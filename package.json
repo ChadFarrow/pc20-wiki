@@ -1,0 +1,24 @@
+{
+  "name": "pc20-wiki",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "PC 2.0 Wiki — a public reference for Podcasting 2.0, built from the PC 2.0 hivemind Obsidian vault.",
+  "scripts": {
+    "sync": "node scripts/sync.mjs",
+    "sync:check": "node scripts/sync.mjs --check",
+    "build": "node scripts/build.mjs",
+    "build:strict": "node scripts/build.mjs --strict",
+    "publish:site": "npm run sync && npm run build:strict",
+    "test": "node --test",
+    "serve": "python3 -m http.server 8088 --bind 127.0.0.1 --directory public",
+    "check:browser": "node scripts/browser-check.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "marked": "^12.0.2"
+  }
+}

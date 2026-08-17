@@ -1,0 +1,659 @@
+/*
+ * PC 2.0 Wiki.
+ *
+ * A reference is read, not skimmed, so the page is built around one measured
+ * column of Newsreader with everything else deferring to it. Fraunces carries
+ * the headings and IBM Plex Mono carries anything the machine wrote — types,
+ * tags, counts — which keeps metadata visibly distinct from prose.
+ *
+ * Same typographic family as pc20-timeline, so the two sites read as siblings.
+ */
+
+:root {
+  --ink: #17150f;
+  --ink-soft: #55503f;
+  --ink-faint: #8a8371;
+  --paper: #faf7f0;
+  --paper-sunk: #f2ede1;
+  --rule: #e0d9c8;
+  --accent: #8a3b12;
+  --accent-soft: #c4581f;
+  --stub: #a89f88;
+
+  --measure: 34rem;
+  --gap: clamp(1rem, 3vw, 2.5rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #ece7da;
+    --ink-soft: #b3ab98;
+    --ink-faint: #857e6d;
+    --paper: #14130f;
+    --paper-sunk: #1c1a15;
+    --rule: #2e2b23;
+    --accent: #e8945c;
+    --accent-soft: #f0ab7c;
+    --stub: #6d6555;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.02rem, 0.98rem + 0.2vw, 1.14rem);
+  line-height: 1.62;
+  font-optical-sizing: auto;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--accent-soft);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+code,
+kbd {
+  font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.88em;
+  background: var(--paper-sunk);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+
+pre {
+  background: var(--paper-sunk);
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+/* ---------- masthead ---------- */
+
+.masthead {
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  flex-wrap: wrap;
+  padding: 1.1rem var(--gap);
+  border-bottom: 1px solid var(--rule);
+  position: sticky;
+  top: 0;
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter: blur(8px);
+  z-index: 10;
+}
+
+.masthead__home {
+  text-decoration: none;
+  color: var(--ink);
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.masthead__nav {
+  display: flex;
+  gap: 1.1rem;
+  margin-left: auto;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.masthead__nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.masthead__nav a:hover {
+  color: var(--accent);
+}
+
+/* ---------- search ---------- */
+
+.search {
+  position: relative;
+  flex: 1 1 14rem;
+  max-width: 24rem;
+}
+
+.search__input {
+  width: 100%;
+  font: inherit;
+  font-size: 0.95rem;
+  padding: 0.42rem 0.7rem;
+  color: var(--ink);
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+}
+
+.search__input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.search__results {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0.3rem;
+  list-style: none;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgb(0 0 0 / 0.14);
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.search__results li a {
+  display: block;
+  padding: 0.5rem 0.6rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.search__results li a:hover,
+.search__results li[aria-selected='true'] a {
+  background: var(--paper-sunk);
+}
+
+.search__title {
+  display: block;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 600;
+}
+
+.search__summary {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  line-height: 1.4;
+}
+
+.search__empty {
+  padding: 0.6rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+/* ---------- page frames ---------- */
+
+.page {
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: clamp(1.6rem, 4vw, 3.4rem) var(--gap) 4rem;
+}
+
+.page--note {
+  display: grid;
+  grid-template-columns: minmax(0, var(--measure)) minmax(0, 15rem);
+  gap: clamp(1.5rem, 5vw, 4rem);
+  align-items: start;
+}
+
+@media (max-width: 56rem) {
+  .page--note {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.note h1 {
+  font-size: clamp(2rem, 1.5rem + 2.2vw, 3rem);
+  margin: 0 0 0.6rem;
+}
+
+.note h2 {
+  font-size: 1.28rem;
+  margin: 2.4rem 0 0.6rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--rule);
+}
+
+.note h3 {
+  font-size: 1.08rem;
+  margin: 1.8rem 0 0.4rem;
+}
+
+/*
+ * The vault's house rule is that every note opens with a one-sentence
+ * definition. Setting that first paragraph larger makes the rule visible: a
+ * reader who wants only the definition never has to read further.
+ */
+.note h1 + p,
+.note__meta + h1 + p {
+  font-size: 1.16em;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.note ul,
+.note ol {
+  padding-left: 1.2rem;
+}
+
+.note li {
+  margin: 0.3rem 0;
+}
+
+.note__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.9rem;
+}
+
+.type,
+.tag,
+.queue__count {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--ink-soft);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.16rem 0.5rem;
+  white-space: nowrap;
+}
+
+.type--moc,
+.type--spec {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--rule));
+}
+
+.tags {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* A link to an unwritten note reads as a promise, not a dead end. */
+.wikilink--stub,
+.notelink--stub {
+  color: var(--stub);
+  text-decoration-style: dotted;
+}
+
+/* ---------- sidebar ---------- */
+
+.sidebar {
+  position: sticky;
+  top: 5rem;
+  font-size: 0.92rem;
+}
+
+@media (max-width: 56rem) {
+  .sidebar {
+    position: static;
+    border-top: 1px solid var(--rule);
+    padding-top: 1.4rem;
+  }
+}
+
+.sidebar h2,
+.outline h2 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+  margin: 0 0 0.5rem;
+}
+
+.panel,
+.outline {
+  margin-bottom: 1.8rem;
+}
+
+.linklist,
+.outline ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.linklist li,
+.outline li {
+  margin: 0.28rem 0;
+  line-height: 1.35;
+}
+
+.outline a {
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.outline a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.panel--empty p {
+  color: var(--ink-faint);
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.sidebar__graph {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.74rem;
+  margin: 0;
+}
+
+/* ---------- home ---------- */
+
+.hero {
+  max-width: var(--measure);
+  margin-bottom: 3rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.4rem, 1.6rem + 3.4vw, 4rem);
+  margin: 0 0 0.5rem;
+  font-variation-settings: 'SOFT' 40, 'WONK' 1;
+}
+
+.hero__tagline {
+  font-size: 1.2rem;
+  color: var(--ink-soft);
+  margin: 0;
+  line-height: 1.45;
+}
+
+.page--home h2 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-faint);
+  border-top: 1px solid var(--rule);
+  padding-top: 0.9rem;
+  margin: 0 0 1.2rem;
+}
+
+.mocs {
+  margin-bottom: 3rem;
+}
+
+.mocs__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+}
+
+.moc {
+  display: block;
+  height: 100%;
+  padding: 1.1rem 1.2rem;
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.moc:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.moc__title {
+  display: block;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+
+.moc__summary {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+
+.notegrid {
+  list-style: none;
+  margin: 0 0 3rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  gap: 0.1rem 1.5rem;
+}
+
+.notegrid__item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.notegrid__item a {
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.notegrid__item a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.colophon {
+  max-width: var(--measure);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+.colophon h2 {
+  border-top: 1px solid var(--rule);
+}
+
+/* ---------- queue ---------- */
+
+.page--queue h1,
+.page--graph h1,
+.page--stub h1 {
+  font-size: clamp(1.9rem, 1.4rem + 2vw, 2.7rem);
+  margin: 0 0 0.5rem;
+}
+
+.lede {
+  max-width: var(--measure);
+  color: var(--ink-soft);
+  margin: 0 0 2rem;
+}
+
+.queue {
+  list-style: none;
+  margin: 0 0 2.5rem;
+  padding: 0;
+}
+
+.queue__item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.queue__item > a {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.05rem;
+  text-decoration: none;
+}
+
+.queue__from {
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+}
+
+.queue__empty {
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.stub__notice {
+  max-width: var(--measure);
+  color: var(--ink-soft);
+  padding: 1rem 1.2rem;
+  background: var(--paper-sunk);
+  border-left: 3px solid var(--stub);
+  border-radius: 0 6px 6px 0;
+}
+
+/* ---------- graph ---------- */
+
+.page--graph {
+  max-width: 78rem;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.4rem;
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.legend__dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  flex: none;
+}
+
+.legend__dot--note {
+  background: var(--ink);
+}
+
+.legend__dot--moc {
+  background: var(--accent);
+}
+
+.legend__dot--stub {
+  background: var(--paper);
+  border: 1.5px dashed var(--ink-faint);
+}
+
+.graph {
+  position: relative;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  background: var(--paper-sunk);
+  overflow: hidden;
+}
+
+#graph-canvas {
+  display: block;
+  width: 100%;
+  height: min(72vh, 40rem);
+  cursor: grab;
+}
+
+#graph-canvas:active {
+  cursor: grabbing;
+}
+
+.graph__fallback {
+  margin: 0;
+  padding: 3rem var(--gap);
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+.graph:has(canvas.ready) .graph__fallback {
+  display: none;
+}
+
+/* ---------- footer ---------- */
+
+.footer {
+  border-top: 1px solid var(--rule);
+  padding: 2rem var(--gap) 3rem;
+  color: var(--ink-faint);
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+.footer p {
+  margin: 0.3rem 0;
+}
+
+.footer__meta em {
+  font-style: normal;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82em;
+  color: var(--ink-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
