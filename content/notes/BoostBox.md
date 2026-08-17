@@ -20,3 +20,7 @@ An app POSTs the complete JSON metadata payload to the `/boost` endpoint and rec
 ## Open questions
 
 - A hosted URL is a dependency the payment does not have: what happens to the metadata when the box goes away
+
+## Sources
+
+- https://podcasting2.org/docs/podcast-namespace/examples/value/blip-0010

@@ -25,3 +25,7 @@ Amounts are tracked internally in millisats, because a recipient holding a 2% sp
 ## Open questions
 
 - Failed payments are largely invisible to the listener, who has no way to tell streaming from silently not working
+
+## Sources
+
+- https://podcasting2.org/docs/podcast-namespace/tags/value

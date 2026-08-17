@@ -20,3 +20,7 @@ A handful of Podcasting 2.0 apps publish each boost as a kind-1 [[Nostr Event]].
 ## Open questions
 
 - Only some apps publish to Nostr, so the picture is partial by construction
+
+## Sources
+
+- https://podcasting2.org/docs/podcast-namespace/examples/value/blip-0010

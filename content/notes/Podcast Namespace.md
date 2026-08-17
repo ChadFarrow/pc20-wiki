@@ -23,3 +23,7 @@ Tags move through a proposal process: discussion, then a phase designation refle
 
 - [[Value 4 Value]] — the `<podcast:value>` block
 - [[Lightning Address]] — one recipient type inside that block
+
+## Sources
+
+- https://podcasting2.org/docs/podcast-namespace

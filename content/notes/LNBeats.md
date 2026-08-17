@@ -20,3 +20,7 @@ It queries the [[Podcast Index]] API for music feeds — the app requires an API
 ## Open questions
 
 - Music feeds and podcast feeds share a namespace but not a listening pattern
+
+## Sources
+
+- https://podcasting2.org/docs/podcast-namespace/tags/medium

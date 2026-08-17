@@ -21,3 +21,7 @@ When a publisher updates a feed, a notification carrying the feed URL is broadca
 ## Open questions
 
 - Trust and spam: what stops a bad actor announcing feeds constantly
+
+## Sources
+
+- https://podcasting2.org/docs/podcast-namespace/tags/podping

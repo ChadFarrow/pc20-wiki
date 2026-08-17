@@ -25,3 +25,7 @@ Two amounts travel along: `value_msat`, what a given recipient actually received
 ## Related
 
 - [[Streaming Sats]] — the automatic counterpart
+
+## Sources
+
+- https://podcasting2.org/docs/podcast-namespace/examples/value/blip-0010

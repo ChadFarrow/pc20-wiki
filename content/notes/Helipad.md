@@ -20,3 +20,7 @@ A poller thread checks an [[LND]] node for invoices every nine seconds, parses t
 ## Open questions
 
 - Reading boosts requires admin-level node credentials; what would a read-only path look like
+
+## Sources
+
+- https://podcasting2.org/docs/podcast-namespace/examples/value/blip-0010

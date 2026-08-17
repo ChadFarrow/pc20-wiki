@@ -20,3 +20,7 @@ The server accepts and stores TLV records, reads the split declarations from the
 ## Open questions
 
 - Forwarding means the box briefly holds other people's money — see [[Custody]]
+
+## Sources
+
+- https://podcasting2.org/docs/podcast-namespace/tags/value-recipient

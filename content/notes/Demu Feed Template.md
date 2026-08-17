@@ -20,3 +20,7 @@ The repo carries a clean `feed.xml` to build from and an annotated `feed-with-co
 ## Open questions
 
 - A template is a snapshot of the namespace; how does a published feed learn about later tags
+
+## Sources
+
+- https://podcasting2.org/docs/podcast-namespace/tags/medium

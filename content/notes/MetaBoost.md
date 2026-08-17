@@ -20,3 +20,7 @@ Payment data is stored as a JSON object with whatever fields the sender needs, p
 ## Open questions
 
 - Two overlapping metadata services now exist; does the ecosystem converge on one or keep both
+
+## Sources
+
+- https://podcasting2.org/docs/podcast-namespace/examples/value/blip-0010

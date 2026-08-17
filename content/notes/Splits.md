@@ -24,4 +24,5 @@ Each `<podcast:valueRecipient>` inside a `<podcast:value>` block carries a requi
 
 ## Sources
 
+- https://podcasting2.org/docs/podcast-namespace/tags/value-recipient
 - https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/tags/value-recipient.md

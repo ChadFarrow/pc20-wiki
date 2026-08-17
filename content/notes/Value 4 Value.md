@@ -24,3 +24,7 @@ The splits are the interesting part — a host, a co-host, an app, and a music a
 
 - [[Keysend]] — how payments reach recipients without an invoice
 - [[Lightning Address]] — a friendlier recipient type
+
+## Sources
+
+- https://podcasting2.org/docs/podcast-namespace/tags/value

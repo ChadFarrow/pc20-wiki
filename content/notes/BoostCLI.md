@@ -20,3 +20,7 @@ It reads the value block out of a podcast feed, resolves the recipients, and sen
 ## Open questions
 
 - Last released in 2024 and node support is narrow; how much still works against current setups
+
+## Sources
+
+- https://podcasting2.org/docs/podcast-namespace/tags/value

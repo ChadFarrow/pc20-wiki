@@ -20,3 +20,7 @@ It is a SvelteKit app at sovereignfeeds.com that builds and serves the [[RSS]] f
 ## Open questions
 
 - Self-published feeds move the hosting problem rather than removing it: what is the durability story
+
+## Sources
+
+- https://podcasting2.org/docs/podcast-namespace

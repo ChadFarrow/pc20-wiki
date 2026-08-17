@@ -28,4 +28,5 @@ The element's text content is an optional title, capped at 128 characters so agg
 
 ## Sources
 
+- https://podcasting2.org/docs/podcast-namespace/tags/soundbite
 - https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/tags/soundbite.md

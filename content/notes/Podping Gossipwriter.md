@@ -20,3 +20,7 @@ It receives Cap'n Proto `PodpingWrite` messages from the podping.cloud front end
 ## Open questions
 
 - Signed notifications imply a key to trust; how do consumers learn which keys are legitimate
+
+## Sources
+
+- https://podcasting2.org/docs/podcast-namespace/tags/podping

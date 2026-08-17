@@ -24,4 +24,5 @@ It is also where [[Podcasting 2.0]] and [[Nostr]] meet in practice. A podcaster 
 
 ## Sources
 
+- https://podcasting2.org/docs/podcast-namespace/tags/social-interact
 - https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/tags/social-interact.md

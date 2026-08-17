@@ -20,3 +20,7 @@ It talks to an [[LND]] node over gRPC and reads the custom TLV records attached 
 ## Open questions
 
 - The repo has been dormant since 2021; treat it as a reference implementation rather than something to deploy
+
+## Sources
+
+- https://podcasting2.org/docs/podcast-namespace/examples/value/blip-0010

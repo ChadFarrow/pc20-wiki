@@ -59,6 +59,7 @@ Infrastructure and reference:
 
 - [[Podping Gossipwriter]] — [[Podping]] over a gossip swarm instead of a blockchain
 - [[Podcast Platform Links]] — how to link to an episode on a given platform
+- [[podcasting2.org]] — the namespace documentation, in a readable layout
 
 ## Open threads
 

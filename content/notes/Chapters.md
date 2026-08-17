@@ -28,4 +28,5 @@ The file itself is a JSON document listing chapters with start times, titles, an
 
 ## Sources
 
+- https://podcasting2.org/docs/podcast-namespace/tags/chapters
 - https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/tags/chapters.md

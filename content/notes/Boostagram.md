@@ -26,4 +26,5 @@ Because it is a custom record on a [[Keysend]] payment, any node that receives t
 
 ## Sources
 
+- https://podcasting2.org/docs/podcast-namespace/examples/value/blip-0010
 - bLIP-10: https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/examples/value/blip-0010.md

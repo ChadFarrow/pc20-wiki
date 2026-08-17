@@ -20,3 +20,7 @@ It scans a profile's kind-1 events — see [[Nostr Event]] — for links to medi
 ## Open questions
 
 - A kind-1 note is not an episode; what gets lost turning a timeline into a feed
+
+## Sources
+
+- https://podcasting2.org/docs/podcast-namespace

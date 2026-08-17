@@ -21,3 +21,7 @@ Three pieces sit together. [[Podcast Namespace]] defines new XML tags. [[Podcast
 
 - Adoption is uneven: a tag in the spec is not a tag in the apps
 - How much complexity can a feed absorb before publishing tools become the bottleneck
+
+## Sources
+
+- https://podcasting2.org/

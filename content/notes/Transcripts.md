@@ -24,4 +24,5 @@ Timed formats are what allow read-along highlighting; a plain text file only sup
 
 ## Sources
 
+- https://podcasting2.org/docs/podcast-namespace/tags/transcript
 - https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/tags/transcript.md
