@@ -16,7 +16,7 @@ Polling is wasteful and slow. Thousands of apps hitting millions of feeds hourly
 
 ## How it works
 
-When a publisher updates a feed, a notification carrying the feed URL is broadcast over a shared medium that any consumer can watch. Consumers see the URL and fetch that one feed immediately.
+When a publisher updates a feed, a notification carrying the feed URL is broadcast over a shared medium that any consumer can watch. Consumers see the URL and fetch that one feed immediately. The shared medium in practice is the Hive blockchain, chosen because writes are fast and cost the publisher nothing per notification.
 
 ## Open questions
 
