@@ -40,22 +40,27 @@ Two things keep the copies together:
 syncs and stages `content/` before every commit, so a stale `content/` cannot be committed
 even by hand.
 
-**A launchd agent** (`launchd/com.chadfarrow.pc20-wiki-sync.plist`) watches the vault,
+**A launchd agent** (`launchd/com.chadfarrow.pc20-wiki-sync.plist.template`) watches the vault,
 waits 45 seconds for edits to settle, then syncs, builds, commits and pushes. It also runs
 every 15 minutes as a backstop, because an in-place write does not always disturb the
 directory kqueue is watching; a run with nothing to do exits in about half a second.
 
 ```sh
-# install
-cp launchd/com.chadfarrow.pc20-wiki-sync.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.chadfarrow.pc20-wiki-sync.plist
+./scripts/install-agent.sh          # generate the plist and load it
+./scripts/install-agent.sh --check  # is the installed agent current?
 
-# stop
-launchctl unload ~/Library/LaunchAgents/com.chadfarrow.pc20-wiki-sync.plist
-
-# what it did
-tail -f ~/Library/Logs/pc20-wiki-sync.log
+launchctl unload ~/Library/LaunchAgents/com.chadfarrow.pc20-wiki-sync.plist   # stop
+tail -f ~/Library/Logs/pc20-wiki-sync.log                                     # what it did
 ```
+
+The plist is generated rather than committed: it has to name absolute paths, and
+this repo is public.
+
+**Saving a note publishes it.** The agent pushes to `main`, Vercel builds `main`, and
+the page is public about two minutes after you stop typing — there is no review step.
+To keep a note out of the site, put `publish: false` in its frontmatter; the sync
+skips it and reports that it did. To retract something already live, delete or
+unpublish it and the next run removes the page.
 
 If a note fails validation the agent publishes nothing, leaves the note alone, and raises a
 notification. Fix the note and the next run picks it up — including a change that was
@@ -123,6 +128,9 @@ scripts/
   render.mjs      HTML generation and the markdown pipeline
   build.mjs       orchestration
   browser-check.mjs
+  update-apps.mjs the Podcast Index apps directory, for adoption counts
+  auto-publish.sh what launchd runs
+data/apps.json    the apps directory, trimmed and committed
 public/assets/    hand-written CSS and JS (committed)
 public/**         everything else is generated
 test/             node --test
@@ -130,6 +138,17 @@ test/             node --test
 
 ## Deploying
 
-Vercel, configured by `vercel.json` (`npm run build` → `public/`, `cleanUrls`,
-`trailingSlash`). Canonical URLs come from `SITE_URL`, falling back to the Vercel
-production host.
+Live at **https://pc20-wiki.vercel.app**.
+
+Vercel builds `main` on every push, configured by `vercel.json` (`npm run build` →
+`public/`, `cleanUrls`, `trailingSlash`). Canonical URLs come from `SITE_URL`, falling
+back to the Vercel production host — so a custom domain needs `SITE_URL` set, and
+nothing else.
+
+The build never touches the vault. It reads `content/` and `data/apps.json`, both
+committed, which is why a Vercel builder with no iCloud and no `~/Vibe` checkout
+produces the same site this machine does.
+
+## Licence
+
+Code is MIT. The notes under `content/` are CC BY 4.0. See `LICENSE`.
