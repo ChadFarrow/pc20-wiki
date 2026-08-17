@@ -20,6 +20,8 @@ Map of the self-hosting and development side: the boxes, the runtimes, and the d
 - [[StartOS]]
 - [[LND]]
 - [[LNbits]]
+- [[RaspiBlitz]] — a full node on Raspberry Pi hardware
+- [[Podping Gossipwriter]] — a peer-to-peer path for [[Podping]] notifications
 
 ## Open threads
 

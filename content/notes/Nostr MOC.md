@@ -22,6 +22,9 @@ Map of the identity and messaging layer: keypairs as identity, relays as dumb tr
 ## Where it meets podcasting
 
 - [[Cross-app Comments]]
+- [[Castr.me]] — an npub rendered as a podcast feed
+- [[OnlyBoosts]] — podcast boosts published as Nostr notes
+- [[Lightning.Pub]] — Nostr identities as Lightning accounts
 
 ## Open threads
 

@@ -35,6 +35,31 @@ Map of the open podcasting stack: the feed format underneath it, the namespace e
 - [[Boost]] — paid on purpose
 - [[Boostagram]] — the message that rides along
 
+## Tools and apps
+
+Listening and publishing:
+
+- [[Podverse]] — an app with the namespace features actually implemented
+- [[LNBeats]] — value-enabled music, paid per listen
+- [[Sovereign Feeds]] — publish a feed carrying tags your host does not support
+- [[Demu Feed Template]] — the same job, as a file you edit by hand
+- [[Castr.me]] — a Nostr identity turned into a feed
+
+Boosts, end to end:
+
+- [[Helipad]] — read the boosts arriving at your node
+- [[BoostCLI]] — send and inspect them from a terminal
+- [[Split Box]] — forward a received boost on to the [[Splits|splits]] in the feed
+- [[BoostBox]] and [[MetaBoost]] — store the metadata a payment cannot carry itself
+- [[extractlv]] — the early proof the TLV data was there to be read
+- [[OnlyBoosts]] — boosts published to Nostr, collected in one place
+- [[Local Bitcoiners]] — a show publishing its own boost activity
+
+Infrastructure and reference:
+
+- [[Podping Gossipwriter]] — [[Podping]] over a gossip swarm instead of a blockchain
+- [[Podcast Platform Links]] — how to link to an episode on a given platform
+
 ## Open threads
 
 - Which namespace tags actually see app adoption vs. which stay theoretical

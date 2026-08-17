@@ -29,6 +29,9 @@ Map of the payment layer: how [[Sats|sats]] move fast enough and cheaply enough 
 
 - [[LND]]
 - [[LNbits]]
+- [[Lightning.Pub]] — sharing one node with other people's Nostr accounts
+- [[Bitcoin Connect]] — wallet connection in the browser, no extension
+- [[RaspiBlitz]] — build the node yourself
 
 ## Open threads
 
