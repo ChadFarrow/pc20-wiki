@@ -249,6 +249,23 @@ async function main() {
       await evaluate('!!document.getElementById("how-it-works")'),
     );
 
+    // ---- adoption ----
+    await go('/notes/cross-app-comments/');
+    await evaluate('document.querySelector(".adoption").scrollIntoView({block:"center"})');
+    await sleep(150);
+    const adoptionText = await evaluate('document.querySelector(".adoption__count")?.textContent.replace(/\\s+/g," ").trim()');
+    check(
+      'a feature note reports how many apps implement it',
+      /^\d+ of \d+ apps in the Podcast Index directory/.test(adoptionText ?? ''),
+      adoptionText,
+    );
+    check(
+      'the adoption block names apps and cites its source',
+      (await evaluate('document.querySelectorAll(".adoption__apps li").length')) > 0 &&
+        (await evaluate('!!document.querySelector(".adoption__source a")')),
+    );
+    await shoot('adoption');
+
     // ---- graph ----
     await go('/graph/');
     for (let attempt = 0; attempt < 60; attempt++) {
