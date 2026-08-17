@@ -15,7 +15,7 @@ A raw node gives you one balance and one credential. LNbits turns that into per-
 
 ## How it works
 
-It connects to a backend node such as [[LND]], tracks balances internally, and exposes wallets over an API. Extensions add features on top — [[Lightning Address]] hosting, LNURL endpoints, paywalls, point-of-sale.
+It connects to a backend node such as [[LND]], tracks balances internally, and exposes wallets over an API. Extensions add features on top — [[Lightning Address]] hosting, [[LNURL]] endpoints, paywalls, point-of-sale.
 
 ## Open questions
 

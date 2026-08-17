@@ -11,7 +11,7 @@ The podcast namespace is a set of XML tags that extend [[RSS]] with podcast-spec
 
 ## Why it matters
 
-It is the extension point where every Podcasting 2.0 feature actually lands. Arguing about a feature means arguing about a tag, in the open, in a public repo — a very different process than a platform shipping something proprietary.
+It is the extension point where every [[Podcasting 2.0]] feature actually lands. Arguing about a feature means arguing about a tag, in the open, in a public repo — a very different process than a platform shipping something proprietary.
 
 ## How it works
 
