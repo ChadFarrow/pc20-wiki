@@ -1,6 +1,7 @@
 ---
 type: spec
 status: seed
+element: Value
 tags: [podcasting, v4v, lightning]
 related: ["[[Value 4 Value]]", "[[Podcast Namespace]]", "[[Keysend]]"]
 ---

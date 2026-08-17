@@ -1,6 +1,7 @@
 ---
 type: protocol
 status: seed
+element: Podping
 tags: [podcasting]
 related: ["[[RSS]]", "[[Podcast Index]]"]
 ---

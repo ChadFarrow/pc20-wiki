@@ -1,6 +1,7 @@
 ---
 type: concept
 status: seed
+element: Boostagrams
 tags: [podcasting, v4v, lightning]
 related: ["[[Value 4 Value]]", "[[Boostagram]]", "[[Streaming Sats]]"]
 ---

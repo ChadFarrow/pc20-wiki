@@ -1,6 +1,7 @@
 ---
 type: concept
 status: growing
+element: Value
 tags: [podcasting, lightning, v4v]
 related: ["[[Lightning Network]]", "[[Keysend]]", "[[Podcast Namespace]]"]
 ---

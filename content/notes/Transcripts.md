@@ -1,6 +1,7 @@
 ---
 type: spec
 status: seed
+element: Transcript
 tags: [podcasting, spec]
 related: ["[[Podcast Namespace]]", "[[Chapters]]"]
 ---

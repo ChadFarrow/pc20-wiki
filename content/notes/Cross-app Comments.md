@@ -1,6 +1,7 @@
 ---
 type: spec
 status: seed
+element: Social Interact
 tags: [podcasting, spec, nostr]
 related: ["[[Podcast Namespace]]", "[[Nostr]]"]
 ---

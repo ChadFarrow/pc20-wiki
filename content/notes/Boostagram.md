@@ -1,6 +1,7 @@
 ---
 type: spec
 status: seed
+element: Boostagrams
 tags: [podcasting, v4v, lightning]
 related: ["[[Boost]]", "[[Keysend]]", "[[Value 4 Value]]"]
 ---

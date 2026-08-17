@@ -1,6 +1,7 @@
 ---
 type: spec
 status: seed
+element: Soundbite
 tags: [podcasting, spec]
 related: ["[[Podcast Namespace]]", "[[Enclosure]]"]
 ---
