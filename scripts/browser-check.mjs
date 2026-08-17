@@ -10,7 +10,8 @@
  * Starts its own static server and headless Chrome, then cleans both up.
  *
  *   npm run check:browser
- *   npm run check:browser -- --shots     # also write screenshots to public/../shots
+ *   npm run check:browser -- --shots            # also write screenshots
+ *   npm run check:browser -- --host https://…   # drive a deployment instead
  *
  * The server and CDP plumbing follow pc20-timeline/scripts/browser-check.mjs.
  */
@@ -28,6 +29,12 @@ const PORT = 8129;
 const CDP_PORT = 9339;
 const PROFILE = '/tmp/pc20-wiki-browser-check';
 const shots = process.argv.includes('--shots');
+
+// --host lets the same checks run against a deployment instead of the local
+// build, which is how a deploy gets verified rather than assumed.
+const hostArg = process.argv.indexOf('--host');
+const HOST = hostArg !== -1 ? process.argv[hostArg + 1].replace(/\/$/, '') : null;
+const ORIGIN = HOST ?? `http://localhost:${PORT}`;
 
 const CHROME = [
   '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
@@ -130,7 +137,8 @@ async function waitForTarget(url) {
 
 async function main() {
   const chrome = await findChrome();
-  const server = await serve();
+  // No local server needed when driving a remote host.
+  const server = HOST ? null : await serve();
   await rm(PROFILE, { recursive: true, force: true });
   if (shots) await mkdir(SHOTS, { recursive: true });
 
@@ -142,7 +150,7 @@ async function main() {
       '--window-size=1280,900',
       `--remote-debugging-port=${CDP_PORT}`,
       `--user-data-dir=${PROFILE}`,
-      `http://localhost:${PORT}/`,
+      `${ORIGIN}/`,
     ],
     { stdio: 'ignore' },
   );
@@ -155,13 +163,13 @@ async function main() {
 
   let client;
   try {
-    const target = await waitForTarget(`localhost:${PORT}`);
+    const target = await waitForTarget(HOST ? new URL(HOST).host : `localhost:${PORT}`);
     client = await connect(target.webSocketDebuggerUrl);
     const { evaluate, send } = client;
     await send('Page.enable');
 
     const go = async (path) => {
-      await send('Page.navigate', { url: `http://localhost:${PORT}${path}` });
+      await send('Page.navigate', { url: `${ORIGIN}${path}` });
       for (let attempt = 0; attempt < 60; attempt++) {
         if (await evaluate('document.readyState === "complete"')) break;
         await sleep(100);
@@ -177,7 +185,9 @@ async function main() {
 
     // ---- home ----
     // Counted from the built data, not hard-coded: the wiki grows.
-    const noteCount = JSON.parse(await readFile(join(SITE, 'data', 'search-index.json'), 'utf8')).length;
+    const noteCount = HOST
+      ? (await (await fetch(`${ORIGIN}/data/search-index.json`)).json()).length
+      : JSON.parse(await readFile(join(SITE, 'data', 'search-index.json'), 'utf8')).length;
 
     await go('/');
     check(
@@ -297,7 +307,7 @@ async function main() {
     await shoot('queue');
   } finally {
     client?.close();
-    server.close();
+    server?.close();
 
     // Chrome needs a moment to let go of its profile directory; deleting it
     // too early throws ENOTEMPTY and would fail an otherwise passing run.
