@@ -31,6 +31,8 @@
   let dragging = null;
   let panning = null;
   let alpha = 1;
+  let spread = 1;
+  let touched = false;   // set once the reader pans, zooms or drags
 
   /**
    * Size by total degree, not inbound alone.
@@ -46,9 +48,15 @@
     .then((data) => {
       // A ring start beats random placement: the layout settles the same way
       // every time, so the graph a reader shares looks like the one they saw.
+      // Spacing scales with the square root of the node count, so the graph
+      // stays as readable at 200 notes as it was at 23 instead of collapsing
+      // into a ball of overlapping labels.
+      spread = Math.sqrt(Math.max(data.nodes.length, 12) / 24);
+
       nodes = data.nodes.map((node, i) => {
         const angle = (i / data.nodes.length) * Math.PI * 2;
-        return { ...node, x: Math.cos(angle) * 220, y: Math.sin(angle) * 220, vx: 0, vy: 0 };
+        const r = 220 * spread;
+        return { ...node, x: Math.cos(angle) * r, y: Math.sin(angle) * r, vx: 0, vy: 0 };
       });
       const bySlug = new Map(nodes.map((node) => [node.slug, node]));
       edges = data.edges
@@ -77,14 +85,15 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     view.x = rect.width / 2;
     view.y = rect.height / 2;
+    fitToContent();
     draw();
   }
 
   function step() {
-    const REPULSION = 7000;
+    const REPULSION = 7000 * spread * spread;
     const SPRING = 0.012;
-    const LENGTH = 110;
-    const CENTRE = 0.004;
+    const LENGTH = 110 * spread;
+    const CENTRE = 0.004 / spread;
 
     for (let i = 0; i < nodes.length; i++) {
       const a = nodes[i];
@@ -188,7 +197,7 @@
         ctx.fill();
       }
 
-      if (!dim && (node === lit || view.scale > 0.75 || node.inbound > 3)) {
+      if (!dim && (node === lit || view.scale > 0.5 || node.degree > 3)) {
         ctx.fillStyle = node === lit ? ACCENT : SOFT;
         // Drawn inside the scaled context, so the size is divided back out and
         // labels stay legible at any zoom instead of ballooning with it.
@@ -203,10 +212,36 @@
     ctx.globalAlpha = 1;
   }
 
+  /**
+   * Frames the whole graph once the layout has settled.
+   *
+   * Without this the reader lands on the middle of a graph that is bigger than
+   * the canvas and has to discover panning before they can see there is more.
+   * Skipped the moment they touch it — refitting under someone's hands would be
+   * the software arguing with them.
+   */
+  function fitToContent() {
+    if (touched || !nodes.length) return;
+    const rect = canvas.getBoundingClientRect();
+    const xs = nodes.map((n) => n.x);
+    const ys = nodes.map((n) => n.y);
+    const pad = 60;
+    const width = Math.max(...xs) - Math.min(...xs) + pad * 2;
+    const height = Math.max(...ys) - Math.min(...ys) + pad * 2;
+
+    // Floored, not just capped: shrinking far enough to fit everything can take
+    // the labels below the size at which they are drawn at all, and a graph of
+    // anonymous dots is not worth framing perfectly.
+    view.scale = Math.max(0.62, Math.min(1.1, Math.min(rect.width / width, rect.height / height)));
+    view.x = rect.width / 2 - ((Math.min(...xs) + Math.max(...xs)) / 2) * view.scale;
+    view.y = rect.height / 2 - ((Math.min(...ys) + Math.max(...ys)) / 2) * view.scale;
+  }
+
   function tick() {
     if (alpha > 0.02) {
       step();
       alpha *= 0.985;
+      fitToContent();
     }
     draw();
     requestAnimationFrame(tick);
@@ -253,6 +288,7 @@
   });
 
   canvas.addEventListener('pointerdown', (event) => {
+    touched = true;
     canvas.setPointerCapture(event.pointerId);
     const hit = nodeAt(toWorld(event));
     if (hit) {
@@ -281,6 +317,7 @@
     'wheel',
     (event) => {
       event.preventDefault();
+      touched = true;
       const rect = canvas.getBoundingClientRect();
       const mx = event.clientX - rect.left;
       const my = event.clientY - rect.top;
