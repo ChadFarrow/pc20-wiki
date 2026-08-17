@@ -7,7 +7,7 @@ related: ["[[NIP]]", "[[Relay]]"]
 
 # Nostr
 
-Nostr is a protocol where identity is a keypair, messages are signed JSON events, and servers called relays do nothing but store and forward them.
+Nostr is a protocol where identity is a keypair, messages are [[Nostr Event|signed JSON events]], and servers called relays do nothing but store and forward them.
 
 ## Why it matters
 

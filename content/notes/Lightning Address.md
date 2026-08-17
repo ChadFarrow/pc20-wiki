@@ -11,7 +11,7 @@ A Lightning Address is an email-shaped identifier like `name@domain.com` that re
 
 ## Why it matters
 
-It is the difference between "here is my payment identity" and "here is a fresh invoice, hurry." For [[Value 4 Value]] recipients it means a feed can name a payee in a form humans can read and verify.
+It is the difference between "here is my payment identity" and "here is a fresh [[Lightning Invoice|invoice]], hurry." For [[Value 4 Value]] recipients it means a feed can name a payee in a form humans can read and verify.
 
 ## How it works
 

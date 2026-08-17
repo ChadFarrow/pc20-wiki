@@ -11,7 +11,7 @@ RSS is an XML document format that describes a list of items published over time
 
 ## Why it matters
 
-A podcast is an RSS feed whose items carry audio enclosures. Nothing more. This is why podcasting stayed open while nearly every other media format consolidated onto platforms: distribution needs no permission, only a URL.
+A podcast is an RSS feed whose items carry audio [[Enclosure|enclosures]]. Nothing more. This is why podcasting stayed open while nearly every other media format consolidated onto platforms: distribution needs no permission, only a URL.
 
 ## How it works
 

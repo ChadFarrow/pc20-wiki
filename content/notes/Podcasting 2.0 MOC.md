@@ -23,4 +23,4 @@ Map of the open podcasting stack: the feed format underneath it, the namespace e
 ## Open threads
 
 - Which namespace tags actually see app adoption vs. which stay theoretical
-- Chapters and transcripts: where the spec is ahead of the tooling
+- [[Chapters]] and [[Transcripts|transcripts]]: where the spec is ahead of the tooling

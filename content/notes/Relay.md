@@ -7,7 +7,7 @@ related: ["[[Nostr]]"]
 
 # Relay
 
-A relay is a server that accepts signed Nostr events, stores them, and serves them to clients that subscribe with filters.
+A relay is a server that accepts signed [[Nostr Event|Nostr events]], stores them, and serves them to clients that subscribe with filters.
 
 ## Why it matters
 

@@ -11,7 +11,7 @@ LNURL is a set of protocols that wrap Lightning interactions in ordinary HTTP re
 
 ## Why it matters
 
-Raw Lightning UX is hostile: invoices expire, are single-use, and are unreadable. LNURL puts a server in the middle that mints them on demand, which is the foundation of anything resembling a reusable payment identity.
+Raw Lightning UX is hostile: [[Lightning Invoice|invoices]] expire, are single-use, and are unreadable. LNURL puts a server in the middle that mints them on demand, which is the foundation of anything resembling a reusable payment identity.
 
 ## How it works
 

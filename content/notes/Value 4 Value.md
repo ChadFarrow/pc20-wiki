@@ -15,7 +15,7 @@ It sidesteps both advertising and paywalls. No sponsor shapes the content, no ga
 
 ## How it works
 
-In podcasting, V4V is expressed in the feed. A `<podcast:value>` block declares recipients and their split percentages. Apps supporting it send payments over the [[Lightning Network]] two ways: streaming sats per minute of listening, and boosts, which are one-off payments that can carry a message.
+In podcasting, V4V is expressed in the feed. A `<podcast:value>` block declares recipients and their [[Splits|split]] percentages. Apps supporting it send payments over the [[Lightning Network]] two ways: [[Streaming Sats|streaming sats]] per minute of listening, and [[Boost|boosts]], which are one-off payments that can carry a message.
 
 The splits are the interesting part — a host, a co-host, an app, and a music artist can each be paid automatically from the same stream without any of them invoicing anyone.
 

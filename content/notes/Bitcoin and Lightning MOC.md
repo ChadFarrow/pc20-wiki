@@ -6,7 +6,7 @@ tags: [moc, bitcoin, lightning]
 
 # Bitcoin and Lightning MOC
 
-Map of the payment layer: how sats move fast enough and cheaply enough to make streaming micropayments plausible.
+Map of the payment layer: how [[Sats|sats]] move fast enough and cheaply enough to make streaming micropayments plausible.
 
 ## Start here
 
@@ -26,5 +26,5 @@ Map of the payment layer: how sats move fast enough and cheaply enough to make s
 
 ## Open threads
 
-- Custody tradeoffs for listeners who will never run a node
-- Receiver-side reliability: inbound liquidity as the recurring failure mode
+- [[Custody]] tradeoffs for listeners who will never run a node
+- Receiver-side reliability: inbound [[Liquidity|liquidity]] as the recurring failure mode

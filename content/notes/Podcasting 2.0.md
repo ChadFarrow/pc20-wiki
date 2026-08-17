@@ -7,7 +7,7 @@ related: ["[[Podcast Namespace]]", "[[Podcast Index]]", "[[Value 4 Value]]"]
 
 # Podcasting 2.0
 
-Podcasting 2.0 is an effort to extend open podcasting with modern features — payments, transcripts, chapters, cross-app comments — without routing any of it through a central platform.
+Podcasting 2.0 is an effort to extend open podcasting with modern features — payments, [[Transcripts|transcripts]], [[Chapters|chapters]], [[Cross-app Comments|cross-app comments]] — without routing any of it through a central platform.
 
 ## Why it matters
 
@@ -15,7 +15,7 @@ By the late 2010s the interesting features in podcasting were arriving as platfo
 
 ## How it works
 
-Three pieces sit together. [[Podcast Namespace]] defines new XML tags. [[Podcast Index]] provides an open directory so apps have something to search. [[Podping]] handles real-time update notification. Individual features — [[Value 4 Value]] payments, transcripts, chapters, soundbites, cross-app comments — are namespace tags that apps opt into.
+Three pieces sit together. [[Podcast Namespace]] defines new XML tags. [[Podcast Index]] provides an open directory so apps have something to search. [[Podping]] handles real-time update notification. Individual features — [[Value 4 Value]] payments, transcripts, chapters, [[Soundbites|soundbites]], cross-app comments — are namespace tags that apps opt into.
 
 ## Open questions
 

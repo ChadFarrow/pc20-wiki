@@ -11,11 +11,11 @@ StartOS is an operating system for personal servers that packages self-hosted se
 
 ## Why it matters
 
-It compresses most of the operational burden of [[Self-hosting]] into a UI. Running a Bitcoin node with [[LND]] and [[LNbits]] on top becomes installation rather than integration work.
+It compresses most of the operational burden of [[Self-hosting]] into a UI. Running a [[Bitcoin]] node with [[LND]] and [[LNbits]] on top becomes installation rather than integration work.
 
 ## How it works
 
-Services ship as packaged apps declaring their dependencies. The system handles service-to-service wiring, TLS, Tor and LAN addressing, and backup scheduling.
+Services ship as packaged apps declaring their dependencies. The system handles service-to-service wiring, TLS, [[Tor]] and LAN addressing, and backup scheduling.
 
 ## Open questions
 
