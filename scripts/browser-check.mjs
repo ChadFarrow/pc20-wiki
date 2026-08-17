@@ -176,8 +176,15 @@ async function main() {
     };
 
     // ---- home ----
+    // Counted from the built data, not hard-coded: the wiki grows.
+    const noteCount = JSON.parse(await readFile(join(SITE, 'data', 'search-index.json'), 'utf8')).length;
+
     await go('/');
-    check('home lists every note in the markup', (await evaluate('document.querySelectorAll(".notegrid__item").length')) === 23);
+    check(
+      'home lists every note in the markup',
+      (await evaluate('document.querySelectorAll(".notegrid__item").length')) === noteCount,
+      `${noteCount} notes`,
+    );
     check('the four maps of content are the entry point', (await evaluate('document.querySelectorAll(".moc").length')) === 4);
     check('no console errors on load', !(await evaluate('window.__err === true')));
     await shoot('home');
@@ -204,7 +211,9 @@ async function main() {
     );
     await shoot('search');
 
-    await type('splits');
+    // A word that appears only in prose, never in a title — otherwise this
+    // tests title matching again, which the previous check already covers.
+    await type('payroll');
     await sleep(200);
     const body = await evaluate('document.querySelector("#search-results .search__title")?.textContent');
     check('search finds a note by a word in its body', body === 'Value 4 Value', `got "${body}"`);
