@@ -12,6 +12,8 @@ Map of the self-hosting and development side: the boxes, the runtimes, and the d
 
 - [[Self-hosting]]
 - [[Reverse Proxy]]
+- [[Tor]] — reaching a box with no public IP
+- [[Macaroon]] — scoping what an application may do to your node
 
 ## Tools
 

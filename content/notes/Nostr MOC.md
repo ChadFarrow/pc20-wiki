@@ -14,9 +14,14 @@ Map of the identity and messaging layer: keypairs as identity, relays as dumb tr
 
 ## Core concepts
 
+- [[Nostr Event]] — the only object in the protocol
 - [[NIP]]
 - [[NIP-46]]
 - [[Relay]]
+
+## Where it meets podcasting
+
+- [[Cross-app Comments]]
 
 ## Open threads
 

@@ -19,6 +19,21 @@ Map of the open podcasting stack: the feed format underneath it, the namespace e
 - [[Podcast Index]]
 - [[Podping]]
 - [[Value 4 Value]]
+- [[RSS]] — and the [[Enclosure]] that makes a feed a podcast
+
+## Feed features
+
+- [[Transcripts]]
+- [[Chapters]]
+- [[Soundbites]]
+- [[Cross-app Comments]]
+
+## Paying for it
+
+- [[Splits]] — who gets what, declared in the feed
+- [[Streaming Sats]] — paid by the minute
+- [[Boost]] — paid on purpose
+- [[Boostagram]] — the message that rides along
 
 ## Open threads
 
