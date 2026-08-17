@@ -25,6 +25,8 @@ import {
   plainText,
   stripTitle,
   headings,
+  adoption,
+  knownElements,
 } from './wiki-lib.mjs';
 import {
   createMarkdown,
@@ -113,6 +115,28 @@ export async function loadNotes(contentDir) {
 async function main() {
   const { notes, problems, warnings } = await loadNotes(CONTENT);
 
+  // Optional: the wiki builds fine without it, just without adoption numbers.
+  let apps = null;
+  try {
+    apps = JSON.parse(await readFile(join(ROOT, 'data', 'apps.json'), 'utf8'));
+  } catch (err) {
+    if (err.code !== 'ENOENT') throw err;
+    warnings.push('data/apps.json is missing — run `npm run update:apps`');
+  }
+
+  // A typo'd element name would silently render "0 of 129 apps", which reads as
+  // a finding rather than a mistake.
+  const elements = knownElements(apps);
+  if (elements.size) {
+    for (const note of notes) {
+      if (note.data.element && !elements.has(note.data.element)) {
+        problems.push(
+          `${note.file}: element '${note.data.element}' is not in the apps directory`,
+        );
+      }
+    }
+  }
+
   const homeSource = await readFile(join(CONTENT, 'Home.md'), 'utf8');
   const home = parseFrontmatter(homeSource);
 
@@ -158,7 +182,15 @@ async function main() {
     const node = nodesBySlug.get(note.slug);
     await writePage(
       `notes/${note.slug}`,
-      renderNotePage({ note, node, graph, nodesBySlug, markdown, baseUrl: BASE_URL }),
+      renderNotePage({
+        note,
+        node,
+        graph,
+        nodesBySlug,
+        markdown,
+        baseUrl: BASE_URL,
+        adoption: adoption(apps, note.data.element),
+      }),
     );
   }
 
@@ -228,8 +260,10 @@ ${[
   await writeFile(join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${BASE_URL}/sitemap.xml\n`);
 
   const stubCount = graph.nodes.filter((node) => node.stub).length;
+  const withAdoption = notes.filter((note) => note.data.element).length;
   console.log(
-    `built ${notes.length} notes, ${stubCount} stub(s), ${graph.edges.length} links → ${OUT}`,
+    `built ${notes.length} notes, ${stubCount} stub(s), ${graph.edges.length} links` +
+      `${withAdoption ? `, ${withAdoption} with adoption data` : ''} → ${OUT}`,
   );
 }
 

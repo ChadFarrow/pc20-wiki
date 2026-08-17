@@ -219,13 +219,47 @@ function outline(body) {
 </nav>`;
 }
 
-export function renderNotePage({ note, node, graph, nodesBySlug, markdown, baseUrl }) {
+/**
+ * Who actually implements this feature.
+ *
+ * Rendered from the Podcast Index apps directory rather than written into the
+ * note, because the number changes and prose does not. The date is shown for
+ * the same reason: a reader should be able to tell how old the claim is.
+ */
+function adoptionSection(adoption) {
+  if (!adoption) return '';
+
+  const share = Math.round((adoption.count / adoption.total) * 100);
+  const listed = adoption.apps.slice(0, 12);
+  const rest = adoption.apps.length - listed.length;
+
+  return `<section class="adoption">
+  <h2>Who implements it</h2>
+  <p class="adoption__count">
+    <strong>${adoption.count}</strong> of ${adoption.total} apps in the Podcast Index directory
+    support <code>${escapeHtml(adoption.element)}</code> — ${share}%.
+  </p>
+  ${
+    adoption.count
+      ? `<ul class="adoption__apps">${listed
+          .map((app) => `<li>${escapeHtml(app)}</li>`)
+          .join('')}${rest > 0 ? `<li class="adoption__more">and ${rest} more</li>` : ''}</ul>`
+      : ''
+  }
+  <p class="adoption__source">From the <a href="https://podcastindex.org/apps" rel="noopener">Podcast Index apps directory</a>${
+    adoption.updated ? `, as of ${escapeHtml(adoption.updated)}` : ''
+  }.</p>
+</section>`;
+}
+
+export function renderNotePage({ note, node, graph, nodesBySlug, markdown, baseUrl, adoption }) {
   const description = summarise(note.plain);
   const body = `${siteHeader()}
 <main class="page page--note">
   <article class="note">
     <div class="note__meta">${typeBadge(node.type)}${tagList(node.tags)}</div>
     ${markdown(note.body)}
+    ${adoptionSection(adoption)}
   </article>
   <aside class="sidebar">
     ${outline(note.body)}

@@ -179,6 +179,34 @@ export function validateNote({ file, title, data, body }) {
 }
 
 /**
+ * Which apps implement a namespace element, out of how many.
+ *
+ * The wiki has an opinion — see the Podcasting 2.0 MOC's open thread — that a
+ * tag in the spec is not a tag in the apps. This is the number that settles it,
+ * so it is computed from the directory at build time rather than typed into a
+ * note where it would rot.
+ */
+export function adoption(apps, element) {
+  if (!apps?.apps || !element) return null;
+  const supporting = apps.apps
+    .filter((app) => app.elements.includes(element))
+    .map((app) => app.name);
+
+  return {
+    element,
+    count: supporting.length,
+    total: apps.apps.length,
+    apps: supporting,
+    updated: apps.updated ?? null,
+  };
+}
+
+/** Every element name the directory knows, for catching a typo'd `element:`. */
+export function knownElements(apps) {
+  return new Set((apps?.apps ?? []).flatMap((app) => app.elements));
+}
+
+/**
  * Builds the link graph.
  *
  * Notes are addressed by slug, and links resolve by title case-insensitively —

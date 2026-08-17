@@ -320,6 +320,73 @@ pre code {
   text-decoration-style: dotted;
 }
 
+/* ---------- adoption ---------- */
+
+/*
+ * Set apart from the prose because it is not prose: it is a measurement, taken
+ * on a date, from a source the reader can go and check.
+ */
+.adoption {
+  margin: 2.6rem 0 0;
+  padding: 1.1rem 1.3rem;
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+}
+
+.adoption h2 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+  border: 0;
+  margin: 0 0 0.6rem;
+  padding: 0;
+}
+
+.adoption__count {
+  margin: 0 0 0.7rem;
+  font-size: 1.02rem;
+}
+
+.adoption__count strong {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.5em;
+  color: var(--accent);
+}
+
+.adoption__apps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.45rem;
+  list-style: none;
+  margin: 0 0 0.7rem;
+  padding: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.74rem;
+}
+
+.adoption__apps li {
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.16rem 0.55rem;
+  color: var(--ink-soft);
+  background: var(--paper);
+}
+
+.adoption__more {
+  border-style: dashed !important;
+  color: var(--ink-faint) !important;
+}
+
+.adoption__source {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+}
+
 /* ---------- sidebar ---------- */
 
 .sidebar {

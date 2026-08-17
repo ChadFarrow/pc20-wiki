@@ -227,3 +227,45 @@ test('stripTitle removes the H1 so summaries do not repeat the title', async () 
   assert.equal(stripTitle('# Value 4 Value\n\nA model where content is free.'), 'A model where content is free.');
   assert.equal(stripTitle('No heading at all.'), 'No heading at all.');
 });
+
+const APPS = {
+  updated: '2026-05-17',
+  apps: [
+    { name: 'Podverse', elements: ['Chapters', 'Social Interact', 'Transcript'] },
+    { name: 'Fountain', elements: ['Chapters', 'Value'] },
+    { name: 'AntennaPod', elements: ['Social Interact'] },
+  ],
+};
+
+test('adoption counts the apps implementing an element', async () => {
+  const { adoption } = await import('../scripts/wiki-lib.mjs');
+  const result = adoption(APPS, 'Chapters');
+  assert.equal(result.count, 2);
+  assert.equal(result.total, 3);
+  assert.deepEqual(result.apps, ['Podverse', 'Fountain']);
+  assert.equal(result.updated, '2026-05-17');
+});
+
+test('adoption reports zero rather than nothing for an unimplemented element', async () => {
+  const { adoption } = await import('../scripts/wiki-lib.mjs');
+  const result = adoption(APPS, 'Podping');
+  assert.equal(result.count, 0);
+  assert.equal(result.total, 3);
+});
+
+test('adoption is absent when a note declares no element or data is missing', async () => {
+  const { adoption } = await import('../scripts/wiki-lib.mjs');
+  assert.equal(adoption(APPS, undefined), null);
+  assert.equal(adoption(null, 'Chapters'), null);
+});
+
+test('knownElements lists every element the directory knows', async () => {
+  const { knownElements } = await import('../scripts/wiki-lib.mjs');
+  assert.deepEqual([...knownElements(APPS)].sort(), [
+    'Chapters',
+    'Social Interact',
+    'Transcript',
+    'Value',
+  ]);
+  assert.equal(knownElements(null).size, 0);
+});

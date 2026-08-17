@@ -179,3 +179,39 @@ test('an unwritten link becomes a stub page rather than a 404', async () => {
 
   await Promise.all([rm(content, { recursive: true }), rm(out, { recursive: true })]);
 });
+
+test('a feature note shows how many apps implement it', () => {
+  const html = pages.get('notes/cross-app-comments/');
+  const section = html.slice(html.indexOf('Who implements it'));
+  assert.match(section, /of 129 apps in the Podcast Index directory/);
+  assert.match(section, /Podverse/);
+  assert.match(section, /podcastindex\.org\/apps/);
+  assert.match(section, /as of 2026-05-17/);
+});
+
+test('adoption appears only on notes that name an element', () => {
+  assert.doesNotMatch(pages.get('notes/tor/'), /Who implements it/);
+  assert.match(pages.get('notes/transcripts/'), /Who implements it/);
+});
+
+test('a typo in a note element name fails the build', async () => {
+  const { writeFile, mkdir } = await import('node:fs/promises');
+  const content = await mkdtemp(join(tmpdir(), 'pc20-element-'));
+  await mkdir(join(content, 'notes'), { recursive: true });
+  await writeFile(join(content, 'Home.md'), '---\ntype: home\nstatus: evergreen\n---\n\n# Home\n');
+  await writeFile(
+    join(content, 'notes', 'Chapters.md'),
+    '---\ntype: spec\nstatus: seed\nelement: Chpaters\n---\n\n# Chapters\n\nChapters divide an episode into titled segments, linked from the feed as an external JSON file rather than baked into the audio itself.\n',
+  );
+
+  const out = await mkdtemp(join(tmpdir(), 'pc20-element-out-'));
+  await assert.rejects(
+    () => run('node', ['scripts/build.mjs', '--content', content, '--out', out], { cwd: ROOT }),
+    (err) => {
+      assert.match(err.stderr, /element 'Chpaters' is not in the apps directory/);
+      return true;
+    },
+  );
+
+  await Promise.all([rm(content, { recursive: true }), rm(out, { recursive: true })]);
+});
