@@ -9,10 +9,11 @@
     "sync:check": "node scripts/sync.mjs --check",
     "build": "node scripts/build.mjs",
     "build:strict": "node scripts/build.mjs --strict",
-    "publish:site": "npm run sync && npm run build:strict",
+    "publish:site": "npm run sync && npm run build",
     "test": "node --test",
     "serve": "python3 -m http.server 8088 --bind 127.0.0.1 --directory public",
-    "check:browser": "node scripts/browser-check.mjs"
+    "check:browser": "node scripts/browser-check.mjs",
+    "lint:notes": "node scripts/build.mjs --strict"
   },
   "engines": {
     "node": ">=20"

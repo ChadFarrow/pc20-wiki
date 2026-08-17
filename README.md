@@ -27,11 +27,39 @@ behind the vault. `npm run sync:check` reports drift and fails if the repo is st
 
 ### Writing loop
 
+There isn't one. Write in Obsidian and stop thinking about it — a launchd agent
+publishes the change about a minute later. To publish immediately:
+
 ```sh
-# edit notes in Obsidian as usual, then:
-npm run publish:site      # sync + strict build
-git add -A && git commit -m "…" && git push
+scripts/auto-publish.sh --now
 ```
+
+Two things keep the copies together:
+
+**A pre-commit hook** (`hooks/pre-commit`, enabled with `git config core.hooksPath hooks`)
+syncs and stages `content/` before every commit, so a stale `content/` cannot be committed
+even by hand.
+
+**A launchd agent** (`launchd/com.chadfarrow.pc20-wiki-sync.plist`) watches the vault,
+waits 45 seconds for edits to settle, then syncs, builds, commits and pushes. It also runs
+every 15 minutes as a backstop, because an in-place write does not always disturb the
+directory kqueue is watching; a run with nothing to do exits in about half a second.
+
+```sh
+# install
+cp launchd/com.chadfarrow.pc20-wiki-sync.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/com.chadfarrow.pc20-wiki-sync.plist
+
+# stop
+launchctl unload ~/Library/LaunchAgents/com.chadfarrow.pc20-wiki-sync.plist
+
+# what it did
+tail -f ~/Library/Logs/pc20-wiki-sync.log
+```
+
+If a note fails validation the agent publishes nothing, leaves the note alone, and raises a
+notification. Fix the note and the next run picks it up — including a change that was
+synced but never committed, which it will find and finish.
 
 ## What gets published
 
@@ -49,9 +77,9 @@ An allowlist, because the vault is personal and the site is not:
 | ------------------------ | ------------------------------------------------------------- |
 | `npm run sync`           | Mirror the vault into `content/`                               |
 | `npm run sync:check`     | Report drift without changing anything (no-ops with no vault)  |
-| `npm run build`          | Build `public/`                                                |
-| `npm run build:strict`   | Build, failing on warnings too — this is what deploys          |
-| `npm run publish:site`   | `sync` then `build:strict`                                     |
+| `npm run build`          | Build `public/` — this is what deploys                         |
+| `npm run publish:site`   | `sync` then `build`                                            |
+| `npm run lint:notes`     | Build with warnings fatal — a deliberate tidy-up pass          |
 | `npm test`               | Unit tests plus an end-to-end build with a link check          |
 | `npm run check:browser`  | Drives the built site in headless Chrome (`-- --shots` for PNGs) |
 | `npm run serve`          | Serve `public/` at http://127.0.0.1:8088                       |
@@ -68,7 +96,11 @@ that quietly drops a note with a typo'd key is how a wiki rots.
 - `type` and `status` must be in the vocabulary `Home.md` documents
 - The H1 must match the filename, because the filename is what wikilinks resolve against
 - Slugs must be unique
-- Warnings (fatal under `--strict`): a note under 40 words, or a note nothing links to
+
+Warnings — a note under 40 words, or a note nothing links to — are printed but do not stop
+a build. Both describe every note on the day it is written, so making them fatal would mean
+the tooling blocks the writing. `npm run lint:notes` makes them fatal when you want to go
+looking for them.
 
 ## Wiki features
 

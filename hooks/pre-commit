@@ -1,0 +1,33 @@
+#!/bin/sh
+#
+# Keeps content/ from being committed stale.
+#
+# The vault is the source of truth but lives outside the repo, so the two can
+# drift. This closes the half of that gap a commit can see: sync first, stage
+# whatever moved, and only then let the commit proceed.
+#
+# Installed via `git config core.hooksPath hooks`, so it is versioned with the
+# repo rather than hidden in .git/.
+
+set -e
+
+repo=$(git rev-parse --show-toplevel)
+cd "$repo"
+
+# A checkout on a machine with no vault is a normal state. There is nothing to
+# sync from, and the committed content/ is already the best copy available.
+vault=${PC20_VAULT:-"$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/PC 2.0 hivemind"}
+if [ ! -d "$vault" ]; then
+  echo "pre-commit: vault not mounted, committing content/ as it stands"
+  exit 0
+fi
+
+before=$(git status --porcelain content/ | wc -l | tr -d ' ')
+node scripts/sync.mjs >/dev/null
+after=$(git status --porcelain content/ | wc -l | tr -d ' ')
+
+if [ "$before" != "$after" ]; then
+  echo "pre-commit: vault had changes the repo was missing — syncing them in"
+fi
+
+git add content/
