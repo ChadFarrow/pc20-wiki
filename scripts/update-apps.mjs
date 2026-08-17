@@ -3,9 +3,15 @@
  * Refreshes data/apps.json — the Podcast Index apps directory, which is what
  * newpodcastapps.com now redirects to.
  *
- *   node scripts/update-apps.mjs                    # from the local web-ui checkout
- *   node scripts/update-apps.mjs --from <path>      # from another checkout
- *   node scripts/update-apps.mjs --url <url>        # straight from GitHub raw
+ *   node scripts/update-apps.mjs                    # upstream master (the directory)
+ *   node scripts/update-apps.mjs --from <path>      # a local checkout instead
+ *   node scripts/update-apps.mjs --url <url>        # some other copy
+ *
+ * Upstream is the default on purpose. The local ~/Vibe/web-ui fork exists to
+ * open PRs against this file, so it is a working branch rather than a mirror:
+ * it lags whatever has merged since, and it can still hold entries that were
+ * later removed upstream. Counting those would overstate adoption using apps
+ * the directory no longer lists.
  *
  * The result is committed, for the same reason content/ is: the Vercel build
  * has neither the checkout nor a guarantee of network access, and a wiki that
@@ -24,11 +30,6 @@ import { fileURLToPath } from 'node:url';
 
 const run = promisify(execFile);
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-
-const DEFAULT_SOURCE = resolve(
-  process.env.HOME ?? '',
-  'Vibe/web-ui/server/data/apps.json',
-);
 
 const UPSTREAM =
   'https://raw.githubusercontent.com/Podcastindex-org/web-ui/master/server/data/apps.json';
@@ -51,22 +52,23 @@ async function sourceDate(path) {
 }
 
 async function main() {
-  const url = arg('url');
+  const from = arg('from');
   let apps;
   let source;
   let updated = null;
 
-  if (url) {
-    const response = await fetch(url === 'upstream' ? UPSTREAM : url);
-    if (!response.ok) throw new Error(`${response.status} fetching ${url}`);
-    apps = await response.json();
-    source = url === 'upstream' ? UPSTREAM : url;
-    updated = new Date().toISOString().slice(0, 10);
-  } else {
-    const path = arg('from') ? resolve(arg('from')) : DEFAULT_SOURCE;
+  if (from) {
+    const path = resolve(from);
     apps = JSON.parse(await readFile(path, 'utf8'));
     source = path.replace(process.env.HOME ?? '', '~');
     updated = await sourceDate(path);
+  } else {
+    const url = arg('url') ?? UPSTREAM;
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`${response.status} fetching ${url}`);
+    apps = await response.json();
+    source = url;
+    updated = new Date().toISOString().slice(0, 10);
   }
 
   if (!Array.isArray(apps)) throw new Error('expected an array of apps');

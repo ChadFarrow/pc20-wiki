@@ -180,13 +180,19 @@ test('an unwritten link becomes a stub page rather than a 404', async () => {
   await Promise.all([rm(content, { recursive: true }), rm(out, { recursive: true })]);
 });
 
-test('a feature note shows how many apps implement it', () => {
+test('a feature note shows how many apps implement it', async () => {
+  const apps = JSON.parse(await readFile(join(ROOT, 'data', 'apps.json'), 'utf8'));
   const html = pages.get('notes/cross-app-comments/');
   const section = html.slice(html.indexOf('Who implements it'));
-  assert.match(section, /of 129 apps in the Podcast Index directory/);
-  assert.match(section, /Podverse/);
+
+  // The counts come from a directory that changes, so this checks the claim is
+  // built correctly rather than checking today's number — which is the mistake
+  // the adoption block exists to avoid making in prose.
+  const expected = apps.apps.filter((app) => app.elements.includes('Social Interact'));
+  assert.match(section, new RegExp(`<strong>${expected.length}</strong> of ${apps.apps.length} apps`));
+  assert.match(section, new RegExp(expected[0].name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
   assert.match(section, /podcastindex\.org\/apps/);
-  assert.match(section, /as of 2026-05-17/);
+  assert.match(section, new RegExp(`as of ${apps.updated}`));
 });
 
 test('adoption appears only on notes that name an element', () => {
