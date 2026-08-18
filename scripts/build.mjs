@@ -24,6 +24,7 @@ import {
   validateNote,
   plainText,
   stripTitle,
+  dropSections,
   headings,
   adoption,
   knownElements,
@@ -109,15 +110,20 @@ export async function loadNotes(contentDir) {
     warnings.push(...check.warnings);
     if (check.errors.length) continue;
 
+    // `body` stays as the vault wrote it so the graph still sees every wikilink;
+    // `published` is what the site renders, indexes and outlines.
+    const published = dropSections(parsed.body);
+
     notes.push({
       file: rel,
       slug,
       title,
       data: parsed.data,
       body: parsed.body,
+      published,
       related: parsed.data.related,
-      plain: plainText(stripTitle(parsed.body)),
-      headings: headings(parsed.body),
+      plain: plainText(stripTitle(published)),
+      headings: headings(published),
     });
   }
 

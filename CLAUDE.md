@@ -57,6 +57,13 @@ are needed only to regenerate.
 committed because Vercel has no iCloud. **Never edit `content/` directly** — the next sync
 destroys it. Note title = filename = H1 = the wikilink target; slug is `slugify(title)`.
 
+Some of a note does not publish: `dropSections` in `wiki-lib.mjs` drops `## Open questions`
+(36 notes today) on the way in, so it lives in Obsidian and never renders, gets outlined or
+gets indexed. `loadNotes` therefore carries two bodies — `note.body`, the vault's, which
+`buildGraph` and `validateNote` read, and `note.published`, which `render.mjs` and the search
+index read. **Keep the graph on the raw body**: three notes reach `Custody` and `NIP-46` only
+from an open question, and stripping first would delete those edges silently.
+
 A launchd agent on the author's Mac watches the vault and runs sync → build → commit → push
 to `main` with no review step. Consequences worth holding in mind: a note is published about
 a minute after it is saved, and **the agent never runs the generators**, so generated data
