@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { parseSrt, captionEpisode, CAPTION_MIN_CUES } from '../scripts/captions-lib.mjs';
+import { parseSrt, captionEpisode, CAPTION_MIN_CUES, densest, DWELL_WINDOW } from '../scripts/captions-lib.mjs';
 
 const SRT = `1
 00:00:01,000 --> 00:00:04,120
@@ -56,4 +56,30 @@ test('CAPTION_MIN_CUES is what tells a stub from a transcript', () => {
   // E46 and E86 come back as 60-byte "Transcript is Processing" files.
   assert.equal(typeof CAPTION_MIN_CUES, 'number');
   assert.ok(CAPTION_MIN_CUES > 0);
+});
+
+test('densest finds the busiest five minutes, not the whole episode', () => {
+  // Lightning Address in E120: 11 hits between 19m and 24m. That is a segment.
+  const clustered = [1140, 1200, 1320, 1380, 1440];
+  assert.deepEqual(densest(clustered), { peak: 5, at: 1140 });
+});
+
+test('densest is unimpressed by hits spread across the hour', () => {
+  // Boost in E100: said constantly, nowhere in particular.
+  const scattered = [600, 1800, 3000, 4200, 5400];
+  assert.equal(densest(scattered).peak, 1);
+});
+
+test('densest counts a hit on the window boundary as inside it', () => {
+  assert.equal(densest([0, 300]).peak, 2);
+  assert.equal(densest([0, 301]).peak, 1);
+});
+
+test('densest handles one hit and no hits', () => {
+  assert.deepEqual(densest([100]), { peak: 1, at: 100 });
+  assert.deepEqual(densest([]), { peak: 0, at: null });
+});
+
+test('DWELL_WINDOW is five minutes', () => {
+  assert.equal(DWELL_WINDOW, 300);
 });

@@ -51,3 +51,34 @@ export function parseSrt(text) {
 
   return cues;
 }
+
+/** How long a stretch of talk counts as one passage. */
+export const DWELL_WINDOW = 300;
+
+/**
+ * The most hits inside any `window` seconds, and where that window opens.
+ *
+ * This is the measure that tells a segment from a habit, and it is the second
+ * one tried. Tightness — the shortest span holding three hits — does not work:
+ * cues are about four seconds apart, so three consecutive "boost"s score as
+ * tight as anything, and the show says boost constantly.
+ *
+ * `seconds` must be ascending, which is what parseSrt already gives.
+ */
+export function densest(seconds, window = DWELL_WINDOW) {
+  if (!seconds.length) return { peak: 0, at: null };
+
+  let peak = 0;
+  let at = seconds[0];
+
+  for (let i = 0; i < seconds.length; i += 1) {
+    let j = i;
+    while (j < seconds.length && seconds[j] - seconds[i] <= window) j += 1;
+    if (j - i > peak) {
+      peak = j - i;
+      at = seconds[i];
+    }
+  }
+
+  return { peak, at };
+}
