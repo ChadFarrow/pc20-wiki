@@ -104,6 +104,52 @@ export function headings(body) {
 }
 
 /**
+ * Sections the vault keeps but the site does not publish.
+ *
+ * `Open questions` is the author's working margin — what a note cannot yet
+ * assert. The heading invites an answer, and a static wiki has no way for a
+ * reader to give one, so it stays in Obsidian and stops here.
+ */
+export const UNPUBLISHED_SECTIONS = ['Open questions'];
+
+/**
+ * Removes a heading and everything under it, up to the next heading at the same
+ * level or higher.
+ *
+ * Line by line rather than one regex because in 14 of the 36 notes that have it
+ * the section is last in the file, so there is no following heading to anchor
+ * on. Fenced code is skipped: a heading inside a sample is prose about a
+ * convention, not the convention.
+ */
+export function dropSections(body, titles = UNPUBLISHED_SECTIONS) {
+  const drop = new Set(titles.map((title) => String(title).trim().toLowerCase()));
+  const kept = [];
+  let fenced = false;
+  // The level being dropped, or 0 when keeping. Levels, not a flag, so a
+  // '### Worth answering' under the heading goes with it and the next '##'
+  // does not.
+  let dropping = 0;
+
+  for (const line of String(body ?? '').split('\n')) {
+    if (/^\s*(?:```|~~~)/.test(line)) fenced = !fenced;
+
+    const heading = fenced ? null : line.match(/^(#{2,6})\s+(.*)$/);
+    if (heading) {
+      const level = heading[1].length;
+      if (dropping && level <= dropping) dropping = 0;
+      if (!dropping && drop.has(heading[2].trim().toLowerCase())) {
+        dropping = level;
+        continue;
+      }
+    }
+
+    if (!dropping) kept.push(line);
+  }
+
+  return kept.join('\n').trim();
+}
+
+/**
  * Drops the H1 line.
  *
  * The title is already known from the filename, so leaving it in the prose

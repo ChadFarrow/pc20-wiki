@@ -122,6 +122,9 @@ looking for them.
 - **Timeline** — `/timeline/` publishes the show's history era by era, each milestone
   linked to the episode it happened on and the notes it is about
 - **Graph** — `/graph/` draws the link graph on canvas, no external libraries
+- **Unpublished sections** — an `## Open questions` section stays in the vault and never
+  reaches the site: the heading asks for an answer a static wiki has no way to take. Any
+  wikilink written there still counts in the graph
 
 ## Structure
 

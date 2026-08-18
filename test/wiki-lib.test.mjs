@@ -228,6 +228,82 @@ test('stripTitle removes the H1 so summaries do not repeat the title', async () 
   assert.equal(stripTitle('No heading at all.'), 'No heading at all.');
 });
 
+test('dropSections removes the section and keeps the one after it', async () => {
+  const { dropSections } = await import('../scripts/wiki-lib.mjs');
+  const body = [
+    '# Podping',
+    '',
+    '## How it works',
+    '',
+    'A notification carrying the feed URL is broadcast.',
+    '',
+    '## Open questions',
+    '',
+    '- Trust and spam: what stops a bad actor announcing feeds constantly',
+    '',
+    '## Sources',
+    '',
+    '- https://podcasting2.org/docs/podcast-namespace/tags/podping',
+  ].join('\n');
+
+  const published = dropSections(body);
+  assert.ok(!published.includes('Open questions'));
+  assert.ok(!published.includes('Trust and spam'));
+  assert.ok(published.includes('## Sources'));
+  assert.ok(published.includes('A notification carrying the feed URL is broadcast.'));
+  assert.ok(!/\n{3}/.test(published), 'no blank gap left where the section was');
+});
+
+test('dropSections handles a section that ends the file', async () => {
+  const { dropSections } = await import('../scripts/wiki-lib.mjs');
+  const body = '# Tor\n\n## Why it matters\n\nIt hides the address.\n\n## Open questions\n\n- Onion addresses are unmemorable';
+
+  assert.equal(dropSections(body), '# Tor\n\n## Why it matters\n\nIt hides the address.');
+});
+
+test('dropSections leaves a note without the section byte-identical', async () => {
+  const { dropSections } = await import('../scripts/wiki-lib.mjs');
+  const body = '# Keysend\n\n## How it works\n\nA payment with no invoice.';
+
+  assert.equal(dropSections(body), body);
+});
+
+test('dropSections stops at the next heading of the same level, not a subheading', async () => {
+  const { dropSections } = await import('../scripts/wiki-lib.mjs');
+  const body = [
+    '## Open questions',
+    '',
+    '### Worth answering',
+    '',
+    '- Still open',
+    '',
+    '## Sources',
+    '',
+    '- A link',
+  ].join('\n');
+
+  const published = dropSections(body);
+  assert.ok(!published.includes('Worth answering'), 'a subheading belongs to the section it sits under');
+  assert.ok(!published.includes('Still open'));
+  assert.ok(published.includes('## Sources'));
+});
+
+test('dropSections ignores a heading inside fenced code', async () => {
+  const { dropSections } = await import('../scripts/wiki-lib.mjs');
+  const body = '# Conventions\n\n```md\n## Open questions\n\n- one bullet\n```\n\nThat block is an example.';
+
+  assert.equal(dropSections(body), body);
+});
+
+test('dropSections takes the section titles it is given', async () => {
+  const { dropSections, UNPUBLISHED_SECTIONS } = await import('../scripts/wiki-lib.mjs');
+  const body = '## Notes to self\n\n- private\n\n## Sources\n\n- A link';
+
+  assert.deepEqual(UNPUBLISHED_SECTIONS, ['Open questions']);
+  assert.equal(dropSections(body), body, 'only the configured titles are dropped');
+  assert.equal(dropSections(body, ['notes to self']), '## Sources\n\n- A link');
+});
+
 const APPS = {
   updated: '2026-05-17',
   apps: [

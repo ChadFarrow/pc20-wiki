@@ -359,12 +359,12 @@ export function renderNotePage({ note, node, graph, nodesBySlug, markdown, baseU
 <main class="page page--note">
   <article class="note">
     <div class="note__meta">${typeBadge(node.type)}${tagList(node.tags)}</div>
-    ${markdown(note.body)}
+    ${markdown(note.published)}
     ${adoptionSection(adoption)}
     ${mentionsSection(mentions)}
   </article>
   <aside class="sidebar">
-    ${outline(note.body)}
+    ${outline(note.published)}
     ${outboundSection(graph.outbound.get(note.slug) ?? [], nodesBySlug)}
     ${backlinkSection(graph.backlinks.get(note.slug) ?? [], nodesBySlug)}
     <p class="sidebar__graph"><a href="/graph/?focus=${encodeURIComponent(note.slug)}">See this note in the graph</a></p>

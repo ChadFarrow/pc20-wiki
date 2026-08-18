@@ -114,6 +114,76 @@ test('the search index carries every note with searchable text', async () => {
   assert.match(v4v.text, /<podcast:value>/);
 });
 
+test('the vault keeps its open questions, the site does not publish them', async () => {
+  for (const [page, html] of pages) {
+    assert.doesNotMatch(html, /Open questions/i, `${page} publishes an open questions section`);
+  }
+
+  // Not just the heading: nothing that only the dropped section said may reach
+  // the page or the index. Derived from the notes, so it keeps holding as the
+  // vault changes.
+  const { parseFrontmatter, dropSections, slugify } = await import('../scripts/wiki-lib.mjs');
+  const index = JSON.parse(await readFile(join(OUT, 'data', 'search-index.json'), 'utf8'));
+  const dir = join(ROOT, 'content', 'notes');
+
+  for (const file of (await readdir(dir)).filter((name) => name.endsWith('.md'))) {
+    const { body } = parseFrontmatter(await readFile(join(dir, file), 'utf8'));
+    const published = dropSections(body);
+    if (published === body) continue;
+
+    // Words the dropped section is alone in using — a word the rest of the note
+    // also uses proves nothing either way. Compared on the raw note so a URL in
+    // Sources counts as usage.
+    const kept = new Set(published.toLowerCase().match(/[a-z]{6,}/g) ?? []);
+    const onlyDropped = [...new Set(body.toLowerCase().match(/[a-z]{6,}/g) ?? [])]
+      .filter((word) => !kept.has(word));
+
+    const slug = slugify(file.replace(/\.md$/, ''));
+    const html = pages.get(`notes/${slug}/`);
+    // The note's prose only. A link the section carried still shows up in the
+    // sidebar by design, and the mentions below it quote the show, not the note.
+    const prose = html.slice(html.indexOf('<article'), html.indexOf('</article>')).split('<section')[0];
+    const entry = index.find((note) => note.slug === slug);
+    for (const word of onlyDropped) {
+      assert.ok(!prose.toLowerCase().includes(word), `${slug} page still says '${word}'`);
+      assert.ok(!entry.text.toLowerCase().includes(word), `${slug} index still says '${word}'`);
+    }
+  }
+});
+
+test('a wikilink still counts as a link when it sits in an unpublished section', async () => {
+  const { parseFrontmatter, dropSections, parseWikilinks, slugify } = await import('../scripts/wiki-lib.mjs');
+  const graph = JSON.parse(await readFile(join(OUT, 'data', 'graph.json'), 'utf8'));
+  const dir = join(ROOT, 'content', 'notes');
+
+  // Three notes reach Custody and NIP-46 only from an open question. Dropping the
+  // prose is a display decision; the relationship between the two concepts is not.
+  let checked = 0;
+  for (const file of (await readdir(dir)).filter((name) => name.endsWith('.md'))) {
+    const { data, body } = parseFrontmatter(await readFile(join(dir, file), 'utf8'));
+    const published = dropSections(body);
+    if (published === body) continue;
+
+    const from = slugify(file.replace(/\.md$/, ''));
+    const kept = new Set([
+      ...parseWikilinks(published).map((link) => slugify(link.target)),
+      ...parseWikilinks(String(data.related ?? '')).map((link) => slugify(link.target)),
+    ]);
+
+    for (const link of parseWikilinks(body)) {
+      const to = slugify(link.target);
+      if (kept.has(to) || to === from) continue;
+      assert.ok(
+        graph.edges.some((edge) => edge.from === from && edge.to === to),
+        `${from} → ${to} was written in an open question and must survive it`,
+      );
+      checked += 1;
+    }
+  }
+
+  assert.ok(checked > 0, 'the guard has something to guard');
+});
+
 test('the graph data matches the pages that were built', async () => {
   const graph = JSON.parse(await readFile(join(OUT, 'data', 'graph.json'), 'utf8'));
   const slugs = new Set(graph.nodes.map((node) => node.slug));
