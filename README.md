@@ -85,6 +85,8 @@ An allowlist, because the vault is personal and the site is not:
 | `npm run build`          | Build `public/` — this is what deploys                         |
 | `npm run publish:site`   | `sync` then `build`                                            |
 | `npm run lint:notes`     | Build with warnings fatal — a deliberate tidy-up pass          |
+| `npm run update:mentions`| Rebuild `data/mentions.json` from the sibling repos            |
+| `npm run update:timeline`| Rebuild `data/timeline.json` from the curated milestones       |
 | `npm test`               | Unit tests plus an end-to-end build with a link check          |
 | `npm run check:browser`  | Drives the built site in headless Chrome (`-- --shots` for PNGs) |
 | `npm run serve`          | Serve `public/` at http://127.0.0.1:8088                       |
@@ -115,6 +117,10 @@ looking for them.
 - **Stub pages** — a link to an unwritten note gets a real page saying so, listing what
   links to it. Links never 404, and `/queue/` publishes the writing queue, most-linked first
 - **Search** — the whole index ships as JSON and is scored in the browser; `/` focuses it
+- **Heard on the show** — each note lists the episodes its subject came up on, deep-linked
+  into the audio at the timestamp. See *Episode mentions* below
+- **Timeline** — `/timeline/` publishes the show's history era by era, each milestone
+  linked to the episode it happened on and the notes it is about
 - **Graph** — `/graph/` draws the link graph on canvas, no external libraries
 
 ## Structure
@@ -129,12 +135,89 @@ scripts/
   build.mjs       orchestration
   browser-check.mjs
   update-apps.mjs the Podcast Index apps directory, for adoption counts
+  source-lib.mjs     reading the sibling checkouts: paths, provenance, absence
+  mentions-lib.mjs   matching a note against what the show said
+  update-mentions.mjs which episodes discussed each note
+  timeline-lib.mjs   eras, placement and the chronology
+  update-timeline.mjs the curated history
   auto-publish.sh what launchd runs
-data/apps.json    the apps directory, trimmed and committed
+data/apps.json     the apps directory, trimmed and committed
+data/mentions.json episode mentions per note (generated, committed)
+data/timeline.json the curated history (generated, committed)
 public/assets/    hand-written CSS and JS (committed)
 public/**         everything else is generated
 test/             node --test
 ```
+
+## Episode mentions
+
+Every note can say which episodes of the show discussed its subject, deep-linked into the
+audio at the moment it came up. That data is generated from three sibling checkouts and
+committed:
+
+```sh
+npm run update:mentions                        # rewrite data/mentions.json
+node scripts/update-mentions.mjs --report      # every matched moment, grouped by note
+node scripts/update-mentions.mjs --dry-run     # what a regenerate would change
+```
+
+Sources, all read from git and never from the network or the NAS: chapter titles and show
+notes from `../pc20-archive`, curated milestones from `../pc20-timeline`, and the clip
+checklist from `../pc20-clips`. Each path is overridable by flag or environment variable,
+and every one is printed before it is read.
+
+**The show's transcripts are deliberately not a source.** They live on a NAS rather than in
+git, so a build that needed them could not run on Vercel. The cost is coverage: chapter
+titles exist for E12–E145 and show notes for E1–E100, so a thin section on a note usually
+means the curated sources run out rather than that nobody discussed it. The section says so
+in its own footer, because letting a reader conclude otherwise would be worse than saying
+nothing.
+
+**Regeneration is manual.** The launchd agent syncs, builds and pushes, but it does not run
+`update:mentions` — so an alias added in Obsidian changes nothing until someone regenerates.
+The build warns when it notices that drift.
+
+To change what a note matches, add `aliases:` to the note **in the vault** (Obsidian's own
+key, so the quick-switcher benefits too). Rules that belong to the archive rather than to
+the concept — the boilerplate threshold, per-note deny phrases, the timeline tag map — live
+in `scripts/mentions-lib.mjs`, where each one can carry the reason it exists.
+
+## The timeline
+
+`/timeline/` is the show's history: 204 curated milestones — firsts, launches, specs,
+shutdowns — grouped into the ten eras `pc20-timeline` defines, each linked to the episode
+it happened on and to the notes that explain it.
+
+```sh
+npm run update:timeline                        # rewrite data/timeline.json
+node scripts/update-timeline.mjs --dry-run     # what a regenerate would change
+```
+
+The entries and the era vocabulary come from `../pc20-timeline`, which is private and
+undeployed — so this is where that work becomes readable. Placement is by **date**, not by
+episode range, which is what makes the eras gapless: every entry falls in the last era that
+had started. An entry whose episode cannot be dated is dropped and named on stderr rather
+than guessed at.
+
+**The entries are first-hand, and deliberately not exhaustive.** They came from relistening
+to the run from E1 and marking what was worth marking — so a milestone title is primary
+evidence, and outranks any chapter title annotating it. It also means coverage is uneven by
+design: roughly 0.5 entries per episode across 2020–22 against 1.2 across 2023–24, because
+that early pass skipped a great deal that had already been overtaken by the time it was
+heard again. Read a thin era as "less was still standing", never as "less happened", and
+do not try to even it out by inferring entries from chapter titles.
+
+**Milestones only.** The mention data on each note already answers "when did they talk
+about this", and folding 770 chapter titles in here would turn a history into a log.
+
+An entry publishes its body where one has been written — 34 of the 204 so far, each written
+from a chapter title or a show-note line in `pc20-archive`. Those are a *weaker* source than
+the title they sit under, which came from the audio, so a body adds context and never
+corrects the entry. The
+rest still hold the seeded `TODO: add context for this milestone`, which is dropped rather
+than published: a placeholder on the page is worse than a bare entry. Most of those cannot
+be written from the archive at all, since chapter titles stop at E145 and show notes at
+E100, and 119 milestones fall outside both.
 
 ## Deploying
 

@@ -9,6 +9,8 @@
 
 import { Marked } from 'marked';
 import { slugify, headings } from './wiki-lib.mjs';
+import { toStamp } from './mentions-lib.mjs';
+import { groupByEra } from './timeline-lib.mjs';
 
 export const SITE_NAME = 'PC 2.0 Wiki';
 export const SITE_TAGLINE = 'A working reference for Podcasting 2.0 — the namespace, the payments, and the plumbing underneath.';
@@ -140,6 +142,7 @@ function siteHeader() {
     <ul class="search__results" id="search-results" role="listbox" hidden></ul>
   </div>
   <nav class="masthead__nav">
+    <a href="/timeline/">Timeline</a>
     <a href="/graph/">Graph</a>
     <a href="/queue/">Queue</a>
   </nav>
@@ -252,7 +255,105 @@ function adoptionSection(adoption) {
 </section>`;
 }
 
-export function renderNotePage({ note, node, graph, nodesBySlug, markdown, baseUrl, adoption }) {
+/** How many episodes and moments a note's section shows before it says "and N more". */
+export const MENTION_EPISODE_CAP = 8;
+export const MENTION_MOMENT_CAP = 3;
+
+const MENTION_SOURCES = { c: 'chapter', n: 'show notes', m: 'timeline', k: 'clip note' };
+
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+/** `2023-02-24` → `24 Feb 2023`, without parsing it as a date and losing a day to UTC. */
+function shortDate(iso) {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(iso ?? ''));
+  if (!match) return '';
+  return `${Number(match[3])} ${MONTHS[Number(match[2]) - 1]} ${match[1]}`;
+}
+
+/** A moment's link: into the audio at the timestamp, or at the episode if there is none. */
+function momentLink(audioUrl, seconds) {
+  if (!audioUrl) return null;
+  return seconds == null ? audioUrl : `${audioUrl}#t=${seconds}`;
+}
+
+/**
+ * Which episodes discussed this note's subject.
+ *
+ * The twin of adoptionSection, and for the same reason: it is a measurement
+ * rather than prose, taken from sources the reader can go and check.
+ *
+ * Newest episode first, because a cap is unavoidable — "Boost" spans 67
+ * episodes — and once you are capping, the oldest eight is the least useful
+ * slice and would freeze permanently as the archive grows. The "and N more"
+ * line carries the *oldest* episode so the cap does not hide the depth.
+ *
+ * The source footer is load-bearing. Chapter titles stop at E145 and show notes
+ * at E100, so a thin section usually means the sources run out rather than that
+ * nobody ever discussed it, and a reference that lets you conclude the latter
+ * is worse than one that says nothing.
+ */
+export function mentionsSection(mentions) {
+  if (!mentions?.episodes?.length) return '';
+
+  const shown = mentions.episodes.slice(0, MENTION_EPISODE_CAP);
+  const rest = mentions.episodes.length - shown.length;
+  const oldest = mentions.episodes.at(-1);
+
+  const episodes = shown
+    .map((episode) => {
+      const moments = episode.moments.slice(0, MENTION_MOMENT_CAP);
+      const spare = episode.moments.length - moments.length;
+      const date = shortDate(episode.date);
+
+      return `<li class="mentions__episode">
+      <p class="mentions__ep">E${episode.number}${date ? ` · ${escapeHtml(date)}` : ''}${
+        episode.title ? ` · ${escapeHtml(episode.title)}` : ''
+      }</p>
+      <ul class="mentions__moments">${moments
+        .map((moment) => {
+          const href = momentLink(episode.audioUrl, moment.seconds);
+          const stamp = moment.seconds == null ? '' : toStamp(moment.seconds);
+          const label = stamp
+            ? href
+              ? `<a class="mentions__at" href="${escapeHtml(href)}">${escapeHtml(stamp)}</a>`
+              : `<span class="mentions__at">${escapeHtml(stamp)}</span>`
+            : '';
+          return `<li>${label}<span class="mentions__text">${escapeHtml(moment.text)}</span>` +
+            `<span class="mentions__from">${escapeHtml(MENTION_SOURCES[moment.source] ?? moment.source)}</span></li>`;
+        })
+        .join('')}${
+        spare > 0 ? `<li class="mentions__more">and ${spare} more in this episode</li>` : ''
+      }</ul>
+    </li>`;
+    })
+    .join('');
+
+  const more =
+    rest > 0
+      ? `<p class="mentions__more-eps">and ${rest} more episode${rest === 1 ? '' : 's'}, back to E${
+          oldest.number
+        }${oldest.date ? ` (${escapeHtml(shortDate(oldest.date))})` : ''}.</p>`
+      : '';
+
+  const coverage = mentions.coverage;
+  const scope = coverage?.episodes
+    ? ` ${coverage.withSources} of ${coverage.episodes} episodes have curated notes.`
+    : '';
+
+  return `<section class="mentions">
+  <h2>Heard on the show</h2>
+  <p class="mentions__count">
+    <strong>${mentions.total}</strong> moment${mentions.total === 1 ? '' : 's'} across
+    ${mentions.episodes.length} episode${mentions.episodes.length === 1 ? '' : 's'}.
+  </p>
+  <ol class="mentions__list">${episodes}</ol>
+  ${more}
+  <p class="mentions__source">From chapter titles, show notes, the PC 2.0 Timeline and the clip
+    notes — curated sources only, not the show\u2019s transcripts.${scope}</p>
+</section>`;
+}
+
+export function renderNotePage({ note, node, graph, nodesBySlug, markdown, baseUrl, adoption, mentions }) {
   const description = summarise(note.plain);
   const body = `${siteHeader()}
 <main class="page page--note">
@@ -260,6 +361,7 @@ export function renderNotePage({ note, node, graph, nodesBySlug, markdown, baseU
     <div class="note__meta">${typeBadge(node.type)}${tagList(node.tags)}</div>
     ${markdown(note.body)}
     ${adoptionSection(adoption)}
+    ${mentionsSection(mentions)}
   </article>
   <aside class="sidebar">
     ${outline(note.body)}
@@ -310,6 +412,131 @@ ${siteFooter()}`;
     body,
   });
 }
+
+/**
+ * The show's history, era by era.
+ *
+ * Rendered whole into the markup like every other page here: it has to read
+ * with JavaScript blocked, and a chronology whose entries arrive by fetch is a
+ * chronology nothing can link into or quote.
+ *
+ * Oldest first, because it is a history. Each entry names the episode it came
+ * from and links into the audio at the moment it happened, so a claim on this
+ * page can always be checked against the recording that supports it.
+ *
+ * The entries are a first-hand record — someone relistened to the run from E1
+ * and marked what was worth marking — which is why the page says so rather than
+ * presenting itself as an index. It is deliberately not exhaustive, and the
+ * density says so: about 0.5 entries per episode through 2020-22 against 1.2
+ * through 2023-24, because the early pass skipped what had since been overtaken.
+ * Do not "fix" that imbalance by inferring entries from chapter titles.
+ */
+export function renderTimelinePage({ timeline, markdown, baseUrl }) {
+  const eras = groupByEra(timeline.eras ?? [], timeline.entries ?? []);
+  const entries = timeline.entries ?? [];
+  const span =
+    entries.length > 1 ? `${shortDate(entries[0].date)} to ${shortDate(entries.at(-1).date)}` : '';
+
+  const jump = `<nav class="eras" aria-label="Jump to an era">
+    <ol>${eras
+      .map(
+        (era) => `<li><a href="#era-${escapeHtml(era.id)}">
+        <span class="eras__no">${String(era.index).padStart(2, '0')}</span>
+        <span class="eras__title">${escapeHtml(era.title)}</span>
+        <span class="eras__n">${era.entries.length}</span>
+      </a></li>`,
+      )
+      .join('')}</ol>
+  </nav>`;
+
+  const body = `${siteHeader()}
+<main class="page page--timeline">
+  <article class="timeline">
+    <h1>Timeline</h1>
+    <p class="timeline__lede">
+      ${entries.length} milestone${entries.length === 1 ? '' : 's'} from the Podcasting 2.0 podcast${
+        span ? `, ${escapeHtml(span)}` : ''
+      }. Each one names the episode it came from; where a timestamp is known, the
+      link opens the audio at that moment.
+    </p>
+    ${jump}
+    ${eras.map((era) => renderEra(era, markdown)).join('')}
+    <p class="timeline__source">Compiled by relistening to the whole run from the first
+      episode. What is marked here is what was judged worth marking on that pass, so the
+      early years are thinner than the later ones — much of what was said then had already
+      been overtaken by the time it was heard again, not because less was happening. Eras
+      are assigned by date, so every entry falls inside one.</p>
+  </article>
+</main>
+${siteFooter()}`;
+
+  return pageShell({
+    title: `Timeline — ${SITE_NAME}`,
+    description: `${entries.length} milestones from the Podcasting 2.0 podcast${
+      span ? `, ${span}` : ''
+    } — the firsts, launches, specs and shutdowns, each linked to the episode it happened on.`,
+    canonical: `${baseUrl}/timeline/`,
+    body,
+  });
+}
+
+function renderEra(era, markdown) {
+  return `<section class="era" id="era-${escapeHtml(era.id)}">
+    <header class="era__head">
+      <p class="era__no">${String(era.index).padStart(2, '0')}</p>
+      <h2>${escapeHtml(era.title)}</h2>
+      <p class="era__from">from ${escapeHtml(shortDate(era.start))} · ${era.entries.length} entr${
+        era.entries.length === 1 ? 'y' : 'ies'
+      }</p>
+      ${era.blurb ? `<p class="era__blurb">${escapeHtml(era.blurb)}</p>` : ''}
+    </header>
+    <ol class="entries">${era.entries.map((entry) => renderEntry(entry, markdown)).join('')}</ol>
+  </section>`;
+}
+
+function renderEntry(entry, markdown) {
+  const href = entry.audioUrl
+    ? entry.seconds == null
+      ? entry.audioUrl
+      : `${entry.audioUrl}#t=${entry.seconds}`
+    : null;
+  const at = entry.seconds == null ? '' : ` · ${escapeHtml(toStamp(entry.seconds))}`;
+  const cite = `E${entry.episode}${at}`;
+
+  return `<li class="entry" id="${escapeHtml(entry.id)}">
+    <p class="entry__when">
+      <time datetime="${escapeHtml(entry.date)}">${escapeHtml(shortDate(entry.date))}</time>
+    </p>
+    <div class="entry__body">
+      <p class="entry__title"><span class="entry__kind entry__kind--${escapeHtml(entry.kind)}">${escapeHtml(
+        KIND_LABELS[entry.kind] ?? entry.kind,
+      )}</span>${escapeHtml(entry.title)}</p>
+      <p class="entry__cite">${
+        href ? `<a href="${escapeHtml(href)}">${escapeHtml(cite)}</a>` : escapeHtml(cite)
+      }${entry.episodeTitle ? ` · ${escapeHtml(entry.episodeTitle)}` : ''}</p>
+      ${
+        // Written from the same chapter titles and show notes the rest of the
+        // page cites, so it belongs with the citation rather than above it.
+        entry.body && markdown ? `<div class="entry__note">${markdown(entry.body)}</div>` : ''
+      }
+      ${
+        entry.notes?.length
+          ? `<p class="entry__notes">${entry.notes
+              .map((note) => `<a href="/notes/${note.slug}/">${escapeHtml(note.title)}</a>`)
+              .join('')}</p>`
+          : ''
+      }
+    </div>
+  </li>`;
+}
+
+const KIND_LABELS = {
+  first: 'First',
+  launch: 'Launch',
+  death: 'Shut down',
+  spec: 'Spec',
+  event: 'Event',
+};
 
 /** Notes grouped by the MOC that maps them, then everything else A–Z. */
 export function renderHome({ home, mocs, nodes, markdown, baseUrl }) {

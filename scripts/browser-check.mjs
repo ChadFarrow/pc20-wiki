@@ -37,11 +37,14 @@ const HOST = hostArg !== -1 ? process.argv[hostArg + 1].replace(/\/$/, '') : nul
 const ORIGIN = HOST ?? `http://localhost:${PORT}`;
 
 const CHROME = [
+  // An explicit path first, so this runs somewhere other than a Mac desktop —
+  // a container or CI has Chrome, just never where a Mac keeps it.
+  process.env.CHROME,
   '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
   '/Applications/Chromium.app/Contents/MacOS/Chromium',
   '/usr/bin/google-chrome',
   '/usr/bin/chromium',
-];
+].filter(Boolean);
 
 const TYPES = {
   '.html': 'text/html',
@@ -147,6 +150,9 @@ async function main() {
     [
       '--headless=new',
       '--disable-gpu',
+      // Chrome refuses to start as root without --no-sandbox, which is exactly
+      // the case in a container. CHROME_FLAGS keeps that out of the default.
+      ...(process.env.CHROME_FLAGS ? process.env.CHROME_FLAGS.split(/\s+/) : []),
       '--window-size=1280,900',
       `--remote-debugging-port=${CDP_PORT}`,
       `--user-data-dir=${PROFILE}`,

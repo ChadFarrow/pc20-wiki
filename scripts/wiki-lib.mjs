@@ -172,6 +172,16 @@ export function validateNote({ file, title, data, body }) {
     errors.push(`${file}: 'tags' must be a list`);
   }
 
+  // Obsidian's own key, reused to tell the mention matcher what the show calls
+  // this thing. A typo here costs the note its episode citations silently, so it
+  // is worth failing the build over.
+  if (data.aliases != null) {
+    if (!Array.isArray(data.aliases)) errors.push(`${file}: 'aliases' must be a list`);
+    else if (data.aliases.some((alias) => typeof alias !== 'string' || !alias.trim())) {
+      errors.push(`${file}: 'aliases' must be a list of non-empty strings`);
+    }
+  }
+
   const words = wordCount(body);
   if (words < 40) warnings.push(`${file}: only ${words} words — still a stub in practice`);
 

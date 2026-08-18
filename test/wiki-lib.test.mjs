@@ -269,3 +269,14 @@ test('knownElements lists every element the directory knows', async () => {
   ]);
   assert.equal(knownElements(null).size, 0);
 });
+
+test('validateNote rejects aliases that are not a list of strings', () => {
+  const base = { type: 'concept', status: 'seed' };
+  const body = '# Podping\n\nA notification system.';
+  const check = (aliases) => validateNote({ file: 'n.md', title: 'Podping', data: { ...base, aliases }, body });
+
+  assert.deepEqual(check(['pod ping']).errors, []);
+  assert.match(check('pod ping').errors[0], /'aliases' must be a list/);
+  assert.match(check([' ']).errors[0], /non-empty strings/);
+  assert.match(check([42]).errors[0], /non-empty strings/);
+});
