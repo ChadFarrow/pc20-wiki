@@ -165,3 +165,24 @@ export function diffEntries(next, previous) {
 
   return changes;
 }
+
+/**
+ * The publishable part of a milestone body.
+ *
+ * A milestone is seeded with `TODO: add context for this milestone.` and a
+ * placeholder on the page is worse than a bare entry, so the seed is dropped.
+ * But the seed line is not always the whole body: nine milestones carry a note
+ * under it recording which episodes of the relisten the entry was drawn from,
+ * and dropping the body wholesale threw that away — provenance from the person
+ * who did the listening, deleted for sitting below a placeholder.
+ *
+ * So only the seed line goes. Anything written under it is the author's, and
+ * publishes.
+ */
+export function milestoneBody(body) {
+  const text = String(body ?? '').trim();
+  if (!/^TODO\b/i.test(text)) return text || null;
+
+  const rest = text.split('\n').slice(1).join('\n').trim();
+  return rest || null;
+}

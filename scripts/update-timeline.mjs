@@ -28,7 +28,7 @@ import { load } from 'js-yaml';
 import { parseFrontmatter, slugify } from './wiki-lib.mjs';
 import { flag, arg, sourcePath, announce, provenance, missing, tilde, writeGenerated } from './source-lib.mjs';
 import { toSeconds } from './mentions-lib.mjs';
-import { parseEras, buildTimeline, diffEntries, KINDS } from './timeline-lib.mjs';
+import { parseEras, buildTimeline, diffEntries, milestoneBody, KINDS } from './timeline-lib.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -83,7 +83,7 @@ async function readMilestones(dir) {
       tags: Array.isArray(data.tags) ? data.tags : [],
       episode: data.episode,
       seconds: toSeconds(data.timestamp),
-      body: /^TODO\b/i.test(String(body ?? '').trim()) ? null : String(body ?? '').trim() || null,
+      body: milestoneBody(body),
     });
   }
 

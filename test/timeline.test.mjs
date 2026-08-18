@@ -1,7 +1,15 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { parseEras, eraForDate, notesForEntry, buildTimeline, groupByEra, diffEntries } from '../scripts/timeline-lib.mjs';
+import {
+  parseEras,
+  eraForDate,
+  notesForEntry,
+  buildTimeline,
+  groupByEra,
+  diffEntries,
+  milestoneBody,
+} from '../scripts/timeline-lib.mjs';
 
 const ERAS = [
   { id: 'genesis', title: 'Genesis', start: '2020-08-28', blurb: 'A new namespace.' },
@@ -172,4 +180,22 @@ test('diffEntries names an entry added and one removed', () => {
 
 test('diffEntries treats a missing previous file as everything being new', () => {
   assert.deepEqual(diffEntries([{ id: 'a', title: 'A', episode: 1 }], null).map((c) => c.kind), ['added']);
+});
+
+test('milestoneBody drops the seeded placeholder', () => {
+  assert.equal(milestoneBody('TODO: add context for this milestone.'), null);
+  assert.equal(milestoneBody(''), null);
+  assert.equal(milestoneBody(undefined), null);
+});
+
+test('milestoneBody keeps the note written under the placeholder', () => {
+  // Nine milestones record which episodes of the relisten the entry came from.
+  // Dropping the body wholesale deleted that — provenance from the person who
+  // did the listening, thrown away for sitting below a placeholder.
+  const body = 'TODO: add context for this milestone.\n\nSpans E1–E5 in the relisten notes.';
+  assert.equal(milestoneBody(body), 'Spans E1–E5 in the relisten notes.');
+});
+
+test('milestoneBody leaves a written body alone', () => {
+  assert.equal(milestoneBody('  The show notes place it in Austin.  '), 'The show notes place it in Austin.');
 });

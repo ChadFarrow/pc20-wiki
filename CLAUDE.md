@@ -102,6 +102,16 @@ without it. Adding a fourth follows the same shape.
 sorted explicitly for this reason. `--dry-run` on either is the guard; it should report
 "no change" immediately after a real run.
 
+**Keep both diffs comparing whole records.** They did not. The timeline's compared title and
+episode, the mentions' compared list lengths, and a run that dropped 34 milestone bodies
+reported "no change" — a guard that cannot see the loss it exists to catch is worse than
+none, because it is believed. Both rules now live in the `*-lib.mjs` files with tests naming
+that failure. Narrowing either one re-opens it.
+
+A real run writes nothing when nothing moved: `writeGenerated` in `source-lib.mjs` keeps the
+previous `generated` date rather than stamping today's, so the launchd agent does not commit
+a one-line diff every day. `generated` therefore means "the day this data last changed".
+
 ## The matching rules (`mentions-lib.mjs`)
 
 This is where the repo is easiest to break subtly. Every rule below was measured against the
@@ -186,11 +196,11 @@ more aliases expecting a yield.
 ## The timeline
 
 `/timeline/` renders `data/timeline.json`: 204 milestones, oldest first, grouped into the 9
-eras that have entries, with an era index at the top. 117 link to a note; 34 carry a body.
+eras that have entries, with an era index at the top. 117 link to a note; 69 carry a body.
 
 **The entries are primary evidence.** They came from someone relistening to the whole run
 from E1 and marking what mattered — not from compiling feeds. A milestone title therefore
-**outranks any chapter title annotating it**: the 34 bodies are written from chapter titles
+**outranks any chapter title annotating it**: the 69 bodies are written from chapter titles
 and show notes, so a body adds context and must never correct the entry.
 
 **Coverage is uneven on purpose.** About 0.5 entries per episode across 2020–22 against 1.2
@@ -202,8 +212,18 @@ Placement is by **date**, not episode range — the last era whose `start` is on
 entry's date — which is what makes the eras gapless. An entry that cannot be dated is dropped
 and named on stderr rather than guessed at.
 
-A body that is still `TODO: add context for this milestone` is dropped at generation. 170
-still are, and most cannot be written from the archive at all.
+**The milestone text lives in `pc20-timeline`, not here.** `data/timeline.json` is generated
+from those files, so a body that exists only in the generated copy is one regeneration away
+from deletion — and `--dry-run` will not warn you, unless the comparison stays as wide as it
+now is. If a body has to be recovered from `data/timeline.json`, it goes back into the
+milestone file; the entry's `id` is that file's name.
+
+Only the seeded `TODO: add context for this milestone` line is dropped at generation, not the
+whole body: nine milestones write which episodes of the relisten the entry spans underneath
+it, and dropping the body wholesale deleted that. 135 milestones still have nothing but the
+seed. Most of them cannot be written from the archive at all — chapter titles stop at E145
+and show notes at E100, so 117 of them sit outside both sources, and of the 53 that were in
+range, 24 were probed and had nothing worth adding.
 
 **Ordering differs from the mentions section on purpose.** The timeline is oldest-first
 because it is a history; a note's mentions are newest-first because that list is capped
@@ -240,9 +260,14 @@ it — `browser-check.mjs` asserts on that element's exact text.
 
 ## Staleness
 
-The launchd agent syncs, builds and pushes, but never runs the generators. So an alias added
-in Obsidian changes nothing until someone regenerates, and the only symptom would be a
-section that is quietly wrong.
+The launchd agent now runs both generators on every publish, before the build, so an alias
+added in Obsidian reaches the site on the same run. A sibling that is not checked out is
+logged and skipped, and the committed data stands. This is why `writeGenerated` in
+`source-lib.mjs` keeps the previous `generated` date when nothing else moved — on a timer,
+that stamp would otherwise be the only line that ever changed.
+
+The warnings below still matter, because a checkout somewhere else may have no siblings at
+all, and because `npm run update:apps` is still run by hand.
 
 `data/mentions.json` records a `notes` fingerprint of the forms each note was matched on, and
 `build.mjs` warns in both directions: when a note's current forms differ from the recorded
