@@ -610,6 +610,42 @@ test('the output is sorted, so a rerun is byte-identical', () => {
   assert.deepEqual(Object.keys(out), ['podping', 'tor']);
 });
 
+test('a form split across a caption break is found, and counted once', () => {
+  // The captions wrap mid-sentence BETWEEN cues, not only inside them:
+  //   "…This is episode number" / "seven. Tag your"
+  // 41 of 815 matches on the sample live only across a break, all multi-word.
+  const notes = [note('Lightning Address', 'lightning-address')];
+  const candidates = [
+    hit(200, 100, 'he gave me his lightning'),
+    hit(200, 104, 'address, which resolves to a node'),
+    hit(200, 130, 'the lightning address spec is simple'),
+  ];
+  const out = buildTranscriptMentions(notes, candidates, {}, { floor: 2 });
+  assert.equal(out['lightning-address'].length, 1, 'one moment per episode');
+  assert.equal(out['lightning-address'][0].t, 100, 'the straddle opens the densest window');
+});
+
+test('a form wholly inside the next cue is not also charged to this one', () => {
+  // Without the second check, the cue before every real mention would score a
+  // straddle of its own and every dwell measure would double.
+  const notes = [note('Podping', 'podping')];
+  const candidates = [
+    hit(200, 100, 'and then he said'),
+    hit(200, 104, 'podping handles it'),
+    hit(200, 108, 'which is neat'),
+  ];
+  assert.deepEqual(buildTranscriptMentions(notes, candidates, {}, { floor: 2 }), {});
+});
+
+test('cues from different episodes are never joined across the seam', () => {
+  const notes = [note('Lightning Address', 'lightning-address')];
+  const candidates = [
+    hit(200, 3000, 'he gave me his lightning'),
+    hit(201, 0, 'address, which resolves to a node'),
+  ];
+  assert.deepEqual(buildTranscriptMentions(notes, candidates, {}, { floor: 1 }), {});
+});
+
 test('the starting thresholds are the ones the spec names', () => {
   assert.equal(DWELL_FLOOR, 2);
   assert.equal(LIFT_MIN, 1);
@@ -697,22 +733,63 @@ export function buildTranscriptMentions(notes, candidates, curated = {}, options
 
   const terms = notes.filter(isMatchable).map((note) => ({
     note,
-    prepared: prepareForms(formsFor(note)),
+    forms: prepareForms(formsFor(note)),
   }));
+
+  // Every cue prepared once, so the per-note loop below is plain `includes`.
+  const prepared = candidates.map((candidate) => ({
+    squashed: squash(candidate.text),
+    normalised: norm(candidate.text),
+    skip: isReadout(candidate.text),
+  }));
+
+  /**
+   * The two cues either side of a caption break, as one string.
+   *
+   * The captions break mid-sentence — "…This is episode number" / "seven." — so
+   * a form that spans the break is invisible to a matcher reading one cue at a
+   * time. Measured on eight episodes: 41 of 815 matches live only across a
+   * boundary, and every one is a multi-word form — "Value 4 Value" 18 times,
+   * "Podcasting 2.0" nine, "Podcast Index" eight. Single words never straddle.
+   *
+   * No extra squashing: squash() drops the space, so a pair's squashed text is
+   * the two squashed texts joined, and norm() wraps in spaces, so the normalised
+   * pair is the two joined on one. Both are O(1) from the neighbours.
+   *
+   * A readout or boilerplate neighbour is not joined — pasting an amount onto
+   * the next line invents text nobody said.
+   */
+  const joined = (i) => {
+    const next = candidates[i + 1];
+    if (!next || next.episode !== candidates[i].episode) return null;
+    if (prepared[i + 1].skip || boilerplate.has(prepared[i + 1].squashed)) return null;
+    return {
+      squashed: prepared[i].squashed + prepared[i + 1].squashed,
+      normalised: `${prepared[i].normalised.slice(0, -1)}${prepared[i + 1].normalised}`,
+    };
+  };
 
   // slug → episode → the cues that hit, in time order
   const found = new Map();
 
-  for (const candidate of candidates) {
-    if (isReadout(candidate.text)) continue;
+  for (let i = 0; i < candidates.length; i += 1) {
+    const candidate = candidates[i];
+    if (prepared[i].skip) continue;
+    if (boilerplate.has(prepared[i].squashed)) continue;
 
-    const squashed = squash(candidate.text);
-    if (boilerplate.has(squashed)) continue;
-    const cue = { squashed, normalised: norm(candidate.text) };
+    const pair = joined(i);
 
-    for (const { note, prepared } of terms) {
+    for (const { note, forms } of terms) {
       if (covered.get(note.slug)?.has(candidate.episode)) continue;
-      if (!matchesPrepared(prepared, cue)) continue;
+
+      let hit = matchesPrepared(forms, prepared[i]);
+      if (!hit && pair) {
+        // Only a form in NEITHER cue alone counts as a straddle. Without that
+        // second check, a form sitting wholly inside the next cue is counted
+        // once there and once here, and every dwell measure doubles.
+        hit = matchesPrepared(forms, pair) && !matchesPrepared(forms, prepared[i + 1]);
+      }
+      if (!hit) continue;
       if (denied(note.title, candidate.text)) continue;
 
       if (!found.has(note.slug)) found.set(note.slug, new Map());
