@@ -28,6 +28,7 @@ import {
   adoption,
   knownElements,
 } from './wiki-lib.mjs';
+import { mentionsFor, formsFor, isMatchable } from './mentions-lib.mjs';
 import {
   createMarkdown,
   renderNotePage,
@@ -47,7 +48,16 @@ function arg(name, fallback) {
 
 const CONTENT = arg('content', 'content');
 const OUT = arg('out', 'public');
+const MENTIONS = arg('mentions', 'data/mentions.json');
 const strict = process.argv.includes('--strict');
+
+/*
+ * How much mention text each note contributes to the search index.
+ *
+ * The index ships whole to the browser on first focus, so this is the one place
+ * mention data has a size cost. Only the two busiest notes come near the limit.
+ */
+const MOMENT_INDEX_LIMIT = 4000;
 
 // Canonical and OG URLs need an absolute origin. Vercel supplies the deploy
 // host; locally the links simply point at the production site.
@@ -124,6 +134,47 @@ async function main() {
     warnings.push('data/apps.json is missing — run `npm run update:apps`');
   }
 
+  // Same contract as apps.json: generated elsewhere, committed, and optional —
+  // the wiki builds without it, just without the episode citations.
+  let mentionsDoc = null;
+  try {
+    mentionsDoc = JSON.parse(await readFile(MENTIONS, 'utf8'));
+  } catch (err) {
+    if (err.code !== 'ENOENT') throw err;
+    warnings.push('data/mentions.json is missing — run `npm run update:mentions`');
+  }
+
+  // The launchd agent runs sync, build and push, but never update:mentions. So
+  // an alias added in the vault changes nothing until somebody regenerates, and
+  // without this the only symptom is a section that stays quietly wrong. Same
+  // failure mode the element check below exists to prevent.
+  if (mentionsDoc) {
+    const bySlug = new Map(notes.map((note) => [note.slug, note]));
+    for (const [slug, recorded] of Object.entries(mentionsDoc.notes ?? {})) {
+      const note = bySlug.get(slug);
+      if (!note) {
+        warnings.push(`data/mentions.json: '${slug}' is not a note any more — run \`npm run update:mentions\``);
+        continue;
+      }
+      const now = formsFor(note).join('|');
+      if (now !== (recorded.forms ?? []).join('|')) {
+        warnings.push(
+          `data/mentions.json: the forms matched for '${note.title}' have changed — run \`npm run update:mentions\``,
+        );
+      }
+    }
+
+    // And the other direction: a note written since the last regenerate has
+    // never been looked for, so it silently shows no episodes at all.
+    for (const note of notes.filter(isMatchable)) {
+      if (!mentionsDoc.notes?.[note.slug]) {
+        warnings.push(
+          `data/mentions.json: '${note.title}' has never been matched — run \`npm run update:mentions\``,
+        );
+      }
+    }
+  }
+
   // A typo'd element name would silently render "0 of 129 apps", which reads as
   // a finding rather than a mistake.
   const elements = knownElements(apps);
@@ -190,6 +241,7 @@ async function main() {
         markdown,
         baseUrl: BASE_URL,
         adoption: adoption(apps, note.data.element),
+        mentions: mentionsFor(mentionsDoc, note.slug),
       }),
     );
   }
@@ -215,15 +267,25 @@ async function main() {
   await writeFile(
     join(OUT, 'data', 'search-index.json'),
     JSON.stringify(
-      notes.map((note) => ({
-        slug: note.slug,
-        title: note.title,
-        type: note.data.type,
-        tags: note.data.tags ?? [],
-        headings: note.headings,
-        summary: summarise(note.plain),
-        text: note.plain,
-      })),
+      notes.map((note) => {
+        const mentions = mentionsDoc?.mentions?.[note.slug] ?? [];
+        return {
+          slug: note.slug,
+          title: note.title,
+          type: note.data.type,
+          tags: note.data.tags ?? [],
+          headings: note.headings,
+          summary: summarise(note.plain),
+          text: note.plain,
+          // What the show called it, which is often not what the wiki calls it —
+          // this is what lets "steno" or "wavlake" reach a note at all.
+          episodes: [...new Set(mentions.map((mention) => mention.e))].sort((a, b) => b - a),
+          moments: mentions
+            .map((mention) => mention.x)
+            .join(' ')
+            .slice(0, MOMENT_INDEX_LIMIT),
+        };
+      }),
     ),
   );
 
@@ -261,9 +323,11 @@ ${[
 
   const stubCount = graph.nodes.filter((node) => node.stub).length;
   const withAdoption = notes.filter((note) => note.data.element).length;
+  const withMentions = notes.filter((note) => mentionsDoc?.mentions?.[note.slug]).length;
   console.log(
     `built ${notes.length} notes, ${stubCount} stub(s), ${graph.edges.length} links` +
-      `${withAdoption ? `, ${withAdoption} with adoption data` : ''} → ${OUT}`,
+      `${withAdoption ? `, ${withAdoption} with adoption data` : ''}` +
+      `${withMentions ? `, ${withMentions} with mentions` : ''} → ${OUT}`,
   );
 }
 

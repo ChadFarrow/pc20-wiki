@@ -204,6 +204,22 @@ pre code {
   font-weight: 600;
 }
 
+.search__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+/* How many episodes discussed this, so a mention-only hit explains itself. */
+.search__eps {
+  flex: none;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 400;
+  color: var(--ink-faint);
+}
+
 .search__summary {
   display: block;
   font-size: 0.85rem;
@@ -389,6 +405,130 @@ pre code {
   margin: 0;
   font-size: 0.8rem;
   color: var(--ink-faint);
+}
+
+/* ---------- mentions ---------- */
+
+/*
+ * A sibling of .adoption, and styled as one: both are measurements taken from a
+ * source the reader can check, rather than something the wiki asserts.
+ */
+.mentions {
+  margin: 1.4rem 0 0;
+  padding: 1.1rem 1.3rem;
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+}
+
+.mentions h2 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+  border: 0;
+  margin: 0 0 0.6rem;
+  padding: 0;
+}
+
+.mentions__count {
+  margin: 0 0 0.9rem;
+  font-size: 1.02rem;
+}
+
+.mentions__count strong {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.5em;
+  color: var(--accent);
+}
+
+.mentions__list {
+  list-style: none;
+  margin: 0 0 0.7rem;
+  padding: 0;
+}
+
+.mentions__episode + .mentions__episode {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--rule);
+}
+
+.mentions__ep {
+  margin: 0 0 0.25rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.74rem;
+  color: var(--ink-faint);
+}
+
+.mentions__moments {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mentions__moments li {
+  /* The timestamp is a fixed-width rail so the texts line up down the column. */
+  display: grid;
+  grid-template-columns: 4.6rem 1fr auto;
+  gap: 0.15rem 0.6rem;
+  align-items: baseline;
+  padding: 0.12rem 0;
+  font-size: 0.93rem;
+}
+
+.mentions__at {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+.mentions__text {
+  grid-column: 2;
+}
+
+.mentions__from {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+
+.mentions__more {
+  grid-column: 2;
+  color: var(--ink-faint);
+  font-size: 0.85rem;
+}
+
+.mentions__more-eps {
+  margin: 0 0 0.6rem;
+  font-size: 0.88rem;
+  color: var(--ink-faint);
+}
+
+.mentions__source {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+}
+
+/* A moment with no timestamp leaves the rail empty rather than shifting left. */
+.mentions__moments li > .mentions__text:first-child {
+  grid-column: 2;
+}
+
+@media (max-width: 34rem) {
+  .mentions__moments li {
+    grid-template-columns: 4.2rem 1fr;
+  }
+
+  .mentions__from {
+    grid-column: 2;
+  }
 }
 
 /* ---------- sidebar ---------- */

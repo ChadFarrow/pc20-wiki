@@ -221,3 +221,115 @@ test('a typo in a note element name fails the build', async () => {
 
   await Promise.all([rm(content, { recursive: true }), rm(out, { recursive: true })]);
 });
+
+test('a note the show discussed lists the episodes it came up on', async () => {
+  const doc = JSON.parse(await readFile(join(ROOT, 'data', 'mentions.json'), 'utf8'));
+  const html = pages.get('notes/podping/');
+  const section = html.slice(html.indexOf('Heard on the show'));
+
+  // Derived from the data rather than pinned to today's episode numbers — the
+  // archive grows, and a test naming E118 is a test that gets updated blindly.
+  const mentions = doc.mentions.podping;
+  const episodes = [...new Set(mentions.map((mention) => mention.e))];
+  assert.match(section, new RegExp(`<strong>${mentions.length}</strong> moments`));
+  assert.match(section, new RegExp(`across\\s+${episodes.length} episodes`));
+
+  const newest = Math.max(...episodes);
+  assert.match(section, new RegExp(`E${newest}\\b`));
+  assert.match(section, /mp3s\.nashownotes\.com/);
+});
+
+test('mentions appear only on notes the sources actually name', () => {
+  // Tor squash-matches "Podfather story time" and "Art Generator Splits"; the
+  // length threshold in mentions-lib is the only thing keeping it clean.
+  assert.doesNotMatch(pages.get('notes/tor/'), /Heard on the show/);
+  assert.match(pages.get('notes/podping/'), /Heard on the show/);
+});
+
+test('every note the mentions data names was actually built', async () => {
+  const doc = JSON.parse(await readFile(join(ROOT, 'data', 'mentions.json'), 'utf8'));
+  for (const slug of Object.keys(doc.mentions)) {
+    assert.ok(pages.has(`notes/${slug}/`), `mentions.json names ${slug}, which has no page`);
+  }
+});
+
+test('every mention cites an episode the data can name', async () => {
+  const doc = JSON.parse(await readFile(join(ROOT, 'data', 'mentions.json'), 'utf8'));
+  for (const [slug, list] of Object.entries(doc.mentions)) {
+    for (const mention of list) {
+      assert.ok(doc.episodes[String(mention.e)], `${slug}: E${mention.e} has no episode record`);
+      if (mention.t != null) {
+        assert.ok(mention.t >= 0 && mention.t <= 20000, `${slug}: E${mention.e} timestamp ${mention.t}`);
+      }
+    }
+  }
+});
+
+test('recurring show furniture never reaches a note', async () => {
+  const doc = JSON.parse(await readFile(join(ROOT, 'data', 'mentions.json'), 'utf8'));
+  for (const [slug, list] of Object.entries(doc.mentions)) {
+    const episodes = new Map();
+    for (const mention of list) {
+      const key = mention.x.toLowerCase().replace(/[^a-z0-9]/g, '');
+      if (!episodes.has(key)) episodes.set(key, new Set());
+      episodes.get(key).add(mention.e);
+    }
+    for (const [key, seen] of episodes) {
+      assert.ok(seen.size < 4, `${slug}: "${key}" appears in ${seen.size} episodes — boilerplate`);
+    }
+  }
+});
+
+test('the search index carries what the show called a thing', async () => {
+  const index = JSON.parse(await readFile(join(OUT, 'data', 'search-index.json'), 'utf8'));
+  const podping = index.find((note) => note.slug === 'podping');
+
+  assert.ok(podping.episodes.length > 0);
+  assert.deepEqual(podping.episodes, [...podping.episodes].sort((a, b) => b - a));
+  assert.ok(podping.moments.length > 0);
+  assert.doesNotMatch(podping.moments, /[<>]/, 'index holds words, not markup');
+
+  // A note nothing was said about still carries the fields, just empty.
+  const tor = index.find((note) => note.slug === 'tor');
+  assert.deepEqual(tor.episodes, []);
+  assert.equal(tor.moments, '');
+});
+
+test('the build still works when the mentions data has not been generated', async () => {
+  const out = await mkdtemp(join(tmpdir(), 'pc20-nomentions-'));
+  const { stdout, stderr } = await run(
+    'node',
+    ['scripts/build.mjs', '--out', out, '--mentions', join(out, 'nothing-here.json')],
+    { cwd: ROOT },
+  );
+  await rm(out, { recursive: true, force: true });
+
+  assert.match(stderr + stdout, /mentions\.json is missing/);
+  assert.match(stdout, /built \d+ notes/);
+});
+
+test('the build says so when the vault has moved on from the mentions data', async () => {
+  const { writeFile, mkdir, cp } = await import('node:fs/promises');
+  const content = await mkdtemp(join(tmpdir(), 'pc20-stale-'));
+  await cp(join(ROOT, 'content'), content, { recursive: true });
+
+  // An alias added in Obsidian, and a note written since the last regenerate.
+  // The launchd agent syncs, builds and pushes but never runs update:mentions,
+  // so without these warnings both changes publish as "no episodes" in silence.
+  const podping = join(content, 'notes', 'Podping.md');
+  await writeFile(podping, (await readFile(podping, 'utf8')).replace('---\n\n#', 'aliases: [pinging the pod]\n---\n\n#'));
+  await mkdir(join(content, 'notes'), { recursive: true });
+  await writeFile(
+    join(content, 'notes', 'Widget.md'),
+    '---\ntype: concept\nstatus: seed\n---\n\n# Widget\n\nA widget is a placeholder concept that exists only so this test has a note the mentions data has never seen.\n',
+  );
+
+  const out = await mkdtemp(join(tmpdir(), 'pc20-stale-out-'));
+  const { stdout, stderr } = await run('node', ['scripts/build.mjs', '--content', content, '--out', out], { cwd: ROOT });
+  await rm(out, { recursive: true, force: true });
+  await rm(content, { recursive: true, force: true });
+
+  const output = stdout + stderr;
+  assert.match(output, /the forms matched for 'Podping' have changed/);
+  assert.match(output, /'Widget' has never been matched/);
+});

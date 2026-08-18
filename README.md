@@ -85,6 +85,7 @@ An allowlist, because the vault is personal and the site is not:
 | `npm run build`          | Build `public/` — this is what deploys                         |
 | `npm run publish:site`   | `sync` then `build`                                            |
 | `npm run lint:notes`     | Build with warnings fatal — a deliberate tidy-up pass          |
+| `npm run update:mentions`| Rebuild `data/mentions.json` from the sibling repos            |
 | `npm test`               | Unit tests plus an end-to-end build with a link check          |
 | `npm run check:browser`  | Drives the built site in headless Chrome (`-- --shots` for PNGs) |
 | `npm run serve`          | Serve `public/` at http://127.0.0.1:8088                       |
@@ -115,6 +116,8 @@ looking for them.
 - **Stub pages** — a link to an unwritten note gets a real page saying so, listing what
   links to it. Links never 404, and `/queue/` publishes the writing queue, most-linked first
 - **Search** — the whole index ships as JSON and is scored in the browser; `/` focuses it
+- **Heard on the show** — each note lists the episodes its subject came up on, deep-linked
+  into the audio at the timestamp. See *Episode mentions* below
 - **Graph** — `/graph/` draws the link graph on canvas, no external libraries
 
 ## Structure
@@ -129,12 +132,48 @@ scripts/
   build.mjs       orchestration
   browser-check.mjs
   update-apps.mjs the Podcast Index apps directory, for adoption counts
+  mentions-lib.mjs   matching a note against what the show said
+  update-mentions.mjs which episodes discussed each note
   auto-publish.sh what launchd runs
-data/apps.json    the apps directory, trimmed and committed
+data/apps.json     the apps directory, trimmed and committed
+data/mentions.json episode mentions per note (generated, committed)
 public/assets/    hand-written CSS and JS (committed)
 public/**         everything else is generated
 test/             node --test
 ```
+
+## Episode mentions
+
+Every note can say which episodes of the show discussed its subject, deep-linked into the
+audio at the moment it came up. That data is generated from three sibling checkouts and
+committed:
+
+```sh
+npm run update:mentions                        # rewrite data/mentions.json
+node scripts/update-mentions.mjs --report      # every matched moment, grouped by note
+node scripts/update-mentions.mjs --dry-run     # what a regenerate would change
+```
+
+Sources, all read from git and never from the network or the NAS: chapter titles and show
+notes from `../pc20-archive`, curated milestones from `../pc20-timeline`, and the clip
+checklist from `../pc20-clips`. Each path is overridable by flag or environment variable,
+and every one is printed before it is read.
+
+**The show's transcripts are deliberately not a source.** They live on a NAS rather than in
+git, so a build that needed them could not run on Vercel. The cost is coverage: chapter
+titles exist for E12–E145 and show notes for E1–E100, so a thin section on a note usually
+means the curated sources run out rather than that nobody discussed it. The section says so
+in its own footer, because letting a reader conclude otherwise would be worse than saying
+nothing.
+
+**Regeneration is manual.** The launchd agent syncs, builds and pushes, but it does not run
+`update:mentions` — so an alias added in Obsidian changes nothing until someone regenerates.
+The build warns when it notices that drift.
+
+To change what a note matches, add `aliases:` to the note **in the vault** (Obsidian's own
+key, so the quick-switcher benefits too). Rules that belong to the archive rather than to
+the concept — the boilerplate threshold, per-note deny phrases, the timeline tag map — live
+in `scripts/mentions-lib.mjs`, where each one can carry the reason it exists.
 
 ## Deploying
 

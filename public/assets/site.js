@@ -1,7 +1,7 @@
 /**
  * Search.
  *
- * Twenty-odd notes is small enough that the whole index ships as one JSON file
+ * Sixty notes is small enough that the whole index ships as one JSON file
  * and scoring happens here — no search library, no server, no network round
  * trip per keystroke. The index is fetched lazily on first focus so a reader
  * who never searches never pays for it.
@@ -32,6 +32,20 @@
   }
 
   /**
+   * Lowercase, letters and digits only — the twin of squash() in
+   * scripts/mentions-lib.mjs, applied to mention text only.
+   *
+   * The show does not agree with itself about compounds: "pod ping" and
+   * "podping" are the same thing, "PodcastIndex.org" and "Podcast Index" are
+   * the same thing. Squashing finds both. It is deliberately NOT applied to the
+   * other fields — doing that would re-rank every existing result to fix a
+   * problem only the show's own vocabulary has.
+   */
+  function squash(text) {
+    return text.replace(/[^a-z0-9]/g, '');
+  }
+
+  /**
    * Scoring is weighted by where a term matched, because a note titled
    * "Keysend" is a better answer to "keysend" than a note that mentions it in
    * passing. Every term has to appear somewhere, so extra words narrow rather
@@ -42,6 +56,7 @@
     const headings = note.headings.join(' ').toLowerCase();
     const tags = note.tags.join(' ').toLowerCase();
     const text = note.text.toLowerCase();
+    const moments = squash((note.moments ?? '').toLowerCase());
 
     let total = 0;
     for (const term of terms) {
@@ -52,6 +67,11 @@
       else if (tags.includes(term)) best = 25;
       else if (headings.includes(term)) best = 18;
       else if (text.includes(term)) best = 6;
+      // Last rung on purpose. Mention text is the show's vocabulary, not the
+      // wiki's, and a common word lights up many notes at once — ranked higher
+      // it would push real answers out of an eight-row dropdown. Ranked here it
+      // only ever adds notes that would otherwise have returned nothing.
+      else if (moments && squash(term) && moments.includes(squash(term))) best = 4;
 
       if (!best) return 0;
       total += best;
@@ -74,7 +94,15 @@
       results.innerHTML = matches
         .map(
           (note) => `<li role="option"><a href="/notes/${note.slug}/">
-            <span class="search__title">${escape(note.title)}</span>
+            <span class="search__row"><span class="search__title">${escape(note.title)}</span>${
+              // Beside the title rather than inside it, so .search__title's text
+              // stays exactly the note's name — which browser-check asserts on.
+              note.episodes?.length
+                ? `<span class="search__eps">${note.episodes.length} episode${
+                    note.episodes.length === 1 ? '' : 's'
+                  }</span>`
+                : ''
+            }</span>
             <span class="search__summary">${escape(note.summary)}</span>
           </a></li>`,
         )
