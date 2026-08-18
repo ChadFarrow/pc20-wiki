@@ -569,9 +569,11 @@ test('gate 2: the readout is dropped before anything is counted', () => {
 test('gate 4: a note keeps only its densest episodes, up to the cap', () => {
   const notes = [note('Boost', 'boost')];
   const candidates = [];
-  // Six episodes, each qualifying, with descending density.
+  // Six episodes, each qualifying, with descending density. The text has to
+  // differ per episode: identical text in four or more episodes is what
+  // denyForms calls furniture, and it would drop every one of these.
   for (let ep = 1; ep <= 6; ep += 1) {
-    for (let i = 0; i < 8 - ep; i += 1) candidates.push(hit(ep, i * 10, 'boost'));
+    for (let i = 0; i < 8 - ep; i += 1) candidates.push(hit(ep, i * 10, `boost ${'a'.repeat(ep)}`));
   }
   const out = buildTranscriptMentions(notes, candidates, {}, { cap: 2 });
   assert.deepEqual([...new Set(out.boost.map((m) => m.e))], [1, 2]);
@@ -961,7 +963,12 @@ async function readCaptions(dir) {
 }
 ```
 
-In `main()`, **after** the existing `buildMentions` call produces the curated set, add:
+In `main()`, **immediately after** `const mentions = buildMentions(notes, candidates);` and
+**before** the `episodeFacts` block, add the following. The position is not a style
+preference: `episodeFacts` is built from the episodes `mentions` cites, so a merge placed
+after it would leave every transcript-only episode without a date, a title or an audio URL —
+and therefore with no deep link, which is most of the point. The `report()` branch reads
+`mentions` too, and Task 9 depends on transcripts appearing in it.
 
 ```js
   // Captions are consulted only where the curated sources said nothing, so this
