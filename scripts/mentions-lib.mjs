@@ -128,6 +128,10 @@ export const EXTRA_ALIASES = {
   'Streaming Sats': ['streaming payments'],
   'Cross-app Comments': ['cross app comment'],
   Boostagram: ['boostagrams'],
+  // The show says "Start9" — the company, and the box on the desk — where the
+  // note is named for the OS running on it. Not the RSS Blue case: Start9 makes
+  // StartOS, so "Adam gets his Start9" really is about this.
+  StartOS: ['start9', 'embassyos'],
 };
 
 /**
