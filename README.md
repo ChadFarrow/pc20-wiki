@@ -199,11 +199,21 @@ episode range, which is what makes the eras gapless: every entry falls in the la
 had started. An entry whose episode cannot be dated is dropped and named on stderr rather
 than guessed at.
 
+**The entries are first-hand, and deliberately not exhaustive.** They came from relistening
+to the run from E1 and marking what was worth marking — so a milestone title is primary
+evidence, and outranks any chapter title annotating it. It also means coverage is uneven by
+design: roughly 0.5 entries per episode across 2020–22 against 1.2 across 2023–24, because
+that early pass skipped a great deal that had already been overtaken by the time it was
+heard again. Read a thin era as "less was still standing", never as "less happened", and
+do not try to even it out by inferring entries from chapter titles.
+
 **Milestones only.** The mention data on each note already answers "when did they talk
 about this", and folding 770 chapter titles in here would turn a history into a log.
 
 An entry publishes its body where one has been written — 34 of the 204 so far, each written
-from a chapter title or a show-note line in `pc20-archive` rather than from the audio. The
+from a chapter title or a show-note line in `pc20-archive`. Those are a *weaker* source than
+the title they sit under, which came from the audio, so a body adds context and never
+corrects the entry. The
 rest still hold the seeded `TODO: add context for this milestone`, which is dropped rather
 than published: a placeholder on the page is worse than a bare entry. Most of those cannot
 be written from the archive at all, since chapter titles stop at E145 and show notes at

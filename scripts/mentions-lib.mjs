@@ -277,9 +277,10 @@ export function collectShowNotes(xml) {
 /**
  * Milestone frontmatter → candidates.
  *
- * Frontmatter only, never the body: 203 of the 204 milestones still read
- * "TODO: add context for this milestone." The title is the whole signal, and
- * `tags` is a second one — see TIMELINE_TAG_NOTES.
+ * Frontmatter only, never the body. The title carries the signal and is worth
+ * trusting: these were written while relistening to the run from E1, so a
+ * milestone title is somebody's account of what happened rather than a label
+ * scraped off a feed. `tags` is a second signal — see TIMELINE_TAG_NOTES.
  */
 export function collectMilestones(entries) {
   const out = [];

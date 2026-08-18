@@ -1,11 +1,14 @@
 /**
  * The show's history as one chronology.
  *
- * pc20-timeline curates 204 milestones — the first boost, the day keysend was
- * deprecated, the launch of each app — each pinned to an episode. That repo is
- * private and undeployed, so the work exists but nobody can read it. This turns
- * those entries into a page on the public wiki, cross-linked to the notes that
- * explain what each one was about.
+ * pc20-timeline holds 204 milestones — the first boost, the day keysend was
+ * deprecated, the launch of each app — each pinned to an episode. They are not
+ * a compilation from other sources: they came from relistening to the whole run
+ * from E1 and noting what mattered, which makes a milestone title primary
+ * evidence and a stronger source than any chapter title annotating it. That
+ * repo is private and undeployed, so the work exists but nobody can read it.
+ * This turns those entries into a page on the public wiki, cross-linked to the
+ * notes that explain what each one was about.
  *
  * Milestones only, deliberately. The mention data on each note already answers
  * "when did they talk about this", and a chapter title like "Podping fun" is a

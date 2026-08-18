@@ -423,6 +423,13 @@ ${siteFooter()}`;
  * Oldest first, because it is a history. Each entry names the episode it came
  * from and links into the audio at the moment it happened, so a claim on this
  * page can always be checked against the recording that supports it.
+ *
+ * The entries are a first-hand record — someone relistened to the run from E1
+ * and marked what was worth marking — which is why the page says so rather than
+ * presenting itself as an index. It is deliberately not exhaustive, and the
+ * density says so: about 0.5 entries per episode through 2020-22 against 1.2
+ * through 2023-24, because the early pass skipped what had since been overtaken.
+ * Do not "fix" that imbalance by inferring entries from chapter titles.
  */
 export function renderTimelinePage({ timeline, markdown, baseUrl }) {
   const eras = groupByEra(timeline.eras ?? [], timeline.entries ?? []);
@@ -454,8 +461,11 @@ export function renderTimelinePage({ timeline, markdown, baseUrl }) {
     </p>
     ${jump}
     ${eras.map((era) => renderEra(era, markdown)).join('')}
-    <p class="timeline__source">Curated in the PC 2.0 Timeline. Eras are assigned by date, so
-      every entry lands in one and the run has no gaps.</p>
+    <p class="timeline__source">Compiled by relistening to the whole run from the first
+      episode. What is marked here is what was judged worth marking on that pass, so the
+      early years are thinner than the later ones — much of what was said then had already
+      been overtaken by the time it was heard again, not because less was happening. Eras
+      are assigned by date, so every entry falls inside one.</p>
   </article>
 </main>
 ${siteFooter()}`;
