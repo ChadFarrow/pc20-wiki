@@ -424,7 +424,7 @@ ${siteFooter()}`;
  * from and links into the audio at the moment it happened, so a claim on this
  * page can always be checked against the recording that supports it.
  */
-export function renderTimelinePage({ timeline, baseUrl }) {
+export function renderTimelinePage({ timeline, markdown, baseUrl }) {
   const eras = groupByEra(timeline.eras ?? [], timeline.entries ?? []);
   const entries = timeline.entries ?? [];
   const span =
@@ -453,7 +453,7 @@ export function renderTimelinePage({ timeline, baseUrl }) {
       link opens the audio at that moment.
     </p>
     ${jump}
-    ${eras.map(renderEra).join('')}
+    ${eras.map((era) => renderEra(era, markdown)).join('')}
     <p class="timeline__source">Curated in the PC 2.0 Timeline. Eras are assigned by date, so
       every entry lands in one and the run has no gaps.</p>
   </article>
@@ -470,7 +470,7 @@ ${siteFooter()}`;
   });
 }
 
-function renderEra(era) {
+function renderEra(era, markdown) {
   return `<section class="era" id="era-${escapeHtml(era.id)}">
     <header class="era__head">
       <p class="era__no">${String(era.index).padStart(2, '0')}</p>
@@ -480,11 +480,11 @@ function renderEra(era) {
       }</p>
       ${era.blurb ? `<p class="era__blurb">${escapeHtml(era.blurb)}</p>` : ''}
     </header>
-    <ol class="entries">${era.entries.map(renderEntry).join('')}</ol>
+    <ol class="entries">${era.entries.map((entry) => renderEntry(entry, markdown)).join('')}</ol>
   </section>`;
 }
 
-function renderEntry(entry) {
+function renderEntry(entry, markdown) {
   const href = entry.audioUrl
     ? entry.seconds == null
       ? entry.audioUrl
@@ -504,6 +504,11 @@ function renderEntry(entry) {
       <p class="entry__cite">${
         href ? `<a href="${escapeHtml(href)}">${escapeHtml(cite)}</a>` : escapeHtml(cite)
       }${entry.episodeTitle ? ` · ${escapeHtml(entry.episodeTitle)}` : ''}</p>
+      ${
+        // Written from the same chapter titles and show notes the rest of the
+        // page cites, so it belongs with the citation rather than above it.
+        entry.body && markdown ? `<div class="entry__note">${markdown(entry.body)}</div>` : ''
+      }
       ${
         entry.notes?.length
           ? `<p class="entry__notes">${entry.notes

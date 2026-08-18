@@ -391,3 +391,14 @@ test('the build still works when the timeline data has not been generated', asyn
   assert.match(stderr + stdout, /timeline\.json is missing/);
   assert.match(stdout, /built \d+ notes/);
 });
+
+test('a milestone with written context shows it on the timeline', async () => {
+  const doc = JSON.parse(await readFile(join(ROOT, 'data', 'timeline.json'), 'utf8'));
+  const written = doc.entries.filter((entry) => entry.body);
+  const html = pages.get('timeline/');
+
+  assert.ok(written.length > 0, 'some milestones have context written');
+  assert.equal((html.match(/class="entry__note"/g) ?? []).length, written.length);
+  // No entry still carries the seeded placeholder into the published page.
+  assert.doesNotMatch(html, /TODO: add context/);
+});

@@ -289,3 +289,28 @@ test('the timeline page survives having no entries at all', () => {
   assert.match(html, /0 milestones/);
   assert.doesNotMatch(html, /class="entry"/);
 });
+
+test('a timeline entry renders its context when the milestone has one', () => {
+  const md = (text) => `<p>${text}</p>`;
+  const withBody = {
+    ...timelineFixture,
+    entries: timelineFixture.entries.map((entry) =>
+      entry.id === 'liftoff' ? { ...entry, body: 'The show notes place it in Austin.' } : entry,
+    ),
+  };
+
+  const html = renderTimelinePage({ timeline: withBody, markdown: md, baseUrl: 'https://example.com' });
+  assert.match(html, /<div class="entry__note"><p>The show notes place it in Austin\.<\/p><\/div>/);
+  // The other entry has no body, so it gets no empty container. Matched on the
+  // full class, since entry__notes — the note links — contains it as a prefix.
+  assert.equal(html.match(/class="entry__note"/g).length, 1);
+});
+
+test('the timeline renders without a markdown pipeline at all', () => {
+  const html = renderTimelinePage({
+    timeline: { ...timelineFixture, entries: [{ ...timelineFixture.entries[0], body: 'Context.' }] },
+    baseUrl: 'https://example.com',
+  });
+  assert.doesNotMatch(html, /entry__note/);
+  assert.match(html, /We have liftoff/);
+});

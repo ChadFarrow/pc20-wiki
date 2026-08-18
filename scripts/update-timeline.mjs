@@ -45,12 +45,12 @@ const FLAGS = { milestones: '--milestones', eras: '--eras', episodes: '--episode
 const fell = (id, err) => missing({ id, err, sources: SOURCES, flags: FLAGS });
 
 /**
- * Milestone frontmatter, with the filename as the id.
+ * Milestone frontmatter and, where there is one, its body.
  *
- * The body is ignored on purpose: 203 of the 204 still read "TODO: add context
- * for this milestone", so publishing it would put a placeholder on the page
- * where a sentence should be. When those get written this is the one line to
- * change.
+ * A body that is still the seeded "TODO: add context for this milestone" is
+ * dropped rather than published — a placeholder on the page is worse than a
+ * bare entry. The rest are written from chapter titles and show notes, so they
+ * carry the same provenance as everything else on the page.
  */
 async function readMilestones(dir) {
   const files = (await readdir(dir)).filter((file) => file.endsWith('.md')).sort();
@@ -59,8 +59,9 @@ async function readMilestones(dir) {
   for (const file of files) {
     const id = basename(file, '.md');
     let data;
+    let body;
     try {
-      ({ data } = parseFrontmatter(await readFile(join(dir, file), 'utf8')));
+      ({ data, body } = parseFrontmatter(await readFile(join(dir, file), 'utf8')));
     } catch {
       console.warn(`  ! ${file}: unreadable frontmatter, skipped`);
       continue;
@@ -82,6 +83,7 @@ async function readMilestones(dir) {
       tags: Array.isArray(data.tags) ? data.tags : [],
       episode: data.episode,
       seconds: toSeconds(data.timestamp),
+      body: /^TODO\b/i.test(String(body ?? '').trim()) ? null : String(body ?? '').trim() || null,
     });
   }
 
@@ -194,10 +196,13 @@ async function main() {
 
   await writeFile(out, `${JSON.stringify(doc, null, 1)}\n`);
 
+  const written = entries.filter((entry) => entry.body).length;
   const linked = entries.filter((entry) => entry.notes.length).length;
   const span = entries.length ? `${entries[0].date} to ${entries.at(-1).date}` : 'nothing';
   console.log(`wrote ${entries.length} entries (${span}) across ${new Set(entries.map((e) => e.era)).size} eras to ${tilde(out)}`);
-  console.log(`${linked} link to a note${dropped.length ? `, ${dropped.length} dropped` : ''}`);
+  console.log(
+    `${linked} link to a note, ${written} carry context${dropped.length ? `, ${dropped.length} dropped` : ''}`,
+  );
 }
 
 await main();

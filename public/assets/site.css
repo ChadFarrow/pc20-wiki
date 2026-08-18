@@ -690,6 +690,21 @@ pre code {
   color: var(--ink-faint);
 }
 
+.entry__note {
+  margin: 0.35rem 0 0;
+  max-width: 42rem;
+  color: var(--ink-soft, var(--ink));
+}
+
+.entry__note p {
+  margin: 0 0 0.4rem;
+  font-size: 0.95rem;
+}
+
+.entry__note p:last-child {
+  margin-bottom: 0;
+}
+
 .entry__notes {
   margin: 0.3rem 0 0;
   display: flex;

@@ -274,7 +274,7 @@ async function main() {
   );
   await writePage('queue', renderQueue({ nodes: graph.nodes, graph, nodesBySlug, baseUrl: BASE_URL }));
   await writePage('graph', renderGraphPage({ baseUrl: BASE_URL }));
-  if (timeline) await writePage('timeline', renderTimelinePage({ timeline, baseUrl: BASE_URL }));
+  if (timeline) await writePage('timeline', renderTimelinePage({ timeline, markdown, baseUrl: BASE_URL }));
 
   await mkdir(join(OUT, 'data'), { recursive: true });
   await writeFile(

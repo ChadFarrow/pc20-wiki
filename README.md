@@ -200,10 +200,14 @@ had started. An entry whose episode cannot be dated is dropped and named on stde
 than guessed at.
 
 **Milestones only.** The mention data on each note already answers "when did they talk
-about this", and folding 770 chapter titles in here would turn a history into a log. Bodies
-are ignored too: 203 of the 204 still read `TODO: add context for this milestone`, so an
-entry is currently its title, its episode and its links. When those get written, the body
-is one line to add in `update-timeline.mjs`.
+about this", and folding 770 chapter titles in here would turn a history into a log.
+
+An entry publishes its body where one has been written — 34 of the 204 so far, each written
+from a chapter title or a show-note line in `pc20-archive` rather than from the audio. The
+rest still hold the seeded `TODO: add context for this milestone`, which is dropped rather
+than published: a placeholder on the page is worse than a bare entry. Most of those cannot
+be written from the archive at all, since chapter titles stop at E145 and show notes at
+E100, and 119 milestones fall outside both.
 
 ## Deploying
 

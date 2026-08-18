@@ -124,3 +124,17 @@ test('groupByEra numbers by position in the run, not by how many survived', () =
     [['present', 3]],
   );
 });
+
+test('buildTimeline carries a milestone body through to the entry', () => {
+  const { entries } = buildTimeline({
+    milestones: [
+      { id: 'a', title: 'A', kind: 'event', tags: [], episode: 1, seconds: null, body: 'Sourced context.' },
+      { id: 'b', title: 'B', kind: 'event', tags: [], episode: 1, seconds: null },
+    ],
+    eras: ERAS,
+    episodes: EPISODES,
+    notes: [],
+  });
+  assert.equal(entries.find((e) => e.id === 'a').body, 'Sourced context.');
+  assert.equal(entries.find((e) => e.id === 'b').body, null, 'no body is null, never undefined');
+});

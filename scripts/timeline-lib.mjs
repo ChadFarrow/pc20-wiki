@@ -101,6 +101,7 @@ export function buildTimeline({ milestones, eras, episodes, notes }) {
       seconds: milestone.seconds ?? null,
       audioUrl: episode.a ?? null,
       era: era.id,
+      body: milestone.body ?? null,
       notes: notesForEntry(notes, milestone.title, milestone.tags),
     });
   }
