@@ -134,3 +134,34 @@ export function groupByEra(eras, entries) {
     .map((era, i) => ({ ...era, index: i + 1, entries: entries.filter((entry) => entry.era === era.id) }))
     .filter((era) => era.entries.length);
 }
+
+/**
+ * What a regeneration would change, field by field.
+ *
+ * This compared title and episode only, and the blind spot cost 34 milestone
+ * bodies: a checkout whose milestone files had gone back to `TODO` regenerated
+ * into a file carrying one body instead of 34, and `--dry-run` called it
+ * "no change". A guard that cannot see the loss it exists to catch is worse
+ * than no guard, because it is believed. The comparison is now the whole entry.
+ */
+export function diffEntries(next, previous) {
+  const before = new Map((previous ?? []).map((entry) => [entry.id, entry]));
+  const after = new Map(next.map((entry) => [entry.id, entry]));
+  const same = (a, b) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
+  const changes = [];
+
+  for (const [id, entry] of after) {
+    const was = before.get(id);
+    if (!was) {
+      changes.push({ kind: 'added', entry });
+      continue;
+    }
+    const fields = [...new Set([...Object.keys(was), ...Object.keys(entry)])]
+      .filter((field) => !same(was[field], entry[field]))
+      .sort();
+    if (fields.length) changes.push({ kind: 'changed', entry, was, fields });
+  }
+  for (const [id, entry] of before) if (!after.has(id)) changes.push({ kind: 'removed', entry });
+
+  return changes;
+}

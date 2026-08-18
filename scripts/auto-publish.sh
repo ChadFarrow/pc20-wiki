@@ -11,8 +11,10 @@
 #   scripts/auto-publish.sh --now      # skip the debounce
 #
 # The rules that matter:
-#   - the vault is only ever read
+#   - the vault is only ever read, and so are the sibling checkouts
 #   - a build that fails validation publishes nothing and says so
+#   - a sibling that is not checked out is skipped, not guessed at: the
+#     committed data/ stands and the publish carries on
 #   - no remote configured is fine; it commits and stops there
 
 set -uo pipefail
@@ -52,24 +54,51 @@ if [ "${1:-}" != "--now" ]; then
   sleep "$DEBOUNCE"
 fi
 
-# Two ways there is work to do: the vault moved ahead of content/, or a previous
-# run synced but never got as far as committing — a build that failed, a machine
-# that slept. Checking only the first would strand that change forever.
-if "$NODE" scripts/sync.mjs --check >/dev/null 2>&1 && [ -z "$(git status --porcelain content/)" ]; then
-  exit 0
+# Three things can have moved: the vault, a sibling checkout the generators read,
+# or a previous run that synced but never got as far as committing — a build that
+# failed, a machine that slept. Checking only the first would strand the others.
+vault_moved=0
+"$NODE" scripts/sync.mjs --check >/dev/null 2>&1 || vault_moved=1
+
+if [ "$vault_moved" = 1 ]; then
+  log "vault changed — syncing"
+  if ! "$NODE" scripts/sync.mjs; then
+    log "sync failed"
+    notify "Sync failed — see the log."
+    exit 1
+  fi
 fi
 
-log "vault changed — syncing"
-if ! "$NODE" scripts/sync.mjs; then
-  log "sync failed"
-  notify "Sync failed — see the log."
-  exit 1
-fi
+# Regenerate before building, because the build reads what these write.
+#
+# This job used to sync, build and push without ever running the generators, so
+# an alias added in Obsidian changed nothing until somebody remembered to run
+# them by hand — and the only symptom was a section quietly citing the wrong
+# episodes. Both take about a fifth of a second and both are deterministic, so a
+# run with nothing to do writes nothing and commits nothing.
+#
+# A generator that cannot read its sources — no sibling checkout on this machine
+# — is logged and skipped. It never writes a partial file (source-lib.mjs is
+# fatal on a missing source by design), so the committed data stands and the
+# publish carries on.
+regenerate() {
+  name="$1"
+  shift
+  if ! "$NODE" "$@" > "/tmp/pc20-wiki-$name.log" 2>&1; then
+    # The Error: line, not the last line — the last line of a node stack trace
+    # is its version number, which tells the reader nothing about what is wrong.
+    reason=$(sed -n 's/^Error: //p' "/tmp/pc20-wiki-$name.log" | head -1)
+    log "$name not regenerated: ${reason:-see /tmp/pc20-wiki-$name.log}"
+  fi
+}
 
-# Nothing git can see means the change was to a file that is not published
-# (a template, a daily note, a note marked publish: false).
-if [ -z "$(git status --porcelain content/)" ]; then
-  log "nothing publishable changed"
+regenerate mentions scripts/update-mentions.mjs
+regenerate timeline scripts/update-timeline.mjs
+
+# Nothing git can see means the vault change was to a file that is not published
+# (a template, a daily note, a note marked publish: false) and no source moved.
+if [ -z "$(git status --porcelain content/ data/)" ]; then
+  [ "$vault_moved" = 1 ] && log "nothing publishable changed"
   exit 0
 fi
 
@@ -84,13 +113,25 @@ if ! "$NODE" scripts/build.mjs > /tmp/pc20-wiki-build.log 2>&1; then
   exit 1
 fi
 
-changed=$(git status --porcelain content/ | wc -l | tr -d ' ')
-git add content/
-git commit -q -m "Sync ${changed} note(s) from the vault" || {
+notes=$(git status --porcelain content/ | wc -l | tr -d ' ')
+data=$(git status --porcelain data/ | wc -l | tr -d ' ')
+git add content/ data/
+
+# "Sync 0 note(s) from the vault" is what a run triggered by a sibling repo would
+# otherwise say, and it would be a lie in the log everyone reads first.
+if [ "$notes" -gt 0 ] && [ "$data" -gt 0 ]; then
+  message="Sync ${notes} note(s) from the vault and refresh the episode data"
+elif [ "$notes" -gt 0 ]; then
+  message="Sync ${notes} note(s) from the vault"
+else
+  message="Refresh the episode data"
+fi
+
+git commit -q -m "$message" || {
   log "nothing to commit"
   exit 0
 }
-log "committed ${changed} file(s)"
+log "committed $((notes + data)) file(s): ${message}"
 
 if git remote | grep -q .; then
   branch=$(git rev-parse --abbrev-ref HEAD)

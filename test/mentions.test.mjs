@@ -19,6 +19,7 @@ import {
   denyForms,
   formsFor,
   buildMentions,
+  diffMentions,
   mentionsFor,
   validateTagMap,
   TIMELINE_TAG_NOTES,
@@ -297,4 +298,34 @@ test('a per-note deny phrase rules out the company but not the protocol', () => 
   assert.ok(denied('RSS', 'Welcome RSS.com'));
   assert.ok(!denied('RSS', 'NOSTR to replace RSS?'));
   assert.ok(!denied('Podping', 'RSS Blue adds music'), 'a phrase only denies the note it belongs to');
+});
+
+// A swap keeps the count identical, so comparing lengths reported "no change"
+// while the citation under a note moved to a different moment.
+test('diffMentions sees a moment swapped for another', () => {
+  const was = { podping: [{ e: 100, t: 60, x: 'Podping goes live' }] };
+  const now = { podping: [{ e: 100, t: 60, x: 'Podping rewritten in Rust' }] };
+
+  const changes = diffMentions(now, was);
+  assert.equal(changes.length, 1);
+  assert.equal(changes[0].before, 1);
+  assert.equal(changes[0].after, 1);
+  assert.deepEqual(changes[0].added.map((m) => m.x), ['Podping rewritten in Rust']);
+  assert.deepEqual(changes[0].removed.map((m) => m.x), ['Podping goes live']);
+});
+
+test('diffMentions sees a timestamp move, which changes where the link lands', () => {
+  const was = { podping: [{ e: 100, t: 60, x: 'Podping goes live' }] };
+  const now = { podping: [{ e: 100, t: 900, x: 'Podping goes live' }] };
+  assert.equal(diffMentions(now, was).length, 1);
+});
+
+test('diffMentions stays quiet when nothing moved', () => {
+  const mentions = { podping: [{ e: 100, t: 60, x: 'Podping goes live' }] };
+  assert.deepEqual(diffMentions(mentions, structuredClone(mentions)), []);
+});
+
+test('diffMentions reports a note that lost every mention it had', () => {
+  const changes = diffMentions({}, { podping: [{ e: 100, t: null, x: 'Podping goes live' }] });
+  assert.deepEqual(changes.map((c) => [c.slug, c.before, c.after]), [['podping', 1, 0]]);
 });

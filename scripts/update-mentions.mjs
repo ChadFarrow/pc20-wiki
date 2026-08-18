@@ -23,14 +23,14 @@
  * it reads clean.
  */
 
-import { readFile, readdir, writeFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 import { dirname, resolve, join, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { load } from 'js-yaml';
 
 import { parseFrontmatter, slugify } from './wiki-lib.mjs';
-import { flag, arg, sourcePath, announce, provenance, missing, tilde } from './source-lib.mjs';
+import { flag, arg, sourcePath, announce, provenance, missing, tilde, writeGenerated } from './source-lib.mjs';
 import {
   collectChapters,
   collectShowNotes,
@@ -38,6 +38,7 @@ import {
   collectClips,
   dedupeClips,
   buildMentions,
+  diffMentions,
   validateTagMap,
   formsFor,
   isMatchable,
@@ -130,25 +131,21 @@ function report(mentions, notes, only) {
   }
 }
 
+/** Prints what diffMentions found; the rule itself lives in mentions-lib.mjs. */
 function diff(next, previous) {
-  const slugs = [...new Set([...Object.keys(next), ...Object.keys(previous ?? {})])].sort();
-  let changed = 0;
+  const changes = diffMentions(next, previous);
 
-  for (const slug of slugs) {
-    const before = previous?.[slug] ?? [];
-    const after = next[slug] ?? [];
-    if (before.length === after.length) continue;
-    changed += 1;
-    const delta = after.length - before.length;
-    console.log(`  ${slug}: ${before.length} → ${after.length} (${delta > 0 ? '+' : ''}${delta})`);
-
-    const seen = new Set(before.map((mention) => `${mention.e}|${mention.x}`));
-    for (const mention of after) {
-      if (!seen.has(`${mention.e}|${mention.x}`)) console.log(`      + E${mention.e} ${mention.x}`);
-    }
+  for (const change of changes) {
+    const delta = change.after - change.before;
+    const count = delta === 0
+      ? `${change.after}, swapped`
+      : `${change.before} → ${change.after} (${delta > 0 ? '+' : ''}${delta})`;
+    console.log(`  ${change.slug}: ${count}`);
+    for (const mention of change.added) console.log(`      + E${mention.e} ${mention.x}`);
+    for (const mention of change.removed) console.log(`      - E${mention.e} ${mention.x}`);
   }
 
-  console.log(changed ? `\n${changed} note(s) changed.` : '\nno change.');
+  console.log(changes.length ? `\n${changes.length} note(s) changed.` : '\nno change.');
 }
 
 async function main() {
@@ -267,7 +264,8 @@ async function main() {
     return;
   }
 
-  await writeFile(out, `${JSON.stringify(doc, null, 1)}\n`);
+  const moved = await writeGenerated(out, doc);
+  if (!moved) console.log(`no change — ${tilde(out)} left alone`);
 
   const pairs = Object.values(mentions).reduce((sum, list) => sum + list.length, 0);
   console.log(

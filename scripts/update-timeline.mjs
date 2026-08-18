@@ -19,16 +19,16 @@
  * update-mentions.mjs, and committed for the same reason.
  */
 
-import { readFile, readdir, writeFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 import { dirname, resolve, join, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { load } from 'js-yaml';
 
 import { parseFrontmatter, slugify } from './wiki-lib.mjs';
-import { flag, arg, sourcePath, announce, provenance, missing, tilde } from './source-lib.mjs';
+import { flag, arg, sourcePath, announce, provenance, missing, tilde, writeGenerated } from './source-lib.mjs';
 import { toSeconds } from './mentions-lib.mjs';
-import { parseEras, buildTimeline, KINDS } from './timeline-lib.mjs';
+import { parseEras, buildTimeline, diffEntries, KINDS } from './timeline-lib.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -105,28 +105,21 @@ async function readNotes(contentDir) {
   return notes;
 }
 
+/** Prints what diffEntries found; the rule itself lives in timeline-lib.mjs. */
 function diff(next, previous) {
-  const before = new Map((previous ?? []).map((entry) => [entry.id, entry]));
-  const after = new Map(next.map((entry) => [entry.id, entry]));
-  let changed = 0;
+  const changes = diffEntries(next, previous);
+  const mark = { added: '+', removed: '-', changed: '~' };
 
-  for (const [id, entry] of after) {
-    if (!before.has(id)) {
-      console.log(`  + ${entry.date} E${entry.episode} ${entry.title}`);
-      changed += 1;
-    } else if (before.get(id).title !== entry.title || before.get(id).episode !== entry.episode) {
-      console.log(`  ~ ${entry.date} E${entry.episode} ${entry.title}`);
-      changed += 1;
-    }
-  }
-  for (const [id, entry] of before) {
-    if (!after.has(id)) {
-      console.log(`  - ${entry.date} E${entry.episode} ${entry.title}`);
-      changed += 1;
-    }
+  for (const change of changes) {
+    const { entry } = change;
+    const fields = change.fields ? `  (${change.fields.join(', ')})` : '';
+    console.log(`  ${mark[change.kind]} ${entry.date} E${entry.episode} ${entry.title}${fields}`);
+    // A body is prose somebody wrote after a relisten. Losing one should read
+    // as a loss, not as a field name in a list.
+    if (change.was?.body && !entry.body) console.log(`      - body: ${change.was.body}`);
   }
 
-  console.log(changed ? `\n${changed} entr(y|ies) changed.` : '\nno change.');
+  console.log(changes.length ? `\n${changes.length} entr(y|ies) changed.` : '\nno change.');
 }
 
 async function main() {
@@ -194,7 +187,8 @@ async function main() {
     return;
   }
 
-  await writeFile(out, `${JSON.stringify(doc, null, 1)}\n`);
+  const moved = await writeGenerated(out, doc);
+  if (!moved) console.log(`no change — ${tilde(out)} left alone`);
 
   const written = entries.filter((entry) => entry.body).length;
   const linked = entries.filter((entry) => entry.notes.length).length;

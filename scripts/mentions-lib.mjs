@@ -469,3 +469,37 @@ export function mentionsFor(doc, slug) {
     coverage: doc.coverage ?? null,
   };
 }
+
+/** One moment, identified by everything that makes it that moment. */
+export const mentionKey = (mention) => `${mention.e}|${mention.t ?? ''}|${mention.x}`;
+
+/**
+ * What a regeneration would change, moment by moment.
+ *
+ * Comparing list lengths — which is what this did — hides a swap: a mention
+ * whose text, episode or timestamp changed leaves the count alone, so the run
+ * reports "no change" while the citation under a note points somewhere else.
+ * The same blind spot in the timeline's diff cost 34 bodies.
+ */
+export function diffMentions(next, previous) {
+  const slugs = [...new Set([...Object.keys(next), ...Object.keys(previous ?? {})])].sort();
+  const changes = [];
+
+  for (const slug of slugs) {
+    const before = previous?.[slug] ?? [];
+    const after = next[slug] ?? [];
+    if (before.map(mentionKey).join('\n') === after.map(mentionKey).join('\n')) continue;
+
+    const kept = new Set(after.map(mentionKey));
+    const seen = new Set(before.map(mentionKey));
+    changes.push({
+      slug,
+      before: before.length,
+      after: after.length,
+      added: after.filter((mention) => !seen.has(mentionKey(mention))),
+      removed: before.filter((mention) => !kept.has(mentionKey(mention))),
+    });
+  }
+
+  return changes;
+}

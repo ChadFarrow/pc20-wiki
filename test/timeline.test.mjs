@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { parseEras, eraForDate, notesForEntry, buildTimeline, groupByEra } from '../scripts/timeline-lib.mjs';
+import { parseEras, eraForDate, notesForEntry, buildTimeline, groupByEra, diffEntries } from '../scripts/timeline-lib.mjs';
 
 const ERAS = [
   { id: 'genesis', title: 'Genesis', start: '2020-08-28', blurb: 'A new namespace.' },
@@ -137,4 +137,39 @@ test('buildTimeline carries a milestone body through to the entry', () => {
   });
   assert.equal(entries.find((e) => e.id === 'a').body, 'Sourced context.');
   assert.equal(entries.find((e) => e.id === 'b').body, null, 'no body is null, never undefined');
+});
+
+// The guard that failed. It compared title and episode only, so a checkout whose
+// milestone files had gone back to `TODO` regenerated from 34 bodies to 1 and
+// --dry-run reported "no change".
+test('diffEntries sees a body disappear', () => {
+  const was = [{ id: 'a', title: 'A', episode: 12, date: '2020-11-20', body: 'The show notes place it in Austin.' }];
+  const now = [{ id: 'a', title: 'A', episode: 12, date: '2020-11-20', body: null }];
+
+  const changes = diffEntries(now, was);
+  assert.equal(changes.length, 1);
+  assert.equal(changes[0].kind, 'changed');
+  assert.deepEqual(changes[0].fields, ['body']);
+  assert.equal(changes[0].was.body, 'The show notes place it in Austin.');
+});
+
+test('diffEntries reports an entry that only changed which notes it links to', () => {
+  const was = [{ id: 'a', title: 'A', episode: 1, date: '2020-08-28', notes: [{ slug: 'rss', title: 'RSS' }] }];
+  const now = [{ id: 'a', title: 'A', episode: 1, date: '2020-08-28', notes: [] }];
+  assert.deepEqual(diffEntries(now, was)[0].fields, ['notes']);
+});
+
+test('diffEntries stays quiet when nothing moved', () => {
+  const entries = [{ id: 'a', title: 'A', episode: 1, date: '2020-08-28', body: 'Context.', notes: [] }];
+  assert.deepEqual(diffEntries(entries, structuredClone(entries)), []);
+});
+
+test('diffEntries names an entry added and one removed', () => {
+  const was = [{ id: 'a', title: 'A', episode: 1, date: '2020-08-28' }];
+  const now = [{ id: 'b', title: 'B', episode: 2, date: '2020-09-04' }];
+  assert.deepEqual(diffEntries(now, was).map((c) => [c.kind, c.entry.id]), [['added', 'b'], ['removed', 'a']]);
+});
+
+test('diffEntries treats a missing previous file as everything being new', () => {
+  assert.deepEqual(diffEntries([{ id: 'a', title: 'A', episode: 1 }], null).map((c) => c.kind), ['added']);
 });
