@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { parseSrt, captionEpisode, CAPTION_MIN_CUES, densest, DWELL_WINDOW } from '../scripts/captions-lib.mjs';
+import { parseSrt, captionEpisode, CAPTION_MIN_CUES, densest, DWELL_WINDOW, isReadout } from '../scripts/captions-lib.mjs';
 
 const SRT = `1
 00:00:01,000 --> 00:00:04,120
@@ -82,4 +82,39 @@ test('densest handles one hit and no hits', () => {
 
 test('DWELL_WINDOW is five minutes', () => {
   assert.equal(DWELL_WINDOW, 300);
+});
+
+test('isReadout drops the boostagram readout, which no frequency count can see', () => {
+  // Every episode ends with half an hour of reading boostagrams aloud. It is
+  // the densest passage in the episode, so the dwell floor SELECTS for it. And
+  // denyForms cannot catch it: every line carries a different amount and a
+  // different name, so no two are the same text.
+  assert.ok(isReadout('boob boost which did come through 808 CELTA Crayon 7'));
+  assert.ok(isReadout('at 100,100 SATs happy 100 show thank you very much.'));
+  assert.ok(isReadout("of the future starship boost with 1701 Satoshi's."));
+  assert.ok(isReadout('Gene been 1337 elite booster cast Matic and he says'));
+  assert.ok(isReadout('Got some booster grams.'));
+});
+
+test('isReadout drops the spoken intro, which the written isStructural misses', () => {
+  // The written rule is tuned to "Podcasting 2.0 for <date> Episode N: <title>".
+  // Spoken, it has a comma and no title, so that rule returns false for it.
+  assert.ok(isReadout('Podcasting 2.0 for August 15th, 2025, episode'));
+  assert.ok(isReadout('Podcasting 2.0 for February 27th, 2026, episode'));
+});
+
+test('isReadout leaves the real lines alone', () => {
+  // Measured: 0 of 12 real lines caught. "2.0" is not a run of three digits.
+  assert.ok(!isReadout('an ln address attribute. An ln address attribute would be'));
+  assert.ok(!isReadout('I access helipad over Tor.'));
+  assert.ok(!isReadout('alternate enclosure, none of this stuff.'));
+  assert.ok(!isReadout('another hero of podcasting 2.0 The Revolution'));
+  assert.ok(!isReadout('You need pod ping.'));
+  assert.ok(!isReadout('RSS is a content distribution standard.'));
+});
+
+test('isReadout knowingly swallows a line naming a long number', () => {
+  // This is the rule's cost, recorded so nobody rediscovers it as a surprise:
+  // the TLV record Boostagram.md is written around cannot survive it.
+  assert.ok(isReadout('the TLV record is 7629169'));
 });
