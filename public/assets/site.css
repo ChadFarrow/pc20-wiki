@@ -230,6 +230,10 @@ pre code {
   grid-template-columns: minmax(0, var(--measure)) minmax(0, 15rem);
   gap: clamp(1.5rem, 5vw, 4rem);
   align-items: start;
+  /* The tracks total less than .page's 68rem, and grid columns start-align by
+     default, so the leftover width piled up on the right and left the whole
+     article sitting off-centre. Centre the pair instead of the container. */
+  justify-content: center;
 }
 
 @media (max-width: 56rem) {
