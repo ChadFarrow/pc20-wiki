@@ -138,9 +138,16 @@ export const EXTRA_ALIASES = {
  * STATUSES in wiki-lib.mjs instead of a data file.
  */
 export const EXTRA_DENY = {
-  // A podcast host, not the protocol. "Welcome RSS.com", "Fiat baller! RSS.com".
-  RSS: ['rss com', 'rsscom'],
+  // Hosting companies, not the protocol — "Welcome RSS.com", "RSS Blue adds
+  // music". Every RSS hit on the timeline was one of these before this existed.
+  RSS: ['rss com', 'rsscom', 'rss blue', 'rssblue'],
 };
+
+/** Does a per-note deny phrase rule this text out for this note? */
+export function denied(title, text) {
+  const squashed = squash(text);
+  return (EXTRA_DENY[title] ?? []).some((phrase) => squashed.includes(squash(phrase)));
+}
 
 /**
  * pc20-timeline tags that name a wiki note.
@@ -383,23 +390,19 @@ export function isMatchable(note) {
  * sources produces a byte-identical file.
  */
 export function buildMentions(notes, candidates) {
-  const denied = denyForms(candidates);
+  const boilerplate = denyForms(candidates);
   const matchable = notes.filter(isMatchable);
-  const terms = matchable.map((note) => ({
-    note,
-    forms: formsFor(note),
-    deny: (EXTRA_DENY[note.title] ?? []).map(squash),
-  }));
+  const terms = matchable.map((note) => ({ note, forms: formsFor(note) }));
 
   const mentions = {};
   for (const candidate of candidates) {
-    if (denied.has(squash(candidate.text))) continue;
+    if (boilerplate.has(squash(candidate.text))) continue;
     const tagged = new Set(
       (candidate.tags ?? []).map((tag) => TIMELINE_TAG_NOTES[tag]).filter(Boolean),
     );
 
-    for (const { note, forms, deny } of terms) {
-      if (deny.some((phrase) => squash(candidate.text).includes(phrase))) continue;
+    for (const { note, forms } of terms) {
+      if (denied(note.title, candidate.text)) continue;
       const hit = tagged.has(note.title) || forms.some((form) => matchesForm(form, candidate.text));
       if (!hit) continue;
 

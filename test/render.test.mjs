@@ -1,7 +1,13 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { createMarkdown, escapeHtml, pageShell, mentionsSection } from '../scripts/render.mjs';
+import {
+  createMarkdown,
+  escapeHtml,
+  pageShell,
+  mentionsSection,
+  renderTimelinePage,
+} from '../scripts/render.mjs';
 
 /** Resolves the two titles the fixtures use; anything else is an unwritten stub. */
 const resolver = (target) => {
@@ -202,4 +208,84 @@ test('the footer omits the coverage sentence when the data does not carry it', (
   const html = mentionsSection(mentionsFixture({ coverage: null }));
   assert.match(html, /curated sources only/);
   assert.doesNotMatch(html, /episodes have curated notes/);
+});
+
+// ---------- timeline ----------
+
+const timelineFixture = {
+  eras: [
+    { id: 'genesis', title: 'Genesis', start: '2020-08-28', blurb: 'A new namespace.' },
+    { id: 'boosts', title: 'Boosts', start: '2021-07-09', blurb: null },
+  ],
+  entries: [
+    {
+      id: 'liftoff',
+      title: 'We have liftoff',
+      kind: 'event',
+      tags: [],
+      episode: 1,
+      episodeTitle: 'We are upgrading podcasting',
+      date: '2020-08-28',
+      seconds: null,
+      audioUrl: 'https://example.com/PC20-01.mp3',
+      era: 'genesis',
+      notes: [],
+    },
+    {
+      id: 'first-ever-boost',
+      title: 'First-ever boost <script>',
+      kind: 'first',
+      tags: ['boosts'],
+      episode: 46,
+      episodeTitle: "Sliding into your PM's",
+      date: '2021-07-16',
+      seconds: 3898,
+      audioUrl: 'https://example.com/PC20-46.mp3',
+      era: 'boosts',
+      notes: [{ slug: 'boost', title: 'Boost' }],
+    },
+  ],
+};
+
+test('the timeline page renders every entry into the markup', () => {
+  const html = renderTimelinePage({ timeline: timelineFixture, baseUrl: 'https://example.com' });
+  assert.match(html, /2 milestones from the Podcasting 2\.0 podcast, 28 Aug 2020 to 16 Jul 2021/);
+  assert.equal(html.match(/class="entry"/g).length, 2);
+  assert.equal(html.match(/<section class="era"/g).length, 2);
+});
+
+test('the timeline runs oldest first and numbers its eras', () => {
+  const html = renderTimelinePage({ timeline: timelineFixture, baseUrl: 'https://example.com' });
+  assert.ok(html.indexOf('era-genesis') < html.indexOf('era-boosts'));
+  assert.ok(html.indexOf('We have liftoff') < html.indexOf('First-ever boost'));
+  assert.match(html, /<p class="era__no">01<\/p>/);
+});
+
+test('an entry with a timestamp opens the audio at that moment', () => {
+  const html = renderTimelinePage({ timeline: timelineFixture, baseUrl: 'https://example.com' });
+  assert.match(html, /href="https:\/\/example\.com\/PC20-46\.mp3#t=3898">E46 · 1:04:58</);
+  // Without one, the episode still links — just not to a point inside it.
+  assert.match(html, /href="https:\/\/example\.com\/PC20-01\.mp3">E1</);
+});
+
+test('a timeline entry links to the notes it is about', () => {
+  const html = renderTimelinePage({ timeline: timelineFixture, baseUrl: 'https://example.com' });
+  assert.match(html, /<a href="\/notes\/boost\/">Boost<\/a>/);
+});
+
+test('a milestone title is escaped, not rendered', () => {
+  const html = renderTimelinePage({ timeline: timelineFixture, baseUrl: 'https://example.com' });
+  assert.doesNotMatch(html, /First-ever boost <script>/);
+  assert.match(html, /First-ever boost &lt;script&gt;/);
+});
+
+test('every entry gets an id so a milestone can be linked to directly', () => {
+  const html = renderTimelinePage({ timeline: timelineFixture, baseUrl: 'https://example.com' });
+  assert.match(html, /<li class="entry" id="first-ever-boost">/);
+});
+
+test('the timeline page survives having no entries at all', () => {
+  const html = renderTimelinePage({ timeline: { eras: [], entries: [] }, baseUrl: 'https://example.com' });
+  assert.match(html, /0 milestones/);
+  assert.doesNotMatch(html, /class="entry"/);
 });

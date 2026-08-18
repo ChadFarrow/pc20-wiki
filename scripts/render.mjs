@@ -10,6 +10,7 @@
 import { Marked } from 'marked';
 import { slugify, headings } from './wiki-lib.mjs';
 import { toStamp } from './mentions-lib.mjs';
+import { groupByEra } from './timeline-lib.mjs';
 
 export const SITE_NAME = 'PC 2.0 Wiki';
 export const SITE_TAGLINE = 'A working reference for Podcasting 2.0 — the namespace, the payments, and the plumbing underneath.';
@@ -141,6 +142,7 @@ function siteHeader() {
     <ul class="search__results" id="search-results" role="listbox" hidden></ul>
   </div>
   <nav class="masthead__nav">
+    <a href="/timeline/">Timeline</a>
     <a href="/graph/">Graph</a>
     <a href="/queue/">Queue</a>
   </nav>
@@ -410,6 +412,116 @@ ${siteFooter()}`;
     body,
   });
 }
+
+/**
+ * The show's history, era by era.
+ *
+ * Rendered whole into the markup like every other page here: it has to read
+ * with JavaScript blocked, and a chronology whose entries arrive by fetch is a
+ * chronology nothing can link into or quote.
+ *
+ * Oldest first, because it is a history. Each entry names the episode it came
+ * from and links into the audio at the moment it happened, so a claim on this
+ * page can always be checked against the recording that supports it.
+ */
+export function renderTimelinePage({ timeline, baseUrl }) {
+  const eras = groupByEra(timeline.eras ?? [], timeline.entries ?? []);
+  const entries = timeline.entries ?? [];
+  const span =
+    entries.length > 1 ? `${shortDate(entries[0].date)} to ${shortDate(entries.at(-1).date)}` : '';
+
+  const jump = `<nav class="eras" aria-label="Jump to an era">
+    <ol>${eras
+      .map(
+        (era) => `<li><a href="#era-${escapeHtml(era.id)}">
+        <span class="eras__no">${String(era.index).padStart(2, '0')}</span>
+        <span class="eras__title">${escapeHtml(era.title)}</span>
+        <span class="eras__n">${era.entries.length}</span>
+      </a></li>`,
+      )
+      .join('')}</ol>
+  </nav>`;
+
+  const body = `${siteHeader()}
+<main class="page page--timeline">
+  <article class="timeline">
+    <h1>Timeline</h1>
+    <p class="timeline__lede">
+      ${entries.length} milestone${entries.length === 1 ? '' : 's'} from the Podcasting 2.0 podcast${
+        span ? `, ${escapeHtml(span)}` : ''
+      }. Each one names the episode it came from; where a timestamp is known, the
+      link opens the audio at that moment.
+    </p>
+    ${jump}
+    ${eras.map(renderEra).join('')}
+    <p class="timeline__source">Curated in the PC 2.0 Timeline. Eras are assigned by date, so
+      every entry lands in one and the run has no gaps.</p>
+  </article>
+</main>
+${siteFooter()}`;
+
+  return pageShell({
+    title: `Timeline — ${SITE_NAME}`,
+    description: `${entries.length} milestones from the Podcasting 2.0 podcast${
+      span ? `, ${span}` : ''
+    } — the firsts, launches, specs and shutdowns, each linked to the episode it happened on.`,
+    canonical: `${baseUrl}/timeline/`,
+    body,
+  });
+}
+
+function renderEra(era) {
+  return `<section class="era" id="era-${escapeHtml(era.id)}">
+    <header class="era__head">
+      <p class="era__no">${String(era.index).padStart(2, '0')}</p>
+      <h2>${escapeHtml(era.title)}</h2>
+      <p class="era__from">from ${escapeHtml(shortDate(era.start))} · ${era.entries.length} entr${
+        era.entries.length === 1 ? 'y' : 'ies'
+      }</p>
+      ${era.blurb ? `<p class="era__blurb">${escapeHtml(era.blurb)}</p>` : ''}
+    </header>
+    <ol class="entries">${era.entries.map(renderEntry).join('')}</ol>
+  </section>`;
+}
+
+function renderEntry(entry) {
+  const href = entry.audioUrl
+    ? entry.seconds == null
+      ? entry.audioUrl
+      : `${entry.audioUrl}#t=${entry.seconds}`
+    : null;
+  const at = entry.seconds == null ? '' : ` · ${escapeHtml(toStamp(entry.seconds))}`;
+  const cite = `E${entry.episode}${at}`;
+
+  return `<li class="entry" id="${escapeHtml(entry.id)}">
+    <p class="entry__when">
+      <time datetime="${escapeHtml(entry.date)}">${escapeHtml(shortDate(entry.date))}</time>
+    </p>
+    <div class="entry__body">
+      <p class="entry__title"><span class="entry__kind entry__kind--${escapeHtml(entry.kind)}">${escapeHtml(
+        KIND_LABELS[entry.kind] ?? entry.kind,
+      )}</span>${escapeHtml(entry.title)}</p>
+      <p class="entry__cite">${
+        href ? `<a href="${escapeHtml(href)}">${escapeHtml(cite)}</a>` : escapeHtml(cite)
+      }${entry.episodeTitle ? ` · ${escapeHtml(entry.episodeTitle)}` : ''}</p>
+      ${
+        entry.notes?.length
+          ? `<p class="entry__notes">${entry.notes
+              .map((note) => `<a href="/notes/${note.slug}/">${escapeHtml(note.title)}</a>`)
+              .join('')}</p>`
+          : ''
+      }
+    </div>
+  </li>`;
+}
+
+const KIND_LABELS = {
+  first: 'First',
+  launch: 'Launch',
+  death: 'Shut down',
+  spec: 'Spec',
+  event: 'Event',
+};
 
 /** Notes grouped by the MOC that maps them, then everything else A–Z. */
 export function renderHome({ home, mocs, nodes, markdown, baseUrl }) {

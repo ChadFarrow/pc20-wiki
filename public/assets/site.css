@@ -531,6 +531,203 @@ pre code {
   }
 }
 
+/* ---------- timeline ---------- */
+
+.page--timeline {
+  /* One column: the history is the page, so there is no sidebar to make room for. */
+  display: block;
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
+.timeline__lede {
+  font-size: 1.05rem;
+  color: var(--ink-soft, var(--ink));
+  margin: 0 0 1.6rem;
+}
+
+/* The era index, so the run is navigable without scrolling through 204 entries. */
+.eras {
+  margin: 0 0 2.6rem;
+  padding: 0.9rem 1rem;
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+}
+
+.eras ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.eras a {
+  display: grid;
+  grid-template-columns: 2.2rem 1fr auto;
+  gap: 0.6rem;
+  align-items: baseline;
+  padding: 0.22rem 0.2rem;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.eras a:hover {
+  background: var(--paper);
+}
+
+.eras__no,
+.eras__n {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+}
+
+.eras__n {
+  text-align: right;
+}
+
+.era {
+  margin: 0 0 3rem;
+  scroll-margin-top: 5rem;
+}
+
+.era__head {
+  margin: 0 0 1.1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.era__no {
+  margin: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+
+.era__head h2 {
+  margin: 0.1rem 0 0.2rem;
+  border: 0;
+  padding: 0;
+}
+
+.era__from {
+  margin: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+}
+
+.era__blurb {
+  margin: 0.5rem 0 0;
+  color: var(--ink-faint);
+}
+
+.entries {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * A date rail down the left, so the eye can scan when things happened without
+ * reading every title. The rule between the columns is the timeline itself.
+ */
+.entry {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: 0 1.2rem;
+  padding: 0.55rem 0;
+  scroll-margin-top: 5rem;
+}
+
+.entry + .entry {
+  border-top: 1px solid var(--rule);
+}
+
+.entry__when {
+  margin: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  padding-top: 0.15rem;
+}
+
+.entry__title {
+  margin: 0;
+}
+
+.entry__kind {
+  display: inline-block;
+  margin-right: 0.5rem;
+  padding: 0.05rem 0.4rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
+  vertical-align: 0.12em;
+}
+
+/* Only the three that mark a change of state earn colour; Event is the default. */
+.entry__kind--first,
+.entry__kind--launch {
+  color: var(--accent);
+  border-color: currentColor;
+}
+
+.entry__kind--death {
+  opacity: 0.75;
+  border-style: dashed;
+}
+
+.entry__cite {
+  margin: 0.15rem 0 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+}
+
+.entry__notes {
+  margin: 0.3rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.4rem;
+  font-size: 0.78rem;
+}
+
+.entry__notes a {
+  padding: 0.05rem 0.4rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  text-decoration: none;
+}
+
+.entry__notes a:hover {
+  background: var(--paper-sunk);
+}
+
+.timeline__source {
+  margin: 2rem 0 0;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+}
+
+@media (max-width: 34rem) {
+  .entry {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+
+  .eras a {
+    grid-template-columns: 2rem 1fr auto;
+  }
+}
+
 /* ---------- sidebar ---------- */
 
 .sidebar {

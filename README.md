@@ -86,6 +86,7 @@ An allowlist, because the vault is personal and the site is not:
 | `npm run publish:site`   | `sync` then `build`                                            |
 | `npm run lint:notes`     | Build with warnings fatal — a deliberate tidy-up pass          |
 | `npm run update:mentions`| Rebuild `data/mentions.json` from the sibling repos            |
+| `npm run update:timeline`| Rebuild `data/timeline.json` from the curated milestones       |
 | `npm test`               | Unit tests plus an end-to-end build with a link check          |
 | `npm run check:browser`  | Drives the built site in headless Chrome (`-- --shots` for PNGs) |
 | `npm run serve`          | Serve `public/` at http://127.0.0.1:8088                       |
@@ -118,6 +119,8 @@ looking for them.
 - **Search** — the whole index ships as JSON and is scored in the browser; `/` focuses it
 - **Heard on the show** — each note lists the episodes its subject came up on, deep-linked
   into the audio at the timestamp. See *Episode mentions* below
+- **Timeline** — `/timeline/` publishes the show's history era by era, each milestone
+  linked to the episode it happened on and the notes it is about
 - **Graph** — `/graph/` draws the link graph on canvas, no external libraries
 
 ## Structure
@@ -132,11 +135,15 @@ scripts/
   build.mjs       orchestration
   browser-check.mjs
   update-apps.mjs the Podcast Index apps directory, for adoption counts
+  source-lib.mjs     reading the sibling checkouts: paths, provenance, absence
   mentions-lib.mjs   matching a note against what the show said
   update-mentions.mjs which episodes discussed each note
+  timeline-lib.mjs   eras, placement and the chronology
+  update-timeline.mjs the curated history
   auto-publish.sh what launchd runs
 data/apps.json     the apps directory, trimmed and committed
 data/mentions.json episode mentions per note (generated, committed)
+data/timeline.json the curated history (generated, committed)
 public/assets/    hand-written CSS and JS (committed)
 public/**         everything else is generated
 test/             node --test
@@ -174,6 +181,29 @@ To change what a note matches, add `aliases:` to the note **in the vault** (Obsi
 key, so the quick-switcher benefits too). Rules that belong to the archive rather than to
 the concept — the boilerplate threshold, per-note deny phrases, the timeline tag map — live
 in `scripts/mentions-lib.mjs`, where each one can carry the reason it exists.
+
+## The timeline
+
+`/timeline/` is the show's history: 204 curated milestones — firsts, launches, specs,
+shutdowns — grouped into the ten eras `pc20-timeline` defines, each linked to the episode
+it happened on and to the notes that explain it.
+
+```sh
+npm run update:timeline                        # rewrite data/timeline.json
+node scripts/update-timeline.mjs --dry-run     # what a regenerate would change
+```
+
+The entries and the era vocabulary come from `../pc20-timeline`, which is private and
+undeployed — so this is where that work becomes readable. Placement is by **date**, not by
+episode range, which is what makes the eras gapless: every entry falls in the last era that
+had started. An entry whose episode cannot be dated is dropped and named on stderr rather
+than guessed at.
+
+**Milestones only.** The mention data on each note already answers "when did they talk
+about this", and folding 770 chapter titles in here would turn a history into a log. Bodies
+are ignored too: 203 of the 204 still read `TODO: add context for this milestone`, so an
+entry is currently its title, its episode and its links. When those get written, the body
+is one line to add in `update-timeline.mjs`.
 
 ## Deploying
 

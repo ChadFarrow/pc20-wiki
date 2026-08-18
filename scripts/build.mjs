@@ -36,6 +36,7 @@ import {
   renderHome,
   renderQueue,
   renderGraphPage,
+  renderTimelinePage,
   summarise,
 } from './render.mjs';
 
@@ -49,6 +50,7 @@ function arg(name, fallback) {
 const CONTENT = arg('content', 'content');
 const OUT = arg('out', 'public');
 const MENTIONS = arg('mentions', 'data/mentions.json');
+const TIMELINE = arg('timeline', 'data/timeline.json');
 const strict = process.argv.includes('--strict');
 
 /*
@@ -175,6 +177,16 @@ async function main() {
     }
   }
 
+  // Optional in the same way: the wiki builds without the history, just without
+  // the page. Absent means nobody has run the generator, not that it is broken.
+  let timeline = null;
+  try {
+    timeline = JSON.parse(await readFile(TIMELINE, 'utf8'));
+  } catch (err) {
+    if (err.code !== 'ENOENT') throw err;
+    warnings.push('data/timeline.json is missing — run `npm run update:timeline`');
+  }
+
   // A typo'd element name would silently render "0 of 129 apps", which reads as
   // a finding rather than a mistake.
   const elements = knownElements(apps);
@@ -225,7 +237,7 @@ async function main() {
 
   // Generated directories are cleared so a renamed note cannot leave its old
   // page behind, published forever at a URL nothing links to any more.
-  for (const dir of ['notes', 'data', 'queue', 'graph']) {
+  for (const dir of ['notes', 'data', 'queue', 'graph', 'timeline']) {
     await rm(join(OUT, dir), { recursive: true, force: true });
   }
 
@@ -262,6 +274,7 @@ async function main() {
   );
   await writePage('queue', renderQueue({ nodes: graph.nodes, graph, nodesBySlug, baseUrl: BASE_URL }));
   await writePage('graph', renderGraphPage({ baseUrl: BASE_URL }));
+  if (timeline) await writePage('timeline', renderTimelinePage({ timeline, baseUrl: BASE_URL }));
 
   await mkdir(join(OUT, 'data'), { recursive: true });
   await writeFile(
@@ -311,6 +324,7 @@ ${[
   '/',
   '/queue/',
   '/graph/',
+  ...(timeline ? ['/timeline/'] : []),
   ...graph.nodes.filter((node) => !node.stub).map((node) => `/notes/${node.slug}/`),
 ]
   .map((path) => `  <url><loc>${BASE_URL}${path}</loc></url>`)
@@ -324,10 +338,12 @@ ${[
   const stubCount = graph.nodes.filter((node) => node.stub).length;
   const withAdoption = notes.filter((note) => note.data.element).length;
   const withMentions = notes.filter((note) => mentionsDoc?.mentions?.[note.slug]).length;
+  const milestones = timeline?.entries?.length ?? 0;
   console.log(
     `built ${notes.length} notes, ${stubCount} stub(s), ${graph.edges.length} links` +
       `${withAdoption ? `, ${withAdoption} with adoption data` : ''}` +
-      `${withMentions ? `, ${withMentions} with mentions` : ''} → ${OUT}`,
+      `${withMentions ? `, ${withMentions} with mentions` : ''}` +
+      `${milestones ? `, ${milestones} milestones` : ''} → ${OUT}`,
   );
 }
 

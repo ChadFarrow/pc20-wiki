@@ -12,6 +12,7 @@ import {
   collectShowNotes,
   isStructural,
   isMatchable,
+  denied,
   collectMilestones,
   collectClips,
   dedupeClips,
@@ -287,4 +288,13 @@ test('isMatchable excludes maps of content and opted-out notes', () => {
   assert.ok(isMatchable(note('Podping', 'podping')));
   assert.ok(!isMatchable(note('Nostr MOC', 'nostr-moc', { type: 'moc' })));
   assert.ok(!isMatchable(note('Podping', 'podping', { mentions: false })));
+});
+
+test('a per-note deny phrase rules out the company but not the protocol', () => {
+  // Every RSS link on the timeline was RSS Blue or rss.com — hosting companies,
+  // not the thing the note is about.
+  assert.ok(denied('RSS', 'RSS Blue adds music'));
+  assert.ok(denied('RSS', 'Welcome RSS.com'));
+  assert.ok(!denied('RSS', 'NOSTR to replace RSS?'));
+  assert.ok(!denied('Podping', 'RSS Blue adds music'), 'a phrase only denies the note it belongs to');
 });
