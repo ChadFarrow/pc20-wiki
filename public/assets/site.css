@@ -628,6 +628,67 @@ pre code {
   border-radius: 0 6px 6px 0;
 }
 
+/* ---------- phones ---------- */
+
+/*
+ * Measured at 390px before this block: no horizontal overflow anywhere, but the
+ * masthead wrapped to two rows and stood 112px tall — 13% of the screen, sticky,
+ * on every page. One row gives most of that back.
+ */
+@media (max-width: 34rem) {
+  .masthead {
+    flex-wrap: nowrap;
+    gap: 0.7rem;
+    padding: 0.35rem var(--gap);
+  }
+
+  /* A flex item will not shrink past its content unless it is told it may.
+     Without this the search box held its width and pushed the nav onto row two. */
+  .search {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .masthead__nav {
+    gap: 0.9rem;
+    font-size: 0.72rem;
+  }
+
+  /* GRAPH and QUEUE measured 42x20, under the 44px touch minimum. The padding is
+     free here: the search input already sets the height of the row. */
+  .masthead__nav a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  /* Lists are navigation on this site — the MOC entries, the sidebar, the writing
+     queue. A 27px row is a small target when its neighbours are 27px away. */
+  .note li,
+  .outline li,
+  .sidebar li,
+  .queue li {
+    margin: 0.5rem 0;
+  }
+
+  /* The sidebar links measured 15px tall. WCAG 2.5.8 asks for 24px and exempts
+     links set inline in a sentence — these are navigation, so they do not
+     qualify. Padding the anchor grows the target without moving the text. */
+  .outline a,
+  .sidebar a {
+    display: inline-block;
+    padding-block: 0.3rem;
+  }
+
+  /* A Sources entry is a bare link on its own line, not a link inside a
+     sentence, so it gets no inline exemption either. Padding an inline box
+     grows the hit area; inline-block was tried first and dragged the list
+     marker onto the wrong line when a long URL wrapped. */
+  .note li > a:only-child {
+    padding-block: 0.25rem;
+  }
+}
+
 /* ---------- graph ---------- */
 
 .page--graph {
