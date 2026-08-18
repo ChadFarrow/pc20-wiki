@@ -103,17 +103,37 @@ existing signal cannot be diluted.
 Measured on the sample: 119 note-episode pairs have transcript hits, and 107 of them are
 gaps the curated sources do not cover.
 
-### 2. Furniture, derived rather than typed
+### 2. Furniture — two mechanisms, for two different problems
 
-Run the existing `denyForms` mechanism over transcript cue text, exactly as it already runs
-over chapter titles and show notes: any text recurring across `DENY_EPISODE_THRESHOLD` (4)
-or more distinct episodes is furniture.
+This mirrors the design the written sources already use, and for the same reason.
 
-The boostagram readout and the spoken intro recur in every episode, so a frequency rule
-catches them without anybody guessing patterns. This is the argument `CLAUDE.md` already
-makes for the written sources — *"Derived rather than hand-listed because the real
-boilerplate is not guessable"* — and the readout is a stronger case for it than anything in
-the feed.
+**2a. Frequency-derived.** Run the existing `denyForms` over transcript cue text, exactly as
+it already runs over chapter titles: any text recurring across `DENY_EPISODE_THRESHOLD` (4)
+or more distinct episodes is furniture. This catches the stock phrases that repeat
+word-for-word — *"Got some booster grams."*, *"Value for value."*, *"Thank you very much."*
+
+**2b. Structural.** Frequency alone **cannot** catch the boostagram readout, and this was an
+error in an earlier draft of this spec. `denyForms` keys on the whole cue text squashed, and
+no two readout lines are the same: *"808 CELTA Crayon"*, *"1701 Satoshi's"*, *"1337 elite
+booster"*. Each carries a different amount and a different name, which is exactly what
+`CLAUDE.md` says about the feed's template lines — *"no frequency count can ever catch
+them"*.
+
+So a new `TRANSCRIPT_BOILERPLATE`, matched by shape:
+
+| Pattern | Catches |
+|---|---|
+| a run of **3 or more digits** | the readout's amounts — *"with 1000 SATs and he"*, *"was 233 threes"* |
+| `podcasting 2.0 for … episode` | the spoken intro, which the written `isStructural` misses because the spoken form has a comma and no title |
+| `boostagram` / `booster gram` / `boost gram` | the readout's own name for itself |
+
+Measured on the sample: the 3-digit rule caught 10 of 10 readout lines and 0 of 12 real
+ones. *"another hero of podcasting 2.0"* survives, because `2.0` is not a 3-digit run.
+
+**The risk it carries.** A 3-digit rule would also drop a line naming TLV record `7629169`
+or a port number — the exact kind of specific fact this wiki is for. The sample is 22 lines.
+This rule above all others must be checked against the full report before it ships, and the
+report should be read specifically for real lines it swallowed.
 
 `EXTRA_DENY` stays available for what only reading the report finds.
 
