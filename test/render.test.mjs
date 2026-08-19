@@ -248,6 +248,37 @@ test('the footer no longer claims the transcripts are excluded', () => {
   assert.ok(!html.includes('not the show’s transcripts'));
 });
 
+test('the episode it says to go back to is not one already on the page', () => {
+  // Asymmetric overflow: the curated tier is UNDER its cap of 8 (three
+  // episodes shown, none hidden), its oldest episode is older than anything
+  // in the transcript tier, and the transcript tier is OVER its cap of 4. The
+  // globally-oldest episode belongs to the tier that did NOT overflow, so a
+  // "back to" line derived from the combined array's tail names an episode
+  // that is sitting right there on the page — which happened on four live
+  // pages (soundbites, liquidity, cross-app-comments, sovereign-feeds) before
+  // `oldest` and `rest` were both derived from the same `hidden` list.
+  const episodes = [];
+  for (let n = 260; n > 250; n -= 1) {
+    episodes.push({ number: n, date: '2026-01-01', title: `E${n}`, audioUrl: null,
+      moments: [{ seconds: 10, source: 't', text: `transcript ${n}` }] });
+  }
+  for (const n of [50, 40, 30]) {
+    episodes.push({ number: n, date: '2021-01-01', title: `E${n}`, audioUrl: null,
+      moments: [{ seconds: 10, source: 'c', text: `chapter ${n}` }] });
+  }
+
+  const html = mentionsSection({ total: 13, episodes, coverage: null });
+
+  // The curated tier (50, 40, 30) is fully shown — three episodes, well under
+  // the cap of 8 — so E30 is genuinely on the page.
+  assert.ok(html.includes('chapter 30'), 'E30 must be shown, under the curated cap');
+
+  const more = html.match(/<p class="mentions__more-eps">([^<]*)<\/p>/)?.[1];
+  assert.ok(more, 'the more-episodes line must render');
+  assert.doesNotMatch(more, /E30\b/, 'must not send the reader back to an episode already on the page');
+  assert.match(more, /back to E251\b/, 'must name the genuinely oldest hidden episode');
+});
+
 // ---------- timeline ----------
 
 const timelineFixture = {
