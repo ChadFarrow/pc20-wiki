@@ -502,16 +502,21 @@ git commit -m "Turn caption files into mention candidates"
 ```js
 // append to test/captions.test.mjs — add buildTranscriptMentions, DWELL_FLOOR,
 // LIFT_MIN, TRANSCRIPT_EPISODE_CAP to the import, and add:
-//   import { matchesForm } from '../scripts/mentions-lib.mjs';
+//   import { formsFor, matchesForm } from '../scripts/mentions-lib.mjs';
 
 const note = (title, slug, data = {}) => ({ title, slug, data: { type: 'concept', ...data } });
 const hit = (episode, seconds, text) => ({ source: 't', episode, seconds, text });
 
-test('the prepared matcher agrees with matchesForm, form for form', () => {
+test('the prepared matcher agrees with the library, form for form', () => {
   // buildTranscriptMentions prepares each cue once instead of calling
   // matchesForm 28 million times. If the two ever disagree, the transcript tier
   // scores by a different rule than the curated one and nothing says so.
-  const forms = ['Tor', 'NIP', 'Boost', 'Podping', 'Lightning Address', 'RSS'];
+  //
+  // Compare against formsFor(note), NOT against the title alone: a note's forms
+  // are its title plus its aliases, and EXTRA_ALIASES gives Lightning Address
+  // `lnaddress`, which is the only reason "an ln address attribute" matches at
+  // all. Comparing to the bare title would test a rule neither path uses.
+  const titles = ['Tor', 'NIP', 'Boost', 'Podping', 'Lightning Address', 'RSS'];
   const lines = [
     'I access helipad over Tor.',
     'You got to nip it in the bud.',
@@ -521,11 +526,12 @@ test('the prepared matcher agrees with matchesForm, form for form', () => {
     'RSS is a content distribution standard',
     'Weathering the storm',
   ];
-  for (const form of forms) {
+  for (const title of titles) {
+    const one = note(title, title.toLowerCase());
     for (const line of lines) {
-      const viaLib = matchesForm(form, line);
-      const mentions = buildTranscriptMentions([note(form, form.toLowerCase())], [hit(1, 0, line)], {}, { floor: 1 });
-      assert.equal(Boolean(mentions[form.toLowerCase()]), viaLib, `${form} vs ${line}`);
+      const viaLib = formsFor(one).some((form) => matchesForm(form, line));
+      const mentions = buildTranscriptMentions([one], [hit(1, 0, line)], {}, { floor: 1 });
+      assert.equal(Boolean(mentions[title.toLowerCase()]), viaLib, `${title} vs ${line}`);
     }
   }
 });
@@ -538,8 +544,9 @@ test('gate 1: a transcript never competes with a curated mention', () => {
 });
 
 test('gate 3: two hits in five minutes survive, one does not', () => {
-  // Tor, E251: four hits inside a minute, every one real, and Tor has no
-  // mentions at all today. NIP, E120: one hit, "nip it in the bud".
+  // Tor, E251: real hits inside a minute, and Tor has no mentions at all today.
+  // NIP, E120: one hit, "nip it in the bud" — the false positive SQUASH_MIN
+  // exists for, which a dwell floor catches where a length rule cannot.
   const notes = [note('Tor', 'tor'), note('NIP', 'nip')];
   const candidates = [
     hit(251, 4140, 'I access helipad over Tor.'),
@@ -547,7 +554,10 @@ test('gate 3: two hits in five minutes survive, one does not', () => {
     hit(120, 60, 'like nip the inside of my lip'),
   ];
   const out = buildTranscriptMentions(notes, candidates, {});
-  assert.equal(out.tor.length, 2);
+  // One moment per episode, not one per hit — the two Tor hits are one passage.
+  assert.equal(out.tor.length, 1);
+  assert.equal(out.tor[0].e, 251);
+  assert.equal(out.tor[0].t, 4140, 'the moment is where the densest window opens');
   assert.ok(!out.nip, 'a single passing mention is not a moment');
 });
 
@@ -569,9 +579,11 @@ test('gate 2: the readout is dropped before anything is counted', () => {
 test('gate 4: a note keeps only its densest episodes, up to the cap', () => {
   const notes = [note('Boost', 'boost')];
   const candidates = [];
-  // Six episodes, each qualifying, with descending density.
+  // Six episodes, each qualifying, with descending density. The text has to
+  // differ per episode: identical text in four or more episodes is what
+  // denyForms calls furniture, and it would drop every one of these.
   for (let ep = 1; ep <= 6; ep += 1) {
-    for (let i = 0; i < 8 - ep; i += 1) candidates.push(hit(ep, i * 10, 'boost'));
+    for (let i = 0; i < 8 - ep; i += 1) candidates.push(hit(ep, i * 10, `boost ${'a'.repeat(ep)}`));
   }
   const out = buildTranscriptMentions(notes, candidates, {}, { cap: 2 });
   assert.deepEqual([...new Set(out.boost.map((m) => m.e))], [1, 2]);
@@ -606,6 +618,42 @@ test('the output is sorted, so a rerun is byte-identical', () => {
   ];
   const out = buildTranscriptMentions(notes, candidates, {});
   assert.deepEqual(Object.keys(out), ['podping', 'tor']);
+});
+
+test('a form split across a caption break is found, and counted once', () => {
+  // The captions wrap mid-sentence BETWEEN cues, not only inside them:
+  //   "…This is episode number" / "seven. Tag your"
+  // 41 of 815 matches on the sample live only across a break, all multi-word.
+  const notes = [note('Lightning Address', 'lightning-address')];
+  const candidates = [
+    hit(200, 100, 'he gave me his lightning'),
+    hit(200, 104, 'address, which resolves to a node'),
+    hit(200, 130, 'the lightning address spec is simple'),
+  ];
+  const out = buildTranscriptMentions(notes, candidates, {}, { floor: 2 });
+  assert.equal(out['lightning-address'].length, 1, 'one moment per episode');
+  assert.equal(out['lightning-address'][0].t, 100, 'the straddle opens the densest window');
+});
+
+test('a form wholly inside the next cue is not also charged to this one', () => {
+  // Without the second check, the cue before every real mention would score a
+  // straddle of its own and every dwell measure would double.
+  const notes = [note('Podping', 'podping')];
+  const candidates = [
+    hit(200, 100, 'and then he said'),
+    hit(200, 104, 'podping handles it'),
+    hit(200, 108, 'which is neat'),
+  ];
+  assert.deepEqual(buildTranscriptMentions(notes, candidates, {}, { floor: 2 }), {});
+});
+
+test('cues from different episodes are never joined across the seam', () => {
+  const notes = [note('Lightning Address', 'lightning-address')];
+  const candidates = [
+    hit(200, 3000, 'he gave me his lightning'),
+    hit(201, 0, 'address, which resolves to a node'),
+  ];
+  assert.deepEqual(buildTranscriptMentions(notes, candidates, {}, { floor: 1 }), {});
 });
 
 test('the starting thresholds are the ones the spec names', () => {
@@ -695,22 +743,63 @@ export function buildTranscriptMentions(notes, candidates, curated = {}, options
 
   const terms = notes.filter(isMatchable).map((note) => ({
     note,
-    prepared: prepareForms(formsFor(note)),
+    forms: prepareForms(formsFor(note)),
   }));
+
+  // Every cue prepared once, so the per-note loop below is plain `includes`.
+  const prepared = candidates.map((candidate) => ({
+    squashed: squash(candidate.text),
+    normalised: norm(candidate.text),
+    skip: isReadout(candidate.text),
+  }));
+
+  /**
+   * The two cues either side of a caption break, as one string.
+   *
+   * The captions break mid-sentence — "…This is episode number" / "seven." — so
+   * a form that spans the break is invisible to a matcher reading one cue at a
+   * time. Measured on eight episodes: 41 of 815 matches live only across a
+   * boundary, and every one is a multi-word form — "Value 4 Value" 18 times,
+   * "Podcasting 2.0" nine, "Podcast Index" eight. Single words never straddle.
+   *
+   * No extra squashing: squash() drops the space, so a pair's squashed text is
+   * the two squashed texts joined, and norm() wraps in spaces, so the normalised
+   * pair is the two joined on one. Both are O(1) from the neighbours.
+   *
+   * A readout or boilerplate neighbour is not joined — pasting an amount onto
+   * the next line invents text nobody said.
+   */
+  const joined = (i) => {
+    const next = candidates[i + 1];
+    if (!next || next.episode !== candidates[i].episode) return null;
+    if (prepared[i + 1].skip || boilerplate.has(prepared[i + 1].squashed)) return null;
+    return {
+      squashed: prepared[i].squashed + prepared[i + 1].squashed,
+      normalised: `${prepared[i].normalised.slice(0, -1)}${prepared[i + 1].normalised}`,
+    };
+  };
 
   // slug → episode → the cues that hit, in time order
   const found = new Map();
 
-  for (const candidate of candidates) {
-    if (isReadout(candidate.text)) continue;
+  for (let i = 0; i < candidates.length; i += 1) {
+    const candidate = candidates[i];
+    if (prepared[i].skip) continue;
+    if (boilerplate.has(prepared[i].squashed)) continue;
 
-    const squashed = squash(candidate.text);
-    if (boilerplate.has(squashed)) continue;
-    const cue = { squashed, normalised: norm(candidate.text) };
+    const pair = joined(i);
 
-    for (const { note, prepared } of terms) {
+    for (const { note, forms } of terms) {
       if (covered.get(note.slug)?.has(candidate.episode)) continue;
-      if (!matchesPrepared(prepared, cue)) continue;
+
+      let hit = matchesPrepared(forms, prepared[i]);
+      if (!hit && pair) {
+        // Only a form in NEITHER cue alone counts as a straddle. Without that
+        // second check, a form sitting wholly inside the next cue is counted
+        // once there and once here, and every dwell measure doubles.
+        hit = matchesPrepared(forms, pair) && !matchesPrepared(forms, prepared[i + 1]);
+      }
+      if (!hit) continue;
       if (denied(note.title, candidate.text)) continue;
 
       if (!found.has(note.slug)) found.set(note.slug, new Map());
@@ -961,7 +1050,12 @@ async function readCaptions(dir) {
 }
 ```
 
-In `main()`, **after** the existing `buildMentions` call produces the curated set, add:
+In `main()`, **immediately after** `const mentions = buildMentions(notes, candidates);` and
+**before** the `episodeFacts` block, add the following. The position is not a style
+preference: `episodeFacts` is built from the episodes `mentions` cites, so a merge placed
+after it would leave every transcript-only episode without a date, a title or an audio URL —
+and therefore with no deep link, which is most of the point. The `report()` branch reads
+`mentions` too, and Task 9 depends on transcripts appearing in it.
 
 ```js
   // Captions are consulted only where the curated sources said nothing, so this

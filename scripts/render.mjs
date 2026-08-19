@@ -259,7 +259,18 @@ function adoptionSection(adoption) {
 export const MENTION_EPISODE_CAP = 8;
 export const MENTION_MOMENT_CAP = 3;
 
-const MENTION_SOURCES = { c: 'chapter', n: 'show notes', m: 'timeline', k: 'clip note' };
+/**
+ * Transcript episodes are shown under the curated ones and capped separately.
+ *
+ * Not cosmetic. The transcript tier exists precisely where the curated sources
+ * stop, which is the back half of the run — the newest episodes. Episodes sort
+ * newest-first, so one shared cap of 8 would fill entirely with transcripts and
+ * push every curated episode below the fold. The better source would be evicted
+ * by the worse one.
+ */
+export const MENTION_TRANSCRIPT_CAP = 4;
+
+const MENTION_SOURCES = { c: 'chapter', n: 'show notes', m: 'timeline', k: 'clip note', t: 'transcript' };
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -295,9 +306,27 @@ function momentLink(audioUrl, seconds) {
 export function mentionsSection(mentions) {
   if (!mentions?.episodes?.length) return '';
 
-  const shown = mentions.episodes.slice(0, MENTION_EPISODE_CAP);
-  const rest = mentions.episodes.length - shown.length;
-  const oldest = mentions.episodes.at(-1);
+  // .every() rather than .some(): an episode is either fully curated-sourced or
+  // fully transcript-sourced, never mixed. That holds only because gate 1 in
+  // mentions-lib.mjs never consults the transcript for an episode a curated
+  // source already covers. If that gate is ever relaxed, this stops being
+  // equivalent to .some() silently — no test here would catch it.
+  const isTranscript = (episode) => episode.moments.every((moment) => moment.source === 't');
+  const curated = mentions.episodes.filter((episode) => !isTranscript(episode));
+  const heard = mentions.episodes.filter(isTranscript);
+
+  const shown = [...curated.slice(0, MENTION_EPISODE_CAP), ...heard.slice(0, MENTION_TRANSCRIPT_CAP)];
+  // With two independent caps there are two ways to be over, and `shown` is the
+  // union of two tier prefixes rather than one prefix of the combined list. The
+  // "back to E<x>" line has to be derived from what is actually hidden — not
+  // from the two tiers' overflow counts and the combined array's tail computed
+  // separately — because that split is exactly what let the two drift: the
+  // globally-oldest episode can sit in the tier that did NOT overflow, land in
+  // `shown`, and still get named as the reason to go back further. It did, on
+  // four live pages, before this fix.
+  const hidden = [...curated.slice(MENTION_EPISODE_CAP), ...heard.slice(MENTION_TRANSCRIPT_CAP)];
+  const rest = hidden.length;
+  const oldest = hidden.length ? hidden.reduce((a, b) => (b.number < a.number ? b : a)) : null;
 
   const episodes = shown
     .map((episode) => {
@@ -329,7 +358,7 @@ export function mentionsSection(mentions) {
     .join('');
 
   const more =
-    rest > 0
+    rest > 0 && oldest
       ? `<p class="mentions__more-eps">and ${rest} more episode${rest === 1 ? '' : 's'}, back to E${
           oldest.number
         }${oldest.date ? ` (${escapeHtml(shortDate(oldest.date))})` : ''}.</p>`
@@ -337,7 +366,8 @@ export function mentionsSection(mentions) {
 
   const coverage = mentions.coverage;
   const scope = coverage?.episodes
-    ? ` ${coverage.withSources} of ${coverage.episodes} episodes have curated notes.`
+    ? ` ${coverage.withSources} of ${coverage.episodes} episodes have curated notes` +
+      `${coverage.transcripts ? `; ${coverage.transcripts} moment${coverage.transcripts === 1 ? '' : 's'} ${coverage.transcripts === 1 ? 'comes' : 'come'} from transcripts` : ''}.`
     : '';
 
   return `<section class="mentions">
@@ -349,7 +379,8 @@ export function mentionsSection(mentions) {
   <ol class="mentions__list">${episodes}</ol>
   ${more}
   <p class="mentions__source">From chapter titles, show notes, the PC 2.0 Timeline and the clip
-    notes — curated sources only, not the show\u2019s transcripts.${scope}</p>
+    notes. Where those say nothing, from the episode transcript — which reaches further but
+    only records that a word was said.${scope}</p>
 </section>`;
 }
 

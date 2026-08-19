@@ -135,6 +135,14 @@ or a port number — the exact kind of specific fact this wiki is for. The sampl
 This rule above all others must be checked against the full report before it ships, and the
 report should be read specifically for real lines it swallowed.
 
+**Checked, and kept.** Across all 481,956 cues, 12,187 carry a 3+ digit run and 766 of those
+both match a note and are not obviously a payment being read aloud. Every one of the 766
+belongs to one of the twelve best-covered notes — Podcasting 2.0 246, Boost 171, Bitcoin 82,
+Podverse 66, Podcast Index 46, Value 4 Value 27, then Splits, Chapters, RSS, Enclosure,
+Podcast Namespace, Transcripts. No thin note appears at all. The cost lands entirely where
+citations are already plentiful and K caps them regardless, and is zero where coverage was
+the point.
+
 `EXTRA_DENY` stays available for what only reading the report finds.
 
 ### 3. Dwell floor
@@ -147,15 +155,40 @@ those notes have no mentions at all today.
 
 ### 4. Rank by lift, then cap
 
-Rank a note's surviving episodes by how unusually present the note is in that episode
-against its own average across the whole run, then keep at most **K** episodes per note.
+Rank a note's surviving episodes by the size of their densest passage, keep only those at or
+above its average, and cap at **K** per note.
+
+Stated exactly, because an earlier draft of this section overclaimed: lift is a **filter**,
+not the ranking, and the average is taken over the episodes that cleared the dwell floor —
+not over the whole run. Averaging over the run would include every episode the note never
+appears in, dragging the mean towards zero and making the filter pass everything.
+
+**Lift is weak in the common case, and that is worth knowing before calibration.** Because
+`max >= mean` always holds, at least one episode always survives it. And where qualifying
+episodes tie on count — which the floor of 2 makes the usual outcome — lift does nothing at
+all and the cap decides alone. So the tiebreak is the operative rule more often than the
+measure is, and the tiebreak keeps the **newest** episodes, because covering E146–E266 is
+what the feature is for.
 
 Lift is what holds `Boost` back: on the sample its ordinary episodes score 0.3 and 0.5
 while its genuine ones score 2.6. The cap is what guarantees a bounded output whatever lift
 turns out to do on the full corpus.
 
-**Starting values, to be moved after reading the report:** floor 2 hits per 5 minutes, lift
-at or above 1.0 (the note is at least as present as its own average), **K = 6**.
+**Final values, after the whole archive was read (2026-08-18):** floor **2** hits per
+5 minutes, lift at or above **1.0**, **K = 6** — all three unchanged from the starting
+values, but now measured against 256 episodes rather than 8.
+
+- **`DWELL_FLOOR` stays at 2.** Tried at 3, 4 and 5. A floor of 3 costs four notes their only
+  citation — BoostCLI, NIP, Payment Channel and StartOS — and each of those four is true,
+  including NIP's "Look at your nip 50 sevens" (NIP-57). The noise a higher floor would clear
+  sits on notes that already carry twenty citations and is capped by K anyway.
+- **`LIFT_MIN` stays at 1.0.** At 1.5 ten notes lose their only citation, `Reverse Proxy`
+  among them — the case this spec named as the feature working.
+- **`TRANSCRIPT_EPISODE_CAP` stays at 6.** All 41 notes carrying transcript mentions were read
+  in the report and none is flooded: the citation at the cap is still a real one, e.g. Boost
+  E183 "a boost UU ID. Yeah, as an optional value on the TLV". 4 would drop 51 true mentions
+  for no quality gain, 8 would add 48 more of the same, and the page's own cap of 4 needs the
+  data to hold more than it shows.
 
 K caps the *data*, which is a departure — for the curated sources `data/mentions.json` holds
 everything and only the page caps. Transcripts are capped in the data because the volume is
@@ -169,6 +202,13 @@ Calibration means fetching all of them and reading
 `node scripts/update-mentions.mjs --report`, which this repo already treats as the quality
 gate rather than a formality. **Expect at least one of the three to move.** The
 implementation is not done until the report has been read.
+
+**Outcome.** None of the three moved — every alternative was measured and every one cost a
+thin note its only true citation. What reading the report *did* find was two things no
+threshold could reach: a second sense of one word (`Relay`, five hits in forty seconds about
+wiring a garage door, now three phrases in `EXTRA_DENY`), and the server handing out one
+transcript at two URLs (`PC20-50`/`PC20-51`, `PC20-248`/`PC20-249`, now dropped as
+duplicates). Both are the kind of defect the report exists to catch and the tests could not.
 
 ## Where the captions come from
 
@@ -193,8 +233,16 @@ node scripts/fetch-captions.mjs --force   # refetch everything
 note with no transcript mentions can be told apart from an episode with no transcript.
 
 **Provenance takes a different shape.** The other four sources record a git revision.
-Captions are not in git, so the record is the episode count, the newest episode and a
-content fingerprint — same purpose, which is that a stale number should read as stale.
+Captions are not in git, so the record is the usable episode count, the newest episode, the
+stub list, the duplicate list and `records` — the total number of cues read.
+
+**`records` is a cue count, not a content fingerprint**, and this paragraph said otherwise
+until Task 9. The distinction matters. The count catches a cache that is short, one that has
+gone stale at the top end, and one that has gained stubs — the three ways a cache usually
+goes wrong. It does **not** catch an episode re-transcribed in place with the same number of
+cues: two files could change completely and the record would not move. `npm run
+fetch:captions --force` is the way to be sure; a real content hash over the cue text is the
+fix if that case ever turns out to matter.
 
 ## Modules
 
@@ -211,7 +259,8 @@ Determinism is unchanged: same cache in, byte-identical JSON out. `--dry-run` is
 guard now that both diffs compare whole records.
 
 **`data/mentions.json` grows.** It is 96 KB today at ~124 bytes a mention. The four gates
-should land in the low thousands of new mentions, so expect **200–350 KB**. It stays
+should land in the low thousands of new mentions, so expect **200–350 KB**. *It did not:* the
+gates are stricter than that estimate assumed, and 177 new mentions took it to **123 KB**. It stays
 committed, for the reason it already is: the Vercel builder has neither the siblings nor a
 guarantee of network access.
 
@@ -237,20 +286,38 @@ transcript count, because the shape of the gap is what a reader most needs to un
 
 ## Search
 
-**Transcripts stay out of `search-index.json` in this version.**
+**Transcript text stays out of `search-index.json`; transcript episodes do not.**
 
-Moment text is deliberately the bottom rung of the scoring ladder, so a common word cannot
-flood an eight-row dropdown. Transcript text is the show's vocabulary at its noisiest, and
-adding it would roughly double the index while importing every transcription error into it.
+`build.mjs` builds each note's `moments` field — the text a search match is scored against —
+by joining mention text, filtered to exclude source `t`. It builds the note's `episodes`
+field, the count shown beside a search result, from the full mention list, transcripts
+included.
 
-It is also the easiest thing to add later, once the report has shown what the text actually
-looks like. Not in v1.
+The two fields answer different questions and only one of them is a flooding risk. Moment
+text is deliberately the bottom rung of the scoring ladder, so a common word cannot flood an
+eight-row dropdown, and transcript text is the show's vocabulary at its noisiest — adding it
+would roughly double the index while importing every transcription error into it. The
+episode count carries no text and no ranking weight; it is just a number next to a title, and
+leaving transcript episodes out of it would make a note's page and its search result
+disagree — `Tor`'s page says six episodes, and search must not say zero.
+
+Adding transcript text to `moments` is still the easiest thing to add later, once the report
+has shown more of what the text looks like. Not in v1.
 
 ## Testing
 
 - `captions-lib.mjs` gets a unit test per rule, each named for the case that produced it:
   `NIP` must not survive "nip it in the bud"; `Tor` must survive "I access helipad over
-  Tor"; three consecutive cues must not clear the dwell floor on their own.
+  Tor"; `RSS Blue` must not reach the `RSS` note even when the two words fall either side of
+  a caption break.
+
+  **A test this section used to name would fail, and the reason matters.** "Three
+  consecutive cues must not clear the dwell floor on their own" is false: cues are about
+  four seconds apart, so three of them sit well inside a 300-second window and clear a floor
+  of 2 comfortably. The dwell floor does **not** stop rapid repetition — it only stops a
+  single passing mention. Separating a habit from a segment is the lift filter's job, and
+  lift is weak where counts tie. This is the shape most likely to let furniture through, and
+  it is the first thing to look for in the report.
 - `site.test.mjs` asserts the two-tier cap against the built HTML, derived from the data
   rather than pinned to episode numbers, because the archive changes.
 - `browser-check.mjs` gains one assertion that a transcript moment renders with its label.

@@ -38,12 +38,14 @@ import {
   collectClips,
   dedupeClips,
   buildMentions,
+  compareMentions,
   diffMentions,
   validateTagMap,
   formsFor,
   isMatchable,
   toStamp,
 } from './mentions-lib.mjs';
+import { collectCaptions, buildTranscriptMentions, captionEpisode } from './captions-lib.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -55,6 +57,7 @@ const SOURCES = {
   episodes: sourcePath(ROOT, 'episodes', 'PC20_TIMELINE_EPISODES', '../pc20-timeline/data/episodes.json'),
   eras: sourcePath(ROOT, 'eras', 'PC20_TIMELINE_ERAS', '../pc20-timeline/content/eras.yml'),
   clips: sourcePath(ROOT, 'checklist', 'PC20_CLIPS_CHECKLIST', '../pc20-clips/pc2-clip-checklist.md'),
+  captions: sourcePath(ROOT, 'captions', 'PC20_CAPTIONS', 'captions'),
 };
 
 const FLAGS = {
@@ -64,9 +67,10 @@ const FLAGS = {
   episodes: '--episodes',
   eras: '--eras',
   clips: '--checklist',
+  captions: '--captions',
 };
 
-const SOURCE_LABELS = { c: 'chapter', n: 'show notes', m: 'timeline', k: 'clip note' };
+const SOURCE_LABELS = { c: 'chapter', n: 'show notes', m: 'timeline', k: 'clip note', t: 'transcript' };
 
 /** A source that is not checked out — fatal unless --allow-missing. */
 const fell = (id, err) => missing({ id, err, sources: SOURCES, flags: FLAGS });
@@ -103,6 +107,20 @@ async function readChapters(dir) {
     parsed.push({ name, json: JSON.parse(await readFile(join(dir, name), 'utf8')) });
   }
   return { files: parsed, count: files.length };
+}
+
+/**
+ * The caption cache.
+ *
+ * Read like every other source — from files, never the network. Filling the
+ * cache is scripts/fetch-captions.mjs's job, and it is the only thing here that
+ * is allowed to reach out.
+ */
+async function readCaptions(dir) {
+  const names = (await readdir(dir)).filter((file) => /-Captions\.srt$/i.test(file)).sort();
+  const files = [];
+  for (const name of names) files.push({ name, text: await readFile(join(dir, name), 'utf8') });
+  return files;
 }
 
 async function readMilestones(dir) {
@@ -211,6 +229,53 @@ async function main() {
 
   const mentions = buildMentions(notes, candidates);
 
+  // Captions are consulted only where the curated sources said nothing, so this
+  // has to run after them and be given what they found.
+  let transcripts = {};
+  let stubs = [];
+  let duplicates = [];
+  let collisions = [];
+  try {
+    const files = await readCaptions(SOURCES.captions);
+    const collected = collectCaptions(files);
+    stubs = collected.stubs;
+    duplicates = collected.duplicates;
+    collisions = collected.collisions;
+    transcripts = buildTranscriptMentions(notes, collected.candidates, mentions);
+    sources.push({
+      id: 'captions',
+      path: tilde(SOURCES.captions),
+      episodes: files.length - stubs.length - duplicates.length - collisions.length,
+      newest: Math.max(0, ...files.map((file) => captionEpisode(file.name) ?? 0)),
+      stubs,
+      duplicates,
+      collisions,
+      records: collected.candidates.length,
+    });
+    if (stubs.length) console.warn(`  ! still processing, no transcript: ${stubs.join(', ')}`);
+    // Two URLs, one transcript. Named rather than dropped in silence, for the
+    // same reason a stub is: "nothing was said" and "we have no transcript"
+    // are different facts.
+    if (duplicates.length) console.warn(`  ! same file served twice, episode unknowable: ${duplicates.join(', ')}`);
+    // Two file names, one episode number — PC20-07 and PC20-7, say. Kept the
+    // first, dropped the rest, named here rather than silently doubling that
+    // episode's hit count.
+    if (collisions.length) console.warn(`  ! two files named the same episode, kept the first: ${collisions.join(', ')}`);
+  } catch (err) {
+    if (fell('captions', err) === null) sources.push({ id: 'captions', missing: true });
+  }
+
+  // Merge, curated first inside each note, then by episode. The comparator
+  // is compareMentions in mentions-lib.mjs — imported, not re-typed, so this
+  // merge and buildMentions's own sort cannot drift apart. data/mentions.json
+  // is committed and determinism is a stated constraint; two copies of the
+  // same four-key comparator is exactly the kind of thing that changes in
+  // one place and not the other, silently reordering every note in the diff.
+  for (const [slug, list] of Object.entries(transcripts)) {
+    (mentions[slug] ??= []).push(...list);
+    mentions[slug].sort(compareMentions);
+  }
+
   let episodeFacts = {};
   let total = 0;
   try {
@@ -241,6 +306,7 @@ async function main() {
       // that the subject never came up.
       withSources: new Set(candidates.map((candidate) => candidate.episode)).size,
       newest: cited.size ? Math.max(...cited) : null,
+      transcripts: Object.values(transcripts).reduce((sum, list) => sum + list.length, 0),
     },
     episodes: Object.fromEntries(
       Object.entries(episodeFacts).sort(([a], [b]) => Number(a) - Number(b)),

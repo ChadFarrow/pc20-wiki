@@ -310,10 +310,34 @@ test('a note the show discussed lists the episodes it came up on', async () => {
   assert.match(section, /mp3s\.nashownotes\.com/);
 });
 
+test('a note with both curated and transcript mentions shows both labels', async () => {
+  // Derived from the data, not pinned to a slug — a hard-coded slug is exactly
+  // what broke two tests in the previous task. Watch for substring collisions
+  // when counting classes: mentions__from is fine here, but mentions__more and
+  // mentions__moments both start with "mentions__mo", so match the label text
+  // that follows the class, not just the class name.
+  const doc = JSON.parse(await readFile(join(ROOT, 'data', 'mentions.json'), 'utf8'));
+  const slug = Object.entries(doc.mentions).find(
+    ([, list]) => list.some((m) => m.s === 'c') && list.some((m) => m.s === 't'),
+  )?.[0];
+  assert.ok(slug, 'no note has both a chapter and a transcript mention to test against');
+
+  const html = pages.get(`notes/${slug}/`);
+  assert.match(html, /<span class="mentions__from">chapter<\/span>/);
+  assert.match(html, /<span class="mentions__from">transcript<\/span>/);
+});
+
 test('mentions appear only on notes the sources actually name', () => {
-  // Tor squash-matches "Podfather story time" and "Art Generator Splits"; the
-  // length threshold in mentions-lib is the only thing keeping it clean.
-  assert.doesNotMatch(pages.get('notes/tor/'), /Heard on the show/);
+  // Tor used to be the canary for "no mentions at all" — it had zero, because
+  // the four curated sources never named it. The transcripts genuinely discuss
+  // it (E121 "it's all Tor", E210 "a Tor exit node", …), so that premise is now
+  // false and Tor has a section. What is still true, and what this threshold is
+  // actually for: Tor squash-matches "Podfather story time" and "Art Generator
+  // Splits" — false positives — and the five-character threshold in
+  // mentions-lib is the only thing keeping those out. Tor is now the canary for
+  // that rule instead.
+  assert.doesNotMatch(pages.get('notes/tor/'), /Podfather story time/);
+  assert.doesNotMatch(pages.get('notes/tor/'), /Art Generator Splits/);
   assert.match(pages.get('notes/podping/'), /Heard on the show/);
 });
 
@@ -360,10 +384,44 @@ test('the search index carries what the show called a thing', async () => {
   assert.ok(podping.moments.length > 0);
   assert.doesNotMatch(podping.moments, /[<>]/, 'index holds words, not markup');
 
-  // A note nothing was said about still carries the fields, just empty.
-  const tor = index.find((note) => note.slug === 'tor');
-  assert.deepEqual(tor.episodes, []);
-  assert.equal(tor.moments, '');
+  // A note nothing was said about still carries the fields, just empty. Tor
+  // used to be that note, but the transcripts now genuinely discuss it, so
+  // this is derived from data/mentions.json rather than pinned to a slug —
+  // pinning to "tor" is exactly how this assertion went stale once already.
+  const doc = JSON.parse(await readFile(join(ROOT, 'data', 'mentions.json'), 'utf8'));
+  const silent = Object.keys(doc.notes).find((slug) => !doc.mentions[slug]);
+  if (silent) {
+    const note = index.find((n) => n.slug === silent);
+    assert.deepEqual(note.episodes, []);
+    assert.equal(note.moments, '');
+  }
+  // If every matchable note now has a citation, that is the feature working,
+  // not a gap in this test — nothing to assert against.
+});
+
+test('the search index carries transcript episodes but not transcript text', async () => {
+  // build.mjs used to join every mention's text into `moments` with no filter
+  // on source, so a transcript-sourced quote — the show's vocabulary at its
+  // noisiest, unedited captions of speech — shipped in the search index.
+  // Moment text is deliberately the bottom rung of the scoring ladder so a
+  // common word cannot flood an eight-row dropdown; transcript text would have
+  // defeated that. The episode count carries no such risk and must NOT be
+  // filtered the same way, or a note's own page and its search result would
+  // disagree about how many episodes discussed it.
+  //
+  // Derived from the data, not pinned to a slug: find a note whose mentions
+  // are transcript-only, so a failure to filter is unambiguous.
+  const doc = JSON.parse(await readFile(join(ROOT, 'data', 'mentions.json'), 'utf8'));
+  const [slug, mentions] =
+    Object.entries(doc.mentions).find(([, list]) => list.length > 0 && list.every((m) => m.s === 't')) ?? [];
+  assert.ok(slug, 'no transcript-only note to test against');
+
+  const index = JSON.parse(await readFile(join(OUT, 'data', 'search-index.json'), 'utf8'));
+  const note = index.find((n) => n.slug === slug);
+
+  const episodes = [...new Set(mentions.map((m) => m.e))].sort((a, b) => b - a);
+  assert.deepEqual(note.episodes, episodes, `${slug}: episodes must still include transcript episodes`);
+  assert.equal(note.moments, '', `${slug}: transcript text must not reach the search index`);
 });
 
 test('the build still works when the mentions data has not been generated', async () => {

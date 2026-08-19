@@ -298,8 +298,17 @@ async function main() {
           text: note.plain,
           // What the show called it, which is often not what the wiki calls it —
           // this is what lets "steno" or "wavlake" reach a note at all.
+          //
+          // The episode count includes transcript mentions (source 't'); the
+          // text below does not. A reader comparing this note's page to a
+          // search result needs the same episode count in both places, but
+          // moment text is the bottom rung of the scoring ladder specifically
+          // so a common word can't flood the dropdown — and caption text is
+          // the show's vocabulary at its noisiest ("CELTA Crayon", "booster
+          // gram", "sinks relay"). So: episodes in, transcript text out.
           episodes: [...new Set(mentions.map((mention) => mention.e))].sort((a, b) => b - a),
           moments: mentions
+            .filter((mention) => mention.s !== 't')
             .map((mention) => mention.x)
             .join(' ')
             .slice(0, MOMENT_INDEX_LIMIT),
