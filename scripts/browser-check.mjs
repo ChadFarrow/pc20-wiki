@@ -265,6 +265,20 @@ async function main() {
       await evaluate('!!document.getElementById("how-it-works")'),
     );
 
+    // ---- transcript mentions ----
+    // Keysend has both curated and transcript mentions, so this is the page
+    // where a transcript moment's label and timestamp link actually render.
+    await go('/notes/keysend/');
+    check(
+      'a transcript moment renders its label and its timestamp link',
+      await evaluate(`
+        [...document.querySelectorAll('.mentions__moments li')].some((li) =>
+          li.querySelector('.mentions__from')?.textContent === 'transcript' &&
+          li.querySelector('a.mentions__at')
+        )
+      `),
+    );
+
     // ---- adoption ----
     await go('/notes/cross-app-comments/');
     await evaluate('document.querySelector(".adoption").scrollIntoView({block:"center"})');

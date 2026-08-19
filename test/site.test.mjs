@@ -310,6 +310,23 @@ test('a note the show discussed lists the episodes it came up on', async () => {
   assert.match(section, /mp3s\.nashownotes\.com/);
 });
 
+test('a note with both curated and transcript mentions shows both labels', async () => {
+  // Derived from the data, not pinned to a slug — a hard-coded slug is exactly
+  // what broke two tests in the previous task. Watch for substring collisions
+  // when counting classes: mentions__from is fine here, but mentions__more and
+  // mentions__moments both start with "mentions__mo", so match the label text
+  // that follows the class, not just the class name.
+  const doc = JSON.parse(await readFile(join(ROOT, 'data', 'mentions.json'), 'utf8'));
+  const slug = Object.entries(doc.mentions).find(
+    ([, list]) => list.some((m) => m.s === 'c') && list.some((m) => m.s === 't'),
+  )?.[0];
+  assert.ok(slug, 'no note has both a chapter and a transcript mention to test against');
+
+  const html = pages.get(`notes/${slug}/`);
+  assert.match(html, /<span class="mentions__from">chapter<\/span>/);
+  assert.match(html, /<span class="mentions__from">transcript<\/span>/);
+});
+
 test('mentions appear only on notes the sources actually name', () => {
   // Tor used to be the canary for "no mentions at all" — it had zero, because
   // the four curated sources never named it. The transcripts genuinely discuss

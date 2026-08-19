@@ -259,7 +259,18 @@ function adoptionSection(adoption) {
 export const MENTION_EPISODE_CAP = 8;
 export const MENTION_MOMENT_CAP = 3;
 
-const MENTION_SOURCES = { c: 'chapter', n: 'show notes', m: 'timeline', k: 'clip note' };
+/**
+ * Transcript episodes are shown under the curated ones and capped separately.
+ *
+ * Not cosmetic. The transcript tier exists precisely where the curated sources
+ * stop, which is the back half of the run — the newest episodes. Episodes sort
+ * newest-first, so one shared cap of 8 would fill entirely with transcripts and
+ * push every curated episode below the fold. The better source would be evicted
+ * by the worse one.
+ */
+export const MENTION_TRANSCRIPT_CAP = 4;
+
+const MENTION_SOURCES = { c: 'chapter', n: 'show notes', m: 'timeline', k: 'clip note', t: 'transcript' };
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -295,8 +306,13 @@ function momentLink(audioUrl, seconds) {
 export function mentionsSection(mentions) {
   if (!mentions?.episodes?.length) return '';
 
-  const shown = mentions.episodes.slice(0, MENTION_EPISODE_CAP);
-  const rest = mentions.episodes.length - shown.length;
+  const isTranscript = (episode) => episode.moments.every((moment) => moment.source === 't');
+  const curated = mentions.episodes.filter((episode) => !isTranscript(episode));
+  const heard = mentions.episodes.filter(isTranscript);
+
+  const shown = [...curated.slice(0, MENTION_EPISODE_CAP), ...heard.slice(0, MENTION_TRANSCRIPT_CAP)];
+  const rest = (curated.length - Math.min(curated.length, MENTION_EPISODE_CAP)) +
+    (heard.length - Math.min(heard.length, MENTION_TRANSCRIPT_CAP));
   const oldest = mentions.episodes.at(-1);
 
   const episodes = shown
@@ -337,7 +353,8 @@ export function mentionsSection(mentions) {
 
   const coverage = mentions.coverage;
   const scope = coverage?.episodes
-    ? ` ${coverage.withSources} of ${coverage.episodes} episodes have curated notes.`
+    ? ` ${coverage.withSources} of ${coverage.episodes} episodes have curated notes` +
+      `${coverage.transcripts ? `; ${coverage.transcripts} moment${coverage.transcripts === 1 ? '' : 's'} come from transcripts` : ''}.`
     : '';
 
   return `<section class="mentions">
@@ -349,7 +366,8 @@ export function mentionsSection(mentions) {
   <ol class="mentions__list">${episodes}</ol>
   ${more}
   <p class="mentions__source">From chapter titles, show notes, the PC 2.0 Timeline and the clip
-    notes — curated sources only, not the show\u2019s transcripts.${scope}</p>
+    notes. Where those say nothing, from the episode transcript — which reaches further but
+    only records that a word was said.${scope}</p>
 </section>`;
 }
 
