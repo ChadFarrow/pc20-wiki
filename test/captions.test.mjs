@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { parseSrt, captionEpisode, CAPTION_MIN_CUES, densest, DWELL_WINDOW, isReadout } from '../scripts/captions-lib.mjs';
+import { parseSrt, captionEpisode, CAPTION_MIN_CUES, densest, DWELL_WINDOW, isReadout, collectCaptions } from '../scripts/captions-lib.mjs';
 
 const SRT = `1
 00:00:01,000 --> 00:00:04,120
@@ -125,4 +125,39 @@ test('isReadout matches the literal first cue of episode 7', () => {
   // the real line has, so the pattern must match this or a future edit can
   // regress silently.
   assert.ok(isReadout('Oh, podcasting 2.0 for October 16 2020 This is episode number'));
+});
+
+const cue = (n, s) => `${n}\n00:${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')},000 --> 00:00:00,000\nline ${n}`;
+const full = (count) => Array.from({ length: count }, (_, i) => cue(i + 1, i * 10)).join('\n\n');
+
+test('collectCaptions produces the same candidate shape the other sources do', () => {
+  const { candidates } = collectCaptions([{ name: 'PC20-07-Captions.srt', text: full(12) }]);
+  assert.equal(candidates.length, 12);
+  assert.deepEqual(candidates[0], { source: 't', episode: 7, seconds: 0, text: 'line 1' });
+});
+
+test('collectCaptions reports a processing stub instead of publishing it', () => {
+  // A note with no transcript mentions must be tellable from an episode with no
+  // transcript. E46 and E86 come back as 60-byte stubs.
+  const { candidates, stubs } = collectCaptions([
+    { name: 'PC20-46-Captions.srt', text: 'Transcript is Processing …' },
+    { name: 'PC20-86-Captions.srt', text: full(3) },
+    { name: 'PC20-07-Captions.srt', text: full(12) },
+  ]);
+  assert.deepEqual(stubs, [46, 86]);
+  assert.deepEqual([...new Set(candidates.map((c) => c.episode))], [7]);
+});
+
+test('collectCaptions ignores a file that is not a caption file', () => {
+  const { candidates, stubs } = collectCaptions([{ name: 'README.md', text: full(12) }]);
+  assert.deepEqual(candidates, []);
+  assert.deepEqual(stubs, []);
+});
+
+test('collectCaptions sorts the stub list, so the output is deterministic', () => {
+  const { stubs } = collectCaptions([
+    { name: 'PC20-86-Captions.srt', text: '' },
+    { name: 'PC20-09-Captions.srt', text: '' },
+  ]);
+  assert.deepEqual(stubs, [9, 86]);
 });

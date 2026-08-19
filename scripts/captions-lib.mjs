@@ -117,3 +117,35 @@ export function isReadout(text) {
   const line = String(text ?? '');
   return TRANSCRIPT_BOILERPLATE.some((pattern) => pattern.test(line));
 }
+
+/**
+ * Caption files → candidates, in the shape every other source produces.
+ *
+ * Same `{ source, episode, seconds, text }` as collectChapters, so denyForms and
+ * the rest of mentions-lib work on these without knowing where they came from.
+ *
+ * A stub is returned rather than dropped in silence: "this note is not discussed
+ * in E86" and "E86 has no transcript" are different facts, and the report should
+ * be able to say which.
+ */
+export function collectCaptions(files) {
+  const candidates = [];
+  const stubs = [];
+
+  for (const { name, text } of files) {
+    const episode = captionEpisode(name);
+    if (!Number.isInteger(episode)) continue;
+
+    const cues = parseSrt(text);
+    if (cues.length < CAPTION_MIN_CUES) {
+      stubs.push(episode);
+      continue;
+    }
+
+    for (const cue of cues) {
+      candidates.push({ source: 't', episode, seconds: cue.seconds, text: cue.text });
+    }
+  }
+
+  return { candidates, stubs: stubs.sort((a, b) => a - b) };
+}
