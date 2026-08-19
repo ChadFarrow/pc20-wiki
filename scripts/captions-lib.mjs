@@ -127,6 +127,13 @@ export function isReadout(text) {
  * A stub is returned rather than dropped in silence: "this note is not discussed
  * in E86" and "E86 has no transcript" are different facts, and the report should
  * be able to say which.
+ *
+ * ORDERING INVARIANT: Task 5's straddle matcher pairs each cue with its successor
+ * to find forms split across caption breaks. The pairing walks the candidate array
+ * positionally, so candidates must: (1) be sorted ascending by time within each
+ * episode, and (2) group by episode contiguously, never interleaved. The loop
+ * structure guarantees both — each file's cues arrive in SRT order, and files are
+ * processed sequentially — but this contract is load-bearing, not incidental.
  */
 export function collectCaptions(files) {
   const candidates = [];

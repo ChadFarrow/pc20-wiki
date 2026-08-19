@@ -161,3 +161,59 @@ test('collectCaptions sorts the stub list, so the output is deterministic', () =
   ]);
   assert.deepEqual(stubs, [9, 86]);
 });
+
+test('candidates stay grouped by episode, because the straddle matcher walks them in order', () => {
+  // Task 5 pairs each cue with its successor to catch a form split across a
+  // caption break. That pairing is positional and assumes: (1) within one
+  // episode, candidates are in ascending time order, and (2) one episode's
+  // candidates never interleave with another's. This must hold regardless of
+  // input order, so we test both.
+  const files1 = [
+    { name: 'PC20-07-Captions.srt', text: full(12) },
+    { name: 'PC20-09-Captions.srt', text: full(8) },
+  ];
+  const files2 = [
+    { name: 'PC20-09-Captions.srt', text: full(8) },
+    { name: 'PC20-07-Captions.srt', text: full(12) },
+  ];
+
+  const { candidates: result1 } = collectCaptions(files1);
+  const { candidates: result2 } = collectCaptions(files2);
+
+  // Verify both orders produce identical candidate sequences.
+  assert.deepEqual(result1, result2);
+
+  const candidates = result1;
+  // Group candidates by episode.
+  const byEpisode = new Map();
+  for (const c of candidates) {
+    if (!byEpisode.has(c.episode)) byEpisode.set(c.episode, []);
+    byEpisode.get(c.episode).push(c);
+  }
+
+  // Assert contiguity: no episode's candidates can have another episode between them.
+  const episodes = Array.from(byEpisode.keys()).sort((a, b) => a - b);
+  let lastEpisode = null;
+  let lastIndex = -1;
+  for (const episode of episodes) {
+    const start = candidates.findIndex((c) => c.episode === episode);
+    const end = candidates.findLastIndex((c) => c.episode === episode);
+    // There should be no gap between end of last episode and start of this one.
+    assert.ok(start <= end + 1, `episode ${episode} is not contiguous`);
+    if (lastEpisode !== null) {
+      const lastEnd = candidates.findLastIndex((c) => c.episode === lastEpisode);
+      assert.ok(lastEnd < start, `episode ${episode} interleaves with ${lastEpisode}`);
+    }
+    lastEpisode = episode;
+  }
+
+  // Assert time order within each episode.
+  for (const [episode, cues] of byEpisode) {
+    for (let i = 1; i < cues.length; i++) {
+      assert.ok(
+        cues[i - 1].seconds <= cues[i].seconds,
+        `episode ${episode} seconds not ascending at index ${i - 1}`
+      );
+    }
+  }
+});
