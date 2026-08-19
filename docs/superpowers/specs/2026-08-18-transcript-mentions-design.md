@@ -147,8 +147,20 @@ those notes have no mentions at all today.
 
 ### 4. Rank by lift, then cap
 
-Rank a note's surviving episodes by how unusually present the note is in that episode
-against its own average across the whole run, then keep at most **K** episodes per note.
+Rank a note's surviving episodes by the size of their densest passage, keep only those at or
+above its average, and cap at **K** per note.
+
+Stated exactly, because an earlier draft of this section overclaimed: lift is a **filter**,
+not the ranking, and the average is taken over the episodes that cleared the dwell floor —
+not over the whole run. Averaging over the run would include every episode the note never
+appears in, dragging the mean towards zero and making the filter pass everything.
+
+**Lift is weak in the common case, and that is worth knowing before calibration.** Because
+`max >= mean` always holds, at least one episode always survives it. And where qualifying
+episodes tie on count — which the floor of 2 makes the usual outcome — lift does nothing at
+all and the cap decides alone. So the tiebreak is the operative rule more often than the
+measure is, and the tiebreak keeps the **newest** episodes, because covering E146–E266 is
+what the feature is for.
 
 Lift is what holds `Boost` back: on the sample its ordinary episodes score 0.3 and 0.5
 while its genuine ones score 2.6. The cap is what guarantees a bounded output whatever lift
@@ -250,7 +262,16 @@ looks like. Not in v1.
 
 - `captions-lib.mjs` gets a unit test per rule, each named for the case that produced it:
   `NIP` must not survive "nip it in the bud"; `Tor` must survive "I access helipad over
-  Tor"; three consecutive cues must not clear the dwell floor on their own.
+  Tor"; `RSS Blue` must not reach the `RSS` note even when the two words fall either side of
+  a caption break.
+
+  **A test this section used to name would fail, and the reason matters.** "Three
+  consecutive cues must not clear the dwell floor on their own" is false: cues are about
+  four seconds apart, so three of them sit well inside a 300-second window and clear a floor
+  of 2 comfortably. The dwell floor does **not** stop rapid repetition — it only stops a
+  single passing mention. Separating a habit from a segment is the lift filter's job, and
+  lift is weak where counts tie. This is the shape most likely to let furniture through, and
+  it is the first thing to look for in the report.
 - `site.test.mjs` asserts the two-tier cap against the built HTML, derived from the data
   rather than pinned to episode numbers, because the archive changes.
 - `browser-check.mjs` gains one assertion that a transcript moment renders with its label.
