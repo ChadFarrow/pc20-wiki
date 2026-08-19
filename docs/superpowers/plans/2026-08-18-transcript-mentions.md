@@ -502,16 +502,21 @@ git commit -m "Turn caption files into mention candidates"
 ```js
 // append to test/captions.test.mjs — add buildTranscriptMentions, DWELL_FLOOR,
 // LIFT_MIN, TRANSCRIPT_EPISODE_CAP to the import, and add:
-//   import { matchesForm } from '../scripts/mentions-lib.mjs';
+//   import { formsFor, matchesForm } from '../scripts/mentions-lib.mjs';
 
 const note = (title, slug, data = {}) => ({ title, slug, data: { type: 'concept', ...data } });
 const hit = (episode, seconds, text) => ({ source: 't', episode, seconds, text });
 
-test('the prepared matcher agrees with matchesForm, form for form', () => {
+test('the prepared matcher agrees with the library, form for form', () => {
   // buildTranscriptMentions prepares each cue once instead of calling
   // matchesForm 28 million times. If the two ever disagree, the transcript tier
   // scores by a different rule than the curated one and nothing says so.
-  const forms = ['Tor', 'NIP', 'Boost', 'Podping', 'Lightning Address', 'RSS'];
+  //
+  // Compare against formsFor(note), NOT against the title alone: a note's forms
+  // are its title plus its aliases, and EXTRA_ALIASES gives Lightning Address
+  // `lnaddress`, which is the only reason "an ln address attribute" matches at
+  // all. Comparing to the bare title would test a rule neither path uses.
+  const titles = ['Tor', 'NIP', 'Boost', 'Podping', 'Lightning Address', 'RSS'];
   const lines = [
     'I access helipad over Tor.',
     'You got to nip it in the bud.',
@@ -521,11 +526,12 @@ test('the prepared matcher agrees with matchesForm, form for form', () => {
     'RSS is a content distribution standard',
     'Weathering the storm',
   ];
-  for (const form of forms) {
+  for (const title of titles) {
+    const one = note(title, title.toLowerCase());
     for (const line of lines) {
-      const viaLib = matchesForm(form, line);
-      const mentions = buildTranscriptMentions([note(form, form.toLowerCase())], [hit(1, 0, line)], {}, { floor: 1 });
-      assert.equal(Boolean(mentions[form.toLowerCase()]), viaLib, `${form} vs ${line}`);
+      const viaLib = formsFor(one).some((form) => matchesForm(form, line));
+      const mentions = buildTranscriptMentions([one], [hit(1, 0, line)], {}, { floor: 1 });
+      assert.equal(Boolean(mentions[title.toLowerCase()]), viaLib, `${title} vs ${line}`);
     }
   }
 });
@@ -538,8 +544,9 @@ test('gate 1: a transcript never competes with a curated mention', () => {
 });
 
 test('gate 3: two hits in five minutes survive, one does not', () => {
-  // Tor, E251: four hits inside a minute, every one real, and Tor has no
-  // mentions at all today. NIP, E120: one hit, "nip it in the bud".
+  // Tor, E251: real hits inside a minute, and Tor has no mentions at all today.
+  // NIP, E120: one hit, "nip it in the bud" — the false positive SQUASH_MIN
+  // exists for, which a dwell floor catches where a length rule cannot.
   const notes = [note('Tor', 'tor'), note('NIP', 'nip')];
   const candidates = [
     hit(251, 4140, 'I access helipad over Tor.'),
@@ -547,7 +554,10 @@ test('gate 3: two hits in five minutes survive, one does not', () => {
     hit(120, 60, 'like nip the inside of my lip'),
   ];
   const out = buildTranscriptMentions(notes, candidates, {});
-  assert.equal(out.tor.length, 2);
+  // One moment per episode, not one per hit — the two Tor hits are one passage.
+  assert.equal(out.tor.length, 1);
+  assert.equal(out.tor[0].e, 251);
+  assert.equal(out.tor[0].t, 4140, 'the moment is where the densest window opens');
   assert.ok(!out.nip, 'a single passing mention is not a moment');
 });
 
