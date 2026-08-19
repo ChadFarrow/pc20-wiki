@@ -311,9 +311,16 @@ test('a note the show discussed lists the episodes it came up on', async () => {
 });
 
 test('mentions appear only on notes the sources actually name', () => {
-  // Tor squash-matches "Podfather story time" and "Art Generator Splits"; the
-  // length threshold in mentions-lib is the only thing keeping it clean.
-  assert.doesNotMatch(pages.get('notes/tor/'), /Heard on the show/);
+  // Tor used to be the canary for "no mentions at all" — it had zero, because
+  // the four curated sources never named it. The transcripts genuinely discuss
+  // it (E121 "it's all Tor", E210 "a Tor exit node", …), so that premise is now
+  // false and Tor has a section. What is still true, and what this threshold is
+  // actually for: Tor squash-matches "Podfather story time" and "Art Generator
+  // Splits" — false positives — and the five-character threshold in
+  // mentions-lib is the only thing keeping those out. Tor is now the canary for
+  // that rule instead.
+  assert.doesNotMatch(pages.get('notes/tor/'), /Podfather story time/);
+  assert.doesNotMatch(pages.get('notes/tor/'), /Art Generator Splits/);
   assert.match(pages.get('notes/podping/'), /Heard on the show/);
 });
 
@@ -360,10 +367,19 @@ test('the search index carries what the show called a thing', async () => {
   assert.ok(podping.moments.length > 0);
   assert.doesNotMatch(podping.moments, /[<>]/, 'index holds words, not markup');
 
-  // A note nothing was said about still carries the fields, just empty.
-  const tor = index.find((note) => note.slug === 'tor');
-  assert.deepEqual(tor.episodes, []);
-  assert.equal(tor.moments, '');
+  // A note nothing was said about still carries the fields, just empty. Tor
+  // used to be that note, but the transcripts now genuinely discuss it, so
+  // this is derived from data/mentions.json rather than pinned to a slug —
+  // pinning to "tor" is exactly how this assertion went stale once already.
+  const doc = JSON.parse(await readFile(join(ROOT, 'data', 'mentions.json'), 'utf8'));
+  const silent = Object.keys(doc.notes).find((slug) => !doc.mentions[slug]);
+  if (silent) {
+    const note = index.find((n) => n.slug === silent);
+    assert.deepEqual(note.episodes, []);
+    assert.equal(note.moments, '');
+  }
+  // If every matchable note now has a citation, that is the feature working,
+  // not a gap in this test — nothing to assert against.
 });
 
 test('the build still works when the mentions data has not been generated', async () => {
