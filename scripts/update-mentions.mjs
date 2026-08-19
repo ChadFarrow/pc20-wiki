@@ -44,6 +44,7 @@ import {
   isMatchable,
   toStamp,
 } from './mentions-lib.mjs';
+import { collectCaptions, buildTranscriptMentions, captionEpisode } from './captions-lib.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -55,6 +56,7 @@ const SOURCES = {
   episodes: sourcePath(ROOT, 'episodes', 'PC20_TIMELINE_EPISODES', '../pc20-timeline/data/episodes.json'),
   eras: sourcePath(ROOT, 'eras', 'PC20_TIMELINE_ERAS', '../pc20-timeline/content/eras.yml'),
   clips: sourcePath(ROOT, 'checklist', 'PC20_CLIPS_CHECKLIST', '../pc20-clips/pc2-clip-checklist.md'),
+  captions: sourcePath(ROOT, 'captions', 'PC20_CAPTIONS', 'captions'),
 };
 
 const FLAGS = {
@@ -64,9 +66,10 @@ const FLAGS = {
   episodes: '--episodes',
   eras: '--eras',
   clips: '--checklist',
+  captions: '--captions',
 };
 
-const SOURCE_LABELS = { c: 'chapter', n: 'show notes', m: 'timeline', k: 'clip note' };
+const SOURCE_LABELS = { c: 'chapter', n: 'show notes', m: 'timeline', k: 'clip note', t: 'transcript' };
 
 /** A source that is not checked out — fatal unless --allow-missing. */
 const fell = (id, err) => missing({ id, err, sources: SOURCES, flags: FLAGS });
@@ -103,6 +106,20 @@ async function readChapters(dir) {
     parsed.push({ name, json: JSON.parse(await readFile(join(dir, name), 'utf8')) });
   }
   return { files: parsed, count: files.length };
+}
+
+/**
+ * The caption cache.
+ *
+ * Read like every other source — from files, never the network. Filling the
+ * cache is scripts/fetch-captions.mjs's job, and it is the only thing here that
+ * is allowed to reach out.
+ */
+async function readCaptions(dir) {
+  const names = (await readdir(dir)).filter((file) => /-Captions\.srt$/i.test(file)).sort();
+  const files = [];
+  for (const name of names) files.push({ name, text: await readFile(join(dir, name), 'utf8') });
+  return files;
 }
 
 async function readMilestones(dir) {
@@ -211,6 +228,34 @@ async function main() {
 
   const mentions = buildMentions(notes, candidates);
 
+  // Captions are consulted only where the curated sources said nothing, so this
+  // has to run after them and be given what they found.
+  let transcripts = {};
+  let stubs = [];
+  try {
+    const files = await readCaptions(SOURCES.captions);
+    const collected = collectCaptions(files);
+    stubs = collected.stubs;
+    transcripts = buildTranscriptMentions(notes, collected.candidates, mentions);
+    sources.push({
+      id: 'captions',
+      path: tilde(SOURCES.captions),
+      episodes: files.length - stubs.length,
+      newest: Math.max(0, ...files.map((file) => captionEpisode(file.name) ?? 0)),
+      stubs,
+      records: collected.candidates.length,
+    });
+    if (stubs.length) console.warn(`  ! still processing, no transcript: ${stubs.join(', ')}`);
+  } catch (err) {
+    if (fell('captions', err) === null) sources.push({ id: 'captions', missing: true });
+  }
+
+  // Merge, curated first inside each note, then by episode.
+  for (const [slug, list] of Object.entries(transcripts)) {
+    (mentions[slug] ??= []).push(...list);
+    mentions[slug].sort((a, b) => a.e - b.e || (a.t ?? Infinity) - (b.t ?? Infinity) || a.s.localeCompare(b.s));
+  }
+
   let episodeFacts = {};
   let total = 0;
   try {
@@ -241,6 +286,7 @@ async function main() {
       // that the subject never came up.
       withSources: new Set(candidates.map((candidate) => candidate.episode)).size,
       newest: cited.size ? Math.max(...cited) : null,
+      transcripts: Object.values(transcripts).reduce((sum, list) => sum + list.length, 0),
     },
     episodes: Object.fromEntries(
       Object.entries(episodeFacts).sort(([a], [b]) => Number(a) - Number(b)),
