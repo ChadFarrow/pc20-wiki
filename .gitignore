@@ -16,6 +16,10 @@ public/timeline/
 # content/ is a synced copy of the Obsidian vault and IS committed:
 # Vercel has no access to iCloud, so the build reads only what is in the repo.
 
+# Caption cache — ~41 MB, filled by scripts/fetch-captions.mjs, never committed.
+# What gets committed is the derived data/mentions.json, same as everything else.
+captions/
+
 # Screenshots from `npm run check:browser -- --shots`
 shots/
 
