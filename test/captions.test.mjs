@@ -118,3 +118,11 @@ test('isReadout knowingly swallows a line naming a long number', () => {
   // the TLV record Boostagram.md is written around cannot survive it.
   assert.ok(isReadout('the TLV record is 7629169'));
 });
+
+test('isReadout matches the literal first cue of episode 7', () => {
+  // This is the real shape of the spoken intro in the captions, not the
+  // invented fixtures above. The "Oh," prefix and the run-on ending are what
+  // the real line has, so the pattern must match this or a future edit can
+  // regress silently.
+  assert.ok(isReadout('Oh, podcasting 2.0 for October 16 2020 This is episode number'));
+});

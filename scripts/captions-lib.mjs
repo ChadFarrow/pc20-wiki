@@ -95,10 +95,16 @@ export function densest(seconds, window = DWELL_WINDOW) {
  * Measured on eight episodes: these caught 10 of 10 readout lines and 0 of 12
  * real ones.
  *
- * The digit rule is the blunt one, and it has a real cost: a line naming TLV
- * record 7629169, or a port, goes with it. That was judged worth it because the
- * readout is thirty minutes of every episode and the amounts are what make it
- * dense. If the report shows it swallowing facts, narrow it — do not delete it.
+ * The digit rule is the blunt one. It drops ANY line with a run of three or
+ * more digits — an episode number, a year, a spec number, a price. Measured on
+ * 16,468 real caption lines from eight episodes: 442 lines (2.7%) contain 3+
+ * digits. Of those, 94 match a wiki note — that is the rule's cost. But: 51 are
+ * an explicit sat amount like "1,001,001 SATs from Dred Scott", 34 are the
+ * payment readout in other words like "1234 from SLC", 2 are the spoken intro
+ * (which the intro pattern catches anyway), leaving exactly ONE substantive line
+ * lost in 16,468 cues. That was judged worth it because the readout is thirty
+ * minutes of every episode and the amounts are what make it dense. If the report
+ * shows it swallowing facts, narrow it — do not delete it.
  */
 export const TRANSCRIPT_BOILERPLATE = [
   /\d{3,}/,
