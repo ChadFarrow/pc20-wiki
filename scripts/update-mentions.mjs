@@ -251,9 +251,23 @@ async function main() {
   }
 
   // Merge, curated first inside each note, then by episode.
+  //
+  // Four keys, not three. Ties on episode, timestamp and source are real: 36
+  // of them today, all show-notes mentions with no timestamp that differ only
+  // in their text. Without the fourth key those ties come out in the order
+  // buildMentions already sorted them into, but only because sort is stable
+  // and that upstream order happens to be there — not because this sort
+  // guarantees it. data/mentions.json is committed and determinism is a
+  // stated constraint, so the order here has to be explicit, not incidental.
   for (const [slug, list] of Object.entries(transcripts)) {
     (mentions[slug] ??= []).push(...list);
-    mentions[slug].sort((a, b) => a.e - b.e || (a.t ?? Infinity) - (b.t ?? Infinity) || a.s.localeCompare(b.s));
+    mentions[slug].sort(
+      (a, b) =>
+        a.e - b.e ||
+        (a.t ?? Infinity) - (b.t ?? Infinity) ||
+        a.s.localeCompare(b.s) ||
+        a.x.localeCompare(b.x),
+    );
   }
 
   let episodeFacts = {};
