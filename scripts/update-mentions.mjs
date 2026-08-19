@@ -232,20 +232,27 @@ async function main() {
   // has to run after them and be given what they found.
   let transcripts = {};
   let stubs = [];
+  let duplicates = [];
   try {
     const files = await readCaptions(SOURCES.captions);
     const collected = collectCaptions(files);
     stubs = collected.stubs;
+    duplicates = collected.duplicates;
     transcripts = buildTranscriptMentions(notes, collected.candidates, mentions);
     sources.push({
       id: 'captions',
       path: tilde(SOURCES.captions),
-      episodes: files.length - stubs.length,
+      episodes: files.length - stubs.length - duplicates.length,
       newest: Math.max(0, ...files.map((file) => captionEpisode(file.name) ?? 0)),
       stubs,
+      duplicates,
       records: collected.candidates.length,
     });
     if (stubs.length) console.warn(`  ! still processing, no transcript: ${stubs.join(', ')}`);
+    // Two URLs, one transcript. Named rather than dropped in silence, for the
+    // same reason a stub is: "nothing was said" and "we have no transcript"
+    // are different facts.
+    if (duplicates.length) console.warn(`  ! same file served twice, episode unknowable: ${duplicates.join(', ')}`);
   } catch (err) {
     if (fell('captions', err) === null) sources.push({ id: 'captions', missing: true });
   }

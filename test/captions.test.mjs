@@ -475,3 +475,59 @@ test('the newer episode wins a tie, not the older one', () => {
   const out = buildTranscriptMentions(notes, candidates, {}, { cap: 2 });
   assert.deepEqual(out.boost.map((m) => m.e), [251, 252]);
 });
+
+test('collectCaptions drops every copy of a file the server served twice', () => {
+  // Measured on the whole cache: PC20-50 and PC20-51 are byte-identical, and so
+  // are PC20-248 and PC20-249 — one transcript at two URLs, twice in 258 files.
+  // Left in, Sats and StartOS each cited the same words at the same timestamp
+  // under two consecutive episodes: "sats or we got 1% of them." at E248 1:22:34
+  // and again at E249 1:22:34. Nothing in the file says which episode it is, so
+  // both copies go and both are named — the same treatment a stub gets.
+  const shared = full(12);
+  const { candidates, duplicates, stubs } = collectCaptions([
+    { name: 'PC20-249-Captions.srt', text: shared },
+    { name: 'PC20-248-Captions.srt', text: shared },
+    { name: 'PC20-07-Captions.srt', text: full(11) },
+  ]);
+  assert.deepEqual(duplicates, [248, 249]);
+  assert.deepEqual(stubs, []);
+  assert.deepEqual([...new Set(candidates.map((c) => c.episode))], [7]);
+});
+
+test('collectCaptions counts a duplicate apart from a stub', () => {
+  // "E86 has no transcript yet" and "E249 has one that is not its own" are
+  // different facts and the report says which. A stub is short; a duplicate is
+  // a whole file, so it must not be reported as still processing.
+  const shared = full(12);
+  const { duplicates, stubs } = collectCaptions([
+    { name: 'PC20-51-Captions.srt', text: shared },
+    { name: 'PC20-86-Captions.srt', text: 'Transcript is Processing …' },
+    { name: 'PC20-50-Captions.srt', text: shared },
+  ]);
+  assert.deepEqual(duplicates, [50, 51]);
+  assert.deepEqual(stubs, [86]);
+});
+
+test('an electrical relay is not a Nostr relay', () => {
+  // E264 34:46 — forty seconds of Adam describing wiring a garage door, and
+  // five hits in one window, which made it the densest Relay passage in the
+  // whole run. No dwell floor or lift cutoff can reach a passage that dense, so
+  // EXTRA_DENY is the only lever. These are the real caption lines.
+  const notes = [note('Relay', 'relay')];
+  const garage = [
+    hit(264, 2086, 'we would hook the micro switch up to a relay.'),
+    hit(264, 2089, "So we'd... We would get big relays, you know, the"),
+    hit(264, 2110, 'edge of it was running through the relay. And so'),
+    hit(264, 2113, 'when the relay was activated, click, it grabs the slip'),
+    hit(264, 2124, 'switch clicks off. Boom. The relay is deactivated. It opens'),
+  ];
+  assert.deepEqual(buildTranscriptMentions(notes, garage, {}), {});
+
+  // The deny phrases must not cost the note the sense it is about. E157 and
+  // E235 are the real lines that stayed.
+  const nostr = [
+    hit(157, 4743, 'Adam Curry: And it has it runs on relays. So you know,'),
+    hit(157, 4760, 'When it comes to running relays, you guys'),
+  ];
+  assert.deepEqual(buildTranscriptMentions(notes, nostr, {}).relay?.map((m) => m.e), [157]);
+});

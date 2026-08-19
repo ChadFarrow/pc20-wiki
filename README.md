@@ -155,8 +155,8 @@ test/             node --test
 ## Episode mentions
 
 Every note can say which episodes of the show discussed its subject, deep-linked into the
-audio at the moment it came up. That data is generated from three sibling checkouts and
-committed:
+audio at the moment it came up. That is **949 mentions across 44 of the 60 notes and 220
+episodes**, generated and committed:
 
 ```sh
 npm run update:mentions                        # rewrite data/mentions.json
@@ -164,17 +164,26 @@ node scripts/update-mentions.mjs --report      # every matched moment, grouped b
 node scripts/update-mentions.mjs --dry-run     # what a regenerate would change
 ```
 
-Sources, all read from git and never from the network or the NAS: chapter titles and show
-notes from `../pc20-archive`, curated milestones from `../pc20-timeline`, and the clip
-checklist from `../pc20-clips`. Each path is overridable by flag or environment variable,
-and every one is printed before it is read.
+**The list has two tiers, and the page labels them.**
 
-**The show's transcripts are deliberately not a source.** They live on a NAS rather than in
-git, so a build that needed them could not run on Vercel. The cost is coverage: chapter
-titles exist for E12–E145 and show notes for E1–E100, so a thin section on a note usually
-means the curated sources run out rather than that nobody discussed it. The section says so
-in its own footer, because letting a reader conclude otherwise would be worse than saying
-nothing.
+*Curated* — **772 mentions** from four sources, all read from a git checkout and never from
+the network: chapter titles and show notes from `../pc20-archive`, curated milestones from
+`../pc20-timeline`, and the clip checklist from `../pc20-clips`. Somebody decided each of
+these was about its subject, which is what makes them the better tier.
+
+*Transcript* — **177 mentions**, quoted and labelled `transcript`, from the show's own
+captions. The curated sources stop early: chapter titles reach E145 and show notes E100,
+while the show is at E266. Captions are the only source that reaches, so **40 of the cited
+episodes are cited by nothing else**, and ten notes — `Tor`, `Reverse Proxy`, `Macaroon`,
+`Payment Channel` and six more — have a citation for the first time. They are also the weakest source — a caption line is only
+somebody saying the word — so four gates cut roughly 24,000 raw hits down to 177, and the
+page shows at most 4 transcript episodes under at most 8 curated ones. The rules and the
+measurements behind each threshold are in `CLAUDE.md`.
+
+**The captions are not in the repo.** `npm run fetch:captions` fills a gitignored `captions/`
+cache (264 files, ~39 MB) from the show's server; `update-mentions` then reads it as a plain
+directory of files, like every other source. Each path is overridable by flag or environment
+variable, and every one is printed before it is read.
 
 **Regeneration is manual.** The launchd agent syncs, builds and pushes, but it does not run
 `update:mentions` — so an alias added in Obsidian changes nothing until someone regenerates.

@@ -130,6 +130,22 @@ export function isReadout(text) {
  * in E86" and "E86 has no transcript" are different facts, and the report should
  * be able to say which.
  *
+ * A DUPLICATE is dropped the same way, and for the same reason. The server hands
+ * out one transcript at two URLs twice in 258 files: `PC20-50` and `PC20-51` are
+ * byte-identical, and so are `PC20-248` and `PC20-249`. One of each pair is not
+ * that episode's transcript, and nothing in the file says which — so both copies
+ * go, rather than one being guessed at. Left in, the pair cited the same words at
+ * the same timestamp under two consecutive episode numbers: `Sats` and `StartOS`
+ * each carried "sats or we got 1% of them." twice, once for E248 and once for
+ * E249.
+ *
+ * The spoken intro looks like an arbiter and is not one. Six of 258 files name an
+ * episode in their first cues that is not the one in the file name, and only the
+ * two duplicates are real: the other four are the transcriber splitting a number
+ * — E152 opens "episode 150 to drop the talk", E182 "episode 180 to drop the
+ * dongle". A rule reading that number would move four correct files for two wrong
+ * ones.
+ *
  * ORDERING INVARIANT: Task 5's straddle matcher pairs each cue with its successor
  * to find forms split across caption breaks. The pairing walks the candidate array
  * positionally, so candidates must: (1) be sorted ascending by time within each
@@ -140,6 +156,12 @@ export function isReadout(text) {
 export function collectCaptions(files) {
   const candidates = [];
   const stubs = [];
+  const duplicates = [];
+
+  const parsed = [];
+  // How many files carry this exact text. Counted before anything is emitted,
+  // because a duplicate is only visible against the whole set.
+  const copies = new Map();
 
   for (const { name, text } of files) {
     const episode = captionEpisode(name);
@@ -151,12 +173,27 @@ export function collectCaptions(files) {
       continue;
     }
 
+    const body = String(text ?? '');
+    copies.set(body, (copies.get(body) ?? 0) + 1);
+    parsed.push({ episode, body, cues });
+  }
+
+  for (const { episode, body, cues } of parsed) {
+    if (copies.get(body) > 1) {
+      duplicates.push(episode);
+      continue;
+    }
+
     for (const cue of cues) {
       candidates.push({ source: 't', episode, seconds: cue.seconds, text: cue.text });
     }
   }
 
-  return { candidates, stubs: stubs.sort((a, b) => a - b) };
+  return {
+    candidates,
+    stubs: stubs.sort((a, b) => a - b),
+    duplicates: duplicates.sort((a, b) => a - b),
+  };
 }
 
 /** Hits needed inside one window before a passage counts as a passage. */

@@ -145,6 +145,14 @@ export const EXTRA_DENY = {
   // Hosting companies, not the protocol — "Welcome RSS.com", "RSS Blue adds
   // music". Every RSS hit on the timeline was one of these before this existed.
   RSS: ['rss com', 'rsscom', 'rss blue', 'rssblue'],
+  // An electrical relay, not a Nostr one. E264 34:46 is forty seconds of Adam
+  // describing wiring a garage door — "we would hook the micro switch up to a
+  // relay.", "when the relay was activated, click, it grabs the slip", "The
+  // relay is deactivated. It opens". Five hits in one window made it the
+  // densest Relay passage in the whole run, so neither the dwell floor nor
+  // lift could ever reach it; only a phrase can. Same shape as RSS Blue above:
+  // one word, two senses.
+  Relay: ['micro switch', 'relay was activated', 'relay is deactivated'],
 };
 
 /** Does a per-note deny phrase rule this text out for this note? */
