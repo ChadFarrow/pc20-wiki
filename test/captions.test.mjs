@@ -376,3 +376,102 @@ test('the starting thresholds are the ones the spec names', () => {
   assert.equal(LIFT_MIN, 1);
   assert.equal(TRANSCRIPT_EPISODE_CAP, 6);
 });
+
+test('a deny phrase split across a caption break still denies', () => {
+  // RSS Blue is a hosting company, not the protocol. The deny list exists
+  // for it, and CLAUDE.md records it once producing five wrong RSS links.
+  const notes = [note('RSS', 'rss')];
+  const candidates = [
+    hit(300, 10, 'a new host called RSS'),
+    hit(300, 14, 'Blue just launched today'),
+    hit(300, 20, 'and RSS'),
+    hit(300, 24, 'Blue again'),
+  ];
+  assert.deepEqual(buildTranscriptMentions(notes, candidates, {}), {});
+});
+
+test('deny reads the neighbour even when the match did not need it', () => {
+  // "RSS" matches this cue on its own — it is below SQUASH_MIN, so it
+  // matches on word boundaries. "RSS Blue" only exists once the next cue is
+  // joined. Tying the deny context to the straddle branch let it through.
+  const notes = [note('RSS', 'rss')];
+  const candidates = [
+    hit(300, 10, 'a new host called RSS'),
+    hit(300, 14, 'Blue just launched today'),
+    hit(300, 40, 'and RSS'),
+    hit(300, 44, 'Blue again'),
+  ];
+  assert.deepEqual(buildTranscriptMentions(notes, candidates, {}), {});
+});
+
+test('gate 1 is scoped to the episode, not the note', () => {
+  // A curated mention in E200 must not stop the same note gaining a
+  // transcript mention in E210 — the gap is per episode, so a note that is
+  // already covered somewhere in the run can still gain the episodes it is
+  // not covered in.
+  const notes = [note('Podping', 'podping')];
+  const candidates = [
+    hit(210, 100, 'podping is great'),
+    hit(210, 140, 'podping again'),
+  ];
+  const curated = { podping: [{ e: 200, s: 'c', x: 'Podping' }] };
+  const out = buildTranscriptMentions(notes, candidates, curated);
+  assert.equal(out.podping.length, 1);
+  assert.equal(out.podping[0].e, 210);
+});
+
+test('lift drops an episode that is thin next to the note\'s own average', () => {
+  // Lift is a filter over the episodes that cleared the dwell floor, not a
+  // tiebreak: without it, a note would keep every episode that merely
+  // dwelled, even one that barely scraped past the floor next to a real
+  // segment elsewhere in the run.
+  const notes = [note('Boost', 'boost')];
+  const candidates = [];
+  for (let i = 0; i < 6; i += 1) candidates.push(hit(1, i * 10, 'boost segment one'));
+  for (let i = 0; i < 2; i += 1) candidates.push(hit(2, i * 10, 'boost segment two'));
+  const out = buildTranscriptMentions(notes, candidates, {});
+  assert.deepEqual(out.boost.map((m) => m.e), [1]);
+});
+
+test('a cue that is the show\'s furniture is skipped, not just deny-checked', () => {
+  // denyForms flags text repeated across four or more episodes as furniture.
+  // Without the skip on the cue itself, "Boost the show" said identically in
+  // four episodes would still dwell and pass every other gate.
+  const notes = [note('Boost', 'boost')];
+  const candidates = [];
+  for (let ep = 1; ep <= 4; ep += 1) {
+    candidates.push(hit(ep, 0, 'Boost the show'), hit(ep, 10, 'Boost the show'));
+  }
+  assert.deepEqual(buildTranscriptMentions(notes, candidates, {}), {});
+});
+
+test('a straddle is not built across a readout neighbour', () => {
+  // Without the guard, joining a readout cue onto its neighbour would invent
+  // a match nobody said: "he gave me his lightning" plus a readout cue that
+  // happens to contain "address" reads as "lightning address" only because
+  // the two were pasted together.
+  const notes = [note('Lightning Address', 'lightning-address')];
+  const candidates = [
+    hit(200, 100, 'he gave me his lightning'),
+    hit(200, 104, 'address 123 which resolves to a node'),
+  ];
+  assert.deepEqual(buildTranscriptMentions(notes, candidates, {}, { floor: 1 }), {});
+});
+
+test('the newer episode wins a tie, not the older one', () => {
+  // DWELL_FLOOR is only 2, so ties on peak and count are the ordinary
+  // outcome. This source exists to reach the episodes after 145 that the
+  // curated sources cannot, so a tie must keep the newer episode.
+  //
+  // Text differs per episode (denyForms would call identical text furniture)
+  // and carries no 3+ digit run (that is the readout rule, unrelated here —
+  // an episode number folded into the cue text would trip it by accident).
+  const notes = [note('Boost', 'boost')];
+  const labels = { 250: 'alpha', 251: 'beta', 252: 'gamma' };
+  const candidates = [];
+  for (const ep of [250, 251, 252]) {
+    candidates.push(hit(ep, 0, `boost segment ${labels[ep]}`), hit(ep, 10, `boost segment ${labels[ep]}`));
+  }
+  const out = buildTranscriptMentions(notes, candidates, {}, { cap: 2 });
+  assert.deepEqual(out.boost.map((m) => m.e), [251, 252]);
+});

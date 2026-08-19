@@ -198,16 +198,28 @@ const matchesPrepared = (prepared, cue) =>
 /**
  * Captions → mentions, through four gates. Every one is measured; see the spec.
  *
- *   1. gap only      — a note that already has a curated mention in an episode
- *                      does not consult the transcript for it, so the better
- *                      source is never diluted by the worse one
- *   2. furniture     — the readout and the spoken intro by shape, plus the
- *                      frequency-derived list the written sources already use
- *   3. dwell         — DWELL_FLOOR hits inside DWELL_WINDOW, which keeps Tor
- *                      ("I access helipad over Tor") and drops NIP ("nip it in
- *                      the bud")
- *   4. lift, and cap — rank by how unusually present the note is in that
- *                      episode against its own average, keep the top `cap`
+ *   1. gap only   — a note that already has a curated mention in an episode
+ *                   does not consult the transcript for it, so the better
+ *                   source is never diluted by the worse one
+ *   2. furniture  — the readout and the spoken intro by shape, plus the
+ *                   frequency-derived list the written sources already use
+ *   3. dwell      — DWELL_FLOOR hits inside DWELL_WINDOW, which keeps Tor
+ *                   ("I access helipad over Tor") and drops NIP ("nip it in
+ *                   the bud")
+ *   4. lift, then rank and cap — lift is a filter, not a ranking: a note keeps
+ *                   only the episodes where its count is at least LIFT_MIN
+ *                   times its own average over the episodes that cleared the
+ *                   dwell floor. The max count is always >= the mean, so lift
+ *                   can never empty a note, and wherever counts tie across
+ *                   episodes lift does nothing at all — it is a floor, not a
+ *                   sort. What survives is ranked by the densest passage
+ *                   (`peak`, then `count`), ties broken toward the NEWER
+ *                   episode, and the top `cap` are kept. The newer-episode
+ *                   tiebreak matters more than it looks: DWELL_FLOOR is only
+ *                   2, so ties are the ordinary outcome, not the exception,
+ *                   and this source exists to reach the episodes after 145
+ *                   that the curated sources cannot — the newer ones are the
+ *                   ones nothing else cites.
  *
  * One moment per surviving episode: the cue that opens the densest window.
  */
@@ -276,19 +288,35 @@ export function buildTranscriptMentions(notes, candidates, curated = {}, options
       if (covered.get(note.slug)?.has(candidate.episode)) continue;
 
       let hit = matchesPrepared(forms, prepared[i]);
+      // The text the hit was actually made on — cue i alone, or the joined
+      // pair for a straddle. This governs only the published excerpt, so a
+      // straddling citation quotes the words it was matched on rather than
+      // half of them.
+      let text = candidate.text;
       if (!hit && pair) {
         // Only a form in NEITHER cue alone counts as a straddle. Without that
         // second check, a form sitting wholly inside the next cue is counted
         // once there and once here, and every dwell measure doubles.
         hit = matchesPrepared(forms, pair) && !matchesPrepared(forms, prepared[i + 1]);
+        if (hit) text = `${candidate.text} ${candidates[i + 1].text}`;
       }
       if (!hit) continue;
-      if (denied(note.title, candidate.text)) continue;
+
+      // Deny reads the neighbour whenever there is one, however the match was
+      // made. The two are different questions: "RSS" is short enough to match
+      // this cue on a word boundary by itself, while the phrase that should
+      // deny it — "RSS Blue", a hosting company — does not exist until the next
+      // cue is joined on. Tying the deny context to the straddle branch let it
+      // through, which is the failure CLAUDE.md already records shipping once.
+      const context = pair ? `${candidate.text} ${candidates[i + 1].text}` : candidate.text;
+      if (denied(note.title, context)) continue;
 
       if (!found.has(note.slug)) found.set(note.slug, new Map());
       const byEpisode = found.get(note.slug);
       if (!byEpisode.has(candidate.episode)) byEpisode.set(candidate.episode, []);
-      byEpisode.get(candidate.episode).push(candidate);
+      // Never mutate `candidate` — it is the caller's array. A straddle gets
+      // its own object carrying the joined text; a plain hit reuses candidate.
+      byEpisode.get(candidate.episode).push(text === candidate.text ? candidate : { ...candidate, text });
     }
   }
 
@@ -298,7 +326,11 @@ export function buildTranscriptMentions(notes, candidates, curated = {}, options
     const passages = [];
 
     for (const [episode, hits] of byEpisode) {
-      hits.sort((a, b) => a.seconds - b.seconds);
+      // parseSrt truncates to whole seconds, so two hits can tie on `seconds`.
+      // A secondary key on text keeps the sort a total order, so which cue is
+      // found first at that timestamp cannot depend on the order candidates
+      // arrived in.
+      hits.sort((a, b) => a.seconds - b.seconds || a.text.localeCompare(b.text));
       const { peak, at } = densest(hits.map((h) => h.seconds), window);
       if (peak < floor) continue;
       passages.push({ episode, peak, at, count: hits.length, hits });
@@ -308,11 +340,16 @@ export function buildTranscriptMentions(notes, candidates, curated = {}, options
 
     // Lift is measured against the episodes the note actually turns up in, which
     // is what makes a Boost episode have to be a Boost episode rather than a
-    // Tuesday.
+    // Tuesday. It is a filter, not a ranking: max count is always >= mean, so
+    // lift can never empty a note, and it decides nothing where counts tie.
     const mean = passages.reduce((sum, p) => sum + p.count, 0) / passages.length;
     const ranked = passages
       .filter((p) => p.count / mean >= liftMin)
-      .sort((a, b) => b.peak - a.peak || b.count - a.count || a.episode - b.episode)
+      // Ties broken toward the NEWER episode. DWELL_FLOOR is only 2, so ties
+      // are the ordinary outcome, and this source exists to reach the
+      // episodes after 145 that the curated sources cannot — the newer ones
+      // are the ones nothing else cites, so they are what a tie should keep.
+      .sort((a, b) => b.peak - a.peak || b.count - a.count || b.episode - a.episode)
       .slice(0, cap);
 
     if (!ranked.length) continue;
