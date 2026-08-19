@@ -13,6 +13,8 @@
  * filesystem, no network.
  */
 
+import { denyForms, squash, norm, SQUASH_MIN, formsFor, isMatchable, denied } from './mentions-lib.mjs';
+
 /** Fewer cues than this and the file is a "Transcript is Processing" stub. */
 export const CAPTION_MIN_CUES = 10;
 
@@ -155,4 +157,173 @@ export function collectCaptions(files) {
   }
 
   return { candidates, stubs: stubs.sort((a, b) => a - b) };
+}
+
+/** Hits needed inside one window before a passage counts as a passage. */
+export const DWELL_FLOOR = 2;
+
+/** How present the note must be against its own average across the run. */
+export const LIFT_MIN = 1;
+
+/** Episodes a note may gain from captions. The data is capped, not just the page. */
+export const TRANSCRIPT_EPISODE_CAP = 6;
+
+/**
+ * matchesForm, with the text prepared once instead of per comparison.
+ *
+ * matchesForm squashes or normalises its `text` on every call. There are roughly
+ * 500,000 cues and 56 matchable notes, so calling it directly means 28 million
+ * squashes of a 200-character string. This is the same rule with the work moved:
+ * the five-character threshold, the squashed form for long forms, word
+ * boundaries for short ones. A test asserts the two agree; if you change
+ * matchesForm, that test is what tells you this went stale.
+ */
+function prepareForms(forms) {
+  return forms
+    .map((form) => {
+      const squashed = squash(form);
+      if (!squashed) return null;
+      return squashed.length >= SQUASH_MIN
+        ? { squashed }
+        : { normalised: norm(form) };
+    })
+    .filter(Boolean);
+}
+
+const matchesPrepared = (prepared, cue) =>
+  prepared.some((form) =>
+    form.squashed ? cue.squashed.includes(form.squashed) : cue.normalised.includes(form.normalised),
+  );
+
+/**
+ * Captions → mentions, through four gates. Every one is measured; see the spec.
+ *
+ *   1. gap only      — a note that already has a curated mention in an episode
+ *                      does not consult the transcript for it, so the better
+ *                      source is never diluted by the worse one
+ *   2. furniture     — the readout and the spoken intro by shape, plus the
+ *                      frequency-derived list the written sources already use
+ *   3. dwell         — DWELL_FLOOR hits inside DWELL_WINDOW, which keeps Tor
+ *                      ("I access helipad over Tor") and drops NIP ("nip it in
+ *                      the bud")
+ *   4. lift, and cap — rank by how unusually present the note is in that
+ *                      episode against its own average, keep the top `cap`
+ *
+ * One moment per surviving episode: the cue that opens the densest window.
+ */
+export function buildTranscriptMentions(notes, candidates, curated = {}, options = {}) {
+  const {
+    floor = DWELL_FLOOR,
+    lift: liftMin = LIFT_MIN,
+    cap = TRANSCRIPT_EPISODE_CAP,
+    window = DWELL_WINDOW,
+  } = options;
+
+  const boilerplate = denyForms(candidates);
+  const covered = new Map(
+    Object.entries(curated).map(([slug, list]) => [slug, new Set(list.map((mention) => mention.e))]),
+  );
+
+  const terms = notes.filter(isMatchable).map((note) => ({
+    note,
+    forms: prepareForms(formsFor(note)),
+  }));
+
+  // Every cue prepared once, so the per-note loop below is plain `includes`.
+  const prepared = candidates.map((candidate) => ({
+    squashed: squash(candidate.text),
+    normalised: norm(candidate.text),
+    skip: isReadout(candidate.text),
+  }));
+
+  /**
+   * The two cues either side of a caption break, as one string.
+   *
+   * The captions break mid-sentence — "…This is episode number" / "seven." — so
+   * a form that spans the break is invisible to a matcher reading one cue at a
+   * time. Measured on eight episodes: 41 of 815 matches live only across a
+   * boundary, and every one is a multi-word form — "Value 4 Value" 18 times,
+   * "Podcasting 2.0" nine, "Podcast Index" eight. Single words never straddle.
+   *
+   * No extra squashing: squash() drops the space, so a pair's squashed text is
+   * the two squashed texts joined, and norm() wraps in spaces, so the normalised
+   * pair is the two joined on one. Both are O(1) from the neighbours.
+   *
+   * A readout or boilerplate neighbour is not joined — pasting an amount onto
+   * the next line invents text nobody said.
+   */
+  const joined = (i) => {
+    const next = candidates[i + 1];
+    if (!next || next.episode !== candidates[i].episode) return null;
+    if (prepared[i + 1].skip || boilerplate.has(prepared[i + 1].squashed)) return null;
+    return {
+      squashed: prepared[i].squashed + prepared[i + 1].squashed,
+      normalised: `${prepared[i].normalised.slice(0, -1)}${prepared[i + 1].normalised}`,
+    };
+  };
+
+  // slug → episode → the cues that hit, in time order
+  const found = new Map();
+
+  for (let i = 0; i < candidates.length; i += 1) {
+    const candidate = candidates[i];
+    if (prepared[i].skip) continue;
+    if (boilerplate.has(prepared[i].squashed)) continue;
+
+    const pair = joined(i);
+
+    for (const { note, forms } of terms) {
+      if (covered.get(note.slug)?.has(candidate.episode)) continue;
+
+      let hit = matchesPrepared(forms, prepared[i]);
+      if (!hit && pair) {
+        // Only a form in NEITHER cue alone counts as a straddle. Without that
+        // second check, a form sitting wholly inside the next cue is counted
+        // once there and once here, and every dwell measure doubles.
+        hit = matchesPrepared(forms, pair) && !matchesPrepared(forms, prepared[i + 1]);
+      }
+      if (!hit) continue;
+      if (denied(note.title, candidate.text)) continue;
+
+      if (!found.has(note.slug)) found.set(note.slug, new Map());
+      const byEpisode = found.get(note.slug);
+      if (!byEpisode.has(candidate.episode)) byEpisode.set(candidate.episode, []);
+      byEpisode.get(candidate.episode).push(candidate);
+    }
+  }
+
+  const mentions = {};
+
+  for (const [slug, byEpisode] of found) {
+    const passages = [];
+
+    for (const [episode, hits] of byEpisode) {
+      hits.sort((a, b) => a.seconds - b.seconds);
+      const { peak, at } = densest(hits.map((h) => h.seconds), window);
+      if (peak < floor) continue;
+      passages.push({ episode, peak, at, count: hits.length, hits });
+    }
+
+    if (!passages.length) continue;
+
+    // Lift is measured against the episodes the note actually turns up in, which
+    // is what makes a Boost episode have to be a Boost episode rather than a
+    // Tuesday.
+    const mean = passages.reduce((sum, p) => sum + p.count, 0) / passages.length;
+    const ranked = passages
+      .filter((p) => p.count / mean >= liftMin)
+      .sort((a, b) => b.peak - a.peak || b.count - a.count || a.episode - b.episode)
+      .slice(0, cap);
+
+    if (!ranked.length) continue;
+
+    mentions[slug] = ranked
+      .map((passage) => {
+        const opener = passage.hits.find((h) => h.seconds === passage.at) ?? passage.hits[0];
+        return { e: passage.episode, t: passage.at, s: 't', x: opener.text };
+      })
+      .sort((a, b) => a.e - b.e);
+  }
+
+  return Object.fromEntries(Object.entries(mentions).sort(([a], [b]) => a.localeCompare(b)));
 }

@@ -2,7 +2,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { parseSrt, captionEpisode, CAPTION_MIN_CUES, densest, DWELL_WINDOW, isReadout, collectCaptions } from '../scripts/captions-lib.mjs';
+import { parseSrt, captionEpisode, CAPTION_MIN_CUES, densest, DWELL_WINDOW, isReadout, collectCaptions, buildTranscriptMentions, DWELL_FLOOR, LIFT_MIN, TRANSCRIPT_EPISODE_CAP } from '../scripts/captions-lib.mjs';
+import { formsFor, matchesForm } from '../scripts/mentions-lib.mjs';
 
 const SRT = `1
 00:00:01,000 --> 00:00:04,120
@@ -216,4 +217,162 @@ test('candidates stay grouped by episode, because the straddle matcher walks the
       );
     }
   }
+});
+
+const note = (title, slug, data = {}) => ({ title, slug, data: { type: 'concept', ...data } });
+const hit = (episode, seconds, text) => ({ source: 't', episode, seconds, text });
+
+test('the prepared matcher agrees with the library, form for form', () => {
+  // buildTranscriptMentions prepares each cue once instead of calling
+  // matchesForm 28 million times. If the two ever disagree, the transcript tier
+  // scores by a different rule than the curated one and nothing says so.
+  //
+  // Compare against formsFor(note), NOT against the title alone: a note's forms
+  // are its title plus its aliases, and EXTRA_ALIASES gives Lightning Address
+  // `lnaddress`, which is the only reason "an ln address attribute" matches at
+  // all. Comparing to the bare title would test a rule neither path uses.
+  const titles = ['Tor', 'NIP', 'Boost', 'Podping', 'Lightning Address', 'RSS'];
+  const lines = [
+    'I access helipad over Tor.',
+    'You got to nip it in the bud.',
+    'Podfather story time',
+    'when y\'all put in pod ping all of a sudden',
+    'an ln address attribute',
+    'RSS is a content distribution standard',
+    'Weathering the storm',
+  ];
+  for (const title of titles) {
+    const one = note(title, title.toLowerCase());
+    for (const line of lines) {
+      const viaLib = formsFor(one).some((form) => matchesForm(form, line));
+      const mentions = buildTranscriptMentions([one], [hit(1, 0, line)], {}, { floor: 1 });
+      assert.equal(Boolean(mentions[title.toLowerCase()]), viaLib, `${title} vs ${line}`);
+    }
+  }
+});
+
+test('gate 1: a transcript never competes with a curated mention', () => {
+  const notes = [note('Podping', 'podping')];
+  const candidates = [hit(200, 100, 'podping is great'), hit(200, 140, 'podping again')];
+  const curated = { podping: [{ e: 200, s: 'c', x: 'Podping' }] };
+  assert.deepEqual(buildTranscriptMentions(notes, candidates, curated), {});
+});
+
+test('gate 3: two hits in five minutes survive, one does not', () => {
+  // Tor, E251: real hits inside a minute, and Tor has no mentions at all today.
+  // NIP, E120: one hit, "nip it in the bud" — the false positive SQUASH_MIN
+  // exists for, which a dwell floor catches where a length rule cannot.
+  const notes = [note('Tor', 'tor'), note('NIP', 'nip')];
+  const candidates = [
+    hit(251, 4140, 'I access helipad over Tor.'),
+    hit(251, 4150, 'my vault warden server right over Tor,'),
+    hit(120, 60, 'like nip the inside of my lip'),
+  ];
+  const out = buildTranscriptMentions(notes, candidates, {});
+  // One moment per episode, not one per hit — the two Tor hits are one passage.
+  assert.equal(out.tor.length, 1);
+  assert.equal(out.tor[0].e, 251);
+  assert.equal(out.tor[0].t, 4140, 'the moment is where the densest window opens');
+  assert.ok(!out.nip, 'a single passing mention is not a moment');
+});
+
+test('gate 3: hits further apart than the window do not add up', () => {
+  const notes = [note('Tor', 'tor')];
+  const candidates = [hit(251, 0, 'over Tor'), hit(251, 4000, 'over Tor')];
+  assert.deepEqual(buildTranscriptMentions(notes, candidates, {}), {});
+});
+
+test('gate 2: the readout is dropped before anything is counted', () => {
+  const notes = [note('Sats', 'sats')];
+  const candidates = [
+    hit(100, 5000, 'at 100,100 SATs happy 100 show thank you very much.'),
+    hit(100, 5010, 'and 1000 SATs from Ben'),
+  ];
+  assert.deepEqual(buildTranscriptMentions(notes, candidates, {}), {});
+});
+
+test('gate 4: a note keeps only its densest episodes, up to the cap', () => {
+  const notes = [note('Boost', 'boost')];
+  const candidates = [];
+  // Six episodes, each qualifying, with descending density. The text has to
+  // differ per episode: identical text in four or more episodes is what
+  // denyForms calls furniture, and it would drop every one of these.
+  for (let ep = 1; ep <= 6; ep += 1) {
+    for (let i = 0; i < 8 - ep; i += 1) candidates.push(hit(ep, i * 10, `boost ${'a'.repeat(ep)}`));
+  }
+  const out = buildTranscriptMentions(notes, candidates, {}, { cap: 2 });
+  assert.deepEqual([...new Set(out.boost.map((m) => m.e))], [1, 2]);
+});
+
+test('one moment per episode: the densest window is what gets linked', () => {
+  const notes = [note('Podping', 'podping')];
+  const candidates = [
+    hit(230, 100, 'podping in passing'),
+    hit(230, 2400, 'podping the first of a run'),
+    hit(230, 2440, 'podping again'),
+    hit(230, 2480, 'podping a third time'),
+  ];
+  const out = buildTranscriptMentions(notes, candidates, {});
+  assert.equal(out.podping.length, 1);
+  assert.equal(out.podping[0].t, 2400);
+  assert.equal(out.podping[0].x, 'podping the first of a run');
+  assert.equal(out.podping[0].s, 't');
+});
+
+test('a MOC or an opted-out note is never matched', () => {
+  const notes = [note('Nostr MOC', 'nostr-moc', { type: 'moc' }), note('Podping', 'podping', { mentions: false })];
+  const candidates = [hit(1, 0, 'nostr moc'), hit(1, 10, 'podping'), hit(1, 20, 'podping')];
+  assert.deepEqual(buildTranscriptMentions(notes, candidates, {}), {});
+});
+
+test('the output is sorted, so a rerun is byte-identical', () => {
+  const notes = [note('Tor', 'tor'), note('Podping', 'podping')];
+  const candidates = [
+    hit(251, 20, 'over Tor'), hit(251, 10, 'over Tor'),
+    hit(200, 10, 'podping'), hit(200, 20, 'podping'),
+  ];
+  const out = buildTranscriptMentions(notes, candidates, {});
+  assert.deepEqual(Object.keys(out), ['podping', 'tor']);
+});
+
+test('a form split across a caption break is found, and counted once', () => {
+  // The captions wrap mid-sentence BETWEEN cues, not only inside them:
+  //   "…This is episode number" / "seven. Tag your"
+  // 41 of 815 matches on the sample live only across a break, all multi-word.
+  const notes = [note('Lightning Address', 'lightning-address')];
+  const candidates = [
+    hit(200, 100, 'he gave me his lightning'),
+    hit(200, 104, 'address, which resolves to a node'),
+    hit(200, 130, 'the lightning address spec is simple'),
+  ];
+  const out = buildTranscriptMentions(notes, candidates, {}, { floor: 2 });
+  assert.equal(out['lightning-address'].length, 1, 'one moment per episode');
+  assert.equal(out['lightning-address'][0].t, 100, 'the straddle opens the densest window');
+});
+
+test('a form wholly inside the next cue is not also charged to this one', () => {
+  // Without the second check, the cue before every real mention would score a
+  // straddle of its own and every dwell measure would double.
+  const notes = [note('Podping', 'podping')];
+  const candidates = [
+    hit(200, 100, 'and then he said'),
+    hit(200, 104, 'podping handles it'),
+    hit(200, 108, 'which is neat'),
+  ];
+  assert.deepEqual(buildTranscriptMentions(notes, candidates, {}, { floor: 2 }), {});
+});
+
+test('cues from different episodes are never joined across the seam', () => {
+  const notes = [note('Lightning Address', 'lightning-address')];
+  const candidates = [
+    hit(200, 3000, 'he gave me his lightning'),
+    hit(201, 0, 'address, which resolves to a node'),
+  ];
+  assert.deepEqual(buildTranscriptMentions(notes, candidates, {}, { floor: 1 }), {});
+});
+
+test('the starting thresholds are the ones the spec names', () => {
+  assert.equal(DWELL_FLOOR, 2);
+  assert.equal(LIFT_MIN, 1);
+  assert.equal(TRANSCRIPT_EPISODE_CAP, 6);
 });
