@@ -417,11 +417,16 @@ changed is only the matching; **the constraints that kept them out have not move
 - **The generator still reads only files.** `update-mentions.mjs` reads `captions/` exactly
   as it reads the four sibling checkouts, behind `--captions` / `PC20_CAPTIONS`, and fails
   the same way when it is absent. No network, ever.
-- **Still out of the search index.** Moment text is deliberately the bottom rung of the
-  scoring ladder so a common word cannot flood the dropdown; transcript text is the show's
-  vocabulary at its noisiest and would roughly double the index while importing every
-  transcription error into it. Adding it later is easy — the report now shows what the text
-  looks like — but it is not in this version.
+- **Transcript text stays out of the search index; transcript episodes do not.** `build.mjs`
+  builds each note's `moments` (the text a search match is scored against) from mention text
+  filtered to exclude source `t`, and builds `episodes` (the count shown beside a result) from
+  the full mention list. Moment text is deliberately the bottom rung of the scoring ladder so
+  a common word cannot flood the dropdown, and transcript text is the show's vocabulary at its
+  noisiest — importing it would roughly double the index and every transcription error with
+  it. The episode count carries no such risk, and leaving transcript episodes out of it would
+  make a note's page and its own search result disagree — `Tor`'s page says six episodes, so
+  search must not say zero. Adding transcript text to `moments` later is easy — the report now
+  shows what the text looks like — but it is not in this version.
 
 The prediction that the *shape* of the feature had to change was right, and the four gates in
 *The transcript tier* above are that shape. So is the two-tier page cap: the page shows up to

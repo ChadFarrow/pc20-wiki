@@ -286,14 +286,23 @@ transcript count, because the shape of the gap is what a reader most needs to un
 
 ## Search
 
-**Transcripts stay out of `search-index.json` in this version.**
+**Transcript text stays out of `search-index.json`; transcript episodes do not.**
 
-Moment text is deliberately the bottom rung of the scoring ladder, so a common word cannot
-flood an eight-row dropdown. Transcript text is the show's vocabulary at its noisiest, and
-adding it would roughly double the index while importing every transcription error into it.
+`build.mjs` builds each note's `moments` field — the text a search match is scored against —
+by joining mention text, filtered to exclude source `t`. It builds the note's `episodes`
+field, the count shown beside a search result, from the full mention list, transcripts
+included.
 
-It is also the easiest thing to add later, once the report has shown what the text actually
-looks like. Not in v1.
+The two fields answer different questions and only one of them is a flooding risk. Moment
+text is deliberately the bottom rung of the scoring ladder, so a common word cannot flood an
+eight-row dropdown, and transcript text is the show's vocabulary at its noisiest — adding it
+would roughly double the index while importing every transcription error into it. The
+episode count carries no text and no ranking weight; it is just a number next to a title, and
+leaving transcript episodes out of it would make a note's page and its search result
+disagree — `Tor`'s page says six episodes, and search must not say zero.
+
+Adding transcript text to `moments` is still the easiest thing to add later, once the report
+has shown more of what the text looks like. Not in v1.
 
 ## Testing
 

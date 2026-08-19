@@ -169,54 +169,106 @@ test('candidates stay grouped by episode, because the straddle matcher walks the
   // episode, candidates are in ascending time order, and (2) one episode's
   // candidates never interleave with another's. This must hold regardless of
   // input order, so we test both.
+  //
+  // The fixture used to give episode 9 only full(8) — eight cues. CAPTION_MIN_CUES
+  // is 10, so collectCaptions filed it as a stub, and every assertion below ran
+  // against a candidate array holding episode 7 alone. Both episodes here get
+  // 11+ cues, comfortably above the threshold, so both are real transcripts and
+  // the invariant actually has two episodes to hold across.
   const files1 = [
     { name: 'PC20-07-Captions.srt', text: full(12) },
-    { name: 'PC20-09-Captions.srt', text: full(8) },
+    { name: 'PC20-09-Captions.srt', text: full(11) },
   ];
   const files2 = [
-    { name: 'PC20-09-Captions.srt', text: full(8) },
+    { name: 'PC20-09-Captions.srt', text: full(11) },
     { name: 'PC20-07-Captions.srt', text: full(12) },
   ];
 
-  const { candidates: result1 } = collectCaptions(files1);
-  const { candidates: result2 } = collectCaptions(files2);
+  const { candidates: result1, stubs: stubs1 } = collectCaptions(files1);
+  const { candidates: result2, stubs: stubs2 } = collectCaptions(files2);
 
-  // Verify both orders produce identical candidate sequences.
-  assert.deepEqual(result1, result2);
+  // Neither run should have filed either episode as a stub — otherwise the
+  // rest of this test is checking an array with one episode in it again.
+  assert.deepEqual(stubs1, []);
+  assert.deepEqual(stubs2, []);
+  assert.deepEqual(new Set(result1.map((c) => c.episode)), new Set([7, 9]));
+  assert.deepEqual(new Set(result2.map((c) => c.episode)), new Set([7, 9]));
 
-  const candidates = result1;
-  // Group candidates by episode.
-  const byEpisode = new Map();
-  for (const c of candidates) {
-    if (!byEpisode.has(c.episode)) byEpisode.set(c.episode, []);
-    byEpisode.get(c.episode).push(c);
-  }
-
-  // Assert contiguity: no episode's candidates can have another episode between them.
-  const episodes = Array.from(byEpisode.keys()).sort((a, b) => a - b);
-  let lastEpisode = null;
-  let lastIndex = -1;
-  for (const episode of episodes) {
-    const start = candidates.findIndex((c) => c.episode === episode);
-    const end = candidates.findLastIndex((c) => c.episode === episode);
-    // There should be no gap between end of last episode and start of this one.
-    assert.ok(start <= end + 1, `episode ${episode} is not contiguous`);
-    if (lastEpisode !== null) {
-      const lastEnd = candidates.findLastIndex((c) => c.episode === lastEpisode);
-      assert.ok(lastEnd < start, `episode ${episode} interleaves with ${lastEpisode}`);
+  // collectCaptions does NOT guarantee the two input orders produce identical
+  // candidate arrays — candidate order follows file order, so files1 and
+  // files2 legitimately produce different orderings (episode 7 first vs.
+  // episode 9 first). What the invariant actually claims is narrower: within
+  // each episode the seconds ascend, and each episode occupies one contiguous
+  // run — checked below, in both input orders.
+  for (const candidates of [result1, result2]) {
+    const byEpisode = new Map();
+    for (const c of candidates) {
+      if (!byEpisode.has(c.episode)) byEpisode.set(c.episode, []);
+      byEpisode.get(c.episode).push(c);
     }
-    lastEpisode = episode;
-  }
 
-  // Assert time order within each episode.
-  for (const [episode, cues] of byEpisode) {
-    for (let i = 1; i < cues.length; i++) {
-      assert.ok(
-        cues[i - 1].seconds <= cues[i].seconds,
-        `episode ${episode} seconds not ascending at index ${i - 1}`
-      );
+    // Assert contiguity: no episode's candidates can have another episode
+    // between them. byEpisode's insertion order already IS the order episodes
+    // first appear in `candidates`, because it was built by iterating
+    // `candidates` in order — do not re-sort by episode number here, or a run
+    // where the higher episode number came first (files2) fails an interleave
+    // check that is comparing against the wrong order.
+    const episodes = Array.from(byEpisode.keys());
+    let lastEpisode = null;
+    for (const episode of episodes) {
+      const start = candidates.findIndex((c) => c.episode === episode);
+      const end = candidates.findLastIndex((c) => c.episode === episode);
+      // There should be no gap between end of last episode and start of this one.
+      assert.ok(start <= end + 1, `episode ${episode} is not contiguous`);
+      if (lastEpisode !== null) {
+        const lastEnd = candidates.findLastIndex((c) => c.episode === lastEpisode);
+        assert.ok(lastEnd < start, `episode ${episode} interleaves with ${lastEpisode}`);
+      }
+      lastEpisode = episode;
+    }
+
+    // Assert time order within each episode.
+    for (const [episode, cues] of byEpisode) {
+      for (let i = 1; i < cues.length; i++) {
+        assert.ok(
+          cues[i - 1].seconds <= cues[i].seconds,
+          `episode ${episode} seconds not ascending at index ${i - 1}`
+        );
+      }
     }
   }
+});
+
+test('collectCaptions drops the second file naming an already-seen episode', () => {
+  // A NAS holding both naming forms for one episode — PC20-07-Captions.srt and
+  // PC20-7-Captions.srt — is a real path, not a hypothetical: the server has
+  // already served one transcript at two URLs (see the byte-identical duplicate
+  // case above). Left in, hit counts and dwell for that episode double, and the
+  // seam between the two files pairs the last cue of one with the first of the
+  // other, both carrying the same episode number, so the episode-boundary guard
+  // that stops a straddle match at a real episode change never fires.
+  const { candidates, collisions, stubs, duplicates } = collectCaptions([
+    { name: 'PC20-07-Captions.srt', text: full(12) },
+    { name: 'PC20-7-Captions.srt', text: full(11) },
+  ]);
+
+  // The first file for the episode is kept in full; the second contributes
+  // nothing.
+  assert.equal(candidates.length, 12);
+  assert.ok(candidates.every((c) => c.episode === 7));
+  assert.deepEqual(collisions, [7]);
+  assert.deepEqual(stubs, []);
+  assert.deepEqual(duplicates, []);
+});
+
+test('collectCaptions reports each colliding episode once, and sorted', () => {
+  const { collisions } = collectCaptions([
+    { name: 'PC20-09-Captions.srt', text: full(11) },
+    { name: 'PC20-07-Captions.srt', text: full(12) },
+    { name: 'PC20-9-Captions.srt', text: full(11) },
+    { name: 'PC20-009-Captions.srt', text: full(11) },
+  ]);
+  assert.deepEqual(collisions, [9]);
 });
 
 const note = (title, slug, data = {}) => ({ title, slug, data: { type: 'concept', ...data } });

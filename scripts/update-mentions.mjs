@@ -38,6 +38,7 @@ import {
   collectClips,
   dedupeClips,
   buildMentions,
+  compareMentions,
   diffMentions,
   validateTagMap,
   formsFor,
@@ -233,19 +234,22 @@ async function main() {
   let transcripts = {};
   let stubs = [];
   let duplicates = [];
+  let collisions = [];
   try {
     const files = await readCaptions(SOURCES.captions);
     const collected = collectCaptions(files);
     stubs = collected.stubs;
     duplicates = collected.duplicates;
+    collisions = collected.collisions;
     transcripts = buildTranscriptMentions(notes, collected.candidates, mentions);
     sources.push({
       id: 'captions',
       path: tilde(SOURCES.captions),
-      episodes: files.length - stubs.length - duplicates.length,
+      episodes: files.length - stubs.length - duplicates.length - collisions.length,
       newest: Math.max(0, ...files.map((file) => captionEpisode(file.name) ?? 0)),
       stubs,
       duplicates,
+      collisions,
       records: collected.candidates.length,
     });
     if (stubs.length) console.warn(`  ! still processing, no transcript: ${stubs.join(', ')}`);
@@ -253,28 +257,23 @@ async function main() {
     // same reason a stub is: "nothing was said" and "we have no transcript"
     // are different facts.
     if (duplicates.length) console.warn(`  ! same file served twice, episode unknowable: ${duplicates.join(', ')}`);
+    // Two file names, one episode number — PC20-07 and PC20-7, say. Kept the
+    // first, dropped the rest, named here rather than silently doubling that
+    // episode's hit count.
+    if (collisions.length) console.warn(`  ! two files named the same episode, kept the first: ${collisions.join(', ')}`);
   } catch (err) {
     if (fell('captions', err) === null) sources.push({ id: 'captions', missing: true });
   }
 
-  // Merge, curated first inside each note, then by episode.
-  //
-  // Four keys, not three. Ties on episode, timestamp and source are real: 36
-  // of them today, all show-notes mentions with no timestamp that differ only
-  // in their text. Without the fourth key those ties come out in the order
-  // buildMentions already sorted them into, but only because sort is stable
-  // and that upstream order happens to be there — not because this sort
-  // guarantees it. data/mentions.json is committed and determinism is a
-  // stated constraint, so the order here has to be explicit, not incidental.
+  // Merge, curated first inside each note, then by episode. The comparator
+  // is compareMentions in mentions-lib.mjs — imported, not re-typed, so this
+  // merge and buildMentions's own sort cannot drift apart. data/mentions.json
+  // is committed and determinism is a stated constraint; two copies of the
+  // same four-key comparator is exactly the kind of thing that changes in
+  // one place and not the other, silently reordering every note in the diff.
   for (const [slug, list] of Object.entries(transcripts)) {
     (mentions[slug] ??= []).push(...list);
-    mentions[slug].sort(
-      (a, b) =>
-        a.e - b.e ||
-        (a.t ?? Infinity) - (b.t ?? Infinity) ||
-        a.s.localeCompare(b.s) ||
-        a.x.localeCompare(b.x),
-    );
+    mentions[slug].sort(compareMentions);
   }
 
   let episodeFacts = {};

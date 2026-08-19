@@ -395,6 +395,24 @@ export function isMatchable(note) {
 }
 
 /**
+ * Orders two mentions within a note: episode, then timestamp, then source,
+ * then text.
+ *
+ * Four keys, not three. Ties on episode, timestamp and source are real: some
+ * are show-notes mentions with no timestamp that differ only in their text.
+ * Without the fourth key those ties come out in whatever order they arrived
+ * in — stable only because of upstream ordering this sort does not control.
+ * `data/mentions.json` is committed and determinism is a stated constraint,
+ * so this is written out once here and imported everywhere a mention list is
+ * merged or sorted, so the two call sites cannot drift apart.
+ */
+export const compareMentions = (a, b) =>
+  a.e - b.e ||
+  (a.t ?? Infinity) - (b.t ?? Infinity) ||
+  a.s.localeCompare(b.s) ||
+  a.x.localeCompare(b.x);
+
+/**
  * Matches every candidate against every note.
  *
  * Notes are excluded when they are a map of content (asking which episodes
@@ -429,13 +447,7 @@ export function buildMentions(notes, candidates) {
   }
 
   for (const list of Object.values(mentions)) {
-    list.sort(
-      (a, b) =>
-        a.e - b.e ||
-        (a.t ?? Infinity) - (b.t ?? Infinity) ||
-        a.s.localeCompare(b.s) ||
-        a.x.localeCompare(b.x),
-    );
+    list.sort(compareMentions);
   }
 
   return Object.fromEntries(Object.entries(mentions).sort(([a], [b]) => a.localeCompare(b)));

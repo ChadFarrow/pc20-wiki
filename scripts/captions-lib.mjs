@@ -107,6 +107,16 @@ export function densest(seconds, window = DWELL_WINDOW) {
  * lost in 16,468 cues. That was judged worth it because the readout is thirty
  * minutes of every episode and the amounts are what make it dense. If the report
  * shows it swallowing facts, narrow it — do not delete it.
+ *
+ * The third pattern denies every cue containing "boostagram", "booster gram"
+ * or "boost gram" — which are exactly the cues that could match the
+ * `Boostagram` note. So `Boostagram` can never gain a transcript citation
+ * from this source; the two confirmed candidates are structurally excluded
+ * by design, not by accident. The cost is low today because `Boostagram`
+ * already carries curated mentions that gate 1 protects. A contributor who
+ * judges this pattern redundant with `denyForms` and deletes it would
+ * reopen that gap — the readout is what the pattern exists to catch, and the
+ * readout is also the only place the note's own name appears in speech.
  */
 export const TRANSCRIPT_BOILERPLATE = [
   /\d{3,}/,
@@ -152,20 +162,43 @@ export function isReadout(text) {
  * episode, and (2) group by episode contiguously, never interleaved. The loop
  * structure guarantees both — each file's cues arrive in SRT order, and files are
  * processed sequentially — but this contract is load-bearing, not incidental.
+ *
+ * A NAME COLLISION is dropped too, and before anything else runs. captionEpisode
+ * folds `PC20-07-Captions.srt` and `PC20-7-Captions.srt` onto the same episode
+ * number, and a cache holding both naming forms for one episode is a real path,
+ * not a hypothetical — the server has served the same episode under more than
+ * one name before (see the duplicate case above). Left in, two harms follow:
+ * hit counts and dwell for that episode double, so it can clear the floor and
+ * the lift on duplicated evidence; and at the seam between the two files the
+ * straddle matcher pairs the last cue of one with the first of the other, both
+ * carrying the same episode number, so the ordering invariant above holds and
+ * the existing episode-boundary guard never fires — producing a quoted line
+ * nobody actually said. Unlike the byte-identical case, the two files here are
+ * not proven to disagree, so there is no reason to distrust either one; the
+ * first file for an episode (input order) is kept and the rest are dropped and
+ * named on `collisions`, the same treatment a stub or a duplicate gets.
  */
 export function collectCaptions(files) {
   const candidates = [];
   const stubs = [];
   const duplicates = [];
+  const collisions = [];
 
   const parsed = [];
   // How many files carry this exact text. Counted before anything is emitted,
   // because a duplicate is only visible against the whole set.
   const copies = new Map();
+  const seenEpisodes = new Set();
 
   for (const { name, text } of files) {
     const episode = captionEpisode(name);
     if (!Number.isInteger(episode)) continue;
+
+    if (seenEpisodes.has(episode)) {
+      collisions.push(episode);
+      continue;
+    }
+    seenEpisodes.add(episode);
 
     const cues = parseSrt(text);
     if (cues.length < CAPTION_MIN_CUES) {
@@ -193,6 +226,7 @@ export function collectCaptions(files) {
     candidates,
     stubs: stubs.sort((a, b) => a - b),
     duplicates: duplicates.sort((a, b) => a - b),
+    collisions: [...new Set(collisions)].sort((a, b) => a - b),
   };
 }
 

@@ -19,6 +19,7 @@ import {
   denyForms,
   formsFor,
   buildMentions,
+  compareMentions,
   diffMentions,
   mentionsFor,
   validateTagMap,
@@ -195,6 +196,28 @@ test('buildMentions matches, denies boilerplate and sorts deterministically', ()
   );
   assert.equal(mentions.podping[0].t, 10);
   assert.equal(mentions.podping.at(-1).x, 'Blueberry adds podping');
+});
+
+test('compareMentions orders by episode, then timestamp, then source, then text', () => {
+  // The same four-key comparator used to be written out separately in
+  // buildMentions and in update-mentions.mjs's merge step. Exported once here
+  // and imported by both, so a change to the ordering can only happen in one
+  // place — data/mentions.json is committed and determinism is a stated
+  // constraint, so two copies drifting apart would silently reorder the file.
+  const a = { e: 1, t: 10, s: 'c', x: 'a' };
+  const b = { e: 1, t: 10, s: 'c', x: 'b' };
+  const c = { e: 1, t: 10, s: 't', x: 'a' };
+  const d = { e: 1, t: 20, s: 'c', x: 'a' };
+  const f = { e: 2, t: null, s: 'c', x: 'a' };
+  const g = { e: 1, s: 'c', x: 'a' }; // no t key at all
+  const h = { e: 1, t: null, s: 'c', x: 'a' }; // t explicitly null
+
+  assert.ok(compareMentions(a, b) < 0, 'ties on episode/timestamp/source break on text');
+  assert.ok(compareMentions(b, c) < 0, 'ties on episode/timestamp break on source');
+  assert.ok(compareMentions(a, d) < 0, 'ties on episode break on timestamp');
+  assert.ok(compareMentions(d, f) < 0, 'episode outranks everything else');
+  assert.ok(compareMentions(a, g) < 0, 'a timestamped mention sorts before an untimestamped one');
+  assert.equal(compareMentions(g, h), 0, 'a missing t key and an explicit null t sort identically');
 });
 
 test('buildMentions omits t entirely when a moment has no timestamp', () => {

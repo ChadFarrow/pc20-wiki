@@ -399,6 +399,31 @@ test('the search index carries what the show called a thing', async () => {
   // not a gap in this test — nothing to assert against.
 });
 
+test('the search index carries transcript episodes but not transcript text', async () => {
+  // build.mjs used to join every mention's text into `moments` with no filter
+  // on source, so a transcript-sourced quote — the show's vocabulary at its
+  // noisiest, unedited captions of speech — shipped in the search index.
+  // Moment text is deliberately the bottom rung of the scoring ladder so a
+  // common word cannot flood an eight-row dropdown; transcript text would have
+  // defeated that. The episode count carries no such risk and must NOT be
+  // filtered the same way, or a note's own page and its search result would
+  // disagree about how many episodes discussed it.
+  //
+  // Derived from the data, not pinned to a slug: find a note whose mentions
+  // are transcript-only, so a failure to filter is unambiguous.
+  const doc = JSON.parse(await readFile(join(ROOT, 'data', 'mentions.json'), 'utf8'));
+  const [slug, mentions] =
+    Object.entries(doc.mentions).find(([, list]) => list.length > 0 && list.every((m) => m.s === 't')) ?? [];
+  assert.ok(slug, 'no transcript-only note to test against');
+
+  const index = JSON.parse(await readFile(join(OUT, 'data', 'search-index.json'), 'utf8'));
+  const note = index.find((n) => n.slug === slug);
+
+  const episodes = [...new Set(mentions.map((m) => m.e))].sort((a, b) => b - a);
+  assert.deepEqual(note.episodes, episodes, `${slug}: episodes must still include transcript episodes`);
+  assert.equal(note.moments, '', `${slug}: transcript text must not reach the search index`);
+});
+
 test('the build still works when the mentions data has not been generated', async () => {
   const out = await mkdtemp(join(tmpdir(), 'pc20-nomentions-'));
   const { stdout, stderr } = await run(

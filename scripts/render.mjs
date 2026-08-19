@@ -367,7 +367,7 @@ export function mentionsSection(mentions) {
   const coverage = mentions.coverage;
   const scope = coverage?.episodes
     ? ` ${coverage.withSources} of ${coverage.episodes} episodes have curated notes` +
-      `${coverage.transcripts ? `; ${coverage.transcripts} moment${coverage.transcripts === 1 ? '' : 's'} come from transcripts` : ''}.`
+      `${coverage.transcripts ? `; ${coverage.transcripts} moment${coverage.transcripts === 1 ? '' : 's'} ${coverage.transcripts === 1 ? 'comes' : 'come'} from transcripts` : ''}.`
     : '';
 
   return `<section class="mentions">

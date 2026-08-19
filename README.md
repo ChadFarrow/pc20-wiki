@@ -185,9 +185,10 @@ cache (264 files, ~39 MB) from the show's server; `update-mentions` then reads i
 directory of files, like every other source. Each path is overridable by flag or environment
 variable, and every one is printed before it is read.
 
-**Regeneration is manual.** The launchd agent syncs, builds and pushes, but it does not run
-`update:mentions` — so an alias added in Obsidian changes nothing until someone regenerates.
-The build warns when it notices that drift.
+**Regeneration runs on every publish.** The launchd agent now runs `update:mentions` and
+`update:timeline` before it builds, so an alias added in Obsidian reaches the site on the
+same run. A sibling checkout that is missing is logged and skipped, and the committed data
+stands; the build still warns when it notices drift.
 
 To change what a note matches, add `aliases:` to the note **in the vault** (Obsidian's own
 key, so the quick-switcher benefits too). Rules that belong to the archive rather than to

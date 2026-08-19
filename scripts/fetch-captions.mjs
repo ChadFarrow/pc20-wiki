@@ -12,8 +12,8 @@
  *
  * This is the ONLY file here that uses the network, and that is the point:
  * update-mentions.mjs reads files and nothing else, the same contract it has for
- * the other four sources. captions/ is gitignored — about 250 files at ~165 KB
- * is 41 MB, and what gets committed is the derived JSON, as it already is for
+ * the other four sources. captions/ is gitignored — 264 files at ~150 KB
+ * is about 39 MB, and what gets committed is the derived JSON, as it already is for
  * mentions and the timeline.
  *
  * If the NAS share is mounted, use it and fetch nothing. It is the same data.
