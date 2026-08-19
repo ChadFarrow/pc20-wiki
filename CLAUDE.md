@@ -248,9 +248,18 @@ line — "reverse proxy on it to basically proxy those WebSocket from Dobby" —
 design named as the feature working. **It stays at 1.** The cap governs the *data*, not just
 the page, because 819 note-episode pairs clear lift and an uncapped file helps nobody; the
 page shows 4 (`MENTION_TRANSCRIPT_CAP`), so 6 in the data leaves "and N more episodes"
-something true to say. Reading all 41 notes at the cap, **none is flooded** — the sixth citation is still a
-real one, e.g. Boost E183 "a boost UU ID. Yeah, as an optional value on the TLV". **It stays
-at 6.**
+something true to say. Reading all 41 notes at the cap, **none is flooded** — the sixth
+citation is still a real one, e.g. Boost E183 "a boost UU ID. Yeah, as an optional value on
+the TLV". **It stays at 6.**
+
+**`Sats` is the weakest note that survives the gates, and it was left that way knowingly.**
+Its six transcript lines are the show using the word rather than discussing it — E201 36:46
+"sats in there so I can, so I" is the clearest example. Nothing was moved for it because
+every lever that would reach it is blunt: a higher floor or a tighter lift cutoff deletes a
+thin note's *only* true citation long before it touches `Sats`, which already carries 18
+curated mentions that gate 1 protects. If it ever reads badly on the page, the lever is
+`EXTRA_DENY`, per-note and hand-written — the same remedy as `RSS Blue`, and for the same
+reason: a per-note problem needs a per-note rule, not a global threshold.
 
 **Two senses of one word is the failure mode left, and `EXTRA_DENY` is the only lever for
 it.** `Relay` E264 is forty seconds of Adam wiring a garage door — five hits in one window,
@@ -358,6 +367,13 @@ all, and because `npm run update:apps` is still run by hand.
 `build.mjs` warns in both directions: when a note's current forms differ from the recorded
 ones, and when a matchable note has no record at all. Both are warnings, so `build:strict`
 fails on them — which is the point.
+
+**The captions have no git revision to record, and what stands in for one is weaker than it
+looks.** Their provenance entry holds the usable episode count, the newest episode, the stub
+list, the duplicate list and `records` — a **cue count, not a content hash**. That catches a
+cache that is short, stale at the top end, or has gained stubs. It does not catch an episode
+re-transcribed in place with the same number of cues. `npm run fetch:captions --force` is the
+only way to be certain; a hash over the cue text is the fix if that case ever matters.
 
 ## Conventions & gotchas
 

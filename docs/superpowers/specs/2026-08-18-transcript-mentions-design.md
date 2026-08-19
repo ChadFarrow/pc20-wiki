@@ -233,8 +233,16 @@ node scripts/fetch-captions.mjs --force   # refetch everything
 note with no transcript mentions can be told apart from an episode with no transcript.
 
 **Provenance takes a different shape.** The other four sources record a git revision.
-Captions are not in git, so the record is the episode count, the newest episode and a
-content fingerprint — same purpose, which is that a stale number should read as stale.
+Captions are not in git, so the record is the usable episode count, the newest episode, the
+stub list, the duplicate list and `records` — the total number of cues read.
+
+**`records` is a cue count, not a content fingerprint**, and this paragraph said otherwise
+until Task 9. The distinction matters. The count catches a cache that is short, one that has
+gone stale at the top end, and one that has gained stubs — the three ways a cache usually
+goes wrong. It does **not** catch an episode re-transcribed in place with the same number of
+cues: two files could change completely and the record would not move. `npm run
+fetch:captions --force` is the way to be sure; a real content hash over the cue text is the
+fix if that case ever turns out to matter.
 
 ## Modules
 
