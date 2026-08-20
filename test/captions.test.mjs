@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { parseSrt, captionEpisode, CAPTION_MIN_CUES, densest, DWELL_WINDOW, isReadout, collectCaptions, buildTranscriptMentions, DWELL_FLOOR, LIFT_MIN, TRANSCRIPT_EPISODE_CAP } from '../scripts/captions-lib.mjs';
+import { parseSrt, captionEpisode, CAPTION_MIN_CUES, isStub, densest, DWELL_WINDOW, isReadout, collectCaptions, buildTranscriptMentions, DWELL_FLOOR, LIFT_MIN, TRANSCRIPT_EPISODE_CAP } from '../scripts/captions-lib.mjs';
 import { formsFor, matchesForm } from '../scripts/mentions-lib.mjs';
 
 const SRT = `1
@@ -57,6 +57,26 @@ test('CAPTION_MIN_CUES is what tells a stub from a transcript', () => {
   // E46 and E86 come back as 60-byte "Transcript is Processing" files.
   assert.equal(typeof CAPTION_MIN_CUES, 'number');
   assert.ok(CAPTION_MIN_CUES > 0);
+});
+
+test('isStub knows the file the server sends while it is still transcribing', () => {
+  // Byte for byte what captions/PC20-46-Captions.srt holds, CRLF included.
+  assert.equal(isStub('1\r\n00:00:00,000 --> 00:00:03,090\r\nTranscript Processing ...\r\n   '), true);
+});
+
+test('isStub treats an empty or cueless file as a stub', () => {
+  assert.equal(isStub(''), true);
+  assert.equal(isStub('Transcript is Processing \u2026'), true);
+  assert.equal(isStub(null), true);
+});
+
+test('isStub reads the threshold off CAPTION_MIN_CUES, not a copy of it', () => {
+  const cues = (count) =>
+    Array.from({ length: count }, (_, at) => `${at + 1}\n00:00:0${at % 10},000 --> 00:00:0${at % 10},500\nline ${at}`).join('\n\n');
+
+  assert.equal(parseSrt(cues(CAPTION_MIN_CUES)).length, CAPTION_MIN_CUES);
+  assert.equal(isStub(cues(CAPTION_MIN_CUES)), false);
+  assert.equal(isStub(cues(CAPTION_MIN_CUES - 1)), true);
 });
 
 test('densest finds the busiest five minutes, not the whole episode', () => {

@@ -54,6 +54,20 @@ export function parseSrt(text) {
   return cues;
 }
 
+/** The rule itself, over cues a caller has already parsed. */
+const cuesAreStub = (cues) => cues.length < CAPTION_MIN_CUES;
+
+/**
+ * True when a file is a "Transcript is Processing" placeholder, not a transcript.
+ *
+ * The server publishes the placeholder at the real URL, so an empty episode and a
+ * finished one are told apart only by how much is in the file. Both the fetcher and
+ * `collectCaptions` need that test, so it is written once and read from here.
+ */
+export function isStub(text) {
+  return cuesAreStub(parseSrt(text));
+}
+
 /** How long a stretch of talk counts as one passage. */
 export const DWELL_WINDOW = 300;
 
@@ -201,7 +215,7 @@ export function collectCaptions(files) {
     seenEpisodes.add(episode);
 
     const cues = parseSrt(text);
-    if (cues.length < CAPTION_MIN_CUES) {
+    if (cuesAreStub(cues)) {
       stubs.push(episode);
       continue;
     }

@@ -197,6 +197,13 @@ somebody saying the word. Under the plain matching rules above, 481,956 cues fro
 episodes produce roughly **24,000 hits — about 31× the entire curated dataset**, and almost
 all of them are worthless. Four gates cut that to 177.
 
+**Two cue counts appear below, and they are not a contradiction.** Every calibration number
+in this section was measured over **481,956 cues from 256 episodes** — every file that was
+not a stub, before the duplicate rule existed. The generator now reads **473,986 cues from
+252 episodes**, because four files (50, 51, 248, 249) are two duplicated pairs it drops. The
+calibration figures stay on the set they were measured over; `data/mentions.json` is the
+authority for what is read today.
+
 Read the calibration report before touching any number here:
 
 ```sh
@@ -214,7 +221,7 @@ two are the same text. `TRANSCRIPT_BOILERPLATE` catches that by shape instead.
 
 **The 3-digit rule is the blunt one, and it stays.** `/\d{3,}/` drops any cue with a run of
 three or more digits, which would also drop a line naming TLV record `7629169` or a port —
-the exact kind of fact this wiki is for. Measured across all **481,956** cues: **12,187**
+the exact kind of fact this wiki is for. Measured across the full **481,956**-cue set: **12,187**
 carry such a run (2.53%), and **766** of those both match a note and are not obviously a
 payment being read aloud. Every one of the 766 belongs to one of the twelve **best**-covered
 notes — Podcasting 2.0 246, Boost 171, Bitcoin 82, Podverse 66, Podcast Index 46, Value 4
@@ -373,7 +380,13 @@ looks.** Their provenance entry holds the usable episode count, the newest episo
 list, the duplicate list and `records` — a **cue count, not a content hash**. That catches a
 cache that is short, stale at the top end, or has gained stubs. It does not catch an episode
 re-transcribed in place with the same number of cues. `npm run fetch:captions --force` is the
-only way to be certain; a hash over the cue text is the fix if that case ever matters.
+only way to be certain of that case; a hash over the cue text is the fix if it ever matters.
+
+A **stub heals on an ordinary run**, so `--force` is not needed for one. `fetch-captions.mjs`
+reads each file before it decides to skip it, and a file holding fewer than `CAPTION_MIN_CUES`
+cues counts as absent. The cost is one read per episode and one request per stub. Before this,
+an existence test skipped a stub for ever, and eight episodes stayed out of the cache no matter
+how often the fetcher ran.
 
 ## Conventions & gotchas
 
@@ -411,7 +424,8 @@ changed is only the matching; **the constraints that kept them out have not move
   sees them. What ships is the derived `data/mentions.json`, as before.
 - **Still fetched by hand.** `npm run fetch:captions` fills the cache from
   `https://mp3s.nashownotes.com/PC20-<NN>-Captions.srt` (single digits zero-padded — `PC20-7`
-  is a 404, `PC20-07` is not), skipping what is present; `--force` refetches. It is the only
+  is a 404, `PC20-07` is not), skipping what is present **and usable** — a stub is asked for
+  again, and the run says how many cleared; `--force` refetches everything. It is the only
   script here that touches the network, and it prefers `/Volumes/pc20-archive` if that share
   is mounted.
 - **The generator still reads only files.** `update-mentions.mjs` reads `captions/` exactly
