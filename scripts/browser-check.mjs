@@ -279,6 +279,45 @@ async function main() {
       `),
     );
 
+    // ---- the expansion under the caps ----
+    // Boost is the worst case the caps produce: 125 moments across 72 episodes,
+    // of which the digest shows 15. The <details> is the only route to the rest,
+    // so it is worth driving rather than asserting in a string test.
+    await go('/notes/boost/');
+    const capped = await evaluate('document.querySelectorAll(".mentions__list:not(.mentions__list--all) .mentions__text").length');
+    const promised = await evaluate('Number(document.querySelector(".mentions__count strong").textContent)');
+    check(
+      'the section says how many moments it has, and the digest shows fewer',
+      capped > 0 && promised > capped,
+      `${capped} of ${promised} shown before expanding`,
+    );
+
+    await evaluate('document.querySelector(".mentions__all summary").click()');
+    await sleep(150);
+    const opened = await evaluate('document.querySelectorAll(".mentions__list--all .mentions__text").length');
+    check(
+      'expanding reaches every moment the section counted',
+      opened === promised,
+      `${opened} of ${promised} after expanding`,
+    );
+
+    // The summary is a control on a phone too. WCAG 2.5.8 wants 24 by 24 CSS px,
+    // and it is not a link inside a sentence, so the exemption does not apply.
+    const box = await evaluate(
+      'JSON.stringify(document.querySelector(".mentions__all summary").getBoundingClientRect())',
+    );
+    const rect = JSON.parse(box ?? '{}');
+    check(
+      'the expand control clears the 24px touch target',
+      rect.height >= 24,
+      `${Math.round(rect.height)}px tall`,
+    );
+
+    // Offset past the sticky header, or the shot cuts the control off the top.
+    await evaluate('document.querySelector(".mentions__all").scrollIntoView({block:"start"}); window.scrollBy(0, -90)');
+    await sleep(150);
+    await shoot('mentions-expanded');
+
     // ---- adoption ----
     await go('/notes/cross-app-comments/');
     await evaluate('document.querySelector(".adoption").scrollIntoView({block:"center"})');

@@ -448,8 +448,31 @@ The prediction that the *shape* of the feature had to change was right, and the 
 `MENTION_TRANSCRIPT_CAP`), because transcript-only episodes are by definition the newest ones
 and a single newest-first cap would let the weaker source evict the better one.
 
+**The caps need an escape hatch, and `<details>` is it.** Between the two episode caps and
+`MENTION_MOMENT_CAP`, the pages rendered **385 of 949 moments — 41%** — while the heading
+above them counted all 949. Boost was the worst: "125 moments across 72 episodes", 15 shown,
+then the line "and 60 more episodes, back to E23" and no way to reach any of them. The digest
+is still the right default, so it did not change; below it `mentionsSection` now emits the
+**complete** list inside a closed `<details>`, and every moment in `data/mentions.json` is
+reachable. No script — it opens with JavaScript off. The cost is page weight: Boost went from
+13 KB to 45 KB, and all 60 note pages together are 892 KB.
+
+Cap assertions in `test/render.test.mjs` must scope themselves to the digest with `digestOf`.
+Against the whole section they now pass trivially, because the expansion contains everything.
+
 `pc20-clips/app/search.py:_squash` was ported and is the reason `squash()` exists. Its
 `Index.variants` — which catches the transcriber's mis-hearings, "pod ping" for podping,
 "wavelake" for wavlake — was **not**, deliberately. `squash()` already handles "pod ping",
 and the report does not show a mis-hearing costing a note a citation. If that changes, this
 is where to start.
+
+**It has changed once, and it did not matter.** All 12 matchable notes with no mentions were
+searched against the raw cues with every gate off. Ten are absent from the archive under every
+spelling tried — the show has never said "RaspiBlitz", "Bitcoin Connect", "NIP-46" or
+"extractlv" once. Two match only as false positives that the gates correctly reject:
+`Lightning.Pub` on "lightning PUBKEY" and "a real lightning pub", `OnlyBoosts` on the ordinary
+phrase "only boosts". The exception is **Podping Gossipwriter**, E251 at 3346s: "this new
+gossip writer into the pod ping" is a true mention, and it is invisible twice over — the
+title squashes to `podpinggossipwriter` and never meets the split words, and it is a lone hit,
+which gate 3 exists to drop. An alias of `Gossipwriter` fixes the first half. Nothing fixes
+the second half except `DWELL_FLOOR = 1`, which the gate is there to prevent.

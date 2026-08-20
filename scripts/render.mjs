@@ -328,9 +328,10 @@ export function mentionsSection(mentions) {
   const rest = hidden.length;
   const oldest = hidden.length ? hidden.reduce((a, b) => (b.number < a.number ? b : a)) : null;
 
-  const episodes = shown
-    .map((episode) => {
-      const moments = episode.moments.slice(0, MENTION_MOMENT_CAP);
+  const episodeList = (list, cap) =>
+    list
+      .map((episode) => {
+      const moments = episode.moments.slice(0, cap);
       const spare = episode.moments.length - moments.length;
       const date = shortDate(episode.date);
 
@@ -354,8 +355,20 @@ export function mentionsSection(mentions) {
         spare > 0 ? `<li class="mentions__more">and ${spare} more in this episode</li>` : ''
       }</ul>
     </li>`;
-    })
-    .join('');
+      })
+      .join('');
+
+  const digest = episodeList(shown, MENTION_MOMENT_CAP);
+
+  // What the two caps between them keep off the page, counted rather than assumed:
+  // an episode can be hidden whole, or shown with its own moments trimmed, and a
+  // reader who is told "125 moments" and shown 15 has no way to tell which.
+  const allMoments = mentions.episodes.reduce((sum, episode) => sum + episode.moments.length, 0);
+  const shownMoments = shown.reduce(
+    (sum, episode) => sum + Math.min(episode.moments.length, MENTION_MOMENT_CAP),
+    0,
+  );
+  const withheld = allMoments - shownMoments;
 
   const more =
     rest > 0 && oldest
@@ -370,14 +383,31 @@ export function mentionsSection(mentions) {
       `${coverage.transcripts ? `; ${coverage.transcripts} moment${coverage.transcripts === 1 ? '' : 's'} ${coverage.transcripts === 1 ? 'comes' : 'come'} from transcripts` : ''}.`
     : '';
 
+  // The caps stay — newest-first and short is the right default — but the count in
+  // the heading promises a whole that the list does not deliver, and before this
+  // there was no route to the rest of it at all: on Boost the page named 125
+  // moments, showed 15, and ended. <details> is the whole mechanism. No script, so
+  // it opens with JavaScript off, and the browser's own find-in-page reaches inside
+  // it in Chrome and Safari.
+  const all =
+    withheld > 0
+      ? `<details class="mentions__all">
+    <summary>Show all ${allMoments} moment${allMoments === 1 ? '' : 's'} across ${
+      mentions.episodes.length
+    } episode${mentions.episodes.length === 1 ? '' : 's'}</summary>
+    <ol class="mentions__list mentions__list--all">${episodeList(mentions.episodes, Infinity)}</ol>
+  </details>`
+      : '';
+
   return `<section class="mentions">
   <h2>Heard on the show</h2>
   <p class="mentions__count">
     <strong>${mentions.total}</strong> moment${mentions.total === 1 ? '' : 's'} across
     ${mentions.episodes.length} episode${mentions.episodes.length === 1 ? '' : 's'}.
   </p>
-  <ol class="mentions__list">${episodes}</ol>
+  <ol class="mentions__list">${digest}</ol>
   ${more}
+  ${all}
   <p class="mentions__source">From chapter titles, show notes, the PC 2.0 Timeline and the clip
     notes. Where those say nothing, from the episode transcript — which reaches further but
     only records that a word was said.${scope}</p>

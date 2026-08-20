@@ -510,6 +510,48 @@ pre code {
   color: var(--ink-faint);
 }
 
+/* The escape hatch from the two episode caps. Closed by default, because the
+   capped digest above it is the right thing to read first; the count in the
+   heading is what tells you there is more. */
+.mentions__all {
+  margin: 0 0 0.8rem;
+}
+
+.mentions__all summary {
+  cursor: pointer;
+  /* A control, not a heading: same monospace label as mentions__from, so it reads
+     as machinery rather than as prose. */
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  /* WCAG 2.5.8 wants 24px; the marker sits inside this box, so pad rather than
+     grow the type. */
+  padding: 0.45rem 0.2rem;
+}
+
+.mentions__all summary:hover {
+  color: var(--accent-soft);
+}
+
+.mentions__all[open] summary {
+  margin-bottom: 0.4rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.mentions__list--all {
+  /* Long enough to scroll past on Boost — 72 episodes — so it gets its own well
+     and a scrollbar rather than pushing the source footer off the screen. */
+  max-height: 32rem;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0.6rem 0.8rem;
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+}
+
 .mentions__source {
   margin: 0;
   font-size: 0.8rem;

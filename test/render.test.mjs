@@ -116,6 +116,18 @@ const mentionsFixture = (overrides = {}) => ({
   ...overrides,
 });
 
+/** The capped list at the top of the section — what a reader sees before expanding. */
+const digestOf = (html) => {
+  const at = html.indexOf('<ol class="mentions__list">');
+  return at === -1 ? '' : html.slice(at, html.indexOf('</ol>', at));
+};
+
+/** The <details> below it, which is deliberately uncapped. */
+const expansionOf = (html) => {
+  const at = html.indexOf('<details');
+  return at === -1 ? '' : html.slice(at);
+};
+
 test('mentionsSection renders nothing for a note nothing was said about', () => {
   assert.equal(mentionsSection(null), '');
   assert.equal(mentionsSection({ total: 0, episodes: [] }), '');
@@ -158,7 +170,7 @@ test('mentionsSection caps the episodes and names the oldest it did not show', (
   }));
 
   const html = mentionsSection({ total: 12, episodes });
-  assert.equal(html.match(/class="mentions__episode"/g).length, 8);
+  assert.equal(digestOf(html).match(/class="mentions__episode"/g).length, 8);
   assert.match(html, /and 4 more episodes, back to E109 \(15 Jan 2021\)/);
 });
 
@@ -176,7 +188,47 @@ test('mentionsSection caps the moments within one episode too', () => {
     ],
   });
   assert.match(html, /and 2 more in this episode/);
-  assert.doesNotMatch(html, />m4</);
+  assert.doesNotMatch(digestOf(html), />m4</);
+});
+
+test('the expansion carries an episode the cap hid', () => {
+  const episodes = Array.from({ length: 12 }, (_, i) => ({
+    number: 120 - i,
+    date: i === 11 ? '2021-01-15' : '2023-01-01',
+    title: `Episode ${120 - i}`,
+    audioUrl: 'https://example.com/a.mp3',
+    moments: [{ seconds: 10, source: 'c', text: `moment ${i}` }],
+  }));
+
+  const html = mentionsSection({ total: 12, episodes });
+
+  // The digest stops at the cap; the expansion below it holds every episode.
+  assert.doesNotMatch(digestOf(html), /E109/);
+  assert.match(expansionOf(html), /E109 · 15 Jan 2021/);
+  assert.match(expansionOf(html), />moment 11</);
+});
+
+test('the expansion carries a moment the cap hid inside a shown episode', () => {
+  const html = mentionsSection({
+    total: 5,
+    episodes: [
+      {
+        number: 118,
+        date: '2023-02-24',
+        title: 'T',
+        audioUrl: 'https://example.com/a.mp3',
+        moments: Array.from({ length: 5 }, (_, i) => ({ seconds: i, source: 'c', text: `m${i}` })),
+      },
+    ],
+  });
+
+  assert.doesNotMatch(digestOf(html), />m4</);
+  assert.match(expansionOf(html), />m4</);
+});
+
+test('a section that hides nothing gets no expansion', () => {
+  // The fixture is one episode with two moments — under every cap.
+  assert.doesNotMatch(mentionsSection(mentionsFixture()), /<details/);
 });
 
 test('mentionsSection escapes a chapter title rather than rendering it', () => {
@@ -223,10 +275,10 @@ test('a transcript episode never pushes a curated episode off the page', () => {
       moments: [{ seconds: 10, source: 'c', text: `chapter ${n}` }] });
   }
 
-  const html = mentionsSection({ total: 20, episodes, coverage: null });
-  for (let n = 100; n > 92; n -= 1) assert.ok(html.includes(`chapter ${n}`), `E${n} must survive`);
-  assert.ok(html.includes('transcript 260'));
-  assert.ok(!html.includes('transcript 256'), 'only MENTION_TRANSCRIPT_CAP of them');
+  const digest = digestOf(mentionsSection({ total: 20, episodes, coverage: null }));
+  for (let n = 100; n > 92; n -= 1) assert.ok(digest.includes(`chapter ${n}`), `E${n} must survive`);
+  assert.ok(digest.includes('transcript 260'));
+  assert.ok(!digest.includes('transcript 256'), 'only MENTION_TRANSCRIPT_CAP of them');
 });
 
 test('a transcript moment says where it came from', () => {
