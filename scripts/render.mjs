@@ -747,7 +747,7 @@ export function renderTranscriptsPage({ transcripts, baseUrl }) {
     <p class="transcripts__lede">
       Search every word said on the show — ${episodes} episode${episodes === 1 ? '' : 's'} with a transcript${
         newest ? `, up to E${newest}` : ''
-      }. Each result opens the audio at that moment.
+      }. Press a timestamp to play that moment right here.
     </p>
     <form class="tsearch" id="tsearch" action="/transcripts/" method="get" role="search">
       <label class="tsearch__label" for="tsearch-q">Search the transcripts</label>

@@ -1396,7 +1396,98 @@ pre code {
   padding-left: 1.2rem;
 }
 
+/* The row whose audio is in the player. */
+.tsearch__moments li.is-playing {
+  background: color-mix(in srgb, var(--accent-soft) 12%, transparent);
+  box-shadow: -0.6rem 0 0 color-mix(in srgb, var(--accent-soft) 12%, transparent),
+    0.6rem 0 0 color-mix(in srgb, var(--accent-soft) 12%, transparent);
+  border-radius: 4px;
+}
+
+/* One player for the whole page, docked at the bottom once something plays. */
+.tplayer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.55rem var(--gap);
+  padding-bottom: max(0.55rem, env(safe-area-inset-bottom));
+  background: color-mix(in srgb, var(--paper-sunk) 94%, transparent);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid var(--rule);
+  box-shadow: 0 -8px 24px rgb(0 0 0 / 0.12);
+}
+
+.tplayer[hidden] {
+  display: none;
+}
+
+.tplayer__now {
+  flex: 0 1 18rem;
+  min-width: 0;
+  margin: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tplayer audio {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 40px;
+  /* The native controls follow the reader's theme, as the page does. */
+  color-scheme: light dark;
+}
+
+.tplayer__close {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--ink-soft);
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.tplayer__close:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Room at the bottom so the player never covers the last result. */
+body.has-player {
+  padding-bottom: 5rem;
+}
+
 @media (max-width: 34rem) {
+  .tplayer {
+    flex-wrap: wrap;
+    gap: 0.35rem 0.6rem;
+  }
+
+  .tplayer__now {
+    flex: 1 1 calc(100% - 3rem);
+  }
+
+  .tplayer audio {
+    order: 3;
+    flex-basis: 100%;
+  }
+
+  body.has-player {
+    padding-bottom: 7rem;
+  }
+
   .tsearch__episode {
     padding: 0.85rem 0.9rem;
   }

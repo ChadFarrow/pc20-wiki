@@ -426,6 +426,31 @@ async function main() {
     check('the address carries the query, so a result can be shared', (await evaluate('location.search')) === '?q=podping');
     await shoot('transcripts');
 
+    // A timestamp plays in the page, not by navigating to the MP3.
+    const before = await evaluate('location.href');
+    const clicked = await evaluate(`(() => {
+      const a = document.querySelector('.tsearch__at[data-src]');
+      a.click();
+      return { src: a.dataset.src, t: Number(a.dataset.t) };
+    })()`);
+    await sleep(200);
+    check('a timestamp plays in the page instead of leaving it', (await evaluate('location.href')) === before);
+    check(
+      'the player opens on the clicked episode',
+      (await evaluate('!document.querySelector(".tplayer").hidden && document.querySelector(".tplayer audio").getAttribute("src")')) ===
+        clicked.src,
+    );
+    check('the row being played is marked', await evaluate('!!document.querySelector(".tsearch__moments li.is-playing")'));
+    // The seek waits for the file's metadata, which comes from the real audio host.
+    await waitFor('document.querySelector(".tplayer audio").readyState >= 1', 150);
+    const position = await evaluate('document.querySelector(".tplayer audio").currentTime');
+    check(
+      'the player starts at the clicked moment',
+      Math.abs(position - clicked.t) < 2,
+      `${position.toFixed(1)}s for ${clicked.t}s`,
+    );
+    await shoot('transcripts-player');
+
     const more = await evaluate('document.querySelector(".tsearch__more")?.textContent ?? null');
     if (more) {
       await evaluate('document.querySelector(".tsearch__more").click()');
@@ -449,6 +474,9 @@ async function main() {
     await send('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 3, mobile: true });
     await go('/transcripts/?q=value%20for%20value');
     await waitFor('document.querySelectorAll(".tsearch__episode").length > 0', 150);
+    // With the player open, since it is the widest thing that can appear.
+    await evaluate('document.querySelector(".tsearch__at[data-src]").click()');
+    await sleep(300);
     const overflow = await evaluate('document.documentElement.scrollWidth - document.documentElement.clientWidth');
     // Name the culprits, innermost first, so a failure says where to look.
     const wide = await evaluate(`[...document.querySelectorAll('body *')]
@@ -458,7 +486,7 @@ async function main() {
       .map((el) => el.tagName.toLowerCase() + (el.className ? '.' + String(el.className).split(' ')[0] : '') + ' "' + el.textContent.trim().slice(0, 20) + '"')`);
     check('the transcripts page fits a phone with no sideways scroll', overflow <= 0, `${overflow}px over${wide.length ? `: ${wide.join(', ')}` : ''}`);
     // WCAG 2.5.8: 24 × 24 CSS px for anything tapped on its own.
-    const small = await evaluate(`[...document.querySelectorAll('.masthead__nav a, .tsearch__go, .tsearch__more, .tsearch__at')]
+    const small = await evaluate(`[...document.querySelectorAll('.masthead__nav a, .tsearch__go, .tsearch__more, .tsearch__at, .tplayer__close')]
       .filter((el) => el.getClientRects().length > 0)
       .map((el) => [el.textContent.trim(), el.getBoundingClientRect()])
       .filter(([, r]) => r.width < 24 || r.height < 24)

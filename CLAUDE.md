@@ -399,6 +399,14 @@ function deploys with no corpus. `update-transcripts.mjs` removes an episode's f
 when it has become a stub, duplicate or collision; an episode merely absent from the cache
 keeps its committed text, so a half-filled cache cannot delete from the live search.
 
+**A timestamp plays in the page.** `transcripts.js` intercepts a plain click on a
+`.tsearch__at` link and plays it in one shared `<audio>` docked at the bottom (`.tplayer`,
+built on first use), seeking once `loadedmetadata` fires for a new file — a seek before that
+is lost. `play()` is called inside the click so browsers count it as the reader's gesture.
+The link stays a real `href` to `<mp3>#t=<s>`: a modified click (new tab) and a page with no
+JavaScript still get the file. It depends on `mp3s.nashownotes.com` answering range requests
+(`206`), which it does; `browser-check` asserts the seek lands on the clicked second.
+
 **Caption text reaches the page only through `textContent`.** It contains `<`, `&` and
 quotes; the API returns it raw on purpose (a test pins that), and escaping twice would show
 "&lt;".

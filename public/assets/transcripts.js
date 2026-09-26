@@ -12,6 +12,12 @@
  *
  * Every piece of caption text goes into the page through textContent. It is the
  * show's words, not markup, and it contains `<`, `&` and quotes.
+ *
+ * A timestamp plays in the page, in one shared player docked at the bottom, rather
+ * than navigating to the MP3. The link stays a real link to `<mp3>#t=<seconds>`, so
+ * a modified click (new tab, new window) and a page with no JavaScript still work.
+ * mp3s.nashownotes.com answers range requests, which is what lets the player seek
+ * into a two-hour file without downloading it first.
  */
 
 (() => {
@@ -145,6 +151,9 @@
       if (facts?.a) {
         time.href = `${facts.a}#t=${row.t}`;
         time.setAttribute('aria-label', `Play E${row.e} from ${stamp(row.t)}`);
+        time.dataset.src = facts.a;
+        time.dataset.t = String(row.t);
+        time.dataset.label = `E${row.e}${facts.t ? ` · ${facts.t}` : ''} · ${stamp(row.t)}`;
       }
       li.append(time, marked(row.x, row.ranges ?? []));
       group.append(li);
@@ -160,6 +169,74 @@
       );
     }
   }
+
+  // ---- the player ----
+
+  let player = null;
+  let playing = null;
+
+  /** Built on first use, so a reader who never presses play never gets a bar. */
+  function ensurePlayer() {
+    if (player) return player;
+    const bar = el('div', 'tplayer');
+    bar.setAttribute('role', 'region');
+    bar.setAttribute('aria-label', 'Player');
+    const now = el('p', 'tplayer__now');
+    const audio = document.createElement('audio');
+    audio.controls = true;
+    audio.preload = 'metadata';
+    const close = el('button', 'tplayer__close', '×');
+    close.type = 'button';
+    close.setAttribute('aria-label', 'Close the player');
+    close.addEventListener('click', () => {
+      audio.pause();
+      bar.hidden = true;
+      document.body.classList.remove('has-player');
+      mark(null);
+    });
+    bar.append(now, audio, close);
+    document.body.append(bar);
+    player = { bar, now, audio };
+    return player;
+  }
+
+  /** The row being played, so a reader can see where the audio came from. */
+  function mark(link) {
+    playing?.closest('li')?.classList.remove('is-playing');
+    playing = link;
+    link?.closest('li')?.classList.add('is-playing');
+  }
+
+  function play(link) {
+    const { bar, now, audio } = ensurePlayer();
+    const src = link.dataset.src;
+    const at = Number(link.dataset.t);
+
+    now.textContent = link.dataset.label;
+    bar.hidden = false;
+    document.body.classList.add('has-player');
+    mark(link);
+
+    // A new file has no duration until its metadata arrives, and a seek before
+    // then is lost. The same file seeks at once.
+    if (audio.getAttribute('src') !== src) {
+      audio.setAttribute('src', src);
+      audio.addEventListener('loadedmetadata', () => (audio.currentTime = at), { once: true });
+    } else {
+      audio.currentTime = at;
+    }
+    // Called inside the click, so the browser counts it as the reader's choice.
+    audio.play().catch(() => {});
+  }
+
+  list.addEventListener('click', (event) => {
+    const link = event.target.closest('a.tsearch__at');
+    if (!link?.dataset.src) return;
+    // New tab, new window, download: the reader asked for the file itself.
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    play(link);
+  });
 
   async function run(raw, episode = null) {
     const query = raw.trim();
