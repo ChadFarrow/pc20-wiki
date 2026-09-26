@@ -187,6 +187,11 @@ measurements behind each threshold are in `CLAUDE.md`.
 cue text alone is committed, for the transcript search — see below. Each path is overridable by flag or environment
 variable, and every one is printed before it is read.
 
+**New episodes arrive on their own.** A second launchd agent runs `scripts/refresh-episodes.sh`
+every 6 hours: it rebuilds the episode list in `../pc20-timeline` and refills `captions/`
+(from the NAS mirror where it can, the show's server for the rest). The publish agent picks
+the new inputs up on its next pass.
+
 **Regeneration runs on every publish.** The launchd agent now runs `update:mentions`,
 `update:timeline` and `update:transcripts` before it builds, so an alias added in Obsidian reaches the site on the
 same run. A sibling checkout that is missing is logged and skipped, and the committed data

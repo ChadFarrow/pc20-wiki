@@ -20,20 +20,57 @@
  * it, and free. It is not authoritative: it lags the server and carries the same
  * stubs, so whatever it cannot supply is still fetched.
  */
-import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readdir, readFile, rename, writeFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { flag, arg, tilde } from './source-lib.mjs';
+import { flag, arg, tilde, sourcePath } from './source-lib.mjs';
 import { captionEpisode, isStub } from './captions-lib.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = resolve(
   arg('captions') ?? arg('out') ?? process.env.PC20_CAPTIONS ?? join(ROOT, 'captions'),
 );
-const NAS = '/Volumes/pc20-archive';
+const NAS = process.env.PC20_NAS ?? '/Volumes/pc20-archive';
 const HOST = 'https://mp3s.nashownotes.com';
-const LAST = Number(arg('to') ?? 266);
+const EPISODES = sourcePath(ROOT, 'episodes', 'PC20_TIMELINE_EPISODES', '../pc20-timeline/data/episodes.json');
+
+/** A request that stalls must not hang an unattended run for ever. */
+const REQUEST_TIMEOUT_MS = 30_000;
+
+/**
+ * The newest episode to ask for.
+ *
+ * This was a literal 266 once. The NAS copy happened to carry E267-E272, so the
+ * cache kept up — but with the share unmounted, no episode past the literal would
+ * ever have been fetched, and the ceiling warning in report() was the only sign.
+ * The episode list in pc20-timeline is rebuilt from the live feed, so it knows.
+ */
+async function lastEpisode() {
+  if (arg('to')) return Number(arg('to'));
+  try {
+    const { episodes } = JSON.parse(await readFile(EPISODES, 'utf8'));
+    return Math.max(...episodes.map((episode) => episode.number));
+  } catch (err) {
+    throw new Error(
+      `cannot tell the newest episode: ${tilde(EPISODES)} unreadable (${err.code ?? err.message}) — pass --to <n>`,
+    );
+  }
+}
+
+/**
+ * Write via a temp file and a rename.
+ *
+ * auto-publish.sh regenerates from this cache every 15 minutes, on its own
+ * schedule. A plain writeFile over a file it is reading hands it half a
+ * transcript, which it would commit. The temp name ends `.tmp`, so neither
+ * captionEpisode() nor a generator ever sees it.
+ */
+async function writeAtomic(target, body) {
+  const temp = join(dirname(target), `.${target.split('/').pop()}.tmp`);
+  await writeFile(temp, body);
+  await rename(temp, target);
+}
 
 /** PC20-7 is a 404 and PC20-07 is not; three digits go plain. */
 const name = (episode) => `PC20-${episode < 10 ? `0${episode}` : episode}-Captions.srt`;
@@ -80,7 +117,7 @@ async function fromNas() {
         stale += 1;
         continue;
       }
-      await writeFile(target, body);
+      await writeAtomic(target, body);
       copied += 1;
     }
     console.log(`copied ${copied} file(s) from ${NAS}`);
@@ -91,7 +128,10 @@ async function fromNas() {
   }
 }
 
+let LAST;
+
 async function main() {
+  LAST = await lastEpisode();
   await mkdir(OUT, { recursive: true });
   console.log(`writing to ${tilde(OUT)}\n`);
 
@@ -124,7 +164,9 @@ async function main() {
     // (writeFile only runs after the body has fully arrived), so the only job
     // here is to keep going and say what happened.
     try {
-      const response = await fetch(`${HOST}/${name(episode)}`);
+      const response = await fetch(`${HOST}/${name(episode)}`, {
+        signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+      });
       if (response.status === 404) {
         missing += 1;
         continue;
@@ -134,7 +176,7 @@ async function main() {
         continue;
       }
       const body = await response.text();
-      await writeFile(target, body);
+      await writeAtomic(target, body);
       fetched += 1;
       if (held === 'stub' && !isStub(body)) cleared += 1;
       if (fetched % 25 === 0) console.log(`  ${fetched} fetched…`);
@@ -172,7 +214,9 @@ async function report() {
   // A short cache looks exactly like a complete one once the loop has stopped
   // at LAST. If the highest usable episode IS the ceiling, the show may well
   // have gone past it since --to was last chosen, and the fix is one flag.
-  if (usable.length && Math.max(...usable) === LAST) {
+  // Only a hand-picked --to can be behind the show; the default comes from the
+  // episode list, and saying this on every run would teach people to ignore it.
+  if (arg('to') && usable.length && Math.max(...usable) === LAST) {
     console.log(
       `highest usable episode (${LAST}) is the ceiling (--to ${LAST}) — the show may have moved past it; rerun with a higher --to`,
     );
