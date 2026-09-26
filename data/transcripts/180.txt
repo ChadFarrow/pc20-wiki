@@ -1,0 +1,1879 @@
+0	Adam Curry: podcasting 2.0 for May 17 2024, episode 180 serial
+6	churn. Hello, everybody. It's Friday once again, time for the
+11	official, the one and only board meaning of podcasting. 10.0.
+16	Everybody, everything it all gets discussed right here.
+19	That's right. We don't talk behind your back. We are the
+22	only boardroom that doesn't have a booth at a podcast conference.
+26	If you want to know what's happened in podcasting, it's all
+28	here. I'm Adam curry in the heart of the Texas Hill Country
+31	and in Alabama, the man who brings his programmatic Ceman to
+35	your vast say a lot of my friend on the other end, the one and
+38	only Mr. De Jones.
+43	Dave Jones: says I have to tell you to rip it twice. Does that
+45	mean I rip you a new one? Do
+46	Adam Curry: you really mean we're in quite the mood today,
+52	Dave? Oh, yeah, we're in a good mood. So we started off before
+57	we started the show, which by the way, we're live and lit
+59	every single Friday afternoon. You can listen to us live and a
+62	modern podcast app. podcast apps.com. Anyway, we're like I
+70	got a rant. I gotta read I got a rant. But I got something to say
+72	I ran out because Dave was late. He was late. And before we even
+76	start that I want to say there will be no board meeting next
+78	week. I will not be in town and will not be available to record.
+82	Warren I'm so sorry. Yes, I'm going to Nashville.
+86	Dave Jones: Oh, well that's not bad. For the
+88	Adam Curry: for the K love the K love awards.
+92	Dave Jones: Oh, yeah, this is yes. This is the is the big the
+96	big God the God music extravaganza.
+101	Adam Curry: Big God music extravaganza again Alright, so
+108	what why were you late? What's your Ran brother? What's going
+110	on? What's happening? How can I help?
+113	Dave Jones: I've spoken many times in the past about the I'm
+118	sorry, I'm trying to put down my salami and cheese.
+123	Adam Curry: I wondered what I smelled. But now I know. Cheese
+127	Dave Jones: is my bread breath. Yeah, so I've spoken many times
+132	in the past about the about my my hatred of USB C docking
+138	stations.
+139	Adam Curry: Yeah, so yes, I can. Yes. And I think I've said don't
+143	be a hater. But you have not taken this advice clearly.
+148	Dave Jones: Okay, so I want to
+151	Adam Curry: only read up the hatred is I want to re up the
+153	hatred now.
+154	Dave Jones: Yes. So this is this is a after a couple of hours of
+164	of troubleshooting. The USBC dock. We come up with this
+168	lovely support bulletin from Lenovo. Oh,
+172	Adam Curry: and this was a at the day job. This was a real
+174	support ticket. uptaking
+176	Dave Jones: Yeah. Oh, yeah. And this, these these things are
+179	just, they're just a nightmare. Everybody you talk to these
+184	things have a limited lifespan. They're crap. Ever since they
+188	went from old docking stations you had they had a custom
+191	connector every every, every big one. Really. It was like it was
+196	like
+196	Adam Curry: 70 penises because they knew scuzzy. scuzzy
+198	connector scuzzy.
+200	Dave Jones: Yeah. Frozen guard, you know, frozen garden hose
+203	type, right? Yes. Goes all proprietary. Everybody had their
+206	own dealio Yeah, but you know what they were working every
+210	single time worked. Yeah, every time USBC I have a document that
+217	is like 20 pages. That shows how all of the routing internally
+225	happens. Because what you see on the end of like when you plug in
+230	a USB C docking station, what you see on the on the end is
+235	just a USBC connector, right? But there is so much going on
+241	inside of that thing.
+243	Adam Curry: And ask the question, is this not
+245	essentially like a USB dongle that has no expansion ports?
+253	Isn't that kind of what this is? This
+256	Dave Jones: is no that's it and this is the problem. USB C
+262	docking stations modern USB C docking stations are since our
+265	Thunderbolt. Oh, they are thunder either Thunderbolt three
+268	or Thunderbolt four Oh, system boards. So these docking
+274	stations are a synth are like they have their firmware in
+278	them. They run they run software they are they are almost like a
+283	small computer unto themselves. Oh, it's
+285	Adam Curry: like my LED lights. Yes. Yeah. It also buzzes on
+288	your microphone.
+291	Dave Jones: So there are things that can happen with with these.
+296	Where, where nothing you do on the computer For itself
+300	actually, we'll fix it. You have to reboot the doc because the
+307	doc is acting, it's acting.
+310	Adam Curry: Acting Up. Yeah. Yes.
+312	Dave Jones: So the the what you see at the end of the is the
+314	USBC cord that plugs into your computer. But what's happening
+320	on the inside of that thing is your route you're actually
+323	routing, your routing, USB A USB, excuse me USB one, two and
+330	three, right, HDMI, HDMI DisplayPort potentially, if it's
+338	supported VGA
+342	Adam Curry: video s video tell me RGB RGB s video audio
+348	Dave Jones: networks, gold and Ethernet Ethernet and and and
+354	Thunderbolt potentially three and four Thunderbolt
+358	Adam Curry: Can you plug in your your Nintendo data glove?
+362	Dave Jones: In the Lord little robot, Nintendo robot big. So
+368	you're routing all of this stuff over over, you know, the small
+373	connections, number of pins. The amount of things that can go
+377	wrong with this are limitless. The so they usually always show
+382	up with video first. So like in a in a financial services
+389	environment. Three monitors is like standard standard standard.
+393	Yeah, standard minimum some sometimes four, sometimes five.
+398	You see big like trading houses and stuff they may have 10 Yeah,
+402	on a single machine. So the ability to do more than two
+407	monitors three four monitors is just standard USBC based docking
+413	stations Thunderbolt docking stations, I struggle with this
+416	so bad. Yeah, they they just can't handle it. You because
+420	there's you have different flavors of DisplayPort over USBC
+425	you have passive and active in all of these the end depending
+431	on which configurations if you plug it in, if you have one
+435	HDMI, one display port and one USB C to display port that may
+439	trigger them to one of them to go into a different mode. It's
+443	mind boggling, but then I run across this wonderful support
+446	document. After troubleshooting for a couple of hours. Lenovo
+452	critical Intel Thunderbolt software and firmware updates
+456	symptom sim systems may experience any of the following
+460	symptoms you're ready. Yes, USB C port not working Intel
+465	Thunderbolt controller not visible in the OS device manager
+468	USB C or Thunderbolt docking station is not visible or having
+470	connectivity problems. HDMI output not available system
+473	battery not charging with the USB C power adapter connected to
+476	the USB C port. Until Thunderbolt pop up error message
+479	Intel Thunderbolt Safe Mode error message BIOS Thunderbolt
+482	communication error or hang during post that and here's the
+486	kit here's the kicker, the white is more these symptoms may occur
+492	after six to 12 months of usage. What
+498	Adam Curry: are there moving parts that were or what was
+501	happening?
+502	Dave Jones: Hey, you tell me what does that even mean? That
+505	sounds
+505	Adam Curry: like it's crazy. That sounds like well you know
+508	that that monitor may have a driver update or something else
+512	may change sounds like they're building in some wiggle room for
+515	things changing external to the device.
+519	Dave Jones: What could possibly be inside of these things that
+523	would that would begin to trigger problems 12 months in
+527	the future.
+529	Adam Curry: Oh, I know that Venezuelan immigrants
+534	Dave Jones: each Thunderbolt doc has a has a Venezuelan inside of
+537	it, I
+537	Adam Curry: guess. Wow. Okay, I I feel your pain brother. I feel
+542	your pain. Yeah.
+543	Dave Jones: Now multiply this across hundreds of users in this
+546	you know, so it's
+547	Adam Curry: primarily but it's primarily the multi monitor
+550	users that are experiencing issues.
+552	Dave Jones: What happens is the they seem to work fine. This is
+556	like being going to industry conferences and this kind of
+559	thing that this has turned into the USBC dock podcast. But going
+565	to like industry conferences and talking to my peers. This is
+568	universal. It's not it's not anything with one specific
+572	vendor. Like evidently the Dell USB the Thunderbolt docks are so
+577	bad that like you just go ahead and budgets 12 to 18 months and
+582	they're gonna die. Like you just build that in they they they
+586	swap them out like crazy. So this is my Can we please go back
+591	to the old days standard
+593	Adam Curry: yuck and you know that's not going to happen and
+595	the fact that it's Thunderbolt is kind of trippy is not what I
+598	thought that wasn't Apple only Dang, but I guess it's the
+600	standard. And
+602	Dave Jones: these dogs the old school dogs used to cost $200
+607	Oh, these these Thunderbolt four dogs? They're $400.03 foot a
+614	three foot Thunderbolt four cable is $75 Wow,
+620	Adam Curry: what a gyp
+622	Dave Jones: it's outrageous and we're going to we're going to so
+626	tell me we're gonna have driving cars we can't we can't even get
+630	three monitors to work over USB see
+632	Adam Curry: self driving cars? Yes.
+634	Dave Jones: Well self driving cars
+635	Adam Curry: Well that brings me to your overview of the most
+639	recent presentation by Google at their i o event. To explain the
+643	future of the company. Yeah,
+645	Unknown: I've ai ai ai ai ai ai ai ai ai ai ai ai, ai ai ai ai
+652	ai ai ai, I found the AI really useful. ai ai ai ai ai, ai ai ai
+660	ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai
+674	ai ai, ai, ai, ai ai, ai students ai ai vertex AI
+679	and that's the father of generative
+684	Adam Curry: AI toolkit. Generative, generative,
+688	generative ai, ai ai ai, there it is. Now you know what they're
+693	up to?
+694	Dave Jones: Like the one guy that didn't generate the AI? Is
+698	that a pretend an Indian or pretending?
+700	Adam Curry: No, that's Oh, yes. I heard that part of the podcast
+703	as well. The pretending No, no, that's a real a real Indian.
+709	Yeah, but before that, I need my randlett All right, go. This
+713	morning at eight o'clock. My phone goes like literally 759
+717	I'm about to take the dog out for a walk. I'm gonna NSC. It's
+720	a 512 number. So it's an Austin number. I'm like, no, no, you're
+724	too early. So I just send it to voicemail. Come back in,
+728	actually have a call scheduled at nine and say, oh, yeah, let
+732	me check this voicemail. voicemail from Deputy Sheriff
+736	Jack Barnes Travis County concerning an urgent legal
+739	matter calling back at this number. And I'll be waiting for
+744	your call.
+745	Dave Jones: Oh, no.
+746	Adam Curry: I'm like, Okay, I call back I get him on the
+749	phone. Now, it's clearly Sheriff's Office, just from the
+753	the sound of it. And that's legit. And then well, I mean,
+757	I'm looking at a 512 number then as a whole, I'm gonna put you on
+759	with my lieutenant. So Lieutenant be Neil comes on
+762	badge number 03156. There are two there's a warrant out for my
+770	arrest, because I have failed to appear as a grand jury expert
+776	witness. And I apparently signed on April 15. I signed the
+781	subpoena that came to my door, and he has the numbers and
+785	everything. And, and he says, you know, basically you can be
+789	arrested? Yeah. Because you know, there's a warrant out
+793	because you have ignored the subpoena. And you've ignored the
+797	you're in contempt of court. And, and then a sudden, you
+802	know, we get disconnected. So he calls back. And then he
+804	continues. And they said now, so there's two ways you can handle
+808	this. There's the criminal procedure or the civil
+811	procedure. I mean, this goes on, I'm like, holy crap. And my
+814	heart is pounding. I'm like, what? There's
+816	Dave Jones: the you can there's an easy way and a hard way we
+819	can do this is what he's Yes,
+820	Adam Curry: exactly. And it's like, I'm like, well, I should
+823	probably call my lawyer. No, no, we have a maintain contact
+827	order, which means we have to stay in contact with you as you
+830	drive down to the sheriff's office. So we can process this.
+836	And I'm likely, and so this is going on now. 10 minutes. I'm
+839	like, holy moly. I'm racking my brain. I can't figure this out.
+845	And then he says, so what we need you to do is you need to go
+849	to this kiosk, and then you're going to pay a bond and then
+852	you'll have a bar code and then you bring that data say Oh, hold
+856	on a second. You got me. You got me. I said I'm calling my
+860	lawyer. No, you can't have Oh, okay. It was a scam. 15 minutes,
+864	they had police radio in the background. And it was
+868	sophisticated. They had my address my name, of course, my
+871	phone number. It was sophisticated. Wow. I'm not
+876	wanting to fall for something. But along the way, there are a
+880	couple of things that started to bother me a little bit, but I
+882	was just so blown. I mean, this actually, I've been asked to be
+886	a possible character witness for a friend in Dallas next week.
+892	was like some bullcrap thing, but you know, so I've actually
+895	I've had special agent show up at my door from the inn.
+900	Inspector General's office and I said, I'm not talking to you go
+902	away, you know, because, you know, they're just harassing. So
+906	that was kind of the back of my mind. I'm like, holy crap, what
+909	are they doing to me? Is this a deep state? Finally, finally
+912	they got me. They found Oh, wait, I have that somewhere.
+920	Where is that?
+921	Dave Jones: Like, so that were they using? Were they using
+925	generated voices or something? Or no,
+927	Adam Curry: no, no, no, no, it was it was actual it was actual
+931	let me see is this it
+937	there you go.
+938	Dave Jones: I mean, that was for real legit like that. So so this
+941	were these were people that had like a believable Texas very
+945	Adam Curry: believable, very believable. The they had the
+950	police radio in the background. It was totally I was in it. I
+955	was like, oh, man, I'm screwed.
+958	Dave Jones: Up. You just knew that you were gonna have to go
+960	buy $5,000 of iTunes gift card when
+964	Adam Curry: it was when it was when you have to go to a kiosk.
+967	Wait a minute, what is the US business? No, no, no, no, no.
+972	I'm calling my lawyer. No, you can't. You. You have to what was
+978	it? You must comply. I'm like, I comply this. But, but hey, 12 to
+985	15 minutes. They really have me Dave. They really really have
+989	me. That's kind of scary. It's social engineering. You know,
+993	it's, it was well done. They had a script and everything. This is
+1000	Dave Jones: so I was in on a security. Like a webinar. Not
+1005	too long a webinar. Yes. Yes. It was great. And this guy's good.
+1010	He does. He's a local guy. Gary Warners has named me from UAB, a
+1015	University of Alabama in Birmingham. And he's, he's
+1019	really good. He's been in the in the cybersecurity game forever.
+1023	And wait, before it was even a thing really. And he he made a
+1029	statement in this last, like the annual update from last I think
+1032	it was in December. And he said, If you know he said it, is it if
+1038	you know, in your family or out or friends with or neighbors
+1042	with anybody who's older. I mean, I mean, like, like any
+1047	anybody who's let's just say, careful, be careful, careful,
+1052	careful. Identify generation, baby. They said baby boomer or
+1057	older. You're not baby your genetics.
+1061	Adam Curry: You know, there's a big disagreement about this. I
+1064	believe I am Gen X 1964. September. There are some places
+1069	that say you're a boomer Tina keep because she's definitely
+1072	Boomer because she's 1962. And I just remind her I was the face
+1077	of Generation X. You were
+1080	Dave Jones: Yeah, I'm deaf. I'm definitely Gen X. You're You're
+1085	I think you're Gen X.
+1086	Adam Curry: Well, I know. I'm Gen X, but there's disagreement
+1089	from some borderline boomers.
+1092	Dave Jones: Are they on the council? Are they on the Gen X?
+1094	Boomer council that my wife apparently Yes. You're one of
+1098	us. Don't try to deny. So but he said, you know, if you if you
+1104	know anybody whose baby boomer or older tell them about these
+1109	things, because they are a target right now. Billions of
+1113	dollars is being milked fro
+1115	Adam Curry: Yes. Oh, older people. I've actually helped
+1118	some people here. Who was going to be Oh, yeah, no, it took them
+1121	to the bank and everything like Stop, stop, stop this payment.
+1124	Stop this stop that, you know, ah, sad. And we've we've had,
+1129	we've had we got a special thing coming up in church for these
+1132	people. Oh, that's good. Because then the main thing is, in the,
+1136	you know, text messages, they're the you know, that's the big,
+1139	that's the big catch all so I got a text message. So that must
+1142	be official. And what what these guys got me with was the 512
+1147	area code that was sophisticated.
+1150	Dave Jones: And in the end, the local accent and and, and, and
+1153	Adam Curry: the police radio in the background. That was good.
+1157	And it was loud. You know, like there was a dispatcher. That was
+1160	quite
+1161	Dave Jones: well, let's see this. This is in 2023 total
+1166	losses reported by c three to those over the age of 62. Up to
+1169	$3.4 billion.
+1171	Adam Curry: Dude, it's a bigger industry than podcasting.
+1178	Dave Jones: We're the wrong money with these guys.
+1183	Adam Curry: We're in the wrong business.
+1184	Dave Jones: Yeah, we should do how you it's it says tickets is
+1189	value for value. You give me money and you don't go to jail.
+1196	Adam Curry: You know, just kind of on that, on that tip. But
+1200	where everything's going, the streamers are, are there. It's
+1205	all going down. It's happening in real time right before our
+1209	eyes. We you know, so first of all the recognition that no one
+1215	is watching television anymore. I mean, of course there's the
+1218	people watching obviously obviously some shows they'll
+1221	have millions of people watching, but not 20 million.
+1224	Dave Jones: Quick Adam, name me one television show that's on
+1229	broadcast television right now.
+1231	Adam Curry: Now the only thing I would guess is NCSI but I don't
+1234	even know what the which one Special Victims Unit I couldn't
+1237	know I can't name anything
+1239	Dave Jones: at all six people in the last week that question not
+1242	one of them that name one you
+1244	Adam Curry: know, this one, they say how do you go bankrupt
+1246	really slow and then it goes fast. All of a sudden this I
+1249	think we're in the going fast acceleration phase. And what's
+1253	happening now is the streaming companies who of course now you
+1257	know, now we got to show profitability. It's not to say
+1259	that Netflix isn't successful. Netflix, arguably the earliest,
+1263	the quickest to the game. And they've pulled back on a lot of
+1266	their a lot of the money they were putting into production.
+1270	And of course everyone's now starting with ads. Everybody has
+1273	an ad. So we've taken advertising base television off
+1277	of cable primarily. And remember, cable was brilliant,
+1281	because you got paid per household. So if you just had a
+1285	channel on cable, this would Al Gore he bought he bought and
+1288	sold the whatever I forget, it became AlJazeera I think I don't
+1292	know. Really? Yeah, if you are in a million households, you get
+1298	a million bucks a month. That's just because it minimum $1 ESPN,
+1303	which is still I think required. You're required to take ESPN by
+1309	most cable companies, they get $7 per subscriber per month off
+1314	of that cable bill goes to ESPN or slash Disney. So now the now
+1320	in so we unbundled everything basically pulled it all apart.
+1324	We got Disney over here. And we got Paramount over here. And
+1328	we've got Hulu, which was kind of a sad bundling of television
+1333	shows. And now, well, I'm going to go to the ditzes at Yahoo
+1339	Finance. two clips. The first the first one. The first one
+1344	shows you kind of the lay of the land. The second one I think is
+1347	actually the meat of what's happening here.
+1349	Unknown: Rebbes Lake Alliance has emerged in the intensifying
+1353	streaming wars, Disney and Warner Brothers discovery are
+1355	teaming up to release a brand new streaming bundle later this
+1358	year. So what does this new partnership mean for the
+1360	streaming landscape moving forward? We're looking at how to
+1363	navigate the big picture with the Yahoo Finance playbook. And
+1366	we're joined by Ken Leon, Research Director of equity
+1368	research at CFRA and Jamie lovingly, third bridge sector
+1372	analysts shaping them start with you. You're here with us in
+1374	studio, I really
+1375	Adam Curry: want to slap her but
+1378	Unknown: man, I just keep getting like so amused by this
+1382	discussion, because it's like this new innovation bundling,
+1386	which is cable. No,
+1388	Adam Curry: it's not cable because these bundles don't get
+1390	paid per channel. That's not true finance lady PayPal
+1393	Unknown: did right. But do you think that this is the way
+1396	forward? And is this going to benefit the various parties who
+1399	are doing it?
+1400	It definitely is interesting development. And we're seeing
+1402	this increasingly in this space. One thing we've been hearing a
+1405	third bridge from the experts we speak with just the fact that
+1407	what streamers are looking for ways to not only drive growth,
+1410	but also manage churn is a huge issue. Serial Turner's are one
+1414	of the things which all these platforms have to deal with his
+1416	people, either at the end of their show, they decided to
+1419	switch to a new platform at the end of a sports season, they
+1421	decide to just cut off that service. By having these
+1424	bundles, it's a new way that they can both drive longer term
+1427	customer value, but also showcasing different types of
+1429	content, you know, with the matchup of a Hulu and a max and
+1433	it Disney plus, it really covers all the bases of genres and can
+1436	appeal to a lot of different audiences.
+1438	Adam Curry: Okay, so a lot of blahdy blahdy blah, but the
+1440	whole point is, they're churning cereal churn, which is great
+1443	show title, actually, cereal churn, because people are doing
+1447	exactly what we've heard everybody say, Yeah, I just want
+1451	to see this one show. And then I'll cancel the minute I sign up
+1453	and I pay my What is it now? Is it 17 $18, which is still pretty
+1458	high, but I'll pay that and then if there's something else going
+1462	on, I'll catch it later. Now the second guy kind of lays out the
+1466	the real bones of this. I
+1467	Unknown: think when you look at the bigger picture, it's really
+1470	a lot of these media companies trying to figure out how can
+1474	they be profitable. So the first step was reducing programming
+1478	and content spending. The second was de risking, because they
+1482	have no control really, of the customer. Unlike wireless, or
+1487	even cable TV decades ago, you had one or two year contracts,
+1492	so churn is very high, they will never release that. And also, if
+1498	you look at where Entertainment has moved to events to live
+1503	sports. So none of these management's will say that they
+1507	can get to a 20% operating margin on this business, nor a
+1513	50% EBIT, margin like wireless, so it's not a great business and
+1518	I think they're all de risking, they're reducing capital, and
+1522	they're gonna say, Gee, Netflix is a winner, large technology
+1526	companies can play here, what can we do for two things, one,
+1530	tried to grow subscribers and to try to get advertising revenue.
+1536	There
+1536	Adam Curry: it is. So basically, we're going to see consolidation
+1541	Paramount is now being ripped apart, the all the parts are
+1544	going to be the actually the parts are worth more than the
+1548	than the whole. And the sum of the parts individually, it's
+1551	going to be ripped apart is going to be you know, typical
+1555	leveraged buyout. So you know, the strip all the assets, get
+1559	rid of Get out, get rid of all the people with lots of firings
+1563	ahead, and there will be some offerings, but it's all going
+1568	advertiser base, the big draw of Netflix and all these other
+1572	streamers was hey, man, I just pay a fee and I don't have to
+1575	deal with ads. It's all going to come back. It's all gonna get
+1578	crappier. And yes, you will have still have some big hit shows,
+1583	just like in the music business we have. We still have a Taylor
+1586	Swift and a Beyonce and there's an even there, I'm starting to
+1591	see some actual revenue issues. For Podcasting, value for value
+1598	is truly the only way to build up your community. I don't care
+1602	if it's 100 people that it is the only way forward at this
+1606	point. And the advertise and certainly in podcasting, no,
+1613	it's just No, it's not working anymore. Except for per inquiry.
+1619	I still like codes. If you get paid on a code bond, Gino, I
+1624	still think that works with what they what we call a post read I
+1627	think that's still works. And you're nothing like a little
+1634	boost. Which was well that's that's a low baller. That's a
+1638	7772 Crayon. Yeah. That's correct. Yes, thank you. Thank
+1643	you, I'm gonna have to turn that one off. So you guys are abusing
+1646	it. You should only be you should only be using that just
+1649	to accentuate something with the harp. When you light up the
+1653	harp.
+1654	Dave Jones: I see. I see Eric pap fixing bugs. So. Yes. And,
+1662	you know, you saw I didn't fully understand what Spotify did with
+1666	that price floor change on
+1671	Adam Curry: their bundling.
+1673	Dave Jones: No, they said they said their Spotify Audience
+1678	Network span
+1681	Adam Curry: lowered the worst name ever. As horrible. Really?
+1686	Did you just say spam what? We're just calling it spam. From
+1691	now on. We're just calling it spam. The
+1693	Dave Jones: marketing jargon here was was virtually
+1697	impenetrable. But I think I figured it out. They said that
+1701	when it's all got to do with programmatic delivery, like you
+1705	know, stitching in the ad as you as you listen. And evidently
+1710	they call it a waterfall.
+1712	Adam Curry: Yeah, where you're at the bottom drowning.
+1717	Dave Jones: It's a waterfall where your foots in the drain.
+1719	Yeah. So they have there's like three layers to this thing.
+1725	There's direct sale, or direct buy and then there's span the
+1731	span Spotify Audience Network, and then there's like
+1735	programmatic delivery I guess that's like we don't have
+1738	anything else let's deliver a Viagra ad or something needed
+1741	bottom of the barrel. Yeah, but but the spec they said they
+1746	lowered the price floor on the span part and I think what that
+1752	means is that the Spotify Audience Network will take we'll
+1758	get more of the of the inventory delivery.
+1762	Adam Curry: Yeah, the the remnant the low level fruit the
+1766	not even fruit is dried up with dried up. It's like raisins,
+1771	Dave Jones: in a way is raisins. Yeah, it'll win it'll win the
+1774	bid more often. So things are pulling from span more. And like
+1779	this. You know, we aren't we we already have seen this
+1786	subscription stuff. That's, that's the only way to make
+1791	these things work. The advertising alone can't sustain
+1794	it. It's not everywhere you look it's always which You know
+1808	Adam Curry: not gonna last long kids use it sparingly.
+1813	Dave Jones: But the I think we got our we ended up with a wrong
+1819	idea of the way that the monetization of all of this
+1822	stuff worked. Because we put your Facebook and Google, which
+1828	dominated advertising in May, obviously makes make billions
+1836	and billions of dollars. And so I think it left us with this
+1839	idea that advertising is, is always in everywhere going to be
+1844	a winning strategy for for, you know, for revenue. But
+1850	Adam Curry: it's not, but it's not no, it
+1854	Dave Jones: only it's only a winning strategy if you are
+1856	essentially a monopoly in a business which Google is and
+1859	Facebook is. Facebook is, is a is a virtual I hate this. I hate
+1865	the term virtual monopoly. Yes, but they but you I think you
+1869	understand my meaning and the players within the social media
+1873	world. Facebook is as close to a monopoly as you're gonna get a
+1878	Twitter's a, that's a joke. I mean, it's an also ran. And it
+1883	Facebook, Facebook is the 900 pound gorilla. Nobody even comes
+1887	close to second.
+1888	Adam Curry: That's because they they're not really in brand
+1890	advertising there. They're like the classifieds. You know, it's
+1893	like, and that's starting to wane as well be you want, you
+1896	want some spam, you want some bots, go and put an ad on
+1899	Facebook. I mean, that's podcasting
+1901	Dave Jones: is the anti monopoly. Ooh,
+1906	Adam Curry: like that is showing that. You
+1908	Dave Jones: know what I mean? They're there. It's the
+1910	podcasting is by definition, anti monopoly because it is so
+1915	diverse. Nobody will ever dominate. In this in this arena.
+1921	Even people who have large audiences, there still only one
+1926	show in a person's podcast app. That person also has, if a
+1930	person listens to doesn't matter if a person listens to three
+1933	hours of Joe Rogan a week. That person also has 17 Other
+1937	subscriptions. Yeah. And it's net, it is absolutely the anti
+1941	monopoly. And so there's no way that advertising is going to
+1945	ever become the main player that supports podcasting. It's just
+1951	not. I mean, I mean, in order to provide everybody with like,
+1955	livelihoods is not happening.
+1959	Adam Curry: Well, in addition, in addition to that, we went
+1963	horribly wrong many, many years ago in podcasting, I would like
+1968	to try and explain and this has come up for me recently, as I am
+1974	realizing that the pitch podcasting is making is pretty
+1980	much centered around a couple things right now monetization
+1986	growing your show video. That's pretty much the pitch. And when
+1991	we first started, okay, so when we first started podcasting,
+1995	what was so common, I don't use this word easily. What was so
+1999	awesome was you were hearing people who weren't professional
+2006	broadcasters, they didn't have a professional delivery.
+2011	Unfortunately, it was very hard to even get a semi professional
+2014	sound. And so somewhere along the line because and I tried it
+2019	was 10 years ago, I tried to get the Kastmaster probe out there
+2023	and like we need to get people back into just sitting down
+2027	recording and then putting that out and because we didn't have
+2031	real time processing basically we had musician gear you know
+2037	that we were that we had repurposed broadcast gear was
+2040	out of control expensive. I mean, the amount of rigs I have
+2045	built over the years with DB X compressor limiters with literal
+2051	racks with the what I have done processing units 19 inch boards
+2059	everything because that was just too much for people to figure
+2064	out and and the sound quality was so poor without some of the
+2069	basics we resulted to this format where you record then you
+2077	or preferably you hire someone who is then going to process
+2082	that check you chop out all the arms and the eyes and tighten up
+2086	spaces of now you Phil Spector with a wall of sound brighter
+2090	eyes, my big baggy as boys and we became and we became
+2094	something that is just boring like radio, you know, just we've
+2098	kind of reached we kind of recreate He did that. And we
+2101	never really got that. In fact, Dave Winer, I think he said,
+2106	This might have been an interview he did. I'm thinking
+2108	James Cridland had this somewhere. Weiner was concerned.
+2112	And it's a valid concern. He was concerned about me being kind of
+2117	the face of podcasting, because and I think there's something to
+2120	this, because people would hear me and think, Well, I can never
+2125	be that professional. Whereas the idea that you can just be
+2130	someone who just records a podcast about your the topic,
+2134	that's your passion, about your community of interest about your
+2138	local community, about your school, your church, your your,
+2142	your soccer club, whatever it is. And that that will be Oh,
+2146	that's not a good podcast. And I think we actually that happened
+2149	to us, we got to that point where, well, that's not a good
+2153	plug. And now it's even taking it one step further. If you
+2157	don't have headphones on with mics, and it doesn't say rode on
+2160	the boom, and you don't have video, you're not a podcast.
+2163	Yeah. And along with that comes a need because we have serial
+2169	churn, we have serial churn in the hosting business. And as I
+2173	was listening, I've only listened to a little bit of pod
+2176	news weekly review, but as I was listening about you know, the
+2180	the never ending conversation of purse first party data, bliss
+2184	and time statistics, etc. A James and Sam both made valid
+2188	points that James says, Look, stats are very important because
+2192	that's kind of the only thing that the new podcasts are has
+2197	that validates what they're doing is okay, I see a download
+2201	from from Lithuania. And I'm sure it's Dolby Das, his mom who
+2206	sit in there. And you know, I won't go into downloads. You
+2210	know, all these weird kind of stats. Interestingly, now that
+2214	James has seen that, that his, the Buzzsprout, what does that
+2220	thing called?
+2223	Dave Jones: Fan Mail fan mail, that
+2225	Adam Curry: if he puts that if he incorporates that into a
+2228	show, all of Jacksonville, Florida will send him fan mail,
+2232	which is of course what Buzzsprout is located. But the
+2236	idea that comments will be one way totally valid. And then Sam
+2240	pipes him, but it was kind of poo pooed a little bit. But what
+2244	I have seen when you put someone on value for value, and they see
+2250	Satoshis coming in the mail one person listening is exciting
+2255	because you every minute you see five SATs go by I just had this
+2258	experience, a dear old friend of mine, Vic Pepe, know from the
+2263	music business. He's been a big IT guy now. He started a podcast
+2267	called 10,000 miles. And even though he knows me, and even
+2270	though I was number two interview on his podcast, it was
+2273	all YouTube is all YouTube. And you know, he's got the camera
+2277	all set up. And everything is he's done like nine episodes.
+2280	And he says, you know, what, do you got any feedback? I said,
+2284	Yeah, turd, you're talking to the pod father here. And so I
+2288	send them to blueberry to vid to pod any and he gets it set up,
+2294	you know, a couple of hiccups and stuff. But Mike Newman
+2297	actually very helpful. So he gets a set up, he puts it out
+2300	there. Its value for value. And of course, I boost him
+2305	obviously, he's all jacked. He's calling me like, I got gotten a
+2308	boost for me. But then he sees other people just listening, he
+2312	got a boost. He's like, how does this happen? It's amazing. So he
+2316	is so excited. Just and it's not about the amount of money. It's
+2321	just the validation, which he's not getting from YouTube, on
+2324	YouTube, you know, he's got like 100 views, you know, 200 views,
+2329	my episode was more i I tweeted it a link or whatever. But in
+2333	general, it's just a, it's a handful of views. And so when he
+2337	sees that coming in, he's excited. And I feel that podcast
+2344	hosting companies. Now, of course, some notable exceptions
+2347	who were all in on this train, need to push that because that
+2352	is what's going to retain your customer. That is the excitement
+2356	that people need. And I think it's great that you know, people
+2359	have magic, magic mix music, sound things and all that to
+2363	help people I think all of that is fantastic. You know, but but
+2367	we need to maintain the idea that just anybody can do it. You
+2371	stop with this pressure of OH, you can get out of $10,000 in
+2375	advertising. That's not going to retain anybody. It's
+2378	unobtainable, actually. And I think that we even and this kind
+2385	of gave me a thought that you know, for for comments I hate
+2388	using the CAC term, but for activity pub interactions, the
+2396	social interact as it's technically known Maybe that
+2400	should be something the hosting company should be pushing,
+2404	instead of relying on the apps to do all this work. That was
+2407	actually something James said. I think so too. And I caught
+2411	myself going. Yeah, you know, I think you're right there. I
+2413	think that's, that's a really good point we have, because of
+2417	the push we have made, because of the integrations we have
+2420	done, we actually got something to be done that people said
+2424	couldn't be done for a decade was Apple actually did
+2427	something. Now, yeah, typical Apple fashion, you know, they do
+2430	it their own way. And you know, their shit don't stink, and
+2433	they're better with their transcripts for I don't care.
+2435	They linked to our namespace, and it's a validation of what
+2439	we're doing. I believe we can push many more of these things.
+2443	Now, is it unthinkable that they would allow you to connect a
+2446	wallet, etc. In the future? I don't know. But I know that my
+2450	boy Vic is now pushing 2.0 apps because he loves it. He loves
+2455	the idea of seeing validation come in. And his hosting company
+2461	is blueberry because blueberry allows that and he was able to
+2464	figure it out himself, you know, when he got a wallet and
+2467	everything was all set up. Beautiful. And but now and you
+2471	know, I pointed him towards Saturn because Saturn relaunched
+2474	their stats for what is that it's honestly your I keep
+2479	forgetting Saturn dot fly dot
+2482	Dave Jones: Dev. Yet wonderful. You
+2485	Adam Curry: are now it's horrible. You are I'll be out
+2486	contracts is still out there. And then of course for the more
+2490	advanced, you know, helipad. And the same goes for for life. You
+2494	know, this is the trend people love listening to live, they
+2497	just love it. And you know, what do we have? I don't even know
+2500	what we have in the boardroom right now. It's like maybe what
+2503	20 People doesn't matter. It's that interaction. It's these
+2507	things that are going back and forth. It's full. If you and I
+2510	just did the show and had nothing but stats and podcast
+2514	index dot social, I think it'd be we'd be a lot less motivated.
+2518	Dave Jones: Oh, for sure. Totally. I don't know what it is
+2522	about. Because Because you're it's no different than just
+2526	looking at a spreadsheet. Like, if you get okay, it's it's the
+2530	difference between if we just talking about purely financial I
+2535	mean, like there's, there's, I think there's a lot more to it.
+2538	It's a psychological thing more than financial. But, but let's
+2542	just put it in financial terms, just for illustrations purposes.
+2547	If you if your company is doing if you just get a spreadsheet at
+2555	the end of the quarter, saying well, you just you know, you
+2558	made this much profit. I mean, that's great, but it's not what
+2562	you would call exciting.
+2564	Adam Curry: Spread, but not sexy.
+2567	Dave Jones: But if you're a bit if you're a sales guy, and
+2569	you're getting those commission checks every month, you that's a
+2573	different thing. There's something about I don't know how
+2578	to explain some value
+2580	Adam Curry: for value, I put this work into it, I got
+2582	something back.
+2583	Dave Jones: And, but it's more like the I think the difference
+2589	with boosts and streaming sets is that you're getting pushed,
+2598	you're getting real time communication. It feels like
+2603	like if somebody turns when somebody listens to your show.
+2607	Okay, here, here's a I think I'm zeroing in on this right now.
+2610	Okay, so when I listen to a podcast, I can't control the
+2616	show. You hit the play button. In your, in your now you've
+2623	turned yourself over to the host. They're in control. You
+2628	are now just along for the ride. And you don't and it's there's
+2633	an excitement there because you're not sure what's going to
+2635	happen next. Because you're you're relinquishing your
+2639	control. Yes, you've become passive. And you're experiencing
+2644	the the podcast. That value for value is streaming says flips
+2650	that back on the podcast or to where now the podcaster is doing
+2654	the same thing. They've relinquished control and they're
+2657	watching seeing things happen in real time as these events come
+2663	back to them. Yeah, it's sort of it's like the most pure two way
+2667	street. Because you're it's almost like your your watch as
+2671	the podcaster you're watching this event happening the same
+2676	way your audience is, you know, I think so. I think it's it yes,
+2680	there's a financial aspect to it. And it's always nice to make
+2684	some to make some money and that kind of thing. But like when
+2688	you're when that when the harp triggered a while ago. Yeah,
+2693	yeah, was it we didn't know that was gonna happen and it makes it
+2696	fun. Yeah, it makes the whole experience fun because you're
+2700	So, now you've engaged your audience and they're able to
+2703	bring you on an on an unexpected journey that you can't control.
+2709	I think I think that's, I never thought a bill I like like that.
+2712	That's a really cool idea. It's,
+2713	Adam Curry: it's important because it, and I'm saying this
+2717	for our hosting company partners, they're the most
+2720	stable part of the entire ecosystem. And the, you know,
+2725	the amount of time and energy may be nothing for him, I don't
+2728	know, but what, what Buzzsprout put into the fan mail app, I
+2731	mean, I wish they would have put that that energy into, you know,
+2737	a social interact, they're there. They're a big player,
+2741	when they do something, when in fact, they were instrumental in
+2744	moving a lot of these things by adopting transcripts and
+2748	chapters and all these things early on. And, you know, as one
+2753	goes, so go the rest. And then I love seeing the 2.0 native
+2756	companies. I mean, these guys, I think that there, if you look at
+2760	them on a pure profitability scale, they're probably out
+2762	doing percentage wise, bigger companies, because it's, you
+2766	know, it's one guy, right, one guy who can do everything, and
+2769	can still handle the relatively low amount of, of customer
+2774	support. But they're really pushing the envelope really
+2777	moving the needle on things. I see what Sam was doing with true
+2783	fans, I mean, he's out of control. He's out of control, is
+2786	out of control, you selling books, and there's all kinds of
+2789	stuff happening, which is great. I mean, it's beautiful. It's not
+2793	all quite, you know, there's not a lot of ecosystem behind him
+2796	yet. But he's worried
+2797	Dave Jones: that it's madness. Yes, it's pure madness. But the
+2801	Adam Curry: idea that you want to give somebody joy for just
+2804	being themselves, I'd like to get back to that. That's what
+2808	the podcast industrial complex, it kind of kind of clicked for
+2811	me. I was having a couple of conversations with people. I'm
+2814	like, you know, what, where do we go wrong with, you know,
+2818	here's, we kind of talked about this last week, but radios main
+2823	function. And I've been in radio since I was 15 years old with a
+2827	five watt transmitter in my little village south of
+2831	Amsterdam. Radio has always been a local medium. So whether it
+2836	was the kids in my neighborhood going, Hey, man, I heard your
+2839	signal and my mom drove me around the block to the closed
+2842	hospital radio station at the tulip Hospital in I'm still
+2846	Fein, where it was literally a captured audience. They could
+2850	not leave. And we're basically just playing requests for them
+2854	from their family, etc. For people who are in the hospital
+2857	Dave Jones: that has a really fun hobby. It
+2859	Adam Curry: was great fun. To the pirate radio stations. Yeah,
+2863	we had 150 Watts, we were only covering Amsterdam, we called
+2867	ourselves the rhythm of the Capitol, you know that we were
+2869	just playing dance music, but really for a dance oriented city
+2874	at the time. But to dizzy 100 in New York, even though that was
+2881	you know, 50,000 watts at the Empire State Building 50,000
+2887	Watts, you know, who did a flame thrower, who? New York. He was
+2897	still local radio. I was talking about the local events about the
+2900	mayor, you know, all these things that were local. Now
+2903	Elvis Duran, who I know really well. I've known Elvis when he
+2906	was still in radio and Austin in like the in the late 90s. That
+2912	he became the morning guy in New York. It's 100. Of course,
+2915	everything got consolidate. He went to I think they've got
+2918	bought by I heart. And so he now is the morning show guy in eight
+2923	cities, eight top markets. And yeah, they've localized stuff,
+2927	you know, in between record. Hey, it's Elvis Duran in New
+2929	York. Hey, it's almost ran in Houston. Yeah, so they've
+2932	localized that, but it's no longer local, and we've lost our
+2936	way in radio, and I'd like to bring that back. And now we have
+2940	all of that capability. In fact, I've been toying with the idea
+2945	of really just starting a local Fredericksburg, a Fredericksburg
+2949	local show that and it should be live and I don't know if it's
+2952	every morning or whatever, but it needs to be live. It's a
+2955	podcast you can listen to whenever you want
+2958	Dave Jones: to please do a morning show. For greater
+2962	Fredericksburg weather.
+2966	Adam Curry: There's a lot going on in Fredericksburg and we only
+2969	have one weekly newspaper. And it's very politically motivated
+2974	and it's very left which is you know, contrary to a lot of live
+2978	around here. But it's
+2981	Dave Jones: per se that pollen counts up to 2500. Today you'll
+2984	be careful out there. There's
+2985	Adam Curry: a lot going on in Fredericksburg that is not
+2988	discussed that there is no end all the all the towns and cities
+2991	really have as a Facebook page where everyone yells at each
+2994	other and is useless. So
+2996	Dave Jones: college it just a local college
+3000	Adam Curry: Thank you even just a local call in show. So I've
+3003	given myself the the edict to lift 1000 voices across America.
+3008	I haven't figured out what that means yet, but I'm working on
+3010	it. Because and it's actually you know, this guy, Fernando.
+3016	Hold on a second. Let me grab this
+3018	Dave Jones: fernet. Feta net, Fernando.
+3023	Adam Curry: Fernando is Where'd that come from?
+3029	Dave Jones: Did that come through?
+3031	Adam Curry: What was that? Sorry. That's that was
+3036	Dave Jones: the Bluetooth does work actually.
+3039	Adam Curry: I was looking I don't think I put that into the
+3042	into helipad. Again,
+3046	Dave Jones: I forgot that I looked up the road caster the
+3049	Bluetooth. Okay.
+3051	Adam Curry: So he so he's a kid who he came to America from
+3058	Brazil with 100 bucks in his pocket. And, and so he has a
+3063	full time job. But he started this company audio sigma. Let me
+3069	see if I can find the audio signal here. Sigma. Yeah, here
+3073	we go audio sigma.com. And actually, Todd turned me on to
+3078	be and so you know, we got to talking. And so he's now built
+3081	this thing called, Oh, these are pretty Yeah, the pod mobile. And
+3086	it was all analog, basically transistor base. And now he's
+3090	done a DSP version. And he's actually sent me one I haven't
+3093	tested and tested on his other ones. So here is a device that
+3097	is about 300 bucks. And it really does everything it does
+3100	everything your road caster can do, but limited, you know, it,
+3104	it's for one or two mics it has does have the loopback for your
+3107	computer, you can actually power it from the computer doesn't
+3110	even have an external supply. But my point is, here's here's a
+3114	an entry level device, and maybe I have to do some courseware or
+3118	something. Thank you Sam Sethi and Dobby das for getting that
+3121	set up because now that now there's a way to do it to do
+3124	courseware to help people just use your own voice to have a
+3129	good sound I just need people to your sound just has to be good.
+3133	This device I've tested these other ones of his there
+3136	dynamite. I mean, I said you should be handing this out to
+3139	Ray Ray roving radio reporters could you can clip it on your
+3142	belt, plug it into your phone, it sounds fantastic. But you
+3148	know, like we need to get back to that place and stop with the
+3152	it all has to be professional. It all has to sound big. It all
+3156	has to be perfectly you listen. I love James Cridland. The way
+3164	he speaks. I love his imperfections. I know he's I
+3167	know he has a stutter. I love that. That that makes him a
+3171	human being to me. And he and he doesn't edit it out and he could
+3176	easily do it but he doesn't. And
+3178	Dave Jones: Todd, I love I love to deliver Todd has taught
+3181	Adam Curry: us voice that is I mean, if you would go to a radio
+3185	station, they laugh you out of the building that voice No. But
+3191	that's what makes it so beautiful. And we've had these
+3194	guys who do stuff live Todd and Rob they do stuff live. And even
+3198	when they're boring me to death, I can listen to him live. It's
+3203	exciting. I can send a boost. I can I can rag on him I can. This
+3207	is where we need to get back to with podcasting. And we need to
+3211	just take a breather on this incessant non stop advertising
+3216	video. Got it? I mean, this is why no one's making money in
+3220	podcasting is because you all gotta hire an editor, Jan briny.
+3224	I love her DeVore I trained her I would say she does value for
+3229	value, but she gives away a lot of her value. Because she has
+3234	someone edit
+3234	Dave Jones: for her. Yeah, that's, that's steep. Whereas
+3239	this, if
+3239	Adam Curry: we just learned to be a little bit better, you
+3241	know, by doing it, go ahead and stumble and make mistakes. This
+3245	is this was the I have to credit my ex wife with my ex ex wife my
+3249	first way when I was just starting out 19 years old is on
+3254	television for the whole country is doing radio, but the
+3256	television mainly, you know, and we do the show was once a week,
+3260	half the country watch and we'd be watching at home. And I'd be
+3263	I can't believe I flubbed that I hate. Like I'm mad at myself
+3267	because I flubbed a word. I stumbled over something and she
+3270	would look at me and go, you're not a robot that makes you
+3274	human. And then I took that to heart and ever since I've just
+3279	I've given up on it and and I think I've been pretty
+3282	successful in my career. By leaving that stuff in
+3289	Dave Jones: there, they send my daughter we had this exact
+3292	conversation with my daughter last night so she's, she's in a
+3294	band. And she they had A gig at an art auction in this it was
+3304	basically like a just a background gig for these high
+3308	high dollar art auctions at this local gallery. And people were
+3313	drinking and stuff and it was his her and four of her buddies
+3317	and they played the see they played boozer made his base made
+3322	for walking
+3322	Adam Curry: as Nancy Sinatra classic. Do
+3327	Dave Jones: they play creep by Radiohead.
+3330	Adam Curry: Creep I'm doing a little
+3335	Dave Jones: they played well, what's the the Jets?
+3342	Adam Curry: Nana nana nana da. Well, I found out that one
+3349	Dave Jones: day didn't their dad and
+3352	Adam Curry: dad. were sucking really bad now that 123 Take a
+3359	look at me. That's the one.
+3361	Dave Jones: Yeah, yeah, I can't remember they played that one. I
+3364	can't remember the name escapes me. But they they played a nice
+3367	little set. And so after it's over, she's like, you know,
+3370	she's like, Oh, I messed up. Mr. Fong crepe. I didn't. I didn't
+3375	come in at the right at the right. Part. And I was like,
+3378	we're like, you're, you're. That's that's the beauty here.
+3382	Are
+3382	Adam Curry: you gonna be my girls language? Here we go.
+3387	Yeah. Yeah, who just hit us with a baller boost. Throw on a
+3391	second. Someone hits with the baller boost. Hello, phantom
+3395	power media. Dave, this is phantom power media. Hello,
+3399	Dave, tell your daughter to apply for our bands at Bitcoin
+3402	stage in July. It's an ad. It's a native ad.
+3406	Dave Jones: I will I will deliver this message
+3413	Adam Curry: I'm gonna remove it. If you guys don't stop that.
+3415	Dave Jones: Miss, she'll have to, she'll have to pay for cover
+3418	band or a cover music rights. Right? Mechanical
+3421	Adam Curry: rights. Right? Yeah, if she does that one. Yeah. But,
+3425	you
+3425	Dave Jones: know, we're telling her like, Hey, this is your
+3428	you're playing with a band, you've only been playing for the
+3430	band for a couple months. This is part of this is how you learn
+3434	by failing. Yes, you know, you learn you, you you go out you.
+3438	Because that's another thing with
+3440	Adam Curry: auto channel. That's another thing that screwed
+3442	everything up. Oh, so
+3444	Dave Jones: much giving up control, when that's another
+3447	time that you give up control. And that's one of the things
+3450	that makes playing live with a band. So exciting. Yes. And Eric
+3456	peepee literally said the exact same thing. Same Time I Saw
+3458	that's what makes it exciting is that you don't know what's going
+3463	to happen. And you're putting your own performance in the
+3466	hands of other people. Because the drummer may screw up. And
+3470	you know what, it's your job to save that to save the drummer.
+3474	Yes. And everybody's in it together. play bass, play bass.
+3478	This band is kind of cool, because they all swap out and
+3481	play everything. Oh excheap The one of the songs she plays drums
+3485	one song she plays guitar once on that she plays bass. And they
+3489	all kind of like in between songs. They all shuffle. Which
+3493	makes it even more complicated. Of course, you're gonna miss
+3495	out. But good drummers now. Yeah, right. But anyway, that
+3501	now I think I think you're right. I think the return to
+3505	load. Podcasting is perfect for local. Because yes, like
+3510	imagining that, that, especially now that we can do live over
+3516	podcast apps. I mean, that's perfect. You. I'm just imagining
+3520	a return to that to your hospital DJ. Yep, scenario where
+3525	it's like, you know, Hey, man, floor three Myrtle and room 302.
+3529	You know, we were here he is, you know,
+3531	Adam Curry: did I ever tell you what we would do with when we
+3534	had a coup, we had our show on Friday night. And I was I was
+3538	the NG I was 15. I was the engineer. So what you do is you
+3541	go before the show started, you'd hand out request forms,
+3544	which are just pieces of paper. I was 15. So that's 45 years
+3549	ago. And, and they would fill it out. And then we take those back
+3553	and we'd start the show. But the studio was in the corner of kind
+3557	of a an auditorium not huge, but you know, where they would have
+3561	like small, like a bit like a three times a conference room
+3565	just put and the window. The Double Glass was right there. So
+3571	it was in the corner so you could see people in the studio,
+3574	and the studio could see out. So what we would do is we would
+3578	actually get the kids and we would roll their beds down into
+3582	the auditorium. Oh, that's cool. And then but we were playing I
+3586	remember it well. Iggy Pop lust for life. Remember that song? I
+3590	got a lust for life. A little bit like the Jets actually. And
+3595	so while that was playing, we got and we put we play bumper
+3598	beds with the kids we'd be bummed. The beds again. I
+3601	actually learned how to reinsert an IV from that experience,
+3604	like, crap. I can't come over here. Like, we're not all over
+3609	the place. But yeah. And it was arguably one of the most fun
+3614	times of my career and was, yeah, it was. It was unpaid. It
+3619	was a, you know, it's just a volunteer work. But yes, there's
+3625	local communities of interest, community, geographic
+3628	communities, but I think we've come the open, wide open
+3632	opportunity. And I'm going to tell you something, I'm going to
+3635	prove this. If I even if I'm not hosting, if I'm just exec
+3640	producing, or whatever I am doing because it's that's part
+3642	of my mission is I need to find new people to do stuff. I think
+3648	it can be run, where it would pay for itself and that people
+3653	would, you know, maybe it's not a full time gig, but I think a
+3656	local community would support a local station, a local, a local
+3661	show, I think it would support that it really would. Well,
+3664	Dave Jones: you already did in a in the the now lost to history,
+3671	the last episode of podcasting 2.0 That you did a you did a
+3676	request a music request show. And that was arena over boosts.
+3682	Adam Curry: That was the most highly boosted episode ever.
+3685	Dave Jones: Yeah, ever of all time. Yes. And this like so
+3688	there's no you now have in 2.0 ABS you can now do live streams
+3692	and boosts and you can get that's there you go. You have
+3697	you have a call in request show right there. So I think you
+3703	know, the other thing like is my daughter, my oldest daughter,
+3706	she's 22. She you're the last to face her work show. Yeah, that's
+3714	right. We she's in she's in communications, like, mass
+3721	communications. And so she was told recently, basically, that I
+3728	forgot who this was no future kid. It was almost like that.
+3733	She she's made. She's majoring currently in, in mass
+3737	communications. And the person told her basically do not go
+3743	into do not think that you're going to go into local
+3746	television because it's dead. Oh, yeah, that's exactly what
+3749	you've been saying the last couple of weeks. He said local
+3752	local affiliates shutting down or shutting
+3754	Adam Curry: down. You know, chat, if just the post in the
+3758	boardroom, you said you just described homegrown hits. You've
+3760	never heard that show. It's exactly right. Also, the no
+3765	agenda stream which is now that's been around so long that
+3768	that's really become its own entity. And that is 24 hours a
+3771	day. But people literally tune in to hear Darren Oh, on
+3775	Thursdays and Sundays they tune in to hear nick the rat on
+3778	Wednesdays they tune the tuning in. Then you have in the smoker
+3782	you've got oh my goodness, beers with buds, but you know, buds
+3788	with buds beard and smoking buds. There's all these
+3792	different shows. And it's all within that same ecosystem of
+3797	very simple chat room, the booster grams have become super
+3800	important. And it's not. It's not that Darren O is retiring?
+3805	No, it's It's the feedback mechanism is the hey man you
+3808	boosted cool, you see it in the chat room, the host responds to
+3811	it. This is stuff that that actually will. That is working,
+3816	the proof is there. And we need a little more engagement, I
+3821	think from the hosting companies, not all and I'm not,
+3825	I'm generalizing to a huge degree. And I'm also extremely
+3828	grateful with all the hosting companies have done so far. But
+3833	we can do more. And
+3834	Dave Jones: I don't see why these local reporters for local
+3837	stations couldn't just strike out on their own and do and do a
+3839	local oriented podcast. And
+3841	Adam Curry: we'll see we'll see some of that. But a lot of that
+3843	a lot of that culture and attitude is not easy to break. I
+3847	mean, the idea that you're going from we'll be right back after
+3850	these messages to begging for money grifting you know, all the
+3856	stuff that gets thrown at your head. That's a very tough change
+3860	for most people. Now I wanted as a part of this since we have the
+3864	Phantom the Phantom people in the nmpa National Music
+3869	Publishers Association sent a very damning letter to Spotify
+3873	and this is important that pertains to us. And Jim actually
+3875	posted on podcast index social about this. They say let me see
+3883	where this is. It has come to our attention that Spotify
+3887	displays lyrics and reproduces and distributes music videos and
+3891	podcasts using musical works without the consent of or
+3895	compensation to the respective publisher and or administrators.
+3900	are members in Perkins, who control the copyrights in the
+3903	musical compass compositions. As such, these uses of musical
+3907	works on the Spotify platform are not licensed or will soon
+3910	become unlicensed. So this is very interesting. I'm not so
+3917	this is probably more about lyrics and the music videos, but
+3921	the fact that put podcasts in there is important because
+3924	you're going to see podcasts come down very quickly from
+3927	Spotify. And a lot of them because people are using music
+3932	in in so many different ways that is unlicensed, because you
+3936	literally can't license it from from the traditional systems.
+3940	And Spotify will not think twice, it'll be hooked, gone,
+3944	quick, gone, hook gone hook, it's gonna be they're gonna be
+3946	running algos on it, it's going to be gone, gone, gone. And even
+3951	if it's just mute, they're not even going to check and see if
+3954	they if it's licensed, I just going to remove it. Big
+3957	opportunity. The main thing we need to shore up and we have a
+3961	version of it, we don't have everything perfect. But I would
+3964	think we need to implement the music license, the remote item
+3968	license, whatever we call it for inclusion of a bit of someone
+3973	else's work in your podcast, I'd like the remote item licensed
+3976	better than a music license. That was the same thing. So this
+3981	this is not not I'm not talking about an RSS feed of songs. Now.
+3987	There's a whole bunch of issues that have come up that that we
+3991	need to discuss but purely remote item. License. Yes, you
+3995	can use this under the value for value auspices. The it's been
+3999	written, it's out there, I think it just needs to be added to the
+4003	namespace and link so people can include it.
+4007	Dave Jones: Is that the case? Honestly, no. So I feel so ill
+4011	equipped to deal with something like this, that I feel like I
+4017	need somebody else to just give me the wording to put
+4021	Adam Curry: to put I'm gonna, I'm gonna carry this, I'm going
+4023	to carry this. I'm going to carry this the
+4026	Dave Jones: I think the lat to me where it fell off a cliff was
+4030	all of a sudden it took a turn into. Yeah, and we need to be
+4033	able to block certain apps from being able to play certain
+4036	music. And I was like, Whoa, I mean that
+4039	Adam Curry: the Exactly. So the, the way I don't carry this Dave
+4043	and I will I'll get the consensus and everything. So
+4047	there's a couple things one, I in this is the main thing we
+4051	have to understand. If you have an RSS feed, and you have an
+4055	enclosure, and that enclosure is an mp3, there is no difference
+4061	between it being dry, dred Scott's ISO, a feed, no agenda,
+4069	three and a half hour shows, or a three minute song. In the
+4074	world of podcasting, they are equal, ergo, therefore, if
+4080	you're going to like that, as my lawyer talk, you sound like a
+4084	philosopher is Raha ergo, therefore, the remote item
+4089	license is how I view this. So it's not because it's a song.
+4094	Because I feel that what if I make a great joke, or there's a
+4099	great a great bid, and someone wants to include that in their
+4101	show, just as valuable to me, as someone who spent three years
+4105	writing a song, you may not think that's fair, but in the
+4108	world that we're dealing with, they're equal. And so we need
+4114	the mechanism, if you're going to include something in your
+4117	show, and it's in the realm of value for value, you should be
+4121	able to say from this moment in time to this moment in time,
+4124	switch the wallets. It's coming from over there. And I think we
+4129	can add into that, a minimum requirement. So you got to give
+4134	me minimum 50%. You know, of the value block, take more if you
+4139	want. I mean, I think that's and it's always all going to be
+4142	gentlemen's agreement, general woman's agreement, Gen Zers
+4146	agreement. But we need that at a minimum to protect ourselves.
+4153	Even though we're all going to get kicked off a Spotify and AB
+4156	it's all coming. This is why we built this Dave, because they
+4161	will not discriminate. You got music and your podcast, you're
+4163	done goodbye. They're not going to check. They don't care. They
+4167	got no infrastructure to see. It's just like YouTube, as you
+4170	know, like tick tock, it'd be muted, all the all these
+4173	problems are coming, but we can solidify for ourselves that we
+4178	have the agreement and we're all cool with each other.
+4182	Dave Jones: So you think they're gonna start taking down stuff
+4185	that's not even guaranteed? There's not even related to
+4189	this, you know, an
+4191	Adam Curry: example our church which I believe so our church
+4194	has a worship team, which as we all know, is Christian for band.
+4198	So they were worship teams. And the worst is
+4200	Dave Jones: to drummer have the plexiglass you better believe
+4203	it?
+4204	Adam Curry: Yes, you better believe it. Yeah, he's got the
+4206	cage. So the worship team licenses music, from you know,
+4211	there's a whole industry, and it puts the words up on the screen.
+4215	So everybody can sing holy, holy, holy, and hands in the
+4219	air, like, we just don't care. And it's license, they pay
+4223	rights. And those rights are also for use in recordings on on
+4228	YouTube. And every month, at least once YouTube takes down
+4234	one of the sermons because they say you got to strike because
+4236	you use the license work, even though they have the right to
+4239	use it, they have the paperwork, it's backed up, it's, it's an
+4243	established system, which has been going for decades, the
+4246	system still takes the whole thing down. So that's going to
+4250	happen at Spotify now. It's just going to happen. So we need our
+4256	stuff to be tight. So that when content producers, whether they
+4262	make music or audio books, or whatever it is, we need a system
+4268	that is fair, and and and and open and everybody can
+4272	participate in. Hey, I made 100, I made 100 SATs on this. Here's
+4277	your ad.
+4279	Dave Jones: So in and the license in the feed is a signal.
+4284	Yes, yes. This is this has this has been covered.
+4289	Adam Curry: Covered. Yeah, it's just it's just like Creative
+4291	Commons. Except, you know, we do it under this this particular
+4295	license. Now. I know that we're going to run into all kinds of
+4299	problems down the line and disagreements, et cetera over
+4302	music itself. I can't deal with that right now. All I can deal
+4307	with is the inclusion of a remote item. That part I want to
+4312	shore up so that when when the Exodus takes place, people know
+4316	they can come here. They can come into this ecosystem, and
+4321	they can promote the apps that understand and do this and
+4324	promote the apps that give the pass the value through. We will
+4328	we will overcome may pleasing Grace
+4335	Dave Jones: shall over.
+4339	Adam Curry: We will we will. So remote item license is what I'm
+4343	looking at. Okay, remote, so you can use this content no matter
+4348	what it is at as a remote item. Here's my here's my my baseline
+4354	requirement. And the technology actually handles most of it. The
+4359	technology handle, you know if it needs to be surfaced what
+4362	this is, you know, just like when I look at I'm at podcast
+4367	Guru, I look at the sidestream music podcast by the way, Cody's
+4370	a great great episode this week was music Tony Hawk screwed up
+4375	on and didn't put it in his in his game. Really good as read
+4379	all the funny music. Yeah, it's very first great promotion. I
+4383	can go on, I hit the V for V tab and I see all the songs. I could
+4387	save those songs to a playlist, I could boost them separately, I
+4390	can play them separately, I can get into the arts and that that
+4393	stuff that technology, that remote item Thank you Alec says
+4396	is taken care of, is taken care of all that is done. So our
+4403	stuff will be tight. So that whenever anybody thinks they're
+4407	gonna come and mess with us, they won't even come be that let
+4410	those guys play over there. They're not the real music
+4412	industry. Okay. Well, we've we've got, we've got some kind
+4416	of, you know, what, what is the
+4417	Dave Jones: remote item license actually protect against
+4421	Adam Curry: protects against nothing. It's an agreement the
+4425	EU. It's just like a Creative Commons. If you really want to
+4429	take someone to court, you can create and I've, I've, I've
+4434	proven the Creative Commons copyright works in court for
+4438	that very reason. But it still comes down to a basic
+4444	understanding and agreement like everything, it's only as good as
+4447	the paper it's written on.
+4450	Dave Jones: And this is
+4453	Adam Curry: this wood. It's not protecting against it really
+4456	doesn't protect you against anything except someone using it
+4460	and not passing on any payment to you. But we have no cops.
+4466	We're never gonna have cops to go out there. But you can say,
+4469	Hey, man, this is under the remote item license. So would
+4473	you please make sure that you put that into your feed
+4476	properly? That's really all that you can do in
+4478	Dave Jones: that, so so it's a matter of if you're going to use
+4482	this, you need to use a remote value split.
+4485	Adam Curry: Yes. And to answer cotton gins question. Yes, the
+4489	splits. The splits accomplish this, but it's it gives you a
+4494	little bit of backup with a legal document and I think we
+4496	should have a minimum requirement and the minimum
+4499	should always be baseline 5050. But as you can say, You know
+4503	what I'll I'll say I'll settle for or do I want 90%? Now, can
+4510	you stop someone from doing it? No, you'd have to bring action
+4515	against them. But guess what? This isn't a world. This is
+4519	about just making it clear what I'd like and what that I want
+4522	this system in play, it's solidifying, what splits are
+4526	it's solidifying what the remote item is? Yes, please use my
+4531	content in this manner. Here's the requirements that I have. If
+4536	you want protection code, ASCAP, BMI, sia EA
+4540	Dave Jones: keeps you from built. I think I'm understanding
+4542	this now because it was just, I think, kind of what you're
+4545	saying is it keeps you from having to build essentially the
+4550	exact same structure that already exists exactly. Again,
+4554	which which has which will have the exact same problems as the
+4559	other system course. It's centralized and, and punitive.
+4565	Yes.
+4566	Adam Curry: Very punitive. Now, if you think you're gonna get
+4569	rich by anyone thinks they're gonna get rich, by all means,
+4572	don't have your music played on podcast, don't get it played
+4575	anywhere, you know, put it into iTunes and have fun. Good luck.
+4579	Absolutely. If you want to have an audience, and you want to
+4583	have value returned to you. That's why you're with us. Yeah,
+4590	there's not enough room in the world for all the people to be
+4593	successful and making you know, quit your job money. Look at
+4599	this podcast 180 episodes not quitting any job. For sure, but
+4605	I love what I do and I love my truck.
+4610	Dave Jones: There's no there's not there's not a the Creator
+4616	middle class is just, it's never going to be a thing. No. Well, I
+4622	Adam Curry: don't think you can I think you know, touring I
+4625	think you can do a lot. You know, a lot of people have a lot
+4629	of love for what they do. No doubt about it. I mean, we're an
+4634	unrestrictive system where you know, the traditional systems
+4638	are all that Why is everything failing because they no longer
+4641	control the distribution once podcasting came in distribution
+4644	was open Why does everybody wants to the move to YouTube why
+4649	because they control the distribution move to Spotify,
+4652	because they control the distribution they controlled it
+4655	but that's the way it's always work and those days are just
+4658	oversee the billion dollar Spotify blue
+4663	Dave Jones: at this, this actually sort of tend sort of
+4668	tangents into a kind of wanted to talk about that Jack Dorsey
+4672	interview. Did you read that? I did. The one in pirate wire.
+4676	Adam Curry: I did. I read the whole thing. You bet.
+4681	Dave Jones: That he said this has some stuff in there. That
+4682	was pretty pretty noteworthy to me. I think they're all so let's
+4691	see. The you talking about this? It kind of reminded me of, of
+4698	him. He talked some about blue sky. He says, here's one thing
+4704	he said. He said what is the anti Twitter? He's talking
+4713	about? Blue Sky says what what happened is people started
+4715	seeing blue skies, something to run to away from Twitter. It's
+4720	the thing that's not Twitter. Therefore, it's great. And blue
+4723	sky saw this exodus of people from Twitter show up. And it was
+4727	a very, very common crowd. It was designed to be controlled by
+4731	the people. But little by little they started asking J she's the
+4735	CEO. Yeah. And the team for moderation tools and to kick
+4739	people off. And unfortunately, they follow through with it.
+4742	Everything we wanted around decentralization, everything we
+4745	wanted, in terms of an open source protocol suddenly became
+4748	a company with VCs and a board. That's not what I wanted. And
+4753	that's not what I intended to help create. Around the same
+4756	time I found noster. We don't know who the leader is. It's
+4759	like this anonymous Brazilian guy. It has no board, no company
+4763	behind it, no funding. It's a truly open protocol. The
+4766	development environment is moving fast. I gave a bunch of
+4768	and I gave him a bunch of money to them. Okay, so that's, that's
+4772	the quote. And he seems to be defining. I've got a few things
+4779	to say about this. But he seems to be defining openness as a
+4783	protocol that is not backed by any company. To him it if it's
+4791	if it has a company and control of it, it's not truly open.
+4796	Adam Curry: I find that to be true. This is why I liked
+4800	Bitcoin no CEO. Right? This is why I like RSS no CEO. But
+4806	Dave Jones: do you think that that's is that always the case,
+4809	though? And I'm gonna bring this back around to what we're
+4812	talking about
+4813	Adam Curry: tell you why I think it's always the case because
+4815	it's never been the case. Bitcoin Bitcoin was the first
+4820	for me, even though I've come to appreciate RSS equally when you
+4827	have something that is truly just a format or a protocol,
+4831	either way. And I and to a degree, I think activity Pub is
+4835	that as well. These are the things that are being
+4839	implemented and used by people because they can, because they
+4843	don't need to pay a developer fee or do any of this stuff.
+4848	Anybody can do it. That was That was always the the idea behind
+4851	RSS and you people will come to me, man now. So do you have your
+4855	own plane? We're talking about God, you invented RSS. You
+4861	invented podcast, and then a podcast to bro, if we had done
+4864	that it would have gone nowhere. No one would be using it. The
+4868	whole point is that it just is. It just is.
+4872	Dave Jones: And now and when you're talking and he started,
+4874	he started talking about licensing fees, and these guys,
+4876	NAD that's understand that. But is like blue sky doesn't have
+4883	Hold on.
+4883	Adam Curry: I didn't talk about a licensing fee. But you mean in
+4886	regards to the music stuff?
+4888	Dave Jones: No, no, I'm talking, you said, you know, royalty like
+4891	fees for implementation. And like developer
+4895	Adam Curry: like API access developer, you have to toolkit
+4899	and all this kind of stuff. But
+4901	Dave Jones: that's see that's in that's where I'm, that's, that's
+4904	the interesting issue here is blue sky is a published
+4907	protocol. You can implement it yourself just like you can
+4912	activity pub. It's a it's just an it's an open specification.
+4919	And in that sense, it's no different than noster. You know,
+4925	but he has, he's saying he has a problem with it.
+4927	Adam Curry: Okay, well, can we separate a couple of things
+4929	because I also see stuff in the boardroom being discussed.
+4934	There's a difference between a protocol and the implementation.
+4939	So when I say activity piled right away, yeah, but there's
+4944	all kinds of lib tardes are Mastodon Mastodon is not
+4947	activity, pub nostre. The Social Network is not Nasir the
+4952	protocol to see the the the mistake, the big mistake of
+4959	nostre was the social network. Because only people in this
+4964	boardroom and not everybody even understand that there's more to
+4969	that than the implementation. So the implementation of RSS was
+4975	initially only blogs. I think if you say RSS people still think
+4980	blogs, they don't think podcasts, they certainly don't
+4983	think music distribution, or audio books, or courseware, or
+4988	any of that stuff. If that's the hardest thing we're doing right
+4991	now is we're we're moving people away from thinking this is just
+4995	for blogs, we're just for podcasting. And this can be for
+4999	all kinds of distribution. That's the hardest thing we're
+5002	doing.
+5004	Dave Jones: See, okay, so he says to backup at the second he
+5008	says, he says in another prices. So what if we created a team
+5012	that was independent to us, he's talking about when he was at
+5015	Twitter that built a protocol that Twitter could use and then
+5020	build on top of, then we would wouldn't have the same
+5024	liabilities because the protocol would be an open standard, like
+5027	HTTP or SMTP. Twitter would become the interface and we can
+5031	build valuable business by competing to be the best view on
+5034	top of this massive corpus of conversation that's happening in
+5037	real time. And, you know, he says, he says, I know it's early
+5043	and noster is weird and hard to use. But if you truly believe in
+5045	censorship, resistance and free speech, you have to use
+5048	technologies that actually enable them to change arise,
+5051	blah, blah, blah, because these, those are technologies, no
+5053	company or government can compromise. The corporations can
+5057	be compromised, and they have been, I
+5059	Adam Curry: think there's a difference between Okay, let me
+5063	take mercy because I hear what you're saying. I hear what he's
+5065	saying. And I think he's incorrect in some things. I do
+5069	to Twitter started as an RSS based system. Where and that's
+5077	why that failed all the time, because they tried to centralize
+5080	RSS, where if they came out of Mike, the first term was
+5085	microblogging. So we all had blogs. And it was kind of a
+5089	groovy system, because we had a product called Google Reader,
+5094	but there are many others. And when that never got to flourish
+5098	that business online Like podcast apps that enable that
+5103	that created the product out of the protocol. Dorsey is
+5107	interspersing, the censorship resistant nature of a protocol
+5114	that allows you to communicate with social media, which is a
+5118	shit product. Yes, that's the problem. Social media is a
+5123	horrible product. It's a horrible product. I can't put it
+5127	any other. Now. You take activity pub in the context of a
+5132	reasonably close system, like podcasts index dot social, it's
+5136	an okay product. And I have an account, just podcast index dot
+5141	social, and I have ad server level have blocked certain
+5145	instances. And from time to time I go through it and go nope,
+5148	nope, I go to the public timeline. Nope. Because I
+5152	protect our community. So it actually functions as a
+5156	reasonable product for for the mission that we have. But are we
+5162	really doing social media there? No. In fact, I've asked some
+5166	people I said, Hey, could you not post that here? Because
+5169	that's just going to create a whole conversation that has
+5173	nothing to do with what we're doing here. It's
+5175	Dave Jones: more in podcasting index dot social is more like
+5178	just a big version of GitHub discussions. Yeah, yeah. Oh,
+5181	Adam Curry: yeah. A little less stringent, I think but yeah,
+5184	Dave Jones: it's very, it's just so hyper specific to one to kind
+5189	of one topic that it keeps some of the and and your moderation
+5193	on the back end. Keep some of that away.
+5196	Adam Curry: So what Dorsey's mistake is, in my opinion, this
+5201	he is equating free speech and censorship resistant speech with
+5207	a social network. No, the hard No, because it's not it's a crap
+5212	show, as people arguing, then, you know, it's like comments,
+5216	comments, depending on how you on how they're displayed, even
+5222	that determines the product of something that can be censorship
+5225	resistant. So podcasting is censorship resistant. And it's
+5230	but it's very different. And you can use RSS for a social
+5234	network, the see what Twitter did in the beginning, but that's
+5238	a crap product. Podcasting is a podcast apps are outstanding
+5242	product, people like them. People use them. Wherever you
+5246	get your podcast, it's a great distribution mechanism. So we
+5250	have to, we have to make a distinction between the protocol
+5255	and the product. Whoo, there you go.
+5258	Dave Jones: Yeah. Well, I think I think and I think that's, I
+5261	think that's where I'm struggling with what he's saying
+5264	and where I disagree with him is you can have, you can have open
+5268	protocols that are developed by private companies. I mean,
+5273	that's just the protocol itself. I mean, it's take the iTunes
+5281	namespace was open, we're all allowed to use it. It's not like
+5285	the it's not like the USBC. Right, but you can't get one
+5289	kangaroo.
+5290	Adam Curry: But it holds everybody back. Because I like
+5294	the podcast namespace. Where there's no, there's no, there's
+5299	no other incentive other than just to keep the servers
+5303	running. Yeah, and no one. Well, I guess, technically, it's all
+5309	it's only as good as the people but when you have a corporation,
+5312	corporations have boards, corporations have targets
+5315	corporations have to make money corporations have a reason for
+5317	existence, podcast index, dot LLC podcast index, LLC, that has
+5324	one mission to make itself unnecessary, to destroy, destroy
+5330	itself. That is that is our ultimate mission. In the
+5333	meantime, keep everything running, but have a backstop. So
+5336	if we all keel over, then the servers keep running on AutoPay,
+5340	etc. But the mission is to make ourselves obsolete. And I think
+5344	we stated that clearly. With all these, all these censorship
+5348	resistant things, which protect us mainly from corporate
+5353	corporate from the corporate world.
+5357	Dave Jones: They said because, okay, he says, He's talking
+5360	about Blue Sky says it was the anti Twitter. And he's talking
+5363	about how why he left blue skies. So he deleted his
+5366	account. He left blue sky. He says it was the anti Twitter
+5369	people were literally running from Twitter to blue sky. And
+5372	that's not a way to build something successful, sir. So he
+5376	says,
+5378	Adam Curry: but they weren't running from they weren't
+5380	running away from Twitter to blue sky, the protocol. They
+5383	were running to the product, blue sky product. Yeah.
+5386	Dave Jones: And so he talks about surviving. And this is
+5389	where it this is what really, this is where I'm bringing it
+5391	back around a little bit because he says, he says, All that said,
+5397	I really respect J she's the blue sky. As CEO, she was under
+5402	a lot of pressure to survive. Yeah. And he's talking about,
+5407	you know, when they started doing moderation and this kind
+5410	of thing. It it's like he says, he says it's such a crazy thing.
+5417	It seems like the core leadership team at Twitter
+5419	around you was just told this is the question the the guy asking
+5423	Dorsey the question. He says it seems like the core leadership
+5426	team at Twitter around you was just totally opposed to elements
+5430	throughout the company from the sales team to the board. It's
+5432	almost as if the company were fundamentally in conflict with
+5435	itself. He says it was also pretty reactive to what was
+5441	happening the world well,
+5443	Adam Curry: because sent to be censorship resistant, there has
+5447	to be zero financial incentive. And by definition, if you have a
+5451	company, you're going to have financial incentive one way or
+5454	the other.
+5456	Dave Jones: And, and I want this idea, he said that she was under
+5459	a lot of pressure to survive as a company. I think you said it
+5466	fine, earlier. But I mean, just to state it more clearly. Let's
+5471	set a goal to never try to survive as a company.
+5475	Adam Curry: No, we actually our goal is to destroy ourselves
+5479	that yeah, that's even better. That's the best goal ever.
+5483	Dave Jones: If podcast index dies, they just dies. I was
+5486	Adam Curry: talking to someone today. And you know, who want to
+5489	use the podcasts index as a back end? And which, you know, a lot
+5495	of a lot of people in this boardroom do. And I think
+5499	because there's a relationship, and there's several years of
+5502	history, now, people know what, you know, know, us know, how we
+5506	operate, know what we do and what we don't do. And they trust
+5510	us, there's a trust, there's a huge trust factor there. And I
+5514	don't think we've ever violated that trust. And I don't know,
+5516	there's just that we're just, we're good guys, now. But
+5521	someone from the outside says, hey, you know, so what happens?
+5524	If podcasts index goes away, there goes my business, because
+5528	I'm trusting that to be the back end. And I always say, Well, let
+5533	me tell you, first of all, we have $28,000 in cash in the
+5539	bank, and that money is on auto pay than that. And you know, it
+5544	costs real money to keep everything running every single
+5547	day, every single month. And we're expanding, and we'll need
+5550	more over time. But in general, we think three to five years,
+5554	this, if we got no, if the money stopped today, we could have
+5558	three to five years, it would continue, there'd be no extra
+5561	development, et cetera. But that would be it. Dave and Adam,
+5564	don't take any of that money for personal use. But I said within
+5570	that three to five years, we hope that there's just an index
+5574	space is just out there, then and you don't have to rely on
+5578	us, it will be just like, Tor, you know, or hash space, or
+5582	whatever it is, it will be, it will just be the way to get in,
+5587	there will be will be the way to get it out will be and this is
+5590	what things like pod ping and activity pub and we're figuring
+5594	all this out and things will know it's our mission, it's our
+5598	ultimate mission to make ourselves obsolete. So
+5600	podcasting will just be it won't be a place where accompany it
+5605	will be podcasting. It's just there, tap in
+5610	Dave Jones: it, to podcasts and to 1.2 point oh will survive
+5614	because it doesn't need any money. Right? The indexes,
+5618	podcasts index does need money. And if and if the market
+5623	determines it should die, then
+5624	Adam Curry: it'll die. That's fine. It's not gonna, it's not
+5626	gonna. And
+5627	Dave Jones: here's why. And here's what happens that the day
+5630	that the day that that does happen, I cut everything down to
+5636	the bone. We can run, we can run just we can run core services
+5641	for about $300 a month. And, you know, with with, with
+5647	Adam Curry: restricted restrictions on API access, I'm
+5650	Dave Jones: sure right, yeah. And that'll and that'll take
+5653	along for a long time. Maybe
+5655	Adam Curry: we just put out a database every week. I don't
+5657	know. It could be any number of things. We could
+5660	Dave Jones: do that for I could do that paying for it myself out
+5662	of my own wallet. So the unknown I'm not worried about that the
+5667	it's just we're you know trying to survive as a company and like
+5673	Keep it keep yourself from dying. I mean, that's where all
+5676	the bad stuff starts. You know, that's that's yeah, that's where
+5681	things start to always go wrong. Yes,
+5686	Adam Curry: that's exactly right. It's always goes wrong.
+5690	Yeah,
+5690	Dave Jones: so I'm just like, you know, the world the world
+5692	moves on things go away. So if we are you know, if for some
+5696	reason, the the economy just completely The tanked and
+5700	everybody's in the funding for the index data. This one we'll
+5703	move on. But, you know, he, he said something else about brand
+5708	advertising. He said, But this is this. I do agree with him. He
+5713	says, I think the core critical sin was choosing the advertising
+5718	model to begin with brand advertising is not like direct
+5721	advertisements, right, which is more programmatic. It requires
+5724	something like a Disney to essentially do you a favor,
+5728	because the only because the only players that matter to them
+5732	are Google and Facebook, Snapchat, Twitter, everything
+5735	else doesn't matter. And these are ads, they're essentially
+5739	throw away money for them. But we made that choice in order to
+5742	go public. Yeah,
+5745	Adam Curry: that's right. These are and that was to satisfy the
+5748	initial investors and you go all the way back up the chain.
+5752	Dave Jones: He said, we needed a model, Facebook's model was
+5755	really good. So we came up with an ad program and ran with it.
+5759	And I came back to the company a year after the IPO, and we were
+5762	seeing a decline in growth. And that manifested in the decline
+5766	in ad revenue. So our first focus was to rework the product.
+5769	So we were growing again. And then second was to get off this
+5772	dependency on advertisement. And when you're entirely dependent
+5776	on that, if a brand like Procter and Gamble, or Unilever doesn't
+5779	like what's happening on your platform, you're totally
+5781	threatened to pull the budget with accounts, which accounts
+5784	for like 20% of your revenue, you have no choice. Yeah,
+5787	Adam Curry: in that interview, he also says that it was easy
+5789	for Elon to fire half the company, because half the
+5792	company was in sales. You know, and all and trust me when I say
+5798	that the largest military contractor in the world, Elon
+5801	Musk, because that's what he is looking at his real businesses.
+5806	His mission is not to give you freedom of speech is just the
+5809	cost of doing business for him. By the way, he's giving you
+5812	freedom of speech, not freedom of reach. That's also in that
+5815	article, which is true. And I see that all the time. Hey, no,
+5820	no, I get no numbers on this post. You know, okay, fine. I
+5823	wonder why. All he's doing is making sure there's enough
+5829	excitement and action around x to keep everybody engaged as he
+5834	rolls out. His Kwazii podcasting infrastructure is make money on
+5841	your writing infrastructure. So he's trying to be substack. He's
+5844	trying to be trying to be Patreon, but not really not
+5848	really with subscriptions. But he'll roll that out. And it all
+5851	comes down to he wants to be your bank. He's got 38 Money
+5855	transmitter licenses, he'll have them all. And if there's not
+5859	enough action around his his x.com, he'll post something
+5863	outrageous to start up again. He just needs to keep everybody
+5867	engaged and on Twitter all the time, until he has everything
+5871	rolled out so he can be your bank. That's it. That's it. He
+5875	wants to be your bank.
+5879	Dave Jones: It here's the quote you were talking about. He says
+5883	it was a brand advertising business and a brand advertising
+5886	business needs a huge sales staff. Over 50 to 60% of Twitter
+5890	employees were in sales. Yeah,
+5893	Adam Curry: there you go. There you go. But, but But make no
+5897	mistake, this is not about Ilan trying to give you freedom of
+5900	speech. No, no, no, no. By the way, can I just do a quick
+5904	namespace thing here? Oh, yeah, sure. Well, I'm not going to
+5907	play the jingle. Leslie Leslie has been emailing me. We got a
+5912	long distance dedication from Lesley Lesley says that she is
+5917	working on audio books. And she has a request for the season
+5924	tag. Which I thought was quite reasonable. Because I'm like,
+5928	Oh, by the way we updated season, we got season taxes.
+5930	Yeah, but it's not enough. I will quote from her
+5933	correspondence with me. I know that most hosting companies
+5937	support season numbers. But what would also be helpful is if we
+5941	could get a season level art and titles. Oh, she says I think
+5946	that would be a great help for audio books. And maybe even for
+5949	musicians, as they could put multiple works out as seasons
+5953	within a single feed and distinguish between them, rather
+5956	than having separate feeds for each.
+5959	Dave Jones: I think that's a neat idea.
+5961	Adam Curry: I think it's an interesting way to look at it.
+5962	And we were just because she says you know, I can't afford to
+5965	have a new RSS feed for every single audiobook. So you gotta
+5971	Dave Jones: get people to subscribe to. Yeah. Because that
+5975	should just be an attribute on the optional attributes,
+5979	Adam Curry: optional attributes. So optional image and title I
+5982	think is what she's specifically asking for. And I said we
+5986	already have titles and titles we have but she wants art. Do we
+5990	have because I looked at it. Are you sure we have title?
+5993	Dave Jones: We have name you can name a season or you can name a
+5996	season. Like as names. Let me go to the GitHub brief thoughts on
+6003	point o season man
+6007	Adam Curry: that James Kerguelen his podcast namespace.org Sure
+6011	pops up at the top of the OGS now I liked that let me see
+6016	because I have season
+6018	Dave Jones: it's the name attribute.
+6020	Adam Curry: Okay let me see
+6023	Dave Jones: in the examples like podcast season Yeah,
+6027	Adam Curry: yeah yeah name equals yes name. So episode art
+6032	Dave Jones: Yes. So we just need an image URL attribute and
+6035	Adam Curry: hosting companies apparently are still only
+6038	offering the old iTunes namespace I guess the number the
+6044	season yeah for the season number but the people want names
+6047	and name title and image
+6050	Dave Jones: so I think we shouldn't want it to get against
+6052	people what they will go on it there's
+6053	Adam Curry: a customer to customer customer waiting for
+6057	you right there. Podcasting 2.0 podcast we deliver customers to
+6062	you. You're gonna play a song. Oh yeah, let's do that right
+6066	now.
+6066	Dave Jones: Thank you for reminding write this up as a as
+6069	an issue on GitHub while you're playing while I'm playing the
+6071	song.
+6071	Adam Curry: Okay, good. I think I got this one from either the
+6075	Phantom music power hour I got it from the side street music
+6078	podcast another banger for a Friday everybody Tony Salamone
+6082	with red light of podcasting live
+6085	Unknown: on offense to the sky affair face first into the
+6092	concrete.
+6140	Logging into my brain
+6153	changed and shaped?
+6220	Supernatural it's
+6231	the days Baby
+6282	Adam Curry: Tony Salamone red lights podcasting. 2.0 if you
+6285	boost if you didn't boost go back, rewind boost. Tell him you
+6289	heard it on podcasting. 2.0 That's a good one. That's a
+6293	great song. I love that track.
+6297	Dave Jones: Add an image href attribute to the season tag for
+6299	SC Have
+6301	Adam Curry: you got it in? Alright, you nailed it, I
+6303	Dave Jones: get it in, I got it. That's
+6305	Adam Curry: how we write one song. And we've updated the
+6307	namespace Beautiful. Beautiful, beautiful, beautiful. I love it.
+6313	Cool. Good. Anything else for the board meeting here?
+6318	Dave Jones: I got some stuff that we can wait. We always push
+6321	Adam Curry: every now next week, there's no board meeting because
+6323	I'm on the road. I can't do it next week. So that's true that I
+6327	need to do is I'd rather go long today. And then
+6331	Dave Jones: that's alright, I've got I didn't get much
+6334	accomplished this week, I'd planned on getting the resolver
+6338	built for the I didn't get much of a chance to code this week.
+6342	But I want to get the that we need a resolver for translating
+6351	a key send addresses? Oh, you know, so that you can look up
+6357	like, David Get out b.com and convert it back to a to a note
+6361	Id we need that. But I want to make it where apps like cast
+6368	ematic can just send one request for a whole bunch of addresses,
+6373	you know, and like we do the resolution for it. You could you
+6378	could just do send off like 10 of these addresses, we would
+6381	resolve them back in one call. Yeah. And do the caching and all
+6387	that nice. Nice. I want to make that easy for everybody for
+6391	lists. Yeah, apps. Yeah. But before we put cuz I want to get
+6396	that key send address thing into the value recipient tag on June
+6399	1. But I don't. But I don't want to do it without giving the
+6404	serverless apps a fallback? Yes, as we always do. So so that's
+6410	the next thing on my list. And we'll talk about that. Okay,
+6413	I'll get it done while while you're
+6415	Adam Curry: gone two weeks. Yeah. Okay. Yeah. Sorry,
+6417	everybody. And Alex is working
+6419	Dave Jones: on a top secret project for us. So. Yeah. Put
+6426	for pod payments.
+6427	Adam Curry: Do you put them under NDA? Indie. So we can't
+6432	talk about it. So we can't talk about it. And yeah, it'd be fun,
+6435	Dave Jones: but sign the document. Here, Alex on this. I
+6441	know what
+6443	Adam Curry: you'd say sign this. Yes. I was just as I was playing
+6448	that song. I'm just I'm just like jamming out to the song. I
+6451	remember because the last episode, when you lost power at
+6455	the office, and I played tracks for two or three hours. That was
+6459	more fun. I had just because we've been talking about I've
+6462	been reminiscing My mind has been going back and forth in
+6464	history. That was more fun. For me as a music disc jockey than
+6471	any shift I ever did on Z 100 The biggest radio station in New
+6475	York at the time. In fact, I wasn't. Why because I was almost
+6479	it was like it was lonely. You know, you're just talking into
+6483	Mica. Hey, I live in New York. But there's nothing coming back.
+6486	There was no there was no chat room. There was no booster grams
+6491	there was you know, we had requests and so on the back
+6493	would take a request and wasn't really a request anyway. We just
+6497	pretend to like yeah, okay, this, this is what's next in the
+6500	computer. So we're playing this.
+6503	Dave Jones: You don't even have Buzzsprout fan mail.
+6506	Adam Curry: Let's, let's thank a few people, shall we? Let's use
+6509	our own fan mail here. We have lots of live booths that came in
+6513	3438 from Billy Bones. says thank you for the boardroom
+6516	meetings. It makes me excited for podcasting. 2.0 Well, you're
+6520	welcome. And you're a part of it. Billy Bones. We're all part
+6522	of the Billy Graham anonymous 3333 We got Mike Dell 1701
+6528	hamvention booths from Dayton Ohio. 70 threes, keto eight Lima
+6532	Mike Juliet at the hamvention forgot all about that. Yes, 73
+6538	is kilo five Alpha Charlie Charlie beaconing every 15
+6540	minutes on bar ac 20 meters. We got the heartburn we got the 777
+6547	from Sam Sethi. True fans has the remote item license working
+6552	for example. She does for example, we have it working for
+6555	all phantom power music artists. We have plans to use it with
+6558	clips next so you grant a license for other podcasts to
+6561	use your audio in another podcast and get paid like music.
+6565	Beautiful Sam. Thank you let's let's can we can you post
+6571	somewhere short. Just to document how that how that
+6574	showed up like hub that pops up so other apps can see it. That
+6579	would be great. This is perfect. See, I told you I would carry
+6581	this it's so easy. The work is done for me. Done. Shred word
+6586	part of the dorsal verse 1000 SATs genuine variety and organic
+6590	goodness is King not perfection and sounding like everybody
+6593	else. We call it here in the Dorko verse Nashville called
+6597	when you stick to the template Amen brother
+6600	Dave Jones: That's right is that the is like the NAM when you're
+6602	Nashville Nashville sound when
+6605	Adam Curry: you're perfect. Last night, this is another another
+6609	writing on the wall. So we were going to tune in to our favorite
+6612	show. Cheers. We're on season nine, we're almost done.
+6616	Dave Jones: Oh, you're close.
+6618	Adam Curry: We've been binging. And so I pop open, because you
+6621	know, you can get it on Paramount plus through Amazon,
+6625	whatever. And right at the top, oh, there's the American Country
+6631	Music Awards. Live on Amazon. So we pop it, you know, it's like,
+6635	okay. And it was just uncomfortable to watch. It was
+6639	so because it's so like, structured and you know, they
+6644	have ads, of course. And so it's all tight on a timeline. It's
+6648	unnatural. You know, I love Reba McIntyre. But, you know, she's
+6652	hosting again. And you know, and it's just, it's they're trying
+6656	to make this tight, tight show. And it's this, this, you know,
+6660	robotic, doesn't feel like podcasting where it's crazy to
+6664	control.
+6666	Dave Jones: You know, I hear songs. Sometimes I'll ever and
+6669	honestly Taylor Swift's catalog is like this. You just know that
+6674	in five years minimum AI will be able to recreate songs this
+6682	dinner just exactly like that. They sound no different. They're
+6686	just like, like vacuous. Couldn't
+6688	Adam Curry: do it already. You can do it already. And there's
+6690	no love. There's no soul. It's soulless. Yeah,
+6693	Dave Jones: there's, do you know what's, you know? What is it?
+6698	Well, so we've been rewatching X Files.
+6700	Adam Curry: Yeah, yes. You're done with the with the musicals.
+6703	You're onto X Files now.
+6705	Dave Jones: Now we're intermixing we're mixing it up.
+6708	Now. We've heard we've been watching musicals too. But do
+6712	you know what's great about those old shows from 80s 90s?
+6716	You don't see any computers anywhere?
+6720	Adam Curry: It's all analog.
+6721	Dave Jones: That's right people people's desks have like pens
+6724	and paper and a phone
+6725	Adam Curry: Sam Sam Malone in cheers has a little black book
+6731	with all those babes all those babes in it? Yes.
+6733	Dave Jones: All the babes so true.
+6735	Adam Curry: It's awesome. Blueberry 77 777 member berry
+6740	booths for Dave Oh, then we had the phantom power media 10,000
+6746	SATs we read that one Dave tell your daughter to apply for bands
+6749	at Bitcoin stage in July. Good idea. Eric peepee was sent the
+6753	boob boost which did come through 808 CELTA Crayon 777.
+6759	Howdy boardroom Dave don't get me started on docking station
+6762	firmware. Weekly we are updating those because they are well past
+6765	the 12 month mark. The Thunderbolt ones are the worst
+6768	culprit so far job security, right go podcast and contests.
+6773	We love job security as a chat F with his 777 boosts and I hit
+6781	the delimiter There we go. Oh,
+6783	Dave Jones: we got a new subscriber $10 a month from
+6786	Timothy voice well then
+6791	Adam Curry: haven't used that one in a while. You've been deep
+6793	fried
+6794	Dave Jones: midribs kid right?
+6795	Adam Curry: Yes it is.
+6796	Dave Jones: That's a little drip this dribbling. We got a Z
+6802	that's our only one off Pay Pal this week but we guess boosts
+6807	get Steve Wilkinson aka CG works. striper boost 7777
+6814	through cast ematic skillet boost. Maybe we can get a John
+6818	Cooper screen skillet
+6819	Adam Curry: boost. That's our semi striper boost. Yes. Okay.
+6828	Dave Jones: We got Andrew Gromit. No 2222 Road ducks hello
+6832	and wherever app nice this top secret app I've
+6836	Adam Curry: ever tried that thing out. It's amazing. It's
+6839	basically wherever Yes, basically a framework of every
+6842	everything that we have in podcasting. 2.0 just smashed
+6846	into one web app.
+6848	Dave Jones: We're gonna get him on the show, do you? Yes, of
+6850	course.
+6850	Adam Curry: Of course. Of course. Andrew, you're up, bro.
+6855	You're up. You're on. You're gonna be on the show. I can't
+6857	wait to catch up with him. I can't wait. We got some we got
+6860	stories a bit. You hear stories that I have forgotten? No. In
+6863	fact, I guarantee you he has stories that I've forgotten.
+6866	That'll be a good one. Let's get him on.
+6870	Dave Jones: Okay, we got Andrew Andrews on deck. He says he says
+6874	this rocks heard on Podcast, episode 179.
+6878	Adam Curry: Yes. And Andrew Thank you. He's got everything
+6880	set. You know, the wherever app booths come through, and I can
+6885	see what song it was for and I think he I don't know that that
+6890	yeah, has the reply function working which is great. I love
+6892	that too. I love replying to boost i Every morning I come and
+6896	say oh, can I reply to this? Oh, can I reply and because it's
+6899	split Usually I'm sending people back more than I received.
+6905	Dave Jones: You're losing money.
+6906	Adam Curry: I'm losing money on it, but I love it.
+6910	Dave Jones: To 237 That is the number of unread emails I have
+6914	in my podcast index mailbox. All
+6916	Adam Curry: right, I'm plugging along, brother. I'm taking care
+6919	of most of them when I can. Oh, yeah.
+6923	Dave Jones: I'll say Jacob J, K, ob 1234. Booths through pod
+6928	verse, he says, great tunes. Thank you, Jake. By
+6931	Adam Curry: the way, the the update ability of the dashboard.
+6935	Now the control dashboard is great, because now I can change
+6940	someone's Feed URL
+6943	Dave Jones: that's working for you. Yes,
+6945	Adam Curry: yes. And now, if the if the feed is already in there
+6948	double, you have to resolve that first. I've even done a couple
+6951	of successful merges, which did my head and well did my head and
+6956	because I'm like, What's merging into what you know, like, I'm
+6960	merging the wrong way. Oh, restore, reset. Okay. merge them
+6963	back the other way. All right. There we go. Undo Ctrl Z. is
+6970	great. I'm able to I'm actually able to do a lot for people. So
+6974	I feel quite powerful with the capabilities I have.
+6978	Dave Jones: It will I'll continue to refine that. It's
+6980	still rough.
+6981	Adam Curry: Give me Give me root access. Give me RM dash RF.
+6986	Yeah, I don't I've actually done that. No, yes. Back what own
+6992	what folder? Okay, back in the onramp days now. Something
+6995	similar. Here's what I did.
+6997	Dave Jones: So wait, they get tilde dummy. Somebody in onramp
+7000	gave you root access to anything?
+7002	Adam Curry: Oh, yeah. No, I had root access to everything. So we
+7005	had a son with a Unison five maybe. Spark station. Spark
+7011	station. Yeah. And Neuromancer was the machines name, I
+7015	remember it well. And so there was a ragtag, we had like one
+7020	client, and we were just trying to do stuff. And, and, you know,
+7023	I was trying to figure something out. And so I go in, and I'm on
+7027	the machine, right? So I have root access on the machine, that
+7030	I'm seeing all these errors being thrown. And I'm like,
+7034	well, there's something wrong here with this sh. So why don't
+7037	just RMS H for a second I removed the shell. Nice. was
+7049	interesting how we brought that back to life. That was my that
+7055	was my big aha moment. Oh, don't give me that access anymore. I
+7059	Dave Jones: used to work at an insurance brokerage in it. And
+7064	we ran a big as 400 system. This is a this is 1000. Person.
+7068	Company. Yes. 400. Man classic. Millions and millions and
+7073	millions of dollars of insurance premiums going through this
+7077	company. And then all the night everything ran as a batch job as
+7084	400 to print all the debt, all the premium notices and all this
+7087	kind of stuff. The COBOL we do in COBOL? No is RPG? Yeah, is
+7093	the native language on is 400. So it was said the we had a new
+7098	guy in it. And he he was just he just needed a job. Like he had
+7105	an history degree like he didn't know hardly anything about about
+7109	anything with computers. And they hired him. And then like a
+7113	week later, all the all the MIS people you know, it used to be a
+7117	separate department in my es mi Yes, yes. Yeah, of course, all
+7121	the MIS people were like, nobody wanted to stay the regular night
+7126	operator guy was off and none of them wanted to stay late. So
+7129	they're like, hey, we'll just give this this guy with a
+7131	history degree a crash course. There was 400 job management
+7136	with RPGA. Yeah, with and so they gave him a 15 minute,
+7140	here's a here's how you do this. You run this command, you wait
+7142	to this other thing happens. You run this command, and then you
+7145	do these things. But whatever you do, don't do this thing at
+7147	this time, because that'll screw everything up. And he did that
+7151	thing. It two o'clock in the morning. The thing was so
+7155	screwed. They had to just start they just had to punt and
+7157	restart restoring from backup. Oh no. He started running batch
+7161	jobs on top of each other. And deleting stuff. It was a it was
+7166	like a almost business ending event.
+7170	Adam Curry: And I'm like, what did you think was gonna happen?
+7172	Fantastic. Ah, Dave, there's another podcast in here for us,
+7176	ma'am. Yes. tales from the trenches.
+7179	Dave Jones: Magnolia mayhem, do 7777 to fountain Magnolia mayhem
+7185	says there's already a good number of audiobooks on our set.
+7188	That's podcasting. Yes, there there are, that's for sure.
+7191	Mostly creepy pasta stuff like Tales from the gas station.
+7195	Several productions of Bourassa last known position etc. but
+7200	it's a foot in the door. I wish I could think of some non horror
+7203	examples. But outside of that I just have custom RSS feeds on my
+7206	NAS for my own audio book ribs. It's pretty easy. Yeah, either
+7210	way. We're already heading in that direction. Right? Oh, it is
+7213	creepy pasta. What does that mean?
+7217	Adam Curry: It's a good band name.
+7221	Dave Jones: Yes.
+7222	Adam Curry: Not everybody with creepypasta.
+7226	Dave Jones: See, Jean been 2222. Hey, Jean to cast magic. He
+7231	says, I think Dave is right about the K God. K God feed
+7235	being a podcast l feed. But do any apps actually support
+7239	podcast l playlists? They
+7241	Adam Curry: will? They will, they will. They will. Because
+7243	that that project will that will happen. Somehow that's going to
+7247	happen. Someone's going to do if it's not me, it's going to be
+7249	somebody's going to happen. Sam Sathya also sent me a very
+7252	thoughtful email with all kinds of ideas about that. I'm still
+7256	processing everything. He thinks that should be the publisher
+7260	feet. I'm thinking the podcast so I think the list is the way
+7262	to go. But we're working on it. We're working on it. There's
+7265	plenty figured out whenever we will figure it out. Of course
+7267	Dave Jones: do stuff, see what works, and then go yep, yep.
+7271	Yep, comic strip blogger, the delimiter. Here we go. 23,000
+7275	SAS through fountain CSB says, howdy, David Adam. I'd like to
+7281	recommend a podcast about important things in life,
+7284	literal quote from the last episode. Quote, I am so happy
+7289	with my new exercise regime, also called having a job. I
+7293	don't know if I'll let you know if I can see my junk in the
+7297	shower someday. Unquote. Said Ryan bemrose. The delivery
+7302	driver for Amazon's subcontractor from Seattle other
+7305	co host is some unemployed Irish guy called Darren or Darren from
+7310	a shoe rack Wars era. Check it out at www dot grumpy old Ben's
+7317	dot com comma yo CSB. So
+7321	Adam Curry: Devora divorce. Darren O'Neill always does the
+7324	Rock and Roll pre show complete copyright violation before every
+7329	it's the copyright or copyright violation show before every no
+7332	agenda live show. And John was ragging on him. He says Darrell,
+7336	I'm like Wow, man. The guy has been doing this for years and
+7339	you still know his name. You call him Darryl now instead of
+7342	Darren. So that's what I think we should just in the knife that
+7345	we should play commerce or bloggers jingle. We haven't
+7348	played that in a while. Yeah, do it hit a
+7351	Unknown: comic strip.
+7353	Dave Jones: Comic Strip,
+7354	Unknown: Comic Strip,
+7355	strip.
+7358	Comic Strip. Comics jam comic strip.
+7364	Adam Curry: Classic has been around for 15 years that that
+7367	jingle probably gets
+7370	Dave Jones: the monthlies. Alright Terry Terry killer $5
+7373	Thank you, Terry. Silicone florist. $10 Chris cow and $5
+7379	Damon Cazal Jack $15. Yarn, Rosenstein. $1 Derek J. Vickery,
+7384	the best name and podcasting. $21. Jeremy gerdts. $5. Michael
+7388	Hall $5.50. and New Media projections. That's Todd and Rob
+7393	$30. Go
+7395	Adam Curry: thank you all very much. You know, I read somewhere
+7397	I think tally coin. Did they shut down the tally coin shut
+7400	down?
+7402	Dave Jones: No.
+7403	Adam Curry: You wouldn't know because nothing ever comes in
+7405	through tally coin. So we wouldn't know. That's right.
+7409	Dave Jones: If a tree falls in the woods, nobody's around to
+7411	hear it. And
+7411	Adam Curry: we'll tally coin have a receipt. Nope. They
+7413	won't. Hey, good board meeting everybody. I feel like we we fix
+7419	the we saw a lot of stuff once again. That's a board did you
+7422	who's doing the meeting minutes?
+7425	Dave Jones: Somebody's got it. Somebody's
+7427	Adam Curry: got it. My
+7427	Dave Jones: name. And Mike's got it.
+7428	Adam Curry: Yeah. All right. Brother. Have a great weekend.
+7432	Dave.
+7433	Dave Jones: Yeah. Have a good trip to Nashville. Yes.
+7435	Adam Curry: Yes. Yeah, I'm looking forward to it's going to
+7437	be a lot of fun. Okay. boardroom Thank you very much for being
+7439	here. Once again. We'll be back in two weeks for another
+7444	probably extended edition of the podcasting 2.0 podcast See you
+7447	then everybody.
+7464	Unknown: You have been listening to podcasting 2.0 Visit podcasts
+7469	index.org. For more information, go podcast.
+7474	Adam Curry: Podcasting
+7474	Dave Jones: is the anti monopoly

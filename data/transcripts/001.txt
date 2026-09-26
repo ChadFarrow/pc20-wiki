@@ -1,0 +1,1311 @@
+0	podcasting 2.0 for August 28 2020, this is episode number
+4	one. We're upgrading podcasting what other software tech podcast
+14	starts like that? It's Adam curry coming to you from Austin,
+20	Texas for the very first episode of podcasting. 2.0. We're going
+24	to upgrade podcasting. And with me, podcasting is my friend and
+30	partner Dave Jones. Dave, how you doing?
+32	I'm good, man. What's up?
+34	Great. This is it's we have you know, we've met once in person,
+38	we've spoken on Skype and on phone calls for man. 10 years, I
+44	guess is how long we've been?
+47	Yes. The only time I've met you in person is we spent the night
+51	at your house.
+51	That's right. You were coming through town, you were on your
+53	way somewhere else in transit? Yeah.
+55	Yeah, you fed. You fed me and my wife, and it was awesome.
+59	Now, what do I What did I make?
+62	No, you took us to the restaurant? Oh, there you go.
+65	You did not cook.
+67	These days I might have. We're all southern boys. I'll take you
+71	up on now all of a sudden, we're all for all Southerners. So I
+76	think to explain what this podcast is about? Well, first,
+79	I'd like to say that it really is intended for the three
+83	stakeholders in podcasting, which is people who make
+86	podcasts. And what that is, is interpretation we can get to
+91	people who listen to podcasts, who also interact, of course,
+94	with their favorite podcasters. And for this for the purposes of
+98	this podcast, the software developers who either have ever
+102	thought about making a podcast app about different ways of
+107	presenting podcasts and making them more fun or more features
+112	or things that just currently can't be done with the
+116	ecosystem. And certainly not because of all the heavy lifting
+119	that comes into play with the actual back end of what a
+125	podcast player or podcast app has to be. And I think it'd be
+131	handiest if, if Dave, if you and I talked a little bit about how
+135	we met each other what we've been doing for the past 10
+137	years. And then we'll talk about a bit of the backstory of how we
+141	came to this point and what the heck we're doing. So yeah, when
+144	I wasn't, if I can remember correctly, we were both in a
+150	like a beta thing. One of Dave whiners. outliner
+154	projects. Yeah, it was easy to for poets, that it was like a
+158	melee kind of a mailing list. More than more than software
+163	originally. And when I first started listening, I started
+166	listening to your podcast, no agenda. I was I started
+171	listening to that and heard that you were using the world
+173	outline, which was like a module, so to speak of the OPML
+178	editor, which itself was a descendant of was at Frontier,
+183	different radio, user land and frontier, which all gave Dave
+186	whiners lifelong project. Okay.
+189	So that, you know, when when I saw that there was software
+192	backing up the whole world outline. And that's how you were
+194	doing your show notes. And all the publishing for the show. I
+198	thought, well, that's really cool. And I don't know anything
+202	about frontier, I don't know, any, you know, how any of this
+204	stuff works. So I just dove in, like I typically do, you know,
+208	with two feet and just started hacking on stuff. And I'm not a
+213	programmer by profession. I'm a sysadmin. But I've been
+218	programming for, you know, many, many years on the side and just
+222	projects. So I thought, well, I'll just go ahead and, you
+225	know, start hitting this. And of course, you know, making all
+228	kinds of mistakes and screwing it up. But I got into the
+230	mailing list. And we were in the Met you because you were in
+234	there as well. We're all beta testing this stuff together. And
+239	I think if my memory serves me correctly, I think the way that
+243	it evolved was that you were had some ideas for a bigger project.
+249	And I, myself had been thinking about moving the frontier and
+256	the stuff that frontier was doing and us and world outline
+260	was doing. I've been thinking about moving it to just a LAMP
+264	stack based Linux application. Because what what had been
+268	happening was that the frontier code base that OPML editor was
+273	built on was showing his age, especially on the Windows side.
+277	And back then we were all this stuff was done by by rote
+283	spinning up an EC to Amazon instance, installing Windows on
+288	it, and then installing the OPML editor in that and then starting
+293	it serve content HTTP only at the time and all that kind of
+296	jazz. So what was happening is, if you had like more than one
+300	encore in your windows AC, two instance, Frontier would like
+304	crash all the time. You know, it's just
+308	the technical explanation to it just didn't scale well.
+311	No. Like I even go as far as I have. Thank you, Maria. I'm sure
+317	you remember Ted Howard? Sure, he was to you. I remember
+323	working a little bit with Ted to try to fix the source. And of
+326	course, the non downloading this, I'm downloading the source
+328	code, the windows source code for frontier and trying to find
+333	a multi CPU bug, which is like, multi threading, which is like
+339	the hardest thing to do in the whole world, right? And you fish
+342	I just said, Yeah, screw it, I may screw it. I'm just gonna
+345	take all this stuff, that this that this thing does all the
+348	stuff that I like, and just build another, just build my own
+352	application from
+353	it. Now, this is something you said here, which is really
+356	critical. The origins of podcasting have different
+360	different parts to the history, and one is really not discussed
+364	at all. And that a lot of that's my my fault. Dave Weiner, of
+369	course, being the creator of RSS and who I work with, when he, I
+373	convinced him to come up with what became the enclosure
+376	element. He's my outline guru, and I outlining is what everyone
+382	knows when an outline is even a file folder, it can be an
+385	outline. It really functions well, for my brain, it's the way
+390	I think. And I'd like to fold up nodes and be able to move stuff
+394	around. And it's how I write everything. And a very powerful
+398	feature is the ability in an outline. So let's say you have a
+402	node where you double click on it, it would expand and there's
+404	something underneath it, it had something called the include,
+409	and include node could mean you could do if you double click on
+413	that node, it will issue an HTTP request to that OPML file, which
+418	could reside anywhere else very similar to gopher back in the
+422	day, which I'm very intimately familiar with, or obviously just
+427	a hyperlink system, but without lines, and the original iPod
+433	or.org index for all podcasts at the time was based on OPML,
+440	which is standard. Another standard day they wind wrote, I
+443	didn't know that, that he did the OPML standard.
+447	No, no, I didn't know that I Potter was based on that. Yeah,
+450	yeah.
+450	And so what I would do is I'd have country identity by country
+454	of countries up at the top. And then I'd have country managers
+458	who just volunteers who were sniffing around who's doing the
+461	podcast. And then they could include RSS feeds as an RSS
+466	know, type in the outline. I know it's getting technical. But
+470	I know I'm here to try and keep the non technical people
+472	thinking. What so you really just had a a huge distributed
+479	directory of nodes maintained by volunteers that really just
+485	pointed to RSS feeds. And I could what was very rudimentary
+490	and I have zero programming skills is really hacky. But I
+493	could crawl this entire tree and then bring up most recently
+497	updated, and I could see what was happening. And then category
+500	started to form. And this was a beautiful project. And I was
+504	hooked on the idea. I love the world outline project. And maybe
+511	I'll just go let's, let's keep let's keep going here. So that
+518	wasn't me. It
+518	was glad you said that. Because I didn't know the history of I
+521	Potter like, yeah, that was, that was probably what year was
+524	that? Maybe 2000 2003 or four? Yeah. Okay, so yeah. And that
+528	was way, you know, that was way before I started listening to
+531	podcast at
+531	the same time, the daily source code was the podcast, which I
+535	made specifically for developers and completely an analogue to
+539	what we're doing here to get them involved in this
+543	conversation. And we need to build something. And those early
+547	software developers were, in fact, building podcast apps, and
+551	they had different names. They also use the iPod or moniker and
+554	then we had iPod or lemon iPod or X for different operating
+558	systems. And there was just a slew of stuff some connected to
+561	mp3 players, others did the iTunes shuffle and others
+565	different concepts, etc. And maybe I should just take I'll
+572	just take down the Steve Jobs and we'll come around to this
+574	since I'm already talking about the specific specific thing. So
+578	podcast,
+579	you get that whole thing the other thing relates to I mean,
+583	that's directly a Steve Jobs thing. Yes.
+585	And is the is directly related to my meeting with him. So this
+588	was just building and I was doing the daily source code and
+592	I was experimenting a lot with the mood for me. It was really
+595	about programming. I was doing stuff with cars walking around
+599	while I was flying. airplanes, all cool stuff, you know, but
+603	certainly in those first hundreds of episodes, it was all
+607	about this feedback loop with the developers. And we learned a
+609	lot of things like, you know, if you subscribe to a new feed,
+613	it's probably not a good idea to start auto downloading every
+616	single element in the feed, you know, especially back in the day
+620	with, you know, basically dial up still. So it's like
+623	the html5 audio tag, when you have 75 on the page, you
+626	probably want to set that
+627	to yes, and you have an AWS and they send you a bill. Exactly.
+631	Yeah. Very large bill. So things start to happen. Stuff starts to
+636	heat up. I'm getting calls from I was living in Belgium at the
+640	time, but actually, BBC was one of the first and the BBC was
+643	very interested and did pieces on me on BBC, I think was radio
+649	four or five and I but it was just great pieces
+654	on just only on you or on iPod or
+657	podcast. Yeah, podcast. And in general, because the focus was
+661	not really on the directory. But everybody was using this
+664	directory, this iPod or directory to pop either populate
+669	their own idea of a directory in their own app, or just to pull
+674	data from it in real time or cache it. So it was an important
+677	piece. Then 2005 I get a call. It's Eddie Q, who now runs a lot
+683	of the entertainment at at Apple and has kind of a cool name,
+689	Eddie Q. EJ,
+692	most Motown producer,
+695	PDQ gonna give you a Cadillac, you record this, and he's kind
+699	of in that business. Still. He says, Hey, Steve would like to
+702	meet with you to do you have time? Like, Yeah, fuck, yeah.
+709	Yes, of course. And it was a d3 conference. I think that was San
+712	Diego. And I said, Okay, well come to d3. And Steve will meet
+716	with you. And so this is kind of it's a big was a big place
+719	exactly where it was, but kind of a venue. And so there's these
+723	dressing rooms, whatever green room type setup, and I go back,
+726	and he takes me back and Steve there. And right away, and it's
+730	just the three of us right away, I noticed Steve Jobs is much
+737	thinner at the time. 2005. So I don't know if he was sick or
+740	not. And he had a list, which I'd never heard before. But he
+744	was really personable. And you know, you said, well, actually,
+748	he was he was yelling like guy that fucked up Wi Fi. He was
+751	yelling something to Eddie.
+753	I'm like, I may have yelled that this way.
+756	And later, I realized, it dawned on me that they were probably
+759	working on the iPhone. And it's now reasonably well known that
+763	Steve Jobs never wanted it to be a cell phone. He wanted it all
+766	to work on Wi Fi. And so something had happened with some
+770	of the standards or, you know, to this day, I've never looked
+772	into it. But I do recall very vividly being very angry. And I
+776	even thought to myself, bro, you should calm down a bit. It's not
+779	good for your health. But there was other things were just
+782	chatting. And he's like, and all sudden, he said, Oh, how do you
+785	record stuff? How do you do this, and I explained what tools
+787	I'm using, because he had a big interest in how the Mac was
+790	being used to record
+792	in your mind and your total Mac 100% Mac
+796	in fact, it turns out he told me in that meeting that I had been
+801	publishing my my mp3 files on my I think it was called the MAC
+805	MAC drive at the time, which now is probably with iCloud. So it
+809	was like you mounted a drive on your desktop share. It's
+813	literally drive and you paid for it. And it had limited. It was
+818	limited by storage. No one was really concerned too much with
+821	bandwidth. But I had all these developers testing the shit out
+825	on my feed. And so it was just going crazy. And Steve said in
+829	that meeting, he said, Yeah, we saw what was going on. And it
+832	was so much bandwidth. But I just said let them go. Just
+836	let's see what he's doing. Now, that's that's not the coolest
+840	story. Isn't that cool? I love that.
+843	I love it too. Because you can't imagine that anything like that
+846	would happen today in big tech. Especially that the CEO would
+851	know that one guy's using a lot of bandwidth. I mean, that's
+853	crazy in and of itself, but to say, well, this guy's you know,
+857	he's really hammering our system pretty hard. But he's kind of
+859	doing something interesting. Don't Don't Don't shut that
+861	down. Just let it yeah, let's just see what happens. And it
+864	was cool.
+864	And I'm not exactly sure who on the inside was looking at it and
+868	brought it up to the higher up or how that went. I'd love to
+871	know. There's several people on the podcast team who I'm very
+875	friendly with. And super cool people and you know, they have
+878	their limitations to what they can do with the corporation.
+881	Everybody understands it.
+883	They've been there like had they been there? Is there anybody
+885	that's been there says that this whole time
+887	this I met you? I don't really know from those early years
+892	because not long after that with help from jobs who introduced me
+897	to the big venture capitalist venture cap Bro investors. I
+901	started pod show I started the first podcast network
+905	that we had eventually became media, right. Yeah.
+907	And that became me VO and it was a almost a decade long learning
+911	of that. Podcast networks just don't work, which will be a
+915	different episode, I'm sure. Yeah, sure. So we're, so we're
+920	chatting away. And yeah, one other thing is, I was using
+924	Audio Hijack Pro to record because you could set up a
+927	little compression chain and stuff like that. So it was great
+930	piece of software at Mac only. And Eddy Cue was still there
+934	when that topic came up. And he says, Yeah, you know, Steve, the
+937	RDA is really bitching about the ability to our OS to be able to
+942	record direct sound, and they really want us to block that or
+945	put some, and Steve interrupts them goes, fuck it. These guys
+949	need it. Hold them off as long as we can.
+952	So you're seeing the sausage made? Like right here?
+956	Yeah, yeah. And it's just like, wow, this is Steve Jobs. He's on
+959	my side, man. He's on my team. I love this. I love this. He said,
+963	Okay, Adam. I really would like your call and blessing to put it
+971	podcasting into iTunes. And I look at him and I go, Are you
+976	fucking kidding me? I'm sorry. Yes. Realizing I'm talking to
+981	Steve Jobs. Yes. And I've sat with a lot of people my most
+985	impressive our, I think was Quincy Jones before this, where
+988	we drank a bottle of his Latour while live on the radio talking
+992	about his career. So, you know, I, I've met a lot of people at
+997	jobs is still number one on the impressive list because he was
+1000	also he was wooing me, you know, this is what he does. He's
+1005	incredibly good at it, and read any history about how he, and I
+1010	think maybe not even dissimilar to President Trump, you know,
+1013	and if you fuck it up, then you're out within seconds. No,
+1015	he doesn't care. But he's very good at the ruling part.
+1019	It's like you're it's like you're, you know, like wanting
+1021	to marry. It's like, you're he's like, the dad wanted to marry
+1025	his daughter, you know, like, exactly, not please have podcast
+1029	now, but he made me feel real good about it. And I then said,
+1032	hey, you know what, I'll even give you a copy of the index. So
+1037	you can get started, we got categories and all that stuff.
+1039	Okay. Now, little did I know that Steve Jobs already had
+1044	everything set up, he you know, he does not go out on stage
+1047	unprepared. However, this is one of the best pieces of acting
+1051	I've ever seen from him, that I'm aware of. And this is when
+1056	he introduced podcasting in iTunes in 2005, at the d3
+1060	conference conference with Walt Mossberg and Kara Swisher, just
+1067	if you were
+1068	to eventually get into selling
+1070	paid for your stuff,
+1072	well, you could, you could try to sell podcasts, but the whole
+1075	phenomenon is so great. It's free. And I think what we're
+1077	gonna see as an advertising supported model emerge, just
+1079	like Free Radio. Here's another Adam curry is one of the guys
+1083	that invented podcasting. And he has a podcast called The Daily
+1087	source. Let me go ahead and subscribe to that. And we can go
+1090	listen to his latest one. Just click on it daily
+1092	source code show number 180. something remarkable is
+1097	happening here.
+1098	Radio is springing free of the regulated gatekeepers who've
+1102	managed what you've been here, since radio was invented. It's
+1105	jumping into the hands of anyone at all with something or nothing
+1109	to say.
+1111	With $16 million worth of airplay strapped by
+1115	next generation radio content in my ears. I like to think testing
+1125	is right. It's show number 180. And it's Friday everybody.
+1133	I've actually had to restart the show three times my Mac has been
+1136	acting up like I think it says something to do with the
+1142	filesystem okay.
+1148	Do you control say dirty stuff?
+1150	I mean, we're gonna have an explicit flag on these, like we
+1154	do the music so you can know if it's explicit.
+1157	So I can find it easier. Yeah.
+1162	That's, that's, it's funny to see they to hear that and see,
+1166	like, immediately that's, you know, what people jump to is
+1170	get, you know, gatekeeping and, okay, how are you going to
+1174	control this? How are you going to control that
+1175	bingo, bingo. And Apple, their team reached out, because of
+1183	course, they saw the end. Just knowing about the whole Mac
+1187	drive backstory. They were working on this for a long time.
+1190	Of course, it wasn't just bless this and we'll put it out and
+1193	that was good to go. He knew exactly how he's going to
+1195	introduce it. And the team consulted with me If, throughout
+1202	the next six months or so, they they added they did patent their
+1207	changes to the basically the RSS namespace. So that's, that's
+1214	patented, yet still Oh, they they patent so the iTunes
+1221	namespace that I don't know if I'm saying the right thing that
+1223	the tags that are specific to iTunes, yeah, that's it then
+1226	they put Dave and I in the patent, you know, it's like
+1229	here's the history, etc. And I'm happy because I feel that iTunes
+1236	Apple has been a very good steward of podcasting. They've
+1242	they've allowed access to their, to their directory to their
+1247	index, they have tried very hard to just give a clean experience,
+1253	they have shown no desire to jump into an advertising model,
+1260	which is really not their business anyway, they just want
+1262	to make great experiences for people who use their products.
+1268	The thing that did disappoint after the release came out and
+1273	we and we kind of looked at what was the what was their podcast,
+1277	their pod catcher was their podcast app doing what it looked
+1280	like, is, it was pretty much all very safe. That was being
+1285	featured in PR mainly with big props to Tony Khan WGBH public
+1291	radio in Boston, who spearheaded getting NPR into the podcast
+1296	business from right from the get go. And I'm very happy because
+1299	it legitimized podcast as well, podcasting. But none of the
+1304	other stuff really made it to the top. And that was a source
+1307	of frustration. And then, of course, when you get popularity
+1312	lists, you know, what is it based on who was at helping? You
+1316	know, this is the same conversation, I'm sure they're
+1318	having always been going on about featured apps in the App
+1321	Store. So you know, they, but they they were at least building
+1326	on their index, then I always kept our copy. And throughout
+1332	the years, I think the the entire database. Well, when when
+1338	we're ready to really open it up, we'll have 100, and you've
+1343	been looking at a day what but like 1.7 1.8x and 1.8 podcasts
+1347	of which an X percentage is active? Yeah, there's
+1351	like, let's see, we are looking at I've got in front of me, it's
+1355	about it currently stands at about 1.0 8 million podcasts.
+1363	And we like if you go back and just look at what has up which
+1366	podcasts have updated in the last 90 days is a good round
+1372	number to look at. There's about 46, roughly 50,000 podcasts that
+1380	have updated in a 90 day period. So, you know, it's it's not like
+1385	the number of we don't know yet just from looking at at the
+1389	stats, like how many of these podcasts come and go like, like,
+1394	you may have one that's dormant for for a while and not publish
+1397	it yet. Right? Yeah, we don't know. But the ones that are that
+1400	seem to be actively publishing look to be, at least from what
+1404	we have so far about 50,000 Roughly, I would say.
+1407	Now, let's pause this here. And let's go back to when we first
+1412	met. And what I had seen what I had learned with the OPML with
+1418	the the iPod or directory is that you could separate the and
+1425	I have no design skills zero. And I mean, I can't even my
+1430	handwriting is barely even legible. It's horrible. I'm a
+1435	great reader. But writing is I can type and that's great, but
+1437	not any other way. I, I really enjoyed the separation of the
+1443	content creation and management and editing, and just saving and
+1447	then clicking over to the HTML version, which just as long as
+1451	it was clean, as long as it worked and give me some
+1454	flexibility in my outline. So I can use a particular type of
+1459	node that becomes a menu bar. You know, different things I can
+1465	fold down, tuck away. And so what
+1471	Yes, yeah, I wasn't an outline guy. When we when when I first
+1474	got involved with the OPML editor and all that stuff y'all
+1477	were doing, because I mean, like I just never really been in that
+1480	world. And like going into that. It kind of took I mean, it took
+1485	a few months to figure out like to make it feel natural. Now I
+1489	just think that way, but outlining and I guess.
+1494	Isn't there an analogy to coding within dense?
+1499	Yeah, there There really is I'm not, you know, I know, Dave
+1503	Winer hit me, he actually coded in the OPML
+1507	form. That was his whole his whole vision.
+1510	And I've never been able to do that. And I can't get, I can't
+1513	get my brain to think that way. But we, but as far as like
+1517	dumping ideas on the page, it's great. And so like I took when
+1523	you first contacted me is like, handsome, you're like, hey, you
+1527	just email me out of the blue one day and you're like, Hey,
+1529	you want to do a project. And I've got some ideas.
+1532	And this is the core of our 10 year relationship is, Hey, you
+1535	want to do a project? Might they might become something after all
+1539	podcasting works.
+1542	Just throw as much crap at the wall as you can, like, Okay, so
+1545	at least at least once every six months, yeah, I get an email
+1550	from you, that says, Hey, call me I've got a great idea. It's
+1555	like, we've done, we've abandoned so many projects.
+1559	Well, this is the beauty, we haven't actually abandoned any
+1563	of them. What
+1564	what what form they were aborted.
+1568	What formed was a, a system. That is, to be honest, is really
+1576	100%. custom tailored to my needs for production of the no
+1582	agenda show. And for other important pieces of my life,
+1586	that includes a very important piece is an RSS aggregator, that
+1592	you're talking about the freedom controller, yeah, we just talked
+1594	about all the different bits that that we put together,
+1597	because while I was happy playing around with, with the
+1600	outliner capabilities that you put together for me, which was
+1604	enabling me to not only maintain my, my show notes and stories
+1610	that I need to talk about in each episode, but you know, one
+1612	click of the button pretty much turns it into a web page. And
+1615	the same for the RSS feed. And it's all it's a beautifully
+1618	connected system. It's a great workflow. But you were really
+1622	building an entire platform. And I would say, really built around
+1626	the RSS aggregator, and I just want to, I want to, I want
+1629	people to understand your expertise in this particular
+1632	field, because it's fucking voodoo, when it comes to RSS
+1636	feeds, and how they're how correct they are, and just to
+1640	get something working, you know, your 10 years has been well
+1644	spent.
+1645	Yeah, I mean, that you're being kind on on the on the voodoo
+1648	stuff. But I mean, like, what it's basically what we, what I
+1652	had started building before you ever even contacted me started
+1656	as a as a clone of the OPML editor and what it was doing,
+1660	but with one thing that I had always wanted, and that was the
+1664	ability to save an article that you anywhere on the internet,
+1670	like a readability type thing and just scrape the article
+1672	content and save it in a database. Because if you know me
+1676	for very long, you will know that I'm always like, at least
+1679	once in every conversation, I'm like, Hey, I read this article
+1682	the other day, and I cannot for the life of me remember where it
+1686	is where I read it or anything like that. So I wanted to
+1689	basically be constantly creating a paper trail as I went. So in
+1694	order to do that, cobbling together all this readability
+1698	stuff into this end of this app X but
+1700	just explain readability for people who who don't know, that
+1703	is,
+1704	like Instapaper, or the readability product, where it
+1708	basically just scrapes the just the text out and renders it in
+1712	an in a nice, clean format. Or like,
+1715	Apple's they have a read review even.
+1718	Exactly, yeah, exactly that. So basically built a microblog
+1724	platform, an RSS aggregator and a readability tool into one
+1728	single product. So you just log into it, and you know, and you
+1732	go, you got an account, all your stuff, searchable, all that kind
+1735	of jazz. And then, so that's, that's kind of where we started.
+1739	And so I was like, oh, yeah, I want to do this, this project
+1742	with you. Because originally you were thinking like, something
+1745	like, different your thing, almost like a social network,
+1748	social network. Yeah, exactly. You were like, Hey, can we build
+1751	a social network based on OPML feeds and that kind of thing?
+1755	Sounds like we have, I've actually got this other cool
+1757	thing. So I set you up an account on my server, and you're
+1761	like, hey, this could be a cool show notes thing. And so because
+1765	you're you're reading, you're reading the, as you're reading
+1768	articles, you're click in the RSS feed aggregator screen,
+1772	you're just you're clicking to expand them into readability
+1775	view, and it's saving them automatically as you go. So as
+1778	you're reading articles, it's building an article database,
+1782	and then you later go back and export those articles that you
+1785	read on show day into an OPML outline, and it just dumps it
+1789	all into one big show, no script.
+1790	And just so everyone understands. It's, by the way
+1794	when you're in the information routing business, which is what
+1796	I truly am taking information from email Stories, media,
+1802	blobs, all kinds of information coming in, I have to organize
+1807	it. And I have to be able to build a show out of it, which
+1811	lasts three hours. And and so my system is I have bookmarklets.
+1816	And I can we call it capitalizing carding, and boom,
+1820	it'll it'll create that readable page and put it in the database
+1824	in my database so that my system knows about it. And then I'm
+1827	done with it. Now, this is also very handy for I have to say for
+1832	paywalls, yes, 90% of all paywalls. Okay, so it's a great
+1839	little system, when people send me stuff behind paywalls all the
+1842	time. So I'm very happy that this exists. Emails, I just drop
+1847	into a certain folder that's connected, didn't connect my
+1851	IMAP and put that in the preface, my email preferences,
+1854	and they can suck in that whole folder, and also put them into
+1857	an outline. So I have all the emails I need, and I can just
+1860	shuffle it around. And it truly is a matter of reorganizing, and
+1865	putting stuff in little sub nodes, and then I'm done and
+1868	then start the show. And when after that, just hit HTML, and
+1872	there's your page.
+1874	And when you talk, when you talk about it like that, it sounds
+1876	like Man, this is awesome. There is I'm just gonna go install it
+1879	right now. And that's where the whole thing.
+1883	Yeah, it's really awesome. But you kind of have to have a
+1886	little more. I mean, you gotta be you gotta really want it. And
+1889	then we create these dynamite ideas. And we've done I think,
+1894	mainly, my problem is I'm like, I don't want it to suck. I don't
+1899	want to be advertising, anything that that I'm not interested in,
+1902	and can it be decentralized? And we, you know, I'm a fan of IPFS.
+1908	And, you know, there's all kinds of integrated so many things
+1911	over the years. And just, I just want to say about Dave. Yeah,
+1916	he's, he's like, I'm not really a programmer, but you're a crack
+1920	programmer. But you program as I as envisioned a sysadmin does.
+1926	It's like, no matter what happens, if you got a customer
+1929	who's working with it, and there's a problem, you wave your
+1932	wand, and something comes back immediately. Don't worry about
+1936	it, I got you covered. Okay, it's good. And whatever,
+1939	whatever needs fixing, I'll work on that.
+1942	You know, sis admins used to be, that's the difference between an
+1946	IT guy or an in the network administrator, and a SIS admin
+1950	is back in the day. I mean, if you're a sysadmin, you had to be
+1953	a programmer to I mean, you, you may not be a great one. But you
+1957	had to have programming skills, because you couldn't get your
+1960	job done without it. Oh, yeah, you said, a lot of sysadmin
+1963	stuff. It's all very practically, the programming
+1966	stuff that sis admins do and learn how to do is all very,
+1969	it's just, it may not, it's not what you see coming out of your
+1972	computer science courses in college, it's like, you know,
+1976	just make it work, peer, you know, period and make it not
+1979	break in the middle of the night where I had to fix it. That's,
+1982	you know, those are two, those are two things. That's what
+1985	you're talking about with kind of throwing everything in here
+1988	is another Achilles heel. This product we built over the years
+1991	is that it does like okay, I don't know if you remember this
+1995	at one point in the on the editor page, it had a Morse code
+1998	interpreter on it, you could just type into it. And it would
+2001	spit out Morse code. I mean, that's some crazy crap.
+2003	I remember, you know, why wasn't I working on like a Morse code
+2008	translator through audio or something? I know that none of
+2011	what I've added was crazy projects
+2013	through it. You were like you were wanting to you were wanting
+2015	to distribute Show Notes through the relay network. Ham radios,
+2020	repeaters, and I'll send like, okay, Morse code bit by bit Neo
+2023	done. At one point I just took it took all that crap out. I'm
+2027	like, it's just not even useful anymore. So I don't even know
+2030	what it does. You have to
+2031	it's like, it's like having all the elves at Santas workshop on
+2035	call. Dave, I want to I want the train with the truck and the
+2041	ladder on it. But it has to have, you know, the tank tracks.
+2045	And he goes into the shed and comes back look at it. So we've,
+2050	we've had a wonderful working relationship that has never been
+2053	about money. Never been about anything but building cool
+2056	stuff. And we just kept in touch about stuff we friends, you
+2059	know, even though we don't live near each other, and was like
+2063	one of those you don't have to talk to each other for half a
+2065	year and then come pick it right up.
+2067	Yeah. And I think you know, I think that's really what, what
+2071	made. I think that's really what's made the whole thing
+2073	rewarding for me over the years is just the, you know, the no
+2078	pressure aspect of it. And it's always been fun and challenging.
+2082	And those two things like, you know, meaning meaningful work. I
+2086	don't know where I heard they do meaningful work and, and
+2090	meaningful relationships are like the two most important
+2093	things in here in human life. And like that's, that's what
+2097	this project has been like Like taking it back to aggregators
+2101	for a minute, like, the first thing that we realized or, you
+2105	know, I realized immediately is that, like, you see a bunch of
+2110	like starter app stuff. So whenever you have a new
+2113	programming languages, you know, one of the first starter apps
+2115	besides the world, build an RSS reader. So you think, Okay, this
+2122	must be easy, oh, my God, it is the most not easy thing in the
+2127	world to be. So to build an RSS reader, a feed reader, when you
+2133	are looking at maybe 10 example feeds. Now, that's fine. When
+2138	you start to get up into something that's actually useful
+2141	in the real world of the way feeds really look and the way
+2144	they're really broken. And you're talking about potentially
+2148	10s of 1000s, or hundreds of 1000s of feeds, it becomes a
+2152	complete crap show immediately, like this. So you start to see
+2158	all kinds of broken XML, things, think crazy stuff like, like one
+2166	thing that I saw early on was feeds that did not have an XML
+2171	open tag, at the beginning of them, you would have, you would
+2175	have an item in the tag that would have three pub date tags
+2179	in it. What do you even do with that? I mean, like which ones
+2182	right, right? Or you would have a feed that had two channel
+2187	tags? Well, I mean, that's completely. So the whole world
+2191	of RSS is a complete chaotic mess. And I think it's
+2195	beautiful, but it's chaos.
+2196	To add one thing to that, I think to this day, I do not put
+2201	an ampersand in the title of any podcast, because I believe that
+2206	breaks the apple podcast app, at least it may break others, but
+2210	Oh, does it Yeah. And you know, so before I can, I will often
+2213	say how about this tonight? No ampersand man, no, no, add sign.
+2217	No, don't don't don't do anything weird exclamation mark.
+2219	We can do we know we get away with that. But otherwise, it's
+2221	really open or close. Don't put none of that. Exactly. None of
+2225	those things in there. Yeah. So that experience that you have is
+2229	is astronomical in the business, I would say.
+2234	And I would say this, that what what I think me and you both
+2238	wanted from the very beginning, is because because you can
+2242	handle that problem. Two ways. You can say, well, probably more
+2246	than that. But you can you can, you can take a hard line, or you
+2249	can say you don't validate fu Yeah, exactly. This feed, if
+2252	there's something wrong or goofy in this feed, I just digit. Oh,
+2256	you know, and, and I will, I will begin to parse it again,
+2259	five months from now when you actually fix it. Or you can say,
+2263	which was the old like UNIX mindset of be liberal with what
+2267	you accept right? And conservative with what you give.
+2271	So like, you can, you can say, and this is the approach that
+2273	we've taken, is, we're going to do everything humanly possible
+2279	in code to fix this feed what we think is broken about it, and
+2284	then parse it, right. So that like, what you end up with, is
+2287	over a corpus of let's say, 6000 feeds news feeds, you end up
+2292	with maybe the 15% of them that are completely broken. But if
+2297	you can fix, you know, if you can fix 10% of that 15 Of those,
+2302	then you get, you may see content that ends up being
+2306	really important that you don't miss.
+2307	And this is so now we're at the spot where I made one of my
+2311	famous calls to Dave, and said, let me talk to you about this. I
+2317	have an idea.
+2321	And I was like yeah,
+2322	sure. What are we gonna do? Okay, what is it? So there's a
+2326	little history to it. Obviously, I actually in March, I went on
+2330	the Joe Rogan Experience podcast, and which was in I
+2336	mean, it's like being invited on to tonight's show. It's, it's,
+2340	I've never even been invited on The Tonight Show. Cuz I don't I
+2343	don't think I'm a great guest for short term. yucks. You know,
+2347	with the, with the pre produced setup lines, longer things I'm
+2351	quite okay with. But Joe was also super nice guy. And he was
+2354	very, he wanted to hear the story, the story of podcasting.
+2358	And he was, it was just an incredibly nice experience. Now,
+2361	it's a great show. Yeah, it was, it was really fun. And we've
+2367	kept in touch actually, since then, and I've helped him with
+2370	his move with his move to Austin. And, but his Spotify
+2375	deal was announced, maybe two weeks after that, and he told me
+2380	about on the phone and we chatted and what it meant. And,
+2382	you know, he also was kind of happy and I said to him, I think
+2385	maybe even on the show like oh man, canceled culture is wicked,
+2388	you know, and they had actually, I think, tried to go after him
+2392	and now these things do affect sponsors and no matter who you
+2396	are, depending on how you know how wide it can get with it. The
+2400	craziness but in general, he's really saved he saves his his
+2404	whole property by having this protection of income protection
+2409	is really what it's about with with Spotify and and for me it
+2415	was fantastic personally because I kind of got a I got
+2418	recertified, you know, it's like oh look at this guy remember
+2420	him? Kind of on the it's a hell of a lot better than being on VH
+2427	one flashback, so it felt very good about it. You might my
+2433	daughter just turned 30 So I got my friends all loved it. They
+2436	all watch rogue so
+2438	perfect. Yes. Macaulay Culkin on Twitter the other day said, Hey,
+2442	guys, I just turned 40. How does it make you feel that you don't
+2444	want to be that guy?
+2445	Exactly, exactly.
+2448	But I realized that this was kind of a shame, because as of
+2451	the first of the year after a transition period, Joe's no
+2455	longer going to be available in any other app, I'm just going to
+2458	call it an app, then the Spotify app as far as I understand it.
+2463	And that makes sense. Because they need to have that exclusive
+2465	for their, for their platform, which I have no problem with
+2468	doesn't matter to me one bit, mainly because I feel that this
+2472	creates a space for the next Joe Rogan to come along. And the
+2476	next one and the next one. And you know, this is a big world.
+2480	And if you really look at what's out there, what's already being
+2484	done in podcasts that you've never heard of or seen of, you
+2487	know, if you just if you're able to jump into a big pile of it,
+2490	it's very interesting what what you what you come across. And so
+2494	there's going to be a vacuum and that vacuum will get filled up.
+2497	And I think that's only good for everybody. So that but that did
+2501	make me think a bit about Okay, where's this going? What is what
+2505	is happening? What are the strategies? The second piece is
+2509	when Apple decided to D platform Infowars and Alex Jones in this
+2515	was this was I know that this hurt his business? Because his
+2520	business really came from the podcast from the audio podcast.
+2523	Same with Joe Rogan, by the way. You think it's all the YouTube?
+2526	The YouTube money, which no, I don't think he was sad about the
+2531	YouTube money. But the podcast, the mp3 is where the money was
+2534	coming from.
+2536	Alex Jones did he? Did he have no I thought he was on radio
+2539	too. When he syndicated he's
+2540	always been streaming. He's always been a streamer. But he's
+2544	been doing a podcast from day one. And and that's particularly
+2547	back in the day when when podcasting, its subscribe
+2550	mechanism was very important because we had low bandwidth,
+2553	you either couldn't stream or you just be sitting there
+2556	waiting for something to download podcasting helped us
+2559	over that bandwidth hump. Gotcha, which was part of the
+2562	original idea behind it. What was that? First of all, I didn't
+2568	like that Apple did that. I thought that they were, you
+2572	know, knowing what's out there and what is available through
+2575	them, I just felt they were making a shitty judgment call.
+2578	And that turns out, they've done more of that, then this was
+2581	really well publicized. But because of the ecosystem, to use
+2589	that shitty word, the ecosystem of podcasting, most podcast apps
+2593	are getting their search queries and their directory information
+2598	from the Apple System, which again, is is very nice that
+2602	they've allowed that. And we'll talk about that, what they
+2606	actually allow and how that works. But there was a domino
+2609	effect. And the domino effect was that other podcast apps now
+2614	also no longer had Infowars and Alex Jones. And that was like,
+2619	wow, you know, that's a weakness. Because for one thing,
+2624	and this is our motto, for what we're going to explain. So what
+2629	longer than I intended, but I think it's important to get all
+2631	this history out, is really, we need to preserve podcasting, as
+2638	a platform for free speech. But podcasting is the literal free
+2642	speech example. There's nothing else but people talk. And of
+2646	course, there's many different types of podcasts, but you get
+2648	the idea. So that has to be maintained, and there's no
+2652	reason why we can't have a way for that. It's just there. You
+2658	know, it should be like, it should be more like your own
+2661	blog. And not like Twitter, you know, you shouldn't be kicked
+2665	off should be like DNS, thank you lets you be like DNS, you
+2668	should just be able to get the podcast, and it should be
+2673	available, you should be able to find an app that works for you
+2676	that you like. And as I looked at this scenario, I saw the
+2684	problem. And it's most definitely I was involved in the
+2691	initial decision to give my copy of the index to Apple, but that
+2698	needs to be outside of any entity that needs to live in a
+2702	place where you don't have to go through some intake process,
+2709	other than Gee, can we make sense of your feed, it shouldn't
+2713	be limited to what your free speech is, after all, it's just
+2717	speech. Hate speech is speech, love speech, speech, it's all
+2721	speech, I don't really care, the internet should has thank you
+2726	for that analogy. The just like DNS doesn't care what website
+2729	is, or what server is going to connect you to. That's really
+2733	what I thought would be very powerful.
+2735	Yeah, you if you, if you think about it in those terms, I mean,
+2738	what what's needed is a directory, where the central
+2744	directory itself has little to no policing. And then because if
+2750	you think about it in DNS terms, if I don't want certain websites
+2755	to be shown on my net on my internal network, then I just
+2759	filter them at my door, don't feel I don't, I don't expect the
+2763	root DNS name servers to filter out all the porn, all the porn
+2767	domains, right now that they exist. And if I don't want them
+2770	here, you know, I just, I just filter them. And you know, so if
+2774	you have a podcast directory, that's just got everything, and
+2777	it's not making these decisions. And then you put the tools in
+2780	the hands of each individual, each individual, either
+2783	developer, or listener, to filter and set up those those
+2787	things that they can curate their own list. And
+2792	the flaw was that there was no incentive for independent
+2798	software developers to really jump into making a great
+2803	podcast, I'm gonna call it podcast experience, because just
+2808	saying a podcast that puts you in a frame of mind of what
+2810	everybody's always doing. What we learned with publishing our
+2814	show notes in OPML, on the no agenda show, is that if you just
+2819	OPML, which is structured data, so it's not even a database,
+2823	it's just all these files that are easy to parse, and you can
+2827	do something with lo and behold, we have developers who just gave
+2831	access to it just said, Oh, it's here, who've created search
+2834	engines, show notes, pages with players, I mean, all kinds of
+2839	stuff integrated. The search engine stuff is really
+2841	impressive. It is, yeah, just by sucking up in ingressing, all of
+2846	that structured data, which is exactly how Oh, my God, there's
+2849	that word interrupt works is supposed to be it's all supposed
+2852	to work together. But what incentive do they have they're
+2854	not a software developer of a podcast app is not in the value
+2859	chain of what's going on between the podcaster and the podcast,
+2867	listeners. They're just there to help and facilitate. And there's
+2872	really, in my mind, and correct me if I'm wrong, there's no way
+2876	for a developer to really focus on all that when most of your
+2879	time is going to be spent on exactly what you were talking
+2882	about all this shit, that just doesn't work. Because it's
+2886	flawed. I mean, people, it's just not, it takes a lot of work
+2891	to get your aggregation and all these fees working. And then,
+2895	you know,
+2896	I would say it took probably, I don't think I'm being I don't
+2902	think I'm exaggerating to say it took probably five years to get
+2904	to aggregator where it was consistently good and not
+2908	missing feeds. Like, I think that if you if you go, what
+2915	would happen is you go in and you say, okay, everything looks
+2917	great. And then you would read it, and then you would make it I
+2920	would, I would realize that there is some edge case, this
+2923	certain phase we're hitting. And so then I would make a change in
+2926	the code. And and like all of a sudden, you would contact me
+2929	soon as I would push the new software to your server and
+2931	maybe with you'd say, oh my god, I'm seeing like, feeds I haven't
+2934	seen.
+2936	Yeah, yeah, exactly. And we had we have all kinds of
+2939	functionality like piano feet painted a story
+2942	new and maybe it was a cause. It may have been because these
+2946	these feeds are being generated by the same software and they
+2950	were letting a weird UTF eight noncompliant character through
+2954	in the encoding are some crap right? That you know, right?
+2957	It's like in that would that would just Bork a whole you
+2959	know, a whole handful of fades. And so like the the years of
+2965	experience of getting the act of getting all these problems and
+2970	making the adjustments necessary to get the feeds to work right
+2973	in the in our aggregator. You know, that that led to this
+2978	where it's like, Hey, can we do this on a bigger scale for
+2981	podcast,
+2982	right? Also, all the functionality you would want to
+2985	have from an entire database of all podcasts and I think, debut
+2991	and I like this, because the all podcast in the universe is a
+2995	number you can kind of see it's not like all web pages, but all
+3000	Podcast feeds in the universe, we can kind of see it. So. So I
+3004	also was thinking like, wow, we really need to retool podcasting
+3009	and another edit next stage and turn it into a platform of
+3015	value. And what that means we're going to get to, as we continue
+3019	in this process and this project in the podcast, want to take a
+3022	break, I want to play a clip here. I was sent a link by Luke
+3026	from to hell, he's in Finland, I've known Luke for a long time,
+3030	he was putting podcasting into the Nokia, the early Nokia
+3034	devices, the end was that the na 81, or that were on the MeeGo
+3038	platform that MIMO MeeGo and the all the Linux stuff they were
+3042	putting into, into portable devices that, of course, kind of
+3047	disappeared when the iPhone came out. And he sent me a link to
+3051	the accidental tech podcast, which is this Marcos show?
+3056	Yeah, this is the developer of overcast. Yeah.
+3058	So overcast is a podcast app that, you know that that I use,
+3064	I use it to you Marco is as has built a business out of it. I
+3068	think he's one of the few. And we'll we'll talk more about, you
+3071	know, what podcast apps are out there and why they're around and
+3075	what their future is. But he sent me this this link, and it
+3078	was, it was kind of related to what to what I was thinking at
+3082	the time. And I think I sent this no, that episode to you.
+3087	Yeah, you texted me. And you're like, you're like, listen to
+3090	this, let's talk.
+3091	And so they weren't using Alex Jones as an example, but
+3095	something that Apple had done with their Apple news podcast,
+3098	and they had removed it from the index, because they wanted I
+3103	guess they wanted to kind of force people to use the Apple
+3106	news app to listen to that podcast. And to me, this was
+3110	kind of the the Oh, wow, yeah, we got to do something about
+3114	this moment. Because, you know, Apple is willing to do things to
+3118	their index, that, that, that hurt podcasting, across the
+3123	board, because feeds go away and things don't come in and things
+3127	can change. And it's an it's an I can't blame them for decisions
+3130	they make. But instead of complaining, we've decided to do
+3135	something about it. So here's what the who was Marco talking
+3138	to on this.
+3139	He's just talking to his co hosts on the show about about
+3142	this Apple news today, podcast and how and what what sort of
+3146	the trickery that Apple was playing in their index with it.
+3149	The iTunes directory is serving as only like directory listing
+3154	to tell you here a podcast that exists that are registered with
+3157	Apple, that Apple's staff has like vetted to be seemingly
+3162	legit, seemingly not illegal or inappropriate or anything like
+3166	that. Here's the RSS feed. And then you go to the RSS feed from
+3170	that point forward and apples no longer in the picture. So they
+3172	really are just like a listing service that's telling you,
+3175	here's our RSS feeds for these podcasts that we think are legit
+3178	podcasts. And so the definition of what is a public podcast,
+3183	what the way most people interpret that is something you
+3186	can get to in any podcast app. The more technical side of it
+3190	seems to be it has to have a public RSS feed. But
+3193	realistically, if it's not listed on Apple podcast with a
+3196	public RSS feed, it's not gonna seem like a public podcast to
+3200	most people most of the time. What Apple news today has is a
+3204	little bit interesting. Apple news today has an iTunes ID. It
+3209	is playable and searchable in Apple podcasts, it shows up in
+3212	the Apple Podcast Directory even in the API if you search for it.
+3216	However, its entry in the API does not have a feed URL that's
+3222	just missing. So it kind of seems like Apple doesn't want
+3226	other apps to play this. Now, if one were to manually set in a
+3232	database, in a podcast app, this feed URL matches this iTunes ID.
+3238	If you happen to know the right fit URL, and you happen to make
+3240	it public, it happens to play just fine. So most podcast apps
+3246	there that have kind of been, you know, on top of this story,
+3249	you can now search for Apple news today and just play it. And
+3252	it works. Because most podcasts apps, I've realized, Oh, we just
+3256	add this RSS feed and make it searchable for this title, and
+3260	it will work. And I think the I think the reason it has an RSS
+3265	feed that's undocumented and not listed in the public API, is I
+3269	think Apple wants it to be an exclusive to Apple podcasts
+3272	because they're trying to gain some kind of leverage over
+3275	Spotify, which is eating a lot of their market share in the
+3278	podcast player space. But the apple podcast apps do not do
+3285	server side crawling. They crawl RSS feeds directly. Apple has
+3290	some servers like crawling to update its directories and
+3292	everything. But when you play a podcast on Apple podcasts, it is
+3296	directly crawling the RSS feeds from your app on your phone. on
+3300	your, on your Mac or whatever. And so for the Apple podcasts
+3303	app to be able to play this exclusive podcast without
+3307	significantly rewriting it and some and rewriting some back end
+3311	server stuff, which is probably a bigger project with an apple
+3314	than what they can probably get engineering resources for right
+3316	now. For it to be playable in their own app, they had to give
+3321	it an RSS feed. So I think it has one, just for that reason.
+3328	So yes, I think I think what freaked everybody out? I think
+3332	that's, that's a good sort of snippet. To show what freaked
+3337	everybody out was that Apple is starting to sort of tinker with
+3340	the directory now, right? Not just with the Alex Jones sort of
+3343	D listing type of stuff, which is, you know, there's always
+3347	going to be a certain amount of people that are okay with that,
+3350	you know, and that's, that's, that's fine. You know,
+3352	everybody's personal politics, but there's always going to be
+3356	the next step. And so like, when you if you're de listing
+3360	somebody that a lot of people don't like, you know, okay,
+3362	well, that's, you know, maybe we can forgive that, and then the
+3366	next but then the next step is Okay, now we're starting to
+3369	return things from the directory, which has become the
+3374	default directory for podcasting for pretty much everybody. If
+3378	you're not in the iTunes directory, you don't exist for
+3381	the most part. So now that they're starting to do little
+3385	odd stuff like that, which means like not returning a feed URL
+3389	that begins to give you pause and say, Well, you know, is it
+3393	the best idea for one company? And I think, as far as comm big
+3399	tech companies, I'm probably on the side of apple 90% of the
+3403	time, in most cases for their privacy stances, and that kind
+3407	of thing. But just in general, as a general rule, is probably
+3411	is it the is it the best idea for one company to be in sort of
+3417	in control of the directory for all of podcasting, which is
+3421	supposed to be this open platform? I mean, like, if you
+3425	think of in terms of like DNS, like we talked about a while
+3427	ago, there's not one company that owns all of DNS, you know,
+3433	it's it's fairly distributed at the top, you know, there are,
+3437	obviously financial interests, but it's distributed enough to
+3441	where one company can't use can't push their own interests
+3446	into the way that it functions. But that's not what we have in
+3450	podcasting. Now, what we have is a very centralized, private
+3454	entity that is controlling pretty much what everybody
+3458	considers the default, Yellow Pages for podcasting.
+3462	And so this problem, and then Marco was talking, I don't have
+3467	the clip, but he was talking about what would it take to do
+3470	an independent directory. And as I was listening to that, I
+3474	realized that everyone is, and I don't want to accuse them of
+3477	this, but most people are stuck in the it's, you know, how do we
+3481	monetize? How do we make money? How do we do advertising? Do it,
+3485	it would take investors, you know, all these things that I've
+3488	been through and have absolutely no interest in being a part of,
+3492	but I did know a guy who loves a challenge and a fun project.
+3498	Does that? Yeah. And I thought, you know, wouldn't it be
+3502	interesting, if we could do a couple things, one, we need to,
+3507	to preserve podcasting as a platform for free speech. And,
+3512	and in order to do that, we have to create a an index that
+3520	anybody can access for their, for their project. And this is
+3526	developers, this is this is a news, we're an API company. This
+3530	is not about a public facing thing. So we need to enable that
+3536	and also have have the core index be available for anybody
+3543	for free for any use at any time. So if you want to go and
+3546	create your own index and load up a database, then you should
+3550	be able to download this, you know, in a CSV file and anything
+3557	you want and and that would kind of be the challenge and I think
+3561	when we talk like you know, there's there's so many ways to
+3564	do this simple part than not have it break you know, break
+3568	our bank initially as we see if it catches on and having enough
+3573	experience with the value for value model in podcasting, which
+3577	means Hey, you know, you you get out of it, what you put into it,
+3580	people who would be interested in supporting this type of a
+3585	project can just donate to the PayPal on podcast index.org
+3591	First time I think we've mentioned the URL in this
+3593	podcast
+3596	is index.org is the is the product so to speak to We're
+3600	building and net that's that's the, if you think about if you
+3606	think about what you would want, as a developer, you would say,
+3610	Okay, I, if I'm going to build do a project around podcasting,
+3614	the number one thing that I want is the ability to search for
+3616	podcasts, request information about podcasts, about the feed
+3622	and all the metadata that goes around it, and be able to see
+3626	when there's new episodes in various ways, those are the
+3629	three things that as a developer you want, and those are the
+3632	things that we're aiming to provide at the beginning. Just
+3636	around around this initial product, there's, yeah,
+3638	so the idea is, and the belief is there that developers really
+3646	want to develop, and for stuff that they probably want
+3650	themselves see Adam and Dave, for the past decade. It's too
+3655	much heavy lifting to get into this game. The competition seems
+3661	overwhelming. And that is a piece that I think, you know, we
+3665	actually discussed our roadmap way before starting down the
+3669	road at all, and how we thought we could actually bring some
+3672	huge value to the software developers who are creating. And
+3676	it doesn't just have to be an app, it can be an html5 app for
+3679	all I care does. And any any type of application, or
+3683	directory service or notification. The idea is give
+3687	everybody as much access to as many different functions as
+3690	possible. And let's see if something great comes out of it.
+3693	So before we talk about the API, specifically, I want to review
+3697	and this is all at podcast index.org. Right at the top of
+3703	the podcast index is an open project to preserve podcasting
+3706	as a platform for free speech. I don't care as long as you we
+3709	don't care. As long as you have an RSS feed. It could be your
+3715	lecture, there's no intake process. Anybody can add a feed
+3721	to the index, there's no claim your feed, your feed is in
+3724	there, it's not in there doesn't matter who was added to it. The
+3727	core categorise index is always available for free for any use,
+3732	and will have archives in multiple places. Now, we are a
+3738	partnership, a limited liability corporation, podcast index LLC.
+3742	And we are a software developer focused partnership. I'm reading
+3745	this that provides tools and data to anyone who aspires to
+3749	create new and exciting podcast experiences. Without the heavy
+3752	lifting of indexing aggregation and data management. What that
+3755	means is, our core of what we're doing is we're making this
+3760	available on our dime, and anybody who wants to help,
+3763	because they see the value of it, and they want to support us
+3766	with a PayPal donation. We intend to find ways to create
+3773	such value for developers podcasters and listeners that we
+3778	will be able to get a piece of that we don't do it for anybody
+3781	else. We don't get anything. Yeah. So again, the core podcast
+3786	index is financed by bytes, founders and stakeholders,
+3789	podcasters developers and listeners, we're all in this
+3791	together. And that means it's more than just money. It's like
+3794	we need feedback, we need people testing, we need people hitting
+3797	the API, coming up with requests, coming up with great
+3801	ideas that we can do to enhance what we make available.
+3805	corporate interests and advertising are antithetical to
+3808	our business. And podcast index LLC strives to grow by providing
+3813	enhanced API services of value to developers and organizations,
+3817	which means if we can't give you something, the value, then we're
+3820	failing, and we may fail. And that is worth trying. So our
+3825	mission and goal, again, preserved podcasting as a
+3827	platform for free speech. And then if we're successful with
+3830	phase one, retool podcasting to a platform of value exchange
+3834	that includes developers with the podcasters. And the
+3837	listeners. And we started basically today with getting
+3841	developers to sign up if you're just interested whether you have
+3846	high skill level low skill level. Dave, tell us what is
+3850	behind the curtain at api dot podcast index.org.
+3856	Okay, so game game show style, the this. Let's see, if you go
+3861	to API dot podcast index.org. You it's pretty simple. You can
+3865	sign up for a developer account, and you get some API keys.
+3870	There's no There's no ad feature at the moment for adding feeds.
+3877	That's, that's coming. But that's got to be you know,
+3879	that's obviously very critical to make sure that you keep
+3883	everything it actually is there when we say that, but it's not
+3887	public. So that that API call will be public very soon. So
+3891	there's two as a developer, there's two kinds of a there's
+3894	two kinds of keys. There is a read key and a read write key.
+3899	So you can In AV, by default, you will have a read key, which
+3903	means you can hit the API and search for you can look, search
+3907	for podcasts by title, or you can do lookups on your own your
+3913	own podcast by iTunes ID or by Feed URL. Now to give you a lot
+3919	of data will give you the metadata around the feed. Or you
+3923	can search for episodes by iTunes ID or feed URL, and some
+3928	a few other calls that will let you just basically get all the
+3931	information that you need to begin to build whatever basic
+3936	app that you're gonna get, you're gonna build the the
+3940	probably most basic app that you would build out of something
+3943	like this is there on the in the developer pages. So once you get
+3949	logged in, you have you have documentation, you have your API
+3953	keys page, and then you have something called Search. And if
+3955	you go to the search, that is basically a podcast player, you
+3959	search for the podcasts you want to you want to hear, it brings
+3962	you back a list of matching podcasts, you click on the one
+3965	you want to want to look at. It gives you a list of episodes,
+3968	and then you just click play. Now it can read the show notes.
+3971	And that can.
+3972	So what it doesn't have, obviously, or maybe not
+3974	obviously, is, is a subscribe mechanism, because that would be
+3977	something that is completely inherent to the application
+3983	itself.
+3984	Yeah, yeah. So like this would be to say that, I'm going to
+3989	build an app. And then I just go get my go get my keys. And then
+3994	I started writing my app. And then I'm just going to use these
+3996	keys to, to do to do subscribe, and get notified and get, you
+4002	know, fun find out when you when the feed gets updated and new
+4006	episodes are released. Right? That's perfectly possible, then
+4009	the subscription mechanism is just a per user thing within the
+4012	app itself. Okay, so the developer themselves would do
+4015	this trip now, how will I think we will handle subscriptions in
+4019	the future? That's definitely on the roadmap to be able to say,
+4024	Okay, I have here's an anonymous user ID. And I'm going to
+4029	anonymize it on the app side. And then I'm going to hand it to
+4033	your API and say, here's the fields that this anonymous user
+4039	ID is subscribed to let me know, when you like ping me when a new
+4045	episode is released from one of these fees that is in the
+4048	subscription list, or the other way around the URL, just check
+4051	every now and then with this anonymized ID. And you can tell
+4054	me whether or not any one of the feeds in that subscription list
+4057	has been has been updated. So that that's definitely on the on
+4061	the roadmap that lets you that lets your app be super lean. So
+4065	you can say okay, well, this person, however you choose to
+4070	identify your user, if it's an iPhone app, or whatever, if
+4074	there's, if you have an ID for that person, you just give that
+4077	ID back to our API. In a way we don't know anything about these
+4082	about this stuff. It's just a random value that you decide and
+4086	then we'll we'll just tell you, Okay, out of these 47 podcasts
+4090	that this person did this idea, subscribe to these three have
+4094	changed. And you just mean a hit it every hour, or whatever you
+4098	want to do.
+4098	So how does this differ just for people who are still hanging in
+4101	there? Who are not developers? How does this differ from what
+4104	can be done with the iTunes directory now versus the podcast
+4108	index?
+4109	I think it's, it differs a little it's but let's just say
+4113	from the from as it stands right now, it's, it's mostly similar.
+4117	Okay, the difference is the fact that it's that is outside of, of
+4123	any of any interested party, that, but the one technical
+4129	difference at the moment right now, though, is the ability to
+4131	get those episode lists easily. Right? We are we are doing the
+4136	aggregating if I understand it correctly, right now Apple in
+4140	their directory, you can get those, those episode lists, but
+4145	you do that through HTML scraping. So like you would have
+4149	to there and you know, like you're not going to get, you're
+4151	not going to ask their API, give me all the episodes. There may
+4156	be a way to do it through the through the iTunes API, but it's
+4160	not clean, right? So if you just for here, you've got, you know,
+4164	you've got the iTunes ID or you've got the feed URL in on
+4167	our API, you just say, you know, you just hit an endpoint, which
+4171	is episodes, recent, you know, are there episodes meaning by
+4175	Feed URL, and it just, it's just one hit
+4177	considering? Considering we want to, maybe I'm jumping ahead
+4181	here, but considering we want to close the loop between listener
+4186	and podcaster. With the with the aggregate with the app in the
+4193	middle? Is there anything developers should be thinking of
+4197	as they start their projects up front that would To help them
+4200	later on.
+4205	I would think that they need Well, that's a hard one. And
+4209	because you know, the the biggest thing that we're doing
+4213	is the aggregating. So if you're if you're looking at, you know,
+4220	if you're looking at building the app you really did, you
+4222	could take that whole thing out of the mix, the only thing I
+4226	think you would really want to think about is how you implement
+4229	the API itself. It's very, it's very simple. It's based on an
+4235	Amazon style AWS style API authentication mechanism. So you
+4242	can, if you're not familiar with that, you have a key and a
+4245	secret. And then to call the API endpoints, you just basically
+4250	create an authorization header in the HTTP request. And that
+4254	header is a hash of the key, the secret and the Unix timestamp.
+4262	That's current of the current date. And as long as it's within
+4265	a five minute window, that time that that will be fine. So you
+4270	hash those three values together, put it in the
+4272	authorization header, and send that along with the date. And
+4277	the key and the key as as other headers in this in the
+4281	documentation on how to do that. This is the answer some example
+4284	code in there too. But it's very simple, very simple process, as
+4288	long as you know how to add headers to your HTTP request.
+4293	And really, you just get handed back JSON. So if you're, you
+4296	know, really, I mean, this could allow you to build an app, a
+4301	podcast, player app, I mean, with very minimal, minimal
+4306	effort and take so take, take marks take overcast, for
+4310	example. There's a whole ton of infrastructure behind overcast,
+4313	which is what has made makes it a very powerful tool, podcast
+4317	player is in his because he has put in the time to build his own
+4324	aggregator infrastructure behind that. And it's very valuable,
+4329	because then his app on the front on the on the iPhone side
+4333	can be very lean, right? And he's just making calls every now
+4336	and then to check the status of what's going on. So it's
+4340	basically
+4340	it's basically, we're doing we're replicating a lot of what
+4343	Marco has done.
+4345	It's it's similar. I think, the I think the difference, and I
+4349	may be mistaken, but I think on his side, what he is doing is in
+4354	within overcast, if you subscribe, I think he's doing an
+4357	iTunes look up. So if he, if if I'm an overcast user, and I
+4363	searched for a feed, or for a prop for a podcast, and I find
+4367	it, that search is coming from an iTunes, look up, and then if
+4371	I hit Subscribe on that, on that search result, then he says,
+4375	Okay, this, this is a feed I need. So he grabs it and sticks
+4379	it in his database. Now he's got it, aggregating it, got it. So
+4382	if you're talking about a million feeds in, in, you know,
+4386	the iTunes directory, then he may only be in he may only be
+4391	aggregating. I don't know. 25,000. Just right. He's only
+4396	aggregating. Again, I'm guessing this and he can correct me if
+4399	I'm wrong, but I would, I'm assuming based on the way it
+4403	looks, that he's just aggregating only the fields that
+4406	his his people are interested in
+4408	listeners, well, he's made, he's made a lot of investment. But of
+4411	course, we'd love for him to connect to our system too. I
+4415	mean, maybe has a toggle switch, which is sanitized, crazy world.
+4422	Yeah, that's what we talked about, like heaven. And that's
+4425	what's going to be in. That's that part is not fully
+4428	functional yet. But, you know, part of this is, within the API,
+4432	you can tell it, what format you want the data, the data to be
+4436	returned to you in. So you can say, if you just do, if you just
+4439	do a call, you get back a JSON reply. But if you if you put in
+4443	a Boolean value of, of iTunes, it'll give you back exactly the
+4449	way iTunes would give it back to you. So what we're hoping is
+4452	that people who are using the iTunes API right now for their
+4456	lookups, that they could easily just go in there and just make
+4459	make a couple of changes to the way that they're doing their
+4461	calls, but not change any of the other downstream code. And
+4466	they're going to just be getting basically they're getting the
+4469	exact same results they would get from the iTunes Directory
+4472	API, they would just be getting it from us instead. And that
+4475	way, you know, they can have as a fallback, the you know, you
+4478	can have to that you know, that way so if a failover, so to
+4482	speak.
+4483	So what I what I hope to have by the next time we record an
+4486	episode is hopefully we'll have a few developers to watch. This
+4491	is really just we're selecting whoever well first of all,
+4494	whoever comes in will be happy. Anyone's raises their hand. I'm
+4499	really Let's
+4500	refresh the page and see a new developer I was gonna be Yeah,
+4503	yeah, you're in. We, I'm looking for creative thinking, you know,
+4509	it's not, it doesn't have to be just a podcast player. For all
+4513	podcasts, there's many different things you can do. I mean, on
+4516	podcast index.org, we have one of my favorite new pastimes,
+4520	which it's crazy that I don't think anyone's really done it
+4523	that way. And there's top 10 lists and featured lists, but
+4526	just most recently updated. Just before we started recording, I
+4530	went, you know, we have a little carousel, as we call it with
+4533	think 10 or 2020 podcasts that have just been updated. And I
+4539	looked at around 11 My time and podcasts of a podcast, it was
+4544	sermons, there was a, it was a couple of rabbis, it was all the
+4548	god casters were just popping by and they all passed, they all
+4551	updated at the same time, it was really fantastic to see that to
+4555	see that scroll by. And, you know, maybe we have some time,
+4558	we could just have a list of like, you know, the most recent
+4561	100 updated, just a list doesn't have to be with images. But
+4564	that's so exciting. Because you listen to stuff like holy shit.
+4567	I never heard what is this podcast? Yeah, you know, there's
+4570	a lot,
+4571	there's some crazy stuff out there. Yeah, there's a lot of
+4573	weird stuff out there. And a lot of like, I'm just looking at
+4577	one, there's some podcast about Richmond, spiders football. I
+4583	mean, like, Who would have ever, that's something. And that's
+4585	something I think we need to talk about. And I think one of
+4588	the things we're thinking about with this series of of podcasts
+4592	is that these these shows is that we're going to be able to
+4597	this whole thing needs to be transparent. So I think what
+4599	we're thinking is we're going to be able to talk this stuff out
+4601	and build the system, that people that developers would
+4606	need, in real time in front of everybody transparently, where
+4611	people can, you know, you're listening, basically, you're
+4615	listening to us through a lot of this stuff in the open. So it's
+4619	not like, we're going back and doing a bunch of code and then
+4621	saying, Okay, here's this new thing. And don't worry about the
+4624	way it works, you know, because I'm going to, there's a lot of
+4627	things that, as you hear somebody talk about, and you get
+4632	an idea, it's like, hey, this, this nice, this needs to be
+4636	done. And I've got this great idea for the way this could be
+4638	better. But you would have never come to that conclusion, if you
+4641	have not heard the process discussed openly. So I think
+4643	that, you know, having, having this outlet to be able to talk
+4647	about well, we'll get into some like, techie, you know, kind of
+4650	like crazy, boring aggregator stuff, you know, in the future,
+4653	as well. And as you hear that stuff talked out, it's, it's
+4658	cool to be able to influence the direction of a product like
+4661	this. Yes, and
+4663	this is so reminiscent of the the original, bootstrapping of
+4669	podcasting. With the developers. I'm a, I'm a listener and a
+4674	podcast creator. So it's, we have pretty much the right
+4679	people at the at the table, but we need to hear the voices, you
+4684	know, we need to we need to get the feedback. We also want to
+4687	feature your apps, you know, if you make something we want to
+4689	feature it so other people can try it out. We'll have a GitHub,
+4692	I guess, where we'll use for, for discussion issues, etc.
+4698	Yeah, documentation, documentation is on the A is on
+4703	the site after you get logged in as a developer, but I'm about to
+4706	put it up on the onto GitHub as well. So you know, there'll be a
+4710	GitHub project that we'll link to, as well. And it'll be open,
+4712	like it won't be behind a behind the registration wall or
+4715	anything. And we're looking at, we're gonna publish the stats
+4719	too. And, you know, think, man, you both have decided that, just
+4723	the more transparent, this whole thing can be the better for
+4725	everybody involved.
+4726	That's the only way it's the only way I'll do it is the only
+4730	way to go. And also, I just want to reiterate, this is we're
+4733	doing this because it's the right thing to do. And we aren't
+4736	actually I think the guys to do it. That's the the core basic
+4741	reason for this project is, hey, we just got to make sure that it
+4744	can be a little rickety, you know, whenever we're going to be
+4747	apple. But who knows, you know, when we don't have to do much,
+4751	we just have to be able to maintain the index, we're
+4754	putting our money where our mouth is, we're helping you to
+4757	do that. But we're a real organization behind the scenes
+4762	whose core mission is also to be creative, and find out if we can
+4766	get ways to get value flowing through these RSS connections.
+4771	And, and that can many different that can come in many different
+4774	forms. But we might be able to do that and everybody would
+4777	benefit. So that's why we've set it up properly, to set ourselves
+4781	up for success. If we achieve, you know, our first our first
+4784	goals.
+4785	Yeah, and we're fun. I mean, we're funding this out of our
+4788	own pocket where paying the hosting fees and that kind of
+4790	thing and hope. Hopefully, you've been you have, I would
+4795	say you have almost created single handedly the value for
+4798	value model and shown that it can work. Yes. With the Vortech.
+4803	Of course, yeah, yeah, of course with no agenda and that we want.
+4808	I mean, that's the whole thing is the value for value. We know
+4810	it works. So you know, if it's going to cost us to, you know,
+4814	$200 a month of, of hosting fees, before we even have the
+4819	first developer signed up, if that, if that can become
+4825	something where people can cover cover our fees and free us up to
+4829	to progress the platform. That's, that's great. That's
+4834	all. That's what this is about. And I mean, we spoke but in
+4838	order to show the commitment to it, we're doing that we're
+4841	funding that ourselves right now. If you start to use it, and
+4844	it's awesome, then, you know, pay it for us.
+4848	Let's upgrade podcasting, everybody. I know there's a lot
+4851	of cool people in this industry, a lot of people have been kind
+4853	of dormant, just kind of seeing it slowly slip away to, to these
+4859	big players who are really whatever in your business. They
+4863	were radio guys, I Heart Radio, I guess they were the ones that
+4866	they buy Stitcher, I think and why they do that is obvious. And
+4872	of course, they allow any other podcast in there, you know, so
+4875	they are basically, you know, they're basically getting a free
+4878	ride on that. Okay, because you get exposure, there's nothing
+4880	wrong with that. But they're doing it because their their
+4883	model is not working so well for them Spotify as well, there,
+4887	they are a music streaming company who has to pay or find a
+4891	way to pay for everything everybody listens to because
+4893	they have to pay these licensing fees. So they want to transform.
+4898	So they want to be HBO or Netflix. And yeah, we're winding
+4902	up with a whole bunch of apps you gotta have to use. But
+4905	wouldn't it be delightful if we could just keep the platform
+4908	open for everybody, for anything I want, I want someone in school
+4913	to be able to say, Hey, man, do a podcast, I want to be able to
+4916	submit a feed to the index, and it work on apps right away, and
+4919	they can enjoy that experience and not have to even go through
+4923	an Apple account, an approval process, none of that it's
+4926	antithetical to the whole idea and the openness of podcasting.
+4930	And it's worth fixing. It's worth metaphases There, it's
+4933	worth a try. And if anything, we wind up with a kick ass database
+4937	that anybody can do something with. And maybe they'll discover
+4940	one day anthropologists will be wondering what the fuck we were
+4943	doing. Did they not know how to write proper RSS? These guys
+4948	were no good. Alright.
+4952	Real Time stats. We the database is 38 gigabytes currently, and
+4959	we have 17 point 3 million episodes of podcasts indexed.
+4965	Those are big numbers.
+4966	And we're counting the stats will also soon be on the
+4969	homepage, podcasts index.org. And email. Are we using info at
+4974	podcast? index.org? Is that what? Yeah, the easiest one for
+4977	us right now. So this being up this podcast, subscribe to it in
+4983	your favorite podcast app, but it probably will hopefully be on
+4987	iTunes database. By the time by the time we put it up. And also,
+4992	they'll be a way for you to sign up. If you have an idea. Just
+4996	want to come hang out. Just kick it around, take a look at it,
+4998	podcast index.org and consider supporting the project as well.
+5002	Dave, I'm really excited about about what's ahead.
+5005	Yeah, it's been fun, and it's gonna be fun. We got a lot of
+5008	stuff to talk about, too. We got we got a crazy long roadmap
+5011	ahead of us. And we haven't we haven't even we haven't even
+5014	talked about scratching the surface yet. You know, we got we
+5017	got a million ideas, and some of them are gonna are really weird.
+5020	And they're gonna, like, we got a lot to talk about.
+5023	I'm very fired up. I have not been this excited in a long
+5026	time. And it's a great project. And I'm so happy that we're
+5030	working on it together. And we have more partners who will be
+5032	introducing on the podcast when appropriate. They'll probably
+5035	want to pop their heads up when we have some success.
+5039	Yeah, we're gonna have success off their head.
+5043	Exactly what protecting the innocent at this point in time.
+5045	Yeah. All right. That's great. We'll talk to you soon, buddy.
+5049	Alright, man. Alright. See ya. All right. We'll talk to
+5051	everybody very soon here on podcast. 2.0 Thank you very much
+5054	for listening. Subscribe, consider supporting us this
+5057	value podcast. index.org See you next time. Bye bye.

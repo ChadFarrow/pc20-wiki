@@ -1,0 +1,2819 @@
+0	Podcasting 2.0 for March 13th, 2026, episode
+4	253, Dirty Fix.
+8	Hello, everybody.
+10	What day is it?
+11	It must be Friday.
+13	And we're at war.
+14	That's a beautiful thing.
+15	That's right.
+16	It's time for the official board meeting of
+18	Podcasting 2.0. This is where all the
+21	cool kids hang out.
+22	No podcast industrial complex here.
+25	No, no.
+25	We just talk about what really needs to
+27	be done, and we talk about building it.
+29	We are the only boardroom that does not
+31	have an AI adoption strategy.
+33	I'm Adam Curry here in the heart of
+35	the Texas Hill Country and in Alabama, the
+37	man who always has a dirty fix when
+39	the clean one just won't do the job.
+41	Say hello to my friend on the other
+42	end, the one, the only, Mr. Dave Jones.
+49	The Dirty Fix.
+51	You posted about a dirty fix.
+53	I'm like, okay, it sounds like a martini,
+55	but a dirty fix, you have to do
+57	for me.
+58	Hey, sometimes a dirty fix is the only
+60	way to do it.
+62	It's temp.
+64	And then sometimes the dirty temporary fix turns
+66	into a permanent fix.
+67	You're talking to a vibe coder.
+69	I hear you.
+70	Your whole product is a dirty fix.
+72	Oh, okay.
+73	Now you're starting to piss me off.
+80	Yeah, the dirty fix in question is not
+84	even a fix.
+85	It's just a punt.
+87	Yeah.
+88	This was for stats, something that Daniel J.
+91	Lewis needed for his empire?
+95	Yeah, the DJL empire.
+98	The problem is that my sequel does not
+106	give, so if you have millions of rows
+109	in a table, the count operation just can't,
+117	it just doesn't work.
+119	I mean, it takes minutes.
+120	You mean a basic equal sum on a
+124	spreadsheet?
+125	Is that what you're talking about?
+126	Or equals?
+127	Yeah, count ID.
+129	It takes minutes to return on an NODB
+132	table, but you have access to estimates of
+142	how big the table is, how many rows
+144	are in the table, but they're not accurate.
+146	Are you running AI on this thing?
+148	It's like, estimate, it must be around this
+151	number somewhere.
+151	It should be pretty good.
+153	It's roughly so-and-so.
+156	That's not good enough.
+159	Especially on the episodes table, that thing could
+162	be off by 700,000 rows.
+166	Why?
+166	What is happening?
+167	Is it just skipping stuff?
+168	What is going on?
+171	It's eventual consistency, I guess, of the metadata
+174	catching up with the actual table.
+176	I don't know.
+177	What happened was the transcripts table, when everybody
+182	started putting transcripts into their podcasts, the transcripts
+188	table just went parabolic.
+190	Everything was fine until one day the stats
+195	were taking 15 minutes to build.
+198	I was like, whoa, okay, wait, what?
+201	So that's where it originated from.
+203	Actually, it was taking so long to build
+206	that the watchdog timer was killing it, so
+209	they were just not building at all.
+212	What does watchdog look for?
+214	Runaway processes?
+217	I think it's just called timeout.
+221	You can put that in front of a
+223	command, and so if it exceeds a specific
+225	time, it'll kill it.
+228	It's good for cron jobs, when you don't
+230	want things to accidentally double up and run
+233	two times in a row.
+236	Okay, Adam's quick vibe coding corner, real quick.
+242	VCC.
+242	VCC, that's right.
+243	A-V-C-C.
+247	So I got this Vulcan 3090 card, and
+250	it's powered by a Raspberry Pi 9, which
+254	is cool.
+254	There's a teeny little flat cable that connects
+256	it.
+256	I didn't even know you could do that
+257	with a Raspberry Pi.
+259	I've seen a screenshot, I've seen a picture
+261	of this thing that you sent me, and
+262	it's hilarious.
+264	The computer is a third the size of
+267	the card.
+267	Oh, less than that.
+268	It's less than that.
+270	It's beautiful.
+271	It's beautiful.
+273	Oh, I have a local model.
+276	Okay, I will install OpenCLL.
+279	Oh, man.
+282	That sounds like a terrible idea.
+283	No, that software is just one big pile
+288	of stinking bullcrap.
+291	I believe it, 100%.
+294	So of course, the context window is pretty
+297	small of this 3090.
+299	It's 24 gigs, so it's pretty small.
+303	So I made it so I could...
+305	This was during this week, and I was
+307	doing just like, I'll just dive into this
+309	a couple hours a day.
+310	So I switched to Gemini, and then I
+313	used of course, there's all kinds of issues.
+316	So there's, oh, there's OpenRouter.
+317	They're really handy.
+319	And it actually are handy.
+321	And OpenRouter, I guess they charge you 5
+324	% processing fee.
+325	So that's kind of how they make their
+327	money.
+327	And otherwise, you're just paying the API fee
+330	for the tokens.
+331	It's for tokens.
+333	It's tokens, man.
+333	I'm buying some tokens.
+334	I need more compute.
+335	What's the cog of my tokens?
+339	Yeah, I was racking up 50 bucks an
+340	hour.
+341	Oh, yikes.
+342	This whole thing is like, oh, well, yeah,
+345	well, you can store local things in a
+348	memory.md file.
+349	I'm like, this is bull.
+351	This is a scam set up by influencers
+355	who are selling virtual private servers pre-configured
+360	with OpenClaw for a hundred bucks a month,
+362	with all kinds of coupon promo codes, Bongino.
+366	This is a scam.
+368	So that was just utterly, utterly disappointing.
+371	And, you know, it's like, OK, schedule this
+373	cron job.
+374	OK, schedule the cron job.
+375	Go look at the cron tab.
+376	There's no cron job there.
+378	Oh, no.
+379	Well, I scheduled in my internal scheduler.
+381	Well, that's not what I wanted.
+383	So I realize that OpenClaw is really a
+387	model, a coding model with a Telegram channel
+392	bridge, which that's pretty cool, actually.
+396	You can interact with your model through Telegram.
+399	Cool and sketchy as hell, by the way.
+401	Oh, very sketchy.
+402	And cron jobs, that's it.
+404	So I just, you know, I wrote my
+407	own, basically.
+408	I wrote my own Python script.
+410	I mean, I wrote big quotations.
+413	And so, you know, I can just say,
+415	tell it to go write a script to
+418	do something.
+419	Then I can alias the script and then
+420	I can schedule the script and then I
+421	can run the script.
+423	And it doesn't chat.
+423	There's no chattiness.
+425	Just does what it's supposed to do.
+427	And as I do this, you know, OK,
+429	it works.
+429	I've got it all together.
+430	And, you know, so what do I do?
+432	OK, top five headlines from business, world technology,
+437	current Bitcoin price, current weather.
+440	I'm like, I have nothing for this thing
+442	to do.
+442	This is stupid.
+443	What am I doing?
+444	This is ridiculous.
+445	You built it all in this and now
+446	it does nothing.
+447	What is the point?
+450	What am I actually going to do with
+451	this thing?
+452	You know, I got that.
+453	I got the new the new open code
+455	models and everything with Quinn 3.5. What
+460	is it called?
+462	It has a funny name.
+464	Yeah.
+466	Hold on.
+467	Yeah, I know what you're talking about.
+468	Yeah.
+469	It's a funny name.
+470	What is it?
+471	Let me see.
+472	Let's models obliterated.
+476	What does that even mean?
+478	That's that's those are models that where they
+482	try to de-censor them, like they try
+485	to remove the guardrails that are part part
+488	of the training.
+489	So the obliterated models are they'll take like
+492	deep seek or something like that.
+493	That's like China.
+494	You got Chinese censorship trained into it and
+496	try to like remove it.
+498	Why do they spell obliterated with an A
+500	and not with an O?
+501	That's kind of sketchy at AB.
+504	Oh, is that a real word?
+507	Well, I was fine.
+509	A bullet, a bullet.
+512	I'm going to ask it.
+518	Obliterated doesn't seem like a word.
+520	There's no standard English word.
+523	No, no, I think that it must be
+525	like it must be like the HTTP refer
+529	a refer header, which is misspelled and has
+531	always been in the spec.
+534	So this so this obliterated model, oh, it's
+537	the newest Quinn.
+538	Oh, it's the newest Quinn thinking, coding of
+540	all seeing eye.
+542	And so my first question is always tell
+544	me about the No Agenda podcast.
+547	So let's see, the No Agenda is one
+549	of the most enduring and respected podcasts in
+552	the tech community.
+553	It holds the distinction of being one of
+555	the longest running tech podcasts, having launched in
+557	2006, continuing to release new episodes weekly without
+560	fail for 18 years.
+562	The show is driven by two distinct personalities
+565	who've been hosting together since the beginning.
+567	Adam Carolla, Adam Mathis, a developer and technology
+571	evangelist and John W.
+573	Smith, a software engineer.
+575	And so I'm like, so I say, OK,
+578	I say, no, that's that's incorrect.
+581	I said, that's wrong.
+582	You're absolutely right.
+583	That was wrong.
+584	Yes, it's the correct host is John W.
+587	Smith.
+587	He's a solo host and producer.
+589	I said, no.
+590	So what about Adam Currie?
+592	We're back to GPT-3.
+594	Oh, yeah.
+595	What about Adam Currie and John C.
+596	DeVore?
+596	You hit on the most critical distinction.
+600	Adam Currie and John C.
+601	DeVore are indeed two of the most influential
+602	figures in tech media, but they are not
+605	the hosts of No Agenda.
+606	Oh, no, no, no.
+608	I mean.
+609	Hot garbage.
+610	Yes, it's complete garbage.
+612	Now I can, you can code some Python,
+615	but this stuff, I'm just, you know what?
+618	Actually, I should play this clip for you.
+620	I played it on No Agenda, but, you
+623	know, they have the big, the big conference
+628	out in San Francisco.
+631	And which conference?
+633	Oh, whose conference is this?
+635	It's an AI conference.
+637	Oh, I don't know about that.
+639	Yeah.
+639	Yeah.
+640	Of course.
+641	It's an AI conference.
+642	Let me see.
+644	Why can't I find this?
+647	So Sam Altman is being interviewed by one
+650	of his own board members, which is just
+652	hilarious.
+653	So that guy's a robot, man.
+655	He is a robot, but he, you know,
+657	so I'm just, I'm trying to figure out
+658	what, what, what are you doing?
+659	You know, what is, what is the point?
+661	What is the actual business model?
+664	So he gets down to the business model.
+667	Let me see where this clip is.
+669	Big tech.
+670	Here we go.
+673	Well, actually this, there's two clips.
+675	I have to play these.
+676	So the first thing is, you know, this,
+679	there's this mystical AGI.
+682	You've heard of AGI.
+683	I'm sure you know what the acronym stands
+685	for.
+686	Yeah.
+686	Artificial General Intelligence.
+688	Yes.
+688	Which for a little while there on CNBC,
+690	they moved it to Artificial Generative Intelligence because
+694	it was basically only doing memes and videos
+697	and bad songs.
+700	But this has been, this has always been
+702	the thing.
+702	Oh, well, we'll be at AGI in a
+704	few years.
+705	AGI is coming when they just get more
+707	power, more wattage, just more compute, more tokens.
+711	So the question from this board member who's
+714	interviewing him, the shill is, you know, tell
+716	us about, you know, how far are we?
+718	Are we there?
+718	Do we have AGI yet?
+719	Are we at AGI?
+721	And, uh, you've been quite vocal in saying
+724	that, um, artificial general intelligence will come sooner
+727	rather than later.
+728	You want to share your views on how
+731	close we are and how soon it will
+732	come?
+734	At this point, I think the definition of
+737	AGI really matters.
+739	Some people would say we already got there.
+741	Some people say it's very close.
+742	Some people say we're kind of, you know,
+744	it's maybe still a year away, but in
+746	any case, that word has ceased to have
+750	much meaning.
+750	Oh, we're going to move the goalposts.
+753	Oh, we have to have a new definition
+755	of AGI.
+757	There are maybe two thresholds that we could
+759	talk about that are interesting.
+761	Number one, when is there going to be
+763	more of the world's cognitive capacity inside of
+766	data centers than outside of them?
+768	And that to me feels like maybe it
+772	could happen.
+773	Huge error bars.
+774	I could be totally wrong, but huge error
+775	bars.
+776	Huge.
+776	What's an error?
+777	What's an error?
+778	I don't know, but if they're huge, I
+779	mean, that means, uh, I figured that was
+782	a coding thing.
+783	An error bar.
+784	Like, is there other than a show title?
+786	I have no idea what huge error bars
+788	are.
+788	It's already the show title to no agenda
+790	show.
+791	We already took it.
+793	Yeah, it's good.
+794	Dang it.
+795	To me feels like maybe it could happen.
+797	Huge error bars.
+798	I could be totally wrong, but maybe that
+799	could happen by like late 2028.
+801	Okay.
+802	So we don't even know what it is,
+803	but then the best one was the business
+806	model.
+806	Now, what, what do you deem to be
+808	the business model of these model companies?
+815	I would say get people as addicted, get
+820	coders as addicted as possible, and then at
+824	$200 a month, and then jack the price
+826	up to four, $5,000 a month.
+829	Well, you're kind of close.
+832	Um, and what's interesting about this clip is
+836	he, he actually, he tells us the business
+840	model and he tells us that in the
+842	past, this business model has failed, which is
+845	just dynamite.
+846	OpenAI does a lot of things that look
+848	weird.
+850	We spend a ton of money on infrastructure
+853	in advance of revenue.
+856	We do new business models like ads that
+858	seem like, you know, maybe not the most
+861	profitable thing we could do.
+863	Um, a long list of other things, but
+865	we have this fundamental belief in abundance of
+867	intelligence.
+868	And that one of the most important things
+870	in the future is that we make intelligence,
+873	you know, to borrow an old phrase from
+876	the energy industry that didn't quite work too
+878	cheap to meter.
+878	We want to flood the world with intelligence.
+880	We want people to just use it for
+881	everything.
+881	We want this to just be something that
+883	the future generation doesn't think about.
+885	They expect everywhere and everybody has access to
+889	like geniuses as many as they need in
+892	any area that they need.
+894	And this principle, which is one of our
+896	kind of like top guiding principles, does lead
+899	to a lot of behavior that would look
+901	less natural for other companies.
+903	And one of those is we really want
+906	to get out of this world that we
+908	have been in, that we still think we're
+909	on a trajectory to stay on without changing
+910	what we do.
+911	Of always being capacity constrained, right?
+914	Fundamentally our business, and I think the business
+916	of every other model provider is going to
+919	look like selling tokens.
+921	They may come from bigger or smaller models,
+925	which makes them more or less expensive.
+927	They may use more or less reasoning, which
+929	also makes them more or less expensive.
+931	They may be running all the time in
+932	the background, trying to help you out.
+934	They may run only when you need them.
+936	If you want to pay less, we see
+938	a future where intelligence is a utility, like
+943	electricity or water, and people buy it from
+947	us on a meter and use it for
+950	whatever they want to use it for.
+951	There you go.
+952	A business model that has failed with the
+954	energy sector.
+955	And this business model is literally based on
+958	energy.
+959	On wattage.
+961	The whole, it's stupid.
+963	Eric PP, feel free to leave the boardroom
+966	if you're bored with us.
+970	Oh, more AI talk.
+971	I've got something that's not AI talk.
+975	I'm happy to share with the class.
+981	It's about the pod ping work I've been
+983	doing.
+985	It's a left turn.
+989	I mean, if we don't want AI talk,
+992	which is the hottest thing, you know, which
+995	is like dominating the entire world of everything
+998	we do right now.
+999	Let's make sure we make Eric PP happy.
+1001	Yep.
+1001	It's okay.
+1004	No, so if, I don't know if Eric
+1008	is running a pod ping server with the
+1014	new gossip stuff on it.
+1016	Maybe he is, maybe he's not.
+1017	Are you running one?
+1019	Sounds like I should be.
+1021	I feel bad now.
+1023	I mean, I should be.
+1026	A gossip listener?
+1027	No, I'm not.
+1028	I'm sorry.
+1029	I was too engrossed in dumb stuff, which
+1031	is, I freely admit, is dumb.
+1034	It's totally dumb in that regard.
+1036	Eric's right.
+1037	It's dumb.
+1040	So progress has been made in many areas,
+1044	but just to recap, the point of this
+1049	is to have a peer-to-peer way
+1054	to distribute pod pings that does not have
+1061	any centralization to it from the standpoint of
+1065	distribution.
+1067	So the gossip part of pod ping is
+1074	split into two actors, if you want to
+1077	call them that, the listener and the writer.
+1081	So the writer is attached to podping.cloud
+1083	or you can run your own or do
+1084	whatever.
+1085	And then the listeners listen to the P2P
+1090	swarm and they essentially just accept the pod
+1095	pings as they come and write them to
+1099	the console.
+1100	So you can pipe them into some other
+1103	tool that you want.
+1104	That's the way it is for now.
+1105	We can add a socket or do whatever
+1106	we want to later.
+1110	A couple of things that are new is
+1114	the ability to do a catch-up.
+1117	So you can enable your listener to archive
+1124	its pings and it'll store them in a
+1126	SQLite database.
+1127	So your listener can become an quote-unquote
+1131	archive node.
+1133	And this needs to be done from the
+1135	listener's side, not the writer's side, because the
+1138	listener's side sees all the pings.
+1141	The writer only sees the pings that it's
+1143	sending.
+1146	So, yeah, catch up.
+1149	C-A-T-C-H-U-P.
+1151	So if you run a archive node, then
+1157	your node also creates a listening channel on
+1165	a private ALPN, which is what Eero refers
+1170	to, it's like a channel in Eero terms.
+1173	So it creates a private routing channel.
+1177	And so what that means is if you,
+1180	if you're, this directly goes back to, we
+1182	had somebody send us a boost last week
+1185	and was like, can I, you know, I
+1187	have a pod, my pod ping usage is,
+1191	I spin my computer up or my pod
+1195	ping listener up and I'll listen for a
+1198	certain amount of time and then I'll shut
+1199	it down.
+1200	So it comes on and offline a lot.
+1204	So this is what that's for.
+1206	So what you would do is you, there's
+1207	a new environment variable you can say, catch
+1210	up enabled equals true.
+1213	Then when your listener starts, it will walk
+1216	through the current swarm and check with every
+1220	node that it knows about asking if they
+1223	are an archive node.
+1225	And if they are, it will send you
+1229	all of its pings since you've been offline.
+1232	Ooh, sweet.
+1233	And it'll do that.
+1234	It'll only send it to you.
+1236	There'll be, it'll, it'll negotiate a private channel
+1238	and send you all the pings that it
+1241	knows about since, since you've been offline or
+1245	a maximum of 24 hours.
+1247	That's the way this, you know, of course,
+1249	I mean, you don't want to get flooded
+1250	with 300,000 pings.
+1254	So it will, it will perform a catch
+1256	up that's private.
+1257	So it does not pollute the, the actual
+1259	gossip topic itself.
+1261	So the rest of the swarm doesn't see
+1263	this action happening.
+1270	This, this is, this led, I think this
+1274	may have led to a bug though.
+1278	So what happened was, oh, Eric, PP's happy.
+1282	Okay, good.
+1282	Can I, can I ask you a question
+1284	while you're going through this?
+1285	So where exactly do I install this from?
+1289	Because I'm looking at your update, but I,
+1292	I see the catch up, but where's the,
+1294	where's the read me to install this?
+1298	So what you would do is you would...
+1301	GitHub is confusing.
+1303	Paste.
+1304	Okay.
+1304	So you would, you're on podping.alpha, right?
+1308	Yes.
+1309	Okay.
+1309	So you would just clone that repo.
+1312	Okay.
+1314	And you, you have to have the rust
+1316	tool chain installed.
+1317	So yeah, you have to build it from
+1319	the rust.
+1321	Sure.
+1321	You, why do you not have the rust
+1323	tool chain installed?
+1324	This is like...
+1325	I don't know.
+1325	I feel bad.
+1326	It's like, it's like, it's like not having
+1328	a browser.
+1331	Okay.
+1332	And then you, then you just change directories
+1334	into gossip-listener and do cargo space run.
+1339	So that's, that's your...
+1340	Okay.
+1341	There's a lot of graphs on there.
+1342	This is, this is hurting my brain.
+1345	Okay.
+1345	I'll have to look at that another time,
+1347	clearly.
+1348	No, you can do it in five minutes.
+1349	Going to gossip-listener.
+1351	Is that where I'm going?
+1351	Yeah.
+1352	Yeah.
+1352	Change directories into gossip-listener.
+1354	Yes.
+1355	And if you, if you type cargo space
+1357	run, do you get anything?
+1359	Let's have a look.
+1362	Hold on a second.
+1363	I do.
+1364	I wonder if you have the rust tool
+1365	chain installed.
+1366	You just don't even know it.
+1367	Cargo space run.
+1369	Let's see.
+1370	Uh, no.
+1372	Okay.
+1373	So you need to go install that from
+1374	rustup.
+1378	Okay.
+1378	Whatever.
+1381	Whatever rustup is.
+1383	Rustup.rs. Yeah.
+1385	Install it.
+1385	That's where you install rust from.
+1387	Rustup.rs. Okay.
+1388	All right.
+1389	A piece of ice fell out of my
+1390	mouth and I can't find it.
+1393	Well, the thing with ice is it, it,
+1395	uh, it eventually it, uh, it doesn't melt.
+1398	Oh, there it is.
+1399	It melts.
+1401	Whenever I started to feel wet, I'll know
+1404	it.
+1404	I know that I found it.
+1407	So I think, but I think this led
+1409	to a bug because what I was noticing
+1413	is that, uh, every so often the gossip
+1418	writer would just crash and there would be
+1421	this humongous backtrace on the server console.
+1426	And I mean, like some, like a backtrace
+1430	that's like a hundred and something functions long.
+1435	So I'm like, okay, well, I don't really
+1437	understand this.
+1438	So I dropped, uh, I dropped it into
+1441	an LLM.
+1442	I'm like, can you just please like pinpoint
+1444	what the actual issue is here?
+1447	And so, so I think, so I found
+1450	it.
+1450	It's the, the problem is in, the problem
+1453	is in the library that Aero uses, which
+1456	is, which uses something called QUIC.
+1458	Q-U-I-C.
+1459	Are you familiar with this?
+1461	No.
+1463	QUIC is an interesting protocol.
+1467	So QUIC is sort of, it's used in
+1474	combination with HTTP 3.
+1479	And the idea is that they, I think
+1484	Google developed this.
+1485	I, I think that's right.
+1488	Um, but the idea is that you stop
+1490	using TCP and you switch to UDP.
+1494	And so the difference between, you know, UDP
+1497	is a stateless thing.
+1498	You just fire and forget.
+1500	There's no, the, the TC, the, the networking
+1503	stack does not try to guarantee delivery.
+1506	It's just, you fire off a packet and
+1509	okay, you're done.
+1511	No followup.
+1515	TCP is different.
+1517	You know, TCP guarantees delivery of the packet.
+1520	And if it doesn't, the connection quote unquote
+1522	fails.
+1524	So it's connection, TCP is connection-based.
+1527	UDP is, is connection-less.
+1531	So what, what the QUIC protocol does is
+1534	it abstracts the idea of a connection, but
+1540	does it over UDP stateless packets.
+1543	So that means that you can, it moves,
+1546	what it does is it has the effect
+1548	of moving the, the, the application protocol, we're
+1551	moving the protocol up one step in the
+1554	chain.
+1554	So now you're no longer at the network
+1557	layer.
+1558	You're now one level up at the applicant.
+1562	It behaves like an application protocol.
+1565	Excuse me.
+1566	It behaves like a network protocol, but at
+1567	the application layer.
+1569	Riveting.
+1570	Just riveting.
+1572	I'm still, I got cargo installed, but I
+1574	don't know.
+1574	I got rust installed.
+1575	I still know what to do, but I'm
+1577	listening.
+1578	Yeah.
+1578	Now, now do cargo space run in the
+1580	gossip listener.
+1581	But I have to get the gossip listener
+1584	first.
+1585	You already, but you, you clone the repo,
+1587	right?
+1588	No, I don't know how to clone a
+1589	repo.
+1590	Oh, you just go get clone.
+1592	And then the, the, the, the URL.
+1596	URL of what?
+1597	I'll paste it in the boardroom.
+1599	Okay.
+1599	Get clone.
+1601	Yeah, there you go.
+1602	Okay.
+1603	So, so get space, clone space, and then
+1606	that URL.
+1606	Okay.
+1608	So then, so, so the idea here is
+1610	that, and the reason that Eero uses this,
+1612	it's a lot of backdrops in order to
+1614	get to the point, which is the reason
+1616	that Eero, this peer-to-peer protocol or
+1620	a library that we're using, the reason that
+1621	uses QUIC is because QUIC allows you to
+1626	have a few important things, multiplexing.
+1633	So you can have multiple streams of data
+1635	going in both directions at one time.
+1639	And also it abstracts the idea of a
+1643	connection so that you can have multiple different
+1646	types of connections over the same channel, essentially.
+1653	Mm-hmm.
+1654	So you don't, you're not, you're not bound
+1657	to a single, uh, to the TCP protocol.
+1660	So you, you, the, the issue though is
+1665	UDP, since it is stateless and you can't,
+1668	and the networking stack does not guarantee a
+1670	connection.
+1672	No, UBT, is it just like spray and
+1674	pray?
+1675	Isn't that what UDP is?
+1676	Yeah.
+1676	Yeah, that's right.
+1677	Yeah.
+1678	So, so you can imagine what, imagine what
+1680	happens.
+1681	So you have, you have a computer on
+1683	one side or an app, uh, you have
+1684	a port on one side and a port
+1687	across the world, and they have this abstract
+1691	sense of their, of that they're connected to
+1693	each other, but over UDP.
+1697	But, but you don't, you can't guarantee it
+1699	because you don't, you have no three-way
+1701	handshake of the TCP.
+1704	So when, if that other side, if I'm
+1708	connected to you and your computer goes down,
+1712	I don't know if you're sending packets to
+1715	me and I'm not getting them or if
+1717	you're just gone.
+1718	Right.
+1719	And so what you have...
+1721	Been arrested, been arrested by the FCC.
+1724	Yeah.
+1725	So what you have is the, the, um,
+1729	what they call a draining period, which means
+1733	that the connection appears to be closed, but
+1737	you can't actually know it.
+1740	So what you do is you, it switches
+1742	to a drain period where you just give
+1745	it a certain amount of buffer time to
+1748	say, okay, look, I'm closing this.
+1750	I'm closing this quote unquote connection, but I'll
+1753	let a few more packets come in if
+1755	there's going to be any, and just to
+1757	clean this thing up.
+1759	So you let, you just essentially give, you
+1762	send a note and say, hey, this thing's
+1764	dead.
+1764	And then you give it a little bit
+1765	of time.
+1766	You're basically building a pod ping tor network
+1769	is what it sounds like.
+1771	Similar.
+1772	Yeah.
+1773	Yeah.
+1774	And so the problem happened in this code
+1777	during the draining phase is a bug in
+1780	the, in the, in the Quinn library that,
+1783	that the Eero uses, which is the quick
+1785	library.
+1786	And that, that draining phase was getting to
+1788	a point in the code, which is supposed
+1790	to be an unreachable branch.
+1793	And, and it was just panicking.
+1795	And so that bubbled up with that, that
+1798	did what a thing called mutex poisoning.
+1801	So that.
+1802	I love all these terms, draining, mutex, poisoning,
+1807	mucus.
+1807	I mean, I'm, I'm seeing Tokyo being installed
+1810	here on my screen.
+1811	I'm listening for gossip notifications.
+1814	Oh, did it work?
+1815	Yes.
+1815	Yes.
+1816	Oh, nice.
+1817	Okay.
+1817	I haven't, I have no bootstrap peers.
+1821	Patience grasshopper.
+1822	Okay, Dave.
+1823	Thanks.
+1824	This will take a minute.
+1825	Patience.
+1826	Yeah, but you could have, you could have
+1829	given me code.
+1830	It could have wiped my entire system.
+1832	The whole Linux system.
+1833	The Ohmarchy would have collapsed.
+1835	No, that's open call.
+1841	Yes, it's true.
+1842	Error bars.
+1844	Okay.
+1844	Huge error bars.
+1846	Huge error bars.
+1848	Okay.
+1849	So how long is this minute grasshopper?
+1852	It's just sitting there.
+1853	You got, you got nothing yet.
+1855	Oh, I see some announcements.
+1856	I mean, I wonder if that's from you.
+1858	I don't see anything yet.
+1859	I have, I have, I have joined the
+1861	gossip topic.
+1863	Oh, boom.
+1865	All right.
+1866	Neighbor up.
+1869	Neighbor up.
+1871	Event neighbor up.
+1872	Oh, okay.
+1872	Look at this.
+1873	Sweet.
+1874	Are you getting pings?
+1875	I'm getting lots of pings.
+1876	Yes.
+1877	Awesome.
+1877	Yeah.
+1878	There was, there was no bootstrap nodes specified
+1882	anywhere.
+1882	It got all of that connection data from
+1884	the DHT.
+1885	Magic.
+1886	Magic.
+1887	Okay.
+1887	So of course this is, you know, it's
+1889	not super readable obviously, because it's just save
+1892	new peer.
+1893	Oh, I have a new peer.
+1894	I've got a peer.
+1895	I'm peering.
+1896	I've got a peer.
+1897	Oh, this is good.
+1898	Spreaker coming through.
+1900	Oh yeah.
+1900	Wow.
+1901	All right.
+1902	Hey, I'm part of the club now.
+1903	I'm with the cool kids.
+1905	I've got a gossip listener.
+1907	Yeah.
+1908	Now, you know, now you can pipe that
+1909	out and do whatever you want to with
+1911	it.
+1911	You're, you're in total control now.
+1914	Yeah.
+1915	Until it crashes.
+1915	I got new peers.
+1917	No, another peer.
+1919	There's peers everywhere.
+1920	This is fantastic.
+1922	Yeah.
+1922	So we, so there's also friendly names.
+1926	So if you start, if you start the
+1928	listener with a node underscore.
+1930	I'm killing it.
+1931	I'm killing it.
+1932	Hold on.
+1932	Okay.
+1932	Kill it.
+1933	So do this.
+1933	All caps.
+1934	So this is an environment variable, all caps,
+1937	node, underscore friendly underscore name.
+1942	Yeah.
+1942	Equals.
+1943	And then in quotes, give it whatever your
+1945	name is, Adam's node or whatever.
+1949	And then space after that, you know, after
+1954	that and then cargo and then cargo run.
+1959	Okay.
+1963	That'll give your node, a friendly name that'll
+1965	appear in the...
+1966	Oh, my neighbors came.
+1968	Oh, neighbor down.
+1969	I have a neighbor down.
+1970	We have a neighbor down.
+1976	Okay.
+1977	I'm sure our, our guest in the lobby
+1980	is like, what the heck are they...
+1981	Should we bring him in?
+1982	Because he's probably excited about this.
+1984	This kind of stuff...
+1985	He's probably, yeah, he's probably got it installed
+1987	already.
+1987	He might be dead.
+1988	I don't know.
+1989	Ladies and gentlemen, from pod page, say hello
+1991	to our guest in the boardroom.
+1993	Brendan Mulligan.
+1995	Hello.
+1996	Hello.
+1996	Hello.
+1996	Brendan comes booming in from the AirPods.
+2001	After much mocking, did you...
+2005	Did you get the gossip listener installed as
+2008	we were talking?
+2009	I did not.
+2010	Oh, boo, boo.
+2013	Love and Claw had full control over my
+2014	computer and was draining my...
+2016	What is even the point of you?
+2018	You've got to install this.
+2021	I mean, look how far I've come, Dave.
+2023	I mean, look how far I have come
+2025	in, in just a short few years.
+2029	Here I am running, running rust.
+2032	Could not open a database file at data
+2035	auth.
+2035	Yeah, no, you're right.
+2037	Hey, citizen, you're running the, the full pod
+2039	ping client.
+2040	You just need to be running the listener.
+2042	So yeah.
+2042	Stop it.
+2043	Yeah.
+2044	Stop doing that.
+2044	Change into the gossip listener database.
+2045	Stop doing that.
+2047	Hey, Brendan, good to have you in the
+2049	boardroom, man.
+2050	Yeah.
+2050	Nice to, nice to talk to you both.
+2052	I am a customer.
+2053	I've been a long time customer of PodPage.
+2057	And I think that perhaps for people who
+2060	are not aware, you should tell us a
+2062	bit about your fine organization.
+2065	PodPage is a website builder, specifically targeted and
+2069	serving podcasters.
+2070	So we try to make it really easy
+2072	to go from having a podcast.
+2074	So you have your RSS feed on any,
+2076	any platform you want to having a website
+2078	where you just type in the name of
+2079	your podcast or your feed.
+2080	And we take all that content.
+2082	We pull it in.
+2083	We look at your artwork and try to
+2084	build a theme based on what your artwork
+2087	is.
+2087	We pull in all your episodes and then
+2089	we just keep the, keep the website up
+2090	to date.
+2092	It's an amazing, it's an amazing product.
+2095	And is this free?
+2098	There is, there are three tiers to it.
+2100	Sort of going from, you know, good, better,
+2101	best.
+2102	We used to have a free plan, but
+2104	it was what we found out.
+2106	We had a free plan for four years.
+2108	And we found that about 99% of
+2111	people who wanted a website wanted a custom
+2114	domain.
+2114	And so you've always had to upgrade to
+2116	get a custom domain.
+2117	And the people that were using it without
+2119	a custom domain, the majority of them were
+2122	using it for, you know, scam purposes.
+2126	So we had a lot, we had a
+2127	lot of, we had a lot of DCMA,
+2129	DCMA, we had a lot of takedown notices,
+2132	DMCA, DMCA takedown notices.
+2135	And it was all for people creating pod
+2136	page accounts, then, you know, putting up pages
+2140	that you could download movies and stuff like
+2142	that.
+2142	So a couple of years ago, we decided,
+2144	you know, we looked at it and we're
+2145	like, there's very few serious podcasters using this
+2148	for free.
+2148	Because, you know, if you want to, if
+2150	you want a basic website with no domain
+2151	name, every podcast host will give you that.
+2153	And so people were moving over to pod
+2155	page to actually have a place that they
+2157	could kind of own and brand.
+2159	So we removed the free account.
+2160	It was kind of a painless situation.
+2163	And so we have accounts, I think it's
+2165	like, starts at 12 bucks a month going
+2167	up to 50 bucks a month, depending if
+2169	you want to pay yearly or annually.
+2172	Very nice.
+2174	I asked you to come on the show
+2176	because I wanted to talk like namespace tech
+2180	with you.
+2180	I've got some ideas in my head that
+2181	I wanted to throw at you.
+2183	But I am interested, like from business wise,
+2188	from what pod page is doing.
+2191	You said just a second ago, you clearly
+2195	that every podcast hosting company will give you
+2198	some sort of basic page for your podcast.
+2202	So, I mean, from that standpoint, you're kind
+2206	of going head to head with something that
+2207	they get already for free.
+2209	What why did you think that you could
+2212	do something different that would make people want
+2215	to pay you?
+2217	Well, you know, when I started, I would
+2218	say, actually, I'd say this for the most
+2221	part now, but especially in 2020 ish when
+2225	when pod page got started, your host page
+2228	generally sucks.
+2230	I mean, it's just and it kind of
+2233	and it kind of should be.
+2234	I mean, like the podcast host job is
+2236	to is to do a great job at
+2237	hosting your podcast, not building your website.
+2240	And so in the majority of cases, a
+2243	podcast hosts page that they give you is
+2246	a bare minimum, both from a functionality and
+2249	design standpoint, just a bare minimum place on
+2251	the web for your episode, which is great.
+2254	I mean, it's great that they do it.
+2255	And for there are some hosts that allow
+2258	you for free to attach a custom domain.
+2260	And I actually think that's a great place
+2261	for a lot of podcasters to start, because,
+2266	you know, you don't I'd rather podcasters and
+2268	the whole point of pod page, I'd rather
+2269	podcasters spend time thinking about the great content
+2271	they're going to create and release and get
+2274	into people's ears than like managing WordPress hosting.
+2278	Right.
+2278	So the easier the better we what we
+2281	did and kind of the way that I
+2282	describe pod pages, we're sort of in the
+2284	middle.
+2285	I would say that there's a lot of
+2287	new start starting podcasters that the podcast host
+2290	page, depending on the host, some of the
+2291	host pages are really bad.
+2293	Some are good.
+2294	So they can stick with that, especially if
+2297	they can put a custom domain on it.
+2298	I think every podcaster should have a website
+2300	with a custom domain, so they can start
+2301	building the domain authority around the name of
+2303	their podcast.
+2304	But so assuming your podcast host can handle
+2306	that, like that works for a lot of
+2308	people.
+2309	Pre-pod page, the next step was WordPress,
+2311	which is a tangled nightmare of plugins and
+2314	hosting and backups and themes.
+2317	And I think like there are a lot
+2319	of podcasters once they reach a certain level
+2322	who really benefit from ultra customization, ultra control.
+2328	And WordPress is a great solution because they
+2330	can typically afford the to pay someone else
+2332	to spend figuring that out.
+2335	I think there's a huge group of podcasters
+2337	that fit in the middle of those two
+2338	that need more than their host page because
+2341	they want basic stuff.
+2342	Like they want to wait for their listeners
+2343	to contact them on their website or they
+2345	want to import reviews or they want to
+2346	maintain a blog.
+2347	And pod page does honestly just way too
+2350	much at this point, but they want a
+2352	lot more.
+2353	But they don't want to have to manage
+2354	like the nightmare that WordPress can become when
+2357	you're having to, you know, literally it's kind
+2359	of for hosting.
+2360	Like this is things that just don't make
+2362	sense anymore.
+2364	If for a lot of people who are
+2365	non-technical and just really started a podcast
+2368	as they were passionate about a subject and
+2369	that subject probably isn't website development.
+2372	So that's kind of where we sit.
+2374	I'm like, I'm thrilled when people cancel their
+2376	pod page account because they say I've gotten
+2378	my podcast has gotten so big and I
+2379	just need to go to WordPress.
+2380	That's a graduation moment that we celebrate.
+2386	And there are, you know, a lot of
+2389	people who just like the host site just
+2391	doesn't do it for them.
+2392	So we try to, you know, we try
+2393	to sit in the middle and that's kind
+2395	of the business.
+2396	How deep does it go?
+2398	I mean, like, how big of a page
+2404	can you build for your site?
+2406	Can it almost mimic a WordPress multi-page
+2410	layout?
+2411	Yeah.
+2412	You can imagine, like I say that I'd
+2414	celebrate people graduating to WordPress over the years.
+2417	You know, I always, I obviously ask them
+2419	on the way out, what did we do
+2420	wrong?
+2421	And for a long time it was, well,
+2423	I want to, I mean, we've always kind
+2425	of had blogging functionality, but I want to
+2426	write a blog in addition to importing episodes.
+2429	Oh, I want to have pages for my
+2431	sponsors.
+2432	I want to have pages for products that
+2433	I sell.
+2434	Right.
+2435	And those are things I'm like, well, you
+2436	shouldn't leave, we can build that.
+2438	And so the pod page, I'm actually working
+2440	through simplifying our feature page because it's kind
+2444	of a wall of text.
+2445	There's just so much as I've added over
+2447	the last six years.
+2449	But you can do a lot.
+2450	You can add courses to your page.
+2452	You can add products.
+2453	You can have your newsletter pipe in and
+2456	have like your newsletter displayed on the page.
+2460	There's a lot of just publishing functionality that
+2463	is there now.
+2464	And then there's also on the backend, like
+2466	a ton of workflow functionality.
+2467	So we have guest intake forums.
+2469	So when you have a guest on the
+2470	show, instead of asking them to send over
+2472	a bio and picture, you just send them
+2473	to a page on your website.
+2474	They fill out a form, they get entered
+2476	as a guest.
+2477	You can then say this guest is going
+2478	to be in episode 255.
+2480	When we import episode 255, the guest gets
+2483	an email that says, hey, your episode has
+2485	been published.
+2486	Here are all your links.
+2487	So there's a lot that we do on
+2489	the backend.
+2491	And then obviously with AI, we do a
+2495	lot of AI.
+2495	What?
+2498	Don't talk about it.
+2499	Eric's going to get mad.
+2500	We can cover that in a minute.
+2504	So the amount of people who cancel their
+2506	pod page account to go to WordPress because
+2508	of lack of functionality has kind of trailed
+2511	off over the last few years.
+2513	There are still people who say like, I
+2515	started out as the fly fishing podcast, but
+2520	I've become a fly fishing influencer.
+2522	And now my whole brand is around me.
+2524	It's not around my podcast.
+2525	Podcast is part of my content strategy, but
+2527	no longer the primary driver.
+2529	So I need a page that's more about
+2530	me, that has a podcast section.
+2533	That's typically the people that end up going
+2534	over to WordPress now.
+2536	Which makes sense because to keep them, I'd
+2539	sort of have to start building a generalized
+2540	web builder and there's enough of those.
+2543	But we have the similar problem with Godcaster.
+2546	We were talking the other day.
+2547	It was like, there's so many, we keep
+2549	adding features at such a high rate that
+2552	we forget that we even have that feature.
+2556	And sometimes I'm like, man, we should put
+2559	the X and we should put ABC feature
+2561	in.
+2561	And then I go to do it and
+2563	I literally find it's already there.
+2565	I'm like, oh, I already did that.
+2567	It's crazy.
+2569	It's funny you say that.
+2570	I love building features.
+2572	I'm horrible at marketing.
+2574	And so there are so many things that
+2575	we've never told our customers about.
+2577	There's some things that Dave Jackson, who runs
+2581	our community and- A beloved member of
+2586	the podcasting community from the days of lore
+2588	for two decades.
+2590	Yes.
+2592	Long-term, our best affiliate and our best,
+2597	completely separate.
+2598	There was always our best affiliate, our best
+2600	voice in the community.
+2602	And so we were excited to bring them
+2604	on board.
+2605	But he says, the amount of tickets and
+2607	emails we get, people are like, I wish
+2609	a pod page did this.
+2610	And his answer is, oh yeah, it's right
+2611	here.
+2612	He's like, it's an overwhelming amount of people
+2614	who can't find it because there's too much
+2616	stuff in the dashboard or Dave will say,
+2618	hey, didn't you say you were going to
+2619	build that?
+2620	And I go, oh, I did build it.
+2621	I forgot to put a button in the
+2622	dashboard for it.
+2624	Or you build it and it only is
+2627	visible for like an admin or you or
+2629	something like that for testing and you forget
+2631	to put it live.
+2632	And so you're like, oh, everybody's got it,
+2634	but nope, they don't.
+2636	Exactly, 100%.
+2641	So I've been thinking a lot.
+2646	Sam, Sethi brought up publisher feeds.
+2650	So are you familiar with, my first question
+2653	is, are you familiar with the concept?
+2657	No.
+2658	Okay.
+2660	Easy to explain.
+2661	So the publisher feed is sort of the,
+2666	and you're a podcasting 2.0 familiar person.
+2669	So you understand the namespace and that kind
+2671	of thing and have a lot of support
+2673	for it.
+2673	So the publisher feed idea is we're trying
+2678	to replicate in an open RSS way, essentially
+2685	what you have with like an Apple channel
+2689	and like a channel in Apple podcasts.
+2692	And the idea here is that you can
+2695	have a feed, an RSS feed, which references
+2701	all of your other feeds.
+2703	So let's say that you're the, let's say
+2705	that you're the New York Times and you
+2707	have seven different RSS feeds for your different
+2710	podcasts, where you would have sort of a
+2713	master feed and a publisher feed that references
+2717	those other feeds to say, okay, these feeds
+2720	belong, these are our podcasts.
+2722	And within each one of those feeds, they
+2726	would also reference back to the parent publisher
+2729	feed in a sort of two-way handshake
+2732	that says, that way a podcast can't claim
+2736	to be part of the New York Times,
+2738	published by the New York Times when it's
+2740	not, because they both have to reference each
+2742	other in order for it to be sort
+2744	of a signature.
+2746	So that was the concept in the beginning.
+2748	So then that way you could have like
+2750	an open way to sort of walk back
+2755	up the chain and you say, okay, I'm
+2757	a listener of this NPR podcast.
+2762	Well, in my app, I can tap NPR
+2765	and now the app has an intelligent way
+2768	to know all the other NPR podcasts that
+2772	are officially published by NPR.
+2776	So that's the concept.
+2778	Well, then recently within the last year, we
+2788	standardized the podcast images tag.
+2791	So the problem with the publisher feed was
+2794	it was just, it's so rudimentary.
+2797	It's just doing this one job.
+2799	So then we standardized the podcast images tag.
+2805	Are you familiar with that tag?
+2808	No.
+2809	Oh, Brenda.
+2810	Okay.
+2810	Well, I mean, with the podcast images tag.
+2812	Yes, the image tag, the podcast colon image
+2817	tag.
+2819	Like, so it's part of the podcast namespace.
+2821	So I called it images.
+2826	What I mean is the podcast image tag.
+2828	And it's fairly recent.
+2831	So you may not have seen it, but
+2833	it's also easy to explain.
+2835	I promise I'm getting you somewhere with this.
+2837	Brenda, just bear with me.
+2840	Yeah.
+2841	The podcast image tag is a way to
+2847	reference sort of third-party descriptive assets.
+2856	So what you could say is, instead of
+2860	just having a square image, like with the
+2862	iTunes image tag, the iTunes image tag is
+2865	always the same thing.
+2866	It's expected to be a one-by-one
+2867	image.
+2868	There's 3000 by 3000 or whatever.
+2871	The podcast image tag in the podcast namespace
+2874	is you can describe the type of image
+2879	that this thing is.
+2881	So that may be like a banner or
+2884	a 16 by nine.
+2886	Or it can even reference the spec of
+2890	another platform.
+2894	So what you could say is here is
+2896	the Apple channel image.
+2900	And then iTunes could bring in that image,
+2903	expecting it to be something that's formatted in
+2905	the way that they specified in their documentation.
+2910	Got it.
+2910	Okay.
+2911	So what I wanted to discuss with you,
+2916	and you seemed like the perfect person to
+2919	ask about this, was a way to pull
+2924	all this together.
+2927	Is there some sort of intelligent way to
+2929	pull all of these kinds of things together
+2932	where things like PodPage and other services and
+2937	apps can have a more intelligent way of
+2941	building a page that's more to the publisher
+2944	or the podcast creator's specification?
+2949	And what I mean is like, there's always
+2955	this push-pull, this sort of like, you
+2959	know, I'm the app creator and I'm going
+2962	to make my app look a certain way.
+2964	And you're the podcast creator and you want
+2967	your brand and your podcast to look a
+2970	certain way.
+2970	But there's this balancing act between the two.
+2973	I'm not going to give you, I'm the
+2975	app creator, I'm not going to give you
+2977	as the podcast creator total control to change
+2979	the way my app looks.
+2981	But I also want to honor the fact
+2982	that you have these, this artwork and these
+2985	fonts and these assets and this kind of
+2987	thing.
+2988	And I want to bring those in.
+2990	And I feel like we've created a lot
+2992	of the tools to do this.
+2994	But I just wonder from a design standpoint
+2996	and a person who does this all day,
+2998	like, what are your ideas around that whole
+3001	concept, if you have any?
+3004	Well, so I feel like, again, when I
+3008	started really like spending my day with podcast
+3011	feeds six years ago, I would have predicted
+3015	that six years later, they would be a
+3017	little further along than they've come over the
+3020	past few years.
+3022	I am sort of a big, big proponent
+3025	for putting, and there's, I guess there's data
+3028	reasons not to do this, but as much
+3030	stuff in the feed, so end user destinations,
+3035	whether it's PodPage or iTunes or whoever.
+3039	And yes, I continue to call it iTunes
+3041	this many years later.
+3045	I mean, it's in their specs, so it's
+3047	their fault too.
+3050	I feel like everything should be in there.
+3052	So the end user, the destinations that ultimately
+3057	listeners are going to be interacting with has
+3059	the right information and is as easy as
+3063	possible to have the information that helps the
+3065	listener learn about the podcast and get to
+3067	the podcast.
+3068	And so, I mean, I would celebrate any
+3072	time where hosts are starting to put more
+3075	stuff in the feed, we start consuming it
+3077	relatively quickly.
+3079	You know, like when PodRoll started getting put
+3082	in the feed, now, like when we import
+3085	a feed with PodRoll in it, we build
+3088	a PodRoll page for the podcast just automatically.
+3091	Because why wouldn't we?
+3094	I would kill, I mean, I think doing
+3096	the biggest parts, and again, I'm looking at
+3099	this from a biased standpoint, just being the
+3100	website world, but like custom banner images, like
+3104	the big banner at the top of the
+3105	page, that's one of the things that makes
+3109	a page feel the most unique.
+3113	And we've tried to like use the podcast
+3115	artwork, the square podcast, but that's not really
+3117	great for a website.
+3118	Like what's great for a website is a
+3119	large hero image.
+3121	And if that could be coming to the
+3123	feed, I would love that because that's everyone
+3125	hits the stopping point.
+3127	Like, oh, they see like, they see Curry
+3129	and the Keeper or what's the one with
+3132	like you with a glass of wine?
+3135	What's that one?
+3135	Curry and the Keeper.
+3136	Curry and the Keeper.
+3137	So that page has this beautiful image at
+3139	the top of two people, is it you
+3142	and your wife?
+3143	I hope so.
+3144	She was last I looked.
+3146	I'm trying to remember if it was you.
+3151	But like the personality of that page is
+3153	set by this big image.
+3154	And you have to take the time and
+3156	effort to create that image.
+3157	And maybe you already have, but then you
+3158	have to upload it.
+3159	So sort of a long-winded way.
+3161	Anything I can get from the feed, I
+3163	love.
+3163	Actually, I was talking to the folks at
+3165	Bloomberg.
+3165	And I'll just say, Tina created all that.
+3168	She did all that.
+3169	I set her up on PodPage and I
+3173	said, here you go.
+3174	And she did all that.
+3175	She's done, she worked for Ronald McDonald House
+3178	Charities.
+3179	And so she's kind of a WordPress Canva
+3182	girl, I guess.
+3183	And she had no problem.
+3185	She created the whole thing.
+3186	I didn't touch it at all.
+3188	And she doesn't understand anything, how RSS works.
+3192	She just said, oh, it just shows up.
+3194	She loves that the chapters are there, that
+3196	the transcript is there, but she created the
+3198	whole site.
+3200	Awesome.
+3201	Yeah, not a podcast.
+3202	Well, she's a podcaster, but not your typical
+3204	podcaster who gets in the weeds on stuff.
+3207	So it was very easy, really nice.
+3210	That's awesome.
+3211	But yeah, I mean, I think that I
+3213	was gonna say, I was talking to the
+3214	Blueberry folks yesterday and we handle so many
+3217	feeds from all these different hosts and a
+3219	lot of times I just, I'm not aware
+3221	of stuff as it comes out or has
+3224	been out.
+3224	But one of the things when we import
+3226	a show, is we grab the show from
+3228	the feed and then we go to Apple
+3231	and we try to find it.
+3233	We try to get the iTunes ID.
+3236	And then we go to Spotify and we
+3237	try to get the Spotify ID.
+3238	We do that with like searching.
+3242	Yeah, right.
+3243	And then I saw that Blueberry had, I
+3247	forget what the tag is, Raw Voice Published
+3250	or something like that.
+3250	That in their feed, they list the destination
+3254	links to Apple and Spotify and whatever's been
+3256	turned on.
+3257	That to me makes so much sense because
+3258	the feed, the host controls the distribution so
+3261	the host knows where the stuff is.
+3264	And so if hosts, so this is just
+3266	one example of like, by putting that in
+3267	the feed, that means every person that consumes
+3271	the feed can quickly and easily without any
+3275	extra code or an extra work, get the
+3277	listener to those destination sites.
+3279	And like, without putting it in there, that's
+3282	making all these different services like mine or
+3283	like the other players have to, or other
+3286	libraries have to go and write a bunch
+3289	of code to figure this stuff out.
+3290	So I'm a big fan of stuff.
+3291	This is a very long answer, but you've
+3293	caught me on a good day talking about
+3294	it because I was just, like I found
+3297	out about the Blueberry tag, I think what
+3300	is today?
+3300	Today's Friday.
+3301	I found out about it on Tuesday.
+3302	It was implemented by the end of the
+3304	day Tuesday.
+3305	I mean, it was like, of course I
+3306	want this.
+3306	Why wouldn't I want to know that this
+3310	is the right place for the show?
+3313	I wish that feed, you know, hosts did
+3315	that for episodes.
+3316	Like here's the deep link to Apple for
+3317	this episode because that's a nightmare to get.
+3320	And that's why most libraries.
+3321	Yeah, reverse, it's easy to get, it's easy
+3323	to have the iTunes ID and get the
+3325	feed that goes with it.
+3326	It's hard to get to have the feed
+3328	and reverse it and get the iTunes ID
+3330	from that.
+3331	But like I'm talking about when a new
+3332	episode is released, we import the episode.
+3334	I'd like on the episode page on pod
+3337	page to link directly to Apple for that
+3340	episode.
+3340	And most people think this is how all
+3343	these libraries and destination sites work.
+3346	Or if you go to episode 16, they
+3347	all just link back to the show.
+3349	Why?
+3349	Because Apple has no sophisticated endpoint for this.
+3353	And the amount of code that we've written
+3355	to go get these things.
+3357	And Nathan from episodes.fm can also talk.
+3361	It's like, it's crazy.
+3362	But the host has it because the host
+3364	knows what the episode ID is.
+3366	I'm a big fan of anything to expand
+3369	the feed to make it easier for people
+3372	who are building these services to make a
+3374	better experience for listeners and one more representative
+3376	of what the podcaster wants.
+3378	Well, so what got me thinking about this
+3381	recently after I heard Sam talking is that,
+3383	is so if you go to like podcast
+3385	.apple.com, if you go to their page
+3390	or whatever, and then you just search.
+3391	If you go to like the Focus on
+3393	the Family channel, that it's functional.
+3398	I mean, it does what it's supposed to
+3400	do in the sense that you can find
+3404	all of their shows there, but it's boring.
+3408	Like it's just got, all it's got is
+3410	like a hero banner at the top.
+3413	And that's kind of it.
+3416	And I guess what I'm envisioning, what I'm
+3421	envisioning is a way to be able to
+3427	use the podcast image tag in combination with
+3431	the publisher feed or even in a feed
+3435	itself to give back all the assets that
+3439	a designer would need in order to build
+3442	a page that looks like the brand would
+3448	want.
+3449	So like instead of just simply a banner
+3452	or just simply a square image or just
+3455	like one image asset or even two, I
+3458	mean, I'm thinking like, what if you had
+3460	like 15 assets coming back that specified all
+3465	these different things?
+3467	Like here's what the background tiling would be.
+3471	Here's what this would be like.
+3472	And it doesn't mean you have to use
+3474	all of them, but you could, I guess
+3477	like what in your dream world of design,
+3483	what would you be getting, what would you
+3486	want to get from the feed in order
+3488	to build like a highly branded page for
+3492	this specific publisher?
+3496	I mean, and this is where I think
+3498	my answer might be kind of like maybe
+3501	the host, this is a lot for a
+3503	host to add, but like what I'd really
+3505	want is a brand kit.
+3506	A media kit for the podcast.
+3509	Think about when you go to like a
+3511	startup's brand page or whatever, you're getting, usually
+3516	they're giving you logos with like a dark
+3518	mode logo and a light mode logo.
+3519	They're giving you potentially like Twitter banners, like
+3522	it depends on the brand, but lots of
+3525	assets at different sizes for different purposes.
+3527	So I think that would be really nice.
+3530	I think a logo with no background, actually
+3534	we could really utilize that.
+3535	It's very nice when someone goes to our
+3538	page and like uploads an actual logo, it
+3540	can make their page look really nice if
+3542	they have certain layouts versus just having to
+3545	use the artwork.
+3546	So like logos in PNG format or SVG
+3548	or something like that, icons, knowing if it
+3551	has like, if the brand is like, the
+3552	more the better, like I ended up being
+3554	able to use a lot.
+3556	Like the pages that look really great on
+3557	PodPage are usually people who come and say,
+3559	hey, we've got all these assets.
+3560	How do we like put them on the
+3562	page?
+3563	I'd love like primary colors.
+3566	Like what are the, because we sort of
+3567	derive that from the logo when we import,
+3570	or it's not logo, the image for our
+3572	guest art.
+3572	Like a palette.
+3574	Yeah, like what's the color palette?
+3575	So like, and for us in a lot
+3577	of places that really breaks down to three
+3579	colors for like a published page.
+3581	And I think in most consumer services, meaning
+3583	services consumed by listeners, it's like, what's the
+3586	background color?
+3587	What's the text color?
+3588	And what's the highlight color?
+3589	Those three can make a page look very,
+3591	very custom to that brand.
+3595	So like that would be the conceptually, it
+3598	would be like a brand kit for a
+3601	pod.
+3601	Now I think a lot of podcasters would
+3603	be intimidated putting that together.
+3604	And so I think hosts could help with
+3607	that.
+3609	But that would be amazing.
+3611	We could do, our pages would look way
+3613	better or more, our pages look more like
+3615	the end user wants or the podcaster wants
+3618	them out of the box if that stuff
+3619	was in the feed.
+3619	So I'm a big fan of all that.
+3620	How many people, I was gonna say, how
+3622	many people work at the company?
+3624	Is it you and Dave or are you
+3625	have more people there?
+3627	It's fluctuated over the years, but right now
+3629	it's Dave and I.
+3630	Okay.
+3631	I do basically all of the engineering design.
+3635	And he plays guitar.
+3636	He plays guitar in his community, which has
+3642	been amazing.
+3643	Cause you know, I still am involved with,
+3647	you know, customer support and community, but that
+3651	was, you know, a lot of me over
+3652	the past four years, which is why the
+3654	product is shaped so much to podcasters.
+3656	But by him sort of taking over, we're
+3659	able to do a lot more, you know,
+3660	new user orientations, live support.
+3664	He's amazing.
+3665	And so we have a lot better community
+3667	support.
+3668	And then that gives me more time for
+3669	just feature development and making the product better.
+3673	You think there's a way, is there a
+3674	way to do, what would be the best
+3677	way to deliver like a color palette without,
+3680	I'm just, I'm trying to think is, would
+3682	there a way to be, would there be
+3684	a way to do that with the image
+3687	tag itself or would, we've had lots of
+3690	proposals, like Daniel in the boardroom saying, we've
+3695	had proposals to provide this information before.
+3698	And we have, I'm just trying to think
+3701	this through and have a comprehensive idea of
+3704	what all would be needed.
+3706	And like, do we need a new tag
+3707	for this?
+3708	Do we need this kind of thing?
+3709	Like you don't want to, I don't like
+3713	creating a spec in a vacuum.
+3715	I mean, I feel like you, I feel
+3717	like you really have to have input from
+3719	the people who would actually, who would be
+3721	using it.
+3724	And I mean, can you get, could you
+3726	get something like a color palette out of
+3728	an image itself?
+3732	That's what we do.
+3733	You know, I forget what the library uses.
+3735	Or in Python, so it might be pill,
+3738	but we run it through, we take your
+3741	cover art and we run it through and
+3743	we try to estimate what your primary color
+3748	would be.
+3748	So like, what's the highlight image.
+3750	And sometimes it's really easy because, you know,
+3752	it's a deep blue.
+3754	It's just, there's so much deep blue on
+3755	the thing.
+3755	You just know that that's what they would
+3757	want.
+3757	And other times it's like, their cover art's
+3760	a picture and there's just no way to
+3762	know what the right primary color is.
+3764	So you could do it automatically.
+3765	I mean, the way that I would think
+3766	from a workflow standpoint is, you know, the
+3769	podcaster uploads this information into their host and
+3772	their host tries that, but then also has
+3776	a place for them to set it, which
+3777	then would be represent, you know, that would
+3779	sort of be the tone of their host
+3781	-driven media player and their host-driven landing
+3783	page, right?
+3784	Like it's useful information for the host because
+3786	the host is creating these assets also.
+3789	So I think I could be totally wrong
+3791	here, but pretty sure on Buzzsprout, you can
+3793	choose a primary color for your player.
+3794	And that's what the little play button gets.
+3797	Yeah, yeah.
+3798	You know, and on most of these landing
+3800	page builders for the host, you can usually
+3802	choose your primary color, your text color, your
+3804	background color, your link color, you know, so
+3806	the information is already there.
+3810	And the problem with hinting though, or whatever,
+3813	you know, like trying to decipher a color
+3816	out of some image assets is that you,
+3820	I mean, you have to do some real
+3822	heuristics and then there are colors where the
+3827	text just doesn't work.
+3832	Because then you have to find a font
+3834	that looks right over the top of that
+3836	text.
+3836	And sometimes things are just right in the
+3838	middle and you can't really find a font
+3841	that looks right.
+3842	Yeah.
+3843	Yeah, I'm sure you're jumping through all kinds
+3845	of hoops to try to figure that out.
+3848	Yeah, and we're also just kind of putting
+3849	it on the user and saying, at some
+3851	point, you have to put it on the
+3853	user and say, you just have to, you
+3854	have to figure this out.
+3855	Stupid user.
+3857	Yeah, yeah, that works real great.
+3858	So users are very, you know what our
+3861	favorite is?
+3862	Power users.
+3864	Oh yeah, that's great.
+3866	Yeah, they're great.
+3867	Yeah, they know just enough to twist themselves
+3869	in knots and then call support.
+3872	Do you find yourself amazed sometimes at how
+3877	people will use your software?
+3880	Oh my God, yes.
+3882	That's always, that's always amazing.
+3885	Oh my God.
+3886	But you know what?
+3886	It's like, this is why, this is why,
+3890	you know, I'm a big believer in everyone
+3893	at a company should be doing customer support
+3894	and talking to customers and why it was
+3896	so valuable because there's, it's like, it's like
+3901	with my kids, the, you know, sometimes there's
+3903	emotions that come up and there's a lot
+3905	of them, they're still learning to manage their
+3908	emotions.
+3909	And what we found is the best thing
+3910	to do is just, let's just take a
+3911	little break.
+3912	Like you might be mad, but let's just
+3913	take a break or let's go sit down
+3916	just for a minute and just, you know,
+3918	let your body calm down and then it
+3920	just helps you think a little clearly.
+3921	And, you know, mom and dad have to
+3923	do that too.
+3924	There's some times that we need to take
+3925	a little break.
+3926	You're usually better off if you go take
+3927	a walk or do something and just clear
+3929	your mind.
+3930	So I feel like when talking to customers,
+3931	I always have to remind myself like, oh
+3933	my God, that is such a rude way
+3934	of saying that.
+3935	Or like, why would they ever expect that
+3939	I would build that for them?
+3940	That is the craziest, craziest feature request.
+3943	And, you know, they're usually angry.
+3945	Like the fact that you don't have this
+3946	is just ridiculous.
+3946	It's so easy to build.
+3950	But then, you know, you take a moment,
+3952	take a breath and you think, okay, like
+3954	what is the problem that they're trying to
+3957	solve?
+3957	Or like, what is the actual, you know,
+3962	they might be telling me what the feature
+3963	they need is, but let me take a
+3965	step back and be like, well, forget about
+3967	what their suggested feature is.
+3968	What is the problem that they're revealing to
+3970	me?
+3970	I mean, that's how almost every feature on
+3972	the platform has been built.
+3973	It's just hearing people say like, I wish
+3975	it did this.
+3976	And sometimes the thing they want is exactly
+3977	what we need to build.
+3979	Most of the time, the thing they want
+3980	isn't what we need to build, but the
+3982	issue they're having is a legitimate issue that
+3984	we should build a feature for.
+3986	So I have found that asking the question,
+3989	what problem are we trying to solve is
+3992	usually the thing that cuts you straight through
+3994	to the answer in the fastest possible way.
+3997	Mm-hmm.
+3998	Because, you know, a lot of times, I
+4001	think a lot of times people are trying
+4003	to, I've done helpdesk, IT helpdesk for 27
+4006	years.
+4008	And a lot of times people call and
+4011	they're trying to describe the issue in the
+4013	way that they think you want to hear
+4015	it.
+4017	And, but really what I want to hear
+4020	is what they're actually doing and the problem
+4023	they're hitting.
+4025	I'm like, what are you trying to do?
+4026	And then tell me what happens when you
+4028	try to do it.
+4029	Don't think about what I want to hear,
+4031	just tell me what you're doing.
+4033	And a lot of times that gets you
+4035	through to an answer much quicker because you
+4037	have a clearer, you know, idea of what's
+4038	happening.
+4039	Well, we had an example of this came
+4041	up yesterday with the user.
+4042	So we're, you know, YouTube is probably an
+4048	emotional topic to talk through in any podcast
+4050	or circle.
+4051	But like, there's a lot of people who
+4053	come to pod page now and say, oh,
+4054	I want to start a pod page.
+4055	And I say, what's your feed?
+4056	And they say, my YouTube channel is this.
+4058	Well, what's your feed?
+4059	Well, my YouTube channel is this.
+4062	And for, and before this, a lot of
+4065	podcasters would come and say, hey, I've got,
+4067	here's my feed, but I also have a
+4068	YouTube channel.
+4069	And you know, it's a, the web is
+4073	a visual platform.
+4075	And so I'm not expecting someone to come
+4077	to someone's podcast episode page and then click
+4080	play and stare at their episode page.
+4082	Right?
+4083	They're probably going to go do other stuff.
+4084	And if they're going to listen in the
+4086	background, they're probably better off listening on Spotify
+4088	or wherever they consume podcasts and subscribing there.
+4091	Like it's not really, the website isn't a
+4093	great place for listening, but it's a good
+4095	place for watching.
+4096	And so a lot of users would say,
+4097	hey, I've got a podcast episode that a
+4099	podcast, or I mean, sorry, a YouTube video
+4100	that's related to this podcast.
+4102	And so we've been doing more sort of
+4103	pairing.
+4104	When we import a feed, we can also
+4107	check YouTube for you and say, oh, here's
+4109	the episode on YouTube.
+4109	And so on your episode page, we'll put
+4111	the player, but we'll also put the YouTube
+4114	videos so someone can just come and watch
+4115	it.
+4117	And so obviously the natural next step from
+4119	that is people saying, well, I don't have
+4120	the feed, but I have the other.
+4122	And so we have a user that we
+4125	pull in his YouTube videos as if they
+4127	are episodes.
+4128	And it's an experimental feature that we're working
+4130	on.
+4131	And yeah.
+4133	Until YouTube decides to change something.
+4136	So your experimental feature breaks.
+4138	Exactly.
+4139	Right, right.
+4140	Um, but so we, we basically, so this
+4144	is to get back to what we're talking
+4145	about.
+4145	This user yesterday emailed us and said, hey,
+4148	yeah, we, I have, I have like, I
+4150	put all my episodes into different playlists based
+4153	on what the category is.
+4155	So the feature I need you to build
+4156	is being able to connect, build categories and
+4159	connect playlists to them.
+4161	And so when you import them, you're auto
+4162	categorizing, you know, well, they didn't say auto
+4165	categories.
+4165	No, like, so the, so the videos on
+4168	the website can be sorted by category.
+4170	Yikes.
+4171	Well, I mean, it's, so at first I
+4173	was like, well, that's just, and he even
+4174	said, cause he's a good user.
+4176	He said, I realized that YouTube isn't your
+4178	focus.
+4178	And this is probably not worth building for
+4180	you.
+4180	But this is what I would want it
+4181	to do.
+4181	How many, how many podcasts do you have
+4184	currently that are hosted with PodPage?
+4189	Active.
+4190	We've got about 20, 30,000 that have,
+4193	that have tried it.
+4196	And then, uh, you know, I don't know
+4198	what the active number is.
+4199	You're just going to the SQL database and
+4201	you ask it to count the rows.
+4203	I hear it works really well.
+4205	And you wait 15, 20 minutes.
+4207	Yeah, and it gives you a ballpark.
+4210	Yeah.
+4212	But, okay.
+4213	So this user was like, this is what
+4214	I want.
+4214	A very specific feature.
+4217	And what I, you know, when I, when
+4218	I, so I replied, I was like, just
+4220	forget all every, then you just told me,
+4222	are you just wanting us to intelligently categorize
+4225	your episodes when we import them?
+4227	Like, you're just looking for auto categories.
+4229	Your, your, your method is this weird playlist
+4232	thing.
+4232	That you'd, right.
+4233	You just want us to be able to
+4235	know like, oh, this is a cat.
+4236	This is for every, he was, it was
+4237	like a, it was a cocktail show.
+4239	And so I was like, you want us
+4240	to know that this is in your whiskey
+4242	sour playlist.
+4244	And so, you know, we've actually already, we're
+4246	working on something that probably in the next
+4247	couple of weeks, we'll release that does the
+4250	auto categorization.
+4251	Cause that's really useful for SEO and Google
+4253	to know like, hey, here's there's 500 categories
+4255	or 500 episodes, but here's how they all
+4257	break down.
+4257	So we're already working on that.
+4258	And like our, the, what we're building, we'll
+4260	already do what he wants.
+4262	So like, again, it was that, like the
+4263	problem you're trying to solve is you just
+4265	want us to get these things into some
+4267	basic categorization.
+4269	Yeah.
+4270	You're just what power users do.
+4272	They, they, they try to form, they try
+4273	to take what you've already built and sort
+4275	of like improve your product, their own solution.
+4279	And a lot of times you can do
+4281	it, you can do it that way, but
+4282	it's, it's so convoluted a lot of times.
+4285	Yeah.
+4285	But if you listen to what their intention,
+4287	you're like, oh, that makes a lot of
+4288	sense.
+4289	Why didn't, you know, so many times, so
+4291	many times I think I start with, oh
+4293	my God, that is, of course we're not
+4294	going to build that.
+4295	That's insane.
+4296	And then like, take a break, take a
+4297	breath.
+4298	And I think, why doesn't pod page do
+4300	that?
+4300	That should be like, that would make it
+4302	better.
+4302	That's a, that's a better way to do,
+4304	you know, that Google would love that.
+4306	SEO would love, you know, so.
+4309	Yeah.
+4310	You can, I think a lot of times
+4312	people will, well, most people don't realize you
+4315	can stick a YouTube RSS feed into the
+4318	podcast index and it will, it'll convert, it'll
+4323	do on the fly.
+4324	It'll convert it to standard RSS with an
+4326	enclosure and that kind of thing with a,
+4329	with a reference in the, that exact reason
+4332	was because we ran into this so many
+4334	times with people sticking YouTube feeds into the
+4339	index and just expecting it to work.
+4341	Cause it's like, well, there's an RSS feed
+4342	there, but it's, but it's not standard RSS.
+4344	You know, it's media RSS.
+4346	So it's this weird, you know, bastard format
+4348	from, you know, forever ago.
+4351	But, but eventually you just kind of give
+4353	up and say, oh yeah, you know, at
+4355	first you, you sort of like fight this
+4357	purity battle and you're like, you know, no,
+4360	no, just make a real podcast.
+4362	And then eventually you're like, whatever.
+4364	You just do it.
+4367	Let me, yeah, I, yeah, I mean, it's
+4371	power users, but you also go down to
+4373	the, the, there's a lot of podcasters that
+4375	of course, why, why would they be?
+4377	They're just non-technical.
+4379	And so we've got the people who have
+4380	all the answers and the people who have
+4382	no answers and are just super confused about
+4385	everything.
+4385	And that's a blessing too.
+4386	Cause you're like, oh, I need this to
+4388	work for both of those people.
+4390	Yeah.
+4390	You know, times when someone writes in and
+4392	says, why, how do I do this?
+4393	And I'm like, the button is literally in
+4395	the screenshot you showed me.
+4396	What?
+4396	And you just want to like, and then
+4398	you really, you think like, oh, well, why
+4400	aren't they seeing that button?
+4401	Oh, there's a lot of that color on
+4403	the screen or it doesn't, you know, you
+4404	just, you end up learning regardless.
+4407	Yeah.
+4407	It always makes the product better.
+4409	What do you, so have you been experiencing
+4414	the AI slop take, you know, explosion on
+4418	your end?
+4422	I mean, very much experiencing across the board.
+4426	I mean, podcasting specifically, people launching pod page
+4430	accounts with just purely automated shows and that
+4434	kind of thing.
+4437	Um, you know what?
+4438	I don't know.
+4441	I mean, I don't know if the show's
+4443	automated or not.
+4445	I haven't seen like a big, since the
+4447	AI stuff started happening, I haven't seen a
+4449	big uptick in like, oh, suddenly we have
+4450	a ton more people coming in.
+4452	It's still, you know, pretty steady.
+4454	Pod page is weird.
+4455	It's been like, it's been this slow.
+4458	I mean, I spent time in Silicon Valley
+4459	and it's all about exponential growth there.
+4462	Pod page has been just slow, linear growth
+4466	over the course of years.
+4467	And it's, and we don't do any marketing.
+4469	So it's just podcasters telling each other about
+4470	it.
+4471	And, um, so I haven't noticed a difference
+4473	since the AI, uh, from a content perspective,
+4477	like more podcasts being created by AI and
+4479	therefore more websites being created because there's more
+4481	podcasts.
+4481	I haven't noticed that.
+4483	I just wondered if you were, if you
+4484	would have a use for the podcast, for
+4487	the AI tagging, you know, that Spreaker and
+4491	RSS.com and others are starting to do,
+4494	saying this show is automated.
+4497	Yeah, I, I can see why that, I
+4499	think Apple said they're going to start labeling
+4501	recently.
+4502	Um, is that what I'm remembering?
+4505	On Apple Music, yeah.
+4506	Oh, Apple Music.
+4507	I mean, you know, if they did it
+4508	on music, then they do them.
+4509	I can see why it was like a
+4511	directory might want to do that because you're
+4512	in there searching and browsing.
+4514	From a, for me, I don't know if
+4516	it really matters because, you know, if, if
+4519	the creator of the podcast wants to build
+4521	a website and people go to that website
+4522	because they're interested in the podcast.
+4524	I think at that point, it's not really
+4526	my responsibility to say, Hey, just letting you
+4527	know, this is fake.
+4529	Yeah, right.
+4531	You know, it's like they're creating a brand
+4532	that it's like, you don't, at this point,
+4534	you've got to use software and most of
+4536	the software is written by AI, but they're
+4537	not tagging it like, Hey, our people didn't
+4539	make this.
+4540	So what's the, what's the, what's the, do
+4542	you have an end goal?
+4543	I mean, do you want to bundle this
+4544	up and sell it eventually?
+4546	You just want to have it run on
+4547	autopilot.
+4548	What's, what is, what are you going to
+4550	do with the rest of your life, son?
+4555	Uh, when I started it, it was not
+4558	intended to be, I started at a time
+4561	where I, I'd been working at Google for
+4563	a few years and I left Google and
+4564	I said, you know, I just want to
+4565	be creative again and build stuff.
+4567	And so I gave myself about a year
+4569	to just to build, um, tiny little apps
+4574	that aren't, that weren't very, uh, not big
+4577	ideas, not things I'd raise money for, just
+4579	like things I found interesting.
+4580	And I was like, I'm going to spend
+4581	about a month on each one.
+4582	So about 12 months went by and I
+4584	built 12 different things, all of them.
+4586	And I was like, all of them are
+4587	going to be failures, but I'm just going
+4588	to, you know, Google, I was a, you
+4590	get into this corporate, uh, workflow and you
+4593	start, for me, like it really killed my
+4596	creativity.
+4596	It killed just the idea of like, like
+4599	going zero to one on an idea for
+4601	me without a, without a Google type infrastructure,
+4603	you know, can take a day to a
+4606	week to a month.
+4608	At Google, you, to go to do anything
+4610	there, it takes, you know, a team army
+4613	of lawyers.
+4614	You can't really do anything.
+4614	So after about, after a few years there,
+4616	I felt a little like muscle atrophy coming
+4618	out of it.
+4618	And I was like, oh, I want to
+4619	just build.
+4620	One of the projects that came out of
+4621	that year was Podpage.
+4624	And so it was never intended to be,
+4628	you know, I knew when I launched, I
+4629	was like, this is a, this is never
+4630	going to be a big company because there's
+4632	this small total addressable market with generally a
+4634	low willingness to pay.
+4636	But I think it can be a really
+4637	useful product that I would never raise money
+4639	for, but could be a nice little business.
+4642	And, and over the years sort of, you
+4643	know, for a while it was growing and
+4645	I had to go get another job because
+4646	it wasn't growing.
+4647	Like I said, it's been linear.
+4648	It wasn't like a rocket ship.
+4651	And then I had another job for a
+4653	while and it was running in the background
+4654	and then it was able to support me.
+4656	And then I was able to support hiring
+4658	some people and investing more into it.
+4660	And so that's still kind of the categories.
+4662	And so it's an awesome business because it's
+4664	super flexible.
+4665	I don't, again, I didn't raise money.
+4667	So I don't answer to anyone.
+4669	We get to do whatever we want to
+4670	do.
+4671	And at the same time, it's, it's websites
+4674	are a good product for customers because it
+4678	takes, you have to support them, getting them
+4679	set up.
+4679	But then most, the best thing that you
+4681	can do for customers to not have them
+4683	use your product and still do really well
+4684	for them.
+4685	I don't know if this is a question
+4687	that concerns you at all, but the removal
+4690	of, was it XSLT from browsers?
+4694	Any thoughts on that?
+4700	It hasn't concerned me enough to really look
+4702	into.
+4702	Okay.
+4704	Yeah.
+4705	I would think that would do nothing probably
+4706	than that would probably just help you because
+4709	some hosts only do XSLT pages.
+4713	Yeah, I mean, you know, and if you
+4715	zoom out, just in general things that would
+4717	concern me, a lot of people say like,
+4718	oh, what does this business look like at
+4720	the age of AI?
+4720	Um, and I think as long as there
+4724	are podcasters, they're going to want to build
+4727	a canonical place on the web to display
+4729	their information, right?
+4731	You know, this is why I went to
+4732	the music industry for 10 years and I
+4734	was in back in the music industry in
+4735	the age of MySpace when suddenly MySpace, when
+4737	MySpace started, there was, it was very hard
+4740	to put music on the web and MySpace
+4741	made it easy.
+4742	And so all the musicians, all the labels
+4744	flocked to investing enormous amounts of time, energy
+4746	and money into building followers, a following on
+4750	MySpace.
+4750	Um, and then MySpace dies.
+4753	And so does the following and all of
+4756	the work that you've done.
+4757	And after that, there was this big ricochet
+4758	being like, you have to own your customer.
+4760	You have to own your, the relationship with
+4763	your customer.
+4764	And so I built a website platform around
+4766	that time for musicians that was like, all
+4768	you need to do is just get an
+4769	email address.
+4770	Just have some relationship.
+4771	Don't let the platform connect you to these
+4773	people.
+4773	So that was a while ago.
+4775	And that's actually, that was the entire purpose
+4776	of PodPage is I had a friend who
+4778	had a podcast and I couldn't find his
+4779	website.
+4779	And I said, where's your website?
+4781	He was like, oh, uh, I just, you
+4783	know, my stuff's on Apple and Spotify.
+4785	I was like, well, you don't have any
+4787	relationship, direct relationship with your customers.
+4789	He had a pretty big podcast.
+4792	Um, and so that's very common.
+4794	Oh, very common.
+4795	Yeah.
+4795	Yeah.
+4796	And so I still believe like, you know,
+4799	you shouldn't rely on the platform.
+4800	Platforms, it's an amazing thing that you can
+4802	just put your stuff into a host and
+4803	it's on, you know, Apple helps you with
+4805	distribution.
+4806	I mean, it's a huge, amazing thing, but
+4808	you should have some place that people can
+4811	come to get the information that is like,
+4813	this is the canonical information for this podcast.
+4815	And whether it's a person, which is what
+4817	it's been like from this point back, or
+4819	chat GPT, there still needs to be a
+4822	canonical place to get the information.
+4824	So I don't really worry too much about,
+4827	um, I think, I think regardless of, you
+4830	know, kind of anything, you're still gonna want
+4831	that one spot.
+4834	So, you know, that's why I haven't really
+4836	worried about many changes.
+4838	We just keep plugging away.
+4840	What'd you do at Google?
+4842	I was a product manager for, I worked
+4845	on Firebase.
+4847	So we had a really small startup that
+4849	we'd raised venture capital for.
+4850	The app spy.
+4852	We had a really small startup we'd raised
+4854	venture capital for.
+4856	It was helping.
+4857	He's still under NDA.
+4858	Can you believe it?
+4859	He can't talk about it.
+4862	I can talk.
+4863	I mean, so I'll tell you how I
+4864	got there.
+4864	So we, so we had a startup that
+4867	we were building like a photo app that
+4869	didn't work.
+4870	And then part of, this is when we
+4872	were just starting, people were just starting to
+4873	build apps.
+4874	There was so much infrastructure to build just
+4875	to launch, literally to launch and market apps
+4877	that we ended up, we built so much
+4880	of it for the app that didn't work
+4881	that we started sharing our tools with other
+4883	people.
+4883	That was called LaunchKit.
+4885	And Google saw that and it ended up
+4887	being a lot of stuff they were building
+4888	into Firebase because they bought Firebase as sort
+4890	of a database product and then wanted to
+4893	build a whole suite of developer tools.
+4894	So they did a tiny acquisition that paid
+4898	our investors back and we got great jobs.
+4901	And so I went in and worked on
+4901	Firebase for a little bit, doing some of
+4903	our, some of the tooling.
+4905	And then I moved over to a team
+4907	that was building Google's attempt at like building
+4910	a Slack for G Suite or Google Work,
+4914	for what is it called now?
+4915	Google Workplace?
+4916	Workspace, Workplace, Workspace.
+4919	The chat version that there was, there was
+4920	like an internal chat tool.
+4922	So I worked on that and then we
+4924	spent some time working on just internal developer
+4926	tools to make developers at Google more productive.
+4929	Maybe just, maybe a question out of left
+4932	field, but if you look at the Google
+4934	graveyard, how, why is it that Google creates
+4937	things and then kills them after a few
+4939	years?
+4939	Do you have any insight into that?
+4943	Well, historically, one of the things that I
+4949	disliked the most about Google, but I don't
+4951	think it's, it's not necessarily just a Google
+4953	thing.
+4953	I think this happens to a lot of
+4954	the companies is, the, as an individual at
+4958	Google, your goal in general is to, for
+4962	a lot of people, I don't mean to
+4963	generalize, but that's what I'm doing, is to
+4965	progress in your career and progressing in your
+4968	career.
+4968	I mean, all these places have these career
+4969	ladders and you want to progress up a
+4971	ladder.
+4971	And so as you want to progress up
+4973	a ladder in order to get to the
+4974	next rung of the ladder, you need to
+4976	prove that you deserve to be there.
+4978	And a lot of that is, has historically
+4982	been- I shipped a product.
+4983	I shipped shipping, not landing a product and
+4987	doing well with it.
+4987	Shipping, yeah.
+4989	But shipping, that was a big deal because,
+4990	you know, you get press and that was
+4992	a big deal for a while.
+4993	And so if you're, and, or it could
+4995	be shipped a feature.
+4996	And so there, it was, it was, that
+4997	was the most disorienting part about working there
+4999	was, you know, I would go in, I
+5001	remember one of my first days at Firebase,
+5003	I was like, okay, like this, the way
+5006	that you create these links, I was working
+5007	on this product called Dynamic Links, which was
+5009	sort of deep linking into apps for a
+5011	developer who like wanted to distribute a link
+5013	on Twitter that would get you to a
+5015	certain page.
+5015	Oh, brother, you're talking our language.
+5018	We just did that ourselves.
+5020	Yeah, yeah.
+5021	So we were building this thing.
+5023	And so I, first day I was like,
+5024	all right, well, how do you create this?
+5025	And I opened a form and it's like
+5026	a 50 field form, so confusing.
+5029	And so I went to the team and
+5031	I was like, all right, we have, I
+5032	mean, if I wasn't allowed to touch code
+5034	because I wasn't technically an engineer there, but
+5037	I was like, if I could get someone
+5038	for like a couple hours, we could turn
+5040	this into like a four page on, you
+5042	know, quick wizard kind of experience.
+5044	It'd be way easier.
+5045	It'd be very clear.
+5046	At the end of it, the user would
+5047	know what they created as opposed to now,
+5049	which is totally, it's, you can't really tell.
+5054	And I learned, you know, within my first
+5056	week, they're like, yeah, that's probably not something
+5058	we're going to do for a while.
+5059	Why?
+5059	That's going to drastically improve the user experience.
+5061	They're like, because there's, there will be no
+5063	reward for the designers working on that or
+5066	the engineers working on that.
+5067	Like that's not a feature.
+5069	That's not something I can put in my
+5070	performance review packet or someone will evaluate my
+5073	performance because it's just like, so if you,
+5076	if you notice it, and this isn't just
+5077	Google, this is a lot of big companies,
+5078	like the polish, the things that where they
+5081	come back and they make the product great
+5082	versus like just shipping it tends to be
+5085	ignored.
+5086	So that's one of the reasons that a
+5087	lot of things go to the graveyard because
+5088	the products just get shipped and then the
+5090	person shipped it says, okay, I have this
+5092	badge on my performance packet.
+5094	I got my promotion.
+5095	This is another piece.
+5096	They're like, I need to go work on
+5098	a new team so I can do another
+5100	big thing at it.
+5101	So people shift around every two years.
+5103	So the people who cared enough to build
+5105	the thing tend to move quickly to a
+5106	different department.
+5108	Yeah.
+5108	You're like, I got my senior vice president
+5110	title.
+5110	Now I don't care anymore.
+5112	Yeah.
+5113	Or another alternative is when you start wanting
+5116	to do a lot of the polish, like
+5118	everything you change at a company like Google
+5120	has to go through a legal review.
+5122	And, and it's just, I couldn't believe it.
+5125	I was like, oh my God, we're just
+5126	changing some fields around.
+5127	And they're like, well, it's got to get
+5128	a check sign off from legal.
+5130	And then the lawyer's like, well, I've got
+5131	a thousand, you know, things to sign off
+5134	on.
+5134	I can get to this in like six
+5135	weeks.
+5136	Just put it on.
+5138	It's crazy.
+5138	And I will say from everything I've heard
+5141	from people who are there now and sort
+5143	of more familiar is that it sort of
+5145	feels like they're in war mode and things
+5147	are getting shipped a lot faster.
+5148	And they're, they're trimming a lot of fat.
+5152	The other, the other thing to know about
+5153	like a company like Google and probably Facebook,
+5155	I didn't work at Facebook, but is, you
+5158	know, 90%, the vast majority of the revenue
+5160	is still made by the same thing that
+5162	made revenue 20 years ago.
+5164	Yeah.
+5164	Yeah.
+5164	So they had this enormous cash cow, which
+5166	they really should just be doing that.
+5168	And then everything else is like a little
+5169	experiment.
+5170	And so then, you know, what ends up
+5171	happening is people are like, that's a great
+5172	idea.
+5173	Google domains.
+5174	I wasn't part of that, but my guess
+5176	is Google domains.
+5177	Oh, the domain buying experience is awful.
+5179	Let's do something awesome.
+5181	They do it.
+5181	It is awesome.
+5182	I still think Google domains was the best
+5183	domain registrar.
+5186	And then you kind of have people are
+5187	like, well, this product isn't going to turn
+5188	into a billion dollar product.
+5191	So then the people working on it are
+5193	like, well, I'm not getting rewarded for just
+5194	continuing to improve it.
+5196	And then eventually it's like, well, why are
+5197	we even running this if it's not really
+5199	making us a ton of money?
+5200	It's not strategically important.
+5201	All right, let's just spin this out or
+5202	kill it.
+5203	Like that's kind of the, yeah, I don't
+5205	know what happens.
+5207	Yeah.
+5207	Well, that's, that's the same thing happens like
+5208	at Microsoft.
+5209	I mean, you have the, you have the
+5212	stuff that used, that made them money 25
+5214	years ago.
+5215	Windows, you know, Windows Server, Windows, Windows and
+5219	Office are still the things that make them
+5223	most of their money today.
+5224	They just have moved.
+5226	They've just recategorized it in their earnings calls
+5229	to make it look like it's in other
+5230	departments.
+5231	But if you actually, if you, if you
+5233	drill down to the actual revenue, it's still
+5236	coming from Windows and Microsoft and Office.
+5239	Now with Copilot.
+5240	Yeah, exactly.
+5241	They just keep layering these things on top
+5243	of it, but it's really just the same
+5245	core things that made the money to begin
+5246	with.
+5248	Well, but, and, and I, you know, so
+5250	that I gave sort of more of a
+5251	negative pessimistic view of the whole scenario.
+5253	The positive is like, they don't really need
+5256	to be building not, you know, 80%
+5258	of the products and features that they're building,
+5260	but they still are.
+5261	And they're still providing, you know, yeah, they
+5263	turn it, they turn them off.
+5264	But like, there's a lot of features that
+5265	launch this sort of experimental nature is why
+5268	we have features that are awesome that we
+5271	don't like, you know, I still use Gmail
+5273	or Workspace for almost everything.
+5275	I think that's an amazing product and that
+5277	you can't have those kinds of successes without
+5280	like a lot of failures.
+5282	What, what is your view on how they,
+5287	because search is still their, their core business.
+5289	I mean, I presume that's what you, what
+5291	you were saying earlier and advertising through search.
+5296	How do you think AI, can they really
+5298	pull this off?
+5299	Can they really make it profitable to incorporate
+5301	all that and still have their ad business
+5303	working?
+5307	I have no idea.
+5309	I haven't, to be honest, like it's been
+5310	so, and I stopped working at Google in
+5312	2019, I think, and I still have a
+5315	huge amount of respect for the company.
+5317	I love, I still love them.
+5321	But I think, you know, I still think
+5324	it's a, it's a really, well, I think
+5326	it's definitely the best company I've ever worked
+5328	for.
+5328	I mean, the way they treat their employees
+5329	is amazing and the autonomy they give you.
+5331	And there's a lot of process, but if
+5333	you can put that headache aside, like as
+5334	far as just having a good job, it's,
+5336	there's just, it's a great, it's a great
+5338	place to work.
+5340	And I think the stuff that they're building,
+5342	you know, you can tell it's, might not
+5343	exist in the world for a very long
+5344	time, but it's, some of it will and
+5347	it's great.
+5348	So, you know, I think corporate process is
+5351	a pain no matter where it is, but
+5353	I'm a fan of them, but I don't
+5355	spend a lot of time thinking about the
+5356	company anymore.
+5357	I, I think that they.
+5360	That sounds healthy.
+5361	Yeah, it does.
+5362	I think that they like, I don't know
+5366	what the ad business looks like in the
+5367	age of AI.
+5368	I'm sure that they will figure something out
+5370	that's interesting, but I do think they are
+5371	executing really well on AI in general.
+5376	And it's really hard when you have a
+5378	business, I don't know what their earnings are
+5379	at this point, but the numbers are just
+5381	so crazy that it's like, how do you
+5384	compete with that?
+5385	Like everything seems like a side project when
+5387	you're making that much money.
+5389	Well, I mean, these are, these are not,
+5390	these are not to me, they're not really
+5393	tech companies anymore.
+5395	They're mostly financial services, firms that sell software.
+5401	And, you know, I mean, like they do,
+5403	they do software as a facilitation of that,
+5406	of that goal.
+5407	I mean, so much, so much of what
+5410	these big tech behemoths like Microsoft and Google
+5412	and Apple and Facebook, so much of what
+5413	they do is, is really just money management.
+5417	I mean, they're doing, you know, they're doing
+5418	financial.
+5421	They're doing financial structuring, selling bonds by a
+5425	share buybacks, you know, they're, they're, the goal
+5429	is to, is to move their money financially
+5431	in a way that keeps that thing going.
+5435	And then the technology part of it, the
+5437	software part of it, there's still people in
+5439	those companies that care deeply about it and
+5441	ship beautiful products.
+5443	But it's really, it's really secondary to what
+5446	the C-suite is, is really looking for,
+5450	you know, that's, that's just a, that's a
+5452	financial end game.
+5455	Yeah.
+5456	And I mean, at the size of those
+5457	companies, though, I mean, you can't, what else
+5460	do you expect?
+5461	I mean, if you're, if you're, if you're
+5464	making $120 billion in profit a quarter or
+5469	something like, like these companies are, how do
+5471	you, of course, you're going to be, all
+5474	of your time is going to be consumed
+5476	with financial issues because, I mean, now you're
+5479	talking about the size, now you're talking about
+5481	financial concerns that are the size of the
+5486	GDP of countries.
+5489	Dave, I'm going to, I'm going to stop
+5492	you because if you look at the time,
+5495	I don't know if you have to be
+5498	somewhere today, but Brendan, it was so nice
+5501	to hear your story and we're real happy
+5504	for your success and love how you're incorporating
+5507	podcasting 2.0 features and you're carrying that
+5509	banner.
+5510	Love that you've given Dave Jackson a home,
+5512	a good guy.
+5513	I bump into him from time to time,
+5515	like he's a good guy.
+5516	He's just a good guy.
+5518	Here's that good guy again.
+5520	Dave, you want to, I don't, I can't
+5522	give any current boost because what happened is,
+5525	I guess my start nine decided to lose
+5529	its tour connection three days ago.
+5531	And so I lost my channels and then
+5535	I tried to log into our node.
+5537	Did you change the password?
+5539	No.
+5540	Oh, then we may have other issues.
+5543	Oh crap.
+5544	No, that's not good.
+5545	It's also possible.
+5547	I'm just not a lot.
+5547	I mean, I think maybe my IP address
+5549	changed or something because I can't, I can't
+5551	get to it from.
+5552	Oh, you're not whitelisted anymore.
+5554	I guess not.
+5555	I guess not.
+5556	So you'll just have to do all the
+5557	thank yous.
+5559	Oh, okay.
+5559	Well, I mean, let me do some PayPals.
+5561	Okay.
+5561	Real quick.
+5563	See, we got, these are all, all in
+5565	one batch.
+5566	We got William Cockrell, $10.
+5569	Thank you, William.
+5569	Appreciate that.
+5570	That's a one-off.
+5571	We got Lauren Ball, $24.20. Podverse, that's
+5576	Mitch and the boys, $50.
+5579	Christopher Harbaric, $10.
+5583	Oh, Mitch.
+5584	Here's Mitch Downey by himself, $10.
+5586	Thank you, Mitch.
+5587	Oh, let's see.
+5587	We have, this was a weird one.
+5589	We had a new subscription.
+5591	Oh, hold on.
+5593	Oh, good call.
+5598	Oh, we got a new subscription, but it
+5599	says, amount that will be paid each time
+5602	is $0.
+5602	So I don't understand how that works.
+5604	You've been refragmented.
+5606	Yeah, yeah.
+5607	You did, yeah.
+5608	Fragment that guy.
+5610	Terry Keller, $5.
+5612	Terry had been giving for a long time.
+5613	Chris Cowan, $5.
+5615	Thank you, Chris.
+5616	Silicone Florist, $10.
+5618	Paul Saltzman, $22.22. As always.
+5622	Derek J.
+5623	Visker, the best name in podcasting, $21.
+5627	Damon Kasejak, $15.
+5629	And then we got some, oh, wait, we
+5632	just got another PayPal that came in.
+5636	That's a last minute.
+5637	Who is this?
+5639	Oh, this from Sam Sethi, $200.
+5644	Thank you, Sam.
+5649	Appreciate that.
+5652	Sammy has a note here.
+5654	He says, go publisher feeds.
+5657	Also proposed AI tag is now working in
+5660	TrueFans with RSS.com and Spreaker.
+5663	TrueFans video hosting goes live Monday.
+5668	Monday 3 p.m. with MP4 streaming.
+5672	No download.
+5673	Watch time metric.
+5675	HLS supported in the alternate enclosure tag.
+5678	Live podcasting next.
+5679	All right.
+5680	Nice.
+5681	Very nice.
+5682	Just as Podbean goes away from live feeds.
+5687	Very strange, strange company.
+5689	Well, that whole Podbean support of live stuff
+5693	was always very proprietary.
+5695	I think it only worked on their app
+5697	and their website.
+5698	Rather iffy, yes.
+5700	Yeah, yeah.
+5701	The closed system.
+5704	Oh, Bruce.
+5705	So we got some boosts here.
+5707	We got Bruce, the ugly quacking duck.
+5709	22, 22 sats.
+5710	The podcast really says after much argument, all
+5714	is still the same.
+5715	LOL.
+5716	Adam moved my FT8 to a different computer.
+5719	Are you working?
+5721	What is what is FT8?
+5723	It is a digital ham radio mode, baby.
+5725	Oh, OK.
+5727	He says, Adam, move my FT8 to a
+5729	different computer.
+5729	Are you working FT8?
+5732	N9UQD, my call, if you are.
+5735	Yes, 73 kilo 5 alpha Charlie Charlie.
+5738	No, I'm down right now.
+5739	I'm down.
+5740	I've got a I'm down.
+5742	I'm down.
+5743	Everything's down.
+5744	The node, the ham, everything.
+5747	But my gossip is rocking and rolling.
+5749	It's ClaudeBot.
+5750	ClaudeBot just took it all down.
+5752	No, Claude has been removed from the system.
+5754	Believe me, Claude is gone.
+5756	Thanks for the episode.
+5757	Go AI slop and free accounts.
+5759	73.
+5763	It's the future.
+5765	Chris, you know, since 2345 sets through fountain,
+5768	he says, thrilled to hear Castamatic is testing
+5771	Nostra Wallet Connect.
+5772	Awesome.
+5772	No longer will I have podcast wallets hit
+5775	zero balance without realizing it.
+5777	Auto top ups with a monthly budget will
+5779	be fantastic.
+5780	Yeah, Franco's really he's he's digging in over
+5783	there.
+5784	And we got a delimiter.
+5785	Commissary blogger, 21,000 sets through fountain, he
+5790	says.
+5791	Howdy, Dave and Adam.
+5792	Today, I want to promote a podcast by
+5794	Adam Curry and his local pastor, Jimmy Pruitt.
+5797	To subscribe, go to Webcat website podcast index
+5801	dot org and search for Adam Curry.
+5804	It's third from top in that podcast.
+5807	They talk politics and religion merely by listening
+5810	to this podcast.
+5811	You automatically go to heaven after you die.
+5816	Fact.
+5818	Yo, CSB, AI arch wizard.
+5822	And then we got a oh, oh, we
+5824	got a Dreb Scott, one, two, three, four
+5826	from Castamatic with us with single word note.
+5829	This is test, test, test, received, test, test,
+5833	test.
+5833	Thank you all very much.
+5835	Go to podcast index dot org and go
+5838	to the bottom as a red donate button
+5840	for your fiat fund coupons.
+5842	Sorry if I missed your live boost.
+5843	We'll catch those next week and we'll put
+5846	those in.
+5847	And we just appreciate everybody who's supporting the
+5850	podcast index dot org project.
+5853	All of it keeps the machines running.
+5855	How many machines we have running right now,
+5856	Dave?
+5857	Oh, 18, 20, 20, 23.
+5861	Yes.
+5863	So your work, your work is going towards
+5865	good things and people can make wonderful stuff
+5868	with it.
+5868	Case in point, there's Brendan.
+5871	Do you actually do you use the index
+5873	for your lookups?
+5873	You're still sucking off Apple.
+5878	Um, let's see a question.
+5880	I changed that a year ago and I
+5881	can't remember.
+5884	It's too much to keep checking.
+5886	It's all yeah.
+5886	Brendan, you're sprawling, sprawling.
+5888	Brendan, thank you so much.
+5890	We appreciate you being here and congratulations on
+5892	all your success, man.
+5893	Thank you.
+5894	Great talking to you too.
+5895	All right, Dave.
+5896	Sorry I kept you a little longer.
+5898	But if you hurry, then you can just
+5900	get to that zoom call in on time.
+5903	Yep, yep, yep.
+5905	That's exactly what he's doing.
+5906	All right, boardroom.
+5907	Thank you very much for being here, RTP.
+5909	I hope you enjoyed everything except the first
+5913	part of the show.
+5914	We'll be back next week with podcasting 2
+5916	.0. Podcasting
+5933	2.0. Visit podcastindex.org for more information.
+5939	Go podcasting!
+5941	Your whole product is a dirty face.
+5942	Okay.

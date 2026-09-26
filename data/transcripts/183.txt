@@ -1,0 +1,1938 @@
+0	Adam Curry: podcasting two point over June 22 2024, episode 183
+5	chain of fraud oh, what's going on? It's Saturday, but it is
+13	once again for the official board meeting of podcasting 2.0
+16	Everything you need to know this going on in podcasting,
+20	everything happening in podcast index dot social and there's a
+23	lot going on their podcast index and of course the namespace. We
+28	are the only boardroom that meets on Saturday when Fridays
+31	don't work out. I'm Adam curry here in the heart of the Texas
+33	Hill Country and in Alabama, the man who bakes more namespace
+36	tags and Betty Crocker does cookies. Say hello to my friend
+40	on the other end the one and only Mr. Hey, sugar. I'm glad
+46	you're back. Hey, baby. Oh, that's
+50	Dave Jones: traveler.
+51	Adam Curry: Yeah, that's a homecoming. Yeah, sorry about
+54	last Friday and yesterday, but here we are. We could not could
+58	not have a board meeting skipped two weeks in a row. So we just
+63	moved it over to Saturday.
+66	Dave Jones: They were going to have a two week Skipper coming
+70	up soon again.
+71	Adam Curry: Oh, that's right. Because you're going on
+72	vacation. Right? You're actually going out? You're leaving him
+75	leaving.
+76	Dave Jones: We're just you know, we've been around so long that
+78	now we're just starting to you know, we're cruising. We're
+81	Adam Curry: getting we're getting jaded. Yeah, podcasting.
+86	2.0 I missed the first thing we could chop off the list. You
+89	know, I gotta live exactly. I've
+91	Dave Jones: been reading this book called. is fantastic book
+95	highly recommended called lab. 257.
+98	Adam Curry: Okay,
+99	Dave Jones: you know, this will No, I don't. Do you know the
+101	Plum Island?
+103	Adam Curry: Oh, yes. Yes, I know all about Plum Island. I think
+106	that's where we got I don't know why I'm disease from. Yeah,
+110	Dave Jones: it's a few things. Yes. West Nile virus. A couple
+114	other things. Yeah. It's the gift that keeps on giving. And
+118	that this book is about the history of Plum Island and is
+120	like the it started off as a germ warfare facility under the
+124	under the army. Then it transitioned to an animal.
+129	Animal virus research lab. Yeah. So they said like, yes. So they
+134	say. And so this, this book that goes through all like, you know,
+140	FOIA requests, and all of these declassified documents, just
+143	like what really happened during this timeframe. And then, like,
+149	what's obvious is it starts out as strict containment, you know,
+154	all of these rigid policies about airflow and positive
+158	ventilation pressures. Every time you come in and out of in
+163	and out of a hot environment, you got to take a shower. So
+167	maybe they're showering, like seven times a day. And then
+170	like, within about 10 years into it.
+175	Adam Curry: I don't need to take a shower and
+177	Dave Jones: lunch. Even lunch right next to an open thing of,
+180	you know, rift valley fever. Yeah.
+183	Adam Curry: Yeah. Buying stuff at the wet market. Oh,
+186	Dave Jones: yeah, exactly. Yeah. Eaten bad. So yeah, the whole
+188	thing. Yeah. That's interesting. I, it's hard to keep it up. You
+193	know?
+194	Adam Curry: Yeah. So I was in the Netherlands for for a full
+197	week. I was pretty interesting. Actually. Friday to Friday to be
+201	exact about it. It was nice. Yeah, it was nice. Yeah, I went
+205	to visit my daughter, but I also didn't know agenda meet up and
+208	there was nice, lots and lots of lots of podcasts and people just
+212	nice. He's cool. Did
+215	Dave Jones: you run into anybody who was from the podcasting? 2.0
+218	sphere?
+219	Adam Curry: No, no, no. Okay. Yeah. No, everyone. Everyone has
+225	a podcast though. That counts. Everybody seems to have one.
+231	Dave Jones: You didn't You didn't run into the mysterious
+232	Satoshis industry? No,
+235	Adam Curry: I although I did. They made me an official node
+238	runner forgot who that the node node runner guys. Are you
+241	familiar with
+242	Dave Jones: this group? That sounds really familiar. Yeah. So
+245	I
+246	Adam Curry: guess there's people who run full nodes and and they
+249	have their they have podcasts and they gave me it's like a
+252	little knighting ceremony and they give me this pin. Whoa, a
+255	node runner. Yeah, I feel I feel very special. That like a no
+259	drunk and
+259	Dave Jones: I feel left. A little left out. I mean, I want
+261	to be a node runner. I run a node. Yes, you do. Don't the
+267	pin. The pin is cool.
+270	Adam Curry: Anyway, so I've been trying to trying to keep up with
+274	with everything. And I don't before we bring in our guests,
+279	should we should we talk about some namespace stuff because it
+283	seems like you've had a lot of updates and I don't know if if
+286	you if you're up to it. Sure. I'm updating him on we need to
+290	do that. And now it's time for some hot namespace talk. Here's
+296	the stuff that I wrote down. Okay, I wrote down ln addresses,
+303	which seemed like a big one. I wrote down boost UU ID. I wrote
+309	down improve the description of splits and fees, which is seem
+314	it seems like one we might want to skip again. And then and then
+318	some stuff that has been proposed medium equals radio and
+321	events, which is coming out of the I think that's a lot of true
+327	fans push from those two. Have you seen these proposals?
+333	Dave Jones: Yeah. And Nathan's involved in that right, Nathan?
+337	Nathan keeps pushing out some new stuff. So let's wait to talk
+345	about Elon address until until our guests arrived. Okay.
+350	Adam Curry: Oh, that'll be okay. Yeah. Let's see. Boosts UU ID. I
+358	saw that. Where'd that come from? What is that? Exactly.
+362	Dave Jones: So that's an that's an older pull request from Dobie
+365	Das. Let me just go through what has been added lately.
+371	Unknown: Okay. That's just the better idea.
+373	Dave Jones: Just to kind of give some context here. Let me pull
+377	up the namespace real quick, not prepared to go into the edit.
+381	Did inspectors go in that quick? Well, we've
+383	Adam Curry: been avoiding it. And you know, it's a Saturday so
+386	we might as well just take the pain now.
+392	Dave Jones: See, changes made? Here we go. So yeah, it's so far
+397	with face seven is some of this goes back to May. But just face
+403	face seven. So far, we've formalized the chat tag,
+408	podcast, colon chat, the publisher tag with the
+414	associated publisher medium. And the added the course medium, to
+426	Yeah, added the coarse medium to the list. And which Alex is now
+431	added course and publisher and the corresponding publisher L
+435	and course L to the schema for that will be sucked into the
+441	next version of pod paying that will enable these mediums,
+444	Adam Curry: that's ce o u r s e for people who want the course
+447	as an as an a course you can take and so that what is the
+451	main? What is the main difference of how a course is
+457	displayed? Or what are the main parts of that namespace? Have
+460	that tag or that medium? Yeah,
+462	Dave Jones: the course is about the course is a you know, look,
+465	look. educational thing. Yeah. So if you're going to take if
+469	you're going to take a course, like liquid berry from pot home
+472	does, right.
+473	Adam Curry: So of course, so does it do? Is there anything
+475	specific that needs to be specified? In course, or is it
+478	just telling you what it is? I mean, it's a different way of
+480	displaying the episodes is there what what is because I've seen
+486	various thing you have to pay to actually get it right.
+489	Dave Jones: Yeah, so well, you would have the the coarse medium
+493	just just gives a hint to the app
+496	Adam Curry: shouldn't just be medium equals paywall or
+499	Dave Jones: bad. I mean, I guess I guess you could,
+503	Adam Curry: we should probably have that too. Might as well
+505	medium equals paywall everybody,
+507	Dave Jones: mediums, medium equals you can't have it. Yeah.
+512	So the course would be something like, you know, the app just
+515	needs to know, okay, what order? Do I need to display these these
+518	in? What's what's, um, I
+521	Adam Curry: guess? There's a lot of these because I guess that's
+524	my question is, what is the display? What are the display
+526	options for a course?
+528	Dave Jones: I'm thinking about, you know, there's these sites
+531	like Udemy? Is that is that one? Think there's something else?
+538	Yeah, Udemy online courses, learn anything on your own
+541	schedule this like a, like, there's a lot of these kinds of
+544	sites where you where you learn a course and it may have what is
+548	in the description may be end up being beside it as a follow
+552	along or the lyrics, I mean, excuse me out layers, but the
+555	transcript may be, you know, handled in a special way. Now,
+561	you know, instead of like with a medium equals music, that
+564	transcript is lyrics with the medium equals course the
+567	transcript might be the outline of, you know, the of the course,
+573	or there might it might look for certain basic ako I'm expecting,
+578	I'm expecting as part of this course there's going to be links
+581	that are important to there where I can go and like I like
+586	the funding link, maybe the maybe the paywall, like you
+588	said, I mean, we don't know yet but okay, it seemed appropriate
+593	to give it its own medium since it's its own media type. Okay,
+598	Adam Curry: but doesn't that need to be defined?
+603	Dave Jones: Well, yeah, I guess, but it doesn't mean but also, we
+605	never defined music as far as like the details of that music
+609	was like we all kind of. Okay, it would be liner notes or in
+613	the description transcript is the lyrics. But nobody but
+617	there's not that's not decided designed anywhere. So, you know,
+621	I think I think this is one of those things where you'd have
+623	to, we had to see what people do. Okay, fair enough. Yeah. But
+629	basically, whatever Barry wants. Yeah.
+632	Adam Curry: Well, that's what I'm saying. So if berries
+634	courses is an example, then that's an exam was good for me.
+638	Dave Jones: Yeah, I mean, it's I think, I think it's okay for him
+640	to set the standard on this. Very cool.
+643	Adam Curry: Then as so and so the course equals L what's a
+648	playlist them I guess? Yeah,
+650	Dave Jones: like a list of courses. Yeah. Because they have
+652	a bunch of he could have a playlist of course is all about
+655	Dino or No, Jas, or whatever. Okay. And then. So then last
+662	night, I merged in a, an older pull request from W Das. To add
+668	a boost UU ID. Yeah, as an optional value on the TLV
+672	record. And that was an addition to the blipped in spec. So
+678	there's, there's there's been a UU ID in there forever, where
+681	you could say, okay, the UU ID property of the to the record
+684	identifies a user. And I'm putting you up and I'm putting
+688	identifying quotes. I mean, it's it's a,
+691	Adam Curry: it's an optional thing it's sent, right? Yeah,
+694	right, right.
+695	Dave Jones: So it's usually just some random string of
+698	characters, just just so you can try to get some idea of
+701	uniqueness of where the things are coming from. Is this the
+704	same person boosting you over and over is is my different?
+706	Even though you have no idea? I have no way to trace that back.
+710	And
+710	Adam Curry: this is, so that's something that would be
+711	generated by the apps.
+714	Dave Jones: Yeah, okay. Exactly. And but so then WDS has said,
+718	Well, you know, here's the problem is that if one boost
+724	generates five splits, then those splits all go to different
+730	places, and you can't really tell where whether it was all
+734	part of the same boost or not. Was it three different you know,
+740	was it safe safe? It goes three different split destinations?
+744	Then what do you know that a rule is the same split that did
+749	it? Did did it three times? Or was it three separate ones? Or
+752	what
+753	Adam Curry: what is what is the point? What exactly do we want
+756	to know with this boost you ID tracking of what
+761	Dave Jones: the tracking of of like trying to determine whether
+764	or not the whether or not a boost? Okay, so you on the
+769	receiving end, you just receive a payment? Yeah. And you don't,
+773	but you don't know whether that payment was part of this was
+780	just a split, let's say you get five payments. Was that? Was
+787	that five different boosts? Or was that somehow three splits
+791	three split paying five split payments from the same boost?
+795	You don't you don't know. So like, this would be. An example
+800	of this would be maybe like, you have heli pad running and you
+805	have set Saturn or the Alby dashboard running. And you're
+811	looking at both did somebody send you and you see two splits
+817	that you think are the same from the same underlying boost? One
+822	on the one on each dashboard, but you can't be first you can't
+825	be sure that they're the same, but if you had a boost, you you
+829	ID, there was a random value included each time. You could
+833	say okay, that's the same that's that's two splits from the same
+837	originating boost.
+839	Adam Curry: Hmm, okay. I still don't quite understand why you
+843	need that. I mean, it's fine. I just look at helipad I don't
+847	look at anything else. I only need to look at one place and I
+850	see something come in and I see the person who sent it I see
+853	it's a split what the percentages
+856	Dave Jones: mean please let's see if I can find what I
+860	Adam Curry: don't have. I only once I accidentally put put the
+865	same note in twice into a value block and that was confusing.
+869	But once Okay, hear it out then. But it doesn't seem like I mean,
+872	I don't know it's just I don't quite understand what it's for.
+875	Dave Jones: But Dobby das explained. He gave me an example
+878	he said my example use cases this RSS Blue has a 2% split to
+883	display booster grams to creators. If both a song and a
+887	music show are hosted at RSS blue, we receive two payments
+892	when a song is boosted during the value time split. There is
+895	no exact way for us to determine if it's a single boost or two.
+898	Adam Curry: Oh, okay, so yeah, I got Okay, I see. Yes, I can see
+905	where that where he needs that as a whole giving that Yeah,
+908	okay. Yeah. And
+910	Dave Jones: when when you release your album and play that
+912	on booster Grand Ball, you'll need it too.
+917	Adam Curry: I was thinking about that use case like, I'm not
+919	gonna release an album. I will never need this. But
+923	Dave Jones: if you ever do, there'll be.
+927	Adam Curry: Alright. Okay.
+929	Dave Jones: So then what what I'm working on now. What I'm
+936	working on now is I'm just making my way through the list
+940	is the Latin is the ln address lightening address attribute on
+945	the value recipient in this, this ended up. I went into this
+949	thinking this would be an easy addition. And it ended up being
+952	sort of a can of worms.
+955	Adam Curry: Oh, good. Well, we'll talk about that one in a
+956	moment. Yeah, the, the only other two ones that I'm just
+961	seeing floating out there. And I'm trying to pay attention to
+964	what, what Sam Sethi is doing with true fans because he tends
+967	to do stuff and, and then says he supports it. And I just want
+970	to make sure everyone's heard about it. Because so one is the
+974	event, which is kind of an interesting, I was listening to
+980	to Sam's tech corner on pod news weekly review, which seems to be
+984	promoting his his ideas, his tech corner. And these as
+989	issues. And the event. So I kind of was interesting, because in a
+994	way, it's like, wow, how sad is it that podcasters now have the
+998	same business model as musicians where we can't make any money.
+1002	So we have to do gigs. We have to do we have to go out and and
+1006	and do shows and merge with merch. Yes. So the event? It's
+1012	there's a lot going on there. Because you know, I heard and I
+1015	think it was easy doing that with what was he working on that
+1020	with? Said Nathan that it was working out with Don that with
+1023	Nathan?
+1024	Dave Jones: I could have sworn Nathan was involved in Yeah, I
+1027	Adam Curry: think so. And the pod two guys, it just so so you
+1030	can have I'm not quite sure what it is other than there's an
+1033	event and then you can publish an event in your feed. Just as a
+1038	separate item. Have you looked at this at all? Well,
+1042	Dave Jones: yeah, it's like it's like a Yeah, like, like a
+1049	reference to an upcoming event. Okay, like, we're like we're
+1052	gonna do. But here's the way I read it. Maybe Maybe this you've
+1057	read it differently. But here's the way I see it, is that you
+1061	have an upcoming like some this happens a lot with podcast. I
+1065	don't know if it's any new podcasts you listen to. But a
+1067	lot of the podcasts I listened to people are the hosts will
+1072	say, you know, have a pre roll and be like, Okay, before we
+1076	start, you know, no, we have a event coming up in a live show
+1079	coming up in Boston. Yeah, sure. Honor. 25th Blah, blah, blah. To
+1083	me, this seems like a way to programmatically put that into
+1088	the fee. Right, so so that you so that the player can show you
+1092	and link to tickets or whatever.
+1094	Adam Curry: Okay, so it's a separate item that that it's
+1097	just an item that has an event with event information in there.
+1101	It's not it's not linked to a specific episode, or is it?
+1105	Dave Jones: It's a remote as a link is a remote item. Okay.
+1108	Yeah, to a specific theme in where the feed is going to be
+1113	the remote event, there's going to be the lava, so
+1115	Adam Curry: it would like would be treated as the same way a
+1118	live item is treated as a separate entity somewhere within
+1121	the player. I
+1123	Dave Jones: believe so. Yeah. This display of app is TBD. But
+1128	I think the I think a good use. My mental use case for this
+1133	would be like Ainsley Costello has a new she has multiple feeds
+1139	right now of different things. She could put this in there,
+1143	announcing an upcoming show, the live show, and that would be the
+1148	reference to the feed that's gonna host the live shot.
+1150	Adam Curry: Okay, got it. Got it. That's it. Okay. That's
+1152	cool. That's cool. That was a lot going on. Yeah,
+1157	Dave Jones: yeah, there is. And, um, I mean, I would think that
+1159	the, the feed that would take the remote item reference to
+1163	that feed is going to carry the live event would also have in
+1167	it, like, you know, put a funding tag in a value block and
+1176	all these kind of, you know, ways to support it, the live
+1179	event or get tickets or whatever, okay, all right. Then
+1183	linked to the merch store merch.
+1186	Adam Curry: I love I love the whole Hey, I will have tickets.
+1188	You can hit a pod ping and the ticket mount will update Mike
+1191	Okay. All right. I like it. I like it. We got to figure that
+1195	the final one that I had which, which I don't think we need to
+1198	delve into but just It's a way of medium equals radio. Which
+1204	is, which seems like which is linked to a pub. This is kind of
+1207	what we're talking about, for the past few shows about a radio
+1210	station. And some I got to figure out what Sam has done
+1213	there. Because it's he says it's linking to live items from a
+1218	radio station. But I'm not quite sure exactly what he's doing
+1224	there. But it seems to be a list
+1229	Dave Jones: Yeah, so net so Nathan's explanation for it on
+1232	the GitHub would be if a radio stations set up here, he this is
+1238	quite I'm quoting Nathan, if a radio station set up podcast
+1240	feeds with a live items for all their shows, and connected them
+1244	with a publisher feed, then podcast apps could aggregate
+1247	those live streams together into a publisher level radio station
+1250	without any new tags. Okay. I like it. Yeah, I like it. Yeah,
+1256	wait for it. Yeah. Yeah. No agenda stream could do that.
+1259	Yeah, sure. Excellent. Oh, yeah. Okay, yeah. All those shows
+1263	together into into nodes, industry, radio station or
+1266	whatever.
+1267	Adam Curry: So but it would be stuff after the fact or even
+1269	into the future.
+1272	Dave Jones: I guess both, okay. Because you know, you because
+1278	it's all it's all being pulled together, all those feeds are
+1280	getting pulled together into a publisher feed. Now that we have
+1284	publisher feeds Nathan's saying, I'd love to hear y'all discuss
+1290	the warrants a new medium versus not is the threshold a tailored
+1293	listener experience? I mean, he know that squishy nice. I mean,
+1299	squishy
+1299	Adam Curry: is the right word. Yeah.
+1302	Dave Jones: Because sometimes, yeah, yeah. I mean, like, some,
+1307	some of them are obvious. It seems to me. Yeah, I think to
+1311	me, it is a matter of, to me it's a matter of is this content
+1319	different enough than a podcast? So that the app really does need
+1325	to change his behavior to handle the content? Like, does the app
+1330	need to know in order to give a sane experience for the for the
+1334	listener when playing this content? So we for all of it,
+1338	you know, obviously for audiobooks that is the case
+1342	because you're gonna have to Okay, now these things, these
+1344	chat, these these chapters are now excuse me, this transcript
+1349	is now a literal text of the of the book, the episodes have to
+1355	go in a specific order. The you know, there's got to be maybe a
+1361	page like, what's that page inside the book that gives you
+1368	the copyright info and all those kinds of there's a copyright
+1370	page
+1375	Adam Curry: what do you call that again? So I think the main
+1378	thing is keep this keep posting the stuff on podcasts index dot
+1381	social, so that we know about it, so it doesn't just get you
+1384	know, because because then what happens is, you know, the Sam
+1387	gets mad because no one's implementing this. We have to,
+1390	we have to keep making everybody aware of it. I think the events
+1394	tag is cool. I clearly know agenda stream and by the way
+1398	when you publish if you know that's what I love about curio
+1402	caster and I think that's how we bootstrapped a lot of this is,
+1405	you know, we were just using every single tag we had on no
+1409	agenda, podcasting, 2.0 mo facts, you know, as many as many
+1412	feeds as I could get, just keep, I'm still publishing the social
+1416	interact tag. So it doesn't always result in apps
+1419	implementing it, but if you keep doing it consistently,
+1423	eventually it'll show up. And I think it has to come from What
+1427	are we drinking?
+1430	Dave Jones: This is a Waterloo Cherry Limeade Wait,
+1434	Adam Curry: I have a Waterloo Cherry Limeade here myself. Oh,
+1439	Broder the chat. I haven't opened it yet. I'm still
+1441	drinking my gigawatt Coffee Roasters snap chill.
+1446	Dave Jones: It doesn't taste anything like cherries or LA?
+1449	No, no. At all. Plus, for the if, at all, at all, at
+1454	Adam Curry: least, this is the one Waterloo that actually
+1457	tastes like something besides just water. Okay, so anyway,
+1464	let's let's keep our eye on that stuff and just keep publishing
+1467	and let people know when there's feeds. You know, tell it to so
+1470	we can keep letting the app devs know that it's out there because
+1474	I think these are some pretty cool tags. I like it a lot.
+1477	Dave Jones: Me too. And I would I would recommend if you're
+1479	gonna if you when you post something on the on the Get on
+1483	the GitHub repo for the namespace also cross posted to
+1485	podcast
+1487	Adam Curry: because I missed all kinds of stuff on the GitHub all
+1491	the time. And also my eyes glaze over. Sometimes it's it's
+1494	because it's just not. I'm so happy we have both but we have
+1499	been crushing it Cross posting is important. It really is.
+1502	Because
+1504	Dave Jones: here's what happens. You miss your photo, you don't
+1508	check it for a few weeks in the one this one post grows into a
+1512	thread, that's like 75 comments. I cannot understand Yeah, no,
+1517	it's painful. You can understand it,
+1521	Adam Curry: I have two more things I want to talk about
+1523	before we get our guests in. The first one is, you know, being
+1527	often the frontline support for podcast index, which I love
+1530	doing, by the way for as far as possible. I have noticed an
+1535	inordinate amount of people who have anchor feeds, where they
+1540	are confused that aid won't show on iTunes or in podcast index.
+1544	And of course, all I need to do is open up the feed, do a CTRL F
+1549	and look for block. I think anchor is adding iTunes block
+1553	from the get go with a new feed. These guys are nasty.
+1558	Dave Jones: I've suspected that too. And I don't I don't know
+1561	how to prove it. That
+1564	Adam Curry: well. I can't prove it either. But but a lot of new
+1566	people show up and they say hey, I got my feed over here on
+1569	anchor and, and it's not showing up in podcast index, and then
+1573	I'll see that it has the block. But I'll before I say that I say
+1576	Hey, is it showing up on iTunes? No, it's not showing up there
+1579	either in that weird, I'm gonna ask like, and then you know,
+1582	they have to go back and they have to contact anchor or
+1585	podcasts or Spotify for podcasts or support. I think that this is
+1589	nefarious, I don't think it's cool what they're doing over
+1591	there. It seems like maybe there's some little box that you
+1594	have to check. I don't know if anyone knows, like, include this
+1599	in iTunes. But
+1601	Dave Jones: let's create that I've created an I've got an
+1603	anchor account that I use for to test stuff and with the
+1607	aggregator. And it didn't use to do that, then there'd be a
+1611	recent change. I don't know. I mean, we're
+1614	Adam Curry: not really cool if they're creating feeds that by
+1617	default will not or won't or should not show in, in iTunes,
+1622	whether it's iTunes, accepts it or not, is secondary. But just
+1627	to add a block without letting people know, I don't want to
+1630	accuse them of anything for sure. But it sure seems like
+1633	just the sheer volume of people who show up with new feeds where
+1636	a block tag is in there.
+1638	Dave Jones: I think it's a great idea. Because we I mean, I don't
+1641	ingest their stuff anymore automatically. Anyway. I
+1645	encourage that.
+1647	Adam Curry: There you go. All right.
+1650	Dave Jones: I mean, seriously, I mean, after you've ingested
+1654	100,000 feeds that are just crying somebody we did or just
+1659	somebody with a with a 15 second episode. And they never post
+1663	again. It's like, I'm not sorry, I'm not doing this anymore. If
+1667	you care if you actually have a legit podcast that you care
+1670	about other people finding. Yeah. And you host on a free on
+1673	a free post like anchor. Yeah, you need to you need to do the
+1677	extra step of contacting a directory and letting them know
+1681	Adam Curry: Yeah, yeah, that's true. Yeah, well, people are
+1684	starting to realize that free isn't necessarily good that's
+1687	for sure with a lot of things. One last thing because I have
+1691	two clips for this short ones. I'm just flabbergasted by by the
+1696	blatant fraud that podcasters are now putting out there and
+1701	blaming, you know, you know, a clip I'm playing right? Yeah.
+1704	Well, I have to I have to this is the I think not podcast.
+1710	Forget who did Spurlock post this I can't remember it so it's
+1717	not safe for work. So crank it up.
+1719	Unknown: And if you are on Apple podcasts, I want to tell you
+1723	there was an iOS update that is making all podcasters bend over
+1728	grab our ankles and take it up the but if you are on Apple
+1732	podcasts and you go to our page, please click the three dots in
+1735	the top right hand corner, go to settings and just click
+1739	automatically download 10 latest episodes just that will fix the
+1744	iOS update that has fucked all of the podcasters up again go to
+1749	the three dots on the top left hit settings and about a little
+1753	further down than halfway down. Click automatically download 10
+1756	latest episodes just that will help us out so much.
+1760	Adam Curry: I mean, that's outrageous.
+1762	Dave Jones: First of all, yikes. I mean, yeah, yes, yikes is
+1766	right. And second of all, I mean just begging for downloads like
+1770	one one stop at 10 Why don't you subscribe, download 10 episodes
+1777	then unsubscribed and do it again. I mean, like just keep
+1780	asking for Jack getting jacked up. But I
+1782	Adam Curry: mean, it's clearly it's clearly fraudulent. Yeah.
+1787	And what really surprised me is to hear not quite as blatant not
+1792	to this level because this was actually more instruction than
+1795	we used to have to give people how to subscribe to the podcast
+1798	itself. You know, that was like Go to the website, look for the
+1801	RSS icon right click copy, go to your podcast application page
+1806	and subscribe. paste this in. She had a lot more instruction
+1812	there to how to do this go down three dots halfway down this
+1816	screw with an apple screwed us. Well, you're being fraudulent,
+1819	you're no screwing your advertisers. I mean, doesn't the
+1822	peep the advertisers not hear this?
+1826	Dave Jones: I was recently told about a situation where I was
+1833	recently told best situation where there was a podcast that a
+1838	hat was having its advertising handled by a third party. So you
+1843	have you have the podcast, you have the advertiser who's or the
+1849	the advertising agency. And then you have the podcast host. And,
+1856	you know, the podcast, the advertising agency signed up for
+1861	a service that's supposed to get you up the ranks in Apple
+1865	podcast directory. And, you know, they do this through
+1869	banner ads, and all these kinds of things. This is nothing new.
+1875	But these aren't real. These are these are rewards based
+1879	subscriptions that you're getting. And you get so you get
+1882	for every new signup, just like she's talking about, you get an
+1884	initial batch of downloads that come off our podcast. Yeah. So
+1888	the it's a temporary boost and it's fake. But if as long as you
+1892	keep signing up, and re upping re upping your buy, you keep
+1897	getting this small temporary influx of of downloads number go
+1901	up baby number go up. And so then the podcast host was like,
+1906	let let the let the podcast podcast podcasts are no hey, you
+1910	know, these? You know, yeah, you're getting some downloads.
+1913	But these aren't real downloads. I mean, these are these are not
+1917	true numbers. And the, the podcaster was like, Well, you
+1924	know, that's fine with us. Because this is for like, this
+1928	is like a branded podcast for this company. And this, we're
+1934	okay with that. Because this lets us report the numbers to
+1937	the company. It's, it's fraudulent live. Yeah, it let me
+1943	know. I'm like, Okay, so there's this chain that's involved here,
+1947	where the agency is getting some numbers for the podcast. Yeah.
+1952	And then the podcaster is wanting to show success to
+1957	corporate. And so then it's all just this big fraudulent chain
+1962	from soup to nuts all the way through in the advertising
+1966	agency is the love is the worst is the
+1971	Adam Curry: chain of fraud. Well, imagine how surprised I
+1975	was flying home from the Netherlands and I downloaded a
+1979	whole bunch of podcasts. And I play my favorite hate listen on
+1984	the media. And listen to what they're doing. Hey,
+1988	Dave Jones: wait, wait, wait, is on the media supplanted pivot is
+1992	your favorite?
+1994	Adam Curry: Well, did I say favorite?
+1996	Dave Jones: He said he said this is your favorite.
+1997	Adam Curry: Hey, listen, it's my second favorite pivot. Ken
+2000	always has to be taught pivot is the Tucker favorite. There's no
+2002	doubt about it. Or listen to this.
+2004	Dave Jones: Hey, this is the on the media midweek Podcast. I'm
+2006	Mike Lowe injure. We've got a great new interview for you this
+2011	week. But first, a quick reminder, if you're an iPhone
+2015	user, and you listen to Oh, TM on the Apple podcast app, the
+2019	one that comes downloaded on your phone, please take a second
+2023	to click on that app, go to our feed. And in the top right
+2028	corner. If you see a plus Follow button, click that it will
+2033	automatically download new episodes of on the media when
+2036	they drop. So you won't have to stream the show when you're out
+2039	and about.
+2040	Adam Curry: Oh wait. It's for your benefit listeners. So you
+2043	won't have to stream when you're out and about. But wait, there's
+2046	more. If you
+2047	Dave Jones: see a checkmark in the upper right corner, then
+2050	you're good to go. And while you're at it, please leave us a
+2053	review. We'd love to hear what you think about the show as the
+2056	ratings help ATM and your feedback means a lot to us. Yeah
+2060	All right. All right on to the podcast.
+2062	Adam Curry: You can listen when you're out and about you don't
+2064	have to stream it give us downloads it's
+2067	Dave Jones: the same exact thing except the up the butt part.
+2072	Adam Curry: No, that would have been awesome.
+2076	Dave Jones: Hello injury No, you're broke.
+2082	Adam Curry: Hey, we're getting screwed up the butt here on NPR.
+2086	Top right corner. All of this to say there is an alternative way
+2090	to receive value for your podcast at the value for value
+2094	model. We've been pioneering it here on podcasting 2.0 for a
+2098	while and We've had fantastic partners in the lightning's I'm
+2104	gonna say it space who have who have helped build this
+2107	throughout the years it started with Sphinx. Then we had ln PE
+2111	and of course lb came into the mix and there's been a lot of
+2115	shakeups and changes so we're very proud and happy to have
+2119	them both here on a Saturday. Please welcome from Alby March
+2125	Kaminski and rollin Berek. Berek Berek rollin. How do i pronounce
+2130	it? bealach Buick. Hey, man, that's Oh, you know, Buick is
+2136	bui CK we all know Buicks here. Yeah.
+2141	Dave Jones: That's the giant car that your granddad drives.
+2145	Adam Curry: Exactly. Good. Rollin. Good to meet you. You
+2149	are playing the role of, of Boomi. Today, Michael boomin. I
+2153	guess he he gave up his spot for you.
+2158	Unknown: Yeah, I'm one of the developers at LV so I can step
+2162	in and answer a few technical questions. I actually wanted to
+2165	mention something quickly though. Because at the start,
+2169	you said you've got a note runners badge is quite, quite
+2172	cool because we also met met him is if at the Bitcoin Film Fest,
+2178	earlier this year, he runs note, he runs node runners radio so
+2183	you can actually vote you can pay with sets to vote for a song
+2186	so I don't think is podcasting. 2.0 But but it's a cool idea.
+2192	Maybe Maybe it confidence somehow I'm not
+2194	Adam Curry: sure that gives me more Bitcoin credibility, more
+2196	Maxi cred, I believe. Yes, I need Maxie credit. And let's say
+2203	hello to Moritz Kaminski, Moritz, how you doing brother?
+2208	Moritz Kaminski: Yeah, good. Thanks for inviting us again.
+2211	And they've secured
+2214	Adam Curry: Yeah, it's it's been long overdue. There's been all
+2217	kinds of compute misinformation and disinformation no doubt done
+2222	by Putin and his team of AI experts. We've just been trying
+2227	to figure out what's going on. In general, since a lot of, or
+2234	probably every, almost every single podcast app has has lent
+2241	has depended on on Alby for its its users wallets. Conversely,
+2248	and there really is, conversely, there really are two sides of
+2250	the equation podcasters and artists have also been using
+2255	Alby for receiving SATs for their boosts booster grams and
+2259	streaming SATs. And then through some weird business going on the
+2266	United States where it's very unclear what what the rules are
+2273	the regulations, you guys I'm sure being out, well, we first
+2277	saw, we saw the French pull out. And then we saw, we saw a number
+2282	of of different wallet providers leave, and then some changes
+2287	happened at Albie. And maybe you can just tell us, just bring us
+2292	up to speed on what happened, what you did where we are, and
+2296	then hopefully where we're going. Oh, yeah,
+2299	Unknown: yeah, sure. I mean, that's why we're here. Right. So
+2301	I mean, first of all, they're like our commitment to value for
+2304	value, and podcasting has, has like, never changed. So it's
+2308	still the same. Since then, when we talked like on on the same
+2314	show here at the boardroom, two years ago. But like, at Adobe,
+2320	things have changed. So so we experienced quite some user
+2324	growth, end of last year. And this means not like, because we
+2332	were like a managed wallet provider back then, just means
+2335	not only a lot of users, it means also suddenly a lot of use
+2338	of funds, right? So quite some responsibilities here on our
+2342	side. And we then made sure that actually we at a small team can
+2349	handle that. So we introduced in white coats, and we also
+2353	introduced limit back then, just to make sure that the users that
+2359	we have that they that we can serve them properly. Right. And
+2362	Adam Curry: and that limit is like a million SATs and you
+2365	encourage people to really use it as a daily, which I think is
+2368	perfect to use it as a daily wallet moved the SATs off
+2371	keeping under that limit.
+2373	Unknown: Yeah. So yeah, that's it. That's it basically. Um, and
+2378	then, um, but the again, so the commitment to podcasting tool
+2384	has never like like changed. So for example, all the AP API
+2390	partners, their users could always sign up to Alby to an AVI
+2396	account without the need of an invite code. Um, so that was
+2401	basically always a free road there. And on top, everybody who
+2407	reaches out to us and ask us for an invite code gets just an
+2411	invite code. Right? Right via email, it's just we are more
+2418	deliberate on what type of users we want to build for. Because we
+2423	saw, like, any type of users signing up suddenly for me,
+2428	because our API is made it so so easy to build, right? So people
+2433	do not have to interact with Lightning Lightning Network with
+2437	the Bitcoin network, they just have to interact with common web
+2440	technologies. And that's what they trained for that. So that's
+2444	why we, we saw the sudden growth also from other integration
+2447	partners. And so that's why we did a step back and but one
+2453	thing also has never changed. So when we talk about the lb API, I
+2457	think it's important to mention that the back end is was
+2464	actually always also open. So you could bring your own note,
+2467	plug it into the lb API, for example, without interrupting
+2474	all the apps that you already use, so for example, I can
+2479	stream sets and send booster grams and podcasts grew directly
+2483	from my own node. So that was already possible, like a few
+2487	months ago, or if I was a node runner and a podcast with
+2492	blueberry or is our rss.com, I can also receive payments
+2497	directly to my own node and not in in in the in the wallet
+2503	managed by lb understand
+2505	Adam Curry: which is which is fantastic. Of course, the your
+2508	typical podcaster even will not go to the lengths of setting up
+2514	their own node initially. But I know you understand that, but
+2517	the the obviously the capability is there, and it's great.
+2524	Unknown: And, um, yeah, so now it's instead also what we
+2532	continue now to promote. So we will, we have some some very
+2538	cool things in the works. And that's actually also where
+2541	Roland is, is basically the lead the lead developer. So that's
+2545	super cool that he can join us here. But the what regarding the
+2554	LV API, it really like it's the idea is that it just keeps
+2558	working no matter what funding pack and you have there happens
+2563	to be an account, you have your own node. And it's up to the
+2566	user what they basically want to plug in. So the the money does
+2571	not go necessarily through our hands. And with the, with the
+2575	upcoming developments, actually, and not even we make it even
+2581	easier. Like it's really another step. Another level for for
+2585	people to use an Adobe account in, in in a self custodial way
+2590	actually understood.
+2593	Adam Curry: Maybe before we get into all the new things you're
+2596	doing, just understand the basic limitations. It sounds like
+2600	you're you you really want to get out of the Manage wallet bid
+2604	that managed funds business is that do I see that correctly?
+2609	Unknown: Yes, that's our intention. Because we also, I
+2613	personally, for example, learned. So financial
+2618	regulations will get stricter over time. But at the same time,
+2624	we are working on an on a payment network, which is the
+2630	Lightning Network, which has incredible like capabilities
+2634	compared to the current payment system. And if we would go down
+2641	like the road of getting financial, financially fully
+2647	regulated and adhering to these laws with transaction
+2650	monitoring, transaction recording. I'm not so sure
+2656	actually, if we could fully leverage this innovation Patan
+2659	potential that's behind the Lightning Network as an as an
+2662	instant, like payment network across across the globe. So
+2667	that's based, that's, for example, one reason why we say
+2669	okay, let's try it out this way right now with because that does
+2674	not limit us in any like, technology technological way,
+2679	basically. So,
+2681	Adam Curry: so just understanding albies business
+2683	then you want to be a front end, you can use any funding source,
+2689	which makes a lot of sense. How, if you don't mind me asking what
+2694	what will the business or what is the business model of Alby if
+2698	you're providing the At free, basically now, will you be
+2702	charging for that down the road? Or how Where do you where do you
+2704	want to insert yourself? Because you're basically offering
+2707	lightning services through a simple API or through a front
+2711	end web interface and bring your own funding source? Where do you
+2716	make money.
+2717	Unknown: So that's really what we want, where we want to
+2720	position us as we want to just remove the away the complexity
+2725	and and especially for apps and developers and be closer to to
+2731	apps basically, and bring bring digital payments there. And
+2737	that's why we plan also to monetize our services through a
+2743	premium plan, basically, for people who want more
+2749	convenience, then, for example, installing their node at home,
+2757	there will be a pro plan where we charge on a monthly basis,
+2764	the price is not yet set there. Just for the users who are not
+2770	let's say, technical, capable or sound enough to spin up their
+2776	own note at home.
+2779	Dave Jones: Is there a drop dead date? When when the lb API that
+2785	apps like Casta Matic and Banpo adverse? Is there a day that's
+2791	coming when they when those wallets that they are hosting
+2794	the hosting for their listeners are going to be not available in
+2798	more and they have to move funds off?
+2801	Unknown: No, there's no droplet. So we be we might not
+2806	necessarily onboard users to these like, let's say arm
+2810	existing Albia accounts and wallets anymore. But the current
+2815	users can keep using them. So there will be there is there is
+2820	no date and also forthcoming. There is no no bigger issue that
+2823	we expect. It's just now what we are currently working on, we
+2826	just want to even lower the the bars even more for other people
+2834	to become like a self sovereign, become self sovereign and take
+2840	back control over their own payments with their own wallets
+2844	and notes. That's the idea. And that's now also we're rollin
+2847	comes in, for example. And the premium that these these Pro
+2852	Plan comes in, where people just like basically get more
+2858	convenience. When they when they run these, these these these
+2863	wallets themselves, do you think
+2865	Adam Curry: that there will ever be because So our main
+2868	limitation when so I'm just putting podcasters on one side
+2872	for a second. Just leave those out of the conversation purely
+2876	about the because most app developers have really not
+2880	looked into the Lightning Network. You know, obviously,
+2883	the lb API made it fantastic. Just for people just up just
+2887	code that and you're good to go. Our biggest issue is the key
+2892	send system because you really need a full time node, you need
+2896	something that's online all the time in order to receive that,
+2901	which kind of precludes us from really using any other system.
+2905	Unless I guess Bolt 12 comes along. I'm not even sure if if
+2911	if that I mean, I don't even know how self sovereign that
+2913	will be. But I've seen you know Chad F for example, has been
+2918	working trying to figure out using the using Zeus and their
+2924	Olympus LSP try and connect the Albea. The lb API to that which
+2932	I think he's had some success with. But the real issue is the
+2937	podcasting. 2.0 with value for value streaming is is really an
+2941	onboarding. But an onboarding for people who don't know
+2944	nothing. I mean, we I think all the people who understand
+2948	Bitcoin and lightning are already there. They're probably
+2950	already using something they probably have their own wallets,
+2953	you know, they may be using fountain in fact, most people
+2956	seem to be using fountain. So we want to make sure that it's easy
+2960	for new users to come in, you know, use podcast guru or pod
+2965	verse or just something that maybe they're already using, and
+2968	just connect a wallet to it, taking them down the path of, of
+2974	setting up their own node is just not going to scale. It just
+2977	won't happen. So we're looking for different ways to make that
+2982	happen. And I think that it's interesting to see what true
+2988	fans is doing. As I understand it, Sam that Sam Sethi has set
+2992	up a Super Hub with you guys and he'll be able to provide virtual
+2996	wallets. Can you explain kind of how that works if it were on a
+2999	per app bases
+3002	Unknown: are that's that's, I better leave that to Sam. I
+3005	think that's that's a great experiment what he's doing
+3009	there. And I don't know like how he's going right now. So we
+3015	helped him onboard to the to this new wallet basically. And
+3021	he wants to use that as a back end and onboard people on
+3026	virtual wallets. Okay, so he's Oh, I
+3029	Dave Jones: think he's
+3030	Adam Curry: doing the virtual wallet part. He's He's taken
+3032	care of that himself internally, and it's just connecting to a
+3035	big node that you're running for him.
+3038	Unknown: And we're not running the node for him. He's running
+3042	the node himself. Right. So that's the idea of, of self
+3045	custody. But actually, so I think for all these users who
+3051	are afraid of running their own note, I think the new wallet
+3055	that we're going to bring out is really something for them.
+3058	Right? So it's not, it's not the, you need to assemble
+3064	hardware, first, buy hardware, assemble it, and then set it up
+3069	at home, exited access it through a browser also, and then
+3075	figure it around there. No, it's really it's it's one click
+3079	deployment in the cloud, for the user. And we guide the users
+3085	through this. Okay,
+3087	Adam Curry: okay. But it has a funding requirement, if I am, am
+3091	I correct?
+3093	Unknown: Yes, you but the funding requirement is solvable,
+3096	right? So there are LSPs involved, where you can with
+3101	like, one, two clicks, get a channel with a receiving
+3106	capacity, and as a podcaster, then you're good to go, right?
+3109	You do not even need to fund this wallet as a podcast,
+3113	because you will then receive something from from the
+3116	listeners.
+3117	Adam Curry: And that okay, so that happens automatically upon
+3120	first receive, then inbound channel opens up with liquidity.
+3126	Unknown: And it does not happen automatically. But it happens,
+3130	like on purpose the, we want to give users the control of okay,
+3135	how much do they actually expect, and also put them in
+3140	the, into the spot of, of making the decision? And also an
+3146	economic decision of requesting inbound capacity from from an
+3152	LSP.
+3153	Adam Curry: Right. So just so you understand, and I, I totally
+3157	understand where you're going, I understand the vision, I think
+3160	it's the right thing to do from your, from your perspective,
+3163	it's totally not doable from the certainly not from the
+3166	listeners, certainly not from musicians. The knowledge level
+3171	is so low is so low, they really, they're barely
+3175	understanding Satoshis over Bitcoin. So while I think it's a
+3181	great solution, and they can be walked through it, and they can
+3185	be made to understand it's not it doesn't make onboarding very
+3189	fast in the podcasting 2.0 user area, because people are just,
+3196	you know, they're just not going to do it. I mean, it's they,
+3199	they, it's just a very high barrier.
+3205	Unknown: I'm, I'm not too much worried about that. So I
+3208	definitely get your point and I think this is something that we
+3211	need to work on like step by step, automating these these
+3216	flows on and abstracting away things like opening a channel
+3222	for example, and that will happen and we also know how we
+3228	can do that but this like one click sign up, and I have my
+3235	wallet. Actually, we have also already ideas there and there
+3240	are still based on on on a self custodial signup, sorry self
+3247	custodial sign up. So it will be possible where we think where we
+3253	can leverage our existing like tax tech stack to give users a
+3259	chance. I don't know for like under 1000 sets for example a
+3263	budget please take this budget go to pot worse and and and
+3269	stream that. And the payment goes directly from my own notes.
+3274	So I will be able to onboard users that are not familiar with
+3279	lightning and give them the chance to make their first
+3283	lightning payment without actually running their node. So
+3286	there are plans for that. But we will see that later this year
+3292	actually also learned if you want to say something here.
+3295	That's that's one of his ideas. Like like the mastermind behind
+3299	it. behind this, this this new wallet. All right, roll on. Come
+3303	Adam Curry: on in brother.
+3306	Roland Bewick: Hello. Yeah. Just before that. You had a question
+3310	about these apps that use their LV API right now, will they
+3315	eventually stop working. And that's not the case. So we
+3318	continue to build upon and support the RBA API. And it's
+3322	just the funding source that will change just like you said.
+3325	And so rather than it being managed by the shed lb service,
+3332	things will decentralize. So a lot of our users will be running
+3335	their own nodes, but they will still be connected to the LV
+3338	API. And all the functionality will exist as before. But as you
+3343	say, so not everyone is ready to invest some money in advance
+3351	right to open now and channels. Or even, even if they have the
+3356	money, maybe they don't, they aren't ready to invest the time
+3359	and energy to learn about lightning and Bitcoin. So we're
+3364	thinking of this feature where everyone who runs the lb, new lb
+3370	hub, product, which you run your own node, you have your own
+3374	case, you can onboard your friends and family, they
+3378	basically just download an app, and with one click or scanning
+3381	one QR code, they're ready to go with lightning wallet. They
+3386	don't have to understand anything, they can make
+3389	podcasting payments, they could even receive podcasting payments
+3392	and start their own podcasts in the future as well. So we think
+3397	if we can build the circular, circular economy, we can onboard
+3401	your friends and family and from there, create more and more
+3404	nodes and decentralize the network. Things will be in a
+3408	much better position. So we're pretty excited. So go ahead. But
+3414	Adam Curry: right now, the biggest hurdle we have is you
+3417	can no longer create a current noncustodial Albea wallet in the
+3424	US, which of course hampers our onboarding. So I'm looking for
+3428	and I and I hear what you're saying. So there will be kind of
+3432	like a one click functionality in the future, I don't know
+3435	about 100,000 SATs, I think you can get most people to put $5 in
+3440	probably five euros. So you're talking more about, you know,
+3444	25,000 SATs, maybe 20,000 SATs, I don't know if that's enough to
+3450	deploy a node and open up a channel with liquidity. But
+3454	that's probably what most people will do just to start off as
+3456	their new being onboarded. So we kind of have this, this bridge,
+3461	we want a gap between where we are now which is here in the US,
+3465	you can't fire up a wallet anymore as my understanding to
+3470	no end of the year when you have deployable product, which will
+3474	be very similar or this idea. And this idea has been around
+3482	ever since we started this the idea of Uncle Tom's node, which
+3485	is kind of a racist thing. But Uncle Tom's node, where you
+3488	share a node with multiple people, and you can have
+3491	multiple wallets on it. How do we bridge that gap?
+3497	Unknown: So regarding the lb accounts in the US, everybody
+3501	that reaches out to us, like sends an email hello@gharavi.com
+3506	I will reply with an invite code in. So that's no issue every
+3510	party also people in the US can create an N lb account today.
+3516	It's we just have managed yet to remove this invite only feature
+3520	yet unfortunately, the only requirement that we have is that
+3523	we then help them to get on on this new self custodial app. And
+3527	again, it's just like, we spin it up for you in the cloud, we
+3531	even help you to open up your first channel. That's not much
+3535	required. Currently, it's around 50,000 sets, and then you're
+3539	able to receive plenty of plenty of sets
+3546	Adam Curry: purely from the listener standpoint. So the
+3548	receiving side I'm less worried about, I'm really you know, I'm
+3552	a podcast listener, my I'm listening to a podcast, my
+3555	podcaster says, Hey, you can support us through value for
+3559	value. This is where someone's going to make a huge step,
+3563	because they're going to open up something called a wallet. And
+3567	obviously they'd like to do that inside of the app they're using.
+3571	So that's where you want kind of like an automatic wallet open.
+3575	It's okay if we say hey, you got to go to get Alby you got to
+3578	open a wall. I mean, there's a whole bunch of hurdles,
+3580	including KYC for for funding, etc. So how many more steps can
+3585	we eliminate from setting up you know, in the new system it I
+3590	mean, can I just be completely transparent to this user? That
+3594	all right, I put in $10.40 or 50,000 SATs and that for that
+3599	you user, it'll just be $10. I'm not even thinking in SATs yet.
+3604	How? How many steps can we eliminate to make that as smooth
+3608	as possible for listeners who just want to support a podcast,
+3612	they're not they don't understand lightning, they may
+3615	have an interest in it, but they just want to support the
+3617	podcast.
+3620	Unknown: I think that's that's definitely a hard nut to crack.
+3624	And that's also where we quickly arrive at the current limits of
+3630	the Lightning Network. If you want to use it in a self
+3634	custodial way, if you want to use it in a custodial way, in a
+3637	properly regulated way, then yeah, that's basically like,
+3643	like using another bank account where you have to sign up, scan
+3646	your ID or upload a photo and such and and do it that way. But
+3654	I also think this, this this, this, this budget feature that
+3658	Holand talked about, is not that far out. So we are maybe talking
+3664	about like a few months. So that's that's definitely very,
+3670	very high on our priority list. Because we see that, yeah,
+3675	running your own node, even like hearing things like channel also
+3679	might be for some people just a little bit too much in the
+3683	beginning. It's
+3684	Adam Curry: way too much for most people. And I'm just trying
+3689	to find the middle ground. So I understand it's going to take a
+3692	few months. And I don't want to hold anyone to schedule because
+3695	it might take you another year doesn't matter. I mean, that's
+3697	that's your development timeline. What I'm just trying
+3699	to get to is can it be simple enough that a podcast app can
+3705	access an API or spin up a wallet, or a node through the
+3710	app through an app to the Alby API, require a budget to be
+3715	entered. So at the moment, the listener has to, you know,
+3718	onboard, somehow, that piece has been solved kind of in some
+3723	ways, but onboard, and then everything else happens in the
+3728	background, it just a wallet is created, the user doesn't know
+3731	that a channel is open, or they have their own node, then they
+3735	may get some credential, spit back, don't lose these this is
+3737	your these are your keys. If you lose this, you lose your money.
+3741	How seamless can we make that process? For the podcast apps?
+3749	Unknown: Yeah, I think like true friends now. Does a lot. Does a
+3753	lot on that part, actually. Right. Then we saw this
+3758	experiment. Yeah. Yeah. So we'll see how this experiment turns
+3761	out. Yeah, I think in general, so it's, it's definitely doable.
+3768	In in, let's say, more like custodial way where you share
+3774	your, your wallet with others people on on one big note. And
+3780	you outsource things like like channel management to, to a
+3785	central party. And, like in the traditional banking way, so
+3791	that's, that's totally doable. But even there, then you will
+3795	not necessarily enter the space where you can onboard users
+3800	easily on API wallet also. Because then, in this very
+3808	moment, do as an app become a money service business, right?
+3811	So and then it's on you to, to do the KYC of the user. So you
+3818	probably need to then work together with a regulated
+3822	entity, or work together with an and wallet service, like, like,
+3828	I'll be where users particularly need to sign up for this wallet
+3832	service themselves and then authorize to connect the wallet
+3839	back to the app. So then, there is a different like, user
+3844	relationship, right? So because then it's the liability of lb,
+3848	or another wallet provider, basically, to take care of, of
+3852	the the regulatory side of things and not a not the app.
+3858	And I think that's definitely something that is that app
+3861	developers may or may not underestimate the the problems
+3868	that might have challenges come that come up there when they,
+3871	um, just spin up wallets on their site on behalf of users
+3876	and take deposits. For example.
+3879	Adam Curry: Do you have any insight into because we're
+3881	talking about regulations that aren't really there yet? Do you
+3883	have any insight or do you just have a feeling of where this is
+3887	going particularly as it pertains to the United States?
+3891	Unknown: Now, I think that's, at least for the United States,
+3894	it's quite clear. I mean, if if if users do not interact With
+3900	the payment networks themselves, but through third party, and
+3906	that's the case, if they don't have their own keys, then you
+3911	are a money service business, and you need to be regulated by
+3915	FinCEN. And you need money transmitter licenses by, by most
+3919	of the states in the US and in addition.
+3924	Adam Curry: Dave
+3927	Dave Jones: Yeah, it seems to me like the the reason I've thought
+3931	this for a while that the real issue on the regulatory side
+3934	with all of this stuff is that the large, the large Bitcoin
+3941	entities that, that do have the money transmitter licenses and
+3946	do have the correct regulatory structure like Cash App strike
+3951	and, and those kinds of organizations. They're not
+3958	there, they're not providing the, they're not providing the
+3964	they have they have lightning support, but they're not
+3966	providing the lightning onboarding experience. They're
+3970	not onboarding into lightning, they're onboarding into
+3973	themselves. And then providing lightning as just a side benefit
+3979	only at the bare minimum of bolt 11. And, you know, what, that,
+3984	you know, what, just just to get stuff across. And it seems to me
+3989	like there's an entire sort of second layer of org of group of
+3996	companies like Albea, that are trying to do more in trying to
+4000	really be the onboarding the on ramp into lightning itself. And
+4006	they're not in in you guys are not getting the support of the
+4009	larger bit, you know, Bitcoin regulated back end. Because if
+4013	you if you if you had, it's a lot to ask a group like lb, to
+4020	go to go out and get all the regular, oh, no, this is
+4024	impossible stuff. It's not possible. But if you know,
+4027	these, it just seems like some bigger group could help but
+4030	they're just not doing it.
+4033	Unknown: Yeah, but that's also one reason why we do now this
+4036	step. And yes, we will like increase the bar a little bit to
+4045	run a new lb wallet. But we are quite sure that we can lower it.
+4051	Same as we lowered the bar, like two years ago, when we published
+4056	LV API.
+4059	Dave Jones: Your What's your I think what we're seeing now in
+4061	the just as in Bitcoin as a whole, just speaking outside of
+4065	lightning itself, is with ETFs. And with, there's a weird
+4069	dynamic going on right now, where you have two things
+4072	happening at the same time, you have a greater awareness and
+4077	acceptance of Bitcoin as a financial instrument, across the
+4081	board. And then you also have credit, just selective cracking
+4087	down trying to send a vague message to the market, that you
+4092	better play by the rules. And so there's those two things. That
+4099	leads me to believe that the future of of this sort of thing
+4105	is I don't know, I guess I see a downside to just making the
+4114	wallet completely transparent. So let's go let me let me say
+4118	like this, I'm trying to figure out the best way to describe
+4121	this if, if you think about a lightning wallet, in terms of,
+4127	okay, like Venmo, or PayPal wallets. You know, we all we're
+4132	all aware that those are pretty easy to onboard, you just spin
+4135	up an account. But if you really want to do anything of any
+4138	importance with them, if you want to, if you want to actually
+4141	send any decent amount of money at all, you actually do have to
+4144	KYC yourself and all of those apps. It is it's not just a It's
+4149	not just a frictionless easy experience. There is KYC and
+4154	regulatory stuff that has to happen on all of those things.
+4158	And so it seems to me that while we may not like it, from the
+4164	from the podcasting and even the Noster, zapping side of things
+4169	while we may not like this, it it may just be a fact of life
+4175	that if people are going to have a wallet, they need to be aware
+4180	of the wallet as a separate entity outside of just being
+4184	some feature of an app. I mean it man it sure is frictionless
+4191	to go and tap a link in in cast ematic kick over to Albea spin
+4199	up been No, get a wallet and put five bucks in there into in the
+4203	five clicks. That's, that's like a dream scenario. Yeah, that's,
+4207	that's,
+4207	Adam Curry: that's what I'm looking for whether it's your
+4209	own road or not, that doesn't matter, I mean that that's
+4212	perfect. I'm just looking for that frictionless part.
+4215	Dave Jones: But see, then the doubt, then the downside becomes
+4218	of that becomes that, like, you know, let's imagine that PayPal
+4224	allowed that to happen. Let's imagine that PayPal will allow
+4227	people to just, like just spin up transparent wallets that they
+4231	kind of barely even know they have, on their own back end,
+4235	what you would end up with is just a whole bunch of sort of
+4239	just ethereal wallets with funds in them, that end up in limbo a
+4247	lot of times, and people are just not even aware of how to
+4249	connect with it. So
+4254	Unknown: that's actually what we were we are solving with this
+4257	new wallet, because that's the idea is that it serves as your
+4260	your hub. So you maybe need to do the extra step. But it's just
+4266	one time in the beginning to make sure you have enough
+4269	spending balance receiving capacity. But afterwards, you
+4274	can fully you have this definitely this plug and play
+4278	experience of Yes, bring your your Adobe account to a pot
+4284	worse to a rss.com. And that's really just one click
+4291	authorization. And then you can receive payments, you can send
+4295	payments, you can see your balance, you can even see your
+4298	transaction lists. So once you've done just the initial
+4303	step, afterwards, like you can, like fully plug and play
+4308	throughout the whole Bitcoin app ecosystem totally
+4311	Adam Curry: understood. What is can you just what will the steps
+4317	be? Do you have a funding on ramp as well? Or do you do point
+4321	people to a certain place to get to transfer Fiat into Satoshis?
+4327	What is what are those steps? Or do you have nuts? Okay, if you
+4332	have not, I'm just trying to understand how we can streamline
+4335	it.
+4336	Unknown: But ya know, it's basically like every other
+4341	account that you create, you set your password and then you if
+4347	you have already Bitcoin, then you can just directly open my
+4350	channel, we recommend your channel partners, no need for
+4352	searching some. So and then you're good to go already. Or if
+4357	you don't have Bitcoin, then define your password. You can
+4362	directly in the new wallet, you can top it up with a credit
+4368	card. And then with these funds, open your first channel. Okay,
+4374	so there is an in app credit card top up mechanism.
+4377	Adam Curry: Okay, that's good.
+4380	Unknown: And then theoretically, sorry, theoretically, we could
+4383	even like if, once we've tested this properly, and a lot of
+4389	confidence in that we could even say okay, why not just top it up
+4395	with a credit card? And automatically open my channel?
+4398	Yeah. So yes. That's all possible. And that's something
+4404	we're looking into that I
+4406	Dave Jones: think, yeah, go head to head. Yeah, yeah, I was just
+4409	gonna say because I think that really is I don't I think the
+4412	issue is less with with the con with the concept of having a
+4418	wallet because I think everybody's comfortable with
+4420	that they Okay, okay, now I have an lb wallet. And I can do lots
+4424	of things with this lb wallet. I can cook it, hook it to a
+4426	podcast app, I can do you know, get over here to Indy hub or
+4431	whatever. I think that's not the issue. I think everybody's
+4435	comfortable with that. It's the channel issue. Because that's
+4439	the one thing that makes lightning different from these
+4442	other sources like PayPal or Venmo, or, or something like
+4446	that is that you have this extra thing called a channel that is
+4449	just completely inscrutable to normal human beings are what is
+4454	I don't even understand what this is. So like, if the channel
+4458	process is even if there's a minimum of you know, 30 bucks to
+4464	open a wallet. It's as long as the channel process just happens
+4468	by itself. Yes, that to me, that is really the hurdle.
+4473	Adam Curry: And even just knowing there's a chat, I love
+4475	the business model. I understand that now. You get your Albea
+4479	your your Alby is your own node, your sovereign, you have your
+4483	keys, you lose that you're screwed, but you can and what
+4486	albies business model will be doing is you will be connecting
+4490	to every other app necessary in the entire lightning ecosystem.
+4496	Anything you want. You'll you'll make sure you can make the
+4499	connection So whether you want to connect it to your your
+4502	noster app to your podcast app to your McDonald's app, whatever
+4506	it is, you guys will provide that. And then you'll have
+4509	different service levels and different capabilities. And
+4512	that's where you come in with your premium. I totally get it.
+4515	So the questions are, how seamless can we, as Dave said,
+4520	can you just make the top it up, and then I send a payment, so I
+4523	have what you call the budget. So minimum top up, if it could
+4527	be 10 bucks or 10 euros, that'd be fantastic. I don't know if
+4529	that's enough, it has to be more than it is what it is. And that
+4534	automatically opens the channel for my first payment, or with my
+4538	first payment, the channel opens up, instead of, hey, I'm funding
+4542	a channel, what am I really doing? You know what I mean? If
+4546	we can obfuscate those pieces, unless you have the, unless
+4550	you're an advanced user, and you need to know it, I think that
+4553	would be great for us. And it'd be great for you to probably,
+4557	Unknown: definitely so. And there's also another idea, for
+4560	example, since we want to have a budget to automatically create a
+4567	channel for for the user. The downside here is a little bit
+4572	that we would do like an upfront commitment, because we wouldn't
+4577	need to pay for this channel. Right. And, and then if if the
+4582	user churns quickly, from the wallet away again, then we
+4589	cannot recover the costs basically. So we need to still
+4594	think a little bit how we can make that in a way that we do
+4601	not take too much risk here as a as a as a small startup. But so
+4606	there are really various ways, or levers that we can use,
+4612	actually, to bring the barriers down even even further. Here's
+4615	Adam Curry: an idea. Because I still feel like in chat F says
+4619	we're focused too much on the channel. But the channel thing
+4621	is the thing that's the problem, people don't understand this.
+4625	They understand Venmo they don't even I mean, even the currently
+4629	the whole send me an invoice so it can pay your invoices already
+4632	foreign to people is very complicated to people who are
+4635	used to Venmo and PayPal. What if podcasts index, for podcast
+4644	wallets only functioned as the liquidity provider. So and not
+4652	for podcasters. But for podcast wallets for people who are
+4657	purely thinking of sending, sending. Yeah, listeners, can we
+4663	because we have a pretty good node, you know, we could even
+4665	set up a separate node with a fat pipe, we've got liquidity.
+4668	We've got good connections. Is there a way that we could bridge
+4672	this for a while so that because we don't need to make profit you
+4675	guys do? Can we bridge this and we provide the liquidity? We
+4679	provide a 5050 channel, for example, when someone spins up a
+4683	wallet or is that too complicated?
+4688	Unknown: So you this would mean if someone would sign up through
+4693	podres, podcast, guru or custom Matic, for example. We know
+4698	somehow this person is interested in in listening to
+4702	podcasts and and making value for value payments. And then in
+4707	this moment, for example, we could request a channel from you
+4712	to give this user some initial balance basically on that,
+4716	actually, yeah, I think it's, we should think about that actually
+4721	is like this idea. And
+4722	Dave Jones: we open it we open the channel and then essentially
+4725	push push to the other side. Yeah, I mean, that I think, I
+4731	mean, yeah, definitely made me mad. I've talked about doing
+4734	that. I mean, it's it's a, it's a thing that are noticed
+4737	sitting, you know, sitting there, it is well connected and
+4740	well funded. So I mean, I think it makes sense to help to help
+4745	people out with this on the podcasting side, at least until,
+4751	you know, until I think there can be like I said, I'm not I'm
+4754	not too concerned about the minimum balances and that kind
+4758	of thing. Those all I think those are all not a big deal.
+4761	It's really, it really is this channel problem. That's, that's
+4765	the thing that just you start talking about channels and
+4768	people just they just don't understand what you're talking
+4771	about.
+4774	Unknown: Yeah, but like, here's one question that I have. So I
+4778	mean, that's always a little bit of a strategic decision that we
+4781	because there are ways to automate these things like like
+4786	channel management with some like lightning so as providers,
+4791	but we, so far we said okay, we just want to make sure people's
+4797	wallet work out and they are not crept into a text, like
+4804	lightning service provider, where then in times of high,
+4808	high on chain fees, they have to constantly open new channels,
+4813	and then end up with five channels, but might even need to
+4817	open up a six channel, because they still cannot receive funds
+4822	higher than 250,000 sets, for example, so they don't have this
+4828	control. And I wonder, okay, do they? Should we give them the
+4833	control? Or should we really automated fully for them? Yeah,
+4843	Adam Curry: I mean, that's interest, I feel that it feels
+4847	like podcasting can be a great onboarding mechanism to what all
+4852	of Lb provides. So, as as lightning becomes more
+4857	integrated into normal life. There'll be more and more and I
+4861	think that's your vision, more and more reasons to have your
+4865	own know that you can connect to all these different services and
+4868	apps that are out there. But to bring them in, you're going to
+4872	need something really, really simple. And I mean, Dave, and I
+4876	have also considered is where to bridge something, just because
+4881	we don't want to lose the momentum, we're losing
+4883	incredible momentum now, just by not making the wallet process
+4889	easy for listeners is, I mean, in essence, you know, we would
+4895	be happy if we could just provide a node with liquidity.
+4898	And for a certain period, you know, even just act as a as a as
+4903	a custodial service, just to keep the momentum going, and
+4907	then hopefully switch people over to their own notes as they
+4910	go along. Because we can't do that forever. But we certainly
+4914	feel like we can assume some of that risk in podcasting only.
+4920	Which is very different from me, because I understand what was
+4922	happening with you guys. Everyone's just Oh, get a free
+4924	wallet here. And then everybody in the grandmas just signing up.
+4929	But if we're just only providing this for, for the podcast apps,
+4935	that may be another avenue to go. But I don't know if you
+4939	could provide like a white label service for for podcasting. That
+4943	would only be for podcast apps. Does that make sense?
+4951	Unknown: Yeah, go ahead.
+4952	Sorry, if I can jump in here. I think this Uncle Tom, so we call
+4956	it uncle Jim's idea perfectly fits here. And it should be able
+4962	to connect. So if you run an LP hub, you can actually connect to
+4965	an external lightning node. So you should be able to connect.
+4969	So run boot up and your lb hub, connect to your existing node,
+4974	and you'll be able to set up these connections for people who
+4978	connect with different podcasting apps. Regulatory
+4982	wise, I don't know. But technically, I think it should
+4986	be possible. And it's a really exciting idea to consider. So
+4990	Mark, sorry, go ahead.
+4993	Dave Jones: Rollin. Can you talk about that? Because I'm not sure
+4998	what you the lb hub? Yeah, the lb hub? Can you just describe
+5002	what that is?
+5005	Unknown: Yeah, so it's, um, it's, it's not a it's not a
+5009	typical Wallet. So if you if you think of a typical wallet, right
+5012	that you start on your phone, and you send and receive
+5015	payments. It's it's not that it's something completely
+5020	different. It's completely revolutionary, is basically what
+5024	you get with the lb account, right. But now you are fully
+5028	self sovereign. So you have one wallet, and you can connect to
+5032	all your different apps, you'll have one balance, you don't need
+5035	to have multiple balances and different apps. And you can have
+5039	permission control. For every single app, you can choose how
+5042	much you want to spend, how much control the app has over your
+5046	wallet, basically, similar to how it works with the LV API.
+5050	And the really cool thing is just like they'll be extension,
+5054	you can choose a funding source for lb hub. So by default, we,
+5059	we embed a node directly into the lb hub. And so you can
+5063	launch it in the cloud with a few clicks get started, ready to
+5066	go. And that's great. But you can also connect to an external
+5069	mining node as well, but get the existing functionality. Does
+5076	this kind of as your question, yeah, yeah.
+5078	Dave Jones: So you're saying that, that the lb hub is lb hub
+5084	is just a sort of a connector either to your own node or a
+5091	node that's running that Albea spins up for you. So you can you
+5096	can connect it either way on the back end, sort of like It's sort
+5101	of like green, like a green light type node service.
+5106	Unknown: Yeah, if lanes, so it's slightly different to green
+5109	light, which will launch on the fly, right? It will normally
+5114	it's off. But if it detects an incoming payment, it will be
+5117	booted up, to receive the payment, and then all shut down
+5121	again to save resources. But ours is a bit different. We, we
+5126	believe that we want lightning fast payments, we want an always
+5130	online service. We want to be able to receive keys in payments
+5133	at any time for podcasting. So this is our focus in This Boy's
+5138	online wallet service that powers all of your apps, embeds
+5142	lightning into your daily life. It just feels innocent, right?
+5148	Seamless attaching lightning payments, to user interactions,
+5151	all those amazing things that we can do in the future.
+5154	Dave Jones: So that node is that and then node is always running
+5157	then.
+5159	Unknown: Yes, that's that's the case. And this comes with costs,
+5163	but it's part of our premium l lb Pro Plan, you would, you
+5168	would basically get this for free. But you can also post lb
+5172	have locally, you can you can run it on your own virtual
+5176	machine or server, if you have one, you can run it as a desktop
+5179	app, if you have a computer that's always online, boys,
+5183	boys, you know, turned on. Or you can even run it on Raspberry
+5187	Pi. So we're trying to do it as give as many options to users to
+5192	pick what best works for them. And they can always migrator
+5196	that anytime. If they think now I bought some hardware, I can
+5201	move my nose or the opposite. If they want an easier, more
+5204	convenient option, they can run it in the cloud.
+5208	Adam Curry: But you bet can you run virtual wallets on that
+5211	similar to like ln bit?
+5215	Unknown: Currently, no. But this is the next feature we're we're
+5220	planning to look at. Because, as we talked about, is
+5225	fundamentally two different types of users, right? One who
+5229	understands Bitcoin, they can open channels, and they can
+5233	manage this. Whereas another user, as you said, they don't
+5236	even they barely know the difference between sets and
+5238	Bitcoin, right? And they were you lightning is very difficult,
+5245	right? You can completely hide the Lightning Network and
+5249	channels, everything from these users. And that's why we think
+5252	we need this. This other idea where you know that Uncle Tom
+5257	Uncle Jim idea, I think fits very well in this in this case.
+5261	And because we can launch with these LV hubs all over the
+5264	world, we still have a much more decentralized system than
+5271	having, you know, one wallet of Satoshi one, one blink sort of
+5276	thing where people are worried about regulation, and, and all
+5280	these these sorts of things. So we think we're in a much better
+5284	position going forward.
+5287	Adam Curry: I'm just not, I'm not understanding the hub
+5291	entirely, because you what I understand under an Uncle Jim or
+5294	it's much funnier in America to say Uncle Tom for all bunch of
+5297	racist reasons. When we say Uncle Tom hub, that means we're
+5302	node, that means that there's a node, and it has channels that
+5306	has liquidity. And someone can connect to that and have their
+5311	own accounting of SATs that they are using and they put in and or
+5316	alternatively receive, are we talking about the same thing
+5319	with the lb hub, because it sounds like it isn't quite the
+5322	same.
+5324	Unknown: It's quite similar. You can think, say you had five
+5328	different podcasting apps and you would connect them to your
+5331	lb heartbreak. And you can give different permissions to each
+5334	app, maybe one app can send 100,000 sets per month and the
+5337	different one continue to send 10,000 sets per month. But you
+5341	can actually also create another app connection, which is
+5344	actually not for an app, but for a new user, or your friend or
+5348	your family member. And they have this connection, which then
+5352	they can use again to connect all these apps. This This
+5358	connection is powered by your node and your channels,
+5361	everything's that's managed by you. It's your responsibility to
+5365	make sure that your friends and family have a good experience.
+5368	Adam Curry: But what do they have? Do they have their own
+5370	accounting their own their own valid accounting, their own
+5373	balance? Or is it just whatever's on the node?
+5377	Unknown: They will have their own accounting on transaction
+5379	lists on balance everything well, they usually your
+5383	Dave Jones: your sort of take like so the person let's say I
+5386	spin up, I create an lb hub and I find I'm paying for the lb
+5392	hub. Then I can connect with a few friends to my lb hub and And
+5400	they each get their own their own wallet, essentially, their
+5406	own their own balance their own wallet, and they can connect it
+5409	to their apps as they see fit. And it's sort of like, I'm I'm
+5416	the host, I'm taking the responsibility for their, for
+5421	their for what they do. And is that responsibility? Because
+5424	it's still because because it's still non custodial. No, it's
+5431	Sorry. Yeah. Non custodial for Alby? It's custodial for me.
+5436	Yes. Yes.
+5442	Unknown: Okay, so yeah, anyone, anyone who connects your note?
+5446	They, they, they have to have a certain level of trust, right?
+5449	Because it's your money. They have to trust that they can
+5452	actually use it. It's, if they haven't balanced, they should be
+5456	able to spend it. So it's your responsibility to provide that
+5459	service. But without the help, we're trying to make that as
+5463	easy and straightforward as possible. Okay.
+5467	Adam Curry: Well, that sounds like something we could do.
+5470	Yeah,
+5471	Dave Jones: yeah. This sounds that sounds interesting. I mean,
+5473	I definitely want to give it a shot. I want to play with it.
+5476	Yeah,
+5477	Adam Curry: I mean, my brain hurts. Yeah, makes my brain
+5484	hurt. I mean, it's, we're just trying to, to provide a bridge
+5489	and provide a way to make it easy for someone who has pod
+5494	verse to just say, get a wallet, click this button, you've
+5500	created a wallet, now you need to fund it. And we're okay with
+5506	providing that for for an interim period. Because I
+5511	certainly like the idea of where you're going, where everyone
+5513	gets their own node. And but I just think that's going to take
+5516	a while. LSPs are new, everything's new channel opens,
+5520	cost on chain costs. There's a lot of stuff going on. But
+5524	David, I've talked to said no, you know, we can probably
+5526	provide this as a bridge for a while. So that's what we're
+5530	really looking to provide. And if that's something lb hub can
+5534	do, then then we'd love to see if we can try that out.
+5540	Unknown: Cool. I think like, we are definitely working on the
+5542	same thing, right? So we just need to make sure that our bases
+5547	at Alveus is right, it's fine. So that's why we now need to
+5553	invest a lot in like technical development, and then can really
+5558	see how we can lower the bar step by step and make sure
+5562	people have a great great onboarding experience there. And
+5565	that I think that's that will be a killer feature that Olin
+5568	mentioned.
+5570	Dave Jones: Is that is that a live product? I'll be hub right
+5573	now, or is that something that is still in development?
+5576	Unknown: Um, so Sam is using it. Oscar, from fontainhas using it.
+5581	James I onboarded. James and truly Costello reasonably that
+5586	means we are slowly rolling it out, step by step. And get every
+5593	every week new users on board. So everybody's happy to, to sign
+5598	up and and try it out. Now. It's just not yet like publicly
+5601	launched and no big boss made around that.
+5605	Adam Curry: Excellent. So Dave, sounds like you need to be
+5607	onboarded. Brother. Yeah,
+5609	Dave Jones: onboard me, bro.
+5611	Adam Curry: You need an onboarding. Just one more thing,
+5615	just to clarify. If us users have a code that they have
+5621	received, then they can or cannot open the kit. There's no
+5626	possibility for us users to receive an Albu wallet as we
+5630	used to know it anymore, correct?
+5633	Unknown: That's correct. But they can create an account with
+5636	an invite code and we help them to get on our behalf.
+5643	Adam Curry: Right, which, which means they they they have their
+5646	own node. Exactly. Yes. Okay. That's it. So, okay. All right.
+5654	I mean, I think we've gotten somewhere.
+5658	Dave Jones: Yeah, I mean, that's Yeah, I think so. I think we
+5661	have the Yeah, I think we just need to be on boarded to lb. Hub
+5664	and just start to play it because this is what this is.
+5667	What I wanted to do with the breeze SDK is is get on boarded
+5670	onto onto the breeze SDK and see if we could try to sandbox a
+5679	solution to show the app developers what to do. And then,
+5686	but then Roy said that it was just debris SDK was just not a
+5689	good fit because of the channel, the channel, the ROI, so that
+5695	that just didn't work out. So lb hub sounds like something that
+5699	did I need to do to onboard into and try to figure out, because
+5703	I'm looking to do the legwork to figure out how it works so that
+5708	I can then explain how that to explain to app developers what
+5711	they need to do. That's really my that must really my point of
+5715	view is to try to be as educational.
+5721	Unknown: As sounds awesome, let's do that.
+5724	Dave Jones: Okay, yep.
+5725	Adam Curry: So somehow we can hopefully create a solution,
+5729	that it's interesting that Oscar is doing that, too. I like that.
+5734	We can find a solution that will maybe allow podcast index to
+5739	provide wallets for a while to app developers. Dave? Is that
+5744	what I'm hearing you say if we can figure out the hub thing?
+5747	Dave Jones: Yeah, maybe? I mean, it I think, I think really, it's
+5750	just an exploratory thing on our part. I mean, we can definitely
+5753	host some wallets. I mean, we did it with their Ellen, you do
+5757	lol? Hey, yeah. For two years, we could definitely host some
+5762	wallets. But then really, if we can just like that would be the
+5767	sort of the learning experience to then figure out how to teach
+5772	other people how to run sort of community. No hopes? Oh, yeah,
+5779	definitely. And, and let us get a feel for what the you know,
+5782	what the investment looks like, and that sort of thing. Yeah, I
+5787	think it's just a matter. I think this is just where we're
+5790	going to end up. I mean, we're going to end up in, in a
+5793	situation where you're going to have people with, you're gonna
+5796	have people with wallets, full wallets, that they just have to,
+5800	you know, learn how to understand themselves. But then
+5803	you also are going to have those people potentially running, you
+5807	know, some of those people, some small percentage of those people
+5810	are running some hubs for other people that they know. And who
+5814	knows how that works? I mean, I don't know, I think this is all
+5816	a learning curve. Yeah.
+5817	Adam Curry: I mean, I can totally see it for on the
+5820	incoming side, I can see like the Costello's who are
+5823	onboarding artists. And I can see them running an lb hub for
+5827	their artists, I can totally see that. Yeah, make that makes a
+5830	lot because you know, they'll have 1050 100. I mean, I don't
+5834	know how many artists they'll have. That I think is fantastic.
+5837	It's really, it's really just how do we keep the how do we
+5841	keep the other apps interesting, in the value for value space?
+5845	Because they, they all do it? It just now they can't onboard new
+5849	people. And that's just a shame. Because you're just losing
+5853	momentum there. And I think we don't want only one app to be
+5857	seen as the only value for value app.
+5862	Dave Jones: Yeah. So yeah, I think yeah, I think we, I think
+5865	we go down this road and see and see if it'll work. Okay, because
+5871	yeah, like you I mean, there's, there's multiple there's
+5875	multiple apps. I mean, if it has to be everything, all this stuff
+5881	has to be doable by everybody. If it's not doable by everybody,
+5885	then it's just not a real solution to a problem right.
+5890	Adam Curry: Okay, well, why don't we break for a song? Yes,
+5895	I think we all need that. Speaking of value, there's a guy
+5900	out there I don't know if it's a guy or a band Richard greaser
+5903	which I found great name if he had good name degreaser Richard
+5908	greaser and has a whole album out and the whole album is about
+5913	the McDonald's value meal and and very nostalgic look at it
+5918	and where did it go? And how come how come everything's so
+5922	expensive? So I figured I'd give that one a world this is I
+5925	remember the days Richard grease Rod 2.0
+5928	Unknown: I remember the day
+5936	morning a simple treasure in a fast food. McDonald's dollar
+5946	menu oh how you mine. A cheeseburger fries and a small
+5952	Sundew joins
+5960	us for that.
+5986	shader in a syllabaries may not be suitable. We will go over
+5997	those Global's notches knew how it feels now to practice and not
+6006	feel stressed at a simple that's caused me to fail
+6025	oh
+6031	no
+6047	How can I move on from Sony so you were a beacon when the end
+6056	was me now unless searching for Jason forgot the stories you
+6079	days your
+6085	peace of mind
+6092	fall
+6102	Adam Curry: now I realize it is entirely possible that was
+6105	completely created by AI I'm not sure
+6110	Dave Jones: think it's more than likely I
+6112	Adam Curry: know the odd I mean everything is auto tune these
+6115	days but I don't I'm not sure I've heard a lot of AI music
+6119	that never that never has this has better structure than most
+6123	for sure. So I'm not sure.
+6127	Dave Jones: I don't know. History
+6131	Adam Curry: pretty soon we'll just have aI music being played
+6134	by AI disc jockeys and we'll all retire. Oh, yeah, just keep the
+6138	sentence flowing baby. Just keep it flowing.
+6140	Dave Jones: At that point is just over.
+6145	Adam Curry: Ever everyone says his AI in the in the boardroom.
+6148	But I don't know. How do we know?
+6152	Dave Jones: What do we want to do? We want to go down. Do we
+6154	want to talk about Elon address real quick? Since we have Yeah.
+6158	Adam Curry: Yeah, we have the boys on Yeah, for sure. Yeah.
+6160	Dave Jones: Roland, are you up for a little discussion about
+6163	Elon? Lightning address issues? Sure.
+6169	Adam Curry: All right. He's excited, Dave. He's really
+6171	raring to go. He's in the saddle.
+6174	Dave Jones: You're Fired up? I can tell you're excited. So, so
+6178	here's the here's the issue. Let me explain to you I don't know,
+6182	are you just for purposes of understanding here? Are you
+6186	familiar with the way that the value block? The value XML is
+6194	described in an RSS feed?
+6200	Unknown: vaguely, I mean, I say that I've set up a couple of
+6203	tests podcasts, but it's been a while. So.
+6207	Dave Jones: Okay, so there's a values in the XML, there's a
+6210	value tag, and that tag has children, which are value
+6216	recipient tags, this specify the addresses of the nodes where the
+6220	keys and payments are going to go. So in the end, each one has
+6224	a split amount, beaten? Yeah, it goes like that. So the what the
+6230	difficult what Oscar proposed was that in is that, instead of
+6237	explicitly declaring the, the, the lightning node ID and the
+6244	value recipient tag, that we would instead use a lightning
+6250	address. If so, then the lightening address would would
+6257	be resolved by the pay by the payer, by the payment sender, so
+6263	that you could have a level of indirection there, where if a
+6269	host if somebody that hosts a bunch of somebody that hosts a
+6273	wall host wallets for a bunch of feeds, if their node ID changes,
+6277	they don't have to go and track down all the RSS feeds and
+6280	change that node, that node pub key in all of those feeds. If
+6284	you agree with me so far. Yes. Okay. So then the issue it was
+6295	nice, okay, well, let's do a lightning address. And then the
+6300	Lightning. So the lightning address is going to specify the
+6302	key send payment information, which would be the pub key of
+6306	the node in a potential potentially a routing, hint of a
+6311	custom key and custom value. And that's fine, except if we're
+6316	going to Roy from Greece. And well, if we're going to fix
+6320	this, if we're going to put this in place, we might as well think
+6324	about the future as well. And let's look at both 12 and other
+6329	things that may be coming down the pipe. And let's try to sort
+6333	of solve all this at once. So if we're going to make if we're
+6336	going to make apps go out and look for a landing address, URL,
+6344	dot well known URL to get this payment in destination
+6347	information, let's make it an options file. So that you have
+6353	an up, he would have handled JSON structure. And the JSON
+6358	structure would contain a property dot JSON JSON object
+6363	would contain a property called options, which is an array that
+6368	has an array of objects, each object itself containing
+6373	information about a payment destination. So that would be
+6376	one of them might be L in your LP. Another one would be might
+6381	be keys, and another one might be Bolt 12 essentially give
+6385	saying for this user that I'm looking up, here's all the
+6390	different ways they can receive a payment. That's, that's the
+6396	idea. Does that sound number one does that sound like this spec
+6402	is not defined anywhere? Currently, we have key send Alby
+6405	supports this the dot well known keys and URL. And you also think
+6411	support L in your LP. But the idea here is just combining all
+6416	these so we don't have to have a bunch of different dot well
+6419	known URL, your eyes, we could do, we could sort of combine
+6423	what all of those different your eyes specify into a single file
+6430	that says here is all the different ways you're it's
+6433	possible to send this person that payment.
+6438	Unknown: I don't think the structure is too important,
+6442	whether it's multiple well known files are one one file with a
+6447	list of options. But both I think is a good idea, future
+6450	proofing, right. So that when you have this set up, like
+6454	applications can, can try to pay with one of the supported
+6460	options, right? And over time, it is applications improved,
+6464	they've been a wallet support, they can upgrade to pay with
+6467	bold 12, for example, which would have, you know, bit a bit
+6473	of privacy, no runners wouldn't have to open public channels,
+6477	which would make the network more performance as well. But at
+6483	the same time, there's not much support for about volt 12 yet,
+6487	we're working on it right. And I think lightning addresses, for
+6491	example, is a great intermediary solution for that. Even the LV,
+6497	our LV node infrastructure, we have the same issue because we
+6501	have our own node with this property that we have to keep
+6503	running because all these value tags and all these feeds, right,
+6511	they all point to this node, we have to keep it online. So So I
+6518	think, definitely having having a lightning address where you
+6521	can, or you know that you can point to the destination, which
+6528	can change without, because it's a lot more flexible, in my
+6532	opinion. I guess there are some downsides, right? It's more
+6535	difficult for application developers, they might have to
+6538	support multiple payment methods. And going forward, all
+6543	the existing apps will have to update to this format. I mean,
+6547	we can make it as backward compatible as possible. But
+6552	hopefully that does happen. I think Bhumi Boomi would be a
+6555	much better person to answer this question. But there's,
+6561	there's the best I can give you today.
+6564	Dave Jones: So you so you think do you have an opinion on
+6567	whether or not and whether or not it should be something like
+6571	a cuz here's the here's the difficulty I see. I can see it
+6577	both ways. Like, on the one hand, it's really nice to have
+6581	one place to check all the different payment that all the
+6585	different payment methods where you can say, okay, I can pay you
+6589	in these three potentially four different ways. But then also,
+6596	it's kind of once but once we get Bolt 12 broad adoption. I
+6603	don't know that any of these other met main Kison is not
+6606	going to I don't think Kison really survives the bolt 12
+6611	transition because then it's not really necessary. So at that
+6616	point, I don't know that the bolt well seems like the native
+6620	lightning, what Native lightning payments should be, should be
+6623	doing already with blinded routes and all of that stuff. So
+6628	I don't even see the point of keys and after bowl 12. And I
+6632	really don't see the point of Ellen, your LP, avail Ellen URL
+6636	after Bolt 12. Because both 12 is essentially doing the same
+6640	thing as ln your LP just under the covers in in a better way.
+6644	So at then, then I'm like, well, then we don't really need an
+6647	options file. Because there's not even any options anymore.
+6651	There's just one way.
+6655	Unknown: But this will take years to happen, right?
+6660	Adam Curry: For years.
+6661	Dave Jones: Yeah. Yeah, I agree. I guess that's I guess that's
+6665	it.
+6665	Adam Curry: There you go. Dave years, we're early brother.
+6668	We're early in the process. We're very early.
+6671	Dave Jones: Well, I guess you're right. I mean, it. It's because
+6677	you're, you know, here's the there's, this ended up being a
+6680	can of worms. It's like, once I started looking at the structure
+6683	after this new thing. I'm like, Well, this sort of, if you start
+6688	specifying, and if you stop spending, start specifying an
+6693	options file, URL in the page value recipient tag, then all of
+6700	a sudden, the key send the method equals key send in the
+6705	value tag parent, doesn't really make any sense anymore.
+6709	Eventually, I guess. Like, because No, I mean, immediately,
+6714	because he said, you know, like, currently, the value tag
+6717	specifies, you know, a type of a type lightning and method key
+6722	sin, right. Then inside that structure, you have various
+6726	recipients, and they just have addresses in them. And those are
+6730	all the keys and addresses. Well, if we put in a lightning
+6734	address, where you're looking up an options file, and it gives
+6737	you the option for keys and or both well or anything like well,
+6740	then now you know, that now, it's to kissin method on the
+6747	value tag doesn't make any sense because they may not be paying
+6750	with keys and they may be paying with bold 12 or Ellen URL or
+6755	whatever. So I'm just thinking that it is sort of negates the
+6761	entirety it messes up the whole structure. So I thought this was
+6766	going to be simple when I first did it, but now I'm starting to
+6768	think that this doesn't make well yeah, Eric, it didn't make
+6776	sense to have method keys and apply to all the recipients
+6779	because that's it made sense at the time because it was assuming
+6786	that a single app it because that's all we had it just makes
+6795	us assuming that the app that's all I could send was key send
+6800	like it was only going to be able to do one thing like it was
+6803	either gonna be able to do Hive or lightning or whatever this
+6806	thing was so then you had you had that idea but now I think it
+6811	makes less sense now because now you can just beacon like you
+6815	like you're saying you can push that keys and it's being pushed
+6819	down into the value recipient. So I don't know I'm gonna have
+6824	to rethink this whole thing. And I've got a halfway written up
+6829	and I think I may just have to like rearrange a lot of stuff.
+6832	But then I don't want to break backwards compatibility. No, no,
+6835	this is like trying to jump through a flaming hoop is what
+6839	this this
+6840	Adam Curry: is why God created the weekend Dave. Stuff like
+6844	this. Sure. Final thing for Morrison rolling now. I know
+6852	Aldi is a German company as far as I know. Moritz, you're in
+6857	Switzerland. Rollin you don't even sound German. Where are you
+6861	from?
+6862	Dave Jones: Is the International Man of Mystery. No, we
+6864	Adam Curry: need to know where are you from rolling.
+6866	Unknown: New Zealand
+6867	Adam Curry: New Zealand. I got it. You did and are you in New
+6870	Zealand right now?
+6873	Unknown: No, I've I've opted out. I live in Thailand now.
+6878	Adam Curry: It makes it even better. What time is it in
+6883	Thailand?
+6886	Unknown: 2:30am.
+6888	Adam Curry: Brother. Oh, I wish we I'm sorry. Well, I was gonna
+6892	ask you know who you guys thought was gonna win the the,
+6896	you know the European Cup. The waiver is that UEFA Cup. Is that
+6899	what it is? You wafer what is it? No, it's
+6903	Unknown: not the way what
+6904	Adam Curry: is it? It's the the European European
+6907	Unknown: Championship exactly at national level. So of
+6911	Adam Curry: course I'm rooting for the Netherlands obviously.
+6913	How about their mon shaft? are you rooting for them? More to go
+6916	on for the for the Swiss?
+6919	Unknown: No, I think like the Germany had a very good start in
+6921	the tournament so I'm optimistic they will they will reach the
+6924	final. They
+6925	Adam Curry: always seem to somehow it always always Germany
+6930	France doesn't matter if it's football doesn't matter if it's
+6932	World War one or two. It's always Germany, France for some
+6935	reason. It's very weird.
+6938	Dave Jones: I just feel like we owe Roland an apology for having
+6940	to sit through this that auto tune song at 230 in the morning.
+6944	It wasn't all that bad.
+6947	Unknown: I actually I actually liked it. Yeah,
+6950	Adam Curry: I'm concerned with my suck you up. I'm concerned
+6953	with myself now that I liked what's going on? I want to thank
+6959	Morrison rollin for for joining us. Certainly rolling so late.
+6962	Really appreciate that. If you if you want to, you're more than
+6966	welcome to hang out. We're just going to thank some people.
+6969	These of course, are people who have also sent value to you
+6972	guys, we put you in the value block. So I presume that's being
+6976	received more. So you see come in. Yeah,
+6979	Unknown: it's actually we put getting emails and
+6983	Adam Curry: I'm sorry, I was a bit of cross talk. Sorry.
+6986	Unknown: So yeah, I'm running the LV hub with a few public
+6989	channels. So I'm receiving all these split payments and is
+6994	working great. Oh, good. Thanks. Thanks, guys. Yeah, good.
+6998	Dave Jones: Awesome.
+6998	Adam Curry: Let me just thank the people who were who were
+7001	boosting live. And of course, Sam said he comes in with 1000
+7005	SATs. And he says this discussion was so overly
+7008	complex. A note podcast listener is going to understand this.
+7011	Well, no. This is also the boardroom is not for podcast
+7015	listeners. It's for it's for the development people. He says
+7019	people don't pay for podcasting today. So if there are too many
+7021	technical hoops to set up a wallet, they won't bother I
+7024	agree. And and I think that Sam probably has a jump on this.
+7028	He's, he's deep into the lb hub. And you know, we onboard Dave
+7032	and we'll start to figure stuff out and if podcast index can
+7035	help with a bridge solution we're happy to so we definitely
+7038	want to make this make this work for everybody. The 5100 SATs
+7043	from Boomi, who you know who gave up his spot and he says
+7047	opening channels are the KYC process for the self sovereign
+7050	person. Interesting point.
+7053	Dave Jones: Yeah,
+7053	Adam Curry: yeah. DS laughs with 1000 SATs this boost is a
+7056	shameless promotion to hear my name mentioned Okay. On a side
+7061	note, any thoughts over leaderboards similar to the art
+7063	generator for the end of show mixes are having categories for
+7066	the best for the big baller booster and troll of the year
+7069	included in the podcast 2.0 awards. Okay, so there's no
+7075	looking forward to the pod awards. He says nope, that's not
+7078	going to happen. Yeah, we need to get Wallace 111 He's, he's
+7087	down under and he says hooked me up with that fat pipe. All
+7091	right. See Brooklyn 112 with 1000 SATs just came in. We've
+7096	got another 1000 from Sam Sethi complexity is failed simplicity.
+7100	Normal people don't want to create wallets etc. But we need
+7103	them to understand V for V and they have tokens called SATs to
+7105	give podcasters and have a one click top up which we have with
+7109	stripe. We need to hide the tech. I'm in total agreement. Oh
+7112	my gosh, he just Okay, here we go. Here's another quote from
+7116	Sam Sethi. Who was surprised nope, true fans already uses
+7121	I'll be helped today and it works. We do not have to change
+7123	your Albie API, we're going to create virtual wallets to start
+7126	with that means two clicks to get onboard. And we'll give them
+7129	a wallet with 5k SATs it removes five to six steps we had to do
+7132	before with Albea we already have stripe to SATs integration
+7136	so we can get people to top up this wallet. We will also enable
+7139	withdrawal for podcasters of SATs back to fiat Sam. We would
+7143	love to know what you're doing.
+7145	Dave Jones: Now he's just rubbing it in he is he's got
+7147	access to it. Yeah, he's like
+7149	Adam Curry: Nene Nene and you and your end. We'd love to know
+7153	how you're doing it brother because we just want to help
+7154	everybody do this. Okay. Call McCormick 2222 It's about Tom
+7163	curry gets back to work. Okay. Yes. Okay. Did you know Biden is
+7168	a clone? Okay. Yeah, there you go. Nein, nein nein from Jean
+7172	Everett. Thank you very much. 1948 from Sir Brian of London.
+7176	He says I drove a brown Buick custom regal from Chicago to
+7180	Little Rock. Paris, Texas Dallas, the grassy knoll Austin
+7184	San Antonio, New Orleans, Memphis and back to Chicago in
+7187	three weeks an awful car. They you go to jail Roland? No.
+7192	21,948 also from Sir Brian of London. Ancient computers ranged
+7197	in the long caves deep in the bowels of The planet take away
+7201	the dark millennia and the age hang heavy on their dusty data
+7205	banks.
+7207	Dave Jones: And stop drinking Brian
+7211	Adam Curry: 6969 from Hey citizen he says please, Adams
+7215	new album we need this yes, I'll work on it. Apparently I can
+7218	just do AI and fool myself. Sir duck with 5000 SATs first live
+7222	boost he says 10,000 from Chris. Chris last 10,000 Nice to have
+7229	you guys back 10,000 chatter from pod verse. This boost
+7233	Graham is being sent from pod verse app using my own node
+7235	connected Albu There you go. Mary cat tooled. Mary Kate Ultra
+7242	takes a second to look at it what can what is this? Oh Mary
+7245	Kate ultra 15,555 sets boosting so the boardroom knows to head
+7251	over to live is lit.com on Sunday, June 30 at 4pm for the
+7256	satellite skirmish a V for V Battle Royale boost your
+7259	favorite D MU artists live to ensure they win the battle of
+7263	the bands. And I think yes, took the tone wrecker. Last 133 33
+7271	Rainy Day in Minneapolis is perfect for cranking out some
+7274	additional college or collage art pieces and catching this
+7278	live episode today. And overdue day for the last 14 days worth
+7284	of booths and PayPals Yeah,
+7286	Dave Jones: this is this there's gonna be quite a few Roland
+7289	seriously if you'd if you need to get some sleep brother knows.
+7292	We're not offended if you drop out. Buzzsprout 1000 bucks
+7298	Adam Curry: dough thank God Sakala 20 his blade on am Paula
+7304	Buzzsprout keeping the engine room running. Thank you guys.
+7307	Thank you so much. Appreciate that
+7309	Dave Jones: as nice and warm. Thank you, Kevin and Tom and all
+7313	the guys over there appreciate y'all. We got blueberry $360
+7320	Wow.
+7322	Adam Curry: Sakala 20 Only Impala, the hosting companies
+7327	coming in strong with the value for value. Thank you.
+7330	Dave Jones: You need to go to Holland more often. From the
+7335	blueberry team lots of internal discussions on V for V and SATs
+7338	need to make it easier for listeners and podcasters we get
+7341	it? They don't. They don't. They don't see we get it. They don't.
+7347	So a Fiat token solution is critical. Let's not forget who
+7350	we're serving here. Go podcasting.
+7351	Adam Curry: What does he mean by Fiat token solution?
+7354	Dave Jones: Just onboarding. Okay. Trying to try to make it
+7361	easy.
+7362	Adam Curry: Sounds like Sam Sethi has it all figured out?
+7365	Yeah.
+7366	Dave Jones: Yeah. I mean, like, maybe, maybe Sam can run a back
+7370	end for for the hosting companies. I mean, like,
+7374	Adam Curry: Oh, there you go. There you go. Well, we're happy
+7377	to help. We just need to understand how we can how we can
+7379	fit in VSP
+7381	Dave Jones: values service provider, who? Sir Pete weenus,
+7387	RP $55.55. He says message, Adam and Dave, great work on shaping
+7394	and preserving the next level of podcasting. I follow your
+7396	discussions closely and have to get half I have committed to
+7400	running with scissors lifestyle with our own V for V podcast
+7403	called it's just a model. Here's some fun coupons.
+7407	Adam Curry: Thank you. Thank you, sir Pete for your coupons
+7410	and the bank. Yep.
+7412	Dave Jones: We got $50 from pod verse. Thank you, Mitch. Thank
+7416	you. Yeah. Jesse Anderson's and a $33.33. He there's no note
+7424	from from Jesse. Jesse Hunter $10. And that was a one off.
+7431	Thank you, Jesse Hunter and Kevin bass and as $5 is free
+7434	says this is the monthly interest from the endowment
+7437	fund. He'll
+7438	Adam Curry: podcast co podcasting to you bro. Thank
+7440	you.
+7442	Dave Jones: And we got some boosts we got. Let me fire up
+7445	the boost machine here. Oh, we got Mike dell 1701. That's a
+7449	Star Trek boost. He says at this you fountain he says SM seven b
+7453	not in B seven or SP seven or whatever. That's a Tod ism.
+7458	Adam Curry: Did I say wrong? Did I say incorrectly? I
+7460	Dave Jones: don't know. Maybe? Maybe. Andrew Grumman 2222 from
+7466	the wherever app. He says thanks for inviting me to the board
+7469	room. It was a blast downloaded at 10 extra times to run up the
+7472	numbers.
+7474	Adam Curry: Yeah. All our advertisers will be happy.
+7477	Remember to set the automatic download on your iOS app. binned
+7481	Dave Jones: over here comes to downloads. Mike Dale again 17
+7485	And one he says can't type today. I pass my check ride
+7488	today.
+7489	Adam Curry: Right on brother. Yes, yes. Welcome to the
+7493	exclusive and rather small club of general aviation pilots.
+7499	Dave Jones: Sir Brian have lunch and 18 444 through cast Matic
+7503	says we had a good day here today calls for a bigger boost
+7505	and a number you'll never fully decode V four v dot app wallets
+7509	will be available for send and receive very soon.
+7512	Adam Curry: Yeah, he's working on his own solution which
+7514	incorporates it with the with an lb like API. So
+7518	Dave Jones: he sends us videos of people like buying steak
+7523	dinner in Colombia or something with with his V for V app.
+7528	Adam Curry: Yeah, it looks. Yeah, it works.
+7532	Dave Jones: Very slick. Randall black 2000 says through podcasts
+7537	index, so through the apps through the website that's using
+7540	lb says LB is driving me nuts. They need to decide the route
+7544	they're taking and make it easier to onboard or off board
+7546	users. Well, I think right from the horse's mouth, they have a
+7550	Adam Curry: plan. Yeah, yeah.
+7553	Dave Jones: 10,000 SATs from Mary Oscar, also known as Oscar
+7555	marry the fans and he says great to hear more the history of
+7558	podcasting. What's he talking about? I have no Andrew grommet.
+7563	Oh, yes. Yeah, so
+7566	Adam Curry: if you haven't heard that episode, it's good. If you
+7568	want to hear some of the early days of podcasting, the stuff
+7570	that no one ever talks about? That was two weeks ago. Yes. Two
+7574	weeks ago the previous one it was board mountain boardroom
+7577	board meeting 182
+7579	Dave Jones: right at 93 sets from Red Bull through breeze Oh,
+7584	love breeze and seen magazine was much boost action from
+7588	Brady's lately. He says I love your music. We'd love you to
+7592	rebel
+7594	Adam Curry: must have been for the song Bill Prague the
+7597	Dave Jones: hive guy through SATs ski me through fountain he
+7600	says 2000 SATs he says I just sent myself custodial hive to
+7604	fountain using V for v dot app could be magic or it could be
+7608	Brian no idea that it works. I
+7610	Adam Curry: wonder if Brian is actually creating invoices you
+7612	know like oh invoice here click click click click if he's if
+7615	it's all automatic or if he's doing it manually.
+7618	Dave Jones: I wonder if Bill Prague is Brian's There you go
+7621	all
+7621	Unknown: the count that's the question
+7626	Dave Jones: Oh, here we go. 6969 from a citizen in pod verse. He
+7630	says I don't actually care about you guys. I'm just boosting the
+7633	song there you go.
+7635	Adam Curry: Man love you.
+7637	Dave Jones: Hey Sally, send us another 6969 He says okay, maybe
+7641	I care a little bit we love you to a citizen Mac 10,000 SATs The
+7648	family says sorry I missed the show live but listen to the end
+7651	as a download from the air on the way to Cali regarding bands
+7655	that Bitcoin please use the Embassy Suites as your Meetup
+7658	location, food drink and all things how V for V works. We
+7663	should have a full schedule next week. No, I wonder if Mamak mom
+7670	AC oh mom in mu m. m AC I think that's the mom of Ainsley
+7676	Costello
+7676	Adam Curry: Oh my goodness. I thought that was music mama yeah
+7681	music mama
+7682	Dave Jones: Yeah. Music mama Macintosh Sasha Richards 11112
+7687	Fountain he says if we are going to consider major re
+7689	architecture of P two o set streaming boosting et cetera
+7692	maybe 30 minutes
+7694	Adam Curry: Yes, another thing I gotta look into it I don't I
+7698	don't I don't understand them yet.
+7700	Dave Jones: No, I don't either. I don't either. Don't record
+7704	3333 says a rainy day admit Oh, do you already read though? A
+7708	rainy day and yeah,
+7709	Adam Curry: wrote yet by now.
+7712	Dave Jones: Yes. Yep. Comic Strip blogger. 24,000 SATs
+7716	through fountain. He says. Howdy, Dave and Adam. I like
+7720	again to recommend a podcast called just two good old boys by
+7724	two Texans Ben and Jean. They talk about fun stuff. Quote from
+7729	the last episode. Jean. Happy Father's Day. Ben. Thank you. I
+7735	would say Happy Father's Day to you but gene I'm not a father so
+7739	it wouldn't be correct. Been that you know of gene. Yeah, I'm
+7744	pretty sure you know, I know that. Because I'm not paying any
+7748	alimony find their podcast at WWW dot just to good ol boys.com
+7754	Yo, CSB. Totally riveting as much Wait,
+7760	Adam Curry: can't wait. Yeah, that's it. That's our group.
+7764	Very nice. Oh, wait, wait, wait, wait, wait, wait. While you're
+7768	looking at that, I'll just read you the tally coin donations
+7771	tally coin. We have closed our doors. Thanks for all the
+7774	memories.
+7776	Dave Jones: Nice. What it should say is this. We've closed our
+7780	doors thank you to drips got Yes,
+7784	Adam Curry: exactly. The only guy the only person was ever
+7787	using it exactly. Yes.
+7789	Dave Jones: monthlies, Basil Phillip $25, Lauren ball $24.20
+7794	Mitch Downey $10 Christopher hyperbaric $10 Terry Keller $5.
+7799	It's silicone florist $10 Chris Cowan $5 Paul Saltzman $22.22
+7807	Derek gives this girl the greatest name in podcasting. $21
+7810	You're in Rosenstein Rosenstein? I'm not sure $1 Daymond Cassie
+7815	Jack $15 Jeremy Garrett's $5 New Media Productions. That's Tom.
+7820	Dollars. Thank you. Michael Hall $5.50 Timothy voice $10 Trevor
+7827	Satan's lawyer $5 Do you think that's on his LinkedIn?
+7831	Adam Curry: I hope so. Yeah.
+7834	Dave Jones: Jorge Hernandez $5. Michael Gagan $5, Charles
+7838	current $5 James Sullivan $10 cone glotzbach $5, and
+7843	Christopher reamer $10. And
+7846	Adam Curry: thank you all very much for supporting us with your
+7848	value, the whole project, the podcast, everything has value
+7851	for value you put back into it, what you get out of it, whatever
+7855	it's worth to you support it support your podcasts index,
+7858	support your podcast app support, everybody. This is how
+7862	we move forward. And we want to thank Roland and Moritz for
+7867	hanging in there for supporting podcasting 2.0 It's really, it's
+7871	been phenomenal what you guys have done and we look forward to
+7874	solving and solving problems making it more robust and more
+7879	sovereign in the future. So again, thank you both for coming
+7881	today.
+7883	Unknown: Yeah, thanks for having us. No, really, really looking
+7885	forward to that. Yeah.
+7887	Adam Curry: And onboard Dave set to set it up because Dave is a
+7890	busy guy, so enlist onboard him.
+7893	Dave Jones: Brother day of Israel is rolling still awake?
+7895	Do we get Israel and he's he's still here. Yeah. He says, oh,
+7898	man, you
+7899	Adam Curry: are a trooper. Yeah. Are you in Bangkok?
+7903	Unknown: No, no, up north. Shanghai,
+7906	Adam Curry: Shanghai, Shanghai.
+7909	Unknown: may hang on.
+7911	Adam Curry: Oh, my hog song. Okay. I think I had dinner with
+7915	her once. It's nice. All right, everybody, Brother Dave, thank
+7921	you so much. Thank you, everybody who jumped into the
+7925	boardroom on a Saturday. We really appreciate it. We'll be
+7928	back Friday with another board meeting with the participants of
+7931	podcasting 2.0.
+7950	Unknown: You have been listening to podcasting 2.0 Visit podcast
+7954	index.org. For more information. Go podcast.
+7960	Adam Curry: Squish is the right word.

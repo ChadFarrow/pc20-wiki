@@ -1,0 +1,2438 @@
+0	Podcasting 2.0 for October 10th, 2025, episode
+4	237, FFPMeg.
+8	Hey everybody, it's good to be back.
+11	Are you kidding me now?
+13	Two weeks and so much has already happened.
+16	Welcome to Podcasting 2.0, the official board
+19	meeting of all things podcasting.
+21	If it's going on in podcasting, it's talked
+23	about here.
+24	We are in fact the only boardroom that
+26	gets none of the $3 billion in projected
+29	advertising.
+30	I'm Adam Curry here in the heart of
+32	the Texas Hill Country and in Alabama, the
+34	man who's every man's philosopher and an agent
+37	of change.
+37	Say hello to my friend on the other
+39	end, the one, the only, Mr. Dave Jones.
+48	I guess it's because I don't have FFMpeg
+51	installed.
+52	You need FFMpeg.
+54	Everybody in the world needs FFMpeg.
+56	Well, I just, I mean, I figured it
+58	would just be there.
+59	I mean, I couldn't build a robot out
+61	of FFMpeg.
+65	FFMpeg, sudo apt-get.
+68	Install.
+70	Install FFMpeg.
+71	Unable to locate package FFMpeg.
+73	Well, that's a problem.
+75	You forgot to do a sudo apt update.
+80	How could you not?
+82	Like, how could this, this has to be
+84	right.
+84	I actually had to build FFMpeg from source
+87	to get the RTMP module.
+91	Now, did you have to do this?
+92	Oh, yes.
+93	Or did Grok just tell you you had
+95	to do it?
+95	No.
+97	No.
+98	After I found out that it did not
+100	include the RTMP module, I went to looking,
+105	but it's always interesting then, because, you know,
+107	it might install it in a different directory
+109	than you expect it.
+111	And if you don't explicitly tell Grok what's
+114	going on, you can go down a rabbit
+116	hole for an hour or two.
+121	Sudo apt-get install FFMpeg does not, does
+125	not work.
+127	Why is this?
+129	I don't understand.
+131	Where is it?
+132	Where is it?
+134	It says no, unable to locate package FFMpeg.
+137	What is my problem?
+138	You got no package, man.
+139	Your package is no good.
+141	I've heard that, but now I know for
+143	sure.
+143	You got no package.
+145	It's weak.
+146	Let's see, cat.
+147	Okay, cat etc message.
+153	Oh, Eric.
+154	Ericpp is trying to be helpful.
+156	Nix-shell.
+158	Okay, yeah.
+159	Now, we're not all running on Nix.
+161	Oh, Nix, oh, yeah.
+163	No, that's not.
+164	I'm on like Ubuntu something.
+166	I don't even remember what version.
+168	Ericpp, you may not have a spouse or
+171	a girlfriend.
+171	If you're on Nix OS, then I don't
+174	think you can have a relationship with anything
+175	else.
+176	Oh, I'm on Ubuntu 20.
+178	I may be off.
+179	Oh, no.
+180	I may be off long-term support and
+182	I can't install packages.
+184	Is that really what this is?
+186	I guess so.
+187	If it is, then I'm gonna be really
+189	annoyed.
+190	Did you kill your stream?
+193	Well, it killed itself.
+195	Oh.
+195	It gave me an encoder error and just
+197	killed it and just died.
+200	Oh, no, that's no good.
+201	That's no good.
+202	Hello, everybody.
+203	Welcome to Podcasting 2.0, where we take
+206	you to the command line, every single show,
+209	just to let you know that we have
+210	no idea what's going on in the world.
+213	I certainly have no idea what's going on
+215	right now.
+218	Is it Snap?
+219	Am I gonna have to resort to Snap?
+222	Let's bring in the memory leak that is
+223	known as Snap.
+225	I'll tell you what, while you're doing that,
+227	why don't we bring in our special guest
+228	for today?
+229	Because he knows a lot more than just
+231	what he's here to talk about, which is,
+233	of course, shameless self-promotion of a product.
+235	But that's what most people should be doing
+237	here.
+238	Please welcome the owner, creator, the proprietor of
+243	PodChapters and many more, Daniel J.
+246	Lewis.
+247	Hey, guys.
+248	Hey, Dave, try and stick some JSON in
+251	it.
+251	Ah, there it is, there it is, there
+253	it is.
+254	Sue, your comments are not helpful, Daniel.
+261	Pseudo apt, this is horrible.
+265	This is horrible.
+267	Pseudo apt again.
+268	I'm just gonna try, wait, unzip.
+270	Let's try to, okay, that works.
+273	So it's not a package problem.
+276	Yeah, that's what she said.
+278	The package is fully operational.
+279	Your package is fully operational and loaded.
+282	Yes, it's ready to fire.
+284	But this is not, but the, is it
+288	caught?
+289	Oh, I see what my problem is.
+291	I'm such an idiot.
+293	Okay, now we all want to know.
+295	Now we all want to know.
+297	Misspelled?
+298	I misspelled FFPEG.
+299	Ah!
+304	I typed FFPEG.
+307	Oh, there you go.
+308	FFPEG, okay, for anybody who's won, FFPEG, FFPEG.
+312	For anybody who is curious, FFPEG is not
+316	a real package.
+317	But it's a show title for sure.
+320	FFPEG.
+323	FFPEG, oh brother.
+325	That sounds like a concealed carry kind of
+327	thing.
+329	It's almost lewd, but in a way that
+331	I can't fully understand.
+334	Well, snap, I had to use snap though,
+336	which is also not good.
+338	So what we're doing here is, for those
+342	who are wondering, for the podcaster, godcaster, I'm
+347	sorry, we have, I don't know how many
+351	hundred stations we have.
+353	And we create these channel streams.
+355	So you throw a bunch of podcasts in
+357	a player and then it plays the most
+359	recent episode of whatever's most recent and does
+362	that in a loop with station IDs in
+364	between.
+365	And we've enabled a way to take over
+369	that stream and go live.
+371	IceCast was pretty simple.
+375	Most churches use RTMP.
+379	So they're streaming video to exciting platforms like
+383	YouTube and Facebook.
+386	So exciting.
+388	And since we refuse to be streaming video,
+391	we have a little RTMP to IceCast bridge
+397	and it actually works.
+400	Except for the metadata.
+402	Metadata is turning out to be a bit
+404	of a problem, not because of the RTMP
+406	to IceCast or how we are doing metadata.
+410	Okay, it seems to be working.
+413	Yeah, hold on, I can see it rolling.
+415	You do see it rolling?
+417	Well, I see you're being probed.
+420	Yes, your stream is active.
+422	Player eight, player eight, player eight enters the
+425	game.
+427	Scanning.
+428	Okay, it has not crashed on me on
+432	the output yet.
+433	Is it actually making a file?
+435	But this is all useless anyway, because I
+439	didn't start at the right time.
+440	So it's going to be way off again.
+442	Oh, that'll be fun.
+443	Let me see, I can check and see
+445	if we're live here.
+446	It freaks out all the apps.
+447	Is it actually making a file?
+448	This is crazy.
+450	There you go, you're live, okay, you're live,
+452	awesome.
+453	It works.
+453	Well, okay, it's creating .ts files.
+455	See what I'm trying to do is, like
+458	a good computer guy, I changed the settings
+465	on OBS right before the show.
+467	Oh, of course, yeah.
+469	Like I connected to the stream, I heard
+472	Daniel's voice and I hit settings.
+475	And I went in there and just started
+476	twiddling with stuff, because what I want to
+478	do is I want to record directly to
+481	HLS instead of having to re-encode afterwards.
+485	That way I can just go, shoot it
+487	right up to Linode.
+488	We had the funniest episode with VoidZero.
+492	On Wednesday, he sends me a note, which
+494	I will read verbatim just because it's funny.
+497	No agenda?
+498	Yeah, for no agenda.
+500	He says, fixes changes and updates today.
+504	Any report of the stream being offline?
+506	I'm aware of it, migrating a bunch of
+508	stuff.
+508	People won't notice.
+512	Yeah, everything broke.
+516	The stream broke, the website didn't update.
+521	Wow.
+522	But it's like, you know what's going to
+524	happen.
+525	It's like, just don't say no one will
+527	notice because there's always something you notice.
+532	It always breaks.
+533	It's hilarious.
+534	I thought Martin knew about no change Thursdays
+538	and Sundays.
+538	Well, he did it on Wednesdays, to be
+540	fair.
+542	That was the good part, but I'm like,
+543	no, just don't do it.
+545	Don't do it, man, and he did it.
+548	Do you make changes?
+549	There are some people in the universe who
+550	have the ability to make Mercury go in
+553	retrograde.
+555	Precisely.
+555	Daniel, do you change critical parts of the
+559	infrastructure of PyChapters like on Friday night?
+564	No way.
+565	No better than that.
+568	No, that's not a good idea.
+570	I, however, still have a tendency to do
+572	that.
+574	Oh, you just pushed to production, that's you.
+576	Oh, I go, yeah, I'm hacking on production.
+580	Staging is for pussies, absolutely.
+583	That's what it is.
+586	You're a real man.
+587	Well, I had the wonderful experience of a
+589	dev server that got, I logged into the
+595	dev server.
+596	I'm like, why is it, why am I,
+598	is everything in 100 CPU cycles?
+601	What is, hmm, so.
+603	Oh, yeah, yeah, your Bitcoin miner expedition.
+606	So it happened to three machines before I
+609	could batten down the hatches, and then somehow
+613	one of the machines I thought I had
+615	closed up, I guess that somebody left something
+617	in there, and it may not have been
+620	a Bitcoin miner because I got a Linode
+624	strike.
+625	Linode, so you get like, I guess, Akamai
+630	complained that my server was abusive.
+633	I'm like, bad server, bad server.
+635	Oh, your server was trying to hack other
+638	servers.
+638	Pwned for something else, yeah, but it was
+640	still the same kaudit zero process that was
+644	running, but it was hidden in all kinds
+647	of places.
+648	It had all kinds of scripts that would
+650	restart it, reinstall it.
+652	It was fun to track down.
+655	Well, I mean, just, I would never, if
+662	a server, if any machine ever gets popped
+665	like that.
+665	Oh, no, I- Never trust you, you
+667	have to rebuild from scratch.
+669	I did, I did.
+670	I rebuilt from scratch, which gave me the
+671	opportunity to rebuild it on a smaller Linode,
+674	which is kind of fun, but yeah.
+676	Linode give you a strike against your VIA
+679	or against your account.
+679	Well, no, not a strike, but they lock
+681	down your networking, so you can't get into
+683	it.
+685	So they just lock you down.
+687	Well, that's kind of cool, though.
+688	Yeah, well, you can get into it with
+690	Lish.
+691	Lish.
+691	Yeah, Lish, but you can't remote into it,
+693	right?
+693	You can't, no, no, no, no.
+695	Lish or Glish, your choice, Lish or Glish.
+697	It is, your choice, whatever you want, or
+700	fish.
+700	Hey, Daniel J.
+701	Lewis, it's good to have you in the
+702	board meeting.
+703	It's been a hot minute.
+705	Yeah, been busy building things, talking to people,
+708	trying to still spread the gospel of Podcasting
+710	2.0 as well.
+711	Well, let's talk about your pod chapters, because
+714	I got an early beta test, which I
+717	thought was really phenomenal.
+720	I went back to use it again, and
+722	then it said, well, you have to become
+724	a beta tester, and it was all kinds
+726	of confusion, so I figured I'd just wait
+727	until I can pay for it, because I
+729	want to pay for it, because it is
+730	that good.
+732	And it's a sneaky way, kind of, of
+734	you trying to build your super chapters idea.
+737	I see what you're doing.
+739	Yeah.
+739	Why don't you just call it super chapters?
+742	You had to throw a pod in front
+743	of it.
+744	Unnecessary roughness on the field.
+747	So tell us about it, because I saw
+749	this, I'm like, yeah, this is good.
+751	This is exactly what we need.
+754	Tell me, tell us what it is, and
+756	I want to know how the adoption rate
+759	is.
+760	Yeah, I have been using chapters for a
+762	long time, and I followed the legacy chapters
+764	for years, and also used Podcasting 2.0
+768	chapters.
+769	You mean heritage chapters?
+771	I prefer legacy.
+772	Vintage.
+773	Vintage, ooh, that's a good one, yeah.
+775	Although vintage implies something of high value.
+780	But anyway, I like supporting the many different
+783	formats, because I still use a podcast app,
+786	Overcast, that does not support Podcasting 2.0
+788	features, unfortunately, and I know many other apps
+792	still support the legacy, vintage, whatever, old-style
+796	chapters.
+797	And the chapter experience was so frustrating, because
+801	for one thing, there's just not a good
+804	cross-platform solution to be able to recommend.
+807	There's almost no way to make chapters on
+809	Windows, and the best app that was available
+811	for Mac that did support Podcasting 2.0
+814	had all kinds of weird issues, and it
+816	was just a pain to work with.
+818	What app was that?
+820	It's called Podcast Chapters.
+822	Oh, gosh, that's been around forever, hasn't it?
+825	Yeah, I used to use that.
+827	I think maybe 15 years ago, I was
+829	still using that.
+831	Maybe I'm wrong.
+832	Yeah, that was the initial JSON format that
+837	we used.
+839	We kind of merged what we were working
+841	on with what he was working, with what
+843	he had, and came to this sort of
+845	amalgam.
+845	And so, yeah, he was one of the
+848	first people to support it.
+850	Yeah, and it worked.
+851	It just was so cumbersome to work with.
+854	And then, as I started getting into certain
+856	things, there were several companies that I talked
+858	to that use AI and can add chapters,
+861	but most of those chapter-adding AI models
+865	just create way too many chapters.
+867	Like, by now, we probably would have created
+869	10 chapters with some of these tools, because
+872	of how many topics we've talked about.
+873	And I wanted to use AI to place
+877	my own chapters, because when I record, I'm
+880	talking from an outline, so I know exactly
+883	what I want my chapters to be.
+884	I just don't know where I want them
+886	to be.
+887	And so, this workflow that I had was
+889	using three or four different apps and taking
+892	15 to 30 minutes for every episode just
+895	to add the chapters and transcript and do
+898	some of this stuff.
+898	So I just decided, I just want to
+900	make a tool that works better for me
+902	to do all of this.
+904	And as I'm making it, I realized someone
+907	else might like this too.
+908	I'm going to turn this into a product.
+910	And thus, PodChapters was born and launched in
+912	about two months.
+913	All right, so tell us exactly what it
+915	does, because it does a lot of things,
+918	and it's actually quite impressive.
+921	You could almost have a basic podcast host
+925	and add PodChapters and have a whole bunch
+927	of extra features.
+929	Oh, yeah.
+930	So some of this ties into the difference
+932	between chapters and what we're calling super chapters.
+935	I like that Dovi Das calls them super
+937	chapters, so I call that something else.
+939	So this does kind of tie in and
+940	bridge with that.
+941	But a chapter, just in case anyone's not
+944	familiar, a chapter, whether that's legacy chapters or
+947	Podcasting 2.0 chapters, they're functionally the same.
+950	They are a time within the audio with
+953	a title and an optional link and an
+955	optional image.
+956	Podcasting 2.0 chapters add on the location
+959	to that and the ability to hide something
+961	from the table of contents.
+963	But still, they're functionally the same.
+965	And so what PodChapters does is you upload
+969	your audio to it, and there will be
+971	an option in the future that you'll be
+972	able to upload video to chapter your videos.
+974	But for now, it's just MP3 audio.
+977	You upload your audio to it, and you
+979	can either BYOT, bring your own transcript, or
+983	you can have it generate a transcript for
+985	you.
+985	And the transcript generation is blazingly fast.
+989	And I've built in some things that really
+991	help it too, where you can tell it
+993	a list of proper nouns or key terms
+997	so that when it finds something that is
+1000	close to that, it can transcribe it properly,
+1002	like John C.
+1004	Dvorak.
+1004	It can finally get that correct.
+1007	And you can also give it- Wait,
+1009	how did you do that?
+1010	How did you get, I have found very
+1013	few AIs that can consistently recognize the name,
+1017	the spoken name Dvorak, and get it right?
+1021	It's part of the AI protocol that I'm
+1023	working with, which is DeepGram.
+1026	They have a really good model for transcription.
+1030	And in their code that you can work
+1032	with, you can send it these key terms
+1034	so that when it gets to something that
+1036	it thinks is close enough, and it's not
+1038	always 100% accurate, but it is very
+1041	accurate and very good at this.
+1043	And it can even do find and replace
+1045	options on top of that.
+1046	Like for example, frequently when I speak a
+1048	URL in my own podcast, like slash give
+1051	back is my own value for value page.
+1054	It sometimes transcribes it as slash give space
+1058	back.
+1059	So I just put in there a find
+1061	and replace.
+1062	So anytimes it sees slash give space back,
+1065	replace that with slash give back, no space
+1068	in there.
+1068	And that kind of thing saves a whole
+1070	lot of time too.
+1071	So when it uses the transcript, the whole
+1074	reason why it needs a transcript, you either
+1076	bring your own SRT or VTT, or it
+1079	generates one for you, is so that then
+1081	it can find where chapters could be.
+1084	Then you have the choice of, do you
+1085	want to either give it your own outline
+1088	to create chapters from your outline, or do
+1091	you want it to suggest chapters for you?
+1094	Both ways work with the transcripts so it
+1096	finds where that information should be.
+1099	And it does a really good job of
+1100	even suggesting the outline that you already speak
+1104	into it.
+1104	I've fine-tuned this thing like crazy to
+1108	make it do that.
+1109	And then it adds those chapters both to
+1112	the MP3 file, as well as gives them
+1114	to you in multiple formats, the JSON format
+1117	for Podcasting 2.0, Podlove simple chapters format,
+1120	it gives you YouTube timestamps, it gives you
+1122	an outline with timestamps, and it can even,
+1126	if you're on a hosting provider that you
+1128	can't upload or work with their own chapters,
+1132	it can even host the chapters for you
+1134	at a predictable URL based on the file
+1138	name of your episode.
+1140	So you could know, like in your case,
+1142	Adam, I was thinking specifically about what you
+1144	do with NoAgenda in this case, and Dreb
+1146	Scott does for the chapters where you don't
+1149	have the chapters ready when you publish the
+1151	episode, but you want to have a predictable
+1154	URL.
+1155	So that's what this can do is that
+1157	it can create that URL that has a
+1159	unique stream in it, but it doesn't change
+1161	per episode.
+1162	The only thing that changes per episode is
+1164	the episode file name.
+1166	So then it can host the chapters for
+1168	you, and by hosting the chapters for you
+1170	in the future, when chapters can start doing
+1173	some cooler, smarter things, I'll be able to
+1176	build that into the system by providing chapter
+1179	hosting as a service, or people can download
+1181	it and host them themselves if they want.
+1183	So what's the uptake?
+1184	How long has it officially been open and
+1187	available?
+1188	It's only been out for a week.
+1191	I launched it on International Podcast Day, September
+1193	30th.
+1194	Oh, damn, I miss it again.
+1196	International Podcast Day.
+1198	What day is that?
+1198	I need to put that in my calendar.
+1201	September 30th.
+1202	September, who came up with that?
+1204	Why is that a?
+1205	I was one of the co-founders of
+1207	that.
+1207	It was Steve Lee, Dave Lee.
+1209	That's why you remember.
+1210	Okay, I got it, yeah.
+1211	Yeah, I celebrate it more than I celebrate
+1213	my own birthday.
+1216	Okay, and so I did hear about it
+1220	in pod news, but can we get a
+1223	presidential proclamation or something so it's a little
+1225	more solidified in the books?
+1229	At this point, it's pretty close to that
+1231	because it was 2014, I believe, or 2013,
+1237	that Steve Lee, Dave Lee approached me and
+1240	Dave Jackson and a couple others to say,
+1242	hey, how about we try and start this?
+1245	And one of the reasons why we picked
+1247	September 30th, it's easy to remember, last day
+1249	of the month of September, but also there
+1251	are a lot of significant things about podcasting
+1254	that happen around September, including your birthday, Adam.
+1261	Wow.
+1261	It was one of the things in consideration.
+1262	The beginning of the month, but okay, yeah.
+1264	But also certain things like the history of
+1266	podcasting where the first podcast, at that time,
+1271	our understanding of the first podcast was published
+1273	around September and also certain other significant things.
+1277	So there were a lot of, it's kind
+1278	of like President's Day.
+1279	There isn't one single president that was born
+1282	on President's Day.
+1283	It's representing multiple things around the same time.
+1286	But can we get a mattress sale on
+1288	International Podcast Day?
+1290	That's what we need.
+1292	Sheets, sheets and linens.
+1294	Linens, yeah.
+1295	The YSL.
+1299	Fireworks would be great.
+1301	Yeah.
+1301	Make them all in the RSS icon.
+1304	So what are you using for the AI
+1308	stuff?
+1308	And this is, they were talking about this
+1311	on Pod News Weekly Review with the guy
+1315	who's doing a video-first hosting company.
+1318	He has a lot of AI stuff in
+1320	there.
+1320	I mean, how do you budget, basically?
+1326	How do you budget for the usage, for
+1329	the credits, all that stuff?
+1330	It seems like it's kind of a crapshoot.
+1333	Yeah, that was a real challenge.
+1335	And for anyone doing anything with AI, that
+1337	is going to be the biggest thing that
+1339	you'll have to think about because you really
+1342	don't want to offer unlimited unless you can
+1345	completely predict what your output sizes will be
+1349	and how the models will work.
+1351	But you really, I think you have to
+1353	make it some kind of credit system.
+1355	And that's what I went with is charging
+1358	based on AI credits where each level that
+1360	you subscribe to, you get a certain number
+1362	of AI credits per month.
+1363	I originally played with calling them transcription minutes
+1366	as a type of currency within the app.
+1369	But then I realized not only is that
+1372	kind of hard to understand in certain contexts,
+1375	but it's also very long, a lot of
+1377	letters, transcription minutes.
+1379	So I just went with AI credits.
+1382	And people have to sometimes just look at
+1385	how much is it costing to generate this,
+1388	do a lot of tests, figure out what
+1390	are the edge cases, see how much it
+1392	actually costs you depending on the models that
+1394	you want to use.
+1395	Like, for example, CloudSummit is one of the
+1398	most expensive models.
+1400	I would say it's the most expensive popular
+1402	model.
+1403	There are cheaper models like GPT-5 is
+1405	cheaper and GROK-4 is cheaper.
+1409	Gemini 2.5 is close to the same
+1412	price as GROK or as a GPT-5.
+1415	But some of these have different versions of
+1419	the model too.
+1420	Like you might have a GPT-5 regular,
+1424	GPT-5 chat, GPT-5 mini, GPT-5
+1427	nano.
+1428	And for each of these, they come at
+1430	different costs and produce different results, different qualities.
+1433	And that's where you have to just test
+1435	it, figure out what works.
+1437	I made a spreadsheet to help me figure
+1439	out what can I afford?
+1441	How can this be profitable to me as
+1444	well as affordable to others?
+1447	CloudMax, let's see.
+1449	CloudMax from $100.
+1452	Wow, you started a hundred bucks?
+1455	That's from Max.
+1457	Oh, that's, you're looking at directly the subscription
+1461	from the AI provider.
+1463	Yeah, like the individual pricing.
+1465	Yeah, I'm just looking at this.
+1466	API pricing, I'm sure is way more complicated.
+1470	If you're looking at integrating AI into an
+1473	app, look at OpenRouter.
+1477	OpenRouter, oh, I've heard of OpenRouter.
+1478	Yeah, OpenRouter.com has all of these models.
+1482	And so you pay based on usage and
+1484	the usage pricing is the same as if
+1486	you were using the API directly from the
+1488	companies.
+1489	But what's great is sometimes you can get
+1492	faster service because they negotiate with other providers
+1496	and such.
+1497	But you can also very easily switch different
+1501	AI models completely without having to go and
+1504	change API keys and sign up for somewhere
+1506	else and add all of your building.
+1508	You can just switch which model you're using
+1510	right with your OpenRouter calls.
+1512	It's fantastic for you working with AI.
+1516	A million free BYO key request.
+1519	Okay, so when you use this platform, you're
+1524	generating keys on all the other APIs and
+1527	then you're just sticking your keys in here
+1528	and then you're calling this and it calls
+1531	them for you.
+1532	Not quite, their BYOK is a special promotion
+1535	right now for bring your own key.
+1537	The default way that it works is they
+1540	give you one API key and you send
+1544	your requests to them and each of your
+1546	requests include what model that you want to
+1548	use like OpenAI slash GPT-5 if you
+1552	want to use GPT-5.
+1554	And then it responds back in a same
+1558	format for all of their models respond back
+1561	in the same format.
+1562	They accept the same input format.
+1564	So it's really great for, this is what
+1567	a lot of the multi LLM chat platforms
+1571	like Magi or T3 chat and other things
+1574	like that that make it so easy to
+1577	be able to switch between different LLMs so
+1579	you can see which one really works the
+1581	best.
+1581	And like, that's what I do with pod
+1582	chapters where I've tested a bunch of the
+1585	chapter placement and suggestion on different models and
+1589	found that this one works really good.
+1591	This one works a little bit better and
+1592	this one seems to work the best and
+1594	they tend to line up with the cost
+1596	too.
+1597	So in pod chapters, I have a good,
+1599	better, best selection where most of the time
+1602	people can be served just great with the
+1604	good option, but they can bump it up
+1606	higher.
+1607	That does cost them more credits but it
+1609	might have the possibility of producing better results.
+1614	Interesting.
+1615	This is a, yeah, I don't know what.
+1621	You sound exasperated, Dave.
+1624	No, no, that's, I just finished, I just
+1630	finished reading the Paul King's North book against
+1635	the machine.
+1636	And I'm so just down on where everything
+1643	is going.
+1643	I'm one step away from depressed.
+1646	You're depressed.
+1646	You need some pharmaceuticals, man.
+1650	I'm one step away from just like depression
+1652	about the state of all this.
+1655	What's the depressing point about it?
+1658	It's, I mean, I was reading this, the
+1662	most recent thing, this most recent, like not
+1667	defense, but like the most recent thread going
+1673	through all of the AI talk is stemming
+1677	a lot from, I think there was an
+1678	article written about it.
+1679	And then Jeff Bezos also had this talk
+1682	in Italy that people are referencing all the
+1684	time.
+1685	And it goes something like this.
+1688	The AI boom, so the narrative has changed
+1693	completely.
+1694	So it's like, now it's not that there's
+1697	no AI boom bubble.
+1701	I'm sorry, there's no AI bubble.
+1703	It's now, yes, there is an AI bubble
+1706	and it's going to pop, but it's not
+1711	an economic bubble.
+1713	It's an industrial bubble.
+1717	So the new way that it's being explained
+1721	is, and you will hear this if you
+1723	haven't already, is remember the railroad bubble of
+1728	the 1870s.
+1729	Oh, I remember it well.
+1730	I remember me and Tina were hanging out.
+1733	Yes, just yesterday, yes.
+1735	And then remember, and how, yes, it was
+1738	a bubble and yes, it blew up and
+1741	caused economic harm.
+1744	But after it was over, we were left
+1745	with all these rail lines and that's great.
+1749	And so later these rail lines got picked
+1752	up and used and this kind of, we
+1754	were left with usable infrastructure after the fact.
+1757	But we'll be left with lots of data
+1758	centers to mine Bitcoin with.
+1760	I'm totally okay with that.
+1762	And then the next example is that it
+1766	was the same, now they're rewriting history that
+1768	it was the .com, same with the .com
+1770	boom, the same with the .com bubble, that
+1773	yeah, it was a bubble and yes, it
+1775	hurt us economically.
+1777	But at the end of it, we were
+1779	left with all this dark fiber.
+1782	Yeah, that's true.
+1783	And that's great, and that's great.
+1784	And now people are picking up this dark
+1786	fiber and lighting it up.
+1788	And now look at all the benefit.
+1792	So this economic argument goes something like this.
+1797	Don't worry about the trillions of dollars of
+1802	economic waste, of setting trillions of dollars on
+1807	fire, because at the end of it, we'll
+1810	get a few billion of usable infrastructure.
+1814	I mean, that is the broken window fallacy
+1818	taken to the largest extreme possible.
+1823	And I was reading an article this morning
+1827	that said that the amount of money being
+1831	spent on AI infrastructure right now is equal
+1837	to, on an annual basis, is equal to
+1842	the GDP of Singapore.
+1847	And the amount of revenue coming in is
+1851	equal to the GDP of Somalia.
+1855	And do the delta between those two countries.
+1859	And let's see.
+1859	Yeah, that's a problem.
+1860	Yeah, that's a real problem.
+1861	I mean, there's other reasons that I'm semi
+1868	-depressed.
+1869	I'm not depressed about pod chapters.
+1870	I love your product, Daniel.
+1872	I wanna be clear.
+1873	It's cool.
+1874	I'm just like, I love the chapters.
+1878	I'm just like, AI, I'm so afraid that
+1882	this AI thing is going to be, I'm
+1886	afraid that it's going to be a collapse
+1888	of monumental proportion.
+1890	Well, there are two basic camps of AI
+1893	usage.
+1894	There's analysis and there's creation.
+1898	We can put quotation marks around that, really
+1900	big quotation marks around that.
+1902	Where like what I'm doing with AI is
+1905	analysis.
+1906	And that's what I love so much because
+1908	there are certain things I've wanted to do
+1909	for years with my software products that I
+1912	couldn't do because it meant trying to build
+1915	my own machine learning algorithms and all of
+1917	this stuff.
+1918	Now, AI can make that so much better
+1920	where I just tell it, this is the
+1921	input.
+1922	Make sure you give me this structured output
+1924	back.
+1925	And yes, it gives me JSON back.
+1927	I tell it, speak to me in JSON,
+1929	baby.
+1929	And it does.
+1932	And that is great.
+1934	I think that will continue and it opens
+1936	up all new kinds of possibilities for development.
+1940	What I don't like is the creation aspect.
+1942	And I think that's what you're talking about.
+1944	The implosion, the bubble is people creating content,
+1947	creating slop with AI.
+1950	That, yes, I'd love to see that bubble
+1952	burst.
+1953	That's the only product.
+1955	That's the only product that people actually want.
+1957	Yeah, everything's chatbots.
+1959	You know, like the most recent episode of
+1963	Pod News, the guy that was from the
+1965	video hosting company, he's like, Sam's like, what
+1969	do you, what'd you put, how are you
+1970	using AI?
+1971	And he's like, well, we made a chatbot
+1973	that you can ask it about your stats.
+1975	You know, hey, which episode got the most
+1977	hit, you know, got the most views or
+1979	whatever.
+1979	Like, why do you need a chatbot for
+1981	that?
+1982	It's like every hosting company shows you that
+1984	data.
+1985	You don't need a chatbot for that.
+1988	This is the amount, like at least three
+1991	times this week, I have asked, I have
+1996	asked, and not on purpose, because now these
+2001	search results, you know, they just give you
+2003	the AI summary, but I've asked three different
+2007	questions and it's been blatantly wrong in all
+2011	three.
+2012	What kind of questions?
+2013	And I had to go- What kind
+2014	of questions?
+2015	Well, the one that's the most recent, the
+2018	one from yesterday was, what's the, I'm building
+2021	a truck in my backyard.
+2025	Oh, okay.
+2027	No, I am.
+2028	I'm building a truck in my backyard, where
+2030	do I start?
+2031	That wasn't the question, but that's just a
+2035	statement of fact I am building a truck
+2037	in my backyard.
+2037	So I bought a 76 Ford F-250
+2042	four-wheel drive frame a couple of months
+2045	ago.
+2045	Wow.
+2045	And then I bought a, I sold my
+2050	65.
+2052	So I sold the 65 and I'm using
+2055	the money that I got from the 65
+2057	to fund the building of this new truck.
+2061	And so I bought the 76 four-wheel
+2063	drive frame with a drive train and everything.
+2065	So then I bought a 72 truck that
+2069	I'm going to take the body off of
+2071	and do a body swap onto that 76.
+2073	So in the end of it, it's going
+2075	to be a 76 factory four-wheel drive.
+2077	So I'm building this.
+2079	This has been, this is an ongoing project.
+2082	So I'm building this.
+2083	And so what I needed to know was,
+2085	is the engine that's in the four by
+2087	four frame, is it a 390 or a
+2089	360?
+2091	And so the Ford three, the Ford FE
+2094	engine came in multiple displacements from 352 all
+2100	the way up to a 428.
+2103	And the 360 and the 390 were the
+2105	two most popular ones.
+2106	Now the 390 was an option.
+2108	And the only way to tell the difference,
+2110	because you can't tell from casting numbers, you
+2111	can't tell from any sort of external indicator.
+2119	The only way to tell the difference between
+2121	a 360 and a 390 is by the
+2124	stroke.
+2125	So you have to put a dowel rod
+2127	down into the cylinder, rotate the crank to
+2131	where the piston is all the way at
+2134	the bottom of its travel.
+2135	This is great.
+2136	Mark the, yeah, yeah.
+2138	Mark the dowel rod, then turn the crank
+2141	to where it's all the way at the
+2141	top of its travel, then do another mark
+2143	and then measure.
+2144	Mark the dowel rod, Mr. Cawson.
+2147	So a 360 has a three and a
+2149	half inch stroke and a 390 has a
+2153	3.78 inch stroke.
+2155	And I knew that they were different.
+2157	I just didn't remember which were the two
+2160	numbers.
+2161	This is a pretty esoteric question, though, that
+2164	you, I mean, this is, this is.
+2166	But for Ford guys, it's common.
+2169	It's very, everybody knows this.
+2171	Everybody, you know, you just may not have
+2173	the numbers at the top of your head,
+2174	but you know that the only, because the
+2176	cylinder diameters are the same.
+2180	Everything's the same, it's just got a different
+2182	crank.
+2183	So it has a different stroke length.
+2185	And that gives you the extra 30 CCs
+2187	of displacement.
+2189	So when you, so I just, I'm like,
+2192	okay, Ford 360, 390 stroke length difference.
+2195	I stuck that into Google.
+2197	And I'm gonna, I'm looking, I'm expecting to
+2199	go and like, you know, hit a Ford
+2201	forum, click through, and somebody has the information
+2204	there.
+2205	Well, I get an AI summary at the
+2206	top that says, the Ford 360 and 390
+2209	engines share the same stroke length.
+2213	And I'm like, no, they don't.
+2216	And it gives references there to articles.
+2220	And you click on those articles and they
+2222	both don't say that.
+2224	They both say, they give you the correct
+2226	information if you click through to something a
+2228	human actually wrote.
+2230	But if you read the summary, it just,
+2232	it just lies.
+2234	And I'm like, we're paying billions and billions
+2240	of dollars for this thing.
+2241	And it is worse than the thing we
+2245	had before.
+2246	This is, it's hard not to be-
+2249	Skeptical?
+2251	I'm saying depressed, honestly.
+2254	It's hard not to be depressed about the
+2257	amount of, the amount of like energy that's
+2263	being put into pumping this stuff into every
+2270	single aspect of our life.
+2275	And it's not, whether the accuracy of it
+2283	is almost like, okay, here's my sense, all
+2288	right.
+2289	We've gotten to a culture now, I'm sorry,
+2292	I've gone into full blown rant mode.
+2294	Yeah, you, yeah, it's okay though.
+2296	Let it all out, let it all out.
+2298	Just let it come out, it's fine.
+2299	We're here for you.
+2300	It's gonna be okay.
+2301	Part of this is my simmering back pain
+2303	here.
+2304	But like, I have to channel this into
+2307	the microphone.
+2308	But the, so the problem that we've, that
+2313	we are encountering across the software industry in
+2316	general is that everybody, everyone has adopted, one
+2323	of the side effects, one of the many
+2326	negative side effects of internet delivery has been
+2329	that nobody cares about getting their software right
+2332	before they ship it.
+2334	So you say, okay, we're gonna get it
+2336	close.
+2336	You're talking about me?
+2338	I'm not, I'm leaving you off the table
+2341	for now.
+2342	I fit the category.
+2344	No, I'm not talking about mistakes.
+2346	I'm talking about, you know it's broke and
+2349	you ship it anyway.
+2350	You know, that's what I'm talking about.
+2352	Like bugs are always a thing and they've
+2354	always existed.
+2355	That's just software.
+2357	Software has bugs and you gotta, and sometimes
+2359	you have to ship a fix or a
+2361	patch.
+2362	That's always been the case and that's not
+2364	a problem.
+2367	The mindset has shifted now to where instead
+2371	of shipping a product that you think doesn't
+2374	have any bugs and finding out later that
+2376	it does and having to fix it, now
+2379	you say, oh, well, we know, we have
+2383	quote known issues.
+2385	Yeah, exactly.
+2386	You know that this thing is broken and
+2389	you ship it anyway and you're like, because
+2391	you need to hit a ship date.
+2393	And so then you say, well, we'll just
+2394	fix it later.
+2395	We'll ship a patch later because it's so
+2398	easy.
+2398	You know, all we gotta do is just
+2399	push this code and everybody just refreshes their
+2402	browser and it's great.
+2403	And so that mindset has leaked into, I
+2408	think that has leaked into AI.
+2411	I think the whole mindset of AI is
+2417	we know that it's broken.
+2418	We know that it gives you false information
+2422	a large percentage of the time.
+2424	Now, we don't know what that percentage is.
+2426	It could be 15% or it could
+2428	be 40%.
+2430	We don't know.
+2431	And it's probably always changing because every time
+2433	these models are retrained, they get new things
+2436	right and old things wrong.
+2438	And so there is a widespread knowledge.
+2441	Everyone understands that this stuff is giving bad
+2444	information a large percentage of the time.
+2448	But it's like, well, we just don't care.
+2451	We'll just fix it later somehow, I think,
+2454	maybe, perhaps.
+2457	And all we need is just a few
+2459	more billion dollars.
+2460	Now, I think it's a trillion is the
+2462	latest I've heard.
+2463	Yeah, a few more trillion.
+2465	Yeah.
+2466	I didn't, this- I'm just worried that,
+2470	I'm worried that everybody's building things, and this
+2473	will be for you, Dan, but also for
+2474	myself, that people are building things that rely
+2477	on AI credits.
+2479	And one day someone's going to say, okay,
+2482	it works, but now you really got to
+2485	pay the cost.
+2486	And it's going to be significantly higher than
+2488	what we're paying now.
+2491	Yeah, I've thought about that and have been
+2493	concerned as well.
+2495	But I think that as the models are
+2498	developing more, the possibility to run them on
+2501	your own hardware is also developing more.
+2503	So even if the cost goes up to
+2505	using an API from a place like OpenRouter
+2509	or something, I might be able to lease
+2511	my own server with my own GPU in
+2513	it that could run the model for me.
+2515	And then I have that own cost, but
+2518	then I have to manage things like queuing
+2519	the requests and handling simultaneous things.
+2522	But I think it's possible.
+2524	Can you set OpenRouter to redirect to something
+2531	that you host yourself?
+2533	No, but it does use different providers based
+2537	on whoever is providing the service the fastest.
+2540	So like Gemini, for example, it's not going
+2543	to only use Google as the provider, but
+2545	there might be some other server farm out
+2547	there.
+2548	Maybe it's Adam's server, Linode server is helping
+2552	to process the request, but it's using whatever
+2555	provides the fastest responses.
+2559	Okay, so you're telling it, you can put
+2565	it into a mode that says, I want
+2567	you to use just whatever is currently the
+2569	quickest, not necessarily the cheapest.
+2571	Well, it will most available.
+2572	It's for the model that you want to
+2575	use.
+2575	So there are lots of providers for that
+2578	model.
+2579	And if you'd look over at OpenRouter.com
+2583	then, or I'm sorry, .ai and look at
+2586	their models page, you'll see a bunch of
+2588	models that they offer.
+2589	They offer hundreds of models.
+2591	And for any one of those models, when
+2593	you click on it, you can also see
+2594	the number of providers.
+2596	Many of these models have multiple providers and
+2599	they come in at different speeds.
+2600	So what OpenRouter does is it routes your
+2603	request for that model to whichever model is
+2607	performing the fastest.
+2608	They do have an auto model that will
+2611	route your request to a model that they
+2614	think will serve your need the best, but
+2618	that also comes at unpredictable costs.
+2621	It might go to GPT 4.0, or
+2623	it might go to a nano model or
+2625	something else.
+2626	Yeah, right.
+2627	Well, is there a, so you mentioned the
+2632	problem and I've seen this before too, where
+2634	AI creates like way too many chapters.
+2639	Just a chat, like a chapter every three
+2642	minutes or something like that.
+2643	Oh, that happens a lot, yeah.
+2645	Yeah, I mean, how are you controlling that?
+2648	That's where my secret sauce comes in, where
+2650	I have.
+2651	No, it's okay, you can't use proprietary information.
+2655	Really, everything you're doing with an AI system
+2657	all comes down to the prompt and what
+2660	information you're doing with it.
+2661	And that's the thing that when I started
+2663	building this, I practiced over and over and
+2666	over just running the same file through the
+2669	prompts, trying to get it to specific results.
+2672	And then I would test on other files
+2673	too, trying to get it to that point.
+2676	And I think I've gotten it there.
+2677	And so the systems that produce a lot
+2680	of chapters could be using the exact same
+2683	LLMs I'm using, but their prompt is different
+2686	because when you work with an AI, simply
+2688	changing a single word in your prompt could
+2691	give you potentially very different results.
+2694	Even running the same prompt multiple times can
+2697	give you different results.
+2699	And some people don't realize that with the
+2701	AIs, they think that the AI gives you
+2703	an absolute answer and everyone gets that same
+2706	answer.
+2706	And that's just not the case.
+2708	Yeah, because in traditional software, we're used to
+2712	going into a configuration file or something like
+2714	that and saying, okay, here's the parameters and
+2717	you have a discrete value that is going
+2720	into this configuration file.
+2722	And for that discrete value, you get a
+2725	predictable output.
+2726	And so you say, if this configuration variable
+2729	is X, then I know that I'm going
+2733	to get an output that looks like Y.
+2736	But with LLMs, you have to, what you're
+2741	saying with the prompts is you have to
+2743	say, you really don't know what you're gonna
+2746	get ever until you test it over and
+2749	over again.
+2749	You have to say things like, LLM, you
+2753	are a chatter creator.
+2755	I'm sorry, can I just interrupt?
+2757	Yeah, sure.
+2757	You're not gonna believe this.
+2760	The recording never started.
+2763	Oh, crap.
+2766	Is somebody recording the stream?
+2768	Tell me somebody's recording the stream.
+2770	Dave, you have half of it.
+2772	You know Cotton Gin's got it.
+2773	Cotton Gin, are you recording the stream?
+2775	Please tell me someone's recording the stream.
+2778	Oh, goodness.
+2780	Oh, goodness.
+2781	I mean, I've got part of it.
+2783	Oh, this is horrible.
+2787	When is the last time this happened with
+2789	you?
+2790	Yeah, Cotton Gin's got it.
+2791	Oh, okay, Cotton Gin.
+2792	I'm just gonna, so I'm not even gonna
+2793	start my, well, I'll start my backup just
+2795	in case.
+2795	Thank you, Cotton Gin.
+2796	Thank you.
+2797	I'm sorry.
+2797	Dave, back to where you were.
+2799	Woo, that was a scary one right there.
+2803	No, what I was saying is that you
+2805	have to, you're basically, you no longer have
+2812	discrete inputs and discrete outputs.
+2815	You have suggestions of what outputs may be
+2820	based on some vague idea of what the
+2823	input may be.
+2824	So you have to, like you were saying,
+2826	you have to go through and say, model,
+2830	you are a chapter creator master for podcasts.
+2835	You always are concise.
+2840	You have to talk to this thing like
+2842	it's a two-year-old.
+2843	Or the way I like to look at
+2845	it is, you have to talk to it
+2846	like it's overseas tech support for your ISP.
+2850	Yes, yeah, exactly.
+2854	You're not trying to create as many chapters
+2859	as you can per minute.
+2860	You're trying to be instead very thoughtful about
+2863	how many chapters you create because you don't
+2865	want to waste people's time.
+2866	Like you have to actually talk and you
+2868	don't know what the output is going to
+2870	be.
+2873	It's again, just sort of like, what?
+2876	What are we doing?
+2878	No, some of the models do have something,
+2880	it's called temperature, where you can change how
+2883	much variance that it might give you in
+2886	a result.
+2887	If you, I think it's, I never play
+2889	with the temperature, but I think it's if
+2890	you put it down to zero, it will,
+2893	for the same prompt, it will always give
+2895	you the same result for that prompt every
+2897	time.
+2898	Whereas if you have a higher temperature, then
+2900	it might give you something different for the
+2902	exact same prompt.
+2904	Okay, yeah, see that's, and I think that's
+2908	where, I think that's where all of this
+2912	becomes so difficult is, and I mean, bless
+2918	you for figuring out how to create these
+2921	things because like.
+2923	Yeah, really.
+2924	I think it may just be a personality
+2926	thing because I can't, I find interacting with
+2930	models hard to tolerate.
+2934	Oh yeah, I have that too.
+2936	Okay.
+2937	I'll tell you a funny story here briefly.
+2938	One of the first times I tried using
+2940	AI to do something in my code base.
+2942	So Podgagement, I built Podgagement completely on my
+2946	own.
+2947	There was some auto completion for lines of
+2950	code, but I wasn't doing any kind of
+2953	vibe coding or prompting or anything like that.
+2956	But I did want to try and improve
+2958	a particular feature.
+2959	And so I started trying to use the
+2961	AI to improve a feature.
+2963	And it was a gauge that I display
+2965	in the dashboard that looks kind of like
+2966	a speedometer.
+2967	It shows the global average rating for a
+2969	podcast.
+2970	And I was trying to redesign the gauge
+2972	because I didn't like the way it looked
+2974	with the system I was using.
+2976	So the AI gave me a good looking
+2978	gauge, but the needle kept going the wrong
+2980	direction.
+2981	Like 2.5 is halfway between one and
+2984	five.
+2985	And so it should be straight up.
+2986	But for some reason that would be pointing
+2988	straight down.
+2989	But then 4.5 would be where it's
+2991	supposed to be.
+2992	And 1.5 would be pointing down below
+2994	the thing.
+2996	So I was fighting with it, felt like
+2998	I was talking with overseas tech support over
+3000	and over and over trying to get it
+3002	to do it right and sending it screenshots
+3005	and all of this stuff.
+3007	And then I just decided I need to
+3009	just look at the code and figure this
+3011	out myself.
+3012	And I found the problem was there was
+3015	a plus sign where there should have been
+3016	a minus sign.
+3018	Ugh.
+3018	Yeah, yeah, yeah, yeah.
+3021	That's classic, classic.
+3025	That's, yeah.
+3027	I'm just, I think that a product like
+3031	PodChapters is, and honestly, the way that AI
+3038	is being used in podcasting, just if I
+3042	can be, you know, like positive for a
+3047	minute, I think that these, what podcasting has
+3052	done in general and PodChapters is a great
+3055	example is probably the best case scenario for
+3059	this stuff.
+3060	Like it's a great fit.
+3062	I'll take that.
+3063	I really can't, yeah.
+3064	I can't find any other place in my
+3067	life where this stuff fits, but for the
+3070	creation of thing where you have like what
+3073	you've done where you say, okay, I'm gonna
+3074	make a transcript and I'm gonna take this
+3075	transcript and I'm gonna feed, you know, and
+3078	this transcript is naturally a language corpus and
+3084	I'm gonna feed that body into the LLM
+3088	and have it do some things to it.
+3091	To me, that is like the best case
+3094	scenario for where AI is useful.
+3096	Exactly.
+3097	You know, and I think because you're operating
+3099	right in its sweet spot, but you know,
+3103	other parts of our lives, I think people
+3106	are trying to jam it in and it's
+3108	not really gonna fit, but I would say
+3110	like with PodChapters, I mean, you're giving these
+3115	other formats besides just the 2.0. So
+3121	you're giving, I think, PodLove, right?
+3124	Yeah.
+3124	As well, yeah.
+3125	Those kinds of things.
+3126	It's like, how are you, so if somebody
+3129	is hosting at something like, you know, Buzzsprout,
+3132	RSS.com or Blueberry or whatever, if they
+3136	take, like, how do they get those things
+3138	that they generate on PodChapters into their feed?
+3142	It depends on the platform, of course.
+3145	And that's one of the things that I'm
+3146	trying to document some of these behaviors for
+3149	canipodcast.com.
+3150	You've probably seen the site caniuse.com, which
+3153	is for browsers that shows you like, these
+3155	are the CSS things that work in these
+3157	browsers as of these versions.
+3159	I'm trying to build that for podcasting too,
+3161	so you can see exactly which podcast apps
+3164	support what features and how they support it.
+3167	Like, okay, if they support the description for
+3170	the show notes, can you use paragraph tags
+3173	in the description?
+3174	Can you use headings, bold, italics, hyperlinks?
+3176	Does that work in the description?
+3178	Stuff like that.
+3179	So I'm doing the same thing for hosting
+3181	providers and publishing tools to see what do
+3184	they support as well.
+3185	Do they publish to this tag or do
+3187	they support this feature?
+3189	How do they support it?
+3190	Do they handle the different title tags the
+3193	same way?
+3194	Like, Buzzsprout, right now, at least, doesn't handle
+3197	them the most optimized way, I'll say.
+3200	So some of these providers, like Buzzsprout, for
+3202	example, if you upload an MP3 that has
+3205	the chapters embedded into it, so legacy chapters,
+3208	Buzzsprout will use the chapters that are in
+3211	the MP3 to then populate their copy of
+3215	Podcasting 2.0 and Podlove Simple Chapters.
+3218	So they pull that from the file.
+3220	A similar thing with rss.com.
+3222	Captivate also can pull the chapters from the
+3225	MP3, but they don't pull, currently, at least,
+3229	they don't pull images and hyperlinks for those
+3231	chapters, so you have to go back in
+3232	and re-add those.
+3234	Or you look at, like, if you're using
+3235	PowerPress, I still use PowerPress to generate my
+3237	own feed for the Audacity podcast.
+3240	And I've made an add-on plugin for
+3243	PowerPress that does some more stuff that I
+3245	want it to do that are specific to
+3247	my workflow.
+3249	And inside of PowerPress, since I'm actually still
+3252	hosting my media files on Libsyn, but I
+3256	don't use Libsyn to create the RSS feed,
+3258	I use PowerPress to create the RSS feed.
+3260	So in PowerPress, there is a text field
+3262	where you can drop in a URL for
+3264	chapters, and that's where I now use PodChapters
+3268	to host that.
+3268	I was previously uploading my chapters to my
+3271	own CDN, as well as my transcript, to
+3273	my own CDN, and trying to manage that
+3276	hosting was another headache.
+3278	But so now I use my own product
+3280	for that.
+3280	I just paste that URL in.
+3282	And yeah, it's unfortunate that these different providers
+3285	handle it differently, and that's something that I'm
+3288	hoping that as PodChapters gets more adoption and
+3292	more people use it and have certain questions,
+3294	I can bring that to these hosting providers
+3297	to say, hey, I've got a customer using
+3299	PodChapters, and when they upload their file to
+3303	you, you're breaking the chapters, and that's creating
+3307	more work for my customer.
+3308	It's making them not like you very much.
+3310	How about we work together and figure out
+3311	a way that you can improve how you're
+3313	handling the chapters?
+3315	I know at least one hosting company is
+3320	in the middle of building an API, and
+3323	it would be nice to see hosting companies
+3328	develop APIs where you could talk directly.
+3331	For external functionality, that's a great idea.
+3335	Yeah, that would be really nice to see,
+3337	because if you could get an API key
+3339	just with your account at your hosting provider
+3342	and then plug it into your own different
+3344	software tools like PodChapters, and I could think
+3349	of 100 use cases right now where that
+3351	would be pretty awesome, not just chapters, but
+3355	value for value, all kinds of things, where
+3359	you could just do things after the fact
+3361	on your own system.
+3363	That would let you do pretty complex workflows,
+3366	like if this, then that type stuff, even
+3369	where you don't have like no code type
+3371	things.
+3372	That's a great idea.
+3373	I mean, it's a lot of extra work
+3374	for the hosting companies, but man, think of
+3376	all, that would actually be cool, all the
+3378	extra stuff that could be put on the
+3380	outside.
+3382	Yeah, and all you'd have to really do
+3383	is just wrap it in one of those
+3385	like warnings that says, hey, you could really
+3390	break your feed, you know, but use it
+3393	at your own risk.
+3394	But it would be really sweet to be
+3396	able to do that.
+3397	Because I think, I mean, like even in
+3399	your case, I guess you're uploading your Audacity
+3402	to Podcast audio to Ellipse and through their
+3406	UI?
+3408	Yeah, see, I mean, if they had an
+3409	API, you could just, you know, pop it
+3411	up there.
+3412	They do actually have some kind of uploading
+3414	API because Auphonic, the audio processing system, you
+3418	can publish from Auphonic to certain hosting providers.
+3422	So whatever audio you get then from Auphonic
+3425	then gets uploaded to the other hosting provider.
+3428	And I'm going to work on integrating some
+3430	of that stuff for some of the platforms
+3432	that support that so that people don't have
+3434	to even download the file from PodChapters.
+3436	I'd love to see more podcasting focused tools
+3439	do that, is integrate with any of the
+3441	APIs that are out there so that the
+3443	user doesn't have to manage files and download
+3447	something that they already uploaded and now they've
+3450	got two copies of the same file, which
+3451	one was the latest one, but they could
+3453	just publish from one system to the other.
+3456	Now, do I have to, if I'm going
+3457	to use PodChapters to generate something for my
+3460	episode, do I have to upload the audio
+3462	to you?
+3463	Yeah, the audio file.
+3465	Okay, because if you could monitor the RSS
+3468	feed and have it like publish, if I
+3471	could publish to my hosting company, have it
+3474	appear in the feed, and then you watch
+3478	that feed and then generate stuff based on
+3482	my wishes for my latest episode, then I
+3485	could just, after the fact, go pull it
+3487	off your site and give it to the
+3489	hosting provider.
+3490	That'd be pretty cool.
+3491	Yeah, I might build something like that separate
+3493	in the future.
+3493	There is already a service that does something
+3495	kind of like that, Cast Magic.
+3496	Now, they don't do anything in your file
+3499	or in the RSS feed or any of
+3500	that, but if you wanted social posts generated
+3504	from your episode, it can do that, but
+3507	this is all after you publish.
+3509	I'm a big fan of getting this stuff
+3511	together before you publish or, for Adam's sake,
+3514	very quickly after you publish.
+3517	But there are plenty of tools, yes, that
+3519	can monitor your feed and then generate a
+3522	transcript or download the file and then suggest
+3525	things on top of that, like here are
+3527	some social posts you could use to promote
+3529	this episode now that it's already published.
+3531	So how are you, I'm sorry, go ahead.
+3534	No, I was just gonna say, I think
+3535	that'd be another area where the API would
+3536	be helpful for my hosting provider because I
+3538	think most hosting providers have a thing where
+3541	you can upload, it's sort of like stage
+3543	an episode for release and then publish it
+3548	later.
+3548	So you're sort of assembling it, getting ready
+3552	to go, but it's not in the feed
+3553	yet.
+3554	That would be a great little way to
+3556	integrate and say, oh, there's a sort of
+3558	a staged audio here.
+3560	I can process that and then you can
+3562	go back and do the full publishing later.
+3565	Yeah, how are you marketing this?
+3567	How do you expect to get it deep
+3570	penetration?
+3572	Well, so far it is reaching out to
+3574	my own audience because the Audacity podcast is
+3577	a podcast about podcasting.
+3578	So my audience is also my ideal customer.
+3581	So I did an episode all about why
+3583	you should use chapters and how to use
+3585	chapters.
+3585	And it flowed very nicely to have native
+3588	advertising inside of that episode where I could
+3591	promote pod chapters that way.
+3592	I have a couple of email lists for
+3594	everyone who's ever signed up for the Audacity
+3596	podcast email incentives and little promotions that I've
+3600	run, as well as podgagement customers, I've promoted
+3603	it to them.
+3603	And then just getting the word out there,
+3605	showing it off to other podcasters, trying to
+3608	promote it very organically.
+3610	I do not do advertising.
+3613	I might look into that in the future,
+3615	but right now it's just a cashflow thing.
+3617	So I'm just trying to grow it organically,
+3619	making a product that, here's my perspective on
+3622	things, whether it's a podcast or a product,
+3624	make it so good that you don't have
+3626	to advertise it.
+3628	Yeah, yeah, yes, that is nice.
+3632	I have to say, I've always been impressed
+3634	by your entrepreneurial spirit.
+3636	Thank you.
+3637	You're always coming up with new, how many
+3639	different things do you have running now in
+3641	your life?
+3643	The way I put it is I have
+3645	my hands in many fires.
+3647	Yeah, tell me how many fires.
+3649	Tell me about the fires.
+3650	I have actual SaaS products too, and I'm
+3653	working on a third one that is actually
+3655	not podcasting related at all, but I'm partnering
+3658	with someone else working on a third SaaS.
+3660	So two SaaS's, I have a WordPress plugin,
+3663	my podcast about podcasting.
+3665	I'm a co-host on the future of
+3667	podcasting with Dave Jackson.
+3670	I do the consulting, I do promotions here
+3674	and there for affiliate things.
+3675	And he's a dad in his spare time.
+3677	And homeschooling nonetheless.
+3679	Oh, goodness gracious, wow, wow.
+3682	And single too, ladies.
+3689	The podcasting 2.0 dating services is open
+3693	and ready for your business.
+3696	We got hot guys, they develop while you
+3700	wait.
+3701	Well, let's hear some hot namespace talk.
+3703	Oh, okay, all right, easy does it now,
+3705	easy.
+3705	The consulting side of podcasting has, what is
+3711	the health of that look like now?
+3714	I feel like that kind of fell off
+3715	a cliff.
+3720	Not maybe for you and people who have
+3723	been around a very long time and are
+3724	established, but for a while there, like from
+3728	2018 to 2022 or so, it was like
+3732	every, you could throw a rock and hit
+3734	a podcast consultant.
+3736	And now I feel like that is kind
+3737	of going away.
+3738	Yeah, and it's funny that you made an
+3739	unintentional pun, fell off the cliff, because one
+3742	of the first major podcast consultants was Cliff
+3746	Ravenscraft.
+3746	He actually lives not far from me.
+3748	We've been long time friends.
+3750	Yeah, and I think that now it's not
+3753	so much only a few people who really
+3756	knows how it works, or we don't have
+3759	to as an, I almost said the naughty
+3762	word that Adam hates, as a world that
+3769	podcasts, I'm so hard trying to say not
+3772	industry, but as a group of people who
+3776	work in the podcasting space, they don't have
+3781	to know as much now to be successful
+3784	as in the early days.
+3785	Like before it was all this stuff, like
+3787	you had to know how to work with
+3788	a mixer.
+3789	How do you use an instrument, a thing
+3791	that's made for musical instruments and live sound?
+3793	How do you use that for podcasting?
+3795	And how do you do a mix minus?
+3797	Now we don't even have to worry about
+3799	mix minus.
+3799	You just plug in and play things and
+3801	it works.
+3802	And so the need for the super expertise,
+3806	I think has diminished, as well as there
+3809	are a lot of people who have either
+3812	by luck or by hard work have had
+3814	success and they've been able to serve certain
+3818	companies.
+3819	And it's not like there are only a
+3822	handful of consultants now that the entire world
+3825	is looking to these handful of consultants and
+3827	the, what's that cult group?
+3832	Not the Gemini, the Illuminati of podcasting doesn't
+3837	exist anymore.
+3839	While there are the people who have stayed
+3842	in the industry and are very familiar with
+3844	it, I think even just a lot of
+3846	companies don't even think necessarily of hiring a
+3849	consultant because it's so many people know enough
+3853	to get by.
+3857	Yeah, I mean, that makes sense.
+3860	It almost feels like, you remember like from
+3864	2000, maybe 2002 to 2006, everybody was a
+3871	real estate agent.
+3873	Yeah, that turned out real well.
+3875	Yeah, you felt like your hairdresser was a
+3878	real estate agent.
+3879	They were flipping houses on the side.
+3880	It's like everybody had a real estate license
+3882	that you ran into on the street.
+3884	And it felt like for a brief period
+3886	of time, for a few years, everybody was
+3889	a podcast agent or consultant or something like
+3893	that.
+3893	And you really just don't see any of
+3897	that anymore, I don't think, or at least
+3899	not to that degree after the great podcast
+3903	collapse of 2022 or whatever that was.
+3908	Has it been that long now?
+3910	I guess it's been 22, 23.
+3911	And even that collapse is rather misreported because
+3915	I've tracked the data, podcastindustryinsights.com is my
+3919	other site that has some of this data
+3922	that I've been tracking from Apple for a
+3923	while.
+3924	And yes, there was a kind of collapse,
+3926	but that's because the fire hose of podcast
+3929	pollution from Anchor was cut off.
+3933	And so it looked like a collapse of
+3935	new podcasts when really it was just the
+3938	junk podcasts weren't being put out into the
+3941	directories anymore.
+3942	So it looked like, but if you were
+3945	to remove Anchor from the equation, everything looks
+3948	like it's still been fairly consistent.
+3950	Well, yeah, I think you're talking about raw
+3952	numbers.
+3953	I was more concerned, I was more referencing
+3956	like this, the economics of it, the big
+3958	deals and all that.
+3959	Oh, right, yeah, the Apple Podcasts update.
+3964	Right, yeah, January of 23 is when Spotify
+3968	started laying people off.
+3969	Yes, Nathan would know.
+3970	Yes, he would be keenly aware of that
+3973	date.
+3974	It's burned into his brain.
+3978	Speaking of Apple, have we seen any movement
+3982	on their possible chapter?
+3986	Well, you saw the leak from the-
+3988	Integration, yeah.
+3989	Yeah, where if they put something in the
+3991	documentation like that, that means they're gonna support
+3994	it.
+3994	And I think what probably happened is someone
+3996	accidentally pressed publish.
+3999	So that's unacceptable, I tell you.
+4002	They've been fired, it's not a problem.
+4005	Exactly.
+4006	Now, here's something that I would love to
+4008	bring up with you guys is to actually
+4009	talk about super chapters because what a chapter
+4013	fundamentally is and does has not changed, even
+4018	though the way we publish them is so
+4020	much better with Podcasting 2.0 and the
+4023	way they're published does present other options for
+4027	other things you can do with chapters.
+4029	Still, they are functionally the same, a title,
+4032	an image, a link.
+4035	How about we make them bigger, make them
+4036	better, make them do more?
+4040	I think the appetite, this is my hot
+4047	take.
+4049	I think the appetite for that would probably
+4051	be bigger if and when Apple does actually
+4058	support it.
+4059	If that happens, I think you would see
+4063	a more desire to start working on that
+4071	spec again.
+4076	Because for the longest time we've heard that,
+4079	oh, why are these 2.0 people doing
+4082	chapters?
+4084	Because it's like, we've already got chapters.
+4086	We got chapters in the MP3 file, but
+4088	we don't need a whole new chapter spec,
+4091	blah, blah, blah.
+4091	And to be fair to the Germans, the
+4095	Podlove guys got the same thing for years.
+4098	They got the same type of verbal dismissal
+4102	of, well, why are you bothering with that?
+4106	We've got MP3 chapters in the ID3 tags.
+4108	We don't need all that.
+4109	We don't need some new spec and that
+4112	kind of thing.
+4113	And the benefits that we've been talking about
+4118	for so long is that the chapters, you
+4126	don't put the show notes in the MP3
+4129	file.
+4130	You don't put the, you know, your album.
+4133	Some people do, believe me.
+4135	Some people definitely do.
+4137	I've seen it.
+4138	Sane people do not put the show notes
+4141	in their MP3 file.
+4142	Like we have all these external repositories for
+4148	where this structured data goes so that it
+4151	doesn't have to live in the audio so
+4154	that you don't have to re-upload your
+4155	audio every time you want to change something,
+4157	which is silly.
+4158	So they, you know, the chapters just fits
+4161	that same, it fits more, the cloud chapters
+4164	fits more along with the model of how
+4168	the feed already looks.
+4171	And I'm, again, mad respect to the Podlove
+4177	guys people, but I feel my personal preference,
+4184	and maybe I'm biased, I don't know.
+4186	A personal sort of idea is that the
+4192	2.0 chapters fits the feed better than
+4199	just listing out the timestamps in the feed
+4202	itself.
+4204	I don't, I freely admit that I'm not
+4207	sure that I could explain why that feels
+4210	that way to me right now, but it
+4212	feels like it fits more of a sort
+4216	of a single entity.
+4218	So you say like, okay, album art, here's
+4222	an image that represents this episode or this
+4224	feed, and here's a link to where that
+4227	image is.
+4228	Right.
+4229	And then you say, okay, here's a set
+4230	of, here's chapters for this episode, and here's
+4234	a link to where those are.
+4236	Yeah, it's a separation of concerns.
+4239	Yes, separation of concern, thank you.
+4241	And so like, that is what, that's what
+4244	the whole idea has been from the beginning.
+4246	So I think that if we can sort
+4249	of get, like that's the, what I'm trying
+4251	to describe is I think maybe Daniel, that
+4253	that's the hurdle to overcome.
+4256	The hurdle there is to get every, is
+4259	to get more people to think this way
+4264	where the idea is, okay, we have this
+4268	thing called chapters and it lives at this
+4271	location and stop thinking about it as something
+4276	that is embedded in the media file itself.
+4279	And if we can make that sort of
+4280	mental switch, then I think now, then you
+4285	have like a lot of people that are
+4287	on the team that are ready to push
+4290	forward with adding more stuff to that spec.
+4294	Yeah, especially when you start to consider things
+4296	like the technological hurdles of supporting even the
+4299	legacy thing.
+4300	Like here's something interesting is that Buzzsprout, although
+4303	you can add an image to a podcasting
+4306	2.0 chapter on Buzzsprout, they at least
+4308	currently do not save that image into the
+4311	MP3 file that they host.
+4313	So the apps that support the legacy chapters
+4316	aren't getting any chapter images, but only the
+4320	podcasting 2.0 apps are getting the chapter
+4322	images.
+4323	But even when you think about just chapter
+4325	images, if you have a podcast that has
+4329	just five images in it, depending on how
+4332	those images are saved, you could be significantly
+4335	bloating the size of the MP3 file to
+4339	embed those images in the file.
+4341	So it makes total sense for people to
+4344	also keep that in mind that do you
+4346	really need to be bloating your MP3 file
+4349	by embedding all of these high resolution images
+4352	in it?
+4352	They would be so much better inside of
+4354	the external file where then the apps that
+4357	support it can load those images.
+4360	And then what do you do when somebody
+4361	like, what's gonna happen to the integrity of
+4364	your file also?
+4365	Like you load up an MP3 with all
+4368	these different, you know, like images and that
+4371	kind of stuff and these binary objects, and
+4374	then you ship that off to Soundstack to
+4377	do dynamic ad insertion, and it comes back
+4380	into a CDN.
+4382	Is that, has that file been molested in
+4385	any way?
+4385	You have no idea.
+4386	I mean, you don't know what's gonna happen
+4387	to that file at that point.
+4390	Yeah, well, thankfully the MP3 chapter information all
+4394	goes in just a specific section of at
+4396	least the MP3 file in the headers, but
+4399	that does start to mess with certain things.
+4401	Like if you're dealing with streaming, all of
+4404	that header information has to be downloaded before
+4406	the audio can even start streaming.
+4408	Right, right, yeah.
+4410	Yeah, I think if we, I think the
+4413	thing you've been calling super chapters for a
+4416	long time of just beginning to expand the
+4420	capabilities of the chapters file in general, I
+4423	think, yeah, I think that is a good
+4426	idea, but I think we'll probably have, we'll
+4430	probably be in a better position to do
+4431	that once we get something like Apple to
+4434	support it.
+4435	Sure, and that is part of the reason
+4437	why I built PodChapters is because I thought,
+4439	well, when you were like, oh, here it
+4441	comes, they're ready, they're good to go, I'm
+4443	in, I'm in the pocket.
+4445	Well, and I didn't start building it because
+4447	of Apple.
+4448	I actually had started building it already and
+4451	then seeing the Apple leak was perfect timing,
+4453	but I was thinking that, well, when we
+4457	can start making chapters do more than they
+4459	do right now, I'd love to make that
+4463	possible with my own podcast and love to
+4465	start leveraging that.
+4466	And so how about I just make a
+4467	tool that makes it really easy to do
+4470	that?
+4470	Yeah, yeah, that's the daily source code strategy.
+4474	That's exactly right.
+4475	We do have to talk about LN versus
+4479	a keysend for a moment because we got
+4483	a note from Oscar.
+4484	Did you get that, Dave?
+4486	About the API?
+4487	Yeah, whatever it was, my eyes glazed over.
+4491	I replied to him, I think he's got
+4493	what he needs because he was saying that
+4497	he needed to be able to put LN
+4499	addresses into the shim, but I corresponded with
+4502	him and I think he's good.
+4504	I think it already supports that.
+4507	Well, you want to explain what's going on?
+4510	Well, so there's lots to talk about with
+4514	V4V and we're going to have to talk
+4519	about it in depth at some point.
+4525	So, but right now, so what Oscar was
+4531	saying was that, hey, we're fully supporting LN
+4534	address in Fountain, but we need to make
+4539	sure that the shim, the Podcaster Wallet shim
+4543	can also have that data as well.
+4551	How do we retroactively implement that?
+4555	Well, so podcasterwallet.com just interacts with the
+4561	podcast index API to insert that stuff in
+4563	there.
+4564	So podcasterwallet.com will help you create a
+4568	value block and then it just talks to
+4571	the podcast index API and sets that value
+4574	in your feed as a, just a big
+4578	JSON object.
+4580	And so then it doesn't really care what's
+4583	the, the podcast index API doesn't really care
+4585	what's in that object.
+4586	It just takes whatever you give it and
+4590	sticks it into the database with that feed.
+4595	And so that's, so the part, our quote
+4599	unquote partner APIs for like Fountain and Sphinx
+4605	and those guys.
+4606	Sphinx.
+4607	Oh, there's a blast from the past.
+4609	I know, I know.
+4610	But the partner API that I built for
+4613	Fountain just allows a feed, allows that value
+4619	block to be set.
+4621	It just bypasses podcasterwallet.com and just allows
+4624	them to set the shim directly.
+4629	And so he just needs to, he tested
+4634	it and it works.
+4635	He's just setting LN addresses in the block
+4637	now and just encoding them as JSON and
+4639	they go straight through.
+4640	So it's not a problem.
+4642	The only thing that would need to change
+4643	would be, I think on our side, I
+4645	would need to update the UI for podcasterwallet
+4651	to be more explicitly accepting of LN address.
+4657	Eric said, how many people are using the
+4659	shim?
+4661	You know, I don't, I think it's very
+4663	few, Eric.
+4664	I really think, I think there's very few
+4670	people that are actually logging into podcasterwallet.com
+4673	and creating a value block.
+4675	Well, it's all API stuff, right?
+4678	It's all coming from the APIs, yeah.
+4681	So I don't think, honestly, I'm tempted to
+4685	get rid of the shim altogether.
+4687	That's, a lot of people would be happy
+4689	with that.
+4691	And now we would still keep the partner
+4693	APIs, you know, for people, because sometimes these
+4700	people just don't have, well, often they don't
+4703	have, yeah, I agree, Eric.
+4706	I wish you could be retired too.
+4707	I may just turn it off and see
+4709	what happens.
+4713	Because like Fountain, TrueFans, these are gonna, these
+4717	apps, they need to be able to talk
+4725	to the podcast index to be able to
+4726	say, hey, here's a value block for this
+4728	feed whose hosting company does not support value
+4731	blocks.
+4732	So that functionality still remains, but the Podcaster
+4736	Wallet website probably doesn't even need to exist
+4741	anymore.
+4743	Yes, that's right, Nathan.
+4744	Everyone who connects a wallet with Fountain is
+4746	technically using the shim, that's correct.
+4749	And that's just so that if Fountain or
+4754	TrueFans or somebody else sets a wallet on
+4757	that feed, it's so that everyone else gets
+4760	to see it because it's not in their
+4762	actual canonical feed.
+4766	So that's, and we can't, I don't know,
+4769	I still don't know any other way to
+4770	do it.
+4771	You know, I can't think of another way
+4773	to do it.
+4776	I will say that I try, our node
+4781	is so big.
+4782	This is where you say, how big is
+4784	it?
+4785	How big is it?
+4786	How big is it?
+4786	It's so big.
+4789	I've been trying to hook up an LN
+4791	address wallet to it, and it's just big,
+4794	like everything just- No way.
+4795	Everything's, all the voltage stuff just falls down.
+4799	It's like, even if you want to run,
+4802	what's the dashboard program?
+4807	Well, it doesn't matter.
+4809	None of them work.
+4810	Ride the lightning or something?
+4811	Yeah, none of that works.
+4812	All of it goes, sorry, can't connect now.
+4815	It's no good.
+4817	And what I don't want to do, I
+4818	have an Albi hub, but I don't want
+4820	the index's node to be dependent upon my
+4823	Albi hub.
+4825	So I'm just trying to figure out how
+4827	to get that done, because we'll switch it.
+4829	I've switched pretty much everybody's split over.
+4832	Eric PP gave me a really nice list,
+4834	so I moved all of those over.
+4838	I've had a 1% on my own
+4841	Strike wallet for a while.
+4842	And it's, I mean, it's pretty good.
+4844	The stuff from Fountain comes through with a
+4847	link, you know, like the first few words,
+4849	and then there's a link for the message.
+4852	And so that, you know, that link then
+4853	takes you to the Boostergram, if there's a
+4855	Boostergram.
+4856	Strike really sucks because you can't filter it.
+4858	So you can't say, show me anything over
+4861	one sat, you know, so you have to
+4863	scroll through a ton of stuff.
+4865	But in principle, it's all kind of working,
+4868	which is nice to see.
+4870	Yeah, I think there's a lot to talk
+4874	about with all that.
+4876	And again, after finishing this most recent book
+4880	that I read, I've got even more, a
+4884	more complex set of conflicting thoughts about this
+4888	whole thing, you know, about self-sovereignty and
+4893	how it's so important.
+4897	But then also, you know, I don't know.
+4902	I'm not maybe fully ready to talk about
+4904	it yet.
+4904	But I'm hoping to get, hopefully we can
+4906	get Chad F on the show.
+4908	And because he's been doing a lot of
+4909	good work.
+4911	He's just been pounding- Non-stop, non
+4914	-stop.
+4914	Non-stop, yeah.
+4915	He's just going at it.
+4916	Yeah, trying everything, every combination of wallet and
+4920	connect and all this stuff.
+4922	I mean, it's- It's so valuable, so
+4923	valuable.
+4924	I've learned so much just watching him try
+4927	different configurations of stuff.
+4930	And I would say the biggest problem where
+4933	we're at right now is it all kind
+4935	of works, but Helipad doesn't.
+4939	You know, that seems to be the big
+4941	stumbling block.
+4942	Everybody wants Helipad.
+4943	Everybody wants to be able to see, you
+4945	know, the Boostergrams.
+4947	The actual payment part seems to work pretty
+4949	well.
+4951	Yeah, and it's going to come down to
+4953	like, you know, there's,
+4965	you still have this divide.
+4967	You still have this divide between the podcasters
+4973	and the listeners, and they have different needs
+4977	for the way that, for their setups.
+4982	And so that's, you know, Nostra Wallet Connect
+4988	would work fine for somebody who is a
+4995	podcaster.
+4997	It's going to be very limiting for somebody
+5000	who is a listener, because now they have
+5003	to go, it's going to require them to
+5004	set up, you know, to set up their
+5007	own wallet.
+5008	They can't just hook in Strike or Cash
+5011	App or anything.
+5012	And then, but see, my thinking is, I'm
+5015	just not, I'm not sure that that's such
+5019	a bad thing anymore.
+5021	I don't know.
+5022	I just need some more time to think
+5023	about it.
+5024	And hope, and, you know, the, because there's
+5030	this thing, like, is it this sort of
+5036	like growth mindset?
+5039	This sort of infatuation with growth.
+5044	And in order to get mass adoption for
+5049	this technology, we're going to have to do
+5054	such and such and such and such.
+5056	Well, I mean, maybe that's not the right
+5059	way to think about it.
+5060	Maybe mass adoption is the same thing that
+5065	is driving AI off the cliff.
+5070	The forever infatuation and obsession with growth and
+5077	getting scale and these sorts of things, maybe.
+5081	That's a very good point.
+5084	You know, it may be okay that it
+5087	just works in a small way.
+5091	That's what I told Tina.
+5093	I said, baby, it's okay that it just
+5095	works in a small way.
+5097	And she married me anyway.
+5099	There we are.
+5100	I've contributed to the show, finally.
+5102	I was waiting for my moment.
+5103	There we go.
+5104	There it is.
+5106	We need to thank some people, Dave, because
+5108	I got to get you out.
+5109	Are you going back to the office?
+5110	Are you going to the backyard to work
+5111	on the truck?
+5112	No, I'm going back to the office.
+5114	Okay.
+5115	Let me thank, we got a few Boostergrams
+5117	during the show.
+5119	Martin Lindeskog, he seems to send the same
+5123	message twice for some reason.
+5126	2222.
+5126	I like friendly competition.
+5128	I've been thinking of getting Frederick Bjorman's app
+5131	podcast chapters.
+5132	Oh, what is this?
+5134	Are you familiar with this, Daniel?
+5136	Frederick?
+5136	Yeah, that's the same one that we were
+5137	talking about.
+5138	Oh, we were talking about?
+5138	Okay.
+5139	He's also a podcaster from Gutenberg, Sweden.
+5142	Daniel J.
+5142	Lewis, look forward to testing pod chapters.
+5144	Well, absolutely.
+5146	1111 from Hey Citizen, testing keys in a
+5149	legacy app from NewLegacyApps.com.
+5151	What is that?
+5155	NewLegacyApps.com.
+5156	All right.
+5157	And we got a 10,000 Satoshi boost
+5160	from Dreb Scott.
+5162	He says, please tell Daniel J.
+5163	Lewis that I'm sorry I never got to
+5165	test this chapters tool.
+5166	He did reach out to me.
+5167	I wanted to test, but with three small
+5169	kids and living my life on the edge
+5171	of getting things done, I just couldn't find
+5172	the time.
+5173	I'm sorry, DJL says, hashtag go podcasting.
+5176	You're forgiven.
+5178	Yes.
+5179	And I think, do we, I don't see
+5182	a delimiter this week.
+5184	Oh yes, I do.
+5185	Yes, I do see a delimiter.
+5186	Yeah, yeah, yeah, it should be in there.
+5187	All right, you're up, Dave.
+5189	Oh, let's see.
+5190	We've got, pardon me.
+5192	I did not have time to print these
+5193	out, but so I'm going to read.
+5194	I'm just going to, I'm reading straight through.
+5196	Go for it.
+5197	No prep, Oistein Berha, $5.
+5200	He's coming up right after the show, right?
+5202	Yes, I believe he is with his mutton
+5205	meat and music.
+5207	Let's see.
+5210	Oh, we got an interesting note.
+5213	Let's see.
+5218	What is that?
+5219	It was from the, can't find it.
+5225	All right, maybe it'll show up here in
+5227	a second.
+5227	Kevin Bay, $5.
+5228	I was looking for a note, because I
+5229	saw your response and I was looking for
+5231	the note.
+5233	Cameron Rose, $25.
+5235	Thank you, Cameron.
+5236	Appreciate that.
+5239	Calaroga Shark Media, LLC sent us $5.
+5244	Nice.
+5244	It says, been meaning to say thanks.
+5246	Thought you'd enjoy my college student homework answers.
+5249	What's a podcast?
+5250	The Revolution Redefined looks at how podcasting began
+5254	and explains how Adam Curry and Dave Weiner
+5256	used RSS feeds to share audio directly with
+5258	listeners.
+5260	What's it called?
+5264	Revolution Redefined, I think is what he said.
+5266	All right, I like that.
+5268	Mark Graham, $1.
+5269	Thank you, Mark.
+5270	New Media, that's Martin Linda Skog, $1.
+5273	Oh, Brendan over at PodPage, I think they
+5274	changed their name, right?
+5276	$25.
+5278	Isn't PodPage changing their name?
+5279	It was Podcast Page changed their name so
+5282	that thankfully it's no longer confused with PodPage.
+5286	Oh, good, okay.
+5287	Thank you, Daniel.
+5288	Andrew Grumet, look at him.
+5290	Oh, Andrew, hello, Andrew Grumet.
+5292	It was there in the beginning, no small
+5294	contributor.
+5295	$100.
+5297	Whoa!
+5298	Paula, shot caller, 20 inch blades, only in
+5302	Paula.
+5302	Thank you, brother.
+5304	Does he have a note?
+5305	Yeah, he says, I can't say it enough.
+5306	Thank you guys for the index.
+5308	Oh, wow.
+5309	You're welcome, Andrew.
+5311	Thank you, brother.
+5312	Joseph Maraca, $5.
+5313	Thank you, Joseph.
+5314	Oh, Oscar Mary, speak of the devil, $200.
+5316	Paula, shot caller, 20 inch blades, only in
+5321	Paula.
+5321	Paula Ballas, nice.
+5323	Thank you all so much.
+5325	Basil Phillip, $25.
+5327	Thank you, Basil.
+5328	Lauren Ball, $24.20, always.
+5333	PodVerse, that's Mitch and Creon over there, 50
+5335	bucks.
+5335	Still waiting on PodVerse next gen.
+5339	Christopher Harbarick is $10.
+5342	Thank you, Christopher.
+5343	Mitch Downey's $10.
+5345	And that's it.
+5347	What happened to that?
+5350	Because the use case.
+5352	What are you talking about?
+5353	I'm not sure I understand what you're referring
+5356	to here.
+5358	Let me see if I can find this
+5360	email.
+5360	Because we got an email newest.
+5365	Got an email from somebody saying how they
+5368	had used the API in a really cool
+5371	way.
+5372	Anyway, that's like my little fly.
+5373	Mm-hmm.
+5377	Oh, oh, wait, that was the, wasn't that
+5380	the blind, the accessibility people?
+5385	Yeah, yeah, yeah, yeah, yeah.
+5386	Yeah, do you remember the details of that
+5388	note?
+5389	It was more like, I think they create,
+5394	they have a service for apps that have
+5397	accessibility features.
+5399	And so they said it was impossible to
+5401	get, it was just a nice note.
+5403	I mean, it was basically just thanking us,
+5405	I think for, this is a few weeks
+5408	back.
+5408	Oh, here it is, I got it, I
+5409	found it.
+5409	You found it?
+5410	Okay, good.
+5410	Yeah, it said, we just discovered your service
+5413	and love it.
+5414	We are a small Australian company that develops
+5417	products for the blind and print disabled.
+5419	Our main product is a repurposed mobile phone,
+5421	which the user talks to and gains access
+5424	to.
+5424	Right, that's what it was, yeah.
+5426	We provide the same, let's see, content on
+5429	Alexa speakers.
+5431	We have our own small podcast database, which
+5432	we find hard to maintain.
+5434	We want to use your service, don't want
+5435	to put too much load.
+5435	Yeah, so they're using that for, using us
+5438	for that and that's great.
+5440	Love that.
+5440	I love it.
+5440	Love it.
+5441	Yeah, that's fantastic.
+5442	Did they send a donation?
+5443	No, they forgot that part, didn't they?
+5447	Nice, nice guys.
+5449	Enjoy the service while it lasts.
+5454	Let's see, Anonymous 5170, that's true fan support.
+5460	Oh, thank you.
+5461	From Anonymous, got a few of those.
+5464	Bruce the Ugly Whacking Duck sent 2222 through
+5469	Podcast Guru, crazy ride on this episode from
+5471	Hackers to Keysend.
+5473	Glad you gave us a chance to hear
+5474	it.
+5474	It might be a Hackers 2 movie, 73.
+5477	Yeah, I don't think so, I don't think
+5479	so.
+5480	Oh, look at Dave Jackson, 9861.
+5483	That's your partner in crime, Daniel.
+5484	Nice.
+5485	Nice.
+5486	Through Castamatic, he says 9861, the Todd Cochran
+5491	boost.
+5494	9861.
+5495	He died on September 9th and he was
+5497	61 years old.
+5499	9861, forever now enshrined as the Todd boost.
+5504	The Todd boost.
+5506	Rest in peace, brother.
+5509	Oh, Eric from R Podcasting, 190,000 sats.
+5514	What?
+5515	Baller, shot caller, 20 inch blades on the
+5518	Impala.
+5520	Whoa, that's a nice boost.
+5523	Yikes, hi Dave and Adam.
+5525	I know I've been away for most of
+5526	the year but I'm slowly catching back up.
+5528	This might be the first ever apology boost.
+5531	Not the first.
+5532	Because I saw that the GitHub actions to
+5535	update the fancy podcast index database dashboard analysis
+5538	had stopped running for almost a year.
+5540	Ah, yes.
+5543	GitHub disables scheduled actions if there are no
+5545	commits for more than 60 days.
+5546	You know, I did not know that.
+5548	Oh, really?
+5549	Oh, that's important information.
+5551	It's good to know.
+5553	I fixed that problem and now the dashboard
+5555	has the latest and greatest analyses of duplicates
+5558	and quality checks.
+5559	I'll do a better job of monitoring, I
+5560	promise.
+5561	And go podcasting.
+5562	Okay, let's go podcasting.
+5563	Go podcasting!
+5564	I'm going to throw out a go podcasting
+5566	for that boost.
+5568	Apology boosts are the best, aren't they?
+5570	All right, I just popped this, yes.
+5572	I just popped this link from Eric over
+5574	here into the boardroom.
+5576	Thank you, brother.
+5578	Appreciate that, man.
+5579	Oh, Kyron from Mirimodal's podcast.
+5581	One, one, one, one.
+5582	Essential Richard from Fountain.
+5583	He says, we demand change around here.
+5585	More beers in the boardroom.
+5586	Okay.
+5588	There's your change.
+5588	No beer in the boardroom allowed, Kyron.
+5590	No, no, no.
+5591	Donuts, yes.
+5592	Beer, no.
+5593	Yep.
+5594	And whiskey.
+5595	And the Delimiter Comma Street Blogger, 12,450
+5600	sats through Fountain.
+5602	He says, howdy, Dave and Adam.
+5605	Bros, for your female partners, girlfriends, hoes, or
+5610	wives, I want to recommend a podcast by
+5614	ladies for ladies entitled Dumpster Fire with Bridget
+5619	Fatesi.
+5620	Quote, Dumpster Fire is a satirical show created
+5625	and hosted by comedian Bridget Fatesi.
+5628	I think it's Fatasi.
+5629	Fatasi.
+5631	That takes a look at the weekend news,
+5633	current events, and politics.
+5636	We make burgers out of your sacred cows.
+5638	Delicious, end quote.
+5640	It's in podcastindex.org or www.fatasi.com.
+5645	Yo, CSB, the maker of www.trading.toys.
+5648	It's like the third person who's reached out
+5650	to me about her.
+5652	Someone connected me with her.
+5653	Someone from Glenn Beck Show said, I know
+5658	I'm overstepping social boundaries, but Bridget's a sister
+5662	in Christ and I want to make sure
+5664	you people in the hill country knew about
+5666	each other.
+5666	She lives in Georgetown, which is 100 miles
+5669	away, but okay.
+5670	And then someone else sent me a note
+5672	and said you should listen to what Bridget's
+5673	doing and help her with value for value.
+5676	So three times, after three times, that means
+5679	I got to do something about it.
+5680	So I'll reach out to her.
+5682	Speaking of hill country, I found out the
+5686	other day my wife teaches at a Charlotte
+5690	Mason school, if you know anything about the
+5692	Charlotte Mason method.
+5695	Yeah, but there's a name here, not heritage.
+5699	Ambleside.
+5700	Ambleside, yes, Ambleside, right down the road here.
+5703	That's right, yep.
+5704	And so my wife started teaching Charlotte Mason
+5706	educational philosophy, gosh, many, many years ago.
+5712	Probably 15 years ago.
+5713	And she used Ambleside online to do that
+5716	with our kids.
+5717	And now she teaches at a Charlotte Mason
+5718	school.
+5719	And I just found out the other day
+5720	that the people that created Ambleside online are
+5722	from Fredericksburg.
+5724	Yeah, that's right.
+5725	I've actually, they, this is one of those,
+5729	hey, come on, talk to us about podcasting,
+5731	because some people go to church, they work
+5734	at Ambleside.
+5735	So I met with everybody, met with all
+5736	the leadership.
+5737	And after that, pretty much crickets, that's how
+5740	it goes.
+5741	Yeah, but that's a huge, I mean, that's
+5743	a huge deal in that world.
+5745	Well, we're trying to get them to do
+5749	some podcasting.
+5749	What always happens is the leadership wants to
+5754	do the podcast.
+5754	I'm like, but you need to get the
+5756	kids podcasting.
+5757	You don't understand this is where it needs
+5759	to go.
+5759	I'm like, oh, yeah, I don't really think
+5761	about that.
+5764	Hey, Daniel J.
+5765	Lewis, man, thank you so much for being
+5767	here.
+5767	Congratulations with the launch of PodChapters.
+5770	I'll be praying for Apple to add chapters
+5772	soon, and that it'll fit seamlessly, that they
+5775	should create an API for all your stuff
+5776	to just flow in.
+5778	Thank you.
+5781	And thank you to everybody who supported us
+5783	here at podcastindex.org.
+5785	Of course, everything goes into the fund to
+5787	keep the index running.
+5789	You can go to podcastindex.org down at
+5791	the bottom.
+5791	There's a big red donut button.
+5793	There's a donut button there.
+5795	A big red, I want that button.
+5797	Hit the donut button and support us with
+5800	your Fiat fund coupons.
+5801	We always accept the boost, of course.
+5802	We really appreciate that.
+5804	Brother Dave, I hope you feel better.
+5807	And you take it easy on the truck
+5810	in the backyard.
+5811	Don't be so mad at the AI.
+5814	Daniel, any parting words?
+5816	Go podcasting.
+5817	There it is, everybody.
+5818	Thank you very much, boardroom.
+5820	Cotton Gin, please give me the link to
+5822	the recording so we can actually post this.
+5824	We'll see you next week here on Podcasting
+5826	2.0. Podcasts
+5841	are cool.
+5842	Do you hope you have been listening to
+5844	Podcasting 2.0?
+5846	Visit podcastindex.org for more information.
+5850	Go podcasting!
+5852	Player A enters the game.

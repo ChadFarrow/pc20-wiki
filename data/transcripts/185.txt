@@ -1,0 +1,1809 @@
+0	Adam Curry: podcasting cuboid over July 1994 Episode 185
+8	everybody we are back once again oh the saddle feels so good
+12	welcome to podcast. We are the official boardroom boy no
+18	family, everything is going on in podcasts and you want to know
+21	what the future is it starts right here we are the only
+24	boardroom that thumbs its nose at the blue screen of death. I'm
+28	Adam curry here in the heart of the Texas Hill Country and in
+31	Alabama the man who can reboot four domain controllers with one
+34	hand tied behind his back to a friend on the other end Mr.
+39	Jones
+42	Dave Jones: international blistering day.
+45	Adam Curry: Everybody blue screen
+49	Dave Jones: you never saw like as a as a corporation or
+53	organization or anything you never want to have like a date
+57	named after you like seven nights?
+60	Adam Curry: Yeah. Yeah, no, you don't like Jan
+64	Dave Jones: six? You just don't ever want well, do
+67	Adam Curry: you want me just call it J 19. Make it easy.
+69	That's it's easy to remember J 19. Day everybody. And the thing
+73	that bothers me and I do want because you are a systems
+75	administrator, amongst many other important jobs. The thing
+80	that bothers me so much is when I see reporting that says, You
+85	know what, what am I going to say?
+87	Dave Jones: Glitch?
+87	Adam Curry: Blame it on the glitch? Just working 10 minutes,
+92	it wasn't that hard to blame it
+93	Unknown: on the glitch. Yeah, well, reporters don't care. This
+96	kind of day. Here's a song I
+99	Adam Curry: was going to keep going with intro
+102	Unknown: to the song idea. Find this song. It's Michael Jackson,
+105	blame it on the boogie to blame it on the glitch. You can think
+110	that I think it can be done
+113	Adam Curry: it could be blamed on the button.
+115	Unknown: Now that sounds too similar. I can hear three rights
+119	alerts to get the rhymes right. I
+120	Adam Curry: can hear Chris popping the beer as we speak.
+123	Don't
+124	Unknown: blame it on the bass. Don't blame it on the blame
+130	around the glitch.
+151	Adam Curry: You call this a glitch. All right, I got my
+154	system
+156	Dave Jones: glitch glitch listings, where you're where
+160	your screen blinks and you're like, Wait,
+162	Adam Curry: what is going on? I know that is that
+165	Dave Jones: is a glitch, a a global a global event that
+170	brings down a banking system. And airlines. That
+174	Adam Curry: is not a good it's not a glitch. No. And you know,
+176	so I woke up this morning. I think well, I saw your message
+182	first. But then I looked at my daughter who works in healthcare
+186	in the Netherlands at Holland man Schiphol Airport KLM they
+191	are they part of Microsoft? I mean, are they an annex of
+195	Microsoft? Everything was she could make phone calls, you
+199	know, everything was completely hosed. And then of course, I see
+202	all the messages. And and at that point, I didn't know what
+206	it was. And you're like, Well, probably not going to be a show
+208	today. And like, oh, no, no, we can go three weeks without a
+213	board meeting. No,
+215	Dave Jones: it was so like ag I started reading No, I was I was
+221	rotten, the toilet scroller this morning as one does about 615.
+227	And I start seeing these reports. And I'm like, Ha, what
+233	is this? I start looking at my oh, gosh, that sounds bad. And
+236	then there's like, it's related to crowd a bad CrowdStrike
+240	update. And I was like, Oh, crap. Yeah. So I flip over to my
+244	email and start trying to interpret, start trying to
+248	interpret what I'm seeing in corporate email to what is know
+254	about what's happening in the news. And I'm like, Oh, this is
+257	bad. Yeah. And it turns out like a lot of times, so think, so
+262	here's the, for people who are not like, fully understanding
+267	what the tech is here. I mean, CrowdStrike is what they call a
+272	Adam Curry: piece of crap. Sorry, that just slipped out. I
+277	didn't mean that.
+278	Dave Jones: Grandpa CrowdStrike is an in endpoint security
+283	platform. So you it's, it's what you used to call antivirus. But
+290	it's evolved anti viruses evolved in the corporate world
+294	to be way more comprehensive than this. So it's doing it's
+298	doing so many things that Steve is doing heuristics. It's doing
+303	traditional signature scans. It's looking for behaviors that
+308	are that are funky. So like, for instance, if I open an Excel
+313	spreadsheet in that Excel spreadsheet and goes out and
+317	downloads a binary file off the internet and attempts to run it,
+321	yeah, that's odd behavior. Cloud
+322	Adam Curry: strike will go stop, stop, stop. That's not cool.
+325	Dave Jones: Yeah, right. So that is highly suspicious behavior.
+328	So it looks it has all these heuristics in in it, that, that
+333	looks for these sorts of things. And one of the so it is
+339	constantly getting just like antivirus is constantly getting
+342	fed these new signatures, signature files, to update its
+346	itself to look to see the latest problems. And to recognize them
+351	is this happens with antivirus, we about 10 years ago, the
+357	company I was with had was at the time was using Trend Micro
+362	Trend Micro had is maybe 1012 years ago, Trend Micro
+368	misinterpret pushed out a signature update that
+371	misidentified remote, a remote assistance software that we were
+377	using as a virus. So where you know where you can like take
+381	over somebody's screen and help them out remotely? Yeah. So it
+385	uninstalled it from everybody's machine.
+387	Adam Curry: So it has that permission as well to just
+390	uninstall stuff. Get
+391	Dave Jones: delete files quarantine entire machines. Oh,
+394	it's
+394	Adam Curry: Wow, that's,
+395	Dave Jones: that's very powerful.
+396	Adam Curry: Very powerful. Yeah.
+398	Dave Jones: So what like one thing you can do? There's,
+401	there's settings within a lot. So the two primary competitors
+405	are CrowdStrike and carbon black, right? Like, at the top
+408	level, when we're talking about, you know, enterprise, high value
+414	targets. Yeah, you're usually either gonna find CrowdStrike or
+417	carbon black CrowdStrike is by far the most dominant now, it
+421	used to be the other way around. So those are those are your two
+425	biggies. So crap that both of those products will do things
+430	like if it notices suspicious network activity, it will shut
+436	down the network cards on the on the machine to only allow to
+441	allow nothing but the CrowdStrike agent to communicate
+445	with it. So that you as the administrator could like
+448	remotely go in communicating with the CrowdStrike agent on
+452	that machine. But
+453	Adam Curry: it has to actually have been booted up. Yes. In
+456	order for that to take place.
+458	Dave Jones: Yes. Yeah. So that so what happened? Was they
+461	pushed out? Yeah, in this update. So CrowdStrike, that
+467	CrowdStrike? Agent?
+467	Adam Curry: Can I ask? Can I ask you a question? Because this is
+470	highly fascinating to me. First of all, don't blame DNS,
+474	everybody. For this one time. It wasn't DNS, sec. Is it typical
+479	for any company? And maybe specifically CrowdStrike to push
+484	an update on a Friday morning?
+488	Dave Jones: These guys push updates 12. Okay. But look, if
+492	they if they noticed something, they're constantly pushing
+495	updates, I mean, sometimes hourly, okay. So I don't know
+500	exactly what kind of update this was. I don't know if this was a
+504	like a virus signature update. I'm not sure yet. But what the
+509	CrowdStrike agent is, and this applies to, you know, carbon
+513	black and others as well, it is a kernel driver as a kernel
+516	driver. It's just like a video card driver or anything else
+519	like it has access to ring zero. Okay,
+523	Adam Curry: so this is why you can boot up in safe mode because
+525	it bypasses all those kinds of add ons. Right.
+530	Dave Jones: And it's I think, if I'm not mistaken, the part of it
+533	they dot that didn't cause the problem was the part of it.
+537	That's the, what they call a network filter driver. And that,
+542	because if you if you boot up in safe mode at work, if you boot
+544	up in Safe Mode with networking, it doesn't it will still cry,
+548	right? So what you saw what everybody has to do in this
+553	applies to everybody across the globe, if you're affected by
+556	this, every machine that has this problem, you're going to
+562	have to walk to that machine, physically with with either a
+566	flat, Windows bootable flash drive, or just go to the
+570	machine. If it's got a recovery partition and boot into that,
+574	you're going to have to drop to a command line and remove the
+578	latest update file, then reboot the machine. So that's and
+583	that's that's if the that's if the disk is not BitLocker
+588	encrypted if it's BitLocker.
+591	Adam Curry: I've lived in BitLocker encrypted for a couple
+594	of like a two weeks so I'm switching just hearing about it.
+598	Because
+599	Dave Jones: what happened If the if the C drive is BitLocker
+603	encrypted is that which most, if you're doing your job writing
+608	corporate it is, is you you boot up, go into the recovery part
+614	into the recovery tools, go to the command line. And as soon as
+618	it tries to drop into a command line to unlock the C drive, it's
+620	going to come up and ask for a recovery key, which you have to
+623	go get from Microsoft, which you have to either know, well, in a
+627	corporate invite, you're gonna have to get it out of Active
+628	Directory. Yeah. So you're gonna have to go into Active
+631	Directory, find that machine print the Recovery Code, which
+634	is a grouping, like and then
+636	Adam Curry: type it in a million times. You never stop typing. I
+641	know, like, 40883 I know some of those by heart now. Yeah,
+645	Dave Jones: it's it's eight groups of six numbers. Yes, it's
+648	48 numbers. So you type all this stuff on a stuff out, and then
+653	you drop into command line, then you have to go and delete the
+656	file and reboot. You're gonna have to do this, like here. I
+660	heard this morning UAB, the University of
+663	Adam Curry: Birmingham, oh, they must have had hundreds of
+665	machines.
+667	Dave Jones: I mean, no, 10s of 1000s of machines is across
+670	their entire network across the entire college is down. Oh, no.
+674	They had they're the biggest employer in the state. They
+676	have, like 100,000 employees.
+679	Adam Curry: And so every single one of those individual machines
+681	that accesses through the domain controller got this update, is
+685	that how it works? Every
+687	Dave Jones: every agent of CrowdStrike is an independent
+690	entity. So all communicate,
+692	Adam Curry: here's so I so I posted some stuff. And the first
+695	thing I posted was be kind to your IT administrator today. How
+700	were the people in your organization? Kind? Go? Yeah,
+704	they
+704	Dave Jones: were okay. Very cool. Oh, yeah. They're great.
+706	Yeah,
+707	Adam Curry: it was what like, you walk around with like, you
+709	know, like holsters and any Bandito crossbelt of ammo and
+715	stuff. So people have been trained to be nice to you.
+718	Dave Jones: Leave me alone. When it get if they if they see me
+722	walking around with a cup of coffee, they know it's bad.
+724	Because that's like, you know, I need emotional support coffee.
+728	Adam Curry: That Has this ever happened with CrowdStrike?
+731	Dave Jones: No, not that I've not aware of any of this ever
+735	happening before. It happens. It happens with other vendors. Like
+739	Like I mentioned, Lee like 10 or 12 years ago. Yeah, Trend Micro
+742	uninstalled all of our remote assistance software,
+744	Adam Curry: you but it's still updated, still booted up, right?
+748	Dave Jones: It booted up. But there's been other ones like
+749	Kaspersky had a problem a long time ago, where they blue
+752	screened a bunch of computer Russians, it know it, it's
+756	unknown, whenever, whenever you have kernel level, whenever you
+761	have kernel level access, if you do something. So if you if
+766	you're a driver, and you do something that causes a page
+772	fault, that machine is going to crash, I
+774	Adam Curry: just thought of a song they call me CrowdStrike
+776	driver. Road and I'm gone. What's my controller? I wonder
+783	where your domain controllers go doo doo doo doo doo. Yeah, I'm
+786	Dave Jones: working. That's the other thing is that, you know,
+790	by design, things like CrowdStrike, carbon black, these
+794	these endpoint security tools. They're made to look for
+798	suspicious behavior on machines, right? So where where you want
+802	these things to live? is in your most critical servers first?
+807	Yeah. So you're gonna have, you're always going to have this
+809	stuff on your domain controllers on remote access, or like a
+815	remote desktop, windows, remote desktop servers, all the stuff
+818	that's critical points of entry, or authentication, you're gonna
+823	have CrowdStrike on that thing, so that when, when they eff up
+826	like this is going to take out all your critical stuff. First,
+830	all your domain controllers are screwed. You know, it's bad.
+833	Adam Curry: It's bad. So my, my general feeling about this,
+840	because this the timing of this is interesting. We had the, the
+844	end of the I don't like Christ. CrowdStrike is a company that
+848	had been involved in all kinds of political, even one of the
+851	founders, you know, think tanks and political based activity, I
+855	could go way into it way deep back to the DNC server hack. And
+860	there's a lot of stuff that they've been involved in that
+862	that I just don't like. Yeah. And of course, that's my other
+866	job. So when I see this, and I was kind of thinking, you know,
+870	we had Trump to his his final acceptance speech last night,
+875	think, well, well, how can they disrupt the news? Because
+877	obviously, it was going to be the top story. You know, he did
+883	some interesting things. I think we're good. You know, the news
+888	media, of course, like, oh, with meandering, rambling, whatever,
+891	fine. But I was wondering how would they detract from it
+895	because you know, we just had an assassination attempt on a
+897	former president on a presidential candidate The news
+900	cycle is kind of stuck in this. And I thought since you know,
+904	President Biden, you know, they changed the the DNC rules, well,
+908	we're not going to virtually Crown Him, you know, we're gonna
+911	wait. And then he went home with COVID, after saying the only
+914	reason I'll resign is if I have some medical condition. I'm
+917	like, I'll be perfect. You know, Biden resigns, that'll that'll
+921	change the new cycle. And then this happened. And it was,
+925	although annoying the fix, I mean, I can read the
+928	instructions. Anybody can fix this, like, oh, I can get the
+932	instructions on my phone, I can figure out how to boot in safe
+935	mode, I can go into this directory. And I could probably
+938	fix it for my friends and my family. So I'm looking at this
+942	like, wow, this is what a great distraction this was and
+944	relatively easy to recover from. And then I'm looking a little
+948	bit and I'm looking at some of the material. And here's some
+953	marketing. Cybersecurity in elections security Resource
+958	Center, cybersecurity is a fundamental pillar of election
+961	security. The election community and their partners in government
+966	NGOs, and the private sector must remain vigilant in the face
+969	of potential threats. This is one of the crowd strikes, main
+972	lines of business is voting machines.
+975	Dave Jones: Oh, really? Yeah. I didn't know that.
+978	Adam Curry: Now. They're not these machines are supposedly
+980	not supposed to be connected to anything. But it just seems like
+984	wow, what a what a fun trial run this was
+987	Dave Jones: this right? If it's if it's running the CrowdStrike
+989	agent, it would have to be connected to something. Well, I
+993	mean, make any sense? Oh,
+994	Adam Curry: I mean, please do let's let's not kill each other,
+997	let's not kill each other about the connectedness of these
+999	voting machines. Right? So I'm, I don't know, that concerns me a
+1003	little bit, but at least we could get back from this. Okay.
+1006	And although there will be a lot of lawsuits, and there's going
+1009	to be all kinds of nonsense for CrowdStrike is not not a good
+1012	day for those guys.
+1014	Dave Jones: Well, there there should, there should be a way to
+1020	win. That's always been a point of contention with within user
+1025	license agreements. You can't just it's you can't just put
+1030	anything into a lender user license agreement and have it be
+1033	legally enforceable. Right. So I mean, like, if I'm driving down
+1036	the street, in a brand new Ford F 150. And the and the brakes,
+1042	you know, fall off and I, you know, run off the road and get
+1047	into a horrible accident. Ford can't just say, Don't look at
+1051	us. You bought it?
+1053	Adam Curry: Well, like just the fact you're on the road, didn't
+1056	you see the EULA at the beginning of the road, and you
+1059	click the box automatically as you drove by.
+1062	Dave Jones: But somehow the software companies think they
+1064	can just put, they can put into their EULA? Hey, if anything
+1068	happens to you, because of our software, we're not responding
+1071	on our problem. That is, just because you write it into an end
+1076	user license agreement doesn't mean that that that's true. I
+1079	mean, it has still has to be legal. Yeah. You know, and I
+1083	think, no, I think all the software companies they claim
+1087	just blanket, just blanket, not our problem. Anything. Yeah, but
+1092	I just, that's yet to be really challenged in court very hard.
+1096	To my knowledge. So
+1098	Adam Curry: now did you have to speak to your CrowdStrike
+1101	representative, your team member
+1104	Dave Jones: now, we're small potatoes to them, they, they're
+1107	too busy. Now, I did talk to a vendor this morning. That we
+1114	that we use to for like procurement and that kind of
+1117	thing. Yeah. And he said, this, this is a big outfit with you
+1122	know, I don't know, this guy to have 40,000 employees about 50%
+1129	or work from home. And he said every single one of them is
+1133	affected
+1134	Adam Curry: by my workstation. So they can't even log
+1138	Dave Jones: how do you how do you send your IT people out to
+1141	somebody's house? I mean, it this is a disaster. Now do you
+1144	have to complete this in
+1145	Adam Curry: general so this is you know, obviously a very
+1147	centralized issue. You know, it shows you how vulnerable
+1154	everything really is. Are you going to make any other
+1156	decisions in your infrastructure there based upon what happened
+1160	here? Days like I've been here 20 years screw it, they can
+1165	pounce and whatever.
+1168	Dave Jones: Honestly, no, I think those I think make like
+1171	changing things. A lot of times after events like this, Charlie
+1176	buys he's just much yeah, this is just my general take on
+1179	things usually is that that's never it's always it's kind of
+1185	awake and less. So so if you're if you're a company that uses
+1189	CrowdStrike and and you find out that what caused this was a
+1194	deliberate
+1197	Adam Curry: we'll find that agents Yeah. Yeah,
+1200	Dave Jones: if it was negligence, like pure
+1202	negligence, like, and that's the question I have is. So if you're
+1207	CrowdStrike? Don't you have testings machine? Yeah, that's
+1211	you have 1000 virtual machines that spin up and test every day
+1215	before it goes out. Do you think this possibly happen? Yeah. I
+1219	mean, this was a note, this was a no brainer. So like, what
+1223	happened is, if your computer was, was up and running, with
+1228	the, if your computer was up and running between roughly
+1233	midnight, and about three o'clock this morning, 3am this
+1239	morning, your computer as soon as it got the minute, it got
+1244	this update in a blue screen? Right? It was toast, right?
+1247	Like, how is that not caught? During the during test? I mean,
+1254	you were talking about we're talking about millions of
+1256	computers here. This was not hands of millions. Yes. I don't,
+1261	I cannot understand how this guy through testing. So if it turns
+1265	out that this was just pure negligence. Yeah. And a part of
+1269	you says, Okay, well, you know, maybe you started looking for a
+1271	change. But then the other part of you says, once you're tested
+1274	by fire, you get your act together. And also, you know,
+1279	CrowdStrike, to my knowledge has never had a problem when, when
+1282	other companies have, you know, this is if you run if you run an
+1287	endpoint security products, endpoint security software
+1290	platform, this right here, what happened today, this is what
+1295	keeps you up at night, because it's so easy to do. If you mess
+1299	up, you've just hosed millions of machines all at once. Yeah.
+1303	So it's like, it's not it's a risk that you're getting when
+1307	you as soon as you install any product on your machine that has
+1312	a driver component and is connected to the internet and
+1314	gets automatic updates. You are accepting that risk into your
+1319	machine? So I mean, it's it's hard to say because, because
+1325	once you know, one time in the past, when we had when we had
+1330	that Trend Micro problem, you know, at a previous company, we
+1335	did switch, we switched to a different result. We're now a
+1338	different vendor. And then But then Trend Micro, they never had
+1341	that problem again. So you know, it's just, it's one of those
+1345	things. I mean, I think I think anytime you This is it doesn't
+1348	matter which software you choose. This is the risk you
+1351	face across the board. It could be it could be carbon black
+1354	tomorrow, it could be Kaspersky a couple of months from now, who
+1358	knows?
+1359	Adam Curry: So of course, the Linux boys are all smiling. Huh?
+1364	Dave Jones: The other all smug.
+1366	Adam Curry: Mac boys. Think different.
+1371	Dave Jones: Yeah, it's amazing. Like, it's amazing that that,
+1376	that Linux has not had more instances like this. We've come
+1383	close with like Heartbleed and ShellShock. And some of these
+1388	some of these issues, but with in with the one was it like a
+1391	month or two ago? Where they almost got that xe library?
+1396	Where they would backdoor everybody's Yeah,
+1400	Adam Curry: yeah,
+1400	Dave Jones: that's that was
+1401	Adam Curry: the estimate that was that the SSH thing? This
+1404	Dave Jones: was? Yeah, this was going to put a backdoor in
+1407	everybody's SSH server. Right. Yeah. So it's amazing to me
+1410	that, that Linux has not had more issues that this hasn't
+1415	happened. Yeah. Yeah. You
+1416	Adam Curry: know, my buddy, the oil baron he had he had to have
+1418	people up in the middle of the night because all of his SCADA
+1421	controllers are on Windows. And that controls you know, like oil
+1426	flow, minor things, minor things.
+1429	Dave Jones: I mean, imagine if you're in an organization that
+1432	has that has 25 or 30,000 workstations. Yeah, spread out
+1438	across the big geographic canvas or region. You're gonna have to
+1443	deputize you know, temporary IT people and teach them how to
+1446	cool
+1447	Adam Curry: does that come with a badge?
+1448	Unknown: It will store
+1452	Adam Curry: deputy IT manager here. I'm here to help ma'am.
+1457	Now the CEO call you the CEO. Yeah, no. Oh, really? He doesn't
+1462	call I'm just checking with you.
+1464	Dave Jones: Oh, you mean a vargr? Yeah, we talked Yeah, we
+1467	talked. Yeah.
+1468	Adam Curry: How does that conversation go?
+1470	Dave Jones: No, that's fine. It's fine. I mean, because, you
+1474	know, we like a thing that I've always had. And this has been
+1479	everywhere. I've worked a thing that sort of a principle I've
+1485	always had is every bit every employee turn their computer off
+1490	at night. Right. That's always been my because for a lot of
+1496	different reasons. Number one is If you have power glitches or
+1502	like glitch outs, you know, you have power surges or brownouts
+1507	or things like that. I mean, if the computer is off, you know,
+1510	anything to worry about, if you have, if you have some, if you
+1514	ever had some sort of intrusion or cyber event, if everything's
+1518	off, that just lowers your blast radius, right? There's so many
+1522	reasons to keep your computer turned off, when you're not
+1526	actively working. And because of that, that limits the blast
+1531	radius of things like this, you know, so you and you end up if,
+1534	if only five people in an organization of 300 have their
+1539	computers left their computers on last night? Well, then you
+1541	only got five computers to visit and right, you're fine. So I
+1545	think
+1545	Adam Curry: so you just had to tell people don't boot up this
+1547	morning. Was that basically that don't start your computer?
+1550	Dave Jones: No, no, if you had your computer off last night,
+1553	you were fine. You never you could boot right out and go to
+1555	work. You never had an issue. Because Because when CrowdStrike
+1559	pushed that update out, started seeing
+1562	Adam Curry: the hat and then returning to retract that, yeah,
+1565	roll it back.
+1565	Dave Jones: Got it gotta go. If you turn your computer off at
+1567	five o'clock in the afternoon and left the office yesterday,
+1571	thing came in at eight o'clock this morning and booted it up.
+1573	You hadn't you never had any?
+1575	Adam Curry: Because I'm a guy who always leaves his computer
+1578	on always, bright day night. And so you know, should I also
+1583	adhere to the sage advice?
+1586	Dave Jones: Well, that that advice is applies to people who
+1590	have no who have no services running on their machine that
+1594	they need to access, which is 99% of all corporate rise,
+1598	right? The 1% of people like in in in system admin, or things
+1604	like that, or home computers that this applies to it, you
+1608	know that that doesn't apply. But you know, there's I leave a
+1612	leave of generally about four different machines. I've bounced
+1616	between at least two of them own because they have things I need.
+1620	And like, like this bill podcast really gets run in my notes. So
+1624	yeah, but but if you don't have a reason to Yeah, I think it's
+1627	always a good idea to keep it off. Because you don't you
+1630	don't. It could be a Windows, the windows. So Windows Defender
+1634	had this problem a few years ago. Oh, really started breaking
+1638	machines with a bad with a bad antivirus update. And so I mean,
+1642	it could be Windows itself that causes
+1645	Adam Curry: that's always my fear. Yeah,
+1647	Dave Jones: yeah, that's not that's a real thing that has
+1650	happened. So just in general, in a corporate environment. I have
+1655	seen so many issues of so many catastrophes averted by
+1660	enforcing a corporate policy of powering off your machines.
+1665	Yeah, well, did anyone did anyone give you any button
+1667	anytime?
+1667	Adam Curry: Did anyone give you any gifts or come in and say
+1669	Hey, thanks, Dave.
+1672	Dave Jones: No, I got a bunch of rough morning, huh?
+1679	Adam Curry: And that's almost like, hey, jiggle the handle
+1681	full. rough morning helps.
+1685	Dave Jones: You also in you know where, when? Anytime. Something
+1689	like this happens. You always get a few, like the stragglers
+1692	that get in at like a you know, 10am Hey, what's going on, man?
+1695	Yeah, they're like, hey, some seeds be wrong with my computer.
+1698	Oh, yeah. Really? Hello,
+1701	Adam Curry: Captain Obvious. Welcome to the party. Yeah,
+1704	well, I'm glad glad it wasn't too bad. Because I was like, oh,
+1707	man, if this is really bad day, it's gonna be working all
+1709	weekend.
+1711	Dave Jones: It's Friday. Yeah, they have a feel for my brothers
+1717	and sisters and that T out there that are going to be working for
+1719	days. Yeah, fix this. Yeah. Yeah. I mean, think about the
+1723	and think about you like, like here at UAB Hospital in
+1726	Birmingham. Think about the the MRI machines. Yeah. Oh, man.
+1733	It's a nightmare. There's gonna be so much fallout. Yeah,
+1737	Adam Curry: well change the news cycle. Good job, everybody.
+1740	That's all we really needed. Just change the new cycle.
+1743	That's how we roll corporate America stretch. Yes. Right of
+1747	the week. That's right. And of course this coming to you from
+1749	the company who we know very well here podcasting. 2.0 This
+1753	is their, this their corporate sound. That was there. That was
+1757	their cue map their pew pew map. That's
+1759	Dave Jones: right. That was for a blue.
+1764	Adam Curry: That was that was CrowdStrike.
+1766	Dave Jones: Yeah, but what what would they were tracking
+1768	something? No,
+1769	Adam Curry: it was it was just like, look at the threat map.
+1771	You know, this is every single thing you see is is an attack.
+1776	Remember that stupid map.
+1777	Dave Jones: But But yeah, but that map they made that map in
+1781	to give real time tracking of some
+1785	Adam Curry: of bullcrap
+1788	Dave Jones: was going across the globe.
+1790	Adam Curry: Let me see if I can find it. Let me see. It was like
+1794	Dave Jones: it was like bullet bock. What was the name of that
+1797	thing that hit Europe so hard a few years ago. Here's
+1800	Adam Curry: a live cyber threat map I think they took out a pew
+1806	pew though it took out the pew pew
+1809	Dave Jones: it was it was poor man's worm. It was that worm
+1813	that was going through those hidden Europe like crazy.
+1818	Awesome, eternal blue. No, that's not right.
+1825	Adam Curry: The threat map is pretty introverted. Too bad that
+1827	took out the pews I got to provide my own here. There we
+1829	go. I feel better no no looking.
+1832	Dave Jones: They still have it they still run it.
+1833	Adam Curry: Yeah threat map is it checkpoint? Was that
+1836	checkpoint? Who had that? His checkpoint from CrowdStrike I
+1839	can't remember now.
+1841	Dave Jones: Anyway, I'm trying to it's killing me that I can't
+1845	remember the name of that thing. Because there was like a whole
+1847	bunch of okay, so you remember this it when it was like this
+1850	worm named
+1852	Adam Curry: Noah storm warm storm worm. I'm just reading
+1855	from from the boardroom.
+1858	Dave Jones: It was this worm that started going across
+1862	primarily Europe. And then you somebody read this dude
+1868	registered a domain that he found in this in the
+1872	disassembled code of the worm. And registering that domain
+1878	stopped its propagation. Like that's, that's how it knew to
+1883	That's it was checking for that domain
+1886	Adam Curry: and it was non existent. I can kind of recall
+1889	this.
+1890	Dave Jones: And then the guy who registered it ended up getting
+1894	on like the morto
+1896	Adam Curry: worm watch list. The morto worm, the flaccid worm
+1899	funny now flat.
+1902	Dave Jones: It shouldn't be ended up on the NSA watch
+1905	Adam Curry: list. Oh, of course. Of course. Of course. Makes
+1909	nothing but sense. Yeah, I can't. Anyway. Welcome back,
+1913	everybody. Good to be back in the boardroom. We do have a
+1915	number of pressing issues to take care of today. You want to
+1921	start with wallets?
+1925	Dave Jones: See if I can. I can pull myself away from wanna cry.
+1929	That's it.
+1930	Adam Curry: No wanna cry? Yeah, I remember that.
+1933	Dave Jones: Yeah, it was. Yeah, the kill switch. Was a domain
+1939	registration. Yeah, want to want to cry. That's, that was the
+1942	first time I saw the PPU map was wondering. Cuz somebody built a
+1947	tracker anyway. Yeah. So what are we doing?
+1951	Adam Curry: What are we doing? Well, we've had a little, little
+1955	issue with wallets recently. And we've, since the last boarding
+1959	board meeting, you and I, and I guess everybody has kind of been
+1962	banging their head, what are we going to do? The main issue
+1965	being that custodial wallets with keys and our custodial
+1971	wallets in general, are clearly going to be a problem for a
+1975	whole bunch of reasons. And we've been looking for solutions
+1981	that do not include key sensing is it's pretty much the pardon
+1986	me for the gingers, but the ugly redheaded stepchild of
+1989	lightning. And it's just not being supported. And people
+1994	really don't care much. It's kind of it's there. But
+1997	everyone's you know, more interested in Bolt 12. In which
+2001	by itself is funny. And so we kind of went through it an
+2006	interesting exercise. First of all, there is there are
+2010	solutions for people who want to be sovereign. I'll be hub.
+2015	There's, you know, there's plenty you can run your own
+2017	node, there's plenty of ways that you can do it if you want
+2020	to be sovereign. But if you want to have a custodial type
+2026	solution where you don't have to think too much, you're really
+2029	going to have to do that with a someone with an outfit that has
+2035	a money transmitter license. This is why Fountain has no
+2039	issue. Seeing as they are their back end is Ebody and Zebedee
+2044	except for Florida has money transmitter licenses so they can
+2048	legally do this and be custodial. I think that's why
+2053	wav Lake move to them as well. Because you know, it's for
+2057	music. I mean, really to onboard listeners is a nightmare. To
+2062	onboard podcasters is kind of doable if you want to help them
+2067	set up an Alby hub or your own node. I mean, there's podcasters
+2070	are kind of like the ham radio operators of podcasting. You
+2074	know, it's like, yeah, I'm willing to try it and dive in.
+2079	As long as Dave Jackson can explain it to me. And but for
+2084	listeners, but when you get to musicians, no, no, that's just a
+2088	nonstarter and becomes very confusing. When you like, well,
+2091	you know, you want to get a fountain wallet and the there's
+2094	a lot of steps are kind of complicated. Alby, which we had,
+2098	of course centralized on We all knew it, we all knew that this
+2101	could be a problem one way or the other. Luckily, the problem
+2104	came. And we all saw it. And we started searching for solutions.
+2108	And so one of the things that you were the last time we were
+2110	in the board meeting, and one of the things we came up with, was
+2115	the idea of E cash. And the reason why e cash was
+2119	interesting is because it was easy to it can use any transport
+2123	mechanism. So you could even you can even send a payment through
+2126	email, technically, it's just a, just a token that you're sending
+2132	is a long string of of number of characters. And the the mint
+2138	side of it, which we don't have to go into was running through
+2140	the strike API. And strike, of course, has a money transmitter
+2145	license, as strike. But I think that because of this, we started
+2149	to start to look at strike. Strike does not implement key
+2154	sin. But strike has a lot of other benefits. The number one
+2157	being a money transmitter license, number two being Jack
+2159	Mahler's number three big corporate interests behind it.
+2164	So it's not going to go away, it's not going to run into the
+2169	if it runs into legislation issues, they have a corporation
+2172	behind it to take care of it. So I think we were kind of looking
+2176	at that moment for how do we get something that's easy for
+2180	podcast app developers to implement? Ie some kind of
+2184	simple API? Oh, auth, etc? And how do we keep it working? You
+2190	know, Legacy things working? And how do we look forward to the
+2195	future when new things come along? And how do we keep an
+2199	open sovereign solution for everybody who doesn't want to be
+2202	a part of a corporate system? Does that kind of explain where
+2206	we were at?
+2207	Dave Jones: Yeah, I think so. And that's pretty much it. Yeah.
+2211	And
+2213	Adam Curry: so strike has an O off the implementation. And of
+2218	course, they have liquidity and back end and everything, which
+2221	would make it very easy for podcasters for, for listeners to
+2227	just sign up to strike, it has some benefits, which I hadn't
+2231	really ever played around with strike, but you can literally
+2235	connect it to a bank card or to your bank account, and you just
+2238	see fiat money in there. And you can say, this was the test that
+2243	I did. I want to send $1 to Adam over at this node. And it just
+2250	sent went $1 Now it came in on my notice SATs. But it just knew
+2256	whatever it to send and it was very comfortable for for me of
+2260	course no problem. I look at Satoshis I get it, but it was
+2263	just $1 sent and it went through and it came in and you know,
+2265	whatever. 1600 50 SATs so it worked. We both independently
+2273	had a talk with Oscar. Oscar Mary from fountain and Oh, yeah.
+2279	Oh, yeah. Now of course he's smart. He be back doors us like
+2282	everybody else's day for everybody back doors. Oh, no,
+2286	no, you were you were super special because he backdoored
+2289	you first. And I don't think I should use that phrase.
+2293	Dave Jones: Please don't say they need back channel.
+2295	Adam Curry: Oh, no, that's not good either. And back channels.
+2300	Now he, he probably contacted you initially for the same
+2303	thing. He contacted me which was for, for his his chat
+2308	integration with noster. Which I which I mean, he went through
+2312	all this and said, you know, Oscar, this is really
+2314	interesting. We have a bigger problem. And it's your problem,
+2317	too. We have to figure out what to do with wallets and payments,
+2320	because you can't be the only the only guy in town. It won't
+2325	work. I mean, it won't take off. And and so I probably had the
+2330	same conversation with you. In fact, I'm gonna read. I'm gonna
+2334	read his email, which he sent. And then we kind of walk through
+2339	this morning. Yeah, then we can work through it because I asked
+2342	him can you build a demo to show everybody what we're doing? And
+2346	he says, I'll read this. I think the consensus is that if we
+2349	include the ln address attribute in the value block the returns
+2352	an options file with multiple lightning payment options, we
+2355	can achieve the following Bolt 11 invoice payments therefore
+2358	give apps and hosting companies the ability to support v for V
+2361	payments with easy Oh auth integration with custodial
+2365	providers like strike, continue to support key Sen and have a
+2369	path to support Bolt 12 Which by the way, right in the middle of
+2372	all this strike all of a sudden came up with their bolt, 12
+2376	sandbox or play house or whatever they call it ground
+2379	playground to continue to support keys and have a path
+2382	toward Bolt 12 without having to make another change to the value
+2385	block spec. To help facilitate this I'm going to create a demo
+2388	flow that includes a test feed with a strike lightning address.
+2391	An example app wallet linking flow with strike Oh off. With
+2396	this we'll be able to create a demo video where the listener
+2398	can send a boost to a podcast or which appears in the local
+2401	currency rather than Bitcoin? Okay, I feel pretty comfortable
+2406	about what he's saying here.
+2408	Dave Jones: Oh, yeah, me too. So let me, let me take everything
+2411	that the, the Yeah, just
+2413	Adam Curry: translate that into something.
+2417	Dave Jones: So. So currently historically, when we first
+2421	crank this thing out, we had this, you know, to the concept
+2427	of two different ways to get paid. And it was streaming
+2433	payments per minute. And boosts they're both essentially the
+2438	same thing. Under the covers, they both are a lightning
+2443	payment, a key a key send lightning payment. The key, you
+2449	know, the keys and being the pertinent phrase, they're,
+2452	they're a key send lightning payment with a T or V record
+2456	attached that has the corresponding metadata about the
+2460	payment, who's who is the sending it a message? What,
+2466	Adam Curry: what podcast what, what episode, timestamp
+2471	Dave Jones: in the episode, all these things. So that's
+2473	essentially what's happened, whether it's a per streaming
+2475	payment or a boost, the payment, the payload, and they form the
+2480	payment takes is exactly the same. They're both key send
+2484	payments, but the reason we chose key send is because by
+2489	default, lightning required what's called a bolt 11 invoice,
+2498	right? So a bolt 11 invoice means that the receiving end of
+2504	this of a payment has to create an A in an invoice with what's
+2511	called a preimage value, and then send the invoice for the
+2516	amount to the payer, then the payer gives that invoice to
+2522	their lightning node, which then encrypts the preimage in an
+2528	onion, and goes back in and sends it through, which is
+2532	basically route
+2533	Adam Curry: so glad you're simplifying this.
+2538	Dave Jones: The Onion, the onion is like a series of of
+2540	Adam Curry: all of a sudden, we're cooking with onions,
+2542	what's happened to the story? I'm crying.
+2550	Dave Jones: So if you have three, if you have three hops in
+2552	the route from you to this other to the destination, from you to
+2557	the to the payee, then you're going to have three layers in
+2561	this in this encrypted onion that didn't get successively
+2564	unwrapped until the payee itself can validate that preimage
+2568	matches. And that's how this thing works, right. So you can
+2572	see that they needed to be able, they needed to generate the
+2577	invoice at the payee rather than the payer, so that they could do
+2581	this verification process on the preimage. The but but the whole
+2587	thing is just clumsy. To have in the real world, you never have
+2593	to ask somebody whether or not you can pay them and how much
+2598	you just write a cheque and hand it to them like or are you just
+2602	send it in the mail, and they just get it like there's no,
+2605	this, this requirement to require the payee to do
+2609	something before you can give them money is just weird. So
+2612	that's,
+2613	Adam Curry: it's very unintuitive in today's digital
+2616	payment world.
+2617	Dave Jones: It is if I have a PayPal address, you can just
+2620	send me money if you know my email address. That's it, you
+2623	don't have to ask my permission. So So key so we chose key sin
+2630	because it avoided that process keys and uses the node the nodes
+2638	public key as as the the preimage. I believe that's the
+2646	way that works. And maybe I may be wrong, but I believe that's
+2650	that's the way it works. So you have set the payment can just as
+2655	long as you know this other person's lightning node public
+2658	key, you can just send them a payment. And they get it as long
+2662	as they have Kison. Enabled, which which most of the of the
+2666	like self run nodes do. But the big the problem is the big
+2671	players like strike Cash App in the in those those lightning
+2676	supporting services. They don't they don't support keys. And so
+2681	key sin has always been more it's always been a more
+2684	efficient way to send payments for payers, but it just doesn't
+2690	have very good support amongst the law amongst the broader
+2694	ecosystem where people are so So then that so that's that's the
+2702	framework that we're that we're working with. So, so when, when
+2706	Albie and other custodial providers like LM pay started to
+2712	have trouble, it started to back off because of the regulations.
+2718	It left us in an environment where we have where we're
+2723	requiring keys and but very few lightning providers support it.
+2729	So we had to wait like so. It's obvious that we have to switch
+2733	them symptom things up. The my dogs freaking out, I can tell
+2739	ya, because obviously, we have switched some things some some
+2741	things have been change. Change the requirements here. So what
+2747	what we do
+2748	Adam Curry: when we need to go just talk to the dog? We can
+2749	wait, I know how distracting that is.
+2757	Dave Jones: Here's a bad joke. Shut up.
+2759	Adam Curry: Go. The dog understands English. Yeah, yeah.
+2766	I can stop.
+2768	Dave Jones: Now it's fine. I'm just like, a mute myself and
+2772	hollering at him is proving to be highly, very effective.
+2776	Adam Curry: Yes,
+2776	Dave Jones: yeah. Let's see. So. So that's where it so that's
+2782	where we're at. So what we what we were talking about was, in
+2787	order to stay to like fit better with, with the current lightning
+2792	ecosystem, meaning custodial world, we need to read we need
+2799	to emphasize Bolt 11 We need to sort of move away from a Kison
+2805	centric right world and go and start going towards the bolt 11.
+2811	Now that's. So here, here, let me lay another thing on top of
+2817	this. Bolt 11 is supported primarily, now through what's
+2824	called a lightning address, and ln URL. That is an HTML layer of
+2831	HTTP calls that are put on top of a lightning node, so that you
+2839	can ask the over acing and ask over HTTP for
+2844	Adam Curry: the proof for the for the for the payment invoice
+2847	basically for
+2847	Dave Jones: an invoice yet for an invoice, and then it'll give
+2850	you one back dynamically, and then you can pay it. It tries to
+2854	get around this idea of having to have the payee participate in
+2858	the transaction, right? It's just automating it all. Yes.
+2862	Automating the generation of the receivers, invoice, create
+2866	Adam Curry: user, create an invoice for X amount of sites,
+2869	and then send me the details. Right.
+2873	Dave Jones: So Ellen URL is, is the sort of standardized way to
+2879	do this thing. We, in talking to Oscar, what we have figured out
+2887	is that we need a CIO and let me finish by saying Ellen URL is
+2896	Bolt 11 centric. That's all it concerns itself with we need a
+2903	way to support multiple payment types. So keys and bolt 11 and
+2911	eventually Bolt 12
+2918	I know you're
+2922	Adam Curry: with us stay with us. Drink Drink, everybody.
+2925	Dave Jones: Don't CrowdStrike me bro. So we need a way to support
+2931	both keys and both 11 and bold 12. Because key sins exists
+2938	already in that should be a thing anything this should be
+2941	backwards compatible. But we want to not also just flip from
+2946	one thing to another and lock herself into Bolt 11 Because
+2949	Bolt 12 is also coming in potentially other things. Cash
+2952	you maybe down the line who fatty mints, oh, all these
+2956	different things. So first, so here's what we're doing. And
+2962	I've already made the initial changes to the documentation.
+2967	There will be a new type on the value recipient tag. Currently,
+2971	the all the value recipient tags contain the type node. So that's
+2978	just it's expecting to have a node type in the value recipient
+2984	and the address type attribute is going to be the public key of
+2988	the node that's receiving the payment. What we've done is
+2995	created a new type called ln address This ln address will
+3002	resolve to an to a will dot well known URL that points to an
+3007	what's called an options file. So adam@curry.com will read Will
+3015	if a if you put that so if you have a value recipient with type
+3019	equals ln address and address equal adam@curry.com, the paying
+3027	application will resolve adam@curry.com to a to
+3036	curry.com/dot well known slash lightning slash options. That
+3043	file will be a JSON document that has potentially three
+3048	different payment methods doesn't have a can have up to
+3052	three different payment methods. Keys end with which would be the
+3056	traditional address, custom key custom value, an Ellen URL, an
+3066	Ellen URL, specification, or block where you can generate a
+3071	bolt 11 address at both Lebanon voice and in the future a bowl
+3076	12
+3079	Adam Curry: option if at any point you feel dizzy on the
+3082	podcasting, 2.0, right, just look at the floor and it will
+3085	all go away.
+3088	Dave Jones: Okay, so Eric peepee asked a question. He says does
+3091	node does the type of node does the type equals node mean key
+3096	sand? Originally, it did not mean that in and of itself, but
+3105	now it will fall. So if you look at the if you look at the
+3110	structure of a value blog, you can go and check one out on the
+3115	podcast namespace documentation. In the there's a value if you go
+3119	into the if you go into the namespace repo and go to the
+3122	value folder, there's a document called Value dot end that's got
+3126	loads of examples in there. So if you look through one of those
+3129	examples, you'll see the the podcast colon value tag in it'll
+3134	have a method equals key send type equals lightning method
+3139	equals key send. And then the value recipients inside those
+3144	will say type equals node in address equals the pub key of
+3150	your lightning node. That was the original structure you're
+3154	gonna say okay, all these addresses are going to be key
+3156	send addresses. This is important. I hope people have
+3162	stuck with me here because type equals excuse me method equals
+3168	keys and that attribute is going to be removed. I don't see
+3174	seeing as how everything has been kissin from the very
+3176	beginning. I don't think that anybody has code that depends on
+3181	the on the presence of method equals keys and in the value
+3186	block tag. If anybody does, you need to tell me.
+3192	Adam Curry: Let me just check. I don't think I don't think I have
+3194	done in ours.
+3195	Dave Jones: You got nothing in your code. Okay,
+3197	Adam Curry: I'm gonna check. No, if you type type equals node is
+3202	all I have.
+3203	Dave Jones: Yeah, so if you in your podcast colon, if you
+3209	public in your podcast colon value, blog, if you have method
+3215	equals key sin is not going to hurt anything.
+3217	Adam Curry: But if I don't know I do have method equals key
+3220	send. Okay,
+3221	Dave Jones: that's fine if you put that in there as a producer
+3224	of a feed, but if you're consuming feeds I don't think
+3228	anybody ever paid attention to that attribute because there was
+3231	only one value it ever was always Easton I
+3234	Adam Curry: feel like I did unnecessary work now.
+3238	Dave Jones: You wasted that wasted bandwidth. You wait you
+3241	wasted like 10 bytes of bandwidth
+3246	Adam Curry: Yeah, type equals lightning method equals key
+3248	send.
+3250	Dave Jones: Yeah, so there was always only just one method
+3252	that's all it ever was right? Key sin so I seriously doubt
+3257	anybody has code that's going to break if value blocks start
+3261	coming into existence that don't have the method attribute right.
+3265	So that method attribute is going away because the method
+3267	now needs to be specified in the options file. Ah, okay. So what
+3273	is going to be is the value block is going to say type
+3276	equals lightning, and then the value recipient tag, are going
+3281	to have a ln Andrew ln address as a type as an available type.
+3288	Adam Curry: So all I'll really have to add to my setup as a as
+3292	a sovereign. Is this Ellen? Ellen address? The end And I
+3300	could I guess I could set it up@curry.com and slash. So the
+3306	so the HTTP requests will come in as Get me the page out of
+3310	mccurry.com.
+3313	Dave Jones: Yeah. So,
+3315	Adam Curry: I mean, it's confusing for people who are
+3316	used to this as email only, you know, job. This is just a mind
+3322	bender. That's all this.
+3325	Dave Jones: This makes more sense. This makes more sense as
+3330	you think about the other part of this, which is if I felt like
+3337	a monologue in here, but it's kind of like almost necessary.
+3342	The other the other side of, well, let me let me finish this
+3346	up. Let's
+3346	Adam Curry: call this a little Liqui.
+3348	Dave Jones: This soliloquy, soliloquy. Let me see if I'm
+3356	finished. Yeah, let me finish this take up. Okay. So the, so
+3361	that's what the new thing is going to be it's going to be
+3364	you're going to have a type of a type of node or you're going to
+3369	have a type of Ellen address, Ellen address will resolve to
+3373	the options file, which will then make available the the
+3378	different options for receiving a payment,
+3380	Adam Curry: which which could be two or three. Yeah, okay. It
+3384	Dave Jones: could be multiple. Okay, cool. Cool. Cool. Cool. So
+3387	Adam Curry: I can still keep my keys and for clients that are
+3389	sending keys and payments to me and I can add my bolt 11 four
+3395	bolt 11 apps.
+3397	Dave Jones: Right, I'm going to feature bold 12 So the other
+3402	part of this is the actual Nashville custodian API service
+3410	that apps would use and here is where like it okay so you've
+3420	always had to wallets to deal with the vault you're in this is
+3426	this is kind of this is going to simplify that Oh, yeah. It's
+3431	going to remove one Yeah, so what you've always had to do is
+3435	I've had an you know, like okay, let's say I get a great I
+3437	grabbed cast ematic download cast ematic cast, thematic says,
+3441	Hey, podcasting 2.0 podcast supports value for value. It's
+3445	such a friendly app. Do you want to fire up a wallet and support
+3452	the show? You say Yeah, sure. I'd love to do that. Behind the
+3456	scenes is firing is creating an ABI wallet. All right now you
+3460	got now be wallet. Your lb wall is linked to cast thematic is
+3466	not helpful because you have zero sets in it right? In order
+3470	to get swept away.
+3472	Adam Curry: Unless you're true fans, because true fans is the
+3474	best. It gives you 5000 SATs right off the bat.
+3479	Dave Jones: Right? Yes. I stand corrected. And anybody that
+3486	other than true fans. You will have no SATs. So now you gotta
+3491	go get some SAT. So what do you gotta do? You gotta go get a
+3493	cash app account. You gotta go get a strike account. Moon pay,
+3498	you know, in it, some of the one of these other turns to
+3501	Adam Curry: the right, turn to the left cough. Okay, yeah. And
+3505	Dave Jones: you gotta go get some set somewhere through an
+3507	exchange. And then you can send those sets over to your new
+3513	shiny Alby wallet, this connected cast thematic. So
+3516	you've got it, you've always had to have two wallets. Now, what
+3523	what striker has done is they've got a very good OAuth API. So
+3529	what can happen now is that you apps can integrate directly with
+3535	striker hopefully Cash App and others in the future. That will,
+3540	you know, you can an app can choose to use the strike API to
+3545	do essentially the essentially the same thing that Al B
+3549	provides, but straight into a regulated a financial regulation
+3556	compliant wallet. And then your your sin now now striker only
+3563	supports Bolt 11 payments, doesn't support keys and, and
+3569	not yet, Bolt 12. So that's why we're saying talking about the
+3573	Embree emphasizing a bolt 11 going forward is that what you
+3580	can have is a is your is your podcast apps tie in through the
+3585	OAuth API to strike on the back end as their wallet and then
+3592	after and then once they have the once they have the
+3595	connection there. They can have the they don't have to have this
+3599	to Wallet song and dance, you can just pay directly through
+3603	both 11 payments from your strike back wallet to the
+3608	podcaster. And vice versa, you can you as the podcaster can
+3613	just have a strike, well, you can just sign up for strike. And
+3618	you get as part of that you get a lightning address, you can
+3622	just put that lightning address directly into your into your
+3624	feed value recipient tag and start receiving payments because
+3627	everything's Bolt 11. Now, the one thing this requires is bolt,
+3632	bolt 11 Since it's not as fast and efficient as keys, and it is
+3637	going to require it for per streaming payments, there's
+3641	going to need to be like badass. Yeah, because what sending a
+3646	payment once per minute, is kind of a big hit, especially when
+3650	you have multiple recipients in the value blog. Because you may
+3653	you know, you had time to send 567 Or if you're blueberry 24
+3658	payments. You know, every minute, that's a big deal, I
+3662	Adam Curry: think. No, I know that podcast guru already does
+3666	that they already batch every five minutes.
+3668	Dave Jones: And so does fountain. Yeah. has always done
+3671	that. Okay. Yeah, makes sense. So I think I mean, I think it
+3677	doesn't sound like too big of a lift to me. You're gonna you
+3681	know, you just, it's it's an emphasis on both 11 over key
+3686	send. And then the lightning address just means you're,
+3693	you're great. You're going to be doing here we get an Ellen URL
+3696	addresses, excuse me, Ellen URL invoice. Okay,
+3698	Adam Curry: a couple of questions. Good job, the T O V
+3703	record data. So all of the payment information, is that
+3707	able to be sent along with these bolts 11 invoice payments?
+3713	Dave Jones: That is an unknown? I do not know. And I'll just be
+3717	honest with you, I have no idea yet. Okay. And if I hope, I hope
+3724	we can figure out, I hope we can figure out a proper way to do
+3727	out of band confirmations. Because when
+3729	Adam Curry: I when I sent my test I sent from strike I sent
+3734	$1 to my breeze wallet knowing that both they both do this
+3738	stuff. And I just send it to whatever Adam See 1999 breeze.io
+3743	This is one of those. And I put a note in there and the note was
+3747	received on the other side. So they're doing something they
+3749	both know that hey, here's a note so that there's a note
+3754	adding capability that is known.
+3757	Dave Jones: And we might just need to we might we might be
+3760	able to like ENCODE encode the JSON into the note field
+3766	somehow? I'm not not sure. Okay. I just don't know yet. We need
+3771	I'm looking forward to Oscar's demo app, where we can all see
+3776	how this is going to work in a clearer way. So that if we just,
+3783	you know, then we can figure out okay, do we just need to put a
+3786	JSON some JSON data in the memo field, which is kind of ugly,
+3790	but I just don't know. I don't know. I mean, it's not. It would
+3796	not be horrible to send, like some out of out of band. Data.
+3801	But But if the when you have a confirmation, like the thing
+3805	about bolts 11 It's a it's a payment confirmation is part of
+3811	the bride. So you don't you you could include that data in
+3816	there. And it is not as bad as keys and which is just sort of
+3821	like, you know, wild west.
+3824	Adam Curry: Open up here I come. Exactly,
+3827	Dave Jones: exactly. By casting 2.5 Yeah, this is what it feels
+3831	like. Yeah. But I mean, what I'm really grateful that Oscar is
+3835	willing to put into a demo app because I think that's really
+3838	what people need to see. Because this is what way I described it
+3842	on on the on the mastodon was, this is a subtle and not subtle
+3847	change at the same time. Because it it's not that different than
+3852	what we're already doing.
+3854	Adam Curry: 640 bytes is what I'm seeing 640 characters max
+3860	for the Yes.
+3862	Dave Jones: It's a little bit small. Yeah. Yeah. I don't know.
+3867	We're just gonna have to figure that part out.
+3868	Adam Curry: Okay. So, well, this is good and the part that I
+3873	really like about it, but we do have to admit, I think we've got
+3878	all the people who understand Bitcoin, I think they're all
+3881	pretty much in in the pocket. Now we need to start onboarding
+3885	quote unquote, normies. I don't like that term. But what I like
+3890	a lot about the strike experience is I didn't even put
+3896	a card in I just had a strike account. And I just Send some
+3900	sets to it. And it told me how much was in there in dollars.
+3903	And I could just send that around. So I didn't even have to
+3905	onboard really? Yeah. But you can I think they actually take a
+3910	bank card. So it doesn't have to be a credit card but a bank card
+3915	or you can connect it through a debit card, the debit card, or
+3919	you can connect it through some some horrible middleware to your
+3924	to your lab to plan it. I think literally plaid to your to your
+3928	bank account. And then you just kind of good to go. And it's in
+3932	Fiat denomination, that's the strike app. You know, you can
+3936	switch it around, but the default is dollars, or euros or
+3941	whatever your dollar redos, whatever you use your local,
+3943	your local fiat currency. I know that's going to simplify it for
+3948	a lot of people, because I've helped onboard a lot of people.
+3951	And I love church people. Because they're typically a
+3955	little bit older, a little bit less sophisticated. Not all of
+3957	them, but the ones who listen to my shows. And they'll come up to
+3961	me in church like, hey, you know, holding up the app. And as
+3964	I explain this, how do I get this? What are the sets? And you
+3967	know, if I can just say, hey, just open this account here. And
+3970	you connect this to your, to the app you're using, and you're
+3974	good to go? And here's dollars Oh man, it's gonna simplify so
+3978	much.
+3979	Dave Jones: Yeah, I think that's what that's, it's, we need to
+3983	keep that in mind. What what's the goal here? The goal is that
+3986	you that you save somebody says, How do I get? We can
+3991	Adam Curry: also just not have to take people you don't have to
+3994	orange pill someone? Yes, on both ends on both ends. Because
+3999	for musicians, I really look at the musicians as with all
+4003	respect, you know, dead like hmm, most of them are just, you
+4007	know, they just want to put their music up somewhere and
+4009	like, how do I get the money and said, Okay, here's my strike,
+4012	here's my strike wallet, okay, I see money coming in, I got
+4015	$5 $10 $50 That's very understandable to people. And
+4021	it's the same step to get it from your paypal or your Venmo
+4024	into your bank account, etc. Or to use it just as money and pay
+4029	other people with it. And I think that obfuscation although
+4033	not what a lot of the Bitcoin people want, I think is
+4037	incredibly important for podcasting.
+4040	Dave Jones: I think so too. Yeah, yeah, that's it if you
+4045	have yet I did would be to because because if you been
+4052	supporting, supporting these custodial wallets in no way
+4059	means you can be sovereign. You can still I mean, you can
+4063	completely you can be sovereign. You want to have options you
+4069	want to people a, do you want to run your own node? Be a go for
+4073	it. Yes. That we that, that that's fully supported? Do you
+4077	want to just have a strike account and have that or a cash
+4080	app account? I have that work to the as your wallet? Yes, fully
+4084	support like, you just want to remove as many barriers as
+4086	possible and lips so that people can dial up and down their their
+4091	risk and their sovereignty based on their own preference. Without
+4095	having and without having to like you know, hey, you know,
+4098	Grandma wants to send me some money you know, okay, go by
+4101	mastering the Lightning Network first and read that. Read the
+4106	first six chapters then let's talk.
+4109	Adam Curry: Exactly, yeah, just I mean, yes, we used to say
+4113	jeans mom, but she passed away. So it's not appropriate anymore.
+4118	To say jeans mom can understand it. But that is the idea. Yeah.
+4124	Stacy, Stacy, Stacy's mom, Stacy's mom, Stacy's mom. So I'm
+4129	very excited about this. I do want to add a couple things to
+4132	this to remind everybody to look at value for value dot info,
+4138	value number four value dot info, because there is creeping
+4142	in. I just have to say that it was actually Matt from Matt
+4150	Madeira, who did a great like 10 minute video on this saying your
+4154	value for value can be time talent, treasure, it's a concept
+4159	is still requires asking that we've kind of we're starting I'm
+4164	seeing some slippage into what we're just replacing buying
+4167	something with micropayments it's not micro payments, it's
+4171	not streaming payments. It's a it's something you ask people to
+4175	do to support you. It's not an automatic thing that is not like
+4181	a set amount. In fact, that's the opposite. The streaming part
+4185	just became really nice because it's literally you're you're
+4188	playing some you're playing and then you're paying but boosting
+4193	I think is equally as important. And, you know, let's not get
+4198	confused that this is a replacement for 99 cents song,
+4203	you know, the song should still be worth $99 to you over it's
+4206	$99.
+4208	Dave Jones: Yeah, just need to put that out there in the
+4212	streaming payment the like, per minute payments. And that'll say
+4221	this, I think it's a good idea. So I guess it wouldn't, it
+4229	wouldn't hurt, it wouldn't hurt me too bad if, if the streaming
+4234	payments just didn't even exist, I'm in
+4236	Adam Curry: agreement with you. Now, I'd like it personally,
+4240	because I know that so for instance, I do, you know, 200
+4245	SATs for any, for any podcasts that I really enjoy, and listen
+4249	to regularly, up to 200 sets per minute streaming. So I know at
+4253	the end of that show, I've given them some real value. And along
+4257	the way, if I, if there's something I like, or I want to
+4260	provide some feedback, I'll boost with typically 10,000 sets
+4265	in me. And that's, that's pretty nice, you know, for for one
+4270	listener, so, but it really does require, and the only people who
+4275	can explain this, by the way, and this is another thing, value
+4279	for value cannot be explained properly, or at least to an
+4284	extent by your app, it has to be the podcasters pot. And that's
+4290	why value for value dot info, gives you some examples and how
+4294	to do it. Dave Jackson, and Daniel J. Lewis, they you know,
+4299	they've done episodes on this, of course, chyron has done an
+4303	entire series, it's critical that that that mentality stays
+4309	in, in there, because you can still do value for value with
+4313	just with just someone sending you some pay pals. You know, in
+4316	fact, you're selling yourself short at this point, because not
+4319	everybody is going to be on this system is not a replacement,
+4322	it's, it was always a, like the index itself initially was, hey,
+4327	we you're not gonna get D platformed. Over here. And
+4331	here's a way for your money not to get the platform to see, you
+4335	know, the poor YouTube guys who are living off of their YouTube
+4339	ads. And all of a sudden YouTube said, Ah, you know what, you
+4342	can't have anything about ammo or guns, and they had ammo and
+4346	guns podcast, I say podcasts in air quotes, a YouTube. So that
+4353	that was always the idea. So, you know, we have a ways to go
+4357	before this replaces everything else. And it's still going to be
+4361	the podcasters who have to learn how to ask for people to support
+4365	them in this manner.
+4368	Dave Jones: Eric, Eric said in the boardroom, he said, I think
+4372	I think streaming stats are extremely important that I do to
+4375	Eric, let me let me just be a little more clear. I realized
+4378	that wasn't that wasn't clear enough. What a mean, is that I
+4382	wouldn't, is that the concept of sending a payment every single
+4387	minute. That's what I'm not as tied to is I used to like, going
+4391	Adam Curry: out with my homie five, five minutes or whatever
+4394	is what you're saying? Yeah,
+4395	Dave Jones: I just want to know, like, my app could just
+4398	periodically as I'm listening, even after I'm listening, after
+4405	I'm finished, he could just say, Hey, you listened to Lou, he
+4408	could do this, like three times a day, he could say, you listen
+4414	to 20 minutes of that show here. I'm just gonna go and send those
+4416	payments on your behalf. It's just the concept of the the
+4423	like, per minute streaming. I don't know if that is what I'm
+4428	at the point now, where if that's what's holding us up? It
+4431	shows the per minute. Yeah, right. I think we need to and,
+4435	Adam Curry: and this, along the same lines, what I thought I
+4438	think what true fans has done is interesting, where I can set my,
+4443	my true fans app and I can say, whenever a new episode drops
+4448	from these guys, I want to send them a payment even if I'm not
+4450	listening. That's a perfectly valid value for value. Exchange.
+4458	Dave Jones: I think I think we don't necessarily, we don't we
+4466	don't think about the listener side of the V for V mindset as
+4470	much as we do the podcaster side, correct. So the the pipe,
+4474	the podcaster side has flipped been fleshed out so well by you
+4480	over the years to say okay, here's here's the podcasters
+4485	investment into V for V. Here's what that looks like. There is a
+4490	mental thing that happens and the reason I'm bringing this up
+4492	is because I saw the chat. So when he said was streaming I
+4496	don't have to remember to boost and I do do that, too. So I
+4501	found out that what I've noticed in myself, and I think this
+4505	probably is true for a lot of people is that on the listener
+4511	side, you start out when you're when you begin to, when you
+4516	begin to think in terms of V for V. Meaning that you know that
+4520	it's your support. That is the reason this podcast is able to
+4524	continue. Yeah. When you start to think about it that way,
+4527	initially, you're, you're really excited about having about
+4531	boosting and sending a message, to be deemed it to be part of
+4537	the show and these kinds of things. But eventually, that
+4540	sort of fades, and you just want to send the show money
+4544	consistently. Yeah, your lesson, you're less enamored with
+4548	wanting to be part of the show than just making sure the show
+4552	continues to be funded. And that's what I that's what where
+4556	I've fallen, I don't boost nearly as much as I used to. But
+4560	I just want to make sure that when I do listen, that money is
+4564	being sent, because I don't want to, I don't want to take without
+4569	giving. And
+4570	Adam Curry: along those lines, I mean, apps could do a lot with
+4572	reminding people or saying hey, you know, you've listened to the
+4575	show a couple of times you think about supporting it, or, you
+4578	know, there's all kinds of things just from the listener
+4581	perspective. Absolutely. But again, again, podcasters have to
+4586	teach their audiences. I mean, I have taught audiences to do the
+4592	craziest things. And they'll do it. And what I mean, is like,
+4598	it's my audience, it's my producers, it's my people. I
+4602	asked him, they'll do something. It's that simple.
+4607	Dave Jones: Yeah, yeah. That mean, because so if you take,
+4613	Adam Curry: like, what I mean, what I'm saying, but this comes
+4616	back to I was saying earlier, it's not, we're not moving into
+4619	a world where everyone pays for the content with micro payments,
+4623	it's just not going to happen. For us, that's not how the world
+4626	operates, people are not going to get that mindset, they're
+4630	going to be reminded by the content producers, that they
+4634	need to support them. And here's an easy way.
+4639	Dave Jones: If and also, we I think we need to just focus on
+4643	if we can, you know, the free is not that much is, it's really
+4648	not different than what we already do. Like this. It's not
+4652	like you have ed the entire world out here operating one
+4654	way, and then you have V for v this operating some other some
+4657	different way, correct. Like when you go to a restaurant, if
+4660	you if nobody ever tipped at a restaurant, if nobody ever gave
+4665	a tip, and everybody just paid what was on the on the on the
+4669	receipt, the restaurant would go out of business. That you you
+4674	can't the you had adding the tip to the bill, you consider the
+4680	bill to be from the from the restaurants point of view to be
+4683	basically zero. And then what you tip is the is the gravy on
+4688	top that makes that thing continue to exist. So if we take
+4693	if we just modify that a little bit and say, you know, if you
+4696	don't support the show is not going to exist. Speaking
+4700	Adam Curry: of which, it's been 45 minutes since anyone boosted
+4703	anything. Just
+4709	Dave Jones: Yeah. Your Europe they don't tip. Well. In the US
+4712	though. If you don't if you don't tip you don't have any
+4715	employees
+4715	Adam Curry: that well. We don't say I don't like the tipping
+4718	example. I just don't like it. Because it puts it into a
+4721	tipping thing. Like you're already working for me. Somehow
+4724	you getting paid. And here's something extra, no, it's the
+4728	it's the pain. It's a value exchange. I'm just a heartless
+4732	about that.
+4733	Dave Jones: It is a value exchange. But the if you I'm
+4735	taking the restaurant out of the equation, and say and you know
+4738	the tip. If, if, if if there are no tips at the restaurant,
+4742	there's not going to be anybody working there. Yeah,
+4744	Adam Curry: I just devalues it. I don't work for tips. I work
+4750	for value. Thank you. So
+4754	Dave Jones: there's restaurants where the dish restaurants were
+4756	the people were the people working for tips make six
+4758	figures. I know.
+4759	Adam Curry: But it's it's different. It's just the minute
+4762	you'd call it tipping. People consider it tipping. It's a
+4765	small amount. And I've had $10,000 tips on no agenda, if
+4771	you want to call it that is that a tip? Was that someone who
+4774	really valued something over over two years time and said, I
+4778	need to give you some value back?
+4780	Dave Jones: I guess I was thinking about like, Sam had
+4783	said once before that, you know, the VA is fine, but we you know,
+4787	if you're running a service, you have fixed costs and that kind
+4790	of thing. And what I'm saying is it's not different. What
+4794	Adam Curry: I'm what I'm saying is what I'm saying is I've
+4798	experimented with this for 17 in yours, I know what works.
+4802	Calling it tipping does not work as well as value as a value for
+4807	value pitch. That's what I'm saying.
+4809	Dave Jones: Yeah, I'm not arguing against that. I was
+4812	talking about something different, like just the concept
+4814	of trying to make the concept that trying to find an analogy,
+4819	because because V four v is not different than then the rest of
+4824	the economy, it's a different, it's, nobody's the same, the
+4829	economics are the same, you're just doing it in a different
+4832	way.
+4833	Adam Curry: Well, here's, here's the difference when it comes to
+4835	what we're doing. For the first time in a podcast app
+4840	development history, the app developers are able to
+4844	participate in the value flow, that's what's significantly
+4848	different. It used to be you got a free app, and you're using it
+4852	for you know, you're creating this app, because you like
+4857	building apps, you could do remove the ads, and pay for it
+4862	or support the app. And now you can be a part of the actual
+4865	value flow. So this podcast and no agenda, podcast, app apps,
+4870	who, who are in that, in that value flow they get, they get
+4874	more than they would ever receive from from many other
+4877	avenues. So that's where it's a real difference is, you know,
+4880	we're supporting the infrastructure.
+4885	Dave Jones: Well, yep, busting my bag. That's a decent term.
+4889	Gluskin
+4889	Adam Curry: busking is yes, I agree, busing is fair.
+4894	Dave Jones: It's our archaic term that nobody knows what it
+4896	means anymore. Now,
+4898	Adam Curry: but like, I mean, I've always supported musicians,
+4901	I don't care how good or how bad. I mean, just because I come
+4904	from a musical background. And I'm in the airport, you got some
+4908	guy in the corner, I'm always gonna drop 20 bucks, always.
+4912	That's just that, just always do that. It's not a tip. It's like,
+4915	Thank you for the value you provide. Even if you suck, you
+4919	came out here. You're playing. This is your thing. Someone
+4924	loves us. Let's see how much chat F 7777 Mini stripe chatter
+4930	chatter. So
+4932	Dave Jones: I'm the same way if you're, if you're, if you're a,
+4934	if you're a guy, or a girl playing guitar and singing at a
+4937	little restaurant, even if you suck, I'm dropping, I'm dropping
+4940	at least 10 bucks in your drawer.
+4942	Adam Curry: Right. But let me let me just drop you some money
+4943	and just put it this way. If we said, hey, podcasts index is
+4947	here for tips. The machines would not be running at this
+4950	moment.
+4952	Dave Jones: Yeah, I agree. I agree. Yeah. But yes, I think I
+4957	get your I get it, I get it. And the fact the fact that the
+4962	podcast index servers do run when our expenses are almost
+4965	$1,000 A month means that even if you run a platform or service
+4972	value for value still works. Yeah. This like, you know,
+4976	that's the thing, just because just because you have fixed
+4978	costs doesn't mean that value value is not exactly, exactly.
+4984	Adam Curry: Now, if you want to get if you want to get VC money
+4987	and show a return on investment, I think it's going to be
+4990	difficult.
+4992	Dave Jones: Yeah, probably,
+4994	Adam Curry: probably, you know, movies of its, you know, some
+4996	people call it crowdfunding, you know, it's ongoing crowdfunding,
+4999	you can call it that, or you can call it that to
+5002	Dave Jones: the people, your business makes money, when the
+5006	people that care that want your product, or want when the when
+5012	the when your customer wants a product. And they see that they
+5016	need to return value in order for them to get it. Yeah, that's
+5022	universal. Yeah, it doesn't matter. That is just flat
+5026	economics. And everybody understands that. You don't get
+5031	something for free. But you know, value for value is not
+5036	giving stuff away. For nothing. It's because just as I've tried
+5041	to make this analogy before, if you're if you have products in a
+5044	store, and people come in, and they don't value the product
+5051	more than they value the cash in their wallet, they're just not
+5054	going to buy it. They're still seeing the shirt, they're
+5057	evaluating it. If you're doing a podcast, they will get to hear
+5061	it, they get to evaluate it. And they get to decide whether or
+5064	not as valuable to them and allow them transaction is just
+5067	the same. Allow
+5068	Adam Curry: me to add a few elements here. It is a
+5072	programming format that does need certain elements. It needs
+5077	an Ask and it needs the feedback loop. That's why booster grants
+5081	became super important because somewhere you need to thank at
+5085	least some some portion of the people who are sending you value
+5090	back that feedback loop and is the thank you segment. That mean
+5097	go look at At GoFundMe, you go to go fund, you're like, Oh,
+5104	hey, I've got this thing going on, I need some, I need some
+5108	support. Here's my story. And then underneath that you see a
+5112	whole list of names and how much they donated. It's aspirational
+5116	and inspirational. At the same time. The people will show up
+5121	anonymous, like, I don't need to attach my name, but they do have
+5124	a message and they do have an amount. And you know, you pretty
+5128	quickly, you'll see people giving 100 bucks, oh, everyone's
+5131	gonna 100 bucks, I'm gonna give 100 bucks, or 50 bucks, or
+5134	here's all that I can afford. Now, here's a little secret. I
+5137	probably mentioned it before. The afternoon slash evening
+5142	before every no agenda show. Jhansi Dvorak sends out a
+5146	newsletter. And the newsletter is often correctly identified by
+5152	people as you're just begging for money, correct? It 40% of
+5158	our value for value comes in before we've even started the
+5162	next show the next day, because people were reminded, and the
+5167	end the reminders clear, they says it right at the top and
+5170	right at the bottom. Without your support, no agenda can not
+5173	survive as a reminder, and then people also Oh, yeah, that's
+5177	right. If I do it now, then they'll also read my message
+5181	tomorrow or they'll say happy birthday to my wife or whatever
+5184	it is. And yeah, there's a drop off in those segments, but it's
+5189	only 30 35%. And of course, we try to make it entertaining. So
+5198	it's a it's a critical part of how the value for value model
+5202	works. You can't just say oh yeah, we're value for value get
+5205	the found nap. It's not going to work for you.
+5208	Dave Jones: Yeah, yeah, it's not it's not a it's not a technology
+5213	that you plug in. Exactly.
+5217	Adam Curry: Should we take a little breather with some new
+5218	music?
+5219	Dave Jones: Oh yeah. I gotta go the bathroom so it's perfect
+5222	time
+5224	Adam Curry: so I'm I'm looking through the split kit and and
+5227	I'm looking at all the new music that's coming out and lo and
+5229	behold a brand new dorsals track everybody couldn't get any
+5232	better on this Friday here's possible on 2.0 She's
+5239	Unknown: back she I can see she said you're okay well you and
+5252	you always knows just want to say she's the straight line and
+5259	you just proved it
+5297	she's
+5317	She she's dead so I can fly the sky. She's as she always knows
+5330	just one.
+5368	When I was on my back out
+5399	everyone have fans
+5409	Adam Curry: love me some doorbells in the afternoon
+5411	everybody.
+5413	Dave Jones: That's a good that's a good team guys. So good. So
+5415	good. Last thing they do is good. So
+5418	Adam Curry: on that note, we have the big Bitcoin Conference.
+5421	Oops, coming up on his next week I guess I will be there in
+5426	Nashville. Yes. So this is what I wanted to discuss. Now the the
+5431	days were already complicated for me because it's Thursday,
+5434	Friday, Saturday. My, my stepdaughter is has been with us
+5440	for two weeks waiting for an operation date for her torn
+5443	meniscus and ACL, which is happening on the 23rd. And I
+5448	kind of have to be here to help out. So I do have a great
+5452	excuse. However, of course, we had the big bands at Bitcoin
+5456	taking place which the Costello's are organizing, which
+5460	is gonna be very exciting. And I had a thought, and I'm going to
+5464	announce it here. Um, I hope it'll be okay with the
+5467	Costello's and I've already tested out the rig and
+5470	everything I'm thinking, why don't I do alive, boosted grand
+5473	ball with video, breaking my cardinal rule? Hey, now with
+5479	video because I have it set up so I can have the camera, the
+5483	camera can switch down to the to the mixer, which is kind of
+5486	cool. With a screencast at the same time, so you can see what
+5490	I'm doing on the screen and have the booths coming in at the same
+5495	time. Wow. Yeah, yeah. So I figured I'd just do a live one.
+5500	I don't know what camera shot yet. Well, basically a two
+5503	camera shot. I don't have a third camera, it'll be a two
+5506	camera shot with one one that will move back and forth between
+5509	me. And, and and the mixer. So I'll just hit that manually. So
+5515	everybody can see kind of how it works. And we'll just be
+5518	blasting out some tunes there. Because I figured there's no
+5521	real difference between sitting there or doing it here that I'm
+5524	just not there. And the question is, do you want to do the board
+5528	meeting? While you're there as well, which you could just do
+5531	from the hotel room, I guess. Do you want to Are you are you
+5533	staying overnight just going up for the day?
+5536	Dave Jones: No, so here's my schedule is I'm going to I'm
+5540	going to head to Nashville. Right after work on Thursday. So
+5547	that's the 25th. So I'm going to head I'm going to leave right at
+5553	five o'clock. from Birmingham. It takes about two hours to get
+5557	to Nashville from here. And so I'm staying, Karen, Karen down
+5562	from mere mortals. He's coming. He's flying in from Brazil to
+5566	cool. Yeah. And so we're going to meet up and share an Airbnb
+5571	for Thursday night and Friday night and I'm going to drive
+5574	back to Birmingham on Saturday. So do you want me there Thursday
+5579	night and Friday night? Do
+5580	Adam Curry: you want to do the board meeting Friday as regular?
+5583	Yeah. Okay. And you'll just bring your gear and just plug it
+5586	in? Yeah,
+5587	Dave Jones: I'm bringing my gear plant board meeting as usual.
+5589	I'll just do it from the Airbnb. Excellent.
+5591	Adam Curry: And because I mean, that's pretty boring. I mean, I
+5595	don't think we should be streaming that it's like, who
+5597	wants to see these dudes. But, so I guess I'm looking for some
+5603	help here.
+5605	Dave Jones: So what what time, we'll see, I will do the board
+5609	doomed. I'm not I'm not going to the conference. By the way. I
+5612	don't have tickets. I don't care anything about going to the
+5613	conferences. So I'm just basically there to meet up with
+5617	people and hang out and just have fun. I'm glad you can make
+5620	it. So the 28th So you got this thing you're doing with the live
+5626	booster Grand Ball? Is that gonna be the 25th or the sixth?
+5629	Adam Curry: It has to be on the 26th it could be on that side.
+5633	It can do the Saturday too. So I'm looking forward looking to
+5637	the Costello's to tell me what they need. And then of course my
+5642	my number one question is and this is where blueberry or
+5646	Spencer anybody can help me out what I mean I have stream yard.
+5651	I just need to know where to point it. I mean, obviously I
+5654	can output to YouTube. That's how I tested it that works fine.
+5658	So I need to know where to point my my stream. And then I guess I
+5664	need to incorporate that into a feed or I mean can I just move
+5668	that put it all into booster ground balls feed? I need a
+5671	little help there because I've never done this with video.
+5675	Dave Jones: Okay. Yeah, so if you're gonna do that oh, so
+5681	there's the seed bands that Bitcoin is the 25th is every day
+5685	right? 26 and 27? I think so. Yeah. Okay, so I hope you do if
+5690	you don't on the 27th I'm not. If it's at night, I'm not going
+5694	to be in I'll already be gone from Nashville.
+5696	Adam Curry: What's the 27th is that Saturday? That's Saturday.
+5698	No, I'd hope I can do it during the day, I mean, I don't know,
+5701	but I'll leave it open to them. Because obviously, they they're
+5705	gonna I know they're gonna have screens so it'll be on the
+5708	screen and the whole point of me is promoting it promoting what's
+5712	going on. I mean, I've done these and, and I've done stuff
+5715	where there's a live audience and I'm just hitting a booth so
+5718	I know how to how to interact and how to make that happen.
+5722	admit there's even extra stuff we can do. You know, also I'd
+5726	like some help from the Costello's on songs song choice
+5730	for the bands that are there, you know, that's kind of the
+5733	stuff you want to do. So I'm open to it but um, so I'm just
+5737	saying I will make myself available all day Friday, all
+5740	day Saturday, whatever is needed for me to set it up. Tell me how
+5744	long you want it. And I'm happy to do it.
+5748	Dave Jones: Looks like it looks like you're getting some advice
+5750	in the boardroom. And the the 26th is my my sort of loose very
+5757	loose agenda is 20 Thursday the 25th I plan to go to the bands
+5763	of Bitcoin thing one I think it might be the 26th I'm going to
+5769	have to check I want to go to the V wavelengths having
+5772	something at the vinyl lounge in Nashville I want to go to that
+5777	and then if the if I'm still if then I'm basically gonna go to
+5783	the band's with Bitcoin every time I can and then the vinyl
+5786	lounge and then the board and then the board meeting on the
+5788	26th on Friday Okay, in any time around anytime Other than that,
+5792	um, you know if anybody wants to hang out me just hit me up and
+5798	we'll and we'll hang out I'll just be you know, be me and Kira
+5800	and and then I know I'm going to meet up with Oscar and gas from
+5804	fountain and things like that. So let's, let's all just,
+5808	anybody can find me. Let's all meet up. Excellent.
+5810	Adam Curry: And maybe, well, you can probably use podcasts index
+5814	out social to coordinate stuff because everyone seems to have
+5817	an account there. So we can just, you know, say hey, I'm
+5819	over here. I'm doing this right now.
+5822	Dave Jones: Eric said the vinyl lounge thing is the 25th I guess
+5824	I'll go to that the first 25th and go to the bands of Bitcoin
+5828	on the 26th Okay, cool.
+5831	Adam Curry: Let's see. I don't I mean, do you have anything on
+5835	your on your list for today?
+5837	Dave Jones: I mean, I've got a I've got a big list. He's
+5840	Adam Curry: got a big list and he's mad you know, I really
+5847	missed our Fridays. You know, I know you had a good time. Can
+5852	you integrate with your family?
+5853	Dave Jones: Yeah. That's awesome. That that so so we got
+5857	to Yosemite so we do getting out there the first few days were
+5865	interesting. So we flew out on American American landed from
+5871	Birmingham to Dallas Fort Worth. So we landed in Dallas with 20
+5878	minutes to make it to our next flight. And because of lightning
+5882	they sat on the runway for 30 minutes so we missed our
+5884	connecting flight. So they had to reschedule us for we had
+5889	ended up five hour layover.
+5893	Adam Curry: What did you do? Did you play games? You got
+5895	something to eat? Of course, we all do that? Yeah. Vape in the
+5899	bathroom? Oh, I'm sorry. You know, vaping allows I'd be in
+5901	the 00 vaping where you you walk out and you inhale and then you
+5908	just let it sit in your lungs for like a minute and then
+5911	nothing comes out as great. I
+5914	Dave Jones: did not do that. The so most of the time, and most of
+5920	the time spent was trying to figure out okay, this this
+5925	because what we did was we flew into Fresno and we stayed one
+5928	night in Mariposa, which is real near to Yosemite. We stayed
+5933	where we had one night, like stay at an inn in Mariposa. So
+5937	I'm caught with vibrating
+5939	Adam Curry: beds and shaped
+5941	Dave Jones: my heart and the big, big hot tubs.
+5945	Adam Curry: It smells kind of weird.
+5947	Dave Jones: Don't don't bring the black light. Okay. So we I
+5953	was I called them I'm like, Hey, we're gonna be late late check
+5955	in and they were like, oh, have you not been reading the news?
+5957	I'm like, what? They're like there's a big wildfire here. I
+5961	was like, Oh crap. So the half of Mariposa was evacuated. Oh,
+5966	wow. Oh no. The entrance to Yosemite from this from the west
+5971	side was closed because of the wildfire and all this I'm like,
+5975	Oh crap. So it ended up we got in and they were able to get the
+5980	fire under control. So we got in we stayed. Then we got to our
+5983	Airbnb the next day in Oakhurst, which is just south of this
+5988	empty. We get to that. The first night we were there. The
+5994	plumbing backs up and there's like sewage coming into the
+5997	toilet you know Don't flush the toilet Ah, man. So they ended up
+6004	refunding part of our stay and they got a plumber out there the
+6007	next day and fixed it. It was it was once the first three days of
+6012	it were over the rest was okay. The rest was great. And your
+6016	expectations are super low. Yeah, like and
+6022	Adam Curry: thank you people. Yes do okay. Well, thank you all
+6026	for boosting very nice. We have anonymous podcast guru user. I
+6030	see that person a lot with 2112 Consider broadcasting I know
+6034	agenda tube supports live splits and generates the feed for you.
+6037	Why yes, that I could do that. But I want to use the booster
+6041	gram ball feed and I see there's already some some good advice
+6045	coming through. 777 from Macintosh and Macintosh
+6052	Macintosh actually boosted twice 2100 and 777 to get the heart
+6058	playing. Can we organize a PC 2.0 meetup please, at the
+6061	Bitcoin Conference? Well, sounds like something will happen.
+6065	It'll probably be pretty organic, but it sounds like
+6067	something will happen. I think it will evolve. Call McCormick
+6070	row six or eight eggplant emojis. Thank you Eric PDP 1111
+6077	V four v is the only way I can build reputation along side
+6080	financial gain and fair market every door to send talent and
+6084	treasure needs to be open to the listener. As a podcaster I think
+6087	there's more to work on showing the system works more so than
+6090	pitching Bitcoin to the listener. I've been hyper
+6093	focused on pushing fountain is V for V about having more money
+6096	apps available or doing more to build value between me and the
+6099	audience. I think it's the relationship between you in the
+6103	audience. And then however they want to send value is fine. Time
+6109	talent treasure can be all kinds of things having someone build
+6112	your website is worth a lot of money. 808 from blueberry boo
+6118	boost if you're producing concerts a great way to recap is
+6121	to go back at a later date and read through every boost as its
+6125	own episode. I did that for Aynsley slash just loud and 12
+6128	rods disco ball show and we just published the one for the
+6131	satellite skirmish yes is a great idea. It's a great way
+6135	it's like you know we watch the chosen
+6139	Unknown: the Dallas who's the show? Yeah,
+6141	Adam Curry: it's it's the Jesus series. You haven't watched the
+6145	chosen? I don't think so. What kind of freak Are you?
+6151	Dave Jones: Substandard whenever daily so the chosen
+6154	Adam Curry: they're now on Season Four it started season
+6156	one and and I think they actually the this the original
+6162	script or you know was at a Hollywood studio in Hollywood
+6166	didn't want to produce it like now we want to do on a Jesus
+6168	stuff. And it's it's literally the story of Jesus but it's done
+6172	in a very modern way. You know, with just it's not like a hokey
+6178	you know, low budget thing because what they did it they
+6180	crowdfunded it. And at the end of the season, there's 15
+6184	minutes of credits on the screen, and oh, for all the
+6189	crowd for all the crowdfunding. Yes. And in season two. They
+6193	actually invited people above a certain level who crowdfunded
+6196	and they were extras.
+6198	Dave Jones: Oh, that's that's a great so a
+6200	Adam Curry: lot of people like there's no there's you see those
+6203	5000 people getting love getting loaves of bread and fish. Well,
+6207	look, there's me and my kids.
+6209	Dave Jones: Yeah, that's great. And it's
+6211	Adam Curry: been very successful. Very successful. Oh,
+6215	I
+6215	Dave Jones: need to watch that. Yeah. Oh,
+6217	Adam Curry: you remember what you gave me for Christmas? Yeah,
+6220	the visual Bible. So it's like that only it's it's only about
+6225	Jesus and and it's the production values are very high.
+6232	So
+6232	Dave Jones: it's 16 by nine instead of four by three VHS.
+6236	Adam Curry: Yeah, amongst other things. We got many striper
+6241	booths from Sam Sethi true fans 7777 Next week we launched true
+6246	fans ball with one click account setup with wallet we did this
+6249	for one click wallet top up and we think we've done it again
+6252	with wallets so there's Sam Sam is thinking like the thinking
+6255	about the listener. Hard Hat 7777 Remember to boost Yes,
+6261	thank you once told Kyle 777 Hey, David Adam, I'm still not
+6265	sure how this V for V alchemy works. But it sure is fun to run
+6269	full speed with these systems every Friday. Have a great
+6271	weekend. Thank you. You have a great weekend. 7777 from chat F
+6276	just says boost 5000 from DS laughs This boost is worth $3.33
+6283	As of this moment, love the podcasting 2.0 Project ecosystem
+6287	and all the users interaction as do we are you seeing bariga 3333
+6293	Here's more value exchange. Thank you. Champ comes in with
+6296	12,621 and says here's your tip. But the day Thank you. RG black
+6304	316 1111 Here's a boost to help break up the silence go
+6308	podcasting. Se Brooklyn Hill is broken. That's right see
+6311	Brooklyn. One 112 3333 Good luck. And let me see we have a
+6318	there's more here RG black 316. Again, with 1000 SATs corporate
+6323	Windows environments definitely should have nightly shutdowns in
+6326	place even if by automation via group policy. Oh,
+6330	Dave Jones: there's something Dave. Yeah. Or or in the past
+6334	I've also set up things that will shock collars. The shock.
+6340	Yes. thing oh, I've also set up automated notices where it says,
+6346	you know, everybody if your machine is on at three o'clock
+6348	in the morning, you get a pop up the next day that says, hey, you
+6352	left your machine if you do it again. Shut down.
+6355	Adam Curry: I like shock collars better. Meaty tone wrecker?
+6359	3333. Boosting Dave sage advice of shut off of the machines when
+6362	leaving the office. Macintosh 777 Thank you. No boost no Dred
+6367	Scott 7777. He sent us a test boost. Great. And he sent us a
+6371	pre shot boost. Got the bad signal via pod verse 2345. And I
+6377	think that is Wait, no, I have no, that's probably on your
+6385	list. Blueberry came in 14 hours ago. So why don't you take it
+6388	from there, Dave? Yeah, I
+6390	Dave Jones: got Eva. I'm starting out with some papers
+6392	and I got Buzzsprout for 1000 bucks. With
+6400	Adam Curry: blades on him. Paul. Thank you, brothers. Thank you
+6403	so much. We appreciate it. Yeah, keeping us rollin. There's a
+6407	month right there.
+6410	Dave Jones: Thank you both. I appreciate that. And right
+6413	behind them Oscar marry $200.
+6415	Adam Curry: I'm gonna hate him to hold on a second. Shot call
+6419	out 20 blades on him, Paul. Very nice. Thank you.
+6424	Dave Jones: Did you Eric said his boost from Alby hub didn't
+6427	go through.
+6430	Adam Curry: Eric VP?
+6431	Dave Jones: I don't see I don't know if I saw them in the
+6436	Adam Curry: in when did he send it recently boost by?
+6440	Dave Jones: I don't know. Maybe during the show? No. Mercy. Very
+6444	fun in a minute. Oh, we got a ROB policeman. No note they sent
+6451	us 24 $25
+6452	Adam Curry: This sounds like someone new. I haven't heard of
+6456	yeah, I've never
+6456	Dave Jones: heard that name before.
+6460	Adam Curry: defragmented. Brother. Thank you. Good call.
+6463	Dave Jones: Good call. See Brooklyn. 112 gave us $20 Cisco
+6468	podcasting.
+6469	Adam Curry: Thank you, ma'am.
+6474	Dave Jones: Thank you see Brooklyn. Appreciate that. See,
+6477	we got some booths. Mr. Graham's
+6480	Adam Curry: people didn't really booths much while while we were
+6483	gone. We didn't deserve it. There's no value. We're no
+6487	valuate Oh, man, we were laid off. We are valueless. Yeah.
+6492	Dave Jones: Let's see. Let me make sure that I've got Yes
+6496	Okay, so I'm gonna have to do this a little differently
+6501	because comments from Blogger boosted long time ago. Okay,
+6508	here we go. Yeah, anonymous. Podcast guru user is all over
+6512	the place. Oh, Christian is unstoppable. May is amazing song
+6515	20 to 22 sets. Thank you.
+6518	Unknown: Thank you. See.
+6521	Dave Jones: Resort. This isn't working right. Okay, newest
+6525	first. There we go. Hey, I got 17 776 through party through
+6531	boosts. CLI says it has been set into motion. Coming soon. A
+6536	boost. A boost double Mall. It'd be working with a new site
+6540	headed up by a consignment shop and help turn the area into live
+6543	streaming venues for live music comedians and artists. Hmm, that
+6549	sounds cool. Yeah.
+6550	Adam Curry: Interesting. Boost.
+6551	Dave Jones: Double boost double Mall. Okay.
+6554	Adam Curry: Good.
+6555	Dave Jones: Yeah, you're you're crazy.
+6557	Adam Curry: Weary as always.
+6559	Dave Jones: Yeah. Todd from Northern Virginia 22 to 22 nice
+6564	boost. He says sets on sale go podcast. I must have bought the
+6569	dip.
+6570	Adam Curry: Yeah, definitely. It's been a roller
+6573	Dave Jones: coaster. The last couple of months has been nuts.
+6577	Andrew grommet Hey, Andrew 2222 He's boosting the tune. He says
+6582	boost
+6583	Adam Curry: No, I can do that for you. Almost I can't where's
+6586	my
+6586	Dave Jones: wherever at? There we go. Oh, he's got the reply
+6591	address reply key. Yeah, he's got everything in here. As you
+6594	would expect, oh, Karen from mere mortals. 1111. Sasha
+6598	Richards he says yep, we have strike in Australia for at least
+6601	a year. Yeah.
+6602	Adam Curry: Why is that only for at least a year? What's going
+6605	on? I'm gonna have
+6607	Dave Jones: it but have never used it for anything. The amount
+6609	of apps I have downloaded after hearing it on here and then
+6612	never used is pretty high. It happens. So Andrew coming in
+6619	again. 2222 says Greenlight is super cool, but yeah, it looks
+6622	like the fee payout from individual noncustodial wallets
+6625	does not justify the liquidity lockup. Yeah, I look forward to
+6628	checking out cashew. Yeah, yeah, it's just I mean, everybody's
+6635	everybody who knows. It's just saying don't do it. No. Wish pod
+6641	home 15,000 SATs. Oh, nice. Do podcast guru says I love that
+6646	there are more and more options for live podcasting. At pod
+6649	home.fm. We provide the streaming server for you. Just
+6653	flip a switch to configure it. We can also record your session
+6656	or play a recording as a live session. or small busy lots of
+6660	people using the live feature.
+6662	Adam Curry: Excellent. I'm glad I'm glad more of that, please.
+6666	Yes.
+6667	Dave Jones: Oh Clarkie. And this is my buddy. From up the road.
+6671	He says he's boosting through fountain 5000 Sassy synesthete
+6675	mint. E cash be a solution for multiple funding source meant
+6680	something to keep an eye on something to keep your eye on.
+6684	Adam Curry: It can all be in the options file.
+6687	Dave Jones: Fitty mint e cash. S T. Interesting. Yeah, I guess. I
+6695	guess Fetty meant I don't understand the difference
+6699	between 30 Min. And cashew? I mean, the
+6701	Adam Curry: Fetty men I think the fatty man is a bunch of
+6704	people who create a mint together. Okay, but I'm I'm a
+6710	little unclear on it myself.
+6713	Dave Jones: I think one thing that makes people nervous about
+6715	the minutes is that you can easily fractional reserve that
+6717	thing.
+6718	Adam Curry: Yes. Yes, that is an issue. You
+6722	Dave Jones: would I don't see it being trustworthy at all, unless
+6726	you have some sort of an attestation to balance what it
+6728	Adam Curry: brought us to strike into the O auth. And so I'm
+6731	grateful for that.
+6733	Dave Jones: And that's and I still think it's I think I still
+6735	think it's a feature thing. I mean, the only thing about
+6739	cashyou is us talking to Alex about this earlier. It feels a
+6744	little immature. I just don't sure that it's ready for Oh
+6747	yeah. Oh
+6747	Adam Curry: no, I think it's very immature at this point.
+6750	Yeah,
+6750	Dave Jones: I think in the future I could see mince being a
+6753	thing by
+6754	Adam Curry: the way. Bitcoin 67,002 79.
+6758	Dave Jones: Lord what did it why did it jump? Tron?
+6761	Adam Curry: Baby Trump. Trump crops on risk on risk on That's
+6768	right.
+6771	Dave Jones: Oh, and we got the delimiter call Mr. Blogger
+6774	28,000 SATs Nice. Thank you. Through fountain he says,
+6778	remembers this from two weeks ago. He says howdy David Adam.
+6781	Instead of the podcast this week in guns by Texans Ben and Jean,
+6786	aka two good old boys Podcast. Today I'd like to recommend a
+6790	good podcast about podcasting industry title in and around
+6796	podcasting by Mark Asquith, Danny Brown and friends. To find
+6799	it, please go to www.in and around podcasting.com or search
+6805	for in and around podcasting. In podcast player apps. It's better
+6809	recommended by podcast index for social users so good to CSV.
+6814	Adam Curry: Thank you CSB. always appreciated man always
+6818	appreciate. Thank you. Bunk.
+6820	Dave Jones: I wonder if the doubt Mark Asquith knows that
+6823	CSB paid to advertise his pledge. He
+6826	Adam Curry: did. This is a beautiful thing he does. I
+6828	really like it. It's good. Yeah, that's good. That's good. Any
+6833	monthlies Oh, yeah, we
+6835	Dave Jones: do. Thank you. I was it was sitting right in front of
+6837	my face. Trevor, the Satan's lawyer. Five $5 from Down Under.
+6845	Thank you had Pharaoh $20.22 Thank you, Brother Chad. Cameron
+6850	Rose $25 Martin lindskog. $1 Brendon. apod page $25. Nice
+6857	smart gram $1 Randall black $5. Joseph maraca $5. Emilio canto
+6863	Molina $4 Mitch and Kreon over a pod verse 50 bucks. Thank you.
+6868	Ah, beautiful. Basil fill up. $25 Thank you, basil. Lauren
+6873	ball. $24.22 Excuse me. $24.20 Thank you, Lauren. Christopher
+6878	hora, Barak $10. Mitch downy coming in again. 10 bucks. Terry
+6883	killer $5 longtime supporter Yes. Silicone florist. $10 Chris
+6889	cow and five bucks. Paul Saltzman $22.22 Beautiful
+6893	DePaul. Daymond Cassie Jack 15 bucks. Longtime Derek J.
+6899	Vickery. The best name In podcasting, $21, Jeremy gerdts
+6902	$5 New Media Productions that would be Todd and Tom Rob Yeah.
+6907	30 bucks. Thank you, Michael Hall $5.50 And Timothy voice
+6912	$10,
+6914	Adam Curry: thank you all very much for supporting us value for
+6917	value and keeps everything running. Dave and Adam don't do
+6920	not take any of this home, we leave it in the bank to keep all
+6922	of this running when we're long gone. Of course, the Bitcoin
+6927	stays on the node, we've been opening up channels with people
+6930	looking for alternate solutions going as sovereign, if you need
+6933	to, if you need some liquidity hit us up. It's, it's crazy, you
+6936	know, it's like they just open a million sat channel to Pete to
+6939	people not even thinking about it. And I'm like, Yeah, that's
+6942	700 bucks. Whoa, yeah, take
+6946	Dave Jones: some thought. Think
+6948	Adam Curry: about that for a second. Yeah, maybe 500,000 SATs
+6951	will be enough. But it doesn't matter. We don't mind locking it
+6954	all up. It's, it's all part of the service part. And including
+6957	podcasts index is social, you get it all. If you get any value
+6961	out of what we do, particularly the index, of course, which is
+6964	now powering 10s. if not hundreds of 1000s of listening
+6967	experiences, then support us with the value you get out of it
+6971	for your app for your, for your hosting service for just for
+6974	enjoyment for being a part of a great community, because it
+6977	really is and and I'm reminded once again, that podcasting
+6982	unites in such incredible ways. If you look at our podcast, the
+6987	podcasting 2.0 community, people from very diverse backgrounds,
+6991	very diverse ideals and thoughts, and somehow just all
+6996	working for the same goal of keeping this moving forward,
+7001	keeps us cohesive, keeps us together. And I appreciate how
+7005	everyone participates in that. It's really it's a great thing
+7009	that's happening here. It's unique, I would say unique.
+7013	Dave Jones: Yeah, yeah, I agree. But if, if we if we start
+7020	putting if if app start using strike a lot more, do should we
+7025	chant? Should we open a Fat Channel to strike?
+7030	Adam Curry: We can.
+7031	Dave Jones: I just, I just don't know. Who to contact over there.
+7034	I don't know that we have any connection there. Maybe I can
+7037	figure that out? By asking around at the conference or
+7040	something? I mean, it seems like it would make the the liquidity
+7044	better. Well, yeah.
+7049	Adam Curry: I mean, the it was, of course, we opened a pipe,
+7052	it's inbound for them. But a lot, a lot of their stuff will
+7057	just stay internal. Who knows how they even you know, if you
+7059	send from strike while to strike, while they may have
+7062	their own ledger, for all I know, just
+7064	Dave Jones: feels like if somebody's if somebody's
+7067	listener, app listener wallet is in strike, and they're boosting
+7072	to some somewhere else. Like, yeah, yeah. Or somebody's node?
+7077	Adam Curry: I think it's, I think it's the courteous thing
+7079	to do regardless.
+7081	Dave Jones: Yeah, you would think so. Find out some more at
+7084	the conference, we
+7085	Adam Curry: can probably we can just find on one, one mL,
+7087	whatever. Or M boss. Just find out what their nodes are and
+7092	just open it up. I mean, I'm sure they have a minimum
+7094	requirement, but we could open 10 million sets to them.
+7098	Dave Jones: And no cash app at least at one time. When they
+7100	first started doing lightning. They were really restrictive.
+7105	Yeah, well of course couldn't you couldn't open a channel to
+7108	them without basically without them knowing about it. Yeah.
+7112	Well, I'm
+7113	Adam Curry: happy I'm happy to do it. But we like being good
+7116	neighbors.
+7117	Dave Jones: We do good neighbor has really good no neighbors.
+7119	All right. Beautiful.
+7121	Adam Curry: Ha almost two hours on the nose. Brother Dave, thank
+7124	you so much. Glad to have you black back and black. Glad to
+7127	have Vanua Glad to have you here safely. And back in the
+7131	boardroom. I really miss talking to you.
+7134	Dave Jones: Yeah, me too. It was it was weird being like, it just
+7138	becomes part of your life and you're like, Wait a second. I'm
+7141	supposed to be doing something you are
+7142	Adam Curry: now officially a podcaster. That's alright,
+7146	everybody out there in the boardroom. Thank you very much
+7148	for tuning in. We'll be back next Friday live here on
+7152	podcasts and I know.
+7169	Unknown: You have been listening to podcasting 2.0 Visit podcast
+7174	in this Dicor. For more information, go podcast.
+7180	Bring a snack

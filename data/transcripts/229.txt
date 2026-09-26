@@ -1,0 +1,2483 @@
+1	Podcasting 2.0 for August 8th, 2025, episode
+4	229, Database Storytime.
+8	We are back in the saddle, ready to
+11	rock and roll.
+13	Let's roll.
+14	Let's go, everybody.
+15	We get to do this this time, once
+16	again, for the official board meeting of Podcasting
+19	2.0. What's that?
+21	It's a name?
+21	Oh, I'm sorry.
+23	This is where we come together to talk
+25	about the future of podcasting, what's happening right
+27	now, and we always reminisce.
+29	We are, in fact, the only boardroom where
+31	talk is cheap and code matters.
+33	I'm Adam Curry, here in the heart of
+34	the Texas Hill Country, and in Alabama, the
+36	man who will track down your user agent,
+39	whoever you are.
+40	Say hello to my friend on the other
+42	end, the one, the only, the pod sage,
+45	Mr. Dan Jones.
+50	So, like, right after I posted using DJL's
+57	fancy link, podcasting2.org slash live, which redirects
+60	to episodes.fm slash something, something, something, something,
+66	that I can never remember and always screw
+68	up.
+70	Right after I posted that, Nathan posted, Dave,
+73	FYI, the podcasting2.org slash live link will
+76	now redirect to pod.link slash podcasting2.0
+81	.live. Oh, he's got the link thing integrated.
+83	That's cool.
+83	He re-inherited pod.link. How does that
+86	even work?
+86	What exactly happened?
+88	I mean, so they bought it from him
+90	and then they just gave it back?
+91	Is that how that, did he have to,
+92	like, write them a check?
+93	How does that work?
+96	They're like, look, we really haven't done anything
+99	with this thing.
+99	You can just have it back.
+100	That is amazing.
+101	I'd love to sell a business like that.
+104	To sell your business like that is fantastic.
+107	It's probably just a handshake deal, you know.
+111	That's probably not what it was.
+113	No, I'm doubting it.
+114	I don't think so.
+115	I don't think so.
+116	How you doing, brother?
+118	I'm doing pretty good right now, actually.
+120	Yeah.
+122	Been a tough week at the office.
+123	Tough week, yeah, tough week.
+125	Well, at least you're not working at Wondery.
+128	I still have a job.
+131	Talk about a tough week for those guys.
+134	I've got impressions on that.
+137	I mean, we don't, ultimately, it's not really
+140	our wheelhouse about inside baseball and stuff like
+143	that.
+143	Well, it's relevant only for one reason.
+147	Because Amazon said, well, you know, podcasting's moving
+151	towards video anyway, so we might as well
+153	shut this down.
+155	Which was bullcrap.
+156	Or reorg or whatever they were saying.
+159	I agree with James.
+160	That is, that's just complete, that's just a
+162	made up thing to say in public.
+164	The sad thing of all this video talk
+168	is that we kind of overlook what it's
+171	really about.
+174	And, you know, considering some of the talk
+177	that went on podcastindex.social between me and
+180	Dave Weiner about a name.
+183	I don't know if you caught any of
+185	that.
+185	No, I totally missed that.
+188	Is there something that happened on the...
+190	Yeah, something happened.
+192	I totally missed it.
+193	I'm kind of glad I did, because I
+195	was on edge all week.
+196	It would have tipped you over, man.
+199	Bill, you've been like, yeah, you pull out
+200	the razor blade.
+201	No, no, you get in the tub, pulling
+202	the Leonard Cohen record in the toaster.
+204	Yeah, you're good.
+205	No, we're not going to do that.
+206	Splish.
+209	I was, you know, I subscribed to his
+211	podcast.
+215	Which is your first mistake.
+217	Well, no, I find him very interesting to
+220	listen to, the things that he's talking about.
+222	The most interesting is if you look at
+224	his arc of AI, it went from, ChatGBT
+227	is the most awesome coding partner ever, to,
+231	I tell this thing to not do it,
+234	and it doesn't give me answers, and it
+235	goes off and does things over here, and
+237	then changes things, like, that sounds about right.
+240	That's pretty much what it is.
+242	That's a common arc with AI.
+244	Yeah, exactly.
+246	But he had a podcast, and he was
+249	talking about, if only there was an API,
+252	if only there was an API that could
+256	do some things, you know, and his idea
+258	was, it was actually, it was an interesting
+261	thought, and that's why I reached out to
+262	him on the Mastodon.
+265	Your second mistake?
+266	Well, no, not really.
+268	It's, I'm fine.
+269	I pray for people like him.
+270	You know, I asked, God.
+272	Yeah, praying for him is not the mistake.
+274	Talking to him on social media is the
+277	mistake.
+277	You're right.
+278	After the talking comes the praying.
+280	Okay.
+282	God, forgive him for he knows not what
+284	he does.
+286	The idea was, you know, there was a
+288	New York Times article, like, who reads that?
+291	But he reads that.
+292	He said, here's the top eight podcasts to
+296	listen to.
+297	And he said, you know, I'm never going
+298	to do that because, you know, I listen
+300	to it in the car, and if there
+301	was just an API that just had a
+303	button, and then it could automatically subscribe my
+305	podcast app, use Pocket Casts to those eight
+309	shows.
+310	I'm like, oh, you know, I'll just say,
+312	you know, hey, Dave, you had an interesting
+314	idea.
+314	I just want you to know there is
+315	an API.
+317	And, and, you know, we actively develop for
+320	endpoints.
+321	And, you know, if you have an idea,
+322	you know, let's, don't, don't.
+325	I already know that.
+325	I already know the end of the story.
+327	Okay.
+328	Hit me, hit me with the end.
+330	Well, it's, the thing with Dave is, if
+334	he didn't build it, then it's, then it's
+336	shit.
+337	So.
+337	No, no, no.
+338	That was, no, that wasn't it.
+339	No.
+340	It's like the insidious nature of calling something
+344	podcasting 2.0. I will never work with
+347	anyone who did that ever.
+349	Okay.
+350	Oh yeah.
+350	Yeah.
+351	Yeah.
+352	Whatever.
+353	All right.
+353	RSS 2.0. Okay.
+355	It was, yeah, whatever.
+359	It's like, meanwhile, he's, he's trying to get
+361	the attention of the, the WordPress people who
+363	literally stole blogging from him, but okay, that's
+366	fine.
+366	Whatever.
+367	Yeah.
+367	And call it WordPress.
+368	Um, it's all good.
+371	Oh, you need a pod ping.
+372	I'm sorry.
+372	Good point.
+373	Everybody.
+374	I'm sorry.
+374	Give me a ping.
+375	I was all wrapped up.
+377	Wrapped up.
+378	Hold on.
+378	My mistake.
+379	Here we go.
+380	I do love my pod ping.
+385	Done.
+386	Um, no.
+389	So back to the, the problem that everyone
+393	is kind of overlooking is what Google is
+395	really doing.
+396	They're not hijacking a name.
+398	They are kind of, you know, RSS.
+401	I mean, podcasting, but that's what they're really
+403	hijacking.
+404	I gave away the punchline.
+406	They're hijacking RSS.
+408	They want to kill RSS based podcasting.
+412	That is their true, whether they even the
+414	people on the front line know it or
+416	not.
+416	That has always been the nature of Google.
+419	You know, just think even the whole concept
+421	of a feed comes from RSS feeds comes
+425	from the name.
+426	Oh, it's my timeline, my feed.
+428	That was always an aggregator led, um, uh,
+435	feature from back in the day, Google reader,
+439	which they ran and saw, holy crap, this
+442	is no good.
+444	And of course they went to, uh, was
+447	it Google plus Google circles, uh, you know,
+450	all these, all these other, and they, and
+452	they shut down Google reader, which effective circles.
+455	Wasn't it Google circles?
+457	You had a circle of friends and Google
+459	squares.
+459	You're my little yellow circle.
+461	And I don't know, it was very complicated.
+464	Typical engineers are going to build a great
+466	product.
+466	No offense.
+468	Um, and, and so what they're doing here,
+472	and I would say they're, they're even stupid
+475	because what they should do is just say,
+477	oh, okay, all your RSS feeds now just
+479	work.
+480	And when you, and when you updated updates
+482	and when you, and when you change something,
+484	it changes and then they should cut it
+486	off.
+487	You know, that's what they did with Google
+488	reader, but they're not even that mean anymore.
+491	Not, not that I think they've, the smart
+494	people have left the building, but that's really
+496	what it is.
+496	They do not want a user controlled feed
+500	experience.
+502	You're talking about Amazon.
+504	No, I'm talking about, no, I'm talking about
+506	Google.
+506	Now this is video.
+507	I'm talking about video in general.
+508	This is not a video thing.
+510	This is, yeah, YouTube does video, but we
+512	know from, from the, from the actual numbers
+515	that 70% of people, uh, quote unquote,
+518	watching a podcast are actually listening to it.
+522	And they may glance at it from time
+523	to time, but, and they may start off
+525	watching, but then they just put it in
+526	their pocket.
+527	Then they're listening.
+528	That's, that's, uh, what was that survey we
+530	had?
+532	Oh, nice.
+533	What are you drinking?
+535	Oh, what is, this is a wixie wixie
+539	pomegranate green tea sparkling water.
+541	That sounds like chemicals, chemicals, baby.
+546	No, this is chemical free.
+548	No, he's sure.
+548	Does it have natural flavors?
+550	Look on the can.
+551	Let's see.
+552	Carbonated water, uh, natural, no organic flavors.
+557	Oh, well that's different.
+559	Okay.
+559	Organic flavors.
+560	Nice.
+561	Yeah.
+561	If it comes from nature, it can't kill
+564	you.
+564	That's right.
+565	But that's different than organic.
+568	Um, so that's, that's really what's happening.
+572	And, uh, and I, and I say this
+575	because when people see the true power of
+578	RSS, which I, I witnessed this in this
+582	past week, when we were off, I was
+583	in Florida, um, at a conference and I
+587	was speaking in front of influential pastors.
+591	Who have all sides, different size churches, but
+594	they have a, their group is about two,
+596	two and a half thousand.
+598	And I was showing them the stuff we're
+600	doing with Godcaster.
+603	And, and it was like magic to them.
+605	You know, I said, well, you know, so
+606	you have a podcast.
+608	Well, no, you can now add it to
+610	this, uh, to this church's, uh, Godcaster station.
+614	But you know, it can also add it
+616	over here.
+617	It's like they, it couldn't believe it.
+618	You don't have to upload over there.
+620	You know, I don't understand.
+621	I don't have to call them.
+623	No, no, it's, it's syndication.
+627	And I was like, are you familiar with
+628	Dr. Rick Scarborough?
+632	He's a, he's like in his seventies.
+634	He's a pretty well-known guy, uh, uh,
+640	former pastor.
+641	He's written a ton of books.
+643	Anyway, I don't think I am.
+645	So, uh, he's in the audience and he
+647	asked a question.
+648	He said, how long should a podcast be?
+650	And I said, until it's boring, everyone laughs.
+654	But, you know, they actually left the room
+656	like crap that I just offend Rick Scarborough.
+658	Sort of boring.
+659	So, so, so I, I cornered, actually kind
+661	of cornered me, uh, right after that.
+664	I said, well, I want to show you
+665	something.
+665	And he shows me, he has this, uh,
+667	this feature called my take.
+669	And it's like a minute and a half
+671	and it's weekly and it's his take on
+674	current affairs.
+674	And it airs on hundreds of radio stations.
+678	They said, uh, this is not a podcast,
+679	is it?
+680	I said, that's exactly what a podcast is.
+682	Do you have a feed?
+683	No.
+684	Said, okay.
+685	So I created a feed for him, actually.
+686	I'm just like, this is too good.
+688	And I just scraped it right off his
+689	website with a script and creates a feed.
+692	Uh, and so I realized that what Google
+695	and YouTube are doing by telling people a
+697	podcast is a bunch of people sitting around
+699	a table with headphones on and microphones, and
+701	it's always video.
+702	It has detracted from the true beauty of
+707	what RSS-based podcasting is.
+710	And when you take a little bit of
+712	time, just a little bit of time to
+713	explain to people the syndication nature of it,
+718	they start to understand, wait a minute, I
+723	can do more with this.
+724	There's more things that can be done.
+727	And so one of our customers, actually, High
+731	Point Church in Lake Wales, Florida, they have
+734	a team.
+735	And so they're Godcaster.
+737	And just for those of you who don't
+738	know, Godcaster is basically a digital podcast app
+742	that, in this case, the church controls what
+744	content is in there for the congregation.
+749	And it's a combination.
+750	It can be live streams.
+751	It can be, you know, all kinds.
+753	But it's mainly podcast, RSS podcast based.
+756	It's very easy for them to type in
+757	some names, you pull it up, and these
+759	are the things that I want people to
+760	hear.
+761	Or I did a sermon, I wanted to
+762	listen to this guy, et cetera.
+765	And it clicked for these people.
+768	So wait, why don't we call ourselves Providence
+770	Voice?
+771	So they're branding.
+771	I like that idea.
+773	And they said, you know, how do we
+776	get Sally, who goes to all the board
+778	meetings, the school board meetings, how do we
+780	get her to do a report and add
+783	it to our station?
+784	And this is where the light bulb went
+785	off for me.
+786	I'm like, oh, well, you just need to
+789	put it into a feed.
+790	And so I think they use, I don't
+793	know if they use RSS.com or Buzzsprout,
+795	but they do some feed creation with some
+798	podcasts.
+799	And they said, wait, so I just make
+801	that like two minute report, a podcast?
+804	I say, yeah.
+805	Yeah, for sure.
+806	And then they started to understand the power
+809	of this, how simple it is to manage
+811	an entire local, hyperlocal actually, resource that people
+818	can listen to.
+819	And of course, you know, we built channel
+821	streams, which turns a bunch of podcasts into
+824	a live stream, you know, with links back
+827	to the original podcast.
+828	So it's, you know, it's all the, all
+830	the things we built here at Podcasting 2
+832	.0, including a remote item.
+836	What's the other one that was, we almost
+838	forgot about them.
+839	The source, source tag, I think it is.
+841	Oh, yeah.
+841	Source tag, using all of those bits and
+845	bobs.
+846	And all of a sudden, you know, now
+848	these guys are seeing how they can link
+850	to each other and they don't really have
+853	to see an RSS feed.
+854	They just know that if I put it
+855	into this box and then I can pull
+858	it up over here, that's all they really
+860	see.
+862	And I was just like, the magic unfolding
+864	before me of how people are looking at
+868	podcasts, not as just a show that shows
+871	up in a app, a app, an app,
+875	but the, the capability to connect these things
+878	together and make a, a bigger hole, kind
+882	of like I was talking about the, you
+883	know, the Rachel Maddow app.
+885	It's like their, their podcast app is very,
+889	very limited.
+889	You can't go around searching for stuff that
+891	they haven't made available.
+894	But the interlinking and all of these different
+897	pieces that fit together makes it a, a
+901	destination for people with it.
+903	And the destination has an opinion.
+905	And that opinion in this case is, you
+908	know, local politics and Jesus for Lake Wales.
+912	And, you know, the pastor also happens to
+914	be the mayor.
+915	So there's a lot of good things there.
+917	Um, and so, you know, if we stop
+921	looking at RSS as just a mechanism to
+925	distribute a show, which is where everyone's stuck
+929	in that mode.
+931	And I've all, I think I've said this
+932	for five years, we've been doing this project.
+934	Where is the innovation?
+935	Where's the, where's the completely crazy idea that
+939	is, yeah, it's an app, but it's not
+941	really a podcast app.
+942	It does something else very specific.
+945	And through, you know, whatever reason you and
+949	I wound up building that with Paul Bailey
+951	and with Gordon, we wound up building an
+953	actual app that does that.
+955	And it's just so beautiful to see.
+958	And you know what, you know, it never
+959	comes up in the conversation.
+961	Uh, does it do video?
+963	You know, people get it.
+964	It's like, oh, I'm listening to this stuff.
+966	Oh, okay.
+966	So, you know, just, it's a, it's like
+968	this customized radio that we control all the
+972	programming and we don't have to be radio
+973	people to understand it.
+975	And it just kind of works and it
+976	updates automatically and they love it.
+979	They really, really love it.
+981	The only thing I would, I would think
+982	would be even better if like every, if
+985	you had a hosting account and you could
+987	add to it like a sub feed where
+989	you just like have an app on your
+991	phone.
+992	And, uh, actually kind of the idea that,
+995	uh, what was, uh, before Spotify bought it,
+999	what was that called?
+1001	The hosting company they bought.
+1004	Oh, Anchor.
+1005	Yeah.
+1005	So Anchor, didn't Anchor have an app and
+1007	you could do a podcast on your phone
+1010	and it was all crap.
+1012	Remember that?
+1012	Yeah.
+1013	Yeah.
+1013	You just fire up your, I mean, yeah,
+1015	you would just like record yourself on the
+1017	phone and then that, that was your episode.
+1020	Right.
+1020	Right.
+1021	So having that as like a sub account,
+1023	so I can just have people I want
+1026	associated with whatever I'm building with RSS just
+1029	to hit something and then send and boom,
+1032	it puts it in a feed and it's
+1033	done.
+1033	I mean, I could build that myself technically,
+1035	but I'd like hosting people to be hosting
+1036	people.
+1038	Um, there is so much, am I making
+1040	any sense here?
+1042	Yeah, yeah, no, yeah, yeah, no, yeah, no,
+1045	that's not an answer.
+1047	Yeah, no, no, yeah.
+1048	Uh, yeah, you're making sense.
+1050	I think, let me, let me go backwards
+1054	real quick because I think the, the vid,
+1059	the video commentary was, uh, in the Wondery
+1064	thing was a head fake.
+1066	Yeah, of course.
+1068	And, but I think, I think there's two,
+1070	I just want to kind of go back
+1071	to that real quick because I think that's,
+1075	I don't know, my, my take on this
+1077	was two, a couple of things.
+1083	I think the primary hit of this news
+1087	was with people in the podcast industry themselves.
+1090	Sure.
+1091	But there's a psychological aspect to it because
+1095	there's so much, since, uh, I don't know
+1102	really when this started, maybe end of 2022,
+1105	there's been so much negative news in the
+1108	podcast world.
+1110	There was only, there's only a few bright
+1112	spots you could point to and Wondery was
+1114	one of them.
+1115	Wondery, you could say, okay, look, you could
+1117	hold them up as the pedestal and say,
+1119	on the pedestal and say, okay, Wondery is
+1123	proof that if you do a podcast network
+1126	right, you can be successful and make money.
+1131	And when something like this happens, it's like
+1135	you got rug pulled.
+1136	I think there was someone who said that
+1138	you can't monetize the network.
+1140	Who was that guy?
+1142	I'm trying to think who that was.
+1144	I vaguely remember that too.
+1145	And I don't remember.
+1146	I don't remember who that guy was.
+1147	Very, very downer dude.
+1150	Smart guy though.
+1151	Well, when you have, what'd they have?
+1153	300 people.
+1156	Oh, did they have that many on staff?
+1158	Well, they fired a hundred.
+1160	Yeah.
+1161	They fired a lot.
+1162	A hundred people.
+1163	You know, what kind, what kind of payroll
+1165	is that, man?
+1166	That's 15, $20 million payroll.
+1170	When the, when the rows of your, of
+1173	your industry sort of, when they get chopped
+1175	in that, that way, you have, you have
+1178	to know they wouldn't, Amazon would not do
+1181	that if it was not, if it was
+1184	wildly successful financially.
+1187	No, of course not.
+1188	No, of course not.
+1189	It's an implicit, it's an implicit admission that
+1192	the, the, the money aspect just is not
+1196	there.
+1197	And the, but the other thing that we're
+1199	seeing is advertising.
+1205	We've been saying this for a while.
+1206	The advertising is just not enough.
+1208	It's bullcrap is what it is.
+1210	You cannot get to profitability solely on advertising.
+1214	You have to use subscriptions.
+1217	Spotify cut their staff and increase their prices.
+1220	YouTube increased their, their premium prices and they're
+1223	pushing people hard into premium.
+1226	That Amazon, so, but the other thing that
+1229	hit me this morning though was, I think
+1231	there's also an aspect of this where Amazon
+1233	sees that they're giving the, the money that
+1238	any money that Wondery was making from subscriptions,
+1242	which is the more valuable of the two.
+1245	If you have subscriptions and advertising, subscriptions is
+1250	the more valuable of the two.
+1252	And 30, 30% of that subscription money
+1255	was going to Apple.
+1258	Um, if you, if you remember the, over
+1260	the last few years, sorry.
+1263	Um, if you remember the last few years,
+1265	I've got a, I just found an article.
+1267	We saw this article, this same story many
+1270	times.
+1271	The headline is Wondery is the winner in
+1273	the subscription race this year, but the size
+1275	of the market remains small.
+1276	Apple says Wondery had the top subscriber channel
+1279	of 2022 as the studio was the home
+1282	of 16 of the top 20 subscriber shows.
+1286	So of Apple's top 20 subscription shows, Wondery
+1291	had 16 of them.
+1294	Yeah.
+1295	And that means that any money that they
+1297	were making from subscriptions, a third of that
+1300	was going to Apple.
+1301	Now that's a reason to stop doing that
+1304	and bring all that content into Audible.
+1308	That, that is because now you say, okay,
+1310	if you have a hardcore subscriber who really
+1313	wants to subscribe, now they'll come over and
+1315	subscribe on Audible.
+1315	They're not giving, they're not going through Apple
+1317	podcasts anymore.
+1318	So I think that the, there was financial
+1321	problems, clearly.
+1324	That's just obvious, or they wouldn't do this.
+1326	But then the, the money they were making,
+1329	which wasn't evidently very large, a third of
+1334	that was getting siphoned off over to Apple
+1335	podcasts.
+1336	So I just think that there's, I mean,
+1339	the psychology aspect of this inside the, the,
+1342	the quote unquote podcast industry is, oh man,
+1347	I thought, you know, I thought these guys
+1349	were, were, were killing it and they clearly
+1351	weren't.
+1352	And then the other side of it is,
+1354	this is just a pure money play on
+1358	Amazon's part.
+1359	They're getting their house in order.
+1360	This is the same way that, that Spotify
+1362	had to.
+1363	I think this, the conversation we're having now
+1365	is exactly the problem, but I'm, but I
+1368	think what I'm trying to, I think what
+1370	I'm trying to say, cause I don't really
+1372	know what I'm saying ever, honestly.
+1374	Okay.
+1376	I know what you're saying.
+1378	Is RSS is a beautiful technology and we've
+1383	distilled it down to shows and money.
+1387	Right.
+1388	Yeah.
+1388	And what I'm saying is what can we
+1391	do differently with RSS when what you put
+1396	in your feed, how much you put in
+1399	your feed, you know, what the actual is,
+1402	is the content always supposed to be a
+1404	show and, and what happens on the other
+1408	end.
+1409	So right now we have, you get a
+1411	transmitter.
+1412	By the way, this, this was absolutely valid
+1414	in the beginning.
+1415	You get a transmitter and your app is
+1417	the receiver.
+1419	And what we've been doing for the past
+1421	year shows me that, well, not entirely.
+1424	The RSS feed is a building block that
+1427	you can put all kinds of different types
+1432	of content and not necessarily a show.
+1435	And on the receiving end, you can build
+1438	something completely customized for one particular function.
+1448	And in this case, we happen to choose,
+1450	you know, we basically built a podcast player,
+1455	a podcast app for a total addressable market,
+1459	my favorite term, TAM, of over 300,000
+1462	churches in America that can fill that with
+1467	whatever they want and create an experience for
+1470	their audience the way they want to.
+1474	So we've put an intermediary into the mix.
+1477	I'm not saying that that's what has to
+1479	happen, but it's a different...
+1480	A repeater.
+1481	Well, it's like a, a remixer.
+1484	That's actually a very good idea.
+1486	It's a remixer.
+1487	A DJ, we're a DJ.
+1488	In a way it's, it's a remixer.
+1490	You're, you're, you're, it's a curation device.
+1494	And that's, and what is the number one
+1496	problem we've had?
+1498	Oh, discovery.
+1499	There's no way to discover.
+1500	There's no way to discover.
+1501	Well, I may look towards a certain person
+1505	and say, oh, I'm going to, my discovery
+1507	is going to be with that person.
+1510	And the way I'm going to consume that
+1511	from that person is going to be in
+1514	their app, in a, in a separate app.
+1517	He might, he might.
+1519	I just had a, I just had a
+1521	killer idea.
+1522	Go.
+1524	Uh, everything that gets shared goes into a
+1527	feed.
+1528	Oh, and not...
+1530	Are you killing?
+1531	Are you kidding me?
+1532	I'm feeling your smalls.
+1535	Exactly.
+1536	All right.
+1536	Okay.
+1537	A feed of shares.
+1538	So this is what I'm talking about.
+1540	It's like, let's just forget the money for
+1542	a second.
+1543	It's forget, forget shows.
+1546	You know, it's like if I could subscribe
+1548	to, when we used to have these experiments,
+1551	just, I just want the weather updated on,
+1555	on whatever device I'm using every hour for
+1558	my location.
+1559	You know, that's just, it's a simple, simple,
+1562	um, example.
+1565	And you know what?
+1566	There's probably no money in it.
+1568	Maybe there is, I don't know.
+1570	But there's so many cool things that we
+1573	can do with remixing and intermediaries instead of
+1577	transmitter receiver, which is what we've been stuck
+1581	in.
+1582	And you know, when, when your competitor, which
+1585	is Google, who is basically trying to kill
+1588	RSS again, is zigging, we need to zag.
+1592	We need to do something completely different.
+1594	It's very hard because the comp, you know,
+1596	the podcast industrial complex is centered around money
+1600	and monetization.
+1602	You wanted to say something?
+1604	I think it's, well, it just hit me
+1607	that it's like, you have to answer the
+1609	question, why?
+1612	Like, why does Google want to kill RSS?
+1616	Why have they had a 20 year hard
+1621	on to kill RSS?
+1625	Because it always is a threat to their
+1630	model.
+1630	The YouTube model, you know, on our, on
+1636	our, um, Well, let me help you.
+1641	Let me help you.
+1642	The money that is in podcasting is not
+1645	the reason Google is doing this.
+1647	They're not going, oh, look, there's another billion
+1649	dollars we can get.
+1651	No, it's really not it.
+1652	They want all your base belong to us.
+1655	They just want it.
+1657	They want your content.
+1658	They want your content and they want it
+1659	for free.
+1661	And they want you.
+1661	Yes.
+1662	Yes.
+1662	That's it.
+1662	They want your content for free because what
+1665	they've realized is is that they've realized the
+1668	same thing that AI has realized that the
+1670	AI companies have realized has realized.
+1672	There's not enough content.
+1676	They've already ingested the entire internet and it's
+1679	not enough.
+1681	It's not enough to fulfill the promise that
+1683	they've, that they've given the promise that they've
+1687	given on YouTube is that it's your new
+1690	TV.
+1691	Whenever you tune, whenever you jump on your
+1693	YouTube, you're always going to find something to
+1696	watch every, there's always going to be something
+1698	interesting there.
+1699	And I can tell you that's not true.
+1701	But also the last thing they want is
+1704	for you to subscribe to something and actually
+1708	get what you want all the time.
+1710	That makes no sense to them.
+1712	Outside of them.
+1713	Yeah, that makes no sense to them.
+1714	They, they want to keep you engaged with
+1717	what they think is what you want.
+1719	And, and in the process, you know, that
+1722	it's, they are definitely hooking us in, but
+1725	they want to take the control away from
+1727	you, the, the listener, the viewer, the user,
+1729	and do it all for you.
+1731	And a lot of people are very happy
+1732	with that.
+1733	I'm sure we have a lot of time
+1734	on their hand on their hands, but I've
+1737	seen time and time again from all ages.
+1743	Uh, where do I find your podcast?
+1746	Well, do you have Apple?
+1747	Yeah, I think so.
+1748	Um, but, oh, I can just get it
+1750	from the church app.
+1751	Oh, okay.
+1752	I'll get it over there.
+1752	And whenever they want that, they go over
+1754	there and they don't care if it's a
+1757	podcast app, if there's other things they could,
+1759	they just want the stuff that they were
+1760	told they can get over there and they
+1762	get it from there.
+1763	Right.
+1764	Uh, oh, it's on your website.
+1765	No agenda still, I think 30% of
+1768	people still go to no agenda show.net
+1771	and click play and leave their browser window
+1773	open.
+1774	And that's quite a lot of, that's a
+1776	lot of people, you know, that's hundreds of
+1777	thousands of people who are doing that.
+1780	It's just the fact.
+1782	So all these different things we can build
+1785	with remixing, and this is where that source,
+1788	it was so beautiful when, when, when you
+1790	point out the source element, just to reiterate,
+1795	so we now have an app and, and
+1798	you open that app and it shows you
+1800	stations in your area by geo location.
+1804	You click on one, you follow the station,
+1807	but you can just, you know, bop around.
+1810	What do they have?
+1810	What kind of content do they have?
+1812	Or, oh, what's this?
+1813	Click.
+1813	It's a live stream.
+1814	Oh, I just fell in the middle of
+1815	something.
+1816	Okay.
+1816	I'm listening to this.
+1817	Oh, that's interesting.
+1818	Now that's radio.
+1818	And I find myself more often than not
+1821	just listening to the program for a bit.
+1822	And if it's really good, I'll be like,
+1824	yeah, I want to find out.
+1825	I want to listen to this when it's
+1827	good for me.
+1828	I want to put it in a queue.
+1829	I want to listen to it later.
+1831	And that's one click away and I have
+1832	the source.
+1834	And oh, there's all these other episodes.
+1836	I might go back and listen to that.
+1837	It's true discovery.
+1839	The stream is, it's almost irrelevant.
+1841	It's just a discovery mechanism.
+1843	What's going on?
+1843	Click.
+1844	Oh, okay.
+1844	Surprise me.
+1845	Oh, okay.
+1845	That's interesting.
+1847	I'll go and listen to that later.
+1849	It's completely, it's a completely different model from
+1853	what podcasting in the monetization sphere really is.
+1859	It's very different.
+1862	Every, all the big players are trying to
+1865	construct walls around their, around their systems.
+1870	Now they can't afford to, it's a money
+1874	thing with them.
+1874	And they're not trying to cap.
+1876	They're not trying to capture the money that's
+1879	in podcasting because there's not very much money
+1881	in podcasting.
+1882	It's, it's the amount of money that's in
+1883	podcasting is completely insignificant to any of these
+1887	large companies.
+1888	Is it complete?
+1890	It is just such a small number.
+1891	It's irrelevant to their bottom line, but it
+1894	does represent a threat to their money in
+1899	a different way.
+1900	And that's through your attention.
+1902	And, and the data you bring along.
+1904	Yes.
+1905	And so that, that is all that this
+1907	is about.
+1908	It's all that this is about.
+1910	And the, every time, every time something happens
+1916	where there's a shift within podcasting, like what
+1920	just happened, it is a signal that these
+1924	walls that they're building are getting, are getting
+1927	tighter, which means there's more threat.
+1929	They perceive more threat internally.
+1932	Yes.
+1932	They, they're looking outside and say, and feeling
+1936	threatened and they double down.
+1938	So, and I, and I, and RSS has
+1940	always been at the core.
+1942	It's always, Google has always been terrified of
+1946	RSS because it completely bypasses their entire setup
+1950	completely.
+1952	And, and the, you know, this, this leads
+1953	into the, to that whole, you know, to
+1956	the HTML working group trying to get rid
+1959	of XSLT.
+1962	I don't know if you saw that.
+1964	Briefly.
+1965	Is that XSLT?
+1966	Is that the style sheet that flows over
+1968	an RSS feed and then shows the content
+1970	as like a webpage?
+1972	Correct.
+1972	Boom.
+1973	Yeah.
+1973	Nailed it.
+1974	Nailed it.
+1976	Yeah.
+1977	And somebody from the HTML working group.
+1980	It's basically one more step for Adam.
+1982	Oh, got a view source.
+1983	Okay.
+1984	Yeah.
+1984	Yeah.
+1985	Right.
+1985	Right.
+1987	Somebody from the HTML working group.
+1990	Who is this?
+1993	Mason Freed.
+1994	Chromium developer.
+1998	He proposed, well, he said, what is the
+2001	issue with the HTML standards?
+2003	Let's see.
+2005	XSLT v1, which all browsers adhere to was
+2008	standardized in 99.
+2009	In the meantime, XSLT has evolved to 2
+2012	.0 and 3.0. Uh, the bottom line
+2015	of what he's saying is 1.0 XSLT
+2019	is all that's in browsers these days.
+2020	It's proven to be a security problem because
+2026	for historical reasons, all of the browsers rely
+2030	on what's a one library called LibXSLT, except
+2034	for Firefox.
+2035	It uses his own thing as usual.
+2037	Um, but that's a C, C++ code base.
+2042	And there's memory safety issues in there.
+2046	So it's proposed that XSLT would be deprecated
+2050	in browsers.
+2051	This is what he's, I don't know if
+2052	he's even proposing it.
+2053	He's just asking the question, should it be
+2055	deprecated?
+2058	Um, and you know, the response, I'm not
+2064	saying this, I'm not saying his motivation is
+2067	this, but what this is, what it, but
+2068	what it boils down to, what it, what
+2070	it amounts to, honestly.
+2073	Is a direct attack on RSS.
+2076	That's right.
+2078	Because XSLT is not just, it's not only
+2082	for styling.
+2083	It'll, it's, it's a templating language for X,
+2087	for XML.
+2089	So it's a way to, I mean, if
+2091	you look at XSLT, it's got, it's got
+2093	control flow.
+2095	I mean, it's got four, you know, it's
+2096	got, uh, uh, for each loops, it's got,
+2100	you know, conditionals it's, it's, it's a language,
+2104	it's a templating language.
+2105	And so you can, you can use it
+2107	to do very complex things and, uh, to
+2112	display XML.
+2113	But since is this good or bad?
+2116	Is this good or bad?
+2117	Sounds like a good thing.
+2119	Well, you know, I, I think some of
+2122	the, I think it's really not good.
+2124	It's, I don't want to assign a sort
+2126	of quality to it, like a moral quality
+2129	to it, as good or bad, because it's,
+2132	it just is a thing that exists that
+2135	is in use.
+2136	But they want to get rid of it?
+2139	Uh, I don't know if he even wants
+2141	to, I think, uh, I think what he's
+2143	proposing was, you know, it's the way this
+2146	HTML working group works is proposals are made
+2148	and they work it out.
+2150	Um, they work through it and people sort
+2154	of, uh, vote with their commentary, uh, in
+2159	a way.
+2159	And then, uh, at the end, you know,
+2162	at the end of the discussion, uh, choices
+2166	begin to, to be proposed, you know, and
+2170	it's still firmly in the discussion phase until
+2173	the let's, let's, let's have a conversation about
+2176	this phase.
+2178	And it does, you know, the, the issue
+2181	is XSLT is primarily used for displaying RSS
+2188	feeds nicely in web browsers.
+2190	That's, that's, that's what 90% of the
+2193	use is.
+2194	Sure.
+2194	But that doesn't mean it's the only use.
+2197	Um, there's still lots of other use going
+2200	on of XSLT, uh, as well.
+2203	And the total page loads for X, you
+2205	know, for XML in browsers is, while as
+2208	a percentage is low, the total, the total
+2211	volume is high.
+2213	Still.
+2214	And anyway, I, the reason I'm bringing this
+2218	up is because RSS is, since it's XML
+2227	based, anything that diminishes XML in the browser
+2233	also diminishes XML on the quote unquote web,
+2240	which is ultimately a diminution of RSS.
+2247	And I think that that we have to
+2250	keep that in mind.
+2251	We need to fight for some of these
+2253	things to be retained, not necessarily because we
+2258	can't live without them if they were to
+2260	go away, but we saw what things like
+2265	Google Reader going away did to RSS.
+2268	Mm-hmm.
+2269	And every time there is a, it's like
+2272	a Jenga tower.
+2274	Every time one of those little blocks is
+2276	pulled out, the tower that is RSS gets
+2279	weaker.
+2280	And, you know, that's, we have to just
+2285	keep as many blocks in that tower as
+2286	we can.
+2288	And it's useful.
+2289	I mean, XSLT, the ultimate, the best outcome
+2292	of this would be that XSLT in browsers
+2294	would be upgraded to a more modern version
+2297	that they would support 3.0. Mm-hmm.
+2303	And because it's not, like I said, it's
+2305	not just styling.
+2305	You can also use it for delivery.
+2309	You can also say, you know, well, this
+2313	feed is huge.
+2315	Alberto gave an example of using a 4
+2319	-H loop in XSLT to minimize the amount
+2322	of data that's returned.
+2323	Or do pagination or whatever.
+2324	Yeah, yeah.
+2325	Things like, there's, the browser is, I mean,
+2329	we had XHTML for crying out loud.
+2333	We had XML as the basis for the
+2337	browser's rendering itself a few years ago.
+2340	Yes, I remember that.
+2340	Yeah, I remember that.
+2341	Yeah.
+2342	Yeah.
+2343	XML is important.
+2345	Well, let me throw two things at you.
+2348	Okay.
+2349	Actually, it was a very interesting, there's a
+2351	clip I played yesterday.
+2353	Hold on a second.
+2359	Scrunch, there's a company and this kind of
+2364	folds into AI.
+2368	Listen carefully to this.
+2370	Chris Andrew is CEO and co-founder of
+2372	Scrunch AI.
+2374	Scrunch tries to help customers' websites get noticed
+2376	by AI bots so that their name or
+2378	products appear in AI answers.
+2381	We're seeing companies that are desperate to get
+2383	their content consumed by AI models.
+2385	He's talking about companies that sell products and
+2388	services, like sneakers or oil changes.
+2391	Andrew says that visibility can lead to more
+2393	transactions, even if there are fewer overall clicks.
+2397	He sees a future where a whole new
+2398	post-human web emerges to feed AI.
+2402	The websites of today, full of pictures and
+2404	videos, were designed primarily for eyeballs.
+2407	So I have a thesis that we're going
+2409	to move to a non-visual internet because
+2411	the internet is going to be for AI.
+2413	And AI wants words.
+2415	The secret is in the name.
+2416	Large language models want language.
+2418	And as a society, we have built a
+2422	very confusing, over-designed, over-incentivized internet that
+2427	is heavily interactive.
+2428	Websites as we know them won't vanish altogether,
+2431	he says.
+2431	People will still need to visit them to
+2433	buy stuff.
+2434	So forget the hypey stuff there.
+2442	Where women wear comfortable shoes.
+2448	Where RSS feeds are interlinking to each other
+2452	constantly.
+2453	We have all the building blocks.
+2456	We have the remote item.
+2457	We have source.
+2459	I think remote item is actually kind of
+2462	the most exciting part of that.
+2464	Where we're interlinking to all of these different
+2467	things.
+2468	They link out to transcripts.
+2470	There's a lot of different things.
+2472	I mean, there could be an interlinked web
+2475	of RSS feeds that would be incredibly beneficial
+2480	for any type of application to pull in
+2485	or search or archive or index to do
+2490	things with.
+2493	Like Gopher.
+2495	Basically, I'm talking about Gopher.
+2498	Let's bring back Gopher.
+2500	Finger.
+2502	Finger my .plan file.
+2506	Um, publisher.
+2507	Thank you very much, Chad F.
+2510	Um, there's something we talked about.
+2511	I mean, there's something to be said about
+2513	that.
+2515	Well, XML serves a role.
+2517	It serves a very important role.
+2519	And we've, you know, man, I feel like
+2520	we're, I feel like we're talking about stuff
+2522	we talked about like five years ago.
+2524	Easily.
+2524	Sure, sure.
+2526	Um, XML.
+2528	XML is important because, um, Let me, let
+2538	me throw this at you.
+2539	So what you said, you've got an RSS
+2542	feed of shared.
+2544	I mean, just think about all the interlinking
+2547	we could be doing, but aren't doing.
+2549	We have all of these, all these different,
+2551	we have pod role.
+2552	We have, you know, all these different feeds
+2555	that can be created.
+2556	You can be surfing around on this invisible
+2559	RSS web, interlinked web that with XSLT actually
+2566	could be viewable, would be viewable to you
+2568	as like just your web browser becomes an
+2571	app again.
+2572	And you know what I'm saying?
+2574	And so you just, you just click on
+2575	something and, oh, I'm in this world.
+2578	Uh, and the XSL, the T part, the
+2581	template part determines your visual experience.
+2586	But underneath anybody can walk this tree and
+2589	figure out all these different things and can
+2591	pull in pieces from.
+2593	I mean, why wouldn't I all of a
+2595	sudden be linked into, um, the true fans
+2599	ecosystem.
+2600	And now there's all this other stuff that
+2602	I'm linking in between a person tag and
+2605	location tag.
+2607	I mean, it is so much more than
+2609	what we're doing.
+2609	Just trying to show, you know, uh, an
+2612	icon of a head of someone.
+2613	Oh, he was a guest.
+2614	You know, you know, do you know what
+2617	I mean?
+2617	You know what I mean?
+2618	I do.
+2618	Yeah.
+2618	I do.
+2618	I do know what you mean.
+2619	This is like world outline.
+2621	Yes.
+2621	Yes.
+2622	But without the OPML.
+2623	And without Dave Weiner.
+2625	Right.
+2626	So it's, it's the same idea.
+2628	It's, it's a.
+2629	Gosh, I keep coming back.
+2631	This freedom controller.
+2632	I keep coming back to the same stuff.
+2633	Don't I?
+2634	Yeah.
+2635	I want to re I'm resisting.
+2637	No resist.
+2637	Resist.
+2638	Resist.
+2639	We must.
+2642	Wait a minute.
+2642	Where's Al?
+2644	Where's Al when we need him?
+2646	Hold on.
+2647	Resist.
+2648	Here we go.
+2650	Man, Al is like so old, he's at
+2652	the bottom of the list.
+2653	He fell off the board.
+2654	But resist we much.
+2657	We must and we will much about that
+2662	be committed.
+2663	There you go.
+2663	Resist it, Dave.
+2664	My thoughts exactly.
+2668	But you know, so.
+2669	Yeah, I agree.
+2669	The XML is a generic markup language.
+2674	And that is so useful.
+2677	God, it's so useful.
+2678	I mean, HTML is not that way.
+2680	HTML is geared towards display.
+2683	Yes, yes.
+2683	And we built a total visual web.
+2686	Oh, yeah.
+2686	Please don't say JSON because before you know
+2689	it, Daniel J.
+2690	Lewis is going to be like, we can
+2691	do all this in JSON.
+2696	That's why his middle name is JSON.
+2698	That's right.
+2698	And the JSON is just a serialization language.
+2705	It's just XML is critical to the web.
+2710	It just really is.
+2711	And anything that diminishes that, we should be
+2714	expanding that, not cutting it.
+2718	And I think hosting companies should, you know,
+2722	do a six-week sprint and come up
+2726	with some ideas of what you can actually
+2728	do with interlinking your RSS feeds.
+2732	Yeah.
+2733	Let's bring creativity back in again.
+2736	We have this beautiful resource, you know, the
+2740	podcast index as your starting point.
+2745	Podroll.
+2746	Yeah, podroll.
+2747	But even the index isn't really necessary if
+2750	you're just linking through XML files.
+2752	Isn't podroll, it just hit me that, I
+2757	feel like podroll is the first time that
+2762	a feed from one hosting company has been
+2765	directly referenced by a feed in another hosting
+2767	company.
+2768	I think you're right, except for remote item.
+2770	We did some remote item stuff, but that's
+2772	a little more complicated.
+2773	Well, blogroll is based on remote items.
+2775	For the first time, you have an RSS
+2781	feed at Blueberry, structurally inside the feed linking
+2788	to an RSS feed at Buzzsprout.
+2792	Maybe we're looking at this all wrong, man.
+2795	Do you know what I mean?
+2797	We've been looking at it from the transmitter
+2800	-receiver model, whereas it's the interlinking part that
+2805	nobody can do.
+2807	Only RSS, and I'm just saying XML, sure,
+2809	but let's just say RSS because we have
+2813	the tags.
+2815	We have all these interlinking tags, and once
+2819	you give people the power to interlink, it
+2823	becomes something completely different.
+2825	We should just have an RSS-based web
+2828	with style sheets on top for all I
+2831	care that just lets you surf around, but
+2835	it's structured.
+2836	You know, like, oh, this guy, I'm going
+2837	from him to this.
+2838	This is what was beautiful about the web
+2841	in the beginning, or really Gopher, I say
+2843	it laughingly, but it was like, wow, I'm
+2846	over here, and this link be over here.
+2847	The linking, which was created by other people,
+2851	was what made it so nice.
+2853	That has been broken down into I got
+2855	to use this app and that app and
+2857	this app and over here got that app,
+2859	and nothing really interrupts or interlinks anymore.
+2862	Think about the search engines you could create
+2864	with that much interlinked structured data.
+2866	Well, look at bingit.io. Yeah, it's killer.
+2869	Bingit.io is based on XML.
+2871	It's a complete XML engine built on, well,
+2876	in this case, OPML and RSS.
+2880	I don't know.
+2881	You mean clipgenie.com?
+2883	Yeah, clipgenie.com, yes.
+2886	There's something there that we've just forgotten, and
+2891	by the way, in this age of verification,
+2893	which is coming, it's unavoidable, we're not going
+2895	to get around it, where apps are going
+2899	to be forced into age verification, and it'll
+2904	start with the big social networks, but eventually
+2906	it'll come down to any app in any
+2908	app store or even to get into the
+2911	app store.
+2912	It's coming.
+2914	Yeah, I mean, isn't Australia doing it?
+2917	Is that right?
+2918	The U.K., Australia, Canada, it's coming everywhere.
+2923	There's lots of legislation on the books here
+2925	in the United States.
+2927	Think about the children.
+2929	By the way, not without merit, but we
+2933	still have the browser.
+2935	Barely.
+2937	Barely.
+2937	Barely.
+2938	We're hanging on to the browser.
+2939	But the good news is anybody can create
+2942	a browser.
+2943	There's enough frameworks out there you can create
+2946	a browser.
+2948	I don't know.
+2949	I just want to bring this creative thinking
+2952	back into the process instead of a show,
+2955	monetization, download, stats.
+2959	It's boring.
+2960	It's very boring.
+2962	I know it pays a lot of rent
+2963	for a lot of people, so I don't
+2965	want to discount that.
+2966	For me, too.
+2966	It does for a while, though.
+2969	I mean, the Wondery thing shows us that
+2972	it's not ever a sure slam dunk.
+2976	I mean, I don't know.
+2979	I mean, it feels like a lot of
+2982	podcasting lore is unraveling a little bit in
+2989	the last few years.
+2990	Well, of the PIC, sure.
+2993	But, you know, it's all focused.
+2994	It all boils down to money.
+2997	Oh, yeah.
+2998	Everything, whether it's value for value, it all
+3002	boils down to money.
+3003	Instead of, wow, I can just throw this
+3005	idea I have, and I wrote something in
+3009	a markdown for all I care, and I
+3011	link it to this, and then someone else
+3013	links through there, and real discovery.
+3016	Our version of discovery is, hey, chat, GPT.
+3020	But we could even make that better by
+3023	giving AI large language models, you know, trees
+3027	to parse.
+3028	I mean, Dave Weiner's right on his podcast.
+3032	LLMs, they suck.
+3034	I mean, they totally get in your way.
+3037	He's completely right, and if that's our future,
+3039	I would like to go ahead and exit
+3042	stage left.
+3044	We need to do database story time.
+3048	Database story time?
+3050	Yeah.
+3052	I'm sure you saw the ungovernable misfits.
+3057	No.
+3058	What did I miss?
+3059	Exposed a huge SoundBytes API bug.
+3061	No, no, no.
+3062	I don't know anything about this.
+3064	Do we need music for this?
+3066	Are you doing a story time that we
+3068	need music for?
+3070	I mean, you can play music.
+3071	It's going to be a long story, though.
+3073	We might need a 20-minute music bed
+3077	here.
+3078	Okay.
+3079	Let's try it.
+3081	Okay.
+3084	And now, database story time with your pod
+3089	sage, Dave Jones.
+3096	You're going to have to stop that.
+3097	I can't even think straight.
+3099	What kind of podcaster are you?
+3102	The crying violin was killing me there.
+3106	It was my in memoriam music.
+3108	Yeah, weeping for the database.
+3112	Yeah, so ungovernable misfits.
+3116	I don't know if you've known.
+3117	There's been an ongoing problem with that one
+3120	feed.
+3122	No, I don't know.
+3123	Did you know about this?
+3123	It sounds familiar, but fill me in.
+3127	Okay.
+3129	Let's see.
+3131	Well, they're ungovernable, so that's part of the
+3135	problem.
+3137	Misfits.
+3138	Here we go.
+3139	Feed ID 352598.
+3143	3529 or 8?
+3146	352598.
+3148	Okay.
+3149	So the ungovernable misfits, it's Linkin Park Rules.
+3154	It's the guy on podcast.
+3158	I'm sorry.
+3160	352598?
+3163	352598.
+3167	And Linkin Park Rules pops up about once
+3171	every couple of weeks and says, hey, I
+3173	just posted a new episode, and the podcast
+3176	index is.
+3177	Not updating.
+3179	No, it's not.
+3179	No, no, it's more than that.
+3181	It's a blank page.
+3182	Oh, okay.
+3185	It shows nothing.
+3186	On my page, and I'm like.
+3189	That's disappointing.
+3190	It is disappointing.
+3191	This is the feed from Podhome?
+3194	Yes.
+3195	Yep, from the Dutch Masterberry.
+3198	And so every time I go and I
+3202	look, and when I go and pull the
+3208	get episodes by feed ID endpoint of the
+3211	API for that show, 352598, it would come
+3216	back and say 500 server error, internal server
+3220	error.
+3221	Oh, no.
+3222	And so then if I continuously reduce the
+3227	number of maximum episodes returned down to, let's
+3230	say, five, eventually I'll get a response.
+3235	And the response would contain hundreds of identical
+3239	sound bytes.
+3240	Ah.
+3242	Okay.
+3243	And so I was like, well, okay, something's
+3248	screwy.
+3250	Like 562.
+3252	Yeah.
+3253	So there's like, there would be, these are
+3257	duplicate sound bytes.
+3259	Well, this is gone.
+3262	And so in order to get the show
+3264	back working in the index, I would just
+3268	reset the feed and then everything would go
+3271	back to normal.
+3272	It would all be perfect after that.
+3274	And for another few, another two, three weeks,
+3277	same thing happens again.
+3281	And so what I thought was happening, and
+3286	this is because Barry at Podhome, a long
+3293	time ago after Podhome first launched, Barry actually
+3297	had a problem with his system where it
+3300	would create duplicate sound bytes, many duplicate sound
+3305	bytes in a feed.
+3306	Mm-hmm.
+3306	And he said he, and we reported it
+3309	to him and he said he fixed it.
+3311	He's the lying Dutchman.
+3315	And so this has always been in the
+3318	back of my head that I'm thinking this
+3321	is some sort of regression, a bug on
+3324	Barry's side.
+3327	And, but I'm trying to look at it
+3329	objectively, but I'm still always thinking, okay, it
+3338	has to be something where when the feed
+3341	is initially published, it has a whole bunch
+3343	of sound bytes, but then later once the
+3347	feed is rebuilt, that gets fixed or something
+3350	like this.
+3350	So I'm, I'm, I'm, my thinking on this
+3354	is polluted by the initial problem a long
+3358	time ago.
+3359	Mm-hmm.
+3361	But we need to talk about database indexes.
+3364	Okay.
+3366	When you don't index a database correctly, a
+3369	database table, you, what ends up happening is
+3374	you, you chase, you end up chasing slowness
+3378	as, as if it's unoptimized code.
+3382	You think a lot of times you think
+3384	the problem is in your code and the
+3386	problem is actually at the database.
+3390	So I, I always index a table, secondary
+3396	tables in the database the same way.
+3399	And so what I mean by secondary tables
+3401	is, you know, you get your primary tables,
+3402	you have the feeds table, which all the
+3405	podcasts are in, then you have the episodes
+3408	table, which we call NF items.
+3413	So you have those two tables are the
+3415	core of podcast index database.
+3420	Everything else is considered a secondary table.
+3423	That's just the terminology I use because those
+3425	are going to be things like soundbites, chapters,
+3428	person, locations, things that attach themselves to an
+3433	episode or a feed.
+3435	And you, and I always index tables like
+3443	that the same way.
+3445	And unless it's something very kind of unique
+3449	in that I use a compound index because
+3453	a lot of times we don't want or,
+3455	uh, or need or have a unique ID
+3460	for each of those tags.
+3461	So say take something like, well, something like
+3464	the soundbite tag, a soundbite tag doesn't have
+3467	an ID, you know, it doesn't have like
+3470	a globally unique ID for every soundbite that
+3472	exists.
+3474	So you have to sort of come up
+3476	with your own unique ID and a unique
+3481	ID for a soundbite tag could be, uh,
+3485	just all the attributes in the tag.
+3488	Those would all add up to be unique.
+3492	Um, so any, you know, another example of
+3494	the person tag.
+3495	So you might have a compound index on
+3498	all the attributes of the person tag, the
+3501	name, the bio, the avatar, the role, all
+3506	that kind of stuff combines.
+3507	If you just like smooshed all that stuff
+3509	together, you would have this big, big unique
+3511	value within the feed.
+3515	And that, what that would do is it
+3516	would naturally exclude duplicates.
+3519	So if somebody put the same tag in
+3521	there 20 times, you would only get one
+3524	of them because that's your unique index on
+3527	that table.
+3527	Right.
+3528	I'm with you.
+3529	I'm following.
+3530	Yeah.
+3531	So RSS can have duplicates.
+3533	It's not against the rules.
+3535	It's just XML.
+3536	You can have duplicates.
+3538	You can have the same ep, you can
+3539	have the same, uh, episode tag, uh, excuse
+3543	me, item tag with, uh, the same content
+3547	in it 27 times.
+3548	But you don't want the same GUID 27
+3550	times.
+3551	Oh, but you can.
+3554	Okay.
+3554	You know, you can have it.
+3555	It's not against the, it's not against the
+3557	rules.
+3558	It's not, it's going to, it's going to
+3561	break stuff, but it's not against the rules.
+3562	Yeah, it'll break stuff.
+3563	Yeah.
+3563	But it doesn't violate XML.
+3565	And so you have to naturally figure out
+3569	a way to filter that.
+3571	And as they get, as those things are
+3574	ingested, grip, yes, you can grip it, uh,
+3579	grip pipe.
+3581	Um, so you can, uh, so the way
+3583	you do that is by having well-constructed
+3587	compound indexes on, on, uh, XML data that
+3592	does not contain a unique identifier.
+3598	Well, the soundbites table did not get indexed
+3600	this way.
+3602	I figured that was the punchline.
+3605	Uh, I don't know what, I don't know
+3609	what exactly brain fart I had, but it
+3615	just, I just did not index this table
+3617	the right way.
+3618	Okay.
+3618	So where does that leave us?
+3620	So this means duplicate soundbites.
+3622	Oh, we're being created.
+3625	Uh, anytime there was a new episode.
+3628	Oh, it would create a new, a new,
+3630	uh, no, go ahead.
+3633	I'm just guessing.
+3634	Yeah, no, you're, you're on the right track.
+3636	Any, so the way the aggregators work is
+3640	that they only read, they only re-ingest
+3644	a feed if they detect a new episode.
+3648	So, um, in, or if they see, well,
+3652	that's not exactly true.
+3654	If they detect a new episode or some
+3655	significant change to the feed.
+3657	So then they'll re-index all the episodes
+3660	and bring them all in.
+3662	So since that's not a common occurrence, most
+3665	of the time with most feeds, you, it's
+3669	not like we were getting a new set
+3671	of soundbites every single time it scanned the
+3674	feed.
+3675	It was only when there were, there was
+3676	a new episode or some significant change was
+3679	made.
+3679	Right.
+3681	So I looked in the soundbites table was
+3685	four gigabytes.
+3687	It had 36 million soundbites in it.
+3691	And I was like, uh, that can't be
+3694	right.
+3695	That's not this, that seems a little excessive.
+3698	Um, so the soundbites table has a column
+3701	that references the episode ID from the episodes
+3705	table.
+3706	And I saw hundreds of soundbites for episodes
+3709	that only in the feed had like a
+3711	few.
+3713	Um, and then I looked on the index
+3715	and I looked at the structure and I
+3716	looked at the indexes that were on that
+3718	soundbites table and I was like, Oh, this
+3720	is okay.
+3721	So that's step one of the bug.
+3723	This is a multifaceted bug.
+3725	That was, that was part one.
+3728	Part two is this.
+3731	We've touched, we've touched on this in other,
+3734	uh, in another context before, but we've talked
+3737	about database table relationships.
+3741	So a simple example is this.
+3743	So imagine you have, um, imagine you have
+3747	a database of, let's say, let's say you're
+3750	a bookstore.
+3751	You have a database of books.
+3754	You have a books table in your database
+3756	and you have an author's table in your
+3757	database.
+3759	There's a column in the books table called
+3763	author.
+3765	And that column references the author's table and
+3770	that's what's called a relationship.
+3771	So that's, those are table relationships.
+3773	That means the value for the author field
+3776	of a book in the books table is
+3780	related to an entry in the author's table.
+3784	And you define those related, the defining the
+3788	relationships in that way is what keeps all
+3790	the data structured.
+3791	And that's what, if you, if you hear
+3793	the term, uh, a relational database, that's what
+3797	that means.
+3799	The way that the way this is typically
+3802	achieved is through, is you link, uh, is
+3808	you, you, the linking of something like an
+3810	ID.
+3811	Okay.
+3811	So you'd have like, there'd be an ID
+3813	column on the books table.
+3815	Every book would get an ID, a unique
+3818	ID.
+3818	And then there would be an ID column
+3820	on the author's table where they were, every
+3822	author would get a unique ID.
+3824	And in the books table, the author column
+3826	would have a reference to the ID column
+3828	in the author's table.
+3829	So every time you pull a list of
+3831	books, you're also getting a list of authors
+3834	of those books.
+3837	Um, and you do that through what's called
+3840	a join statement.
+3841	So you would say something like select all
+3846	books from the, you know, select all the
+3848	books from the books table and then join
+3851	the author's table onto the book, uh, onto
+3854	that result set, where the books.author equals
+3859	the author ID.
+3860	So now what you've gotten is you've gotten
+3862	all the books and then you've gotten all
+3865	the fields from the author's table that go
+3868	along with that book.
+3869	Mm hmm.
+3871	That creates a full, the full result set.
+3874	Okay.
+3876	And you do, and the joins are how
+3879	you build out all the data you need
+3883	in a single call rather than having to
+3885	do, go look up a little bit over
+3887	here, a little bit over there, a little
+3888	bit over here.
+3889	So Nate, you know, what I just described
+3893	is a one-to-one relationship.
+3897	So every book has one author and you
+3900	can visualize, you can visualize what this would
+3902	look like in your head.
+3903	If you think of just like an Excel
+3904	spreadsheet where every row is a book and
+3908	then there are column called authors with one
+3912	name in it.
+3914	However, however, obviously there's more, there's, things are
+3921	more complicated than that because now imagine that
+3925	books can have multiple authors, you know, which
+3928	is, is obviously a thing that happens.
+3930	So now we're talking about a one to
+3932	many relationship and you would tip it the
+3935	way you would typically handle this in a
+3937	relational database is you was, you'd have like
+3939	a three way table relationship.
+3941	You'd have like a database menage a trois
+3943	where you'd have a books table, an authors
+3951	table, and then you would have a pivot
+3954	table that links those two together.
+3957	So you may call it like the book
+3959	authors table.
+3961	So this book authors table has three columns.
+3966	It has an ID of its own because
+3968	that's good practice.
+3970	It has a book ID column and then
+3972	it has an author ID column.
+3974	So this, the, the purpose of this table
+3977	is to link authors with books.
+3981	Now, if you want one particular book, we
+3983	book, let's say, um, uh, as JCD, uh,
+3989	JCD book online, the book vinegar, the vinegar
+3994	book and it has, um, you know, multiple
+3999	authors.
+4000	It has him and Mimi.
+4003	So you could query the books table and
+4009	then join the book authors table on that,
+4012	on that book ID.
+4014	So let's say that the book ID for
+4015	that is 512.
+4018	You'd say select all the books from, you
+4022	say select from the books table where the
+4024	book ID equals five 12 then you're going
+4027	to join the book authors table, uh, where
+4030	the book ID equals five 12 then you're
+4034	going to join the authors table where the,
+4037	uh, author ID equals book authors, author ID.
+4041	So you're basically linking, you're chaining these things
+4044	together to get a complete results set where
+4047	you have books and all their authors.
+4050	Now, what do you think the results of
+4052	that?
+4052	What do you, if you were to visualize
+4054	that output as a spreadsheet, what would it
+4056	look like?
+4057	You lost me at Mimi.
+4062	So if you have, if you have multi,
+4066	if you have a result set from a
+4068	database query where one of the tables that
+4072	you're querying has multiple results, but the one
+4078	that it was joined onto only has one
+4081	result.
+4081	Okay.
+4082	So you're searching for one book, but you
+4085	want to get all the authors.
+4087	And what it's going to give you back
+4089	is a, is a set of rows, just
+4090	like an Excel spreadsheet, right?
+4092	Of authors.
+4093	So what goes into all those other columns?
+4096	Because what you're having is you've got the
+4098	book title, the book publication date, the book
+4101	publisher, blah, blah, blah, blah, blah.
+4102	And only one of the columns is author.
+4105	So what goes in all those other columns
+4108	in the results set?
+4111	Because you're going to have two entries.
+4112	You're going to have two rows, one for
+4114	JCD and one for Mimi, but you still
+4117	have all these other columns and what goes
+4119	in those columns.
+4121	And I can tell you what goes in
+4122	those columns because the way SQL works is
+4124	you're going to get an exact duplicate row,
+4127	except for the author is going to be
+4129	different.
+4130	So what is going to look like in
+4131	the resulting output is that you have two
+4133	identical books with two different authors, but you
+4137	don't, you only have one book with two
+4140	authors, but that's not what the results set
+4143	looks like.
+4143	So SQL is broken.
+4146	Yes, we brought, yes.
+4148	Um, so for this, this is the way
+4152	SQL works.
+4152	And for this reason in the API code
+4155	of the podcast index, and this is kind
+4158	of, you know, it's very common.
+4160	I have to pull out those duplicate rows.
+4162	You have to do something.
+4164	You have to do something that takes a
+4165	result set that looks like that.
+4167	And then files it down to have only
+4175	the episode.
+4176	So I'm like, you remember, I'm looking for
+4177	episodes here and I want to get all
+4179	the sound bites that go with those episodes.
+4181	So, so, and one episode can have multiple
+4183	sound bites.
+4185	So you're going to get that episode back
+4186	multiple times.
+4189	Oh, you have to do something that filters.
+4191	Yes.
+4192	Okay.
+4192	So here's, we're back to gripped.
+4194	We're back to gripped.
+4196	This is the actual I'm posting in the,
+4199	in the boardroom.
+4201	This is the actual code from that gets,
+4204	this is the function that gets called when
+4207	you do an API call on podcast index
+4210	for get episodes by feed ID.
+4214	Um, there's some stuff that the endpoint does,
+4217	but, but this is the main workhorse that
+4220	gets called at, at the database items by
+4224	feed.
+4226	Yes.
+4227	And so you can see, uh, I think
+4230	it's line two 83.
+4233	You can see that this is, it's filtering
+4238	out.
+4238	Okay.
+4239	It's saying, um, I'm it we already know
+4244	we're going to get lots of iterations of
+4246	the same.
+4247	We're going to get what is in effect,
+4249	duplicate episodes.
+4250	So we want to filter through those duplicate
+4254	episodes and we're not looking where we get
+4257	the episode once.
+4259	And then we add the sound bites to
+4262	that episode as separate parts of the response
+4265	object that we're building to send back in
+4267	the API call.
+4268	But we only want to add the sound
+4271	bite if we haven't already added it.
+4275	Um, and so because this is complicated, complicated,
+4280	but, but remember, this is not just sound
+4284	bites.
+4285	This is multiple joins.
+4287	So what's getting joined here, you can see
+4289	the list of joins up in the code.
+4292	It's joining the chapters table, the transcripts table,
+4294	the soundbites table, the person's table, the value
+4296	table, the social learner, the value timesplits and
+4298	the nfguids.
+4299	Yeah.
+4300	So there's a lot of joins going on
+4302	here.
+4302	So you're going to get multiples of all
+4304	these rows many, many, many times.
+4306	And that's going to fill up memory and
+4307	bork the result.
+4310	If you don't, if you're not careful to
+4313	exclude them.
+4314	Yes.
+4315	So this was part.
+4317	If only you built this in Frontier, this
+4319	wouldn't be a problem.
+4321	Frontier.
+4322	Yes.
+4323	Yes.
+4323	Userland.
+4326	And for some reason in this case, I
+4328	wasn't doing that either.
+4331	This is the fixed code.
+4333	The other code, I just, I was just
+4335	taking whatever I was given and sticking it
+4337	back in there.
+4338	It was pulling all the soundbites from the
+4340	SQL response without ever looking to see if
+4342	it had already had that soundbite in the
+4344	response object.
+4345	Oh man, this is what a crazy bug,
+4347	Dave.
+4349	What this was bugs all the way down.
+4352	I mean, this was a complete, this was
+4353	a complete brain fart on my, on my
+4357	side of things.
+4358	I mean, this was, I still don't understand
+4361	why I got this so wrong.
+4363	The only thing I can think, my only
+4366	thinking here is that I was doing, is
+4371	that I was putting the soundbite stuff in
+4373	play and that I got, I may have
+4379	gotten interrupted in them and just forgot what
+4382	I was doing because this is not normal.
+4384	This is what I typically do on a
+4386	situation like this is I, I basically just
+4388	take, and this is what every programmer does.
+4390	You take what you did before and you
+4392	just replicate it again.
+4393	You do the same thing again.
+4394	You know, you take, because all these things
+4396	follow a pattern.
+4397	I mean, the persons, chapters, soundbites, they all
+4400	follow a consistent pattern.
+4402	So you just copy and paste over your
+4404	code, then make a couple of modifications and
+4406	you, you know, you do your thing.
+4408	But that's, that's just looking at that soundbite
+4411	code.
+4411	I was like, why did I do this?
+4415	Cause it was completely different than the rest
+4417	of the code.
+4417	But you know, the human element came in
+4420	because I kept thinking the whole time about
+4423	that old bug that Barry had.
+4425	And I just was thinking this has to
+4427	be on his side.
+4430	Um, and as the new, and it was
+4432	enough of a head fake because every time
+4437	I would reset the ungovernable misfits feed, it
+4440	would remove everything related to that feed from
+4442	all the tables because like part of table
+4447	relationships is you can sit, you can set
+4449	what's called cascades.
+4450	And so what you can do is every
+4454	table that references.
+4455	So, so we have an episodes table, right?
+4458	And each episode gets an ID.
+4460	Well, all the, all the things like transcripts,
+4463	chapters, uh, soundbites, persons, all those tables that
+4469	hang off of it, the episodes table, they
+4472	reference those episode IDs.
+4474	So if you set a cascade on, on
+4476	those reference on those secondary tables, you can
+4480	have it where when you delete the episode,
+4483	anything on another table that references those, those
+4487	entries also get deleted.
+4489	So that's very convenient because you can wipe,
+4491	you don't have to go clean up after
+4493	yourself.
+4494	Everything just gets, but you know, it's like,
+4497	okay, well this episode is now gone.
+4498	Well, everything that referenced that episode, that also
+4500	needs to be gone because it's now invalid
+4502	data.
+4503	So it would wipe everything.
+4507	Um, and this would temporarily solve the problem
+4509	because now there's just the exact sound bites
+4513	from the feed in the database.
+4515	There's no duplicates at all.
+4517	And I was like, okay, well, maybe there
+4519	was a caching problem on Barry's side, blah,
+4521	blah, blah, blah, blah.
+4523	Because now it's fixed.
+4526	Um, but then as new episodes were released,
+4529	the sound bites would begin to duplicate and
+4531	then it would build up over time.
+4534	So the here's, so the fix for this,
+4536	Oh, thank God there's a fix.
+4540	The fixes is implemented and done.
+4543	The first, first, stop all the aggregators from
+4548	ingesting sound bites because you gotta, the sound
+4551	bites table at this point needs to be
+4553	read only.
+4554	So we don't want anything being written to
+4556	it.
+4556	So then you, then I exported all the
+4560	sound bites, every record out of the sound
+4562	bites table into a CSV file because I
+4565	don't want to have to reread all these
+4567	feeds.
+4568	Um, cause I don't know which feeds have
+4571	the problem, have the, yeah, well, have, um,
+4575	sound bites in them.
+4575	You know, I just don't cause I'm getting
+4577	rid of the sound bites table.
+4578	Yeah.
+4579	So you export all the sound bites entries
+4581	into a CSV file.
+4584	Truncate the sound bites table.
+4585	Now, truncate is a SQL function that you
+4588	can do.
+4590	It's like instantaneous.
+4591	It just basically empties the table.
+4593	You don't have to do like a whole
+4594	bunch of deletes.
+4596	And the nice thing about that is it
+4597	doesn't lock the database.
+4599	So you can just basically just, it's gone.
+4603	Empty the sound bites table, modify the indexes
+4606	on the table so that now it includes
+4607	the proper indexes so that you won't get
+4609	duplicates.
+4610	Um, making a compound index, download the CSV
+4617	of all the exported, you know, sound bite
+4621	entries, create a temporary table in a SQLite
+4624	database with the same index parameters as what's
+4628	now in this, in this, in the main
+4630	database, import the CSV file into the SQLite
+4633	table.
+4635	Basically it's using SQLite as a way to
+4637	de-duplicate.
+4638	And then export out of SQLite back to
+4643	CSV because what I, because I don't want
+4646	to have to upload a humongous CSV.
+4649	I mean, this thing was four gigabytes.
+4651	You know, I get to get this thing
+4653	as small as I can.
+4656	So export that CS, that now de-duplicated
+4659	the CSV back out.
+4661	And I wrote a PHP script, PHP script
+4664	that would just like slowly ingest these back
+4667	into the sound bites table.
+4668	Cause I didn't want to do like a
+4669	mass import.
+4671	Then go in and fix the API code.
+4673	So this properly de-duplicate, de-duplicating the
+4676	SQL results, then turn the sound bite aggregation
+4681	back on in the, across the aggregator fleet.
+4683	So that was, that was what happened.
+4689	Um, I guess Sunday and Monday of last
+4692	weekend, uh, uh, was.
+4695	You needed that.
+4697	You really needed that.
+4698	That was great.
+4699	It was, it was wonderful.
+4700	Yeah.
+4701	Yeah.
+4702	And you know, hearty apologies to Dutch master
+4707	Barry.
+4707	I, I was, I was blaming him for
+4712	like three months on this and it was
+4716	my problem the whole time.
+4718	And, but now, but we got it fixed.
+4721	And also, also apologies to Oscar and, uh,
+4724	for blaming them.
+4726	And I didn't blame them as I just,
+4729	cause Oscar depends on a podcast index to
+4734	get value value splits.
+4736	Yeah.
+4736	And it wasn't, nothing was coming out.
+4737	It was breaking.
+4738	Yeah.
+4738	It would just work.
+4739	Yeah.
+4739	So anyway, I, it, it was my problem
+4742	the whole time, but now we got it
+4743	fixed.
+4745	This has been another episode of Database Storytime
+4749	with Dave Jones.
+4753	Please join us next time when Dave will
+4757	explain out of memory errors on Linode infrastructure
+4762	right here on Database Storytime.
+4774	Next week.
+4775	What does it mean when you go to
+4777	a bulletin board and it says too many
+4778	connections?
+4782	Oh man.
+4783	Okay.
+4783	Well you've, you've eaten up all of the
+4784	rest of our time for today.
+4787	I'm sorry.
+4787	No, that's okay.
+4788	It was, this was, I mean, okay.
+4791	I actually was working on an excess LT
+4794	style sheet in the meantime, but you know,
+4796	otherwise, well actually, you know, I, the person
+4800	I really blame is clearly not myself.
+4803	The person, the person I truly blame is
+4806	John Spurlock.
+4807	Oh really?
+4808	How does Spurlock get the blame for this?
+4810	Because he gets full database dumps of the
+4813	podcast index with every table.
+4815	He should know.
+4816	He should have seen this.
+4817	He should have seen this months ago.
+4819	What are you doing?
+4820	What are you doing Spurlock?
+4822	Yeah.
+4822	He's just, he's clearly not paying attention.
+4824	He's asleep at the wheel.
+4826	I want to thank some people who support
+4827	the podcast index.
+4828	Many of you have been supporting it for
+4830	five years now.
+4832	As we continue to bring you the boardroom
+4834	with all of the, we got warts and
+4836	all in this one, man, man.
+4838	Thank you Dave so much for you do
+4841	all this for no money.
+4844	Exposing my flaws in public.
+4846	That's wonderful.
+4847	That's, that's part of it.
+4848	But man, what you have built is just
+4850	a beautiful system and it's so highly appreciated.
+4854	I'm tearing up.
+4857	You can support the podcast index and all
+4860	of the infrastructure that Dave needs to make
+4863	all of this work.
+4863	And it always does.
+4865	I mean, have we ever had any real
+4867	actual downtime?
+4868	I don't think so.
+4869	On the index?
+4870	Yeah.
+4871	I don't think we've ever had it like
+4872	a, like a downtime downtime.
+4875	Like it didn't work.
+4877	I don't think so.
+4878	We had downtime one once I think when,
+4881	didn't we have a downtime once?
+4883	I don't think, see, this is what I
+4884	mean.
+4885	No, your error log is like two bites.
+4892	It's been created.
+4895	Let's not talk about downtime.
+4898	Boost that came in while we were chatting
+4900	and of course we appreciate you supporting this
+4903	project value for value.
+4904	You can go to podcastindex.org at the
+4906	bottom.
+4907	There's a big red button.
+4908	You can hit that and you can support
+4909	us with your fiat fund coupons through PayPal.
+4911	We love boost coming into the modern podcast
+4913	apps row of ducks from Martin Lindeskog known
+4917	as Lyceum.
+4917	And he actually, so he always has like
+4920	a running dialogue.
+4921	So I got to find it and then
+4923	read it in reverse.
+4926	So let me see if I can find
+4928	his first one.
+4930	So he sends 420 boost for the hackathon,
+4934	then a hundred great to hear what's the
+4936	next step.
+4937	It's like he's sending us text messages.
+4941	I'm not replying.
+4942	And he says, as a side note, I
+4944	like that you were showing comments on podcastindex
+4946	.org for your podcast.
+4948	Yes, this is a, is this thanks to
+4950	the thread on Macedon activity pub protocol?
+4952	Yes, that is exactly what it is.
+4954	It's the the activity.
+4957	No, what is it?
+4957	The what's the tag?
+4961	Social interaction.
+4963	Yeah.
+4964	Yeah.
+4964	We keep using that and I'll just keep
+4967	using it.
+4968	He says you have your ducks in a
+4970	row.
+4971	That's why I sent 22, 22.
+4972	Perfect.
+4974	We got a boost from Sam, Sam Sethi.
+4978	Hey, the Seth, Seth Meister, triple seven.
+4982	The original goal of RSS really simple syndication
+4985	was to grab data from around the web
+4987	and bring it into the Netscape portal.
+4989	So stocks, weather, sports, et cetera.
+4991	My boss Mike Homer had the original RSS
+4993	feed idea and Danny Libby coded the first
+4997	XML RSS.
+4998	Today we have come full circle and have
+5000	the podcast portal page with podcast blog events,
+5003	merch, et cetera.
+5005	See, I thought I was coming up with
+5006	something new, but Sam has already done it.
+5008	It's amazing.
+5009	It's amazing.
+5010	What happened?
+5011	The way it works.
+5012	1776 from Lyceum again, Martin is code Liberty
+5015	boost.
+5016	He says salty crayon with the triple seven
+5018	audio or video is the simple V8 that
+5020	still has knobs, buttons, and a gear shift.
+5023	Video is 2025 vehicles with a giant iPad
+5026	that keeps your eyes off the road.
+5028	Audio is King.
+5030	Thank you.
+5032	Another salty crayon three, three, three, just a
+5034	node rebuild test in the pipe.
+5036	It worked.
+5037	It sure did.
+5038	And there's the delimiter.
+5040	So you're up a drip.
+5042	Scott, we'll get some, get some monthly's here.
+5046	I'm going to, these are all mixed.
+5047	These are all mixed up.
+5049	Monthly's we got drip.
+5051	Scott $15.
+5053	Thank you, Dre.
+5054	How's the weight loss journey going, man?
+5056	I haven't heard an update.
+5057	I want an update.
+5058	Yeah.
+5059	What's the scale scales.
+5060	What's the scales.
+5060	What's up with the scales, man.
+5062	Chris Bernardik $5.
+5064	Thank you, Chris.
+5065	Michael Kimmerer $5 and 33 cents.
+5069	Oh, RSS.com $777.
+5074	Oh, I've got the angel number lined up
+5082	for us.
+5082	Thank you gentlemen.
+5083	Thank you so much.
+5084	Thank you.
+5085	Really appreciate it.
+5086	You guys, you guys rock.
+5087	All the hosting company guys rock.
+5090	They're always helping us out.
+5091	They know.
+5092	They sent us a message donations and support
+5094	are rolling in.
+5095	Turns out Dave's forest retreats have magical fundraising
+5098	powers, but even when he's not off grid,
+5101	the love keeps coming.
+5102	It's amazing.
+5104	How does that work?
+5104	Get out of town.
+5105	That's great.
+5107	Uh, Kevin Bay $5.
+5110	Thank you, Kevin.
+5111	Uh, Cameron Rose $25.
+5113	Thank you, Cameron.
+5114	Uh, Chad Pharaoh.
+5115	What's up, Chad?
+5116	Chad F $20 22 cents.
+5119	Brendan at pod page 25 bucks.
+5121	Thank you, Brendan.
+5123	Uh, new media $1.
+5125	Martin Lindeskog, Mark Graham $1.
+5127	Oh, look at there.
+5128	Speak of the devil.
+5129	It's Oscar Mary $200.
+5132	Call a 20 inch blaze on the Impala.
+5136	You deliver bugs and we get value in
+5138	return.
+5139	That's awesome.
+5139	Thank you.
+5141	Yeah.
+5141	I give you bugs.
+5142	You give us $200.
+5143	That's right.
+5143	Thank you.
+5144	Thank you, Oscar.
+5146	Um, yeah, my, my dad, uh, was a
+5149	programmer and RS 400, uh, AS 400 programmer
+5151	and he had a, in the, uh, I
+5153	didn't know.
+5154	This is the more, you know, I didn't
+5155	know about this.
+5156	I didn't know he was an AS 400
+5157	guy for a long time.
+5159	He started on the, uh, IBM system 32.
+5162	How about that?
+5163	If you remember that?
+5164	Oh yes.
+5164	I have one in the corner.
+5166	Is the system 32 then the, that went
+5169	to system 36 and then that became the
+5171	AS 400.
+5172	Yeah.
+5172	I had an AS 400 at one point.
+5175	You had one in your house?
+5177	No, in my office, uh, when I had
+5179	my company and IBM was our customer, specifically
+5182	the AS 400 division.
+5184	And I think I told you this, they
+5186	gave us that.
+5188	Oh, and they said you had to serve
+5189	it from AS 400?
+5191	You gotta run your web server on the
+5193	AS 400.
+5193	Okay.
+5194	Yeah.
+5194	And they come visit the office.
+5196	Oh, there it is.
+5196	Look at it humming along.
+5198	Meanwhile, in the background, Linux.
+5200	It's all, it's all Apache.
+5202	Apache.
+5202	Exactly.
+5203	Yeah.
+5204	That's, uh, do you remember how big those
+5206	AS 400s would get?
+5207	The ones with the big disk packs?
+5209	Well, mine was about this.
+5211	You could get them, they were gigantic.
+5212	No, the one I had was about the
+5214	size of a filing cabinet, but that was
+5216	kind of the standard model, I think.
+5220	That was mostly disk in there.
+5222	Oh yeah.
+5222	Oh yeah.
+5223	Definitely.
+5224	So the back, the system 32 in the
+5227	old days had, uh, or maybe it was
+5229	the 36.
+5230	I forgot.
+5230	It's the precursor to the, to the AS
+5231	400 had what they called disk packs.
+5235	Did you ever see one of those?
+5236	No, I don't think so.
+5237	So a disk pack looked like a briefcase,
+5241	except imagine that the briefcase is laying down
+5244	flat and the handle is on top.
+5248	And so that was your personal disk pack.
+5252	And you would, and you had a, you
+5254	had a big, uh, a big opening on
+5257	the top and you would come in and
+5259	drop the disk pack down into the slot
+5262	to load anything that was on your, was
+5266	on your personal drive.
+5268	And so, but it didn't have the thing.
+5272	The cool thing about the disk packs is
+5274	that they did not have electric brakes on
+5278	the spin, on the spindles.
+5279	It would take forever to spin down.
+5283	It would gyro as soon as you pulled
+5285	it out of the thing, you'd be chasing
+5286	it around.
+5286	Oh, it was spinning around.
+5288	Yeah, for like, it would, it was like
+5291	gyroscoping in your hand.
+5293	You'd be chasing that thing for like, I
+5294	don't know, 30 seconds.
+5295	That's awesome.
+5297	Everybody would pull it out and immediately get,
+5299	they'd get yanked to the side.
+5302	Yeah, boomer moment.
+5304	Yeah.
+5305	Lauren Ball, $24.20. Thank you.
+5307	Appreciate that.
+5308	Basil Phillip, $25.
+5311	Thank you, Basil.
+5312	Podverse.
+5313	Hey, that's Mitch and the boys.
+5314	Yeah.
+5315	50 bucks.
+5315	Wow.
+5316	Thank you.
+5316	Thank you, Podverse.
+5317	Appreciate that.
+5319	And then we got, yeah, we got some
+5320	booster grams.
+5321	Let's see what we got here.
+5322	Let me re-sort.
+5323	Those were the monthlies or those were the
+5325	what else?
+5326	That was monthlies and monthlies, yes.
+5328	Okay, everything.
+5328	Got it.
+5329	This is good.
+5329	Thank you, everybody.
+5330	This is nice.
+5332	Keep those servers humming.
+5334	Bruce the ugly quacking duck, $22.22. He
+5337	said, when the comfort leaves, people are forced
+5339	to make a move.
+5340	However, how people move is the point.
+5342	Thanks for the episode.
+5344	73s.
+5345	73s.
+5345	That's key to 5 Alpha Charlie Charlie.
+5348	Very philosophical on this one.
+5351	Oh, through fountain.
+5353	This is user 5935256.
+5356	He says, first Bitcoin, or he or she
+5358	says, first Bitcoin donation ever.
+5362	And it has to go to the podcasting
+5363	2.0 team.
+5364	Thanks for opening a whole new world to
+5365	me.
+5366	Go podcasting.
+5366	Oh, awesome.
+5367	How many sets?
+5370	$22.22. Very nice.
+5372	Let me give you a go podcasting for
+5374	you.
+5374	Welcome to the party!
+5380	Cole McCormick, did you read Cole McCormick?
+5381	No, I did not, no.
+5383	Cole McCormick, Satchel of Richards, 1111, through Fountain,
+5387	he says, I was born in 1997.
+5390	I feel like I'm one of...
+5394	That's the boomer of me.
+5398	I was born in...
+5400	I like how I get labeled as a
+5401	boomer.
+5402	Oh no, get used to it.
+5403	There's just no way you can get it
+5405	right.
+5405	Whenever you talk about something that's before the
+5409	iPhone, you're a boomer.
+5412	I'm about as Gen X as you could
+5414	possibly get.
+5415	No, no, no.
+5417	I'm a boomer.
+5417	No, you're a boomer, man.
+5419	You're a boomer.
+5419	You're Gen X too.
+5420	You're not a boomer.
+5421	Well, I'm September 1964, so that I call
+5425	myself a Ben X.
+5426	You're a boomer.
+5429	You're the...
+5431	You're Gen X's hair.
+5432	That was John C.
+5434	DeVore.
+5435	Oh, sorry.
+5436	No, that's not right.
+5437	I thought it was a boomer.
+5440	Another great show.
+5442	Boomers.
+5443	There you go.
+5444	Yeah, yeah.
+5445	Yes.
+5447	I was born in 1997, says Cole McCormick.
+5451	I feel like I'm one of the only
+5453	people my age who even know what an
+5455	RSS feed is and why podcasting is awesome.
+5457	I'll be sure to drill all this opportunity
+5459	to my six-year-old nephew.
+5461	Gen Alpha will be RSS.
+5463	There you go.
+5464	Hey, there you go.
+5465	Very good.
+5466	We need that.
+5467	Get them a style sheet.
+5470	Everybody gets a style sheet.
+5472	You get your birth certificate and a style
+5474	sheet.
+5477	ComicStripBlogger12855 through Fountain, the delimiter.
+5481	He says, Howdy, Dave and Adam.
+5484	Today, I'd like to recommend a plastic fantastic
+5487	podcast called Unrelenting.
+5489	It airs 33 minutes before your Podcasting 2
+5492	.0 podcast on no agenda stream.
+5496	Unrelenting co-hosts are Jean from Austin, Texas
+5499	and Darren from a village near Chicago.
+5502	More infos at www.unrelenting.show www.unrelenting
+5507	.show Last week, their talk about ice cubes
+5509	took my breath away, but they tackle many
+5512	other topics like health, computer hardware, trading, content
+5516	creation, snake feeding, etc.
+5520	Yo, CSB.
+5521	I've seen Jean's snakes.
+5527	He has them in the house.
+5529	He has two humongous snakes.
+5532	He's got a python that I think is
+5534	11 feet long.
+5536	Iso.
+5537	Yes, Iso that.
+5539	It just decides it curls up in the
+5542	bathtub like it wants a bath and then
+5544	he gives it a bath and then it
+5546	goes out.
+5547	That snake sleeps most of the time.
+5549	He's got a smaller one, 5 feet.
+5553	And they just slither around throughout the house.
+5557	And then when we had the snowpocalypse and
+5559	the power went out.
+5561	What did he do with the snakes that
+5563	day?
+5563	Well, the problem is if it's too cold
+5565	for the snake, the snake dies.
+5568	Well, if it's too cold, the snake just
+5570	shrivels up.
+5571	Do you know what he did?
+5571	He actually laid down with the snakes to
+5574	keep them warm for five days.
+5578	Jean, you went too deep.
+5580	With his body heat.
+5582	Now he was very concerned.
+5583	He was like, what am I going to
+5584	do?
+5585	My snakes are going to die if it
+5587	gets 2 degrees colder.
+5588	I said, curl up with them.
+5589	He said, okay.
+5592	Not in the microwave.
+5595	No, no agenda millennial.
+5597	Not in the microwave.
+5599	That'll heat them up.
+5600	That's a great idea.
+5602	Tasty snack.
+5605	Jerky.
+5606	You guys are the worst.
+5607	You're the worst.
+5611	All right.
+5612	Boardroom, thank you very much.
+5613	Dave, do you get to chill a little
+5615	bit this weekend?
+5618	A little bit, yeah.
+5619	There's going to be some work going on,
+5621	but I'm going to try to not think
+5624	about work.
+5625	Okay.
+5625	Well, you deserve it.
+5626	When I'm not there.
+5629	That's exactly right.
+5632	All right, everybody.
+5633	Thank you so much for being here.
+5634	We will be back next Friday with another
+5636	Board Meeting of Podcasting 2.0. You
+5655	have been listening to Podcasting 2.0. Visit
+5659	podcastindex.org for more information.
+5663	Go podcasting!
+5665	We can do all this in JSON.

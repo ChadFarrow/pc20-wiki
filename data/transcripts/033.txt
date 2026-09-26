@@ -1,0 +1,1921 @@
+0	podcasting 2.0 for April 16 2021, Episode 33 serving
+6	billions daily.
+11	That's what you're supposed to do in podcasting now just say
+14	whatever it is we do a billion of those 100 million of them.
+19	Welcome everybody. It's another Friday time for the board
+22	meeting here podcast. 2.0 everything that's going on in
+25	podcast index.org and on the mastodon in the socials. I'm
+28	Adam curry, in Austin, Texas. And now ladies and gentlemen,
+32	the man who has the pub for your sub.
+35	Jones
+38	he finally came back came back from vacation.
+41	Yeah, I have to admit, I missed you.
+45	We had weird parties while you were gone. Did you really know
+48	Yeah. buddies to boss beer they were 2021 sorry, dad,
+54	even though we did have a great episode with with Ryan Gentry
+60	from lightning labs. I missed it. I missed the update. You
+63	know, when I was on vacation trying to relax and I'd already
+69	you know distancing myself from my from my from my day job.
+73	That's not too hard to just stop watching the news. And just just
+78	eliminate myself from that. That's no problem for me at all.
+81	But when it comes to this man, podcasting 2.0 check on the
+85	mastodon see what's happening here. This little promotion.
+90	Hey, what's satsa streaming got let everybody know. It was
+93	hard to hear. Eric was like, Adam, stop. Just stop posting to
+99	the signal chat. Just enjoy yourself. Like you're like,
+103	Okay, fine. You know, like you 30 minutes later, okay, boom,
+105	you know, you get your bags, like, stop, just relax.
+108	Yeah. And then I also somehow was able to get into a huge
+112	argument with Eric, that was interesting. Oh, yeah.
+115	I love you know, I love bro fights. Like, it wasn't like, he
+121	Bubble bubble. You know? Like, what? Why would you ever do
+123	this? And then it's like, okay, we're done. Alright.
+126	Alright, man. Let's move on now,
+128	bro. Hug done for beers. We're done. The whole thing last, like
+131	20 minutes.
+132	It was so funny. It took me a long time to figure out what
+137	went wrong. But it was obviously I broke my cardinal rule. You
+140	know, there's no context in text. So it was just dumb.
+145	Anyway, after that, I got real relax.
+148	Yeah. Okay, good. Go ahead and get it out and get the get the
+151	lever spat out of the way. Yes, exactly. Get back here. Get
+154	back to the relationship. Exactly. So this is the board
+156	meeting. There's a lot to catch up on a lot of things that
+160	taking place and I kind of kicked it off with what has been
+163	one of the most active conversations in the past.
+167	Probably the past couple days is an activity pub for podcasting.
+172	Yeah.
+173	Yeah, I think that's a huge deal. Like, I'm, I'm having
+176	trouble. We've got so many specifications here. And I've
+179	got them all printed out. I'm having a little bit of trouble
+182	kind of keeping up with the pace of content. If people are
+185	thrown, you know, thrown in there. But the activity pub
+189	thing, we're going to talk about it tomorrow on the developer.
+194	Right. That's it. What time is that? Is that? Like, seven?
+198	Seven central time? I think something?
+201	No, it's like, it's gonna be it's right around lunchtime,
+205	maybe one o'clock Central.
+207	central time. Right, right. Right. Right. Right. Okay.
+211	Okay. Yeah, that So Alex Gates is going to give us a like a
+216	activity pub one on one. Cool, which will be good because it's
+220	a con. It's, it's, I've read, I've read the activity pub spec
+224	a couple of times. It is not difficult, but there's a little
+228	bit like it's not difficult to comprehend. But the there's some
+232	there's some gotchas there where the protocol is almost, it's
+239	almost open, it's almost too open to be able to really put
+242	the pieces together inside. So it really helps to have somebody
+245	explain it to you. I can't. It's kinda like Bitcoin.
+248	Really? Oh, it was really like that. Okay.
+250	Yeah, not not in the difficulty level, but in the, in the idea
+254	that like, you can get to an understanding of how it all
+257	pieces together by getting by going through the documents, but
+260	it's a whole lot easier. Somebody can just sit there and
+262	explain it to you. Okay, you can explain it if somebody who
+265	really knows it and understands it can explain it in five
+268	minutes, versus you spending two and a half hours going through
+272	trying to figure it out.
+273	Right, right. Right.
+274	But but man is awesome, though. I mean, like if we can get this
+277	work, and that would be that's
+279	something that we run is that distributed? How does that how
+281	does that play out?
+282	distributed? Basically, I mean, ice activity pub is what makes
+286	mass
+286	mastodon work right? federate,
+288	right. Yeah. So the idea would be
+292	hosting companies have their own anybody.
+295	Yeah, pod friend. The hosting company, blueberry best Brown,
+299	right? arsa could have their own the services like, like in a
+305	tube tube can have them the pot, you know, podcast players
+310	podcasters. Anybody could have an activity pub instance. And as
+316	long as it conforms to the spec, then everything just then
+320	everything can federate. So if I go and leave a review of a
+323	podcast, in pod friend, well, then that review could show up
+328	on the actual podcasters. website.
+334	cribe Yeah. Oh, boy,
+339	boy. Exactly. Yeah, totally. Everything. federates everything
+344	federates. And so like, cool. You know, like, just take
+348	somebody like captivate. They can have their shows, each one
+353	showing the comments in the reviews right from and somebody
+358	in pod verse makes it Lisa leaves a comment or a joke shows
+362	up everywhere, shows up right there on everybody's stuff.
+366	Now, does that mean you have to have Okay, I guess the only the
+370	really the app has to have an account in that case, right? Not
+373	every, or does every person have to have an account?
+376	Now they like is the there's a few different way and this is
+381	this is what we got to work out is there's three different ways
+383	you can do it. Because in activity pub, everything's sort
+385	of, for lack of a better term and identity. And so you can you
+391	know, you can do it multiple ways. I mean, each each podcast
+395	can be an identity, each app can be done to him or not, those are
+399	things we get a workout in. So whatever, however that lands,
+405	there will be some sort of at. So when Right, right, right,
+409	right, right, right. You know, and like, you know, each well,
+413	like one way you could do it would be that each pod friend,
+416	I'm just gonna use them as example. Okay, each pod friend
+418	user account could have an identity on pod friend.
+423	Okay, so you don't necessarily, so I'm just looking at scale, I
+427	guess because, you know, running our own mastodon. I know what
+431	the scale is running that. And that's no joke. But that's the
+433	mastodon part. That's not the activity pub part. So you're
+436	really just pinging this API with a little bit of data?
+440	Well, you register in each activity, pub server, compliance
+445	server registers federates with with other ones. And so then
+450	this sets up an a stream between the two between these instances,
+455	so that when something happens on one, it gets replicated to
+460	the other ones, for the people who subscribe to that.
+464	Activity Stream, maybe it's maybe my question should just be
+467	refined, does it scale?
+469	It does if we do it if we if we design it. Right, right. So
+473	like, because originally I had said, Well, this would be great.
+476	Why doesn't that podcast index run an activity per instance.
+480	And we just could subscribe to every podcast, like every
+484	podcast could be an identity, right? We could just subscribe
+487	to it. And then we would be able to like see all the traffic.
+491	Yeah,
+491	that doesn't scale a bit.
+493	Yeah. And that's what Alex was like, Hey, no, I don't think you
+495	want 3 million. million identities? No, because you're
+500	pushing tons of bandwidth. So
+503	it's a nightmare.
+504	Yeah. Because I think if we do it, right, we can have it where
+508	each individual, you know, login. Really, I think it works
+513	best. If each individual podcast app, their user base has an
+520	identity within their instance. And then that thing federates
+527	Yes, yes. Yes. Yes. And
+528	he has some accountability to you don't want to miss right.
+531	Well, that's the next thing. Of course, it's circumvents my
+534	dream of having this all being Satoshi chat based. I can see
+538	why why this will go first. This makes a lot of sense.
+542	But I don't think it's circumvent, like, circumvent,
+546	maybe, but I don't see why it I don't think it precludes
+548	it's not incompatible. No, no, it's not inevitable. And I put
+551	myself you know, I lay that down next to me, like, let's get this
+554	thing working. Because this is what Moe keeps beating me over
+557	the head about, he says, You've got everything lined up, you've
+560	got the boost, which is a Super Chat. And he says, but you need
+565	to have people to be able to interact with comments. That's
+569	it. That's the thing. That's what's missing. And no one's
+572	ever done that in podcasting.
+575	Well, he because and this is finally a way that you can do it
+579	without siloing Yeah, without being in love without being
+582	dependent on one central location. Because if everybody
+586	federates and then let's just say pod friend goes down one
+591	day, there's like, this is too much trouble. I'm not I'm not
+594	gonna do this anymore. It doesn't affect anything. One
+597	mastodon instance, offline, everything just still exists,
+599	right? Right. It's beautiful. If we can get it working. Yeah,
+603	yeah raise us tomorrow. Okay, cuz I got it like a million I
+607	want to attend. But I also kind of promised a ghost. No agenda
+611	meet up. I gotta figure out what time everything happens.
+614	Yeah Now it's, I'll be I'll be there. Good.
+617	Yeah. So that's by the way anyone who's listening to this
+621	if you're not listening in podcasting 2.0 compatible
+624	browser you're missing out and you're cheapskate. And if you
+628	are, you're probably a cheapskate, the crank crank up
+630	those value sliders hit us with a boost.
+634	Yeah, I'm watching right now
+635	I woke up this morning. And I was and I looked at my my node
+639	which pretty much is for no agenda only and half thermofax.
+645	And I had like, like, I got some massive super boosts I think I
+648	got 50 bucks or something totally con believable. I could
+653	have these charts. You know, there's rudimentary charts that
+656	are command line. Like, what is this phallic thing doing here?
+659	What happened there? And I tried to find the source of it. And I
+663	think you found it that it came from, from the Sphinx tribe.
+668	That was existed.
+669	Yeah, but for some reason that didn't show up. In in my app. I
+673	don't know. I'm on graphene. Oh, so God knows what's what's going
+676	on?
+677	Yeah, so
+678	I'm not. I'm quick to blame Sphinx. They could easily be
+681	just, yeah, this is not meant to run the Android stuff that Well,
+685	whatever.
+686	Every time I see a big boost go through on anything. I'm always
+690	my first thought is mastery. I'm glad that channel was big
+693	enough.
+694	So that's the first thing I did is like, Oh, shit is that where
+697	did that come from? I want to make sure I got some channels to
+700	work in. Because it was a lot. That was huge. That was like
+703	200,000 SATs or something was crazy.
+706	The way we got like, the analogy for channels is always like the
+710	abacus where you're sliding gaps from the right. Like you always
+714	think when you see this huge boost to some I grabbed the
+716	abacus and just turned.
+719	Yeah, they all got to the right.
+720	Exactly. For those of you who don't know, we're talking about
+725	apps such as pod friend breeze, swings, chat, and the pod
+729	station, browser extension, all of them with their own
+734	individual look and feel and thoughts and interfaces. And and
+738	I had a huge wins. I've never, ever participated in an issue on
+742	a GitHub for a serious project. And I've never been taken
+746	seriously. Score. But I went to the, you know, I saw someone had
+753	posted a number of people actually posted about I think
+757	might have been Brian of London or some other people chimed in
+759	about the breeze, boost. And really, the more the boost
+764	functionality than the than the SATs per minute. It's like you
+767	only do it in increments. And people want to do specific
+770	numbers. They want to do like have a 33 in there, or 69 or a
+776	1337. There's all these little codes that people really enjoy.
+780	And it'll be it's more relevant in a in a situation like like
+786	like a Sphynx chat tribe. But I can see with the activity pub,
+790	why wouldn't a boost also go through as a and show up in the
+796	comments or in maybe in a special boost section with, you
+799	know, the alias of the person who sent it in the amount, you
+801	know that we know that this is this is a gamified thing that
+804	people really enjoy doing. But you can't do those numbers. And,
+811	and so, you know, someone had posted that. And then there was
+815	in the breeze developers like now we're not going to do that.
+818	That's makes no sense. And I said, Well, here's my experience
+821	with it and went back and forth a couple times. And then all of
+823	a sudden was like now Alright, you've convinced me done. We're
+826	doing it like wow.
+829	Yeah, okay, I'm good.
+830	Wow.
+832	That's it. Like, that's an important thing, because I
+835	always boost. I've got this pattern now where I boost twice
+840	when I start listening to you. And then if I have to stop and
+844	come back, basically, every time I'd begin listening, either from
+847	the beginning or pick it back up, where it left off, I throw a
+849	boost in there, right? And then I always give it usually a
+851	couple of booths at the end. So it's like I'm going broke, but
+855	it's Same, same same thing. Yeah, I've
+857	been going pretty broke myself, you know, cuz pot frame is, is
+861	1000 sets of boot boost fixed at the moment? It's a little Yeah,
+864	little wrench for me, you know, because I'm a 500 set guy. Like
+868	I might hit you four times in a longer show, depending on what's
+871	going on. Or I'll hit you. Yeah, quick cup. Like, I always boost
+875	Cridland. Yeah,
+877	right. Yeah, boost
+878	employee, always 1000 SAS and if he says something nice about us,
+881	give me another 1000 many times, like how can I just I'd like to
+886	remove some stats from what I just heard.
+890	To get a refund.
+892	I was listening to pod land which I stream stats to them for
+896	that I really enjoyed pod land. And Holy crap, man. Had the, the
+902	host on from the libsyn podcast, which is all about libsyn. And
+909	oh my gosh, she, I, okay, she's the face of their company for
+914	the podcast with man. She's hypee without saying anything.
+918	And then he asks about what you guys going to support
+920	podcasting. 2.0 and she wanted this whole lot, which is like,
+924	stop. You're killing me. Give me some sense back. I don't want to
+927	hear it like this. Just Say No. Just Say No, you're not really
+931	doing it yet.
+933	A d boost. D boost Exactly. Down Down the down boost, huh?
+939	Let me see, we got a lot. And I want to make sure that we get
+942	some of this stuff out of the way, because we're going to go
+944	in completely the opposite direction with our guest today
+948	in the boardroom, who was dropped by to let us pick his
+952	brain and hopefully vice versa. Oh, yeah, just want to mention
+956	that the podcast index, which should be receiving
+960	approximately 1% of the of the transactions taking place. Right
+967	now we're, we're, it's we don't really have a big enough sample
+971	size because of, you know, like, when Martin's when podcast, pod
+976	friend came online, you know, his massive, massive boosting A
+981	lot of you know, things have normalized a little bit now. I
+984	would say the index is receiving somewhere in the neighborhood of
+990	$9 average per day, which I'm super excited by. Now, first of
+997	all this, this means that, you know, there's $900 flowing
+1000	through the system. Yeah, I love that. That's like, Whoa, that's
+1006	$100
+1006	a day
+1007	a day. Yeah. And by the way, if, you know, there's also the,
+1012	whatever the amount of transactions is, the same goes
+1015	to podcast app developers. So and, you know, all I see is I
+1019	see a flywheel. You know, I see this thing, turning and every
+1023	single minute of every of the 24 hours, there's at least a
+1028	Satoshi, sometimes three coming through. And it's just, it's
+1031	just a perpetual motion machine. So all we need to do is get more
+1035	people going, get more listeners, using apps do a
+1039	better job of promoting our apps doing a better job of onboarding
+1042	people doing a better job of explaining. What are we up to
+1046	now, but 150 155 podcasts that are enabled value for value
+1053	streaming payment enabled? Think so
+1057	I can look that up? I think it was like 150 maybe 160 1000?
+1062	Okay, cuz it was like one, man. Let me just do the demo. Look up
+1068	here. I need I need to put that on the website.
+1072	We have a stamp. Yeah, yeah.
+1074	We have a number of that. We've been talking with Eric to we got
+1076	to get some some stats. Because we have interesting stats,
+1080	actually. And it seems like the industry is surprised that we
+1084	have so many podcasts in the podcast index in the podcast
+1090	index that are not listed on the I don't know Apple like oh, gee,
+1094	go figure.
+1095	Of course we do ever. That was very good. I thought that was
+1098	very interesting. What
+1099	doesn't surprise me at all.
+1101	I mean, like, there's one some host, he was talking about a
+1104	large host. He's evidently the name but a large host. It's only
+1108	50% of their shows are not during the apple date. Right.
+1111	Right. All right.
+1112	Does that mean that you know, that's kind of crazy. Clearly,
+1115	Christopher I seen.
+1117	Oh, now that we have the secret weapon. Yeah, we have the secret
+1119	weapon is
+1121	there's almost no, there's almost 3 million in there now.
+1124	Right?
+1124	Yeah. No, he gives it every day. The first thing I see is is only
+1127	274,000 left to go.
+1131	Because I was like, so we got up to I really misunderstood him at
+1135	the beginning. Because I thought he was saying that we're total
+1138	that we would end up around 2.7 million. And when he finished,
+1143	but then he's like, no, he said, Well, we were at 2.7. We got
+1147	540,000. He goes Oh, crap. Okay. Anything about backup
+1152	strategies. This database is getting rather large. Yeah, I
+1156	bet. I'll bet Yeah.
+1157	Yeah, it's the it's the episodes table that is just like
+1160	gargantuan now. I mean, it's, I don't even know how many it is
+1163	10s of millions of episodes.
+1165	So one of the exciting things that that's kind of been taking
+1169	place over the past week has been a tight collaboration with
+1174	ln pay. And I'm excited about this. And I've had a long long
+1180	think about and the vacation was good for this and we we kind of
+1183	left a day or two after we pre recorded with Ryan Gentry and so
+1187	I got a much better understanding of some of the
+1190	religion of the lightning network, which I'm not I have no
+1194	problem discussing. It seems like it's a lot of hush hush but
+1198	but the you know, the religious issue here is custodial versus
+1202	non custodial. And noncustodial. Meaning that you run your own
+1207	node or you have a path such as breeze, which is very close to
+1211	running it is it is your own full node. But you know, there's
+1214	some channel management that they're doing. versus a much
+1221	simpler to set up system, which is custodial, such as ln pay
+1227	where your $20 of podcast money is sitting on a node that
+1232	someone else that you don't own the keys to, let's put it that
+1235	way. And so that's where you hit the monitor, not your keys, not
+1239	your Bitcoin. True. And I think for onboarding of podcasters not
+1244	for app for apps right now. And when I look at will breeze is
+1250	obviously super, super slick. And you know, they help you
+1254	onboard by getting Bitcoin and Yeah, they do have some some
+1257	podcast, player issues that they need to focus on. Because people
+1261	don't just want to pay and, and send value, they also want the
+1264	features they like. And I think that they'll they have listened,
+1268	I think they know most of what they want to do. pod friend is
+1272	fantastic experience. Certainly, if you if you already have
+1276	satoshis. But if you have a separate wallet, I mean, that
+1279	just is slick, and I love his explanation. For podcasters,
+1284	though, we really don't have great solutions. I love the
+1288	tribes that that Sphinx chat has, it's not really great for a
+1294	receiving station for your podcast, streaming payments. Now
+1298	you have the breeze voltage, and this is all stuff that pops up
+1301	if you if you're ready to register and start receiving
+1305	payments, and the voltage node cost $17 a month is gonna get I
+1311	mean, that's like I use one, it's guaranteed it's gonna be
+1315	up, it's great, it's solid is fantastic. You do have to do
+1318	your own channel management. I'm sorry, I know a breeze breeze
+1322	manages your channel. So you don't have to do that. But it's
+1325	lacking in much else. You have some lightning network node
+1332	management tools, they do have a podcast tab, which shows you
+1339	what you received in a graph over time, but it really doesn't
+1342	have any level of statistics. And, you know, having worked
+1347	with Tim and lm pay for Well, shit for since almost since we
+1352	started this. I mean, he's super stoked to work on, you know,
+1356	creating a good onboarding experience working on
+1359	statistics, so we can get something cool for podcast.
+1362	Yeah, this is what the Satoshi stream guys have. And if you
+1365	don't know what I'm talking about, then you're just lost I'm
+1367	sorry. But the Satoshi stream guys, they have a lot going for
+1372	them. Except you know, it's not really structured. They don't
+1377	have the same, you know, they're really sharing one node similar
+1382	to lm pay, but I think lm pay has been around has got a lot
+1385	more going for it to host podcasts or wallets.
+1391	The there really needs to be more than one level of this
+1395	thing, I think is what we're discovering at this point,
+1397	because you're going to have and this is probably fits in real
+1402	well with with what we'll talk about with our guest today. But
+1406	like there really needs to be probably a custodial service.
+1413	And this may creep all the lightning people out. But I
+1416	mean, like, Oh, you know, quote him from yesterday, he's like,
+1420	you really don't need to worry about it. If it's kista He's
+1424	like, what you don't really need to be noncustodial for $2?
+1428	Well, exactly. It's like the it's like the store where you
+1431	have the cash drawer. And then you want to take it to your
+1433	bank. So every night the way I what I plan to do is I want us
+1437	and of course it's easy to switch you just you know, you
+1439	switch it in podcast or wallet calm, you switch your node,
+1442	boom. And it's going in everything streaming somewhere
+1446	else. I'd like it for the statistics. And then you know,
+1451	every night I'll just poop it out, send it to my end to my
+1453	bank, which is my, my, my big node.
+1456	Well, you know, the Satoshi stream guys showed that there is
+1460	a need for for onboarding small podcast Yes. Big because, like,
+1466	okay, so if you're, let's just say that you're Tim Poole or Joe
+1471	Rogan, or some some big podcast, is this doing a whole lot of
+1475	revenue and has a humongous listener base? Well, I mean, $17
+1480	a month for a voltage node is not a big deal. You probably
+1483	you're probably, you know, able to pay a guy to manage your
+1486	channels for you. So Exactly.
+1488	There's a lot of people who have anchor feeds and they take what
+1490	they get, and when they want to be a little more structured and
+1493	get some shit going and they move to a paid solution. That's
+1495	exactly it's the same analogy. I
+1497	agree. So the cost of having a custodian Do podcaster wallet,
+1503	having that option available to you, if you're making, you know,
+1507	$50 a month on your podcast that you know, 17 bucks is a big
+1511	percentage of your 50 bucks. Having a custodial service it
+1514	makes makes sense. And then if you get big, big enough, well,
+1518	then you move to a noncustodial service. And the whole time even
+1522	if it is custodial, you can be autumn you can be sending your
+1525	SATs to a off to air to your own Raspberry Pi or what? Yeah, the
+1531	phaser nothing. So
+1532	yeah,
+1533	I think it's necessary. I completely
+1536	agree. And, and I like the work that Satoshi streams has done
+1541	and is doing with statistics, they've really driven a lot of
+1546	the TLV record adoption and, and you know, which is already kind
+1553	of working almost everywhere. And once we get that published
+1556	properly, I mean, it's going to be great, we'll be able to
+1558	recognize, hopefully a lot, a lot of things, whatever we want
+1562	that or whatever people will want. But what
+1565	we need those we need, there's a couple of things I want to talk
+1568	about on this. So with, with the records, attended, Ellen pay,
+1576	has, he's got his custom records he needs for his routing.
+1582	There's some custom record routing based routing that
+1585	Snake's needs as well for private channels. So we there is
+1589	a there are two properties in the value block value recipient
+1593	tag called custom key and custom value. And so the that is for
+1600	primary routing. And I think I saw this morning that this
+1605	stream was like, I am disappointed that this is in the
+1610	spec and it's not got room for more key value pairs. And
+1614	there's a misunderstanding there like that, that custom key
+1618	custom value probably is poorly named, it should probably be
+1622	routing key routing value. Because what what what I'm
+1625	intending that for is just, this is the thing that's going to be
+1630	if, if a route is needed, on the on the destination side, we can
+1636	easily put in an another attribute in the value recipient
+1641	tag holder that holds a bigger payload of key value pair. There
+1645	they go there yeah, that can just it can just be something
+1649	like payload equal or to be equal. It can just be key colon
+1654	value, semi colon key colon, but it could just be you just parse
+1657	that out. But do we have no way is it is shutting that down?
+1661	Okay, good, good, but it seems like we need to merge some of
+1664	these things because everyone's got TLV numbers and a lot of
+1670	stuff going on there.
+1671	Yeah, I'm gonna go ahead and finish that up. Because I'm back
+1674	in the namespace a little bit right now getting doing that and
+1678	I'm in that mindset right now. So I'm go ahead and put that in
+1681	there and I'll talk to them about it and make sure that what
+1683	we put in is is going to be useful
+1686	over there on the corner is our guest for today. If he hasn't
+1689	fallen asleep and we apologize it's just it's been so long for
+1693	us to catch up. We have a I call him the man with the bag you
+1698	know he's holding the big bag and all the cool stuff the other
+1701	side of the table but isn't really welcome to the to the
+1705	board meeting Brian Barletta of sounds profitable. Hey, thanks
+1710	for having me.
+1710	Yeah, I'm glad you're still here.
+1713	No, it's great listen you guys catch up I actually been
+1715	listening to the last few episodes right before this so
+1719	missing that week gave me a little bit of time to make sure
+1722	I was up to speed with everything
+1724	you get you're not you're not full of stale cheap boardroom
+1727	coffee and ready to go
+1730	yeah that half donut sitting there was perfect
+1735	you know when when us whenever I see your name I think I see it
+1739	in print I always read it Beretta the old TV show you you
+1745	got you've got that you got that Moxie for me like the guy that
+1748	you're talking about before the show like the guy that everybody
+1751	hates on both sides the as the the non the privacy guys hate
+1755	you. Well, that's good. But you're really on both sides of
+1758	it.
+1758	Yes. Look get a little background on Brian here because
+1760	just saying sounds profitable sound sounds profitable. Calm is
+1763	not enough. You know, you're you're around us and I think the
+1769	connection there is James Cridland, but not quite sure how
+1773	the connection works. I'd love to hear a little bit about
+1776	sounds profitable, where your where your, what your background
+1779	is, and then how we can save you from James Cridland because you
+1783	know, you must clearly be a hostage of some sorts. No,
+1787	no, James honestly I'm so thankful for him. We met at
+1789	podcast movement after years of me following his his work and he
+1793	gave me the ability to talk to more people and give me a
+1795	platform. So yeah, Brian Barletta from sounds profitable,
+1799	and I Write about podcasts, ad tech and advertising in general.
+1804	I have been working in advertising technology for 12
+1807	years as either a product manager or a sales engineer. And
+1811	the last six have been in podcasting, specifically with a
+1814	stint at barometric and then Claire to us as one of the
+1817	founding members there, and then a shorter period of time with
+1821	megaphone running data and monetization for them. And we
+1826	started actually right around the same time. So in September
+1829	of last year, 2020 was when sounds profitable, started as a
+1833	newsletter, and I pulled up the email as two weeks into it. And
+1836	I sent you an email and I was like, I'd love to talk to you
+1838	about this, because I love what you guys are doing here. And it
+1841	was really cool to just see that we we went at it from different
+1844	sides. Like we said, these are conversations that need to be
+1847	had. There's technology and developers and engineers
+1850	involved in these things. It's more than just salespeople. It's
+1853	more than just content creators. And I think we kind of took
+1857	different sides of the same approach, and have been starting
+1860	up the conversation. And so it's, it's awesome to be here.
+1864	I'm very, very excited to be talking about,
+1866	did I reply to your email?
+1868	You did? Oh, my
+1870	God. Oh, my God. I said, I said, I need some time to step away
+1874	from me. I need. You said, Well, I
+1877	think it was where you were, because I was like, hey, let's
+1879	talk about advertising. And here's like, I got thoughts
+1881	about it. But I gotta let them marinate a little bit. Yes,
+1883	yes. Okay. I remember now, and I have
+1886	seven and a half months isn't appropriate. marination. And I
+1888	mean, all three of us have really been on like a rocket
+1892	course with.
+1893	Yeah. And I want to make something clear from from the
+1896	get go right off the bat, that I have no problem with marketing
+1900	and advertising. You cannot live in a world without marketing and
+1903	advertising because it would be very dull, very boring. But just
+1907	like we have, I think retooled podcasting, I think we can
+1911	retool advertising and I seeburger get to that. So just
+1916	upfront, even though I do feel that advertising is you can just
+1923	say it censorship, because at the basis, you're never going to
+1926	say anything negative about your advertiser. There's something
+1930	that is overlooked. I feel, and it's exactly what you're doing.
+1935	And it's exactly what James is doing is the idea of a
+1940	newsletter. And it made me chuckle I was, of course I was
+1944	listening to I can't, I might it might have been pod news, I
+1950	don't remember what it was, or maybe pod land. And James was
+1955	thanking a gold sponsor is and he said, me, I want to thank so
+1961	and so for returning as a gold sponsor, so that we can do
+1964	independent journalists. You know, I understand what he's
+1970	saying. But of course, is horse crap, because it's not
+1973	independent if you're being paid by the advertiser who you then
+1977	subsequently do stories on. But that's okay. Because everybody
+1981	knows what's going on. And when you have a newsletter, or a
+1984	product, which is sponsored, or somehow you're monetizing, with
+1991	companies in the industry, so I was, you know, PC Magazine,
+1995	brides magazine, you know, whatever it is, then if Vogue,
+1999	Vogue, to me is the best advertising in the world, the
+2002	content is actually the ads. So this is very beneficial to
+2008	people, and everybody understands it, but we have a
+2010	lot of misunderstanding about what advertising is. And so I
+2016	think where the industry is going, and then I'll shut up
+2018	because I really want to hear what you have to say, is towards
+2021	programmatic slamming stuff in doing it with the attribution
+2026	figuring out exactly where people live, what they smoke,
+2029	what they drink, how they, how they act. And, you know, and,
+2033	and then cross profiling, whatever, whatever we can do, to
+2038	deliver, you know, the audience to the advertiser. That's how it
+2042	feels, which is not what I ever envisioned for podcasting, but
+2046	that's the obvious path that it is taken. How's that going?
+2051	Oh, not good. happening. It's what I love about podcasting is
+2057	like, first of all, like, I'm with you on a lot of this stuff.
+2060	Like I think podcasting technology is neat. I like the
+2063	tools like, I'm not the best at like selling ads or like
+2067	successfully running a campaign. But I know the tools that people
+2070	smarter than me can use to do that. Nobody likes bad ads.
+2074	Nobody likes ads that don't fit either to them, or ideally also
+2078	to them in the context. And they stand out like a sore thumb. And
+2081	so there's this mindset on like, the bigger side of it is that
+2085	everybody wants programmatic. They want that Sunday, Sunday,
+2087	Sunday ads slammed in there that
+2089	was everybody. Brian, when you say everybody is that the
+2091	advertisers, the agencies, the ad networks, the podcasters, the
+2095	listeners,
+2096	I said the voices that are talking about this world of
+2099	programmatic In the world of like invasive data, the world of
+2102	radio ads slammed in and programmatic I think, are just
+2104	the naysayers. They're the they're the industry, people
+2106	drumming up the hate for the people that are just like slowly
+2110	on the tail end of that listening in, right? Because
+2113	like, the further higher up, you get into that space, you don't
+2116	have to deal with that. Like I think programmatic has a cool
+2118	place. I think it's a neat technology. I think it's order
+2121	management. But there's no company out there that's just
+2124	like, Hey, I got eight ad slots, put whatever you want in there,
+2127	right? They're gonna drop down and downloads, they're gonna
+2129	drop in rankings. And the bigger you get, the more you don't even
+2133	have to do advertising. As we look at like buy impressions and
+2136	conversion, you can just do sponsorship. Right? There are so
+2140	many different ways to go at it. So this fear of what
+2143	programmatic can be this fear of invasiveness is something that
+2146	people in like this mid level, talk about, and hype up the
+2151	negativity around, and then pass it down to the people that are
+2154	as close as possible to the consumer level. So more of the
+2157	longtail and it gets that fear going. But the The truth is, is
+2160	it's just not. It's not there. Like we're getting so little
+2164	data and podcasting. And I don't mean that in a bad way. I mean,
+2167	like we're ahead of the curve, just because we couldn't get
+2170	more IP and user agent user agents useless. You can't buy
+2173	anything inside the Spotify app, so that just a dead end. It just
+2177	tells me what app you're on and what device you're on. IP
+2180	address. Yeah, it's personally identifiable information. But
+2183	there's regulations and stuff going on there. And there need
+2185	to be a little bit more, and it's gonna help,
+2188	but it'll get Isn't it? Isn't the problem? It mean, just at
+2193	the at the basic problem is, it's an open system, no one has
+2198	a lock on it. I mean, you and the industry in general talks a
+2203	lot about what Spotify is doing. Isn't that exactly the direction
+2207	they're taking what they call podcasting?
+2210	I mean, at the end of the day, do you call the news on Facebook
+2213	news? Or is it Facebook's curated content?
+2215	Well, no. But my point is, they're doing the programmatic
+2220	inserts, dynamic streaming insertion, wherever it's called.
+2223	I mean, that seems to be their dream, which to me is like,
+2226	Well, yeah, 2009, we were looking at that, and then it
+2229	started to suck, then.
+2231	Yeah, and I think Spotify is an interesting case, because
+2234	everybody tries to call it podcast advertising. And I make
+2236	it a priority to call it app advertising, where the contents
+2239	podcasting, or music. Right, because it is the app, the Joe
+2244	Rogan podcast, if you listen to it, 10 seconds into it, there's
+2247	a streaming ad insertion point. And that what happens there, if
+2250	you look at the like the marquee that's streaming, it'll say the
+2253	name of the episode The 10. Second markets, your app
+2256	immediately starts naming the file, which is the advertiser.
+2259	And in the app has paused the mp3 is inserted, like the app
+2265	has taken control. Now it knows that you're exactly listening to
+2268	it. If you hit play for two seconds turn on airplane mode,
+2271	when you get to that 10. second mark, the app just fails, the
+2274	episode is done. Because the app can't make that call for the
+2278	streaming add the podcast experiences interrupted, which
+2281	is an ideal for anybody. I'm sure Spotify will change that.
+2284	But when we talk about podcast advertising, and push Spotify
+2287	firmly to the side, because they're an app whose content
+2290	includes podcasting, but when I talk about programmatic, I talk
+2293	about when someone presses play on a podcast, it's setting their
+2298	IP and user agent and the content they want. And they're
+2301	taking that info and saying, What do I know about this
+2303	episode, the time of day, and this listener, that I can fill
+2307	these potential ad slots based on what's available for
+2309	inventory, and some of it can be direct sold. Some of it can be a
+2312	second seat sellers, like their teams like megaphone and a cast.
+2316	And all these partners will sell whatever you don't directly
+2318	sell. And then the third part can be programmatic kicked up to
+2321	an open marketplace or private marketplace, where you set rules
+2324	of what they can do with that data, and what they can send
+2327	back and how much visibility they have. But I mean, like I
+2330	can open up my inventory to programmatic. And I can simply
+2333	just say, I want to approve every creative. And so that
+2336	means I might miss out on campaigns. That means it's a lot
+2338	of account management, but I can stop that control.
+2341	You have a very varied background, but all in this in
+2346	this general industry. I've I've made the assertion and maybe you
+2351	can help me with some data that you have or is there a suspect
+2355	that Spotify cannot actually fulfill the inventory they're
+2359	promising to advertisers and when I saw the Michelle Obama
+2363	podcast open up all of a sudden it was not exclusive. It was
+2366	available and other apps. To me, it was like hmm, are they able
+2372	to deliver can they deliver the the rates that they that they
+2376	launched with and they promised to advertisers? Do you hear
+2379	anything about that? You know,
+2381	I mean, I truly believe Spotify bought megaphone for the sales
+2385	team and the reach I think Spotify what they have set up
+2388	for Spotify as the streaming ad insertion product, they're
+2391	filling out like I don't think that they have a problem with
+2393	that but not a lot of their shows that are directly owned,
+2397	even use that I mean, I believe the bill Simmons podcasts that
+2401	they own doesn't. It sounds like it's baked in how it's set up. I
+2404	could be wrong. And kudos to that producer for making dynamic
+2408	ad insertion some baked in. But I think that the truth is, is
+2412	that not enough podcasts? Not enough podcasts on the Spotify
+2416	app have implemented that technology yet. And when you see
+2420	these things about exclusive, I actually think it's more about
+2422	the creators expressing control. Right. Like, I think that they
+2426	looked at it. And they said, We could go about this that
+2429	specific way and make it completely exclusive. But I
+2432	think that the, you know, in the Michelle Obama example, I think,
+2435	I think that was more creator controlled an advertorial is.
+2438	Yeah, because you're not going to hear anything but baked in
+2440	ads for for the Renegades and the Michelle Obama, right?
+2443	Because they need that level of control. Like,
+2446	is renegades open to? Is that subscribable outside of Spotify?
+2451	I don't think it is. I think that that one is only in the
+2453	app, but that one, to my knowledge, he is going to be
+2456	baked in ads, because that's a level of control the the content
+2460	creator gets a shirt because they say like my brand, and
+2463	reputation is critical. And I can't provide you anything that
+2467	you can insert something to and accidentally put an ad in that I
+2471	didn't agree with. Right?
+2472	what's right, that that tells me that there that there may be
+2475	some sort of like internal tension or struggle,
+2477	there's got to be I tried to do this kind of network. It's
+2481	sucks.
+2482	I can't imagine a lot of because you're, you're dealing like
+2487	you're dealing with like five separate companies, right to
+2489	technology companies through content companies. And
+2491	then here's what happened. here's, here's what happens.
+2494	Those guys get all the big exclusives. Well, they got the
+2497	cool Pro, how can we get the shit product, we don't get
+2499	enough exposure on the homepage. I've
+2502	heard it all man. And then add in the worst part of it all like
+2506	that. It's a publicly traded company. That sounds cool when
+2509	you're like running a startup, like sell an IPO and all that
+2512	stuff. But like the pressure, you lose a lot of ability of
+2516	what you can do not like not necessarily on like the like
+2518	skirting legality sense, but in the sense that you're beholden
+2521	to way bigger structures. Yeah, you can't add and move.
+2526	I don't understand the exclusive thing at all. I mean, why if
+2530	you're, if you're trying to sell if, if you're fun if your
+2534	primary funding comes through ad sales? Why would you limit your
+2541	reach to an app that has the at most 20% of the market? 25% of
+2546	the marketing
+2546	I can answer that is because it's a technology company.
+2551	They're valued as a technology company. And so all of their
+2555	sizzle comes from look at this cool technology. Look at the
+2558	streaming ad insertion. Take it from me, they're bound by
+2562	technology. Now they've sold it as such.
+2566	I just don't like yeah, it's got to be some. It's got to be
+2570	something like that some sort of internal tension where Yeah,
+2573	it's like, oh, one set of people says we want we want to grow the
+2578	app. We want to grow listeners, monthly active users, whatever
+2581	we got.
+2583	They want subscribers, they really want people's credit
+2585	card. They want subscribers. Yeah.
+2587	Yeah. And the other side of it is the ad. The ad sales
+2590	department. It's like guys are killing us. We could be we could
+2593	be getting right. This many more.
+2596	Struggle right there. There's your struggle. Absolutely.
+2599	Do you think that sounds like something that could that's
+2602	going on? Yeah,
+2604	I definitely do. I think that the bigger part of it is that
+2608	it's like Spotify is focused on what they're building. And they
+2610	want to be that content hub and that aggregator and like, we're
+2613	not. I mean, you couldn't, there was no, I mean, I guess,
+2618	broadcast television, like you could set up a satellite and
+2621	just ingested in however you wanted. But like podcasting and
+2624	the RSS feed is so cool and unique. And everything that
+2627	we're building off of it, all these aggregator tools have the
+2630	ability to say, well, it's my audience and kind of silo it
+2633	off, and they're trying to do that they're trying to be I hate
+2636	the cliche, like the Netflix of audio and, and all that. It's
+2640	just ugly. It's gross, right? I'm, I'm shocked. You don't have
+2642	a sound bit for that out. But, but that's I mean, that's the
+2646	truth of it. Right? That's, that's how you sell that to an
+2649	investor or that's how you sell it as a as a technology pieces
+2653	that you're going to create that silo the next Facebook, the next
+2655	Twitter, the next whatever. And and podcasting is a cool bit of
+2659	content. It also doesn't hurt that every time someone's
+2661	listening to something that's not music, Spotify benefits from
+2665	it, but I agree with you on the ad sales team. I mean, that's
+2668	like, that's a really hard thing, right, the distribution
+2671	of the ads, but also, supposedly, you can charge more,
+2675	right? If you can say, I know this user, I know this listener
+2678	as an app through first party data where I have their name,
+2681	their email address, their you know, all of their actions,
+2684	their habits, and I have their consent because to sign up for
+2687	my service, they have to give that consent. I can sell that
+2690	for $100 CPM and I got a half the impressions or a fifth right
+2695	but if it's open and wide, I can't I might struggle to sell
+2699	it for Due to our CPM because now I'm talking about I don't
+2703	know, all that first party data. Now I have to say, Well, you
+2706	know, it is the, you know, the Obama podcasts. And that's like
+2709	really important. And so I should be able to sell it for
+2712	whatever. But I don't have the listener data that I
+2714	think that that's flawed logic anyway, because that show was
+2719	terrible.
+2721	But it's a ripoff of Moe facts, let's be honest. We're poor,
+2724	poorly done by the salespeople, right, these
+2728	salespeople are not equipped with the right knowledge to go.
+2730	Well, this is this is the next topic. And I think it plays into
+2733	something we just learned in this past week. And so it's
+2738	really what the the polite word I've learned is attribution.
+2742	It's really tracking, tracking of listeners. So listeners who
+2746	are disregarded in the entire conversation up until now. And
+2751	one of the things we discovered is, is a lot of a lot of things
+2755	are wrong with even simple attribution that is used in
+2758	compiling statistics about the industry, such as the user
+2762	agents, and I don't know if you follow that, Brian, but maybe
+2766	Dave, you could explain what was discovered. And and the
+2770	significance of it and how that pertains to. I think it's
+2775	important, what apps are getting traffic, you know, for
+2779	advertising and just knowing the industry? What exactly because I
+2783	think I understand it, did we discover?
+2785	Well, the I don't think it's anything that we discovered that
+2788	what Well, I guess we discovered a couple of things that the
+2792	problem has been for a while, that area, and it really came to
+2796	the forefront when buzzsprout decided to remove the apple core
+2800	media user agent from his stats page. And when they when they
+2804	did that it dropped apples, the apple podcast app share a market
+2809	share of Listen, you know, plays down from like, sikinos, 60%,
+2815	plus, down to below Spotify. So they're each neck and neck at
+2820	roughly, I think it's like 28%. So that tells you immediately
+2824	that you have roughly 30% of the of the listens, the depth of the
+2831	GET requests that are that are coming through in the user agent
+2834	as apple core media, which is a UI specific user agent string
+2838	that so we knew sort of everybody knew that was
+2842	happening, but then nobody knew. Okay, which apps are reporting
+2847	themselves incorrectly as apple core media. So John's Birla go
+2851	ahead
+2851	of me and show me and James actually wrote about this like,
+2854	right in the first couple of months. And the the main idea
+2857	that we push is that when the RSS request comes in, pass
+2860	something back that identifies that requests uniquely. So that
+2864	you look at the RSS user agents so that when the episode comes
+2867	in, you can differentiate all the apple core media.
+2871	So john Spurlock did something brilliant on the mastodon
+2874	server, and he created essentially, a, it's a fake RSS
+2878	feed. This serves one single fake show all the time, this
+2882	dynamic and in you. So if you request the RSS feed, it just
+2888	gives you back a new MD every excellent Well, it doesn't even
+2892	serve the mp3 then it gives you back a new an XML feed with the
+2896	user agent string as the description in the feed. Listen
+2900	to the episode. When you listen to the episode, it dynamically
+2903	generates an audio file every time with the user agent string
+2908	that requested it as the audio. And so you can look in here
+2913	verbally. And I've got two examples. So first, the first
+2916	one clip is called reflections. podcast index,
+2922	podcast index.org at 1642 GMT
+2928	podcast index.org is the user agent string that we request
+2933	that that that came from. So then the next one is reflections
+2937	apple core media,
+2938	apple core media, at 1649 GMT from IP address.
+2945	So what we did was was, I tried to SDI into as many different
+2953	podcast apps as I could, and then just test it. And in
+2957	predictively, every time you've downloaded an episode, you got
+2961	the correct user agent string. So like if it's down, if you
+2965	stream it, if you stream it, it comes through as apple core
+2969	media ship.
+2971	I haven't downloaded a podcast in years, I'm always streaming.
+2975	And I think a lot of people are so like pocket cast is a perfect
+2978	example. Pocket cast when you stream it reports itself as
+2981	apple core media. And so they're just leaving, they're leaving
+2985	market share stats on on on the floor. Yeah. Yeah. James
+2990	James talked about. He had a Twitter thread where I guess the
+2994	developer identified that you actually can change that user
+2997	agent from apple core media, you can add things to it. So I'm
+3000	excited to see if people do that. But getting the app
+3003	developers to, like take that stance and and do more in unify
+3007	is, I think, the roadblock that we're hitting. And I want to I
+3010	want to loop this back to what you were saying with tracking
+3013	and attribution, you can definitely call it tracking. I
+3016	mean, that's what it is. attribution is the one marketing
+3018	word for it. But at the end of the day, I mean, like, first
+3021	off, it's just IP, right? So that IP is matching to a
+3025	database that has data that you've consented to share. Do I
+3028	wish was
+3029	that's already not true? Okay, you hit my IP at home, you have
+3034	data that I did not intend to share, but I know what shows up.
+3038	I know what shows up, it shows right down to the address, it's
+3041	very close. So
+3043	now show for geo targeting. So with geo targeting with IP
+3046	address, it's a 10 kilometer variance for for Wi Fi. And so
+3054	like for me, I'm like a kilometer away from my physical
+3057	location. If I'm on cellular, though, I, when I was in Austin,
+3061	it was showing me and either San Antonio or Houston. Right. So I
+3064	guess I guess
+3065	what I'm saying is, forget geo targeting. Sure. There's
+3068	databases, you hit my IP address, it comes back with my
+3071	name. Yeah, that's out there. And I'm sure
+3075	that the collection of data I'm not comfortable with how all of
+3078	these databases have been created, and I'm excited for
+3081	this whole look at identity that's going to reassess what is
+3085	allowed to be stored and created and how and how it's going to be
+3088	allowed to be tied together.
+3089	What is this? What is this identity? identity talk you
+3092	speak of?
+3093	Yes. So they're moving away from the mobile device IDs and the
+3096	cookies. And the intent there is that everything is going to be
+3099	first party collected data. So you log into a website,
+3102	and they just don't understand who's driving this.
+3105	A Nielsen loaded me live ramp. And why are they doing this?
+3112	Because the mobile device ID and cookies was a goldmine. They had
+3115	so much information. So now they have to move at a way that
+3117	allows your your specific site and my specific site to collect
+3121	collect first party data, but then join it together in one
+3125	central place that doesn't allow you to see my data me to see
+3128	your data, or advertisers should just pull and get a request of
+3131	ID Oh,
+3132	so we just we just trust the industry on this one. Cool.
+3135	I will laugh nervously with you on that one.
+3139	This sounds like this sounds like flop. This sounds like the
+3143	whole thing.
+3145	Talk, there you go.
+3146	But the biggest thing about about attribution on these
+3149	things, right, like so, you know, a lot of these companies
+3151	and podcasts and you have a big global presence, and they do
+3154	honor GDPR. And it's actually from my understanding, a
+3157	nightmare to honor GDPR only in those territories, and not
+3162	worldwide, so most of them will adhere to it. But But here's the
+3165	problem. A podcast host doesn't have a way to interact with a
+3169	pod. Like a listener. The podcast apps, depending on their
+3173	size, have to adhere to GDPR and ccpa, and all the other
+3177	regulations. And I don't know why they're not. So when I log
+3180	into Spotify, or pocket casts or overcast, I don't care what the
+3183	app is, I am a listener of that app, that app should be asking
+3187	me for my consent or give me the option to opt out depending on
+3191	how narrow they want to get. Did they want to just let me do it
+3193	only in California and ignore me in Texas because there's no
+3195	regulation. Cool, do they want to do GDPR style regulation
+3200	everywhere, awesome. But because I as a listener have no way to
+3203	interact with the app, which is my only listening portal to
+3207	determine my consent framework. And that app has no structure to
+3212	pass that consent down the line. Now, you still have to pass the
+3215	IP address in useragent. There's absolutely structural things
+3218	that need it. But if there was a consent flag passed with that by
+3221	these apps, these major hosting platforms and publishers would
+3225	honor it, right? There's no reason why they wouldn't because
+3228	it is if I can say I own an app, my users opted out. And here's
+3233	their information and opted out, I have an audit log, I have
+3236	something that they can absolutely confirm that they
+3238	received, I have something that they can prove what they can and
+3241	can't do with it. Because with the opt out, you can do less
+3243	with it. There are still ways to do attribution. With opting out,
+3246	you can do direct IP to IP match with no data augment, it still
+3250	shows the efficacy of advertising, buddy.
+3253	You're saying? What you're saying is that you don't think
+3257	there's a way to just kind of jump in a few steps ahead. And
+3261	you don't think there's a way to fix that anywhere other than the
+3266	product? And by that I mean the privacy invasion aspect of all
+3270	this stuff. You think really where the rubber meets the road
+3273	is that the app is I think yeah indicates with the podcast.
+3278	Whoa, wow, this
+3279	is this is very This is very good, because that's where my
+3281	solution goes as well, which I'm going to still hold back on.
+3285	While I think me and you should partner with it unless you
+3287	completely disagree with my idea. Now, the thing, the thing
+3292	here is that like these apps, get all this content and I
+3296	understand it's a chicken in the egg right who made what
+3298	podcasting successful The app or the content, and but the problem
+3302	is, is that everyone tries to beat up on these attribution
+3305	companies, pod sites and Chartwell and whatnot or the
+3307	hosting platforms, right? The thing is, is that they're the
+3311	little guy, right? These publishers are trying to squeak
+3313	by and get as much as possible, if a publisher could get direct
+3317	information about their listeners that their listeners
+3319	opted into if a publisher could communicate through their
+3322	hosting platform in one central location, directly to all of
+3325	their listeners across all apps, because there was some sort of
+3328	app required framework like you're doing with the RSS feed.
+3332	But getting more buy in, it would be amazing, because we
+3334	keep talking about, oh, well, when I log into an app, I want
+3337	to opt out of these three podcast tracking me but I'll let
+3340	these four know don't split hairs. And forget the fact that
+3343	every time you don't opt out of Spotify, or Apple or Google or
+3346	whoever, they get all your info, and they're just determining
+3349	what you don't pass down the line. So all of those apps are
+3354	incentivized and motivated to get as much data from you as
+3357	possible. So the opt out should happen in the app, because the
+3360	app is the directing for, like control with you. And the the
+3364	app should be responsible for passing that consent flag to the
+3367	rest of the stream. So
+3368	is that what you're proposing, that's I would love to do that I
+3371	talked to Marco with over at overcast and he said, by
+3375	default, he's gonna like you, if he did this, he would opt
+3377	everyone out, because he will not never let anybody opt into
+3381	the app. And I'll tell you that the the attribution partners are
+3385	cool with it, they'd honor it, a lot of the hosts will honor it,
+3387	a lot of the major publishers are dying for this type of legal
+3391	coverage, because you got to remember, if I want to opt out
+3394	of an NPR podcast, right now, I have to, I have to opt out of
+3399	the app itself. And PR directly, I have to know their hosting
+3402	provider and opt out of it, I have to know their prefix
+3405	tracking partner and opt out of it, I have to somehow magically
+3408	know their server side attribution partner and opt out
+3410	of it. And then if there's data collection with the host, or
+3414	like, if they use like Nielsen targeting, I have to do that,
+3416	too. That's seven different places, each one of them have
+3419	their own way to honor opting out, some will accept that I'm
+3422	in Texas, and they'll cover me under GDPR ccpa. Others might
+3426	say you're not in a protected territory. And so I as a
+3430	listener have to do that. And worst of all, I have to do it on
+3432	the home IP address. Because cellular and business IP I
+3436	know I mean, it's it's stomach churning. And just hearing you
+3439	talk about stuff that it is possible. I'm being I'm sitting
+3442	here going What the fuck this is exactly what I hate.
+3446	But so if there's a Is there any part that the feed itself can
+3452	play in this? Because I don't know that? You know, what you're
+3456	saying is like a do not track style header
+3459	for which everybody hates?
+3463	Gentlemen, it's much deeper than that. In 57 minutes, we have not
+3468	that the listener, the listener, is completely ignored and abused
+3473	in this entire process. We're abusing the listeners
+3476	information, we're abusing their everything, and then we're gonna
+3481	throw ads at them. I don't know it. To me, it seems like this is
+3486	a very short sighted way of going about making money and
+3490	good product. It just goes against everything. Because what
+3494	I haven't heard is the promise we used to get at least it was a
+3498	cool promise, you'll get an ad for exactly what you're
+3502	interested in. That was the prop. That was the promise. That
+3505	was awesome. And no, I disagree. You want to hear my idea goes
+3510	here. So what we've done with podcasting 2.0 is we have taken
+3519	out several middlemen silently, the deadly one is we've we've
+3525	taken out forces that can be bad. So we've taken out the
+3530	centralized corporate controlled index, known as Apple, we have
+3535	at least a sneakernet distributed version of that,
+3539	which is you know, by no way robust, but at least the
+3544	information cannot just necessarily die. And we're
+3546	working on decentralizing and making the the core index more
+3550	robust. With value for value streaming payments, we've
+3554	eliminated all middlemen in all payment structures, except for
+3559	the onboarding, which is still a process of getting your money
+3563	fiat money into an appropriate cryptocurrency. We've also
+3568	eliminated a royalty organizations Performing Rights
+3573	Organization. So we do direct royalty split payments from a at
+3579	the moment of, of consumption or sending a value from the person
+3584	who's receiving whatever value they're getting from an mp3
+3587	typically, that's huge. So we need to remove some middlemen
+3592	from this process to end. Let's fulfill the one promise because
+3597	the again, the promise was There are two promises made early on
+3601	about the internet. One is your refrigerator will no one to
+3605	order the milk. And I'm completely convinced that the
+3609	refrigerator can do that today. But we've we've forgotten that
+3612	promise. We've done all kinds of other stupid shit to build to
+3616	track people. And we never fulfill the one promise, you'll
+3619	get the ads you're interested in. So that that we failed, and
+3624	I've been a part of the marketing ad. Now, let's just
+3628	put serendipity aside, because you of course, is always a pro.
+3632	I didn't know I wanted that product. Of course, that
+3634	happens. But maybe this is not the appropriate forum. I'll go
+3637	back to brides magazine, Vogue magazine, fishing magazine, Hot
+3642	Rod magazine, Bitcoin magazine. When I listen to Tales from the
+3646	Crypt, Marty bent, I'm streaming value to him. I'm streaming
+3651	satoshis, I'm boosting him. I do however, listen to his ads,
+3655	because he's got Bitcoin services companies that I'm
+3658	interested in their product, and I'll see it then I go, okay.
+3661	Now, I may not want to listen to the same ad three times, you
+3665	know, by may want to skip through and maybe if the ads
+3667	different, I'll listen for a different offering. But I know
+3670	that it's going to be Bitcoin related, because that's who
+3672	advertises on Tales from the Crypt? So how about this? Why
+3676	don't we change the whole thing? I love your idea of the apps
+3679	because I think that is exactly where this needs to be managed
+3685	from. And the app developers, and that's one of our two
+3690	mission statements is they've always gotten screwed. They've
+3694	been left out of all deal flow. And all of it, you know, podcast
+3698	at Joe Rogan's money now app, the apps didn't get any of that
+3701	money, none of it. And yet all the apps pass it on through
+3704	quite happily Now, did they benefit maybe by featuring him?
+3707	Sure. All kinds of stuff can be done. Some would run ads if they
+3711	have a popular app, but they're really not in the deal flow. So
+3715	what if we say, we have a podcast, I'll just take Tales
+3719	from the Crypt as an example. And I have a Bitcoin widget
+3727	company and I'm advertising. And I want to spend $50. CPM. So
+3733	I'll pay $50 for every 1000 people who have listened to my
+3736	podcast. Now, the first thing I have in the traditional
+3739	scenario, is all the numbers, all the data, everything that
+3743	people have to tell me that my money is working, or the old
+3747	joke, half of my marketing money is working. I just don't know
+3750	which which half
+3752	is bullshit. Because the elephant in the room, the two
+3755	elephants really is, is this just something that downloaded
+3760	and it's sitting there, and I know that there's all kinds of
+3763	algorithms and IAB standards, and we've dusted that over a
+3768	little bit. So we have so well, at least we all agree that this
+3771	stinks, is poor, but we all agree on the poop. But then the
+3775	shape, but then the skipping of ads, this is the elephant and no
+3779	one wants to talk about skipping of ads. That's what Spotify went
+3783	after, you can't skip the ads on Spotify. That's their streaming
+3787	insertion. That's the whole USP that they have. So what if you
+3792	go to you're going to do a media buy, I'm going to go to five
+3796	apps. And the reasons for that should be apparent to me as a
+3799	marketer, or maybe as a representative of someone who
+3802	wants to market a product. And I'll say, okay, pod friend, I
+3807	want to pay a $50. CPM. Let's just start with $50. I want to
+3812	be on this podcast. And that's Marty's podcast. And Marty says,
+3816	Yeah, sure, that's good. What happens is, the minute that ad
+3821	hits, my streaming, satoshis stops, it reverses. And the ad
+3828	by that the Bitcoin widget company made with pod friend now
+3833	starts to pay from their wallet, which sits at pod friend starts
+3838	to pay the podcaster, Marty, but also it's going to pay me for
+3842	sitting through the ad, which I can then recycle and put into
+3845	other podcasts. And it's going to pay the app. So now I'm being
+3849	paid for my attention, which is their investment in me you're
+3853	literally investing in convincing me with money to to
+3856	listen, it's like a pitch for a bad timeshare.
+3861	You're, you're a boat, and I have a feeling. And if I skip
+3866	it, then Marty doesn't get paid app doesn't get paid. I don't
+3869	get paid. Okay, but let's talk and talk to that for a second.
+3872	So there's got to be a line that we draw on this. I like your
+3874	idea, but I everything I'm doing with sounds profitable is
+3878	talking to and it's such a shitty word for it. But like the
+3881	industry of podcasting, you got a paycheck and you got a 401k.
+3884	Right. The other side of it is you're trying to generate that
+3886	paycheck. On that side. If I'm a smaller publisher, and I'm
+3890	trying to generate revenue, I want it in every way I possibly
+3893	can go about it. But pod friend is not big enough for these big
+3897	publishers to log into yet another system
+3899	On a second, you want a
+3901	$50 CPM.
+3903	But I don't, but I don't want what happens if in. So let's say
+3907	that I, there was an example I heard there was a podcaster that
+3910	had a Fiji water Add dynamic insertion, they put it live,
+3914	they got Twitter bombed by their followers about how terrible
+3916	Fiji water was, they removed it immediately, I was talking to
+3919	this other company that their entire idea was to make clips of
+3922	podcasts, they opened up with their like we checked with their
+3925	lawyers, we have the legal right to do that. And then what we're
+3927	gonna do is we're going to take that clip and then sell
+3929	advertising to it and that we're gonna have that super bad idea i
+3933	there was the media first thing I said, I'm like,
+3934	congratulations, you're legally able to do that podcasters are
+3937	gonna light you on fire. Right and but so they're like people
+3941	can log in the podcast or can log in and claim that and I said
+3945	show let me get this straight I'm the podcasts are removed
+3947	Fiji water Fiji water comes to you, it matches the targeting of
+3950	that clip, and you just run Fiji water against my content without
+3953	my permission. So I'm here,
+3955	I think you're missing. You're missing my point, though. And
+3958	before we do, cuz I understand where you're going just wanted
+3960	before you go all the way down the path. This This only works
+3964	if pod friend does active ad sales, because as you pointed
+3969	out, and pod friend or Piper catcher or Mayo, pod station, or
+3974	breeze or whatever, they have all the information, they should
+3977	be the ones cutting the deals. I'm just see,
+3980	as you view it the other way, get them all to unify so that I
+3983	as the publisher can get all that.
+3985	Of course, that's that's the next step, of course,
+3988	because if that's all unified, I'll just give them a check.
+3992	aspects, think
+3992	about the Think about what can be done with an app itself.
+3996	These two these app developers have so much experience they can
+4000	add, if they understood that they can receive money for it.
+4004	Look, yeah, I don't care if if my app is promoting one, one
+4008	podcast over the other, that actually might be enjoyable. I
+4011	want my podcasters to recommend and maybe we have a whole
+4015	namespace tag for this. All of these things aren't come through
+4018	the app and the app developers have been beaten into submission
+4021	from day one, to shut up and just listen to what Apple does.
+4026	And look at all the stuff that they can be doing.
+4029	I think I think the only flaw is they have to unify and come
+4032	together like they have the IAB for the hosts and the
+4035	publishers. And I think there's some good and unification there.
+4038	And there's plenty of flaws with it. But the app developers, if
+4042	they all came together and said, this is the stuff that we're
+4044	going to accept, we all accepted, you can pass through
+4047	polls down to the audience, you can pass through ads. And you
+4050	can know we'll let you know listener, why
+4052	does it why did why does it have to be? Why does it have to be
+4055	unified, I don't understand
+4057	that if I if I log into my hosting platform, and I set up
+4060	the ad in my hosting platform, knowing that that ad a specific
+4063	type of ad can react nor a regular RSS feeds. And let's
+4067	call this like the RSS 2.0 aspect, right? That you're
+4070	working on if or the podcasting 2.0. If it lands on a podcast
+4075	app that honors that and it gets more data, they get a cut of it.
+4078	But in one central location,
+4080	we have a fundamental, fundamental difference in
+4083	approach. Okay, I this is brides magazine, I have beautiful
+4088	brides gowns,
+4090	I want to talk to Marty, I want to talk about how the message is
+4093	be conveyed. I want to make sure that his audience this is this
+4096	is not a Oh, let me log in and buy some ads. That's the problem
+4100	with advertising. We're not thinking anymore. When I'm
+4103	talking about buying the ads I'm talking about. I'm the
+4106	publisher. And I want to sell My Brides magazine, it feels like
+4110	how you're talking about it is advertising on the newsstand.
+4113	And I'm talking about advertising, a unique version of
+4117	My Brides magazine to specific newsstands that bought into my
+4120	type of marketing and I pay them extra for it. And then the
+4122	regular brides magazine that goes to everybody else so that I
+4126	as sounds profitable selling ads on my inventory. I say to an
+4130	advertiser, I say 50% of my inventory runs on with these
+4132	cool features that I can show you listener data just like
+4135	Spotify. And it's $5 more CPM because I pay that guy, but I'm
+4139	just saying back to
+4140	hopes the whole point the whole point of mice and then I'll shut
+4143	up about it. That my audience, my audience as brides magazine
+4148	podcast, you know what the fuck my audience is? You sell brides
+4153	dresses, you know that this is where you don't need to know
+4156	their IP address. You don't need to know their spending habits.
+4159	You don't need to know anything whatsoever. Except I'm brides
+4163	magazine. I'm hot rod magazine. I'm fishing magazine, whatever
+4167	it is that I just don't believe in any other type of advertising
+4171	for podcasts. It's right. It's got to be related and look at
+4175	where the money's being made. newsletters. You're doing it
+4178	with advertisers, you don't have BMW tied? Oh, yeah. So that but
+4186	that's a much more personal sale. And I think that if we
+4189	focused on that, because it is making content again, people,
+4194	but that's a scale issue. I agree with you on that one. And
+4197	this is a great example. I think that like the the luxury of a
+4200	bigger podcast can do sponsorship. I am a huge
+4204	advocate for contextual advertising over this
+4207	identification, your IP address.
+4209	But wait,
+4210	wait, wait, wait. But wait, boy, if I know that 1000 people
+4215	listen to my ad on the brides magazine podcast is going to be
+4220	much easier for me to measure. And even with a with a chapter
+4224	URL, click through, it's gonna be much easier for me to measure
+4227	the effectiveness of that than anything else. You understand
+4233	what I'm saying? Because people are going to be, they're going
+4236	to be buying a quality product, a big product. I mean, it's just
+4240	not good for everything.
+4242	I promise you, we see this the same way. It's just where the ad
+4244	is place. And I don't believe that it should be automated by
+4247	the buyer, just buying in mass all the time through these
+4249	pieces of technology, there needs to be that relationship
+4252	that you want. Bride magazine, I just mean that like there's a
+4255	level of publisher that can't spend time logging into every
+4258	unique podcast app and setting up this is my blockless I just
+4261	don't like tobacco ads. I don't like.
+4266	Okay, all right, well,
+4268	you got to protect their brand. And
+4271	the ad can only come with their consensus.
+4275	I think the brand protection thing, this is a problem that I
+4278	have with what the current like
+4279	get over yours. If you have to take ads, get the fuck over
+4282	yourself with your brand protection business, please.
+4285	And I've got a perfect example of this. I'm listening to some.
+4289	Okay, I guess my basic premises there's that modern advertising,
+4293	there's this group of, sort of, you know, I guess, just the
+4297	modern advertising mindset has shifted to where brand safety is
+4301	the number one thing and that it forgets the fact that people
+4305	like danger. They like things that are scary. And like it. So
+4310	play, I got a perfect example of this. It's play the clip art
+4316	build trigger warning.
+4318	This is where we'll take questions about anything in the
+4322	world of the occult. This is going to be something again, I
+4325	serve up the warning that if you are frightened by this kind of
+4329	material or unduly disturbed
+4331	by it, turn your radio off.
+4334	Or in other words, don't
+4335	listen. Now
+4339	that that's like when you give the warning. It keeps people
+4344	listening fake. Yeah, it's a fake warning.
+4347	But what what I heard Brian say is the podcasters want to
+4353	protect their brand because they don't want shitty ads. My point
+4356	is their category is weddings. So here's my category pod friend
+4363	hyper catcher. Sell to me what you got weddings, wedding
+4366	dresses, wedding venues, wedding DJs, all this stuff. Bring it on
+4369	in. That's good.
+4370	Yeah, but the thing with that, though, is that you have if you
+4373	have a podcast that's like, Okay, look, don't listen, like
+4377	if, if you're a slave to video podcast, don't be like, I'm
+4382	gonna warn you. There's gonna be some skimpy wedding dresses
+4385	coming up. You need to turn this off. If that's you know if
+4388	that's against your
+4389	right. But I heard Brian St. Didn't say the brands were
+4391	afraid. But I heard Brian says that the publishers, the podcast
+4395	creators don't want shit ad. That's what I heard him say. But
+4397	you could have a specific reason why you don't want to work with
+4400	a specific advertiser. I mean, like you, you could have
+4402	competitive separation, you've already sold them directly. And
+4405	you don't want them to have a way to get your
+4407	that's why it's not. That's why it's not programmatic. That's
+4409	why you can't buy without having a real connection, and a
+4412	valuable one. We've gone too far, we've gone too far with all
+4416	this technology.
+4418	Now, if you're seeing the app has to like as they sell the
+4421	inventory, they reach out to you and say do you want to purchase?
+4423	That's great, but I would just love a unified framework for
+4425	that. I'd love the ability for me to also sell into their
+4428	technology and pay them for that added technology that they've
+4431	all unified around. Well,
+4433	it's never gonna happen. All I know,
+4435	is. And that's why I keep focusing on the fact that right
+4439	now, you're right, that the listeners are being abused. But
+4441	the truth is, it starts with the apps, they have to pass consent
+4445	over to everybody else to honor and they have to hold them
+4447	accountable for it. Right.
+4448	That's that sounds kind of, you know, I think you're right, I
+4451	think you're 100%. Right. But it's also kind of, it's funny,
+4454	there's this, there's this shared lie that goes on within
+4458	the industry that, oh, we want more accurate stats. But no,
+4461	you know, we
+4462	really don't want more accurate. Yeah, and, and I hear the other
+4466	the other side of that is what I hear you saying, Brian, is that
+4470	there's also this shared lie of look, we don't want your data
+4473	because GDPR and it's really complicated and all that kind of
+4477	stuff. But we're not actually going to stop trying to get your
+4480	data unless you give us a header. Imagine
+4484	that. Yeah, but imagine that TechCrunch article talks like in
+4488	the top 10 apps, five of them are not the big names there.
+4491	They all get together and they say, Hey, we're gonna pass opt
+4494	out. So if a listener logs into the app, it says, Do you want to
+4497	opt in or out of this data and that app on Is it for its
+4500	entirety and passes it downstream to everything it
+4503	does. And then the apps say, Okay, what hosts are going to
+4507	honor this? If no hosts or publishers honor, imagine the
+4510	TechCrunch article on that. Imagine the press release on
+4513	apps, protect privacy, and downstream. Okay. So that's why
+4517	all these
+4518	people, the only, the only difference we have here of
+4521	opinion, is that the think, the approval process, which
+4528	whichever way it goes, for the listener for the advertiser for
+4532	the podcast, or for the app, it shouldn't be about whether
+4536	you're tracking somebody. So I'm saying no tracking, zero
+4541	tracking, turn it all off. No one needs to know shit, other
+4544	than here's guaranteed proof by a cryptographic hash agreement,
+4551	that this person is interested at this very moment in this kind
+4555	of ad, bring it, that's all you need. And otherwise, you're just
+4559	wasting it pissing people off. I mean, that's the other half of
+4562	your money.
+4563	I'd take that anyway, if on the on the request came through, it
+4566	said this app is verified that this person likes these things.
+4569	And that's why you get to know about them. A hosting platform
+4572	would target that. But what I'm saying is to be unified.
+4574	Okay, it's easier to make a unified for everybody to say,
+4578	but we'll do ads in this specific way, when the person
+4581	agrees by a cryptographic agreement, saying yes. And that
+4587	typically is because I will accept a one Satoshi payment for
+4590	from you. Right. So you have a transaction there that I'm
+4594	agreeing to this being put in my face. That's all you need to
+4599	know.
+4600	Yeah, the blockchain is the buzzword of the of the century,
+4602	it seems like ad tech ad, ag tech and dude can jump on that
+4606	bandwagon. And
+4607	I don't disagree. And I think
+4609	fundamentally, the the industry does, I think fundamentally the
+4612	industry is addicted to data is addicted to knowing is addicted
+4617	to charts has huge infrastructure of analysts who
+4620	are addicted to data, they don't use
+4622	it, nyan, they abuse it, they've collapsed.
+4624	They resell it, they abuse it and do all kinds of crap with
+4627	it. And it lays around everywhere. Yeah. So yes, you
+4630	can get 100% everybody will agree to a system that says no
+4634	tracking whatsoever. Here's how we handle an agreement that
+4637	someone wants to listen to something. Here's how the
+4641	podcast here it can be done in one transaction. It's very
+4644	simple. There's a consensus.
+4647	That's right need help from you, guys, we need the apps to buy
+4650	into this, we need them to unify and agree on how they're going
+4652	to tell everybody upstream one, my guess
+4655	I can guarantee you I can get everybody to not track,
+4659	you got to give them that as the app, that entire app has to say
+4663	I will not collect your data, I will hold it to these standards,
+4666	I will not do anything, we'd be
+4667	happy to do that if they have a way to help the advertising. And
+4672	my and my idea, while not it's not sexy, like spewing ads all
+4677	over the place, I think they'll make more money. And I would
+4681	tend I personally, I want this feature I want I want to learn
+4685	stuff about stuff that's really deliver on that promise. That's
+4689	what we promise,
+4690	I promise. I want targeted ads that actually sell me things I
+4693	want all the time, all the time.
+4695	But you know, that's not gonna happen.
+4697	No, correct. But,
+4698	but this is why I say let's just forget that. Because it's not
+4702	possible. It's a pipe dream. Let's just agree that what
+4707	whatever the content of that podcast is, I'm going to get ads
+4711	that the host has selected for me. And there's going to be a
+4714	way for me to skip through it without feeling guilty, or to be
+4718	compensated for my attention for the pitch, bring the listener
+4723	in, bring him in for once 100%.
+4726	It just needs to be a framework that everybody can adopt, and it
+4729	can be sold from app up. And from host down. Okay,
+4732	Dave, what are you doing Tuesday?
+4737	I mean, you guys are the right guys to make this happen. Like
+4739	I'm talking to the advertisers and technology partners in the
+4741	agencies, everybody wants more accountability. Everybody wants
+4745	more information that can actually work and drive these
+4749	results. They don't want useless data, right? They don't want to
+4752	guess at the 2000 segments that my house identifies with. And
+4756	some of them might be my wife. Some of them might have been my
+4758	mom who came to visit and haven't expired yet. And they
+4761	serve me an ad based on those like that doesn't help anybody.
+4764	So more data is fine paying people for that data in the
+4768	chain. compensating the app for providing that is fine. The
+4771	problem is, it's got to be at scale, because the higher up you
+4775	get these advertisers, I was talking to someone at Westwood
+4779	One and they mentioned that a big agency was just like, I
+4781	don't care about targeting my audiences, people who brush
+4783	their teeth. So it's everybody in the world, hopefully,
+4787	right? Well, the fast moving consumer goods sector is always
+4790	good. That's how they work. That's
+4792	that's exactly that much inventory that we need to pare
+4795	it down with targeting contextual works. Great general
+4798	interest works great shows that will You know, like, there's
+4801	room for advertising everywhere. We need to bring more
+4804	advertisers in here. We absolutely do. Like that's how
+4807	we're going to grow. But I'm with you. Like, I want to see
+4810	you guys. And I want to help you guys organize these app
+4814	developers, because the second is agreed upon framework that
+4817	they'll all implement, then the hosts will implemented because
+4820	the publishers want it. NPR had rad a listening spec. The
+4825	problem was the abstinent implemented. So the host and an
+4828	implemented NPR didn't even have a chance to their app.
+4831	No, no, I understand. Because believe me, this is this is what
+4836	the 10 year non movement has been in podcasting is for
+4840	exactly that chicken in the egg problem. Yeah, so this is not
+4846	going to get so what we the reason why we're successful, you
+4849	can't organize developers. It's like, here's a bunch of cats.
+4853	Okay, now go herd? No, that's not gonna work. itself, it's
+4858	self organizing organisms, they, all we did is we said, Hey,
+4862	here's, here's what we here's our skin in the game. And let's
+4866	develop something together. That works. So for any additional
+4873	feature, what we're doing right here is is the best I can do.
+4876	And but I think that the goals still aren't aligned. It's very
+4883	easy. For app developers to agree and have consensus on
+4888	something I've seen it, we've seen it multiple times. It
+4890	happens in big things, little things. And it's enthusiasm, and
+4894	it's an usually benefit to humankind. So we
+4898	can't tell you what I can tell you what developers want.
+4901	Developers are motivated by, by want. Ultimately, one thing and
+4908	I mean, when I say developers, I mean developers that are in it,
+4911	for the love of the technology and the experience of developing
+4916	a product, not as somebody who's just working as a pro programmer
+4919	on the staff somewhere, people, people like Marco, like, Xavier,
+4927	from podcast addict. Like Martin, and Mitch, and Jason,
+4933	and all these guys, they're what motivates those guys, more than
+4937	anything, as a developer is creating something really cool
+4943	in having people have an enjoyable experience and talk
+4947	about the What a great experience it was using their
+4951	thing. So a perfect example of that is john Spurlock. He spent
+4956	his time developing this way to detect the user agent header
+4962	from apps that you don't control. And the motivation for
+4967	him was doing something really unique and cool. And the joy
+4972	that people got from experiencing the thing that he
+4976	built. And so it anytime you if you want to get developers to
+4981	all join in and on a common cause, the way you do it, is by
+4988	letting them letting them have that experience by joining in,
+4994	in developing something that makes other people happy. And
+4998	talk in in generates talk about the thing they did you can you
+5002	can say it's, it's not really like, selfishness or narcissism.
+5007	It's more just, they want a room the reward of the experience of
+5011	seats white, both white people write songs
+5014	stiff.
+5015	Yes, exactly. Yes. Perfect, perfect example. And if you can
+5019	do that, it doesn't matter if it's ad tech or anything else,
+5022	you will get people on board. The the what doesn't get them on
+5025	board with does not enjoy a good developers excited is saying,
+5030	here's a spec. But it's, it's 14 pages long. And and it's not
+5036	really, if you implement it, nobody's really ever gonna know,
+5040	you're just gonna have maybe a press release Sunday.
+5042	Okay, so let's, let's flip it around, right? Spotify is
+5046	implementing some really neat publisher features, you'll be
+5048	able to send polls, you'll be able to do subscriptions, we
+5051	can't argue that these are cool features being rolled out slowly
+5054	in a walled garden. So it would be super badass if all those
+5058	publisher all those podcasts apps, all the developers got
+5062	together, replicated all of those features and created as a
+5065	unified frame framework. So any host could participate and use
+5069	those Whoa, whoa, whoa, whoa, hold on, hold
+5071	on a second. The way I see it, we're driving features. We're
+5074	driving shit. The other guys are just now catching up to. I mean,
+5077	we've got so many features note. I mean, they need to implement
+5081	our stuff. We're not going to replicate anything that
+5084	Deathstar does test
+5086	you're not doing polls or anything like that.
+5089	Now we're about to champion Oh, yeah. Wait, wait until we put
+5093	the activity pub together. Oh, yeah, polls are gonna be
+5096	there'll be I mean, go look at mastodon right now. They got
+5099	polls. We'll have all All of that stuff.
+5101	And that's so cool. And as a as a publisher on a hosting
+5104	platform, if I could log into washko, which is what I use, and
+5108	be able to set a poll that would send through my RSS feed,
+5110	knowing that I have to pay the podcast apps to polled the
+5114	listeners that we combined have access to a dude in a second.
+5117	That's cool.
+5118	Yeah. But that's, that's the thing. What we need is we need
+5121	to understand all the apps and get them all together. And then
+5124	I'll No, no,
+5124	no, no, no, no, no, listen, please, Brian, listen, you don't
+5127	get all the apps together. It's just not how it works. Because
+5130	we have exactly the same issue that you're looking at. We have
+5135	some, some hosts who have just more skin in the game for
+5139	themselves, ultimately, which is how it should be, who have
+5142	implemented many more of the namespace tags than others. We
+5146	have some who said, Well, fuck it, you can, like Lipson, you
+5149	can just throw whatever you want in there, and it'll work. We're
+5152	not really doing a UI for it. And the argument that why
+5156	they're not doing it is well, to two Part one is there's no apple
+5161	and Spotify aren't going to use it. So why bother. And the other
+5165	one is not enough people are requesting it. So it's a true
+5167	chicken in the egg. We've done very good moving that needle.
+5171	And I think that this unavoidable, um, that the
+5174	hosting companies are implementing what we're doing.
+5178	And now what Spotify is doing. And I, so I'm with you on
+5184	everything. But fuck Spotify, there. Oh,
+5189	yeah, we're removing them. Apple and Spotify aren't going to play
+5191	ball on this. So get everybody else.
+5192	Because I mean, all we have is apps. You know, we have we have
+5196	a lot more apps. And I think we have some apps that are a lot
+5200	more successful than people know. By No, because I whatever
+5204	all these numbers confuse me even more as to what apps are
+5206	really being used. And, and I think that the experience we
+5211	bring today is already better. And every single time Spotify
+5215	kick somebody off is another group of people who are looking
+5219	for an alternative. And you're probably I don't know, if you're
+5223	an older millennial, but I see that, you know, 25 to 35 year
+5228	olds, decentralizing and moving away from stuff, they're sick of
+5231	it. But that doesn't mean that there's not a place for
+5234	marketing and advertising, where appropriate that we that we can
+5237	absolutely deliver on but it has to be the mission has to be
+5241	stated before the let's get everybody together and do it. To
+5245	what what is the mission? If the mission is okay, we're not we're
+5248	just going to make everyone not track people have people opt out
+5251	so that we can really track the shit out of people who want to
+5254	be tracked this no one gets any joy from that. But if we can say
+5259	we absolutely will, we'll get people exposed to products and
+5264	things they really do want, because they're saying they want
+5267	it. And it's because of this relatable, or contextual
+5272	advertising as you call it. Maybe that's the only thing
+5275	that's appropriate. We're not we're not for for toothpaste.
+5279	That's the billboard is up. And this is the hard part here
+5282	because it's about scale. Because if I'm a major podcast,
+5286	I can just transcribe, and then contextually target ads against
+5289	keywords and then that text, their ads was you can do that
+5293	with that. And that can be directly like host read ads
+5296	targeted that way. It can be programmatic, it can be whatever
+5298	you want. And that's the scale I want. I want to see more
+5301	involved. I want to be able to say there are millions, but I
+5305	just don't show a specific app that I can target ads to
+5308	Yeah, I just don't believe that, that audiences want that
+5311	anymore. I don't think podcasters want it they do it
+5313	out of necessity. Because they were sold a dream.
+5318	I think as you
+5320	know, good. Now she'll say I want to switch gears for a
+5323	second because I want I think this is important. And I want to
+5328	get your opinion on this. Brian. Yeah, if it's so let me try to
+5334	figure out how to how to explain this. Part of what something I'm
+5338	concerned about is the sort of centralization of the
+5344	advertising spending that's going on right now in podcasting
+5347	around VC money. Like if you look at Africa, where the chart
+5352	was, and I tried to find it just a minute ago, I couldn't I
+5355	couldn't put my finger on it. But if you look at the top month
+5359	over month, spin spenders, are spending the most amount of
+5363	money on ad sales each month on like host reads and stuff. The
+5368	that list is dominated by things like betterhelp Squarespace, and
+5378	I think that long term, you know, people expect the podcast
+5384	industry advertising market to continue to grow. But what I see
+5388	is a basically a table with one with with one leg that's almost
+5393	broken in half. If you have that VC VC money is not dependable.
+5400	evaporate with the slightest amount of economic, you know,
+5404	disruption. So if you had, you know, if betterhelp is
+5408	responsible for 15% of the of the advertising market every
+5414	month? I mean, if that company goes belly up, which many VC
+5420	exit strategy type things do? I mean, that could just be gone? I
+5425	mean, what I guess what I'm saying is, I think there's a lot
+5430	of, there's a lot more danger, in the podcast, ad revenue
+5436	space, then people are even talking about, I wonder what
+5441	your initial thought is on that.
+5443	So those tools are able to tell what podcasts what ads are in a
+5448	podcast, by reading the show notes, or transcribing the
+5454	episode and getting one of the dynamic ads hard part about
+5456	dynamic ad insertion is that they could be rotated, you'd
+5460	have to download it multiple times a day, multiple times a
+5463	week, different countries, states, whatever to get that. So
+5466	it's not really hard to easy to detect, for hosts read, you're
+5469	getting it to the show notes. But it's only the shows that
+5472	they choose to monitor and nobody is transcribing or
+5474	grabbing the show notes from everybody. betterhelp is huge.
+5478	They're spending massive amounts, but based off of what
+5480	900,000,015% of that over, like if it was evenly spent over 12
+5485	months, you're on 11 million a month that seems high. That
+5489	seems high that they're the ones spending that much. I think the
+5493	truth is, is that we're not detecting all the advertisers, I
+5496	think there are advertisers that are spread out in different ways
+5499	that we're just not getting that are buying through programmatic
+5501	that are buying on wider reach instead of hosts read in
+5504	detectable ways. I mean, progressive is a huge proponent
+5508	of podcast advertising. And so I think there's more money in
+5511	there, but the ones that are visible are these performance
+5513	marketing, like you said, VC funded companies that are
+5517	spending heavy getting decent results. But yeah, it is a
+5520	little bit scary. But that's that's why everything I'm
+5524	writing is to help empower the sales people's in agencies to go
+5528	out there and say to these big advertisers, like, Hey, we're
+5531	closer to radio than we are to digital, we got more data than
+5534	social media influencer marketing, we can accurately you
+5537	know, drive conversions for you and effectively drive them
+5540	because these are engaged, active listeners tuned into this
+5544	and like the hosts. And there's more there. And that's the goal
+5549	of sounds proper was to get those people to arm the people
+5552	with their salespeople to get those advertisers in here, the
+5554	bigger ones that are holding up industries a little bit more
+5557	sturdy, I would say,
+5558	well, the other version of that, though, is the same thing. It's
+5564	sort of the same, the same issue. But it's sort of like
+5568	materializing in a different way is if, if I go back in time, and
+5573	I listened to an episode of Let's just say, this week in
+5577	tech from eight years ago, I can probably hear the exact same
+5584	Squarespace ad that I hear from from that same show this week.
+5588	It's like the and and that's a problem because these are
+5593	companies that like it's Squarespace or Casper mattress,
+5599	or Warby Parker, or Baba, Baba, we all know these, these, these
+5603	ads that you hear these same one over and over and over every
+5607	week for years. That doesn't seem exactly like a healthy
+5612	advertising market either. Because I mean, like, you know,
+5615	what we're used to within the larger bigger price media space,
+5619	you know, the the multi billion dollar a year media space from
+5623	like network news and these kinds of things in primetime
+5626	television is, is advertising from companies that rotate and
+5633	they have new products they want to sell their their a it's just
+5636	a larger, more stable, more mature market. I just hear just
+5642	something about the advertising space within within podcasting.
+5646	Makes me think that this is just I don't know, it's it seems very
+5650	immature and very unstable to me, I guess is what I'm pulling
+5655	in.
+5655	And that's a great observation. And I was while you were
+5658	talking, I looked and I see ziprecruiter Geico, which of
+5661	course is huge indeed, Squarespace simply safe quip
+5664	Robin Hood's any optical Madison Reed Casper Skillshare third
+5668	love care of stamps.com progressive. I did not realize
+5673	that since I've been so removed from it, that we are indeed
+5676	still with the same see List advertisers that we started
+5679	with, you know, 15 years ago, because it's really hasn't
+5683	improved that much. It seems that it's never going to work.
+5690	And the reason why don't have the bigger advertisers come in
+5694	is canceled culture and we have an unconscionable system.
+5700	believe that the big a name brands, except for perhaps even
+5705	the fast moving consumer goods, so it would be so simple. You
+5708	know, don't just use one tweet Gillette, I can't believe you're
+5711	advertising on this podcast, boom, done, it's pulled, they
+5715	don't want to do it. And they're never going to because it's not
+5718	controllable. They can't call Mark Zuckerberg, they can't call
+5721	Tim Cook, they can't call Daniel Eck. That's why it's not going
+5726	to happen, you will always remain with this. Which doesn't
+5730	mean that you can't turn this into 10 or $100 billion. But you
+5733	have to approach it differently.
+5735	I but I think that that's a hard one, right? Because I you know,
+5737	back in the day, I could have recorded a TV show always ads
+5740	and everything on VHS. I can record radio to cassette tape,
+5743	downloading a podcast, mp3, and me having that copy with the ad
+5746	in it forever, is the same thing. I mean, I agree with you
+5749	that like there are there's fear from brands on that end. And
+5753	that is why, you know, they're they have trouble with that,
+5756	right? Because your episodes could be exactly what they're
+5758	looking for. And then you could just take a departure, and
+5761	they're associated with previous episodes post radbeacon dynamic
+5765	ad insertion, it doesn't matter. Someone has a copy of that
+5767	episode elsewhere. So that does kind of hold them back. But I
+5772	don't know. I mean, here's the truth of it. I'm not James
+5775	Cridland with like awesome views of the podcast space. I'm not
+5780	Tom Webster, who gets all this in the data. I'm the nerd who
+5784	plays with this tech and says, what happens if we did premium
+5786	feeds and instead of charging for them, we figured out cool
+5789	ways to customize the listener experience so that they got the
+5792	exact level of podcast they wanted out of it. What happens
+5795	if we did ads that were content and did them sequentially
+5798	throughout an episode? Like I, when I first started, I
+5804	read your piece on the membership.
+5806	And it's fun, like that's the cool part of it is is that
+5809	everybody looks at these tools and say they're their serve ads
+5812	and ads are boring, and you pardon me for my ad break, and
+5815	then you're excused from it. No, it's one complete file. So
+5818	everything I wish I had more understanding to be able to
+5821	hypothesize about the space. But the truth is, I'm just trying to
+5824	take these tools and be like, No, no, your creative guy
+5826	doesn't get to tap out here. Like they should 100% be driving
+5830	this and here's a cool way to look at it makes something way
+5832	cooler. And that's really what I want to drive. I mean, I have
+5835	these lofty ideas for how to get the apps involved and get paid
+5839	and how to do all these other things. And ultimately, like I
+5841	hope they succeed, but it's not where I'm doing the best good.
+5844	The best good is i'm saying is your ads are lazy, do better use
+5847	this technology, there's more you can do and you don't need
+5850	invasive information about people to succeed.
+5853	Could I could I interest you in, in, in writing some articles
+5859	about profitable podcasting just now sounds profitable as a great
+5865	brand, because you're not necessarily sounds profitable.
+5868	But you, you feel like you're only exclusive to AD tech. I
+5872	think advertising and how to use,
+5874	I think that the use of the ad tech is important because when I
+5877	was in that space, the truth of it was like I wasn't educated.
+5880	And when I joined a podcast company, nobody was like sign up
+5883	to pod news, check out these podcasts read this. Or here's
+5886	our insider newsletter. Heck, I've been at companies that
+5888	didn't even teach me the tool, they gave me a login and told me
+5891	good luck. So I'm trying to educate these people who are
+5894	overworked, and are undereducated and their decision
+5897	makers who are lying through their teeth, about their
+5899	knowledge about the space and the sea levels above them before
+5902	just holding on and hoping everything works. And I'm here
+5905	to say like, this is how this technology works, you need to
+5908	stop thinking about it as just ones and zeros. There's a whole
+5911	alphabet of options that you can do with it, show you the grunt
+5915	that's doing this, you the person that needs to become the
+5917	decision maker in three to five years, you have to be better
+5919	than your boss. Now, you have to be better educated. And here's
+5922	some things ask for time to play around with it. So I think that
+5925	I mean, that's the market I was that person, I was in a
+5928	situation where my boss would walk into a meeting that I
+5931	wasn't invited to sign on for a tool that I ultimately would
+5935	have to be the owner from. And I think it's have any input and I
+5938	was like, this sucks. It doesn't do anything. Now I want it
+5941	works.
+5941	That's the heart of tech. Yeah,
+5943	yeah. Here's my goal. My goal is to help those people not be in
+5948	those situations anymore. And hopefully, then those people
+5951	will get better and better and better. And we'll get into a
+5953	situation where we're not recycling the mistakes of
+5956	advertising in the past. We are not saying that, oh, the podcast
+5960	is expertly created by all these amazing content creators and
+5963	editors and producers. And but please ignore our five minutes
+5966	of we have to make money. It's not our fault.
+5969	Well, what? Sorry, go ahead,
+5971	Dave. One thing that I think was interesting that came out over
+5975	the last week really, what we're actually talking about it at the
+5980	beginning of the show was that there's this now this
+5984	understanding that only, let's just say some large podcast
+5988	networks, only 50% of their shows in Apple can Apple's
+5991	directory. And if that's true, then and the real scope of the
+5999	podcast landscape is 50% bigger than we think it is. And then
+6007	there's a whole set of untapped territory out there. And that
+6011	really puts the screws to this idea that you can make a show go
+6015	exclusive and be in be more and be more successful than you can
+6019	and it can in the open, open ecosystem, you know, like me,
+6022	because you, you have, there's this, if you know that you're
+6026	missing out on what you thought was, you know, 70% of the
+6032	market, when you go exclusive to Spotify, and now, you know,
+6036	you're missing out on 170% of the market. Well, then, you
+6041	know, that's, that's a huge swing back in favor of
+6045	exclusivity is, is the joke. And
+6049	I so I think that every publisher should have as much
+6053	control as possible. I'm having such success with my premium
+6055	feeds aspect. I have my it's a podcast about podcasts, ad tech,
+6060	right? Like how, like, I'm not even just a podcast about
+6063	podcasting. Like this is like even further deeper down the
+6066	line. There are there, there are 33,000 people that read my
+6071	newsletter, and 6575 of them sign up for my premium feed.
+6075	Like there's, if you if you release a weekly podcast, and
+6079	you have six ad slots, and it's $50. CPM, I think the maximum
+6083	per listener you could earn is $15.60. Right? For a year,
+6088	right? We need to think creative ways to help people make money,
+6091	we need to think of how to use these tools in different ways
+6093	than they were intended. supercast was like, hey, it's 59
+6097	cents per listener per month for that feed. And I was just like,
+6099	what happens if you were just the landing page of podcasting
+6102	complete, unique RSS feeds. And these people are looking at
+6105	these tech in different ways. And that's the goal, because I
+6108	could bring my podcasts completely exclusive outside of
+6111	Spotify, owned by me in the RSS feed that I allow everybody to
+6115	use, right. So you have to sign up and give me some other
+6117	information. I could just put it in podcast, podcast index. And I
+6121	guarantee you I'd still have the same number of downloads,
+6124	because all my podcast is not a lot of Spotify listeners. And
+6127	that's okay. And I think we need to be comfortable exploring all
+6130	of this and the technology that powers it. And so when I say ad
+6133	tech, I mean, like at its fundamental level, the hosting,
+6136	right? Yeah, your host is ad tech analytics, or ad tech adds
+6140	a component of
+6141	it. I look at Spotify and Apple subscription based podcast
+6145	membership, whatever you want to call it. I see that is like, if
+6149	it materializes within the next year or two, it just feels I
+6155	don't know, it feels so wrong to me, too. Because they're it's
+6159	like a, it's like they're doubling down on the
+6162	exclusivity,
+6163	part of it. Think about this as a publisher to be exclusive or
+6167	to have a subscription on Spotify after host on anchor. So
+6170	does that mean I have to host my podcast in two places my primary
+6174	hosting platform and anchor specifically for the
+6176	subscription, meaning that Spotify has to do some magic
+6178	where they take my main feed in my subscription feed and make it
+6181	not look like to ugly feeds on their platform? Or is this their
+6184	goal to get me to move over to anchor and host everything on
+6188	there? which feels weird because the type of people who do
+6191	subscriptions primarily are going to be want to be on
+6193	something like megaphone which they own. But you can't do the
+6197	subscriptions on megaphone yet. It's specifically says for
+6199	anchor hosted podcast. So I think we're gonna see a lot of
+6202	roadblocks. And I think the biggest thing that I'm trying to
+6205	encourage everybody to do before then is play around with this.
+6208	Ask your audience would you sign up for premium feed, figure out
+6211	tools like Yapa and community and all and everything you're
+6214	doing to interact with these your audience and get that
+6218	direct relationship and and figure out what works because
+6222	general marketing and advertising will gain new
+6224	listeners. And that's cool, but talking to your audience about
+6227	how you get them excited to be part of it. And you guys do a
+6229	fantastic job. Your growth through word of mouth has to be
+6232	the hugest part of what you do that that's what's cool about
+6235	podcasting.
+6236	We're not even in the apple index, or we are not we are
+6240	no, no, no, this
+6240	show is not in the I don't believe you are.
+6243	But that How cool is that? I would love to know your stats on
+6246	Apple podcasts. But
+6247	you know, I have no idea not interested. All we look at is do
+6251	we get enough money to pay for the machines? And speaking of
+6254	that,
+6257	day is on here and currently reaching for the cardboard box.
+6264	Yes, this is a
+6265	this is a value value for value proposition This podcast is
+6269	which means whatever you get out of it, we would like you to
+6272	return the favor time, talent or treasure. We got a lot of time
+6276	and talent being spent on on everything podcasting 2.0 and
+6280	luckily, people are still contributing. Well, you know
+6284	where we're at with the satoshis we're at our about $9 a day
+6287	average, which, by the way, is is not far off from being kind
+6291	of autonomous for the current setup we have right?
+6294	Yeah, that's pretty, I mean, like
+6296	12 $15 a day and then then the servers run. It's like A true
+6301	perpetual motion machine.
+6303	Yeah, yeah.
+6305	Our hosting is add everything up is a little bit less than 400 so
+6309	we're getting close and then I'll sell sustainability
+6312	brother.
+6312	Nice and then we can we can pay by linode through their partner
+6317	and Bitcoin so we keep it all within the ecosystem. I don't
+6321	want to give
+6323	away the Bitcoin Why give that to linode?
+6325	Let's, let's thank some people who supported us financially.
+6329	Oh crap, Brian, we made you miss your thing, right?
+6333	No, that's fine I cancelled it.
+6334	Oh geez I sorry I completely forgot the time.
+6338	This was a this was a blast and I really hope that we can have a
+6341	chance to talk. Wait, you're not
+6342	we're not letting you go yet. You can say a few more minutes.
+6344	I got it. I get 10 minutes.
+6346	We'll do five. Okay.
+6349	See Kevin Kevin Bay, sent us 100 bucks and says I need to send
+6356	you is that I need to send more treasure. Thank you both for
+6359	responding to me personally for my Sphinx wallet screw up. Dave
+6363	especially does yeoman's work. That's right. Yeah. Hell yeah.
+6366	Doesn't editorialize. He helped me figure things out at 11pm I
+6371	felt so bad when the light bulb went off in my head and to fix a
+6374	non problem. I was like the guy who needs to be told to make
+6377	sure his computer's plugged in. I can't thank you enough.
+6381	Thank you, Kevin. Yeah, that's very kind. Well, there you go.
+6385	Although actually Dave charges 200 but okay.
+6388	Yeah, let's give you a discount. We get Michael wing it. He gave
+6398	us $50 and he says, just wanted to throw some support to the
+6402	project. Bruce city Mike. Thank
+6403	you. Bruce through city Mike. Yeah, Mike. He works with Gene
+6408	sir Jean.
+6409	Oh, okay. Right. Yeah, um, yeah,
+6411	I know. More he supports surgeon he's a big supporter.
+6414	Yeah, I want to personally thank Jean for standing me up and not
+6420	in telling me to come on his podcast and I showed up and
+6423	waited 15 minutes and he never showed us Oh my word.
+6427	We doing donations because I don't want to leave Brian
+6429	hanging I want to
+6430	know we got a couple okay. We got and I'm just kidding Jean.
+6435	just messaged me. Let's see. I don't see a name on this. Oh,
+6439	no. Here it is. Lauren ball. And he gave us $48.40 and no just
+6445	says thanks.
+6446	Thank you. Judith let them
+6450	see $33.33 from Dame Jennifer. always there for us. It is she
+6458	says in the morning y'all. Show bleed over your project
+6462	continues to be hot. If any, if any generous. Okay, if any
+6467	generous with time. Do name Ben wants to help me get my own rest
+6471	raspy Blitz notes set up. It would be so grateful. I am
+6475	Jennifer and Jennifer on nogen. To social care, hugs and kisses
+6480	named Jennifer PS Dave is the originator as the originator of
+6483	talking hot math. Had to send the jingle to Adam behind your
+6487	back it would have been way less fun if you knew about it.
+6493	When you talk
+6499	to me
+6501	that's it ladies gentlemen. Dame Jennifer
+6505	it's hard to be from the future when you're legend. Thank you
+6509	David for Ray Fleischmanns and is $25 and I do not see a note
+6513	on the right. Thank you
+6515	Ray. And
+6517	flying through the stack here and I do not know how to
+6522	pronounce this name. Oh sir. Oh s s you're in it. The OCR has
+6526	the oom lot above it. two dots as
+6529	I will, sir. Oh, sure. Yeah,
+6532	sure. Johansson. I'm gonna say, Oh,
+6535	it's from a Scandinavian country. Okay.
+6539	Yeah, he gave us $10. And I do not see a note. And that's
+6542	millions of kronor. Thank you.
+6545	literally millions of Chrome. And then a sad puppy. We had
+6550	somebody cancel the subscription.
+6553	Sad puppy.
+6555	I'm gonna have to Nuka server
+6556	sorry. All right, well, one goes down three go up. That's that's
+6561	our group. Good group. Good. You can support us by going to
+6563	podcast index.org. Scroll down to the bottom. And there's a big
+6567	red Donate button, click on that to send your COC bucks through
+6570	Pay Pal or just boost us in any of the podcasting 2.0 compatible
+6574	and certified apps and raise those value sliders up as far as
+6578	you can take them. Brian Barletta, I really appreciate
+6582	you coming on because I am. You're brave and brave, but I
+6589	also really appreciate and Don't sell yourself short. You
+6592	absolutely have vision in this. And just because we don't agree
+6595	on some fundamentals doesn't mean that your brain power isn't
+6600	Appreciate it. And I think useful because you're on to a
+6603	lot of things. And you see you have a big overview. And I'd
+6607	love to be able to work with you to figure out how we can make.
+6612	And I think it's actually beneficial that the advertisers
+6615	that are still in podcasting, or I'm just gonna say, kind of low
+6617	rent, we're, we're missing part of that conversation with them.
+6622	Or with the potentials, you know, the the the marketers that
+6626	I don't see them showing up anywhere saying, here's what we
+6628	want. So I'd love to see that. And let's keep the lines of
+6633	communication open. Because there's somewhere between where
+6636	you are and where we're where I am. I think there's there's
+6639	middle ground. And let's see if the app developers have any
+6642	takeaway from this. No, I know, they listen. I
+6645	agree. I know that. Listen,
+6647	that's I'm right there with you. At a minimum, I think that we
+6650	agree on like 80% of it. And what we both want to do is drive
+6653	all three of us want to do is drive this industry forward to
+6656	help everybody. Right. So I I'm so excited that you guys had me
+6660	on here. I definitely prepared myself for a little anti
+6664	advertising talk. And I think we talked more about good stuff.
+6667	But let's collaborate as much as possible. I'm available to you
+6670	guys. I'm available to any of your listeners if they want to
+6672	talk about this stuff. And yeah, I think this is really great.
+6676	Do you have a podcast? Brian?
+6678	I do. Yeah, that sounds profitable podcasts. And so we
+6681	send out my articles.
+6682	Can you can you lightning enable that for some value for value?
+6687	Yeah, you know what, let's talk about that. afterwards. I use I
+6689	host for bushka. And they've been really excited to, to work
+6694	with any innovative things like that. So if it's something I can
+6696	do myself, then I'll ask for your help on it. And if it's
+6698	something they need to do, we'll see about getting it on their
+6700	roadmap as soon as possible.
+6701	For anybody who's interested. Just find your podcast on
+6705	podcast. index.org hit the lightning bolt and you're off to
+6708	the races. The process starts there.
+6711	Yep. Awesome. Cool. Thanks, Brian. This is fun show. Friday
+6717	show.
+6718	Dave anything for you for the for the final minutes here at
+6722	the board.
+6723	No, no, man. I'm just glad to be back on the horse.
+6726	Yeah, well, I know you've had a real busy week at the day job.
+6729	So you know, all the stuff you're doing is so appreciated,
+6732	man.
+6732	Yeah, man. Yeah, no
+6733	problem is not like, like, you know, like lazy, lazy bums like
+6737	me and just cavorting around and vacationing and taking all this
+6740	time off. I feel guilty sitting on the beach.
+6744	Margarita,
+6745	Ryan, thank you again and of course we will return next
+6748	Friday with another board meeting as we take a look at
+6751	what's going on with podcasting 2.0 right here on podcast
+6754	index.org.
+6770	You have been listening to podcasting 2.0 This is
+6774	podcast.com for more information.

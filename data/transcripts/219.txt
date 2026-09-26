@@ -1,0 +1,2656 @@
+0	Podcasting 2.0 for May 2nd, 2025, Episode
+3	219, BudCast.
+8	Hello, everybody.
+9	Hello, boardroom.
+10	Hello, America.
+11	Hello to the world.
+13	Welcome to the only board meeting that talks
+15	about podcasting, because we are podcasting 2.0,
+19	and coincidentally, the only boardroom that isn't at
+22	war with Russia.
+23	I'm Adam Currie, here in the heart of
+25	the Texas Hill Country, and in Alabama, the
+27	man I'd rather be vibe coding with than
+29	Claude or Grok.
+31	Say hello to my friend on the other
+32	end, the one, the only, Mr. Dave Jones.
+41	So as you were introing, I had tooted
+49	earlier about the show being live, and I
+52	included, as I always do, this time correctly,
+55	the episodes.fm link.
+57	Yeah, although episodes.fm didn't still tell you
+59	it was undefined?
+61	Yes, that's what I was about to say.
+62	It didn't do anything, and then finally the
+66	open graph tag popped up right at the
+69	end of your intro, and it just came
+71	up and it said, undefined.
+73	I know, I know, I know.
+74	It sat there for like a minute, and
+76	then it said undefined.
+76	This bug has been there for a long
+78	time.
+80	Nathan, what are you doing?
+82	It's undefined.
+84	Nathan is undefined.
+88	And I've learned a lot of undefined.
+91	Ladies and gentlemen, welcome to TWIV.
+94	This Week in Vibe Coding?
+95	That's right, This Week in Vibe Coding.
+97	Did you see my code?
+98	Did you look at my code?
+99	What do you think of my code?
+100	I did not open your Python file because
+103	I was on the way out the door,
+105	but I should open it right now.
+106	Let's look at this thing.
+107	Yeah, so in the ongoing, and this is
+111	all podcasting related by the way, and I'll
+113	tell you what I'm doing.
+115	Can I just tell you that you sending
+116	me a Python file is kind of weird?
+119	Startling in and of itself.
+121	I'm like, wait, there's an attachment?
+123	The project I've been working on for, I
+126	think, four weeks now, which you and I
+128	together, Vibe Coding, could have done in four
+131	hours.
+134	Started out with me using all different kinds
+137	of AI, trying to get liquid soap to
+138	work.
+139	I'll cut right to the chase.
+141	After trying everything, and I mean everything, even
+144	Cursor, but Cursor's like, I need an IDE.
+147	My eyes rolled up in my head like,
+149	no, no, I don't want that.
+150	What is Cursor?
+151	It's another AI that integrates with your IDE,
+153	and I understand what it does, but I
+156	want nothing to do with an IDE.
+157	I just want to copy-paste stuff into
+159	it, into Nano, okay?
+162	And then I can go and find log
+164	files, and I can feed it back to
+165	you.
+166	So anyway, long story short, after trying liquid
+170	soap, after trying ICES, after trying MPD, Music
+181	Playlist Daemon, and I'm trying to turn an
+184	MP3 feed of files, so it's a Godcaster
+190	feed, so it has files from different podcasts
+192	in there, different hosts, et cetera, turning that
+195	into an IceCast stream.
+198	You think it would be easy.
+201	Ultimately, because I kept saying, liquid soap, I've
+204	spent at least 20 hours trying to get
+207	liquid soap to work properly, forget about it.
+210	That's when, you know, whichever AI I was
+212	using at the time finally told me I
+214	needed to recompile my kernel.
+215	I'm like, okay, you're stupid.
+222	So what actually finally worked, with some reasonable
+227	success, using FFmpeg as the streamer to IceCast,
+231	was doing this in Grok, in SuperGrok.
+235	SuperGrok, which is grok.com, but for some
+238	reason it calls itself SuperGrok.
+240	Is that the one that doesn't have any,
+242	like, filters, it cusses at you all the
+244	time?
+245	I cussed at it.
+246	It didn't cuss back at me, so I
+248	don't know about that, but quite impressive at
+252	creating a Python script.
+254	I think I've probably worked on this for
+256	the past four days, and it's really incredible.
+260	It has zero intelligence.
+263	Can it parse syntax, and does it understand,
+267	um, you know, code, and how code should
+270	probably work?
+271	Yeah.
+273	Is it intelligent?
+274	Absolutely not.
+276	I'm sitting there going, hey, this is obviously
+278	what's going wrong.
+280	Maybe you should look at this.
+281	Oh, you're right.
+282	Snap.
+283	Yeah, okay.
+284	All right.
+285	Snap.
+285	Oh, that gets your goat faster than you.
+288	You hate that.
+290	You hate the oh, snap.
+291	Oh, snap.
+293	This Python script, now, I'm not a Python
+297	guy.
+298	I don't, I'm never going to claim to
+300	know much about Python.
+301	I can just sort of hammer my way
+303	through it if I need to fix something,
+305	but I've never seen Alex Gates cry, but
+310	I believe this might be the main, the
+314	ingredient that would make that happen.
+316	Tell me why.
+317	Tell me why.
+317	What is it about the script that, now,
+319	I've told it to comment things, even include
+322	whatever you need in your Python environment, all
+325	the required includes, so I made it document
+330	stuff all over the place.
+332	What would make Alex Gates cry?
+335	Well, I mean, first of all, it's just
+337	all run together.
+339	I mean, like trying, you would have to
+341	go, there's a cursory attempt at some sort
+346	of documentation in this code.
+348	Like there's essentially one comment at the top
+353	of each function that tells you what the
+354	function is supposed to do, and there's no
+356	other comments anywhere in the function.
+359	And so you're, it's, I mean, you would
+361	really have to go through this thing line
+365	by line for 45 minutes and say, oh,
+368	okay, what is this doing?
+371	What is this doing?
+372	And then, I mean, it's very hard to
+375	follow.
+376	The logging is all just straight logging.
+379	There's no like, yeah, this is rough.
+382	Well, there you go.
+383	As long as it works.
+384	It's going to take over the world, people.
+386	It's going to rule the world.
+388	It's so smart.
+389	No, this is what I thought.
+393	But there's no Chinese that I can see.
+395	No, there's no, I look for that as
+397	well.
+397	Indeed.
+397	No Chinese characters, but it does work.
+400	The hardest part.
+402	What do you think the hardest part of
+403	this whole exercise was?
+410	Now, give me more.
+412	You're like coding wise?
+413	No, no, no, no.
+414	What took the most time to figure out
+417	and reiterate over and over again to get
+419	it right?
+421	What failed the most?
+423	Come on.
+424	DNS.
+426	Close, close second.
+429	Parsing through, no, parsing through all the permutations
+434	and variations of URLs to MP3 files.
+441	And I mean, people have got multiple redirects
+445	and wrong MIME types.
+447	And then the file is, you know, you
+450	can't get the size because there's no size
+452	in the RSS feed.
+454	The file itself is, you know, you've got
+456	images encoded in it and all kinds of
+459	stuff.
+459	And that that makes it complicated.
+461	Then you've got a question mark after the
+463	dot MP3.
+465	And that is a whole nother tracking thing.
+467	And so by the time I took my
+469	intelligence told Grok, like, you can ignore that.
+474	That's tracking stuff.
+476	Oh, OK.
+478	Wait.
+478	So you're wait, wait, wait, wait.
+479	So you're ignoring the URL parameters that come
+482	after the the the main part of the
+486	URL?
+486	Not on the first.
+487	Well, the first access obviously brings the whole
+490	thing in, but then it has to parse
+491	it out to give a proper URL that
+495	FFMPEG or any other streaming software will understand
+498	because that all breaks it.
+501	No streaming software that I could find can
+504	actually handle redirects and parameters.
+507	If you're not giving it a straight up
+509	file URL to an MP3 file without hoops,
+512	it's all going to break.
+514	OK, so you're you're saying that you're saying
+518	that you have to follow the URL redirect
+521	chain to its final destination, get that final
+524	URL, then give that to FFMPEG.
+526	Correct.
+527	Gotcha.
+527	Yeah, I got you.
+528	So that was the hardest part.
+530	And of all of the different RSS feeds,
+532	all of them.
+534	And believe me, I've tried a lot.
+538	You're getting a tour.
+540	I got a full one.
+542	By the way, my heart goes out to
+544	podcast app developers, man.
+545	I can only imagine what they have to
+547	go through.
+548	Straight up.
+549	And so what is the there's only one
+551	host, only one host that constantly blocks my
+555	script, no matter how I spoof it, no
+557	matter what refer I give it, no matter
+561	what identifier I give it, even passing off
+564	a cookie to it.
+566	Buzzsprout is the one that will not let
+568	me create a script to download their MP3
+571	file because I think those guys are the
+573	only ones who really try to just stop
+575	download bullcrap.
+578	What are you getting back?
+579	403?
+580	403.
+580	Yeah.
+583	So what is the user agent you're using
+587	to send?
+587	Tried everything.
+589	Tried Mozilla, Safari, tried spoofing, because I could
+593	literally do it in my browser on the
+595	Brave browser, same machine, same connection, no problem.
+599	The minute I fire up the script, no
+600	matter what I was passing off to it,
+603	and Grok and I did a lot of
+604	work on this, it would continuously give me
+607	a 403.
+608	It's like it identified me and for some
+612	reason, I know you're no good.
+614	What is the source IP?
+617	I mean, not the IP itself, but where
+619	is this coming from, this traffic?
+624	Oh, I'm sorry.
+625	You're right.
+625	In this case, Linode.
+627	It's coming from Linode.
+628	Yeah.
+628	Okay.
+628	Yeah.
+629	Linode.
+629	And it comes from Linode block.
+633	Does it work if you come from somewhere
+635	else to Busbro?
+638	Yes.
+639	Okay.
+640	So you're probably running up against an ASN
+643	block.
+644	Yeah.
+644	Yeah.
+645	Linode, just because it's Linode, that would make
+647	sense.
+647	Right.
+648	So certain ASNs- ASN stands for what?
+654	Autonomous system number.
+656	That's the owner of an IP block.
+657	Oh yeah.
+658	Oh, I knew that somehow.
+659	Yeah.
+659	Yeah.
+659	So if you have an ASN that belongs
+663	to Linode, DigitalOcean, parts of Amazon, Azure, you
+670	run the risk of getting blocked by some
+673	of this stuff because the only way you
+677	can do it- Yeah.
+678	They figure that's going to be some download
+679	script.
+680	Right.
+681	Right.
+681	Right.
+681	That's not a real end user.
+683	Yeah.
+684	Yeah.
+684	My point being, Busbro is the only one
+687	doing it.
+689	Nobody else.
+690	Nobody else.
+691	Luckily, we know somebody over there.
+693	Oh, no.
+693	I just put it in.
+695	You'll see somewhere in that spaghetti of code,
+697	you'll see, oh, it's from Busbro.
+699	Expect to go to 403, just skip ahead.
+703	Well, I'm looking at it right now.
+705	This is headers, user agent, refer Busbro.
+709	There's a bunch of stuff in here from
+711	Busbro.
+713	Yeah.
+715	Clean your, yeah.
+716	Yeah.
+716	You got a lot of Busbro avoidance code
+720	in here.
+722	Except for the one thing I can't help,
+724	this actual location of the machine.
+726	It's been fascinating.
+728	However, I will say it works.
+730	I got it to work this morning.
+733	I'm like, holy mackerel.
+735	Now, there's still some buggies in there, but
+738	in general, it works.
+740	It's real.
+741	And so, I got like three streams running
+743	and it's fun to listen to.
+747	It's like, oh, I'm listening to radio all
+749	of a sudden.
+750	I will say that you need to not
+754	impersonate a browser user agent.
+759	It can seem like the right thing to
+762	do, but ultimately you will run into problems.
+765	Right.
+766	So, what should I impersonate?
+767	Because obviously I'm a machine.
+769	Well, no, you don't need to impersonate anybody.
+772	You just need to give your app a
+775	name and just eat it.
+777	Because if you, like podcast index though, we
+780	do this.
+781	If you're coming from an ASN that belongs
+786	to Amazon or Linode or somebody like, if
+790	you're coming from a hyperscaler ASN and you
+793	claim to be a web browser user agent,
+796	instant block.
+798	Because I know you're not, nobody's running Mozilla
+800	browser.
+802	Am I masking as Mozilla right now in
+805	that script?
+806	Yeah.
+806	Your user agent is Chrome.
+808	Well, your user agent is Chrome.
+809	Okay.
+810	All right.
+810	I'll tell it to, I'll change that.
+813	You shouldn't have any problems, I wouldn't think.
+816	I mean, you're not getting blocked by, Buzzsprout's
+818	not blocking you because your user agent is
+820	something else.
+820	No, they're blocking because of me.
+822	Just Adam.
+823	It's like, Adam, no, no, that guy's, he's
+825	up to no good.
+826	It's like, this joker again, kill it.
+829	Yeah.
+830	Now the thing I'd like to do, I
+832	mean, I have so many ideas now that
+834	it's kind of working.
+836	I'd love to be able to somehow hand
+838	off a count.
+839	So if I've got another person listening to
+841	a stream and it's, hello Dreb Scott, thank
+845	you.
+845	If I've got another person listening to a
+847	stream and it's a podcast hosted on Buzzsprout,
+850	I'd love to hand off a, hey, I
+852	got a listener.
+853	You know, which would, I guess, mean another
+857	download or whatever, you know, just to just,
+859	or give them a count somehow.
+862	Okay.
+862	Yeah.
+863	Because what you're doing, I'd actually like to
+864	hand it down the whole stream now, you
+866	know, all the redirects and everything I'd like
+868	them, I'd like, I want everyone to know
+870	that there's another person listening and not just
+873	one continuous stream.
+874	I think that would be fair to do.
+878	I think you can, I think you can
+882	follow the redirect chain with some, what you
+885	could do is follow the redirect chain with
+887	something like curl.
+889	And then this is a good, this is
+894	actually a good question because I don't know
+898	if a head request would follow a redirect.
+903	No, you'd need the, okay.
+906	You, what you could do is like follow
+908	the redirect chain with, with something like curl
+911	just to get all the intermediate, intermediate hops.
+916	Right.
+916	Give everybody, give everybody a ping.
+919	A heads up.
+920	Yeah.
+921	Give them a heads up.
+922	And then.
+922	Yeah.
+922	I'll put that in eventually.
+923	And then just go straight to the source.
+925	Right.
+925	Well, I give that, I do all that
+929	once, but then once somehow I want to
+931	see if ice cast can then say, oh,
+933	we got another listener.
+935	You're listening to this particular file, follow the
+937	chain, give them a, give them a hit.
+940	You know what I mean?
+942	Yeah.
+942	I think, you know who I think would
+943	be like the master of knowing the proper
+947	way to do this would be John Spurlock.
+949	You're telling me that Grok can't figure this
+951	out.
+951	Grok is the master of all.
+953	It's the best AI ever according to Elon.
+955	Good luck.
+957	The thing I'm most afraid of is if
+959	I actually had to pay for this man,
+962	the amount of computes, the amount of compute
+965	I must've sucked up in resources has got
+967	to be out of control.
+968	And then sometimes Grok just says, oh, I'm
+974	sorry.
+974	I lost the connection.
+976	Regenerate like, like refrag or whatever.
+979	Well, you can click that regenerate button all
+981	you want, but your session's over.
+983	It is almost impossible.
+985	Much.
+986	I got no credits.
+989	I got no credits.
+990	So then you got to start a new
+992	session and say, here's what we were doing.
+994	Get it?
+995	Cause they can't connect to the old session.
+997	This stuff sucks so bad.
+1000	It sucks so bad.
+1001	And I know that if you and I
+1003	had sat down, I'm telling you three, four
+1005	hours, we would have banged this out.
+1007	It would be working.
+1008	This code would have been a 10th of
+1010	what this is.
+1011	You know, that's.
+1012	It would have been in PHP, not Python
+1014	though.
+1015	I could just say, Hey, this is great.
+1017	Do it in PHP.
+1019	No, you can tell, you can tell Grok
+1021	to convert this script to PHP.
+1023	Yeah.
+1023	Oh yeah.
+1023	I'll try.
+1026	That would be fun to watch.
+1027	No, no.
+1028	I think I'll make it work in Python
+1030	now because it suggested Python.
+1032	I didn't, I said, what should we do
+1033	this in Python?
+1034	Okay.
+1035	Yeah.
+1036	Python's not, it's that's, that's a good choice.
+1038	Yeah.
+1039	Yeah.
+1039	It's a good choice.
+1040	Hmm.
+1042	I'm look, I'm, I'm impressed.
+1044	I'm impressed.
+1046	I'm impressed as much by, uh, your persistence.
+1052	Yeah.
+1053	You know, like what, what is the, you
+1056	know, the scripture was at Matthew or it's
+1057	like, uh, you know, your name, you know,
+1060	your neighbor gets up and goes and bangs
+1062	on your door.
+1063	I was saying, give me some bread.
+1065	And it's like, uh, are they going to
+1067	get up because they're your friend and help
+1069	you?
+1069	No, but they will get up and help
+1071	you because of your persistence.
+1072	Yeah.
+1073	You just keep banging on that door.
+1075	Just keep banging.
+1076	And eventually they're going to get up and
+1078	give you some dinner.
+1079	Yeah.
+1080	Yeah.
+1081	Well, no mere mortal could do this.
+1084	I have a, you know, I have 25
+1086	years of idiot experience of doing this stuff.
+1091	I mean, I can, I can get myself
+1092	around a shell, you know, it was like,
+1094	I, I know conceptually what it's doing, but
+1097	if I'm just some schmo showing up and
+1099	saying, Hey, write this for me.
+1101	No, not, you already know what the pitfalls
+1104	are going to be in pretty much each
+1107	step of this process.
+1108	If you just go in naively and are
+1110	like, Oh, I'm just going to have this
+1112	thing down, you know, download or go to
+1114	a URL and start streaming.
+1116	It's like, no, no, please.
+1118	That's not how this works.
+1119	No, no, exactly.
+1121	But so again, it has, it, it knows
+1123	what the next word should be.
+1125	It understands syntax.
+1127	I mean, the syntax of the language of,
+1129	of Python is well-known and it's obviously
+1132	been trained on all kinds of, you know,
+1135	uh, overstack, uh, was it overstack?
+1138	No, what's the way everyone searches for answers
+1142	on, uh, on their code.
+1144	Is that, uh, why am I saying overstack?
+1147	Stack overflow.
+1148	Yeah.
+1148	Stack overflow.
+1149	Yeah.
+1149	Obviously it's been trained on all this stuff.
+1153	Yeah.
+1153	Yeah.
+1153	So, so it understands, I'm telling you there
+1158	is 0.0 intelligence.
+1161	The term intelligence is just get out of
+1164	here.
+1164	No, there's no intelligence.
+1166	It's, I mean, it basically wrote code for
+1170	me, the way it would write a marketing
+1172	document with someone who doesn't, knows nothing about
+1174	marketing.
+1175	You get a, you get all this flowery
+1178	wording and all this mumbo jumbo, and it's
+1181	all way too long.
+1182	You know, the same, if you're doing a
+1184	resume, you know, a professional will just do
+1187	a much better job in much shorter amount
+1190	of time.
+1191	So what I do a lot is I
+1194	search for things.
+1196	I just Google search for things that I
+1200	kind of already know what the answer is,
+1203	but I can't remember the exact syntax.
+1206	So a lot, most of pro most of
+1209	programming is just interacting with what's called the
+1211	standard library for that language.
+1214	And so like, you know, it's all your
+1216	normal, like, uh, find a string in another
+1219	string, uh, print, you know, print to the
+1223	print to this, to the console, uh, multiply.
+1227	And I mean, it's just, it's like, you
+1228	know, it's just a bunch of standard things.
+1231	And 90% of your code is going
+1233	to be using the standard library, no matter
+1236	what language you're in.
+1238	And, and so eventually over time, when you
+1241	just code in that language enough, you begin
+1243	to remember just the standard library stuff, you
+1248	know, most of them, but there are, but
+1250	standard libraries are large, you know, they got
+1252	hundreds of functions in them.
+1254	So you can't remember all of it.
+1256	And like one that gets me every time
+1258	is, um, and especially in PHP is, uh,
+1261	uh, P reg replace NP reg match so
+1265	that, you know, these are standard library functions
+1268	to search a string for a substring using
+1272	a regular expression.
+1273	And I just can't ever remember what the
+1276	syntax is because for it's not like a
+1279	lot of PHP functions, because I think it's
+1281	like the second function or third, uh, excuse
+1283	me, second argument or third argument, you pass
+1286	in a variable in that variable is going
+1289	to receive an argument on output.
+1291	And so that's, that's sort of a, that's
+1294	a way that C does things.
+1296	And you don't really see that in other
+1299	languages, but because PHP has C under the
+1302	hood a lot, you, you get some of
+1304	this functionality.
+1305	So I always have to, I'll do like,
+1307	uh, I'll just Google search for PHP P
+1310	reg replace.
+1311	Sure.
+1312	And, and I don't, and used to, it
+1314	would always just kind of take you to,
+1316	uh, the, the PHP website with their documentation.
+1321	Now it gives you, uh, an AI hit
+1326	using Gemini or something like that.
+1327	Or Bing, Bing gives you an AI hit
+1330	like every time.
+1332	Um, so what I like, so now that's
+1335	happening a lot and most of the time
+1337	it's fine.
+1338	You know, it's just kind of, cause I'm
+1339	just searching for simple stuff, but I searched
+1341	for something the other day and, uh, Bing
+1344	came back with, with an answer and it
+1349	was a, it was claiming to be just
+1351	the standard library.
+1352	This is the way you use this function.
+1354	And it was completely wrong.
+1355	Yeah.
+1356	Hallucination.
+1357	Yeah.
+1358	It was like the, the, the, the parameters
+1360	for the function call were just wrong.
+1362	And I was like, it called me off
+1364	guard cause I was like, what, wait, is
+1366	that right?
+1367	That doesn't look right.
+1367	And here's the thing.
+1369	That type of a search that comes back
+1371	with an quote unquote AI query result is
+1375	seven times more expensive for the search engine
+1378	to do.
+1379	Yeah.
+1380	Then just an Apache get request to php
+1382	.net.
+1383	Yeah.
+1383	I mean, it's, it's, this is the problem
+1386	is it's all so expensive where, you know,
+1391	it's like, it, it took, you know, it
+1396	takes a gigawatt of power to power this
+1399	data center.
+1400	My brain runs on 20 Watts.
+1403	You know, it's like my brain can do
+1405	so much.
+1406	It's so much more efficient if I've trained
+1408	my brain in the right manner to speak
+1410	this particular language.
+1411	I just don't see the business case for
+1414	it other than a lot of bad code
+1416	getting put out there.
+1418	Well, I mean, I use, um, um, probably
+1422	like a lot of people, I use different
+1424	browsers for different, um, yeah.
+1426	One for porn, one for, yeah, that's, yeah,
+1429	that's the one that's all screen.
+1431	Yeah.
+1431	Yeah.
+1432	Um, I use like, uh, I have, for
+1436	some reason I've fallen into using edge for
+1438	all my Godcaster stuff because really, well, yeah,
+1442	because I don't know why it's like we
+1443	all used to use IE in the web
+1445	development world.
+1446	All right.
+1447	We got to check it on internet Explorer.
+1450	Oh, we got to have a whole nother
+1452	version for IE 5.3. Oh man.
+1456	It was the worst.
+1457	It's like brave's my main browser for everything.
+1459	So I keep, it's almost like having different
+1461	workspaces.
+1462	My edge is my Godcaster workspace.
+1464	Yeah.
+1465	And, uh, so I still haven't changed the
+1470	default search engine in edge away from being
+1473	to a Google and, uh, which I need
+1477	to be using Coggy anyway.
+1478	I need to use if you do Coggy
+1481	slash assistant, they give you, I pay my
+1483	10 bucks a month, whatever it is.
+1485	They give you, I think 10 different models
+1488	to use for your $10.
+1491	Yeah.
+1491	Yeah.
+1492	Let me see what they give you.
+1493	I think, uh, Alex turned me onto this.
+1496	Uh, how much is it for real?
+1498	Is it like 10 bucks a month?
+1499	I think nine, nine something.
+1502	So yeah, I've heard nothing but good stuff.
+1504	Yeah.
+1504	So you get a chat SDPD four Oh
+1508	mini four, one mini four, one nano Mistral,
+1511	pick stroll Mistral, small three, one Gemini two
+1514	Oh flash.
+1515	And 2.5 preview Lama three, three, four,
+1519	and four scouts of four Maverick Nova light
+1522	and deep sea chat V3.
+1525	And then if you upgrade, I've not done
+1528	that.
+1528	You can get Claude three dot seven Gemini
+1531	2.5 pro preview and grok three.
+1535	I get grok three for free, 10 bucks
+1537	a month for unlimited searches and standard AI.
+1540	Okay.
+1540	Yeah.
+1541	Yeah.
+1541	That's not bad.
+1542	Yeah.
+1542	I think I'll go ahead and go ahead.
+1544	And Coggy is just, and Coggy, if you
+1546	put in a search query and whatever you're
+1549	searching for and you add a question Mark
+1551	at the end, it'll give you the AI
+1552	hits at the top.
+1554	That's a little tip, a little pro tip
+1556	for you.
+1556	A little pro tip.
+1557	Okay.
+1557	And I think it'll do that just no
+1560	matter what, I mean, I don't know.
+1562	What am I paying for this stuff?
+1563	I think I'm only paying.
+1565	How's the search results in Coggy?
+1567	I mean, is it comparable to Google?
+1568	Yeah, it's good enough.
+1570	Sometimes for the, now, if I'm really looking
+1573	for something obscure, I go over to my,
+1577	my start nine and I use, hold on.
+1583	What is it called?
+1587	Yancey?
+1588	Is it?
+1588	No, no, no.
+1589	It's the other one.
+1589	You're on the right track.
+1590	No, I use where is it?
+1593	Embassy search XNG.
+1596	Ooh, I don't even know what this is.
+1598	So it's a meta search and it's completely
+1602	customizable.
+1602	So it searches, let me see what I'm
+1604	set to right now.
+1607	So it searches, you can determine different search
+1611	engines for different types of queries, dict zone,
+1616	Libra translate, lingva, mozi, my memory translated, bing,
+1622	brave, duck, duck, go Google, mojik, priest.
+1625	I mean, you can set a whole bunch.
+1628	It's a meta search.
+1630	Blending all the results.
+1632	Yeah.
+1632	I got you.
+1633	But if I'm for details on somebody or,
+1636	you know, some obscure thing from a long
+1639	time ago, always, always search XNG.
+1643	The problem is I can only access it
+1645	over Tor on my, on my start nine.
+1648	So it doesn't integrate very well with my
+1650	workflow.
+1650	So I wind up, you know, copying, pasting,
+1655	copying from the Tor browser into a regular
+1659	browser.
+1660	Is it Tor only?
+1662	Can you only get to it through Tor?
+1664	Yeah.
+1664	I mean, you can, you can get to
+1666	it.
+1667	There's a way to get to it through
+1668	dot local, but that fails a lot for
+1671	some reason, depending on, you know, Oh, well,
+1673	you got your VPN running.
+1674	You got this running.
+1675	You got that.
+1676	And it's like, and it's just, it's too
+1678	disruptive.
+1678	If I just, you know, you don't want
+1680	to get used to something.
+1681	And then all of a sudden you're on
+1682	the road and like, Oh, Oh, I can't
+1684	do it now.
+1685	You know, Cotton Jensen, I self host certain,
+1688	certain gig.
+1690	What?
+1691	Yeah.
+1692	Yeah.
+1694	Sear XNG, Sear XNG.
+1697	That's it.
+1698	Okay.
+1698	So you can self host it.
+1699	Yeah.
+1700	I'm self hosting it on my start nine.
+1701	Oh, on your start nine.
+1702	Yeah.
+1703	I got you.
+1704	I got you.
+1704	But it's just getting to my start nine.
+1706	It's Tor or it's complicated.
+1708	I got you.
+1709	I'm following that.
+1711	You got to insert, you know, you got
+1713	to add a certain to your browser manually.
+1717	Yeah.
+1718	I'm, I'm already dreading adding SSL to my
+1721	ice cast to server.
+1722	I can't wait for that process.
+1724	That's going to wait until they drop the,
+1726	uh, the SSL renewal period to 47 days,
+1730	which is that coming announced.
+1732	Yes.
+1732	Yes.
+1733	You can.
+1734	What a psyop this whole thing was.
+1736	I don't need it for this.
+1738	I need it for some stuff, but not
+1740	for this.
+1741	And I, and then Chrome and all these
+1744	browsers go, Oh, look at this little bandit
+1747	crawling through your window.
+1749	Someone might be trying and stealing your stuff.
+1751	Are you sure you want to proceed a
+1754	bandit?
+1754	Yeah.
+1755	You've never seen that guy?
+1756	A little bandit with the mask with the
+1758	mask on.
+1759	Yeah.
+1759	Like, thanks Google.
+1761	Thanks.
+1762	Yeah.
+1763	Psyoping everybody so that the, you know, you
+1766	know what it irritates me about this there
+1769	and I'm thinking there has to be a
+1771	name for this dark pattern.
+1773	I don't, well, it's not fair to call
+1776	it a dark pattern.
+1778	It's because I don't think it's necessarily, I
+1782	don't think it's intentional, but there is an
+1785	epidemic now of websites and even native apps
+1791	that slide new UI components under the thing
+1797	you're about to tap on.
+1799	So you go to tap on something or
+1801	click something and right before you click or
+1804	tap, Oh, it pops something up.
+1807	Yeah.
+1808	Yeah.
+1809	It's a, it's a hijacked dark pattern.
+1813	And it's like, um, so you, like you
+1816	go to click on the website loads.
+1819	I blame, I blame react, you know, react
+1823	based page hydrators, because I think that they,
+1827	this, this, this idea of hydration where you
+1831	load the page in full and then more,
+1836	and then the page itself like fills in
+1839	its content after the fact.
+1841	I hate that because I think it, it
+1843	makes it, there's like this weird delay that
+1845	happens.
+1845	You think the website is there in full,
+1848	but then, and so you start to interact
+1850	with it, but right before you do something
+1852	changes.
+1854	There's also a, who does that?
+1856	Um, what's the, uh, the website, uh, how
+1860	they do financial information.
+1862	They have all kinds of, ah, why can't
+1865	I come up with it now?
+1866	It's a very famous website.
+1868	It's got news, but then you, so you're
+1870	reading the article.
+1871	It'll come to me.
+1872	I hope you're reading the article and like,
+1874	Oh, this is cool.
+1874	And then you scroll and then it pops
+1877	up.
+1877	Don't you want to register?
+1880	No, I don't want to register.
+1883	I just want to get this article from
+1885	you for free.
+1886	Don't you understand the economy of the web?
+1891	We should talk about app, the Apple.
+1894	This.
+1895	Yeah.
+1895	What, what a win.
+1896	I'll, I'll read the headline.
+1897	I have it here from nine to nine
+1900	to five Mac.
+1901	Apple updates app store guidelines to allow links
+1905	to external payments.
+1907	The full changes 3.1.1 apps on
+1911	the United States storefront are not prohibited from
+1914	including buttons, external links, or other calls to
+1916	action when allowing users to browse NFT collections
+1919	owned by others.
+1921	Nice.
+1922	Uh, 3.1.1 a on the United
+1924	States storefront, there's no prohibition on an app,
+1926	including buttons, external links, or other calls to
+1928	action.
+1929	And no entitlement is required to do so.
+1932	The prohibition on encouraging users to use a
+1934	purchasing method other than in-app purchase does
+1937	not apply on the United States storefront.
+1940	This is good news.
+1942	Very good.
+1943	The, the, the donation known as the funding
+1946	link is now approved as if it wasn't
+1950	already boosting buttons, not a problem.
+1954	So I think it's worth kind of going
+1957	back and giving the context of this because
+1960	I mean, a lot of people just don't
+1961	keep up with this stuff.
+1963	Isn't this from the game company lawsuit?
+1967	Yes.
+1967	So this goes all the way back to,
+1971	uh, 2020, uh, is late 2020.
+1976	Uh, Apple got sued by Epic games.
+1979	Yeah.
+1980	Epic games.
+1981	That's right.
+1981	Yeah.
+1982	Yeah.
+1982	And it was, it was clearly a, I
+1985	mean, it was an intentional.
+1986	So what, what had happened is Epic had
+1988	put in to Fortnite, the, the mobile version
+1992	of Fortnite Epic had put in a link
+1996	to poison pill.
+1997	Oh, poison pill.
+1998	Hmm.
+1999	Yeah.
+1999	I mean, they, they intentionally poison pilled the
+2001	game, uh, to have an in-app purchase
+2004	system.
+2005	And, uh, that was not Apple's in-app
+2008	store purchase in-app purchase.
+2010	And so of course, Apple blocked them, you
+2013	know, block the game, the game and Fortnite
+2016	sued them.
+2017	They just needed some premise, you know, to
+2020	bring, to take them to court for anti
+2021	-competitive behavior.
+2023	Yeah.
+2023	And so they, they sued them and Epic
+2026	removed Fortnite from the app store, uh, withdrew
+2029	from the app, from the iOS app store.
+2032	And they sued them for, um, for anti
+2037	-competitive behavior regarding the 30% app store
+2040	commission.
+2041	Yeah.
+2043	And so this, this all tax, let's just
+2045	call it what it is tax.
+2046	Yeah.
+2046	The Apple tax.
+2047	Yeah.
+2048	And so, and to be, to be clear.
+2051	So the, you know, for people who may
+2053	not understand how this works, Apple in the
+2059	iOS app store, which applies to, uh, iPhones,
+2063	iPads, they make a distinction between digital goods
+2067	and physical goods.
+2069	So if you, that's why you can use
+2071	the Amazon app and you can make, you
+2073	know, purchase, you know, a book and have
+2075	it sent to your house for cash.
+2077	And there's just no problem.
+2078	It's a seamless experience.
+2081	But if you try to buy digital goods,
+2083	things like streaming music, streaming movies, um, you
+2088	know, pot, let's say podcasts.
+2091	If you try to buy anything digital, it,
+2095	you, what they had was a pod, that
+2097	app store policy that required you to use
+2100	to a use in app purchase.
+2103	You had to, you can't, you could not
+2106	use your own payment system and you could
+2108	not link out to an alternative payment system.
+2113	Um, and you could also not promote the
+2118	fact that you even had another alternative payment
+2121	system.
+2122	You could not even put wording, even if
+2124	you didn't link to it, you couldn't even
+2126	put wording in your app saying that it
+2129	was available at some, as some other place
+2133	to go get it.
+2134	And this is at that time that Epic
+2137	sued and you could not communicate with your
+2142	customers through even through like an email or
+2145	something like that saying that there was any
+2148	alternative.
+2149	Bastards.
+2150	I mean, it was complete lockdown.
+2153	Yeah.
+2154	You know, just actual prohibitions against the way
+2157	you communicate with your own customers.
+2159	That's how, that's how thorough their blocking of
+2163	this was.
+2164	And as a result, you had to pay
+2166	the in-app service in-app purchase commission
+2171	of 30%.
+2173	So Apple gets 30% of everything that
+2175	you do through in-app purchase.
+2177	So that's what Epic sued them about.
+2180	Um, so that's like, uh, what, what is
+2183	the word I'm looking for when you were,
+2185	uh, back in the old days, you were
+2188	the, the owner of the castle and the
+2190	land, and then you made all your plebs
+2193	working the land where the feudalism.
+2195	Feudalism.
+2197	Digital feudalism.
+2198	That's it.
+2199	Yeah.
+2199	Yeah.
+2200	Yeah.
+2200	We're just, we're all, uh, digital sharecroppers.
+2204	Um, so, you know, they, Epic did not
+2209	want to be a digital sharecropper, so they
+2211	sued Apple, uh, and on paper, Apple lost
+2215	that case.
+2217	Right.
+2217	And then they went nana, nana, nana.
+2220	Yeah.
+2220	And the judge ruled that they had to
+2224	allow apps to link out from their app
+2229	to an external payment platform, uh, somewhere else.
+2235	So their website was Stripe or something like
+2237	that.
+2238	But, but in reality, nothing actually changed because
+2242	what Apple, what Apple did a handful of
+2244	things in their, in like the way they
+2248	complied, they did a handful of things that
+2250	made nobody actually want to do it.
+2253	Right.
+2253	And the things they did was they, the
+2257	first thing they did was, uh, they made
+2259	you, uh, if you were going to put
+2262	a link to an external method of payment
+2265	in your app, you, so let's, let's just
+2268	say you're, let's say you're Spotify and you
+2270	want to put a link in your app
+2272	on the profile screen saying, you know, Hey,
+2275	if you want to upgrade from premium to
+2278	family package, uh, click this link and go
+2282	to our website and upgrade your account.
+2283	Right.
+2284	If you wanted to do that, you had
+2286	to ask for an entitlement.
+2290	Yes.
+2291	I'm very familiar with the entitlements.
+2293	You want to use mapping function.
+2294	You got to get an entitlement, which means
+2297	they know exactly what you're doing.
+2299	So they created a new entitlement.
+2302	The name Dave entitlement, you are now entitled
+2307	to do that, but we can remove your
+2309	entitlement.
+2310	You play whenever we wish.
+2312	Yeah.
+2313	Baked into the word entitlement is the threat
+2315	of removal of that entitlement at any moment.
+2318	That's right.
+2320	Um, so they, first you had to ask
+2322	for and hopefully receive an entitlement from Apple,
+2326	allowing you to put a link in there.
+2329	Then next of all, they put in, when
+2332	you click the link, they put in a
+2336	interstitial like scare screen.
+2340	You're going to an external, Oh, here's, here's
+2343	a, here's a bandit with a mask.
+2345	You might be, you might be getting ripped
+2346	off.
+2347	I just linked to it in the boardroom.
+2350	The scare screen is like this big, scary
+2354	thing that says you're about to leave the
+2355	app and go to an external website.
+2357	Apple's not responsible for the privacy or security
+2359	of purchases made on the web, blah, blah,
+2361	blah, blah, blah, blah, blah.
+2362	It's like, it's a full screen notice.
+2365	Yeah.
+2365	It tries to scare people away from actually
+2368	doing it.
+2370	Um, and then finally they, uh, they did
+2374	not get rid of, they, they didn't forfeit
+2377	their, their 30% Apple tax commission.
+2381	What they did was they took the credit
+2384	card fee, which was like 3%.
+2386	They cut that because now you're going to
+2390	be using your own credit card processing.
+2392	So that cut it down to 27%.
+2394	And instead they just charge you 27%
+2397	for all outside purchases and you have to
+2400	do your own ledger keeping and report it.
+2404	Yeah.
+2404	It's worse than a ASCAP BMI.
+2407	Yeah.
+2408	Yeah.
+2408	So you can, yeah, it's like, yeah, you
+2410	can, you can take payments if you want
+2412	to on your own website using Stripe, but
+2414	you're going to have to track every one
+2415	of those payments, add up 20% and
+2417	send us a check once a month.
+2419	Like who in the world is going to,
+2420	nobody's going to do that.
+2421	So I would love for podcast apps, if
+2424	funding tag equals one surface, the funding tag,
+2430	nice and big.
+2431	And I'll tell you what's really exciting because
+2433	we're seeing this with the Godcaster app that's
+2436	being built right now.
+2437	Uh, there's an option in the funding tag
+2440	to put in text what you want the
+2443	funding tag to say.
+2445	And so if I look at the app,
+2449	you know, some say give, some say support
+2453	the show.
+2454	Some say donate now.
+2455	Now I understand there's issues with how much
+2457	text people put in and how that fits
+2459	into a button, but when you figure that
+2462	stuff out, it's sexy.
+2463	It's really, I mean, that's, it's different, man,
+2466	because it's like, you, you want to have
+2468	a, you know, you want to have a,
+2470	you know, depending on what your show is,
+2472	what that page is, where you go to,
+2475	I mean, I might want to say, uh,
+2477	support us with PayPal.
+2478	And then you hit that.
+2479	It goes right into the PayPal pay payment,
+2482	uh, page, you know, straight in with a
+2485	code.
+2485	So I know it came from the app.
+2487	I mean, there's lots of cool stuff you
+2488	can do with that.
+2489	And this will drive innovation.
+2493	This will drive adoption of this tag.
+2497	So, you know, we, we have, particularly for
+2500	Patreon people.
+2502	Well, see this fixes the, yeah, I mean,
+2504	this fixes the Patreon, Patreon's problem.
+2506	Yep.
+2508	You know, they, they had this, they had
+2510	the, this issue of, uh, getting pulled into
+2515	this, this digital goods commission problem.
+2518	And this fixes it because they can go,
+2520	they can link out to their own, to
+2522	their own, um, payment platform.
+2526	I mean, the, the judge's ruling on this
+2530	was about the most scathing thing I've ever
+2532	written.
+2533	80 pages of you guys suck.
+2536	Yeah.
+2536	I mean, Apple was in, she said Apple
+2539	was in willful violation of the court order
+2541	and lied about it.
+2543	And it's being referred to the U S
+2545	district attorney for criminal process.
+2547	AG Barbie coming down on you.
+2551	Barbie's dropping the ball.
+2552	I mean, what, what is, you know, so
+2556	what does it mean?
+2557	So they, the judge ruled yesterday that basically
+2562	all this, what Apple did after that initial
+2566	ruling was willful violation of what her order
+2569	was.
+2570	So as of today, uh, Apple changed their
+2576	guide, their app store guidelines, uh, to make
+2579	the language clear that you can put a
+2582	link into your, into your app to an
+2585	external purchase flow or, or funding option, uh,
+2589	without needing any sort of entitlements and without
+2592	any scare screens and without paying any sort
+2594	of commission to Apple.
+2595	They didn't actually say without scare screens.
+2597	I don't think they said that specifically, to
+2599	be honest about it.
+2600	It said, well, let's see.
+2602	It says, um, doesn't say without scare screens.
+2606	She referred to that in her ruling.
+2609	Oh, she did.
+2610	She did.
+2610	She's, uh, she specifically said that, uh, that
+2614	was part of their willful violation is thing
+2617	is, uh, scaring using language to scare impose
+2623	new barriers and new requirements to increase friction,
+2626	increasing breakage rates with full page scare screens.
+2629	So that's what they did.
+2632	Uh, let me see what else here.
+2636	So this was the link entitlement because you
+2639	had the scarce.
+2639	Oh, she has a whole section here.
+2642	Yeah.
+2642	Apple deployed.
+2643	Oh yeah.
+2643	And even with yours, did you get that
+2645	straight from the, from the ruling that picture?
+2647	That's the same picture.
+2649	Okay.
+2649	So we're on the, we're literally on the
+2650	same page.
+2652	Wow.
+2653	Um, let's see.
+2655	Um, and so yeah, the, so the changes
+2659	they made, uh, you read some of it
+2661	earlier, the external link account, you know, all
+2664	that stuff's not required and it's plain language.
+2668	The prohibition on, uh, this is from the
+2670	Apple's terms of service, the prohibition on encouraging
+2673	users to use a purchasing method other than
+2676	in that purchase does not apply.
+2679	So you are, there is no barrier to
+2683	you putting a, a funding tag or any
+2687	sort of like top up your wallet type
+2690	tag, uh, type of button or link or
+2693	anything like that in your app.
+2697	If I, if I was Apple at this
+2699	moment, you know what I do?
+2700	I'd front run this thing.
+2702	I'd be putting digital wallets, uh, in the
+2705	SDKs.
+2706	I'd be getting, you know, stable coin, lightning,
+2709	Monero, everything.
+2710	I'd be front running that and become the
+2713	master of the universe at owning that concept,
+2716	not owning the money or owning anything, but
+2719	being the, you know, being the, you know,
+2721	have a sanctioned, uh, do Hickey in the,
+2727	in the SDKs, you know, whatever it's called,
+2729	uh, I would be front running that.
+2733	You mean, you mean competing?
+2735	No, I, yeah.
+2736	Competing against the, against any other wallets.
+2739	Sure.
+2740	Yeah.
+2740	Yeah.
+2741	Compete.
+2741	I mean, and that's all anybody ever wanted
+2743	was, was just, you know, competition and like
+2747	the, every company immediately, I mean, as of
+2753	starting like today, apps are already changing and
+2757	putting this stuff into their Spotify already.
+2760	They already submitted an update and it was
+2762	approved.
+2762	So now you can change your music and
+2765	you can buy your music.
+2767	Yes.
+2768	Wow.
+2769	Did that send their stock price skyrocketing?
+2772	Let me check.
+2773	You know, it may have, that's a good
+2774	question.
+2775	Spotify stock price.
+2777	Let me check it out.
+2779	I'd be buying that.
+2780	Oh, they tanked with 11.72%. Not
+2790	sure what happened there, but yeah.
+2793	Yeah.
+2796	What happened there?
+2797	That's a good question.
+2799	Spotify, they, they updated their app today.
+2802	Proton updated their app and they're sending out
+2805	emails to users saying, you know, basically pre
+2808	please go and uns and resubscribe to your
+2812	account using our platform instead of Apple.
+2815	Yep.
+2815	Yep.
+2816	Yep.
+2816	Yep.
+2816	Oh, that's great.
+2817	But the markets, the markets are up today,
+2819	300 points on the NASDAQ.
+2821	So it's interesting that well, they suck first
+2826	and foremost, let's be honest.
+2829	Um, and, and this will float, this will
+2831	flow to Google as well because Google is
+2834	embroiled in their embroiled in their own antitrust
+2836	stuff and they're not going to go near
+2839	anything that looks like this.
+2842	You know, they're going to, they're not this,
+2845	this will have a chilling effect on, on
+2849	the big, uh, on, on Apple and Google
+2853	both.
+2854	Sure.
+2854	I think this is, this is probably the
+2858	best outcome we could have possibly hoped for
+2861	big time for clarity.
+2863	Yeah.
+2864	No, I love it.
+2865	I love it.
+2866	What is it not?
+2866	But what, okay.
+2867	What does it not mean?
+2868	It does not.
+2870	It's only about linking out to an external
+2873	payment platform.
+2874	Yep.
+2875	You, it still doesn't mean that you can
+2877	put your own in-app purchase mechanism inside
+2882	your app.
+2882	No, you have to link it out.
+2884	Yeah.
+2885	So, um, so like if you, if you
+2890	continue, if you continue using an, uh, you
+2892	know, like, uh, in-app purchase, you're still
+2896	going to be paying apples 30% or
+2898	15% if you're a small business.
+2900	Yeah.
+2900	And it doesn't seem like, I mean, the
+2902	court's not requiring them to change that at
+2904	all.
+2905	So, so baking stripe or some other payment
+2908	API directly into your app is not okay,
+2911	but this, you know, fully clears the way
+2915	for adding a link in your podcast app
+2918	to the funding tag.
+2920	Um, it also clears the way for apps
+2923	like true fans to put a link in
+2926	their app where a listener can bounce out
+2928	to their website and top up their wallet
+2931	and then come back into the app and
+2933	use that money.
+2934	Yep.
+2935	Yep.
+2935	Yep.
+2935	Yep.
+2936	That, that way true fans doesn't have to
+2938	eat that 30% of in-app purchase,
+2941	which I'm sure Sam wasn't eating anyway.
+2942	I'm sure you figured out a way around
+2944	that.
+2945	Yeah, maybe.
+2946	I don't know.
+2947	I mean, he's still, he's still trying to
+2948	launch, you know, so who knows how much
+2950	he's price and flexibility he has.
+2953	Yeah.
+2954	Um, but anyway, this is, I mean, it's,
+2956	it's excellent news.
+2958	And because so many companies are flooding in
+2962	to make this change right now, that tells
+2966	me that you're, you're not putting this genie
+2968	back in the bottle.
+2969	No, no.
+2971	This is, it's just going to, this is
+2973	just kind of the final word on this.
+2975	Now, Apple said that they're going to appeal,
+2977	but I don't even know really what they
+2979	would be appealing because this is not a
+2983	new ruling.
+2983	This is just, this is from the old
+2985	ruling.
+2986	Yeah.
+2987	This is an enforcement measure on them, not
+2991	following the injunction from the previous ruling.
+2994	So I don't even know what they're appealing
+2996	really.
+2998	Uh, evidently they filed some sort of, I
+3001	don't know, but I just don't see that
+3003	this is going to fail.
+3005	I think this is just the way things
+3006	are going to be.
+3007	And Apple's just going to have to get
+3008	over it.
+3009	Yeah.
+3009	Um, and that's just great.
+3011	It's great for podcast apps and for podcasters
+3013	because now, you know, podcast apps can really
+3018	help direct funding to podcasters in a way
+3024	that's, that's straightforward and easy.
+3027	Just stick a freaking link in your, in
+3029	your RSS feed and you're done, you know,
+3033	I'm going to make a bet with you.
+3035	One whole dollar.
+3038	Okay.
+3038	Ready?
+3038	You ready?
+3039	Got it.
+3039	Give me, give me, go.
+3041	Marco will not put the funding tag in
+3043	overcast.
+3043	No matter what I bet you a dollar.
+3046	Take that bet, brother.
+3047	Take that bet from me.
+3049	Come on.
+3049	I'll give you 10 to one, 10 to
+3051	one odds.
+3052	No, I'm not taking it.
+3054	Purely for ideological reasons that he thinks we
+3057	suck.
+3059	Probably so.
+3060	Yep.
+3060	Yep.
+3061	Yep.
+3061	I I'm not taking that bet because I
+3063	will lose my dollar.
+3067	I love that pocket cash just went ahead
+3069	and did it.
+3071	Oh, that's huge.
+3072	Yeah.
+3072	They've got big market share.
+3074	They've got, you know, what I would love
+3075	to see.
+3076	I would love to see Ted and Apple
+3078	do it.
+3078	Yes.
+3079	Thank you.
+3080	That would be hilarious.
+3081	It'd be awesome.
+3082	It would be awesome if they did that.
+3084	Ted, please do this so I can put
+3086	that on the apps on the podcast.
+3090	Does Ted have that kind of juice?
+3092	Oh, he's full of juice.
+3097	He's got so much juice.
+3099	Please do that Ted.
+3100	So that I can put on podcast apps
+3102	.com that Apple podcast supports the funding tag.
+3105	I want that so much.
+3110	Oh, goodness gracious.
+3112	Anyway, good, good.
+3113	This, this is a, this is a banner
+3115	day.
+3116	A red letter day.
+3116	It is a red letter day.
+3118	I'm super excited about it.
+3120	What is the origin of that term?
+3121	Red letter day?
+3122	What does that even mean?
+3123	Oh, let's let's ask a seer in X
+3126	and G.
+3128	Red letter day origin.
+3132	Okay, here we go.
+3133	Red letter day.
+3135	The phrase red letter day originated from the
+3137	practice of marking important dates, such as church
+3140	festivals and holy days in red on the
+3142	calendars.
+3143	There you go.
+3145	There it is.
+3147	Cool.
+3149	Well, that's all I had, Dave.
+3152	Oh, I'm trying to find this.
+3156	I'm trying to find this video.
+3161	Bitcoin's up nicely too.
+3162	97, 5, 6, 7.
+3165	Oh, yeah.
+3165	I've noticed that.
+3166	I don't know what that's about either.
+3168	No, it's the devaluation of the dollar.
+3171	Let's see.
+3171	What's the dollar at?
+3172	The dollar has been, it's down like 8
+3175	% this year.
+3176	Let me see.
+3176	I'm posting a link to a video I
+3179	watched the other day in the boardroom.
+3182	It's, it's a guy that, this is random,
+3186	but it's a guy who is a language
+3192	expert and he gives the history of the
+3194	English language.
+3197	And I mean, a lot, I'm sure a
+3200	lot of people kind of know that, you
+3201	know, English came from the Germanic Anglo-Saxons,
+3204	sort of a mishmash of, of mostly that
+3208	and other sources.
+3210	But he tracks this, he tracks the origin,
+3213	he tracks the English language all the way
+3215	back to like Sanskrit and Hittite in these,
+3220	these in a, an unknown, an ancestor language
+3225	called Indo-European.
+3227	It is fascinating.
+3230	And he taught, he talks about how you
+3234	can, if you went back and listened to
+3236	someone speak Hittite, you could, you could understand
+3241	entire sentences that sound just like English.
+3246	It's crazy.
+3249	Yeah.
+3250	I just posted that and it's, it's a
+3252	fascinating video.
+3253	He just reminded me of it when you
+3254	were talking about red letter.
+3255	You know, I did a deconstruction yesterday on
+3258	no agenda, which I will not repeat is
+3260	too long about stable coin.
+3264	Do you know that stable coin Tether specifically
+3267	has 400 million users?
+3271	What are these users doing with it?
+3273	I don't understand.
+3275	It is emerging countries, countries that have crap
+3279	currency, Turkey, South America, they are using it
+3284	between each other, just using dollar denominations to
+3287	pay each other.
+3291	Because their own money sucks so bad.
+3295	And they're just, and it's, you know, and
+3297	the, the stable coin is backed by us
+3300	treasury.
+3301	So it's literally stable.
+3304	And I, 400 million users, and this is
+3308	like, you know, to buy groceries.
+3311	I'm telling you, and no KYC.
+3316	Really?
+3317	Yes.
+3318	Well, so part of the stable coin bill
+3322	that's coming, that is moving through Congress right
+3325	now, there's no KYC.
+3328	There's no, there's another one.
+3330	There's C I Y or something.
+3333	There's some other extra KYC that you have
+3336	to do with the bank account.
+3339	Those are quite now, mind you, it may
+3343	be that that is not necessarily available in
+3346	the United States that way.
+3348	Because they're trying to separate the Euro dollar
+3351	from the dollar dollar.
+3352	So Euro dollar being all the dollars that
+3354	aren't in America, like they're like, Hey, do
+3357	whatever you want.
+3358	You know, just go for it, whatever you
+3360	want to do.
+3362	Of course it's completely trackable, obviously.
+3366	But I am going to predict that that
+3369	is, you know, stable coin already works on
+3371	the lightning network.
+3372	I know people are rolling their eyes.
+3374	I know Stripe integrate it.
+3378	They use it now support for stable coin.
+3380	Yep.
+3380	Like in, you can do use it for
+3382	purchases.
+3383	Yes.
+3384	Yes.
+3385	It's, I mean, it's going to be the
+3388	future.
+3389	You know, there's a good, there's a guy
+3396	that I watch on YouTube sometimes who explains
+3399	a lot of stuff really well.
+3400	You know, you're a dollar.
+3401	You sent me links to him.
+3402	Yeah.
+3403	Now, now sometimes he can be kind of
+3405	insufferable at times.
+3407	You got to get, you got to get
+3408	past a lot of the, Oh my God,
+3410	we're all going to die.
+3411	Like his face just to get to get
+3413	past his face.
+3415	I don't mean, I'm not intending to be
+3417	mean, but he's like, okay, it looks like
+3420	a weasel weasel.
+3421	He's got a little weasel face.
+3422	Oh, every video is, Oh my God, we're
+3428	all going to die.
+3429	But if you get past that to some
+3431	of the like underlying economic mechanics, he's phenomenal.
+3436	It's phenomenal.
+3437	And he debated Lynn Alden a couple of
+3441	times about some things.
+3443	But you know, one of the things that
+3445	he, one of his main, can I ask
+3446	you a question before you move on?
+3448	Yeah, sure.
+3449	About Lynn Alden.
+3450	Maybe it's just me.
+3452	Is Lynn Alden trans?
+3456	Yes.
+3457	Okay.
+3458	All right.
+3458	Yeah.
+3458	I always wondered.
+3460	Yeah.
+3461	Uh, there was a whole thread about it
+3462	on Twitter.
+3464	Yeah.
+3464	Yeah.
+3465	Um, yeah, no, that one's like, I know,
+3472	but it never bothered me, you know, like,
+3474	but it's just this lingering question.
+3477	I was, I should ask someone about that.
+3478	And finally I got the chance to ask.
+3480	Thank you.
+3481	All right.
+3481	So, um, so one of the things, one
+3485	of his main sort of like pillars is,
+3488	um, of, of the Euro dollar system is
+3493	that when you, uh, that other countries, see,
+3499	seeing as how the U S dollar is
+3501	the reserve currency of the, as the world's
+3503	reserve currency, other countries are constantly having a
+3507	problem of running out of dollars.
+3509	Exactly.
+3509	This is exactly what I talked about yesterday.
+3512	So they need, they need dollars.
+3515	And, um, and so there's a whole dollar
+3517	market, which was always set by LIBOR, the
+3521	London interbank offered rate LIBOR died.
+3525	It failed.
+3527	Yes.
+3527	And now it's SOFR, S O F R.
+3530	And that's controlled by the New York fed.
+3533	And the whole idea of the stable coin
+3536	bill is we're going to keep the dollars
+3539	dominance by flooding the world with stable coin
+3542	tether specifically, but I think you'll have there'll
+3545	be all kinds of stable coins, you know,
+3548	JP Morgan coin, whatever, and then weakening the
+3552	U S dollar itself that we use internally.
+3555	So that our exports become cheaper.
+3559	And see, and by flooding, what you really
+3562	mean is just having an open market for
+3565	dollars that is not controlled by the fed.
+3569	Yes.
+3570	Well, it's not.
+3572	It's not.
+3573	Well, it will be controlled.
+3574	Now it will be controlled by the fed,
+3576	but the fed can let it do whatever
+3578	it wants.
+3579	It'll control our dollar the way it wants,
+3582	but the fed may think they can control
+3584	this, but I can tell you already they
+3585	can't.
+3586	This is where it goes beyond my knowledge.
+3588	I have no idea.
+3590	Well, I mean, so global banks trade U
+3594	S treasuries, that's their main source of currency
+3598	bank to bank.
+3599	If you're a, if you're HSBC and you're
+3602	trying to do a deal with a bank
+3604	in Singapore, you're doing those deals based on
+3609	U S treasury bonds.
+3610	Yes.
+3611	Yes.
+3611	And so if there isn't, there isn't.
+3614	So, and, and if you're a JP Morgan
+3617	and you have a subsidy, if you have
+3620	a subsidiary of yourself in Germany, you can
+3624	create U S dollars at will.
+3627	There's no governor on that.
+3628	You can do it as much as you
+3629	want.
+3630	That's right.
+3630	And so all those, what they call money,
+3632	money lenders, creators, makers, there's certain, there's certain
+3640	primary dealers, whatever primary dealers, primary dealers, those
+3644	primary dealer banks can just create as many
+3647	U S dollars as they want.
+3649	And that's when they're backing them with U
+3650	S treasuries.
+3651	And that's what Tether, their backer is Cantor
+3656	Fitzgerald.
+3657	They're the primary dealer.
+3659	So they can create all these stable coins.
+3661	Cantor Fitzgerald, Howard Lutnick, who is currently our
+3665	secretary of commerce.
+3667	Hello.
+3669	Now no agenda millennial is saying in the,
+3673	in the boardroom that it was planned LIBOR
+3678	to SOFR.
+3679	Yes, it was planned and LIBOR ended technically
+3683	was supposed to end 2021.
+3685	But you know, when the last contract ended,
+3688	the very last contract that, that finished off
+3691	LIBOR ended on March 31st, 2025, which gives
+3696	a whole new meaning to this.
+3699	My fellow Americans, this is liberation day.
+3703	So we, we were all told it was
+3705	about tariffs, but I think it had more
+3707	to do with SOFR than anything.
+3710	Oh, you may be right.
+3711	Well, the, you know, Paul, is it Paul
+3714	Volcker, one of the fed guys called, um,
+3719	called the U the Euro dollar, uh, like
+3723	poison or something system.
+3725	Now they called it the, it was the
+3726	hole in the side, in the hole of
+3728	the boat of the U S economy.
+3730	Sure.
+3731	Especially because China has all those dollars.
+3733	Yeah.
+3734	And you, you can, you think of, of
+3737	the U S economy as this boat and
+3740	the fed is increasing and decreasing the money
+3742	supply, but then you ignore this giant hole
+3746	in the hole, which the Euro dollars just
+3748	flow in and out of at will.
+3750	So you can have trillions of dollars of,
+3752	of trade, you know, of treasuries and now
+3757	stable coins just coming in and out of
+3759	that system.
+3760	And it's not as completely unaccounted for.
+3763	Now the fed can't control it.
+3764	They can't stop it.
+3765	They can't regulate it.
+3767	It's completely beyond their control.
+3769	But if it's a stable coin, they can
+3771	monitor it.
+3774	If, if it's a stable coin and they're
+3777	buying, if, if somebody is buying a stable,
+3781	if tether is buying a stable coin to
+3783	increase supply because they have a customer and
+3786	they're doing so by selling a treasury, I
+3789	don't know how you track that.
+3793	Well, uh, I do know one other thing
+3796	that, um, these stable coins will also also
+3800	be backed by Bitcoin and Cantor Fitzgerald, again,
+3805	huge holder of Bitcoin.
+3809	Um, Cantor Fitzgerald were basically wiped out because
+3816	they were in one of the twin towers
+3817	on nine 11.
+3819	Interestingly, Howard didn't go to work that day.
+3824	Um, that is interesting.
+3826	Yeah.
+3827	So, uh, and he holds hundreds of millions
+3830	of dollars in Bitcoin personally.
+3834	So I guess what I'm saying is if
+3838	we want the value for value economy to
+3841	work, it's worth observing stable coin.
+3846	If we're going to be jihadist and maximalist
+3849	about it, that's fine.
+3851	But I'm just saying it's worth the, the
+3853	infrastructure doesn't have to change.
+3855	In fact, the infrastructure becomes easier, but the
+3857	lightning network, that was the whole tap root,
+3861	uh, whatever the, whatever that extra widget was
+3864	that was added.
+3866	Yeah.
+3866	Does that even, does that work?
+3868	Yeah, it works.
+3869	It does.
+3869	It works.
+3870	Yeah.
+3870	You can, you can transfer stable coin over
+3872	lightning.
+3873	Um, it's going to become very easy to
+3877	use stable coin in programmatic ways that will
+3883	be understandable due to hundreds of millions, if
+3887	not billions of dollars of marketing to help
+3890	people understand it.
+3892	So I'm just saying it's a new frontier,
+3896	man.
+3896	I'm just saying, I don't think anybody knows
+3899	what, uh, you know, who knows if you
+3903	were to take this strike kid, Jack Mallers,
+3907	he knows, he knows what's going on.
+3911	So, you know, he's, he's using stable coin,
+3914	but he's also has this 21, forget the
+3917	name of the company.
+3918	He's a company that, uh, will give people
+3922	shares and it'll be Bitcoin.
+3924	The, the, the measurement mainly will be how
+3927	much Bitcoin per share.
+3929	So he knows, he knows that there, what's
+3931	going on behind the scenes.
+3932	His parents are in there.
+3934	They're the commodities.
+3935	I think they pretty much are the, the
+3937	Chicago, uh, uh, commodities exchange where they were.
+3942	He knows what's going on.
+3944	I would follow whatever he's doing.
+3945	I would follow.
+3946	Strike has been using stable coins since the
+3949	beginning.
+3949	As far as I, as far as I
+3951	understand.
+3951	For their transfers.
+3952	Absolutely.
+3953	Yeah.
+3954	Yeah.
+3955	So it really is the perfect solution for,
+3958	for its use case in that, you know,
+3961	when you're talking about, you know, dollar availability,
+3965	but I'm just going to say it straight
+3966	up.
+3966	The opportunity for value for value might be
+3970	in stable coin.
+3972	Please keep your mind open to it.
+3975	That's what I'm saying.
+3977	If we're all going to say, no, it
+3978	has to be Bitcoin and nothing else.
+3980	Okay.
+3980	Then we'll, then we'll remain that.
+3983	But for me, it's always been about the
+3986	value being able to be returned.
+3988	Simply for me, it was never, it has
+3990	to be completely, you know, anonymous and it
+3993	has to be Monero and all this stuff.
+3995	I'm just not like that.
+3997	I just, I, you know, I take PayPal
+3998	as my main income.
+3999	My number one income is PayPal.
+4004	Um, yeah, Eric PP, we do have a
+4006	new podcast location tag and it is cool.
+4013	The, uh, where's Eric PP been?
+4016	Where have you been, man?
+4018	Everybody knows about the location tag.
+4020	We talked about it on the last board
+4021	meeting.
+4022	Where you been?
+4023	The, uh, yes.
+4024	So that is formal now.
+4026	I formalized those changes, uh, I think Monday
+4031	or Tuesday.
+4032	I can't remember.
+4033	So I formalized those, uh, and, uh, James,
+4037	uh, I did, I did some changes in
+4040	the James, uh, clean things up and, uh,
+4043	we pushed it into the namespace.
+4045	So that is good to go.
+4048	And, um, I started, uh, working on putting,
+4053	now that, now that we have, uh, in
+4055	Godcaster, now that we have lat, latitude, longitude
+4057	started, um, I started a, uh, a new
+4061	branch to put that in the, that stuff
+4064	into Godcaster players.
+4066	Yeah.
+4067	We're, we're using it heavily.
+4068	Did you see the, did you see the
+4070	map?
+4071	Yes.
+4072	Yes.
+4072	I did.
+4074	It's really nice.
+4076	It's really nice.
+4077	And it's, it's this tag, this tag lets
+4079	you do that kind of stuff.
+4080	It's amazing.
+4081	We built all this stuff and then all
+4083	of a sudden we got an opportunity to
+4084	use it.
+4085	We've never had that.
+4086	It's like, Oh, yes, it is like, Hey,
+4089	if only we had a, Oh, wait a
+4091	minute.
+4091	We built that solution.
+4093	Yeah.
+4093	It has been really fun to be able
+4096	to actually use this stuff other than just
+4098	like blindly sticking it into a parser.
+4102	Yes.
+4102	Yes.
+4104	I'll, I'll, I'll, I'm going to send a
+4105	picture.
+4107	I'm going to give this picture to the,
+4109	uh, to the boardroom.
+4110	They'll love it.
+4111	Hold on a second.
+4111	Where am I?
+4113	Oh, is this the map?
+4114	Yeah.
+4114	Yeah.
+4115	Hey, we can share screenshots.
+4117	Let me see.
+4118	Hold on.
+4119	This, this, this takes a lot to do
+4122	a screenshot these days.
+4123	Hold on.
+4125	I'll show the sec.
+4126	I got two screenshots.
+4128	I'll show, I'll share both of them.
+4130	Here we go.
+4131	Uh, boom.
+4133	There's one and boom.
+4137	There's two.
+4139	Okay.
+4140	There you go.
+4142	So now it's back to everybody's favorite, uh,
+4146	aspect to everybody's favorite tag, the images tag.
+4150	Are we on that?
+4151	What happened?
+4152	How do we get back to that?
+4153	Does that, uh, problem the images?
+4155	Well, we, I put it off until after
+4157	we finalized the, uh, the, the location tag
+4160	changes.
+4161	So now we're back to that.
+4164	And, uh, you know, I'm just, I'm going
+4168	to, my plan for this is to work
+4170	with Nathan, uh, middle name undefined.
+4174	I'm going to work with, uh, Nathan undefined.
+4177	Yeah.
+4178	I'm going to work with undefined Nathan to
+4180	get, um, to get some, some stuff that
+4185	we can link to, to show what can
+4189	be possible with the, with the images tag.
+4193	So that's going to be, that's going to
+4195	be where we go and where we go
+4197	forward on that.
+4197	So I'm, I don't, I don't want to
+4198	talk about it today too much, but I
+4200	just, that's, that's where we're headed next in
+4203	back, back into the mouth of the beast.
+4207	Okay.
+4208	What does that mean?
+4210	Um, the, the images tag is the, it,
+4213	oh, that's the mouth of the beast.
+4215	Yeah.
+4216	The B the images tag is the beast.
+4219	Oh goodness gracious.
+4221	Uh, but I, in the meantime though, I
+4223	have, I've started working on, um, uh, started
+4228	back working on the new parser, uh, the
+4231	new, uh, yes.
+4234	Yeah.
+4234	The new, the new, uh, parsing age party
+4236	time part.
+4237	Yeah.
+4238	The new version of party time.
+4239	Um, we can talk about that next week.
+4241	I am, I do want to, I do
+4244	want to run through though.
+4247	Um, I've been promising, uh, Archie that I
+4250	would just kind of lay out how our
+4252	backend is, is put together.
+4254	Cause he's been asking about that.
+4255	I think, I mean, I think I've talked
+4257	about this before, but maybe not.
+4259	I know, I know we've talked about all
+4261	kinds of stuff, but, um, let me just
+4265	make sure that, uh, that I give that
+4268	some time since I promised I would.
+4271	Uh, so I mean, our infrastructure for the
+4274	index is pretty simple.
+4277	I'm trying to get, trying to get logged
+4279	in here.
+4280	Hang on a second.
+4281	We, um, we just have a single, a
+4285	single main database, uh, running my SQL, you
+4291	know, trying to get my two factor code.
+4294	I, I, I don't know on Leno.
+4296	Do you always have to wait for the
+4297	code through email when they log you out?
+4300	No, I have it.
+4301	I have it in my, uh, code app
+4304	one-time password app.
+4306	Oh, okay.
+4307	I should probably use that because they can
+4309	take five minutes to send that email.
+4311	I always get worried.
+4311	I'm looking at spam.
+4313	It does.
+4314	Yeah, it does take sitting around like, come
+4316	on, come on.
+4317	I got a project to do.
+4320	Grok is waiting.
+4323	Grok is very patient.
+4324	I'll give it that.
+4325	You can come back a day later and
+4326	says, hi, yeah, we're continuing.
+4328	It's all good.
+4330	Um, okay.
+4331	So we got, we have one, one main
+4334	MySQL database.
+4336	Uh, it's a 32 gigs of Ram.
+4339	Uh, I don't know.
+4340	That's some bunch of bunch of desk.
+4342	I don't know how much disk it is,
+4343	like 640 gigs or something like that.
+4346	Whoa.
+4348	Um, yeah, it's big.
+4349	It's, I mean, the database is big though.
+4351	Uh, so we've got, uh, we've got that
+4353	it's running MySQL eight, uh, the front.
+4356	So the front end is two, uh, two
+4360	servers, uh, each running, uh, NGINX reverse proxying
+4367	into, uh, PHP FPM that then, um, you
+4375	know, sit in front of the database and
+4378	those are load balanced using a cloud flare.
+4382	So we have, um, so it's, it's just
+4385	round robin load balancing on that cloud flare,
+4387	man.
+4388	What a genius operation that is really when
+4391	you think about it.
+4392	Oh, it's, it's so slick.
+4394	It's a game and money saver.
+4395	It really is.
+4397	You know, one of the best things about
+4398	cloud flare is you don't, it, you get
+4401	to piggyback on their SSL certificates and you
+4404	don't have to do, you don't have to
+4405	do all that junk.
+4406	Oh, interesting.
+4407	Interesting.
+4409	You just proxy it and, and you get
+4411	to piggyback as an SN on their certificate.
+4416	Certificate is great.
+4417	Nice.
+4418	Um, so then, so that's, that's basically the
+4423	whole of the API, uh, direct API is
+4427	just the database and two front end servers.
+4430	The two front end server is everything's Ubuntu,
+4432	uh, Ubuntu 20, Ubuntu 20 LTS, I think.
+4438	LTS 20.4. Is that it?
+4441	Okay.
+4442	Yes.
+4442	I happen to have been doing some Linode
+4444	work lately.
+4446	Okay.
+4447	Uh, it's 20, it's 20 LTS.
+4451	And then, and then we have a, uh,
+4455	then our main website is just, you know,
+4457	running off on a, on a thing.
+4459	It's on its own on a small Linode.
+4461	Uh, the, uh, no, nothing is running.
+4466	None of that's the database and the front
+4468	end servers.
+4469	None of that's running like Docker or anything.
+4472	Those are, they're just running on bare metal,
+4474	uh, the processes.
+4475	Then we have 10 aggregators, uh, each running,
+4480	um, on two, uh, excuse me, one, well,
+4484	about half of them are on one gig
+4486	Nanodes, the smallest, uh, Linode.
+4489	And then, uh, three C six, uh, yeah,
+4493	six of them are on that four of
+4494	them are owns two gig Linodes because they
+4497	have more volume on them.
+4498	And so each one of the aggregators is
+4500	just, is running party time and it, uh,
+4505	runs, you know, runs it, it does the
+4507	puller, uh, runs the puller to pull the
+4510	feeds.
+4511	It processes them with party time and then
+4513	it directly talks to the database and does
+4516	SQL, uh, inject SQL execution on the database.
+4521	Uh, there's no pipeline of, of SQL.
+4524	It's just, everybody's talking to everybody's talking to
+4527	the database at once.
+4529	Um, then we have our search indexers.
+4533	We have three of those.
+4536	We've got the main indexer just pulls the
+4540	database every 15 to 20 minutes and, um,
+4546	searches for, it's running, uh, Manta, uh, Sphinx
+4550	Manticore.
+4552	And it's a very lightweight, very fast, uh,
+4557	search, uh, language index on Dick can sit
+4560	on top of my SQL.
+4562	So we have, um, you have three, uh,
+4566	instances of that.
+4568	Uh, the main one pulls every 15 to
+4571	20 minutes and look and just indexes the
+4574	title of the fee of the podcast and
+4576	the author and, uh, the, the author field.
+4581	And then, um, we have another one that
+4584	is, uh, the person tag search, um, not
+4589	the tag, but there's a person search.
+4592	Um, and then another Sphinx Manticore instance, which
+4596	runs and does autocomplete.
+4598	So in the API documentation, there's that's a
+4601	sexy, you didn't know we had, I did
+4604	not know that.
+4604	No, that's cool.
+4606	Wow.
+4606	Nice.
+4606	We did that a long time ago for,
+4608	uh, for Martin, may he rest in peace
+4610	of a pod friend, our Danish friend.
+4614	Yes.
+4615	Um, he's going to come back one day.
+4619	He's going to have a whole new interface.
+4621	We get angry when we, uh, when we
+4624	encroached upon Greenland.
+4626	Yeah.
+4626	He's like, Hey man, that's our stuff.
+4629	Yeah.
+4631	Then we got, um, I'm sorry, we got
+4633	four search indexes.
+4634	There's also the value for value podcasts.
+4637	Those have their own.
+4638	Ah, yes, of course.
+4640	Of course.
+4641	And then, uh, there's the, then there's three
+4644	like utility servers.
+4646	You might want to call it.
+4647	There's a, an email server that's just running
+4650	on a tiny, you know, one gig nano
+4652	at five bucks a month.
+4654	And all it does is act as a
+4657	bastion host for email to go out.
+4660	So any, any email traffic all goes through,
+4664	all goes through that host thing gets redirected
+4666	to, um, Mailgun and then Mailgun does the
+4671	delivery of the, of the, of the email.
+4673	Uh, then there's a utility server, which is
+4676	a four gig load and it's it that
+4679	handles all of the backups, like nightly backups,
+4683	weekly backups.
+4684	Um, it, what it monitors pod ping, um,
+4688	and flags the database for, you know, when
+4691	things need to be pulled.
+4694	Um, and does a whole bunch of just
+4697	any, anything and everything that did this just
+4699	sort of like utility work that happens on
+4702	the, on, on the index.
+4704	It's all running through that one, that server
+4706	runs all those cron jobs and does all
+4708	that stuff.
+4709	Uh, pruning, uh, slow polling for specific things
+4714	that are needed.
+4715	Uh, the weekly database dump, all that stuff
+4717	happens on that one server.
+4719	Nice.
+4720	There's a webhook gateway server that handles, um,
+4727	stuff that handles things coming from, um, CurioCaster
+4731	or not CurioCaster, but, um, Sovereign Feeds.
+4735	Sovereign Feeds.
+4736	Yes.
+4736	Thank you.
+4737	That handles webhooks coming from Sovereign Feeds.
+4739	Can I just say once again, thank you
+4741	so much Stephen B for Sovereign Feeds.
+4744	It is my life.
+4745	It truly is my life.
+4748	Thank you for, he added the location tags.
+4750	That is, that is such a wonderful, wonderful,
+4755	wonderful tool.
+4756	Thank you so much.
+4757	In fact, I'm going to send him some
+4758	Satoshis right now.
+4760	I forget to do that from time to
+4761	time.
+4762	He's in my splits, but he needs, he
+4763	needs a boost.
+4764	He's a bonus boost.
+4766	The, uh, the webhook gateway also, uh, unlocks
+4770	our, um, the podcast index lightning node from
+4778	Voltage.
+4779	So it auto unlocks that.
+4782	Um, it basically does any webhook traffic that's
+4785	necessary.
+4786	Uh, and then we have, uh, and that's,
+4790	that's running on just the five bucks a
+4792	month, uh, Nanode.
+4793	And then we have a, uh, a, a,
+4796	we have a server dedicated to lightning node
+4801	maintenance and all the stuff that goes around
+4807	lightning so that it interacts with our lightning
+4810	node and is constantly pulling once a minute
+4815	it's pulling the node and pulling in transactions.
+4818	And that's what's responsible for generating like the
+4821	charts.
+4822	And that's how I pull, um, weekly, uh,
+4827	booster grams.
+4828	And it just keeps a running total of
+4831	all the transactions.
+4832	And it's, it's constantly sucking them into a
+4834	MySQL database.
+4835	So to make it easy to search at
+4838	the end, at the end of the year
+4839	for taxes, we had to dump all those
+4840	things out, all this kind of stuff.
+4842	Um, so that's, that's on a server by
+4845	itself.
+4846	And then we have 1, 2, 3, 4,
+4848	5 pod ping hosts, uh, one in Australia,
+4852	one in Europe and three in the U
+4855	S by region.
+4856	So there's one, I hope everybody who's in
+4859	the board meeting and listening is proud of
+4862	what you all have accomplished.
+4863	I mean, Dave, you've done this work.
+4865	Thank you.
+4865	Of course.
+4866	But man, I mean, with all the, just
+4869	the whole community and the, the funding from
+4872	the community has just been phenomenal.
+4874	Look at, look at what we've created.
+4876	Don't break your arm, patting yourself on the
+4878	back, but Holy mackerel.
+4880	It's awesome.
+4882	It is.
+4882	I just got to stop and say, it's
+4884	awesome.
+4884	What a, what a group, what a group.
+4886	And we're all pretty too, except for that,
+4889	and good looking, that undefined guy though.
+4892	I'm not too sure about him.
+4893	Yeah.
+4894	Holding judgment with that.
+4895	Um, and then there's activity pub bridge that's
+4898	running on a two gig linode.
+4900	Um, people probably may forget that even exists,
+4904	but the activity pro bridge is there.
+4907	And then, um, we got one other nanode
+4910	that's just, uh, used for various things.
+4915	I use it for testing new, you know,
+4917	new stuff where I don't have any other
+4918	place to put it.
+4919	So all now he has one, two, three,
+4921	four, five, five, there's 10, 20, say 24,
+4928	25, 26, 30 servers.
+4931	We have a lot.
+4934	So let's, uh, let's thank some people who
+4935	help keep those servers running.
+4937	Shall we, Dave?
+4938	Yes, let's do it.
+4939	Because, uh, you're going back to the office
+4941	today.
+4941	It feels like you're at home today.
+4942	I don't know why.
+4943	Uh, I am, I'm at home currently, but
+4946	I am going back to the office.
+4947	Oh, okay.
+4948	It felt like you were at home this
+4950	morning.
+4952	No, it's, uh, it's post tax season.
+4955	Very slow at the office right now.
+4958	Dave's like on the ball, like, Oh, well
+4959	he's not, he answered another message.
+4963	He answered in less than an hour.
+4965	Well, Hey, I'll take a day.
+4967	So it's all right.
+4968	I get it.
+4969	Thank you.
+4970	See loss on Linux two, three, four, five.
+4972	He says, I think with podcasts have to
+4974	have RSS.
+4975	We have enough elitism already.
+4977	We don't need everything needs to be pure
+4979	Bitcoin elitism.
+4981	No, I'm I'm with you, brother.
+4982	I'm with you.
+4984	Uh, let's see.
+4985	Martin Linda's Coke, AKA Lyceum coming in from
+4988	a true fans, 420 sets.
+4991	Thanks for your economics in one lesson about
+4993	stable coins, funding tag, et cetera.
+4995	I'm happy to be a super fan of
+4996	your podcast on true fans game on and
+4998	go podcasting.
+4999	I'll top up my wallet next week.
+5002	Lovely.
+5004	Stephen B one Oh one.
+5005	And he says it's coming.
+5008	It's coming.
+5009	What's coming?
+5011	It's coming.
+5012	You don't know that it's coming.
+5014	Oh, it's coming.
+5016	May 10th, 10th, 10th, the satellite spotlight.
+5022	See the future of everything.
+5025	Everything podcasting 2.0 has been working on
+5028	for the last few years, few years, May
+5031	10th, 2025, the satellite spotlight.
+5037	I did a promo right there.
+5041	35 nitro burning funny cars.
+5046	Triple seven from Sam, Sam over there to
+5049	true fans.
+5050	I'm so happy.
+5051	Apple are being forced to change their feudal
+5053	tax.
+5054	The EU will follow and then we can
+5055	submit our true fans native app.
+5057	I assume Google will be forced to do
+5059	the same for the play store.
+5060	Spotify's updated app is already available.
+5063	Patreon are updating their new app next.
+5065	Yes, this is a sea change.
+5067	I think as we call it a sea
+5068	change, sea change.
+5070	Yeah, I don't know if, I don't know
+5072	what Google's current policies are.
+5076	I really not familiar with it.
+5077	I think they have a similar thing, but
+5079	I just don't think they're as aggressive as
+5081	Apple is.
+5082	But I think even, even if they were,
+5085	it's clear that this is a chilling of
+5089	all that.
+5090	I mean, I, I really think that, that,
+5093	that Google would not have a whole lot
+5096	of desire to do strict enforcement of any
+5099	of that kind of thing.
+5099	I, I think you're, I think the feeling
+5102	that you have, Sam is totally correct.
+5104	Yes, I agree too.
+5106	Uh, four sevens from Dreb Scott.
+5109	He says, uh, coming in from podverse, thanks
+5112	everyone for their patience with delays.
+5114	Am I posting of chapters lately?
+5116	Hey brother, you know me.
+5118	I'm like, I'm amazed you do it at
+5119	all.
+5120	I appreciate it.
+5121	I've recently started exercising to try to lose
+5123	about 50 pounds.
+5125	I started gaining when my now eight year
+5128	old was I hear you got to drop
+5130	the baby weight.
+5132	The exercise is making me more tired than
+5135	usual and using up my extra energy that
+5136	I use for chapters doing my best to
+5138	keep up.
+5139	Thanks again for your patience.
+5140	Hashtag go podcasting brother.
+5142	It is all okay.
+5144	I appreciate what you do, man.
+5146	I really do.
+5147	Uh, he does chapters for no agenda podcasting
+5150	2.0 curry in the keeper.
+5152	I know he does it for at least
+5153	three more shows.
+5154	He just does a ton of work.
+5156	The Bruce Wayne of podcasting 2.0. Thank
+5158	you brother.
+5159	And uh, there's the delimiter.
+5161	So you're up Dave.
+5163	Oh, we had one counting one, uh, PayPal,
+5171	PayPal, PayPal, one off PayPal.
+5172	Yeah.
+5173	It's very slow these days.
+5174	Very slow.
+5175	It's tax season.
+5176	It's not summer.
+5178	It's not summer.
+5179	It kind of is.
+5180	It's not here.
+5181	It's not summer.
+5182	Yeah.
+5183	Summer.
+5183	Not people already getting out of school.
+5185	Jason Tiamin, $10.
+5188	Thank you, Jason.
+5188	Thank you very much.
+5189	Thank you.
+5190	Appreciate it.
+5191	We did have some booster grams though.
+5192	We've got plenty of plenty of booster grams.
+5196	We've got, um, boost the grams of plenty.
+5200	Uh, we've got Sam 42, 19.
+5204	Welcome back.
+5205	Welcome back.
+5205	Gents.
+5206	Friday night restored red wine in hand and
+5208	geek chat.
+5208	Yeah.
+5208	I think we read that one on the
+5209	last show actually.
+5211	Oh, did I?
+5212	Yeah.
+5212	You might've doubled up, doubled up, doubled down.
+5215	April 25th.
+5219	Did I pull the wrong start?
+5221	Let me see.
+5222	Our last show, our last show was April
+5226	25th.
+5227	Yes.
+5229	So everything from the 25th you can ignore.
+5232	You may have, that may have come in
+5234	from the, I may have had my, uh,
+5236	Tom stamp wrong.
+5238	Uh, let's see.
+5240	1701.
+5243	Yeah, we've got a butt.
+5245	Ooh, a bunch of these.
+5247	Captain sweatpants says my boost didn't make it,
+5251	but shows it went through on my node.
+5253	Okay.
+5253	I'll read your boost.
+5254	I listened to a podcast last weekend that
+5256	said podcasting too.
+5257	Oh, wait a minute.
+5258	I did see that one.
+5259	How come I, did I miss that one?
+5260	Hold on a second, brother.
+5261	No, we're discombobulated.
+5262	This is falling apart.
+5263	Yeah, it is falling apart.
+5265	Um, I'm sure I saw that one somewhere.
+5268	Hold on.
+5269	Hold on.
+5270	I thought I saw that boost come through.
+5273	I know I saw it.
+5275	Well, anyway, I'll read it from your, uh,
+5277	from, from the board, the boardroom, uh, listened
+5280	to a podcast last weekend that said podcasting
+5282	2.0 is just too geeky for the
+5284	average podcast listener.
+5285	Well, duh, it's supposed to be we have
+5289	fun with all the sexy namespace and coding
+5291	talk each week.
+5292	Jeez.
+5293	Go podcasting.
+5296	Michael, what happened to that?
+5298	I know I saw that boost come in.
+5300	I did it disappear.
+5302	Oh, there it is.
+5303	Yeah.
+5303	13, 13, hiding in plain sight.
+5305	You had hiding in plain sight.
+5307	1321 Randy black.
+5308	Thank you.
+5308	Gotcha.
+5310	Uh, Lyceum one, one, one, one central Richards
+5314	through true fans, Dave, an episode of episode
+5317	171, a butt cast.
+5319	Uh, I think we read that one too.
+5320	What?
+5321	But I heard you said, but cast, I
+5324	heard you say, but cast, what are you
+5327	listening to?
+5328	Title, but cast, um, oh yeah, we read
+5334	that one too.
+5335	I, this, my time, you're all over the
+5338	map, man.
+5339	They're mixed up.
+5341	Okay.
+5341	This is not, thank you.
+5342	Mike Dell 1701.
+5344	Hi guys.
+5344	Long time.
+5345	No talk.
+5345	Yes.
+5345	We see you.
+5346	We see a Cole McCormick Godcaster video coming
+5349	Sunday.
+5350	Oh, thank you.
+5351	Cole.
+5352	We've, we hired Cole.
+5353	Oh, nice.
+5354	Yeah.
+5354	We hired Cole to do some Godcaster videos.
+5357	Okay.
+5357	Look, I think I've found, I think I've
+5360	found my figured it out.
+5362	Yeah.
+5363	The timestamp was wrong.
+5366	Uh, Hey citizen.
+5368	Hey citizen.
+5369	69 69.
+5370	The pod verse says, thanks again for the
+5373	index fellas.
+5374	Last episode gave me a strange impression that
+5376	we're going our separate ways.
+5378	Monetizing V for V using well established platforms
+5380	like Patreon for easier onboarding.
+5382	Am I reading too much into this love
+5384	and lit?
+5387	I don't know what read that again.
+5390	Read that again.
+5391	Read that again.
+5392	He says last episode gave me a strange
+5394	impression with it.
+5395	We're going our separate ways.
+5397	Monetizing V for V using well established platforms
+5401	like Patreon for easier onboarding.
+5404	No.
+5405	Well, yeah, you're reading too much into it.
+5407	You are.
+5408	Yeah.
+5409	As usual.
+5411	You know, it's, listen, you're in a Curry
+5413	world experiment.
+5414	I'm always 10 years early.
+5415	We've got five more years to go before
+5417	V for V V for V really works.
+5419	And at that point, Jack Mollers is going
+5421	to make all the money and we'll still
+5423	be sitting here doing this silly podcast with
+5425	y'all.
+5426	Prediction point trillionaire.
+5428	This is a prediction guaranteed.
+5432	That's my lot in life.
+5433	I get to have a lot of fun,
+5434	but no money.
+5436	No, I mean, I don't see, I mean,
+5439	I don't see anything changing.
+5440	I mean, we, I think in order to,
+5443	you have to, you have to hit every,
+5446	um, if you're a, if you're a podcaster,
+5450	you have to allow people to give to
+5454	you in whatever way that they feel.
+5456	Yes.
+5457	Do you know that, um, Dvorak go, we
+5462	have a, a bank.
+5463	I think I might've told you this.
+5464	We have a bank in, in, uh, California
+5467	near him in Albany, I think.
+5471	And it's called mechanics bank, which is clearly
+5473	a gangster bank.
+5474	And, uh, and he cannot change banks because
+5477	the only bank that will accept him coming
+5479	in every two weeks with like a stack
+5482	of 50 checks for like three to all
+5485	different $3 and 33 cents, $5, you know,
+5489	it's just, and it's great.
+5491	Now they do charges, but only 15 cents
+5493	flat fee for each check they process.
+5496	So we'll take anything except Bitcoin, stupid Dvorak.
+5502	It's, I mean, you gotta, you know, you
+5505	have to allow checks, PayPal.
+5508	You just can't, you can't be jihadist to
+5512	get about it, you know?
+5514	No, I mean, it's crazy.
+5516	If you say someone says, Oh, I want
+5518	to, I want to, this is why I'm
+5519	so frustrated with Bitcoin.
+5520	The other day was so happy.
+5522	Oh, we can now take Bitcoin.
+5524	I'm like, what do you mean through Stripe?
+5526	I go, look, no, they can take stable
+5529	coin.
+5532	No Bitcoin.
+5533	I said, but you know, Trump takes it
+5536	for his, his sneakers.
+5538	Bobby, the op takes it.
+5540	Robert Kennedy jr.
+5541	Takes it for, took it for his campaign.
+5544	We'll get there.
+5545	We'll get there.
+5546	He's just mad.
+5547	He's just mad.
+5548	He's mad.
+5549	Nothing's changed.
+5550	No, nothing's changed.
+5551	But yes, the bottom line is you got
+5553	to give every people the opportunity to donate
+5555	however they want to.
+5558	And it should be stable coin, Bitcoin, lightning,
+5561	meme coin, Trump coin.
+5563	I don't care.
+5564	Yeah.
+5565	Anything, anything that you can pay your bills
+5568	with.
+5569	Yes.
+5569	Correct.
+5571	See loss on Linux.
+5572	That's where Richard's one, one, one, one, through
+5575	fountain.
+5576	He says this vibe coding talk cements what
+5578	I boosted in previous shows.
+5579	You need to know how to code and
+5581	the more detailed your instructions are, the better
+5583	it will do.
+5584	Probably also depends on how much memory the
+5586	app and context window, the LLM has.
+5589	Yeah.
+5590	Knowing how to code in order to use
+5592	one of these things is pretty handy.
+5595	Yes.
+5595	Handy.
+5596	Very handy.
+5597	Um, aqualith media, 10 33 through fountain says,
+5603	uh, the live stream on my podcast part,
+5605	just lit my mind on fire soon.
+5608	Go podcast.
+5609	He has go podcasting.
+5610	Go, go, go.
+5612	Yes.
+5613	Bruce, the ugly duck, ugly quacking duck to,
+5616	to, to, to do podcast guru love funding
+5620	tag using butts, bus sprout, butt sprout, using
+5623	bus sprout, hosting, but sprout, um, a push
+5627	of the funding button.
+5629	And it takes you to my, uh, push
+5631	the funding button and it takes you to
+5632	my support page on my website with different
+5634	ways to support.
+5635	Thanks for the episode 73 years.
+5637	Yes.
+5638	The, the bus sprout way of doing, uh,
+5644	the funding tag is, uh, I think it's
+5649	the way to do it.
+5651	You tap the funding link and you land
+5654	on a page and you just can donate
+5657	like five different ways.
+5659	Yeah.
+5660	It's just so easy.
+5662	I wish other hosts would build a similar
+5665	backend.
+5666	It's the way to go.
+5668	Yes.
+5669	Uh, comic strip blogger.
+5670	Oh, let me make sure.
+5671	Is that the delimiter?
+5672	We hit the delimiter delimiter.
+5674	That is the delimiter.
+5675	Let me make sure.
+5676	Yep.
+5676	Yep.
+5676	We're good.
+5677	Comedy strip blogger, 15 four 65.
+5680	Yeah.
+5680	Fountain.
+5682	Howdy Bitcoiners, Adam and Dave, please tell your
+5685	audience to visit my blog at www dot
+5688	C S B dot L O L for
+5691	my mostly hand-drawn cartoons about artificial intelligence,
+5695	about podcasting 2.0 and dogs.
+5697	These are copyright free cartoons.
+5700	So anybody can repost or use anywhere.
+5702	Also follow me on X at C dot
+5705	S dot B just the three letters C
+5708	S B C S B C S B
+5714	little house ad from comic strip blogger.
+5721	We got some, uh, monthlies.
+5726	All right.
+5726	Uh, Chris Bernardik, $5, Michael Kimmerer, $5 and
+5730	33 cents.
+5731	Dreb Scott, $15.
+5733	Thank you.
+5734	Now lighter.
+5736	Dreb Scott, the 50 pounds lighter, uh, Cameron
+5740	Rose, $25.
+5742	Chad Pharaoh, $20 and 22 cents.
+5745	Kevin Bay is $5.
+5747	Thank you, Chad.
+5748	By the way, uh, Kevin Bay, $5.
+5750	Jason, uh, see, uh, Martin Lindeskog, $1.
+5752	Mark Graham, $1.
+5754	And, uh, Brendan over a pod page, $25.
+5757	Ah, love you guys all so much.
+5759	And gals.
+5759	I'm sure some gals are hiding in there.
+5761	Thank you for supporting.
+5762	Thank you for supporting podcasting 2.0. Um,
+5766	really you're supporting the entire infrastructure and for
+5769	a long time.
+5770	So we'll be good for that.
+5772	When that, when the next five years hits,
+5773	when everything becomes successful, it'll still be running.
+5776	We'll see who donates then.
+5780	It won't be Jack Muller's.
+5782	No, it won't be.
+5784	It won't be.
+5785	That's okay.
+5786	We all have our role to play on
+5787	this grand stage.
+5789	And with that, I want to thank you,
+5791	brother, Dave, uh, what you're doing this weekend.
+5793	Yeah.
+5793	Hanging out, having a good time this weekend.
+5796	We'll probably do some rock climbing and, and,
+5800	uh, housework.
+5802	Well, you should go grab the brand new,
+5804	uh, beta of the Godcaster app on Android.
+5808	Your mind will be blown.
+5809	Yes.
+5810	I've got my Android phone here.
+5811	I may after, after work, prepare for your
+5814	head to explode.
+5817	I'll get, I'll get napkins.
+5819	All right.
+5820	Boardroom.
+5820	Thank you very much for being here.
+5821	We look forward to seeing y'all again
+5823	next week as we return once again, with
+5825	podcasting 2.0. You
+5844	have been listening to podcasting 2.0. Visit
+5848	podcastindex.org for more information.
+5851	Go podcasting.
+5854	Oh, he's full of juice.

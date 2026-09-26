@@ -1,0 +1,2712 @@
+0	Podcasting 2.0 for March 21st, 2025, Episode
+4	215, Traffic and Weather on the 8s.
+8	Hello, everybody.
+9	Welcome once again to the only show that
+11	matters.
+11	I don't care what you like listening to.
+13	Is it politics?
+14	Is it about AI?
+15	It's all here.
+17	Of course, if you're here for podcasting, you're
+19	really in luck because this is the official
+21	board meeting of Podcasting 2.0. We are
+24	the only boardroom that makes guests bring their
+26	own lunch.
+28	I'm Adam Curry here in heart of the
+29	Texas Hill Country and in Alabama.
+32	The man whose static global hash map is
+34	always up to date.
+36	Say hello to my friend on the other
+37	end, the one, the only, Mr. Dave Jones.
+43	That went faster than normal.
+45	I'm not finished tweeting.
+49	It probably didn't go faster than normal.
+51	It's the same every single week.
+53	I try to hit the post, but sometimes
+56	I scratch it, but it's always the same.
+59	Yeah, that's what it was.
+60	You didn't say my last name long enough.
+65	There we go.
+66	It's your fault.
+67	It's my one day a week I get
+69	to play DJ.
+72	Yeah, especially since you hadn't done a booster
+74	gram ball in like three months.
+76	Yeah.
+76	Well, you know, I'm too busy saving podcasting.
+81	That's true.
+82	I'll give you a pass.
+85	Hello, boardroom.
+86	Good to see everybody here.
+87	Once again, everyone is all set and good
+89	to go.
+90	How's your week been, Dave?
+93	Oh, it's good.
+94	I found out I got a leak in...
+98	I drove my wife's truck this morning, the
+100	67 Ford, and it was leaky fuel pump.
+104	Oh, no.
+105	I hate that.
+106	Well, I mean, it's got a 460 in
+108	it, so it's already...
+110	Why don't you just put the tank right
+112	on top of the cylinder head in that
+113	case?
+115	Put it right in.
+116	You know, spray the fuel into the blower.
+118	She has a blower, doesn't she?
+120	No, there's no blower.
+122	I can just see Dave's wife with a
+125	blower on top, big chrome job.
+129	This is an F-250.
+130	It's a 67 F-250 with a three
+132	quarter ton axle.
+133	It weighs like 8,000 pounds.
+136	Is that a dually?
+137	It's got the big axle for the dually,
+142	but it doesn't have two tires.
+143	Okay.
+144	Well, you should get her an extra set
+146	of tires for her birthday.
+148	Hey, baby, happy birthday.
+149	Here you go.
+151	Oh, thanks.
+152	Yeah, that's kind of needed.
+154	I've had a bad afternoon.
+157	Oh.
+157	Yeah.
+158	Well, my umbral, which I have...
+162	Yeah.
+162	Oh, yeah.
+163	Installed under Ubuntu, but never upgraded to 1
+167	.0 because it just all kind of worked.
+170	I've been putting that off for so long
+173	now.
+173	Well, so the node quit and it was
+175	kind of my backup node.
+177	So I had, you know, I have two
+179	channels open.
+180	One from my start nine and then one
+183	from the umbral.
+184	And then I have a channel between the
+185	umbral and my start nine.
+187	So, you know, it's two routes, more or
+189	less.
+190	And lots of people, because that thing's called
+192	Podfather.
+193	So a lot of people connected to it.
+195	And of course that stopped working.
+196	And then like, OK, restart.
+199	Restart the umbral.
+201	No, nothing works.
+202	Well, and this is where I went wrong.
+206	You just typed upgrade.
+208	No, no, it won't.
+209	It won't update yet.
+210	There's a whole process.
+212	If you're not on, you know, if you're
+214	on Linux, there's a whole process you have
+217	to go through.
+217	You got to export all your data.
+219	Then you have to upgrade.
+221	And then, you know, it has to start
+223	for it has to boot from a USB.
+225	My mistake was like, well, you know, maybe
+226	you just need to upgrade Bitcoin Core and
+228	the Lightning.
+229	Yeah, that's it.
+231	So when it came back up, not only
+233	did that not come back up, it shows
+235	starting.
+237	But my vault warden also didn't come back
+241	up.
+241	Oh, so you run personal bit warden.
+244	Yeah.
+245	Oh, yeah.
+246	How did that, how did that mess up?
+248	I don't know.
+250	That shouldn't even be anything to do with
+251	the other stuff.
+254	I'm assuming that's just a docker container.
+256	Yeah, well, you don't know these docker containers.
+259	There's all kinds of stuff that goes on
+260	with that.
+262	It's so I don't now I don't know
+264	what to do.
+265	Because now all my passwords, you know, and
+267	I'm like, oh, luckily I have it on
+268	the app.
+269	And the app's like, no, I can't connect.
+271	I thought the app would synchronize it and
+273	it would just stick.
+274	Nothing like single point of failure to make
+276	your life interesting.
+277	Yeah, my life is very interesting now.
+279	But then for some reason, I have one
+282	Tor window open.
+285	Tor window?
+286	What's a Tor window?
+287	You know, a browser window under Tor.
+289	Oh, I see.
+290	Yeah.
+291	And so for some reason, I can connect
+293	to the vault warden with that.
+296	But if I open a new window and
+300	try to connect to the vault warden, it
+301	says error in device or something, whatever that
+305	means.
+305	So this this means immediately export everything from
+308	that open tab.
+308	So I click export.
+310	Nothing happens.
+312	Can you see everything?
+314	I can see everything.
+315	I can search it.
+316	Of course, I'm deadly afraid to close it.
+319	I won't.
+319	For sure.
+320	So now I do have a vault warden
+322	running on the start nine.
+323	So I think now I'm going to have
+324	to manually copy the things over that are
+326	new since the last time I installed it.
+329	So I'm in between like copy all the
+333	vault warden stuff over and let this whole
+334	thing die.
+335	And eventually the channels will close.
+337	And I can always, you know, it'll go
+340	back to the node and I can always
+341	get stuff off in the node with a
+344	different wallet.
+345	Can you control a that tab?
+348	Copy, paste.
+350	Well, unfortunately, no, because it only has the
+353	entries.
+353	You have to you have to click each
+354	single.
+355	It's no.
+357	Yes.
+359	Hey, you can't get it.
+360	You can't get a page that just has
+361	everything, everything exposed.
+364	All the passwords are also hidden.
+366	No, no, this is this this is a
+368	this is a crop show, man.
+369	This is really bad.
+370	This is bad.
+370	It's bad.
+371	Don't you ever close that tab?
+373	No, no.
+373	This tab is going to stay open.
+375	You need.
+376	Yeah, this you need to you need to
+378	encase this tab in carbonite.
+383	Lucite.
+384	Yeah, lucite.
+386	Oh, man.
+387	Anyway.
+390	Well, it's kind of interesting.
+391	I was listening to power.
+394	Pop up a power podcast weekly review.
+399	And I depend on you.
+401	That's your beat.
+402	Now I depend on you for that because
+403	I don't ever have time to listen to
+405	it anymore.
+406	I feel bad.
+406	It's not that I hate him.
+408	It's not.
+409	I'm not.
+409	No, you're not.
+410	I just don't have time.
+411	No, but I totally disagree with them 100
+416	percent on this episode.
+417	OK.
+418	Um, and there was something James said, which
+422	did I say that we called this part
+426	this podcast podcasting to point to piss off
+428	Dave Weiner?
+429	I don't think I ever said that.
+430	No, we never said that and never did
+432	that.
+433	That's not true.
+435	Maybe we said it as a joke or
+436	something.
+437	I can't recall it.
+438	I could totally see us saying that as
+440	a joke.
+440	But, you know, that had nothing to do
+442	with it.
+442	So James like this project is full of
+444	ego.
+446	No ego.
+448	My ego, my ego does not need satisfying.
+453	This project is a project of love, baby.
+455	It's all a project of love.
+457	But they did have Matt Medeiros on.
+460	I was not able to hear.
+462	I didn't have enough time to listen because
+463	I was, you know, messing around with the
+465	umbrel.
+466	And I can't mess around with the umbrel
+468	and focus on a podcast.
+469	That's very difficult.
+471	Um, but this, of course, is, um, is
+474	all due to the article.
+476	Troublemaker Tom Webster wrote.
+479	Troublemaker.
+479	He's a troublemaker.
+482	This is where you say, yeah, he's a
+484	troublemaker.
+485	Yeah.
+487	Which I think I actually agreed with 99
+490	.9% of, uh, of what he wrote.
+493	And, um, you were smart enough as you
+496	are because, you know, I listened to podcast
+498	weekly review.
+499	You booked the guests and you said, Hey,
+502	I'm the booker.
+503	You're the booker, baby.
+504	Please.
+504	Welcome to the board meeting.
+505	Everybody.
+506	The one, the only from sounds profitable.
+507	The man with the golden voice, the pipes
+510	of lavender.
+512	Tom Webster.
+514	You know, I, I'm, I keep going back
+515	to, uh, vault warden and I have actually
+518	not thought about, uh, my vault warden since
+521	I escaped from a Burmese jail back in
+523	1992.
+525	This is what I mean.
+526	This is what I mean.
+527	This is a morning show guy.
+528	He's got the voice.
+530	You know, you need a couple, a couple
+532	of sound effects and everything.
+534	And it's not the same without your sidekick
+536	though.
+538	Carlos and the chicken.
+540	Yeah.
+546	All right.
+547	Now I promised you when we got, when
+549	we first started this off the air that
+552	I was going to disabuse you of a
+553	notion and this is going to surprise you.
+556	Okay.
+557	I have never worked in radio a day
+559	of my adult life.
+561	Well, this is a travesty and a loss
+565	for the industry.
+567	And you can see the results.
+570	You've been in a radio station though.
+573	Surely.
+574	Oh yeah.
+574	I've been in many, uh, you know, but
+576	as a, as a consultant, as an, you
+578	know, audience research guy, but, uh, like work
+581	for a station, get a check from a
+582	station.
+582	Never.
+583	Well, so what is your background, Tom Webster?
+586	Uh, you know, it's, it's really survey research
+589	and, and, uh, consumer behavior.
+590	And I, I started, uh, in the radio
+593	business doing that for a couple of radio.
+595	Wait a minute.
+595	Were you one of these guys, one of
+597	these consultants who would come in, you'd have
+600	the, the rollaway bag, the trolley bag, and
+602	you come in and all this, all the
+604	DJs would go, Oh crap.
+605	The consultants here.
+606	Were you one of those guys?
+608	A hundred percent.
+609	Oh man.
+609	We used to hate you.
+611	Like, Oh, this guy's going to come in
+613	and tell us we're doing it all wrong.
+614	You got to keep your brakes to 3
+615	.7 seconds.
+618	Well, it's given me thick skin.
+619	I will say that.
+620	I'll bet.
+620	I'll bet.
+621	Okay.
+621	Well, I have mad respect for you, man.
+623	So when you show up, so when you
+625	show up, does that mean a format change
+627	is weeks away?
+629	Someone's getting fired.
+630	Your morning guy is no good.
+632	Yeah.
+633	It's never good when you see me on
+634	the door.
+634	No, uh, no, it was, it was more,
+636	uh, to keep a, you know, a check
+638	on, on how things were doing.
+639	And, you know, I've done that in radio.
+640	I've done that in TV.
+641	I've done that in pretty much every major
+644	media, but I've been, uh, exclusively digital audio
+647	for the last 20 years.
+648	Oh, okay.
+649	So where did you start in digital audio?
+651	Was that the days of real audio?
+654	No, um, that was still kind of doing,
+656	doing the thing that I do.
+658	Um, and that was, uh, during my time
+661	with Edison research, I, I joined Edison in,
+663	uh, 2004.
+665	I had, I had, uh, actually gone back
+667	to school.
+667	I went back and got an MBA in
+669	consumer behavior.
+669	So I knew what I was talking about.
+672	And, uh, when I finished that, uh, I
+674	went to work for Edison in 2004 and,
+677	and, uh, ended up really building that, uh,
+679	their digital audio practice, which, you know, podcasting
+682	was obviously a huge part of it.
+683	So this is the start of my 20th
+685	year in podcasting.
+686	Not quite as long as you have.
+687	Oh, that's awesome.
+688	Well, I'll have, you know, I have, I
+690	have a degree from the Connecticut school of
+691	broadcasting.
+692	So yeah, CSB.
+694	I know it well.
+694	Yeah.
+695	Uh, what was the guy's name who ran
+697	that?
+697	Uh, bill bulbous bill, we called him.
+699	Did you ever meet him?
+701	No.
+702	Uh, I actually have never been on the
+703	campus there, but I'm, I certainly met many
+705	people, the campus, the campus, the assemblage of,
+711	uh, domiciles.
+712	Yes, exactly.
+713	Exactly.
+714	Bulb.
+715	He had this big bulbous red nose and
+718	we, and we just called him, Hey, bulbous
+719	bill.
+719	How you doing?
+720	And he, I forget he, I was at
+721	MTV and he said, Oh, come on by
+723	and do a seminar.
+723	I'm like, whatever.
+724	Okay.
+725	You know, I'm sure he loved that.
+727	Oh, of course.
+728	Bill was a great guy.
+728	I don't know if he's still doing that
+730	or not, but then he, he gave me
+731	the, he gave me a, a certificate.
+733	I'm a graduate honorary degree.
+736	So here's another thing I'm going to drop
+737	on you, Adam, which you did not know.
+739	Uh, during that time, uh, when I was
+742	doing research for, you know, I was doing
+744	research for radio stations, for podcasting, audio books,
+746	you name it.
+747	Uh, at one point in the two thousands,
+749	I did music research for radio Veronica, which
+755	I believe, you know.
+757	Yeah, wait, but I was gone by then
+759	because you were, you were, you were, you
+761	were gone by who was, who was your
+763	contact over there?
+764	Oh, you're asking me to remember something.
+766	Unico, Unico, Unico glory.
+768	Yeah.
+770	How funny.
+770	Yeah, no, this is, this is after, after
+772	Veronica left the, uh, the, the literal pirate
+775	ship, uh, and became a, you know, respectable
+778	organization.
+779	Yeah.
+779	Well, I was there when they were respectable
+780	organization, but this is when they went commercial.
+783	They went, were they on am only at
+785	the time?
+786	Hmm.
+786	I don't think so.
+787	No, but again, what is this?
+790	What is radio Veronica?
+791	Um, you're leaving me out here.
+792	Oh, I'm sorry.
+793	So radio Veronica was one of the many,
+795	uh, pirate ships in the North sea, um,
+798	in international waters like radio, me amigo, radio
+801	Caroline, and all the kids would be listening
+804	to it on, on their long wave radios
+807	because, you know, it's because obviously, um, you
+810	know, people have to have high fidelity to
+812	enjoy music, but no, that proved it because
+814	there was plenty of FM in, in the
+816	domestic countries, but there was, it was all,
+818	uh, government controls and it sucks.
+821	And so they, these, they were these outlaws
+823	and the way you get into the public
+825	system in the Netherlands, you have to have,
+828	uh, an X amount of members and members
+830	were counted by you subscribing to their TV
+833	guide.
+834	So there were literally 15 TV guides and
+837	you had to be a member for, I
+838	think, five guilders at the time, maybe 10
+840	guilders a month.
+842	And so they, they were so popular that
+845	there were these huge demonstrations in the Hague
+847	where the government system, like, you know, make
+849	Veronica legal, bring them on board.
+851	And so they just collected enough people spending
+854	their 10 guilders a month, um, to become,
+857	um, uh, an official part of the Dutch
+860	broadcasting system.
+861	And they grew like wildfire.
+863	I mean, they had, they had, I think,
+865	2 million members of their magazine for a
+867	country of 14 million.
+868	That's quite a lot.
+869	At the time it was 14 million.
+872	And, uh, and so that's when I came
+874	in and they really only, they had radio
+876	and that's why they had only Friday and,
+880	but they were given TV too, and they
+881	didn't know what to do.
+882	So they said, well, we'll just do some
+883	music on television.
+884	That's how I started with the countdown show.
+886	And then later they went out when you
+888	could do commercial radio in the Netherlands, because
+890	I think, you know, be careful what you
+892	wish for.
+893	Uh, so then they, they jumped out and
+895	they went as a commercial station and then
+898	RTL bought them is a whole mess.
+899	The brand is now effectively dead.
+904	So good work, Tom.
+906	On the advice.
+906	And it's, I was sort of consulting.
+909	Yeah.
+910	I was the Ted McGinley of radio.
+911	I, when I, when I, uh, when I
+913	came into your sitcom, you knew it was
+914	in the last season.
+915	So what's really, what's really cool now that
+917	I hear all this backstory, uh, and I
+920	do want to, I want to hear about,
+922	uh, sounds profitable, but in essence we are
+925	getting a $10,000 free consultant to visit
+929	from a consultant who knows what he's talking
+931	about.
+932	Well, when you put it that way, uh,
+934	$10,000 or however many Gilders, um, the
+938	Gilder no longer exists.
+940	A lot, a lot of Gilders.
+941	Yeah.
+941	There aren't any more Gilders.
+942	So, so poor one out.
+944	So when did you start a sounds profitable?
+947	Uh, so I did not start sounds profitable.
+949	My partner, Brian Barletta started it almost five
+952	years ago.
+953	And I joined up about three years ago.
+955	And you know, when Brian started it, it
+957	was, it was kind of an ad tech
+959	newsletter.
+960	Um, but we had this idea together that
+963	we could build the thing that podcasting really
+966	lacked, which was a trade association for the
+969	industry side.
+971	And well, and you, and you laugh because
+975	yeah, you laugh because, uh, it is, it's
+977	really been herding cats.
+979	I mean, cats are more cooperative, uh, to
+981	try to, to put an organization like that
+983	together.
+983	So we just sort of built the thing,
+985	uh, until it got big enough that, that,
+987	uh, we just kind of declared it.
+988	Well, here's, here's an odd question then.
+990	How come we've never spoken before?
+992	If you're going to build a trade organization,
+994	I think you would have at least sent
+995	me an email.
+998	Well, see now.
+1000	Not that I would have done anything with
+1002	it.
+1002	Well, there's a, there's a very distinct focus,
+1006	I think, to, uh, I think to where
+1008	sounds profitable started.
+1010	Um, and that, you know, it definitely started
+1012	on the ad tech side.
+1013	And that's, that's where it grew out of,
+1015	but it's, it has grown out of that.
+1017	And now you and I are talking, I
+1019	mean, ultimately my, my personal mission in all
+1022	of this, and I've said this repeatedly is
+1025	to do what I can to remove obstacles,
+1028	promote the medium and grow podcasting so that
+1031	it is actually a source of careers for
+1034	people.
+1034	I want people to be able to have
+1035	a career in podcasting.
+1036	And I, I, I remember a couple of
+1039	years ago I was flying, um, back home
+1042	from Toronto and I'd, I'd gone to speak,
+1043	I think at, uh, radio days, North America
+1045	in Toronto.
+1046	And I was coming back through us customs
+1049	at Pearson airport.
+1051	And the customs officer asked me, I was,
+1053	and I had global entry cause I've had
+1055	it for years.
+1055	Right.
+1056	And I, I'm going through the global entry
+1057	line and the customs officer asks me, what
+1060	do you do for a living?
+1061	And, uh, I don't know, I was possessed
+1063	by a demon or something.
+1064	And I just said, I'm a podcaster.
+1067	And he looked at me, he goes, and
+1068	you, you have global entry.
+1072	This is what I'm trying to fix.
+1074	Adam Curry.
+1075	This is exactly what I'm trying to fix.
+1078	Well, okay.
+1079	Thank you for clarifying that because, um, when
+1082	I, to me sounds profitable is I thought
+1086	it was still ad tech.
+1088	And so I guess it sounds like you're,
+1090	what you're saying is that it's, it's grown
+1091	into to be a different thing now.
+1094	It has, you know, I mean, we put
+1096	out a lot of, you know, obviously research
+1098	is sort of the, the hammer that everything
+1099	looks like a nail to me.
+1100	So we do a lot of that now.
+1102	Um, and it's, it's really all about insights,
+1105	advocacy, uh, and trying to promote, you know,
+1108	and trying to get in front of buyers.
+1109	And that is not necessarily your world.
+1111	And that's probably why, uh, we have not
+1114	necessarily crossed paths, but, uh, you know, we're
+1117	trying to remove the obstacles that, uh, brands
+1121	and buyers and advertisers have to investing in
+1124	the space because the more money gets invested,
+1125	the more careers can happen.
+1127	So who pays you?
+1128	How does sounds profitable become profitable?
+1131	Yeah.
+1132	Well, there's, there's two income streams.
+1134	One, uh, we have a very profitable, uh,
+1137	methamphetamine.
+1139	Oh yeah.
+1140	You have been on radio, Tom Webster.
+1142	You can't lie to me.
+1143	These jokes are too good.
+1145	These are good.
+1145	They're, they're not that good.
+1147	Um, no, I mean, this is sort of,
+1149	I think the, the, the genius that Brian
+1151	had when he started it, uh, there's a
+1154	flat structure to sounds profitable.
+1156	It's all partnership.
+1157	It's a flat 500 bucks a month.
+1159	That's it.
+1160	And it doesn't matter if you're SXM or,
+1163	uh, just starting out production company or, uh,
+1167	or, you know, an ad tech tool company.
+1168	It's, it's the same for everybody.
+1171	Wow.
+1172	Okay.
+1173	And what do they, and what, what do
+1175	they get for that money?
+1176	Just your, they get your, uh, industry, uh,
+1181	sort of inter engagement in order to build
+1185	the industry to then hopefully get to raise
+1188	their ship as well.
+1189	Is that the thinking?
+1191	Well, you know, they get, first of all,
+1192	they brush up against, uh, my aura, which
+1195	I think you're feeling now.
+1198	Yeah.
+1199	Uh, well, I mean, there's some, there are
+1200	some tangible benefits.
+1201	I mean, yeah, there are the altruistic benefits
+1203	that, uh, you know, supporting us is helping
+1206	to, you know, we've had a, uh, we've
+1208	established a major presence at South by the
+1210	last three years that keeps growing.
+1211	We're footing the bill for that and we're
+1213	getting, uh, all of our partners involved with
+1215	it.
+1216	So we're getting, you know, we're getting podcasting
+1218	in front of people.
+1219	Basically, we're doing all we can in non
+1221	-podcasting events.
+1222	Were you getting USAID money?
+1224	So, uh, no, no, I, I understand that's
+1227	hard and harder and harder to come by.
+1229	Uh, so we're not getting...
+1230	Podcasting NGO is what they do.
+1233	No, but do you, um, this, this is
+1237	interesting.
+1237	So if you are, um, so if you're
+1241	an advertiser, uh, you, you want something like
+1246	Sounds Profitable to be what the Podcast Academy
+1250	tried to be, but has regularly failed to
+1253	come to fruition.
+1254	Yeah, I think so.
+1255	I mean, I, I think, you know, we
+1257	are, uh, you know, personally in my, in
+1260	my career, in my speaking and the things
+1262	that I've done, I've tried to serve the
+1263	individual creator, uh, as much as I can
+1266	throughout the entire 20 years I've been in
+1267	the space.
+1268	Um, and you know, I've, in some cases
+1271	I've, you know, robbed from the rich to
+1273	give to the poor.
+1274	Right.
+1275	Um, but, uh, you know, ultimately in, in
+1278	almost any agency, there's a champion for podcasting
+1282	and we want to equip that champion with
+1286	everything that we can with, you know, credible
+1288	research, uh, industry insights to, to equip them
+1292	to be able to go in and convince
+1293	their, you know, whether it's the leader of
+1295	their brand team or an, or an advertiser
+1298	that the podcasting is a great place to
+1299	spend your money.
+1300	So that's a part of what we do.
+1302	Uh, partners also get consulting partners, get access
+1305	to our research database, which is this incredible
+1308	searchable archive of stuff that I've built.
+1311	Um, and they get access to private events.
+1313	They get access to our Slack channel, which
+1315	has over 2000, uh, industry insiders in it.
+1318	Uh, it's pretty active.
+1319	Um, you know, we're all going to be
+1321	a podcast movement evolutions.
+1322	We maintain a lounge there at all of
+1324	the major podcasting events that our partners get
+1326	access to, to, uh, you know, have meetings
+1329	and things like that.
+1330	Um, so, you know, we, we've tried to
+1332	build a community that at least shares a
+1336	common goal of promoting the space, even if
+1338	they have different means and measures to do
+1340	so.
+1341	So I'm sorry, Dick, I was just going
+1344	to say, it's being in the advertising industry.
+1345	It's like, it feels like being, um, like
+1348	a tax collector, like the people benefiting from
+1352	what you're doing, complain about the difficulty of
+1355	the process and the complexity of, you know,
+1358	the buying and all that kind of stuff.
+1359	And then the people that actually pay for
+1361	it, you know, by their listening or watching
+1363	the ads, hate the experience.
+1365	It's like, it feels like sometimes I'm just
+1368	imagining being in the advertising industry in general,
+1370	probably you probably get hate from both sides.
+1373	Yeah, I mean, on the one hand, you
+1375	know, I certainly want to promote the medium
+1377	and I want to talk about why it's
+1379	a great place to put your money, why
+1381	it's a great place to invest so that
+1382	creators can get paid.
+1384	On the other hand, it's not easy, right?
+1387	Uh, it, you know, we still don't have
+1389	great tools to monetize the incredible long tail.
+1392	Most of podcasting is long tail, right?
+1394	You know, and we don't really have great
+1397	tools to, uh, to open access up to
+1400	that in a way that's, uh, you know,
+1403	acceptable to a lot of advertisers.
+1405	And that's something I'd like to change.
+1406	Well, so this is interesting because when you
+1408	say tools, that means measurement, I'm presuming, um,
+1412	the, the feeling I've had for a long
+1415	time, and I, um, uh, I used to
+1418	be on the advertising or on the, uh,
+1421	advertising based content side.
+1423	I built a company, uh, didn't exit, didn't
+1426	do so well.
+1427	It was very difficult for a whole bunch
+1428	of reasons.
+1429	Um, I, I'm always thinking that, you know,
+1433	we started off with this horrible metric, this
+1436	metric called downloads, and that's pretty much what
+1440	the industry has standardized on.
+1442	And the feeling I get is that people
+1446	don't actually want to know the real numbers
+1450	of people listening because it will probably be
+1453	significantly less than the downloads.
+1458	Yeah.
+1459	You know, we've already been through a period
+1460	of time like that, right?
+1461	I mean, there have been a number of,
+1463	uh, haircuts that people have taken on their
+1466	download numbers.
+1467	And, and, you know, if you're with a
+1468	podcast host that adheres to the IAB certifications
+1472	for what counts as a download, right?
+1475	You know, minimum of, you know, X number
+1476	of seconds within 24 hours and yada, yada,
+1479	yada.
+1479	Uh, that, that measure gets better and better
+1482	and better.
+1483	Uh, what irks me though, is when I
+1486	hear these arguments from people and yet they're
+1488	still buying radio and have you looked at
+1491	how radio ratings are done or have you
+1493	looked at how TV ratings are done?
+1495	Oh, they're shambolic compared to what podcasting has.
+1498	So, you know, a part of it is
+1499	making them better.
+1500	Yes.
+1501	But another part of it is just like,
+1502	come on, wake up.
+1503	What's your real reason?
+1504	So, okay.
+1505	Well, that, that is my question.
+1506	What is the real reason that, is it
+1509	because they can't get a single source?
+1511	Uh, they feel more comfortable with a big
+1514	company like Google.
+1515	Uh, what, what, what do you see is
+1518	the real reason?
+1520	Yeah, I think, you know, there's the reason
+1522	there's the stated reason.
+1523	And then there's the actual reason.
+1524	I think the stated reason, uh, single source
+1527	does have a lot to do with it.
+1528	Right.
+1529	And, you know, I'm sure Adam, you know,
+1531	from your radio days, although, you know, I
+1534	forget what the authority was in, in, uh,
+1536	the Netherlands that, that was.
+1537	Right.
+1538	I know about Arbitron in the US.
+1541	Arbitron, which is now Nielsen.
+1543	And, you know, it is, uh, there are
+1544	pluses and minuses.
+1545	Yes.
+1545	It's a single source of truth.
+1547	Uh, but as a, you know, veritable monopoly,
+1550	uh, it's sort of difficult to make changes
+1553	for the better, uh, changes for the better
+1555	do happen slowly over time.
+1557	But, you know, the, the way that radio
+1559	is measured in, in major markets is with
+1561	a, you know, a little, uh, passive listening
+1564	device, uh, called the PPM.
+1566	It's like a little beeper kind of thing.
+1567	And, uh, the problem with it is that,
+1571	uh, the sample sizes are really, really small
+1573	and, you know, and that actually had a
+1576	major impact on a lot of radio stations
+1578	that used to survive with low audiences, but
+1582	high time spent listening, right?
+1583	Think like urban formats and smooth jazz and
+1585	things like that.
+1586	And, uh, you know, the sample sizes went
+1588	down with PPM and some of those stations
+1590	became untenable because they wobble too much in
+1593	the rating.
+1593	So there's pluses and minuses.
+1594	Now that's the stated reason.
+1596	But underlying all of that is the number
+1600	one goal of, I think the average media
+1603	buyer, the average, um, you know, sort of
+1607	brand team employee, the number one goal of
+1608	all of them is this don't get fired
+1611	and doing what you have always done is
+1615	safer than all of a sudden moving new
+1618	money into this medium that you haven't invested
+1619	in.
+1620	So it's, uh, and that's not meant to,
+1622	you know, sort of denigrate an entire industry
+1624	people, uh, you know, all at once.
+1627	I like to do it over time.
+1629	Um, but, uh, but it's, it's a valid
+1631	concern, right?
+1632	It's, it's a lot of times, you know,
+1634	in bad times, people, there's a flight to
+1637	safety in terms of what they invest money
+1639	in.
+1639	Um, and we're trying to make the case
+1641	with the research that, that we're doing and
+1643	everything else that podcasting is actually an incredibly
+1645	safe place to put your money.
+1646	So how do you get from that and
+1648	that knowledge to it's the apps?
+1652	Yeah, well, here's my concern.
+1653	Cause that's what you wrote about and I'm,
+1656	I'm in agreement with you for a whole
+1658	bunch of reasons, maybe different than yours.
+1660	Uh, so were you just, uh, shaking the
+1663	basket or what was the point?
+1665	No, I mean, well, I guess I kind
+1668	of was shaking the basket and I'm, I'm,
+1669	I was doing it really to shake, uh,
+1672	a number of baskets, right?
+1674	I, you know, I guess I shook your
+1675	basket a tiny bit, but I'm hoping that
+1678	I shake some baskets at the industry level
+1680	though.
+1680	Um, and, and it's really because of this.
+1683	We're not industry, Dave, we are.
+1685	You're not, you're not.
+1686	Thank you, Lord.
+1689	You're not, I don't, I don't think you,
+1691	I don't think you want to be, um,
+1693	but here's the thing, right?
+1695	You're all putting a lot of time and
+1698	passion into improving podcasting through the open RSS
+1702	standard.
+1702	And what I see every year is the
+1705	share for open RSS declining and the share
+1708	for closed systems like YouTube and Spotify, uh,
+1712	growing and growing and growing.
+1713	And I think a lot of people have
+1715	gotten hung up on YouTube, uh, being, you
+1719	know, really the number one source for podcasting
+1721	now.
+1721	And by any measure, I think people have
+1723	gotten hung up on the video part of
+1724	that.
+1725	And I don't think it's just the video
+1726	part.
+1726	Interrupt you for one second.
+1728	Um, Spotify is part of the open RSS
+1731	ecosystem.
+1732	I mean, I don't actually participate in myself
+1734	for other reasons, but you can just have
+1737	your RSS feed going to Spotify.
+1739	So technically that's a part of the open
+1741	system.
+1742	No.
+1743	Uh, I mean, are they, uh, how are
+1745	they doing with all of the, uh, all
+1746	of the tags you all are working on?
+1748	Irrelevant.
+1749	The content, the content, the content is, is
+1752	to me, it always comes down to the
+1754	content.
+1756	Okay.
+1756	So why work on podcasting 2.0 then?
+1761	Well, we started the podcast index.
+1764	Podcasting 2.0 is this show.
+1766	That's an important differentiator.
+1768	It kind of morphed into this is podcasting
+1770	2.0, but we started the podcast index
+1773	for one reason.
+1774	And one reason only is that Apple had
+1776	become the center of the podcasting universe and
+1779	they were deciding what goes into podcasting or
+1782	not.
+1782	They were deciding what content was okay.
+1786	And in fact, there was a, a recent
+1788	example of, uh, Andrew Tate's podcasts or episodes
+1792	being taken off of Spotify.
+1794	And we simply won't do that.
+1796	We're, we're just, unless you're breaking a U
+1798	S law, we're not going to do that.
+1800	So that's the main reason we did it.
+1803	And what came from that is all these
+1805	developers who had ideas who said, I want
+1808	this, I want this, I want this.
+1809	And then Dave and I never set out
+1811	to do this.
+1812	We just rolled with it and went, okay,
+1813	we'll kind of coordinate that and we'll see
+1815	what we can do.
+1816	And that has become colloquially the, the podcasting
+1819	2.0 group, but really, and you know,
+1822	with some apps that came along with it,
+1823	but there was never a mission of we're
+1825	going to do X, Y, and Z.
+1827	Other than we want to have an open
+1829	index where developers can come, can do whatever
+1832	they want.
+1833	And that's probably the most enjoyable.
+1835	And at the same time, most disappointing.
+1839	The enjoyable part is we've seen enormous successes
+1843	with, uh, music, uh, Ellen beats being in
+1847	my mind, a success.
+1848	Now, a success means a group of people
+1851	who are happy.
+1853	Um, the fountain app I think is a,
+1855	is a runaway success for the people who
+1857	want to use that and want to do
+1859	value for value and want to use the
+1862	lightning network.
+1863	It's they're, they're running a great show over
+1866	there.
+1866	They love it.
+1867	And the people who use it, love it.
+1869	And that to me is success.
+1871	I don't think we, Dave and I ever
+1873	had the idea of, well, this is going
+1875	to change podcasting knowing fully well that Apple
+1879	is slow to move.
+1880	And quite frankly, I was blown away when
+1882	they implemented the transcript tag.
+1884	I was like, Oh, I would never expected
+1886	that.
+1887	So, but it, but when it comes to
+1889	success, it's always the content that drives everything.
+1894	And that often is left out of the
+1896	conversation.
+1896	You know, it's like, well, the apps are
+1898	this now.
+1898	I mean, there there's only so many good
+1902	pieces of content that people listen to and
+1905	people want to advertise on.
+1906	And it's very segmented, just like everything else.
+1909	You know, look at the streamers, look at
+1911	the networks, look at radio.
+1913	There's so much choice now that you have
+1915	to redefine what success is.
+1918	And I think that's what I'm looking for
+1919	is what do you call success?
+1921	What do you call good?
+1923	And well, here's my, here's my concern, Adam.
+1925	And that is, and I say this not
+1928	as a slam against YouTube, but really as
+1931	an incredible compliment to YouTube.
+1933	YouTube has built a hell of an app.
+1934	And the podcasting industry has gotten a little
+1937	bit hung up on the video part of
+1938	it and not the every single other part
+1940	of it that makes it a great app.
+1942	And the more, uh, you know, as, as
+1945	people, more and more people discover podcasting, they
+1948	never have to download a podcast app.
+1950	They never have to even know that one
+1952	exists.
+1953	That's, um, that's right.
+1954	They're just going to YouTube.
+1955	And here's, here's my issue with that.
+1957	My issue with that is the future of
+1960	audio and with the radio industry in incredible
+1963	decline, right?
+1964	It has declined every single year for about
+1966	the fifth, the last 15 straight, uh, you
+1968	know, numbers under 35 are really, really not
+1971	great, right?
+1972	The radio industry is going down.
+1974	Spotify's focus is music.
+1975	YouTube's focus is video.
+1978	Uh, where, where are people going to get
+1981	the audio habit?
+1982	How is spoken word audio going to remain
+1985	a part of people's lives if it's not
+1987	getting put in front of them every day?
+1988	And increasingly it's not.
+1990	And so my concern is that the, that
+1992	the podcasting industry such as it is, or
+1995	those of us that have a stake in
+1997	it, uh, do what we can to showcase
+1999	audio and do what we can to showcase
+2001	the communities that can build around audio and
+2004	make those more visible, make them easier to
+2006	use so that people don't just default to,
+2008	to apps, which yes, you can get the
+2010	content, but that's not their main job.
+2014	It's fun.
+2015	I was, you know, if you think about,
+2017	um, you can make the case that Apple
+2021	is the number one defense against this thing
+2026	that you're describing, uh, but merely by the
+2029	fact that they have a, an app on
+2032	the phone by default that just, that is
+2034	called podcasts.
+2035	But I mean that so that when somebody
+2038	says, Hey, I was listening to this podcast
+2041	and here's the name of it and here
+2043	it was really cool.
+2045	And you flip open your phone, the first
+2048	place you're going to go is you're going
+2049	to tap on the podcast, but you know,
+2051	app, because that's what they're calling it.
+2053	They're calling it a podcast, but that's really,
+2056	you know, so you can make, you can
+2058	make the case in that framework that, that
+2061	Apple has been the main bulwark against the
+2065	sort of subsuming of podcasting into closed systems.
+2069	I mean, cause like I was reading your,
+2072	I was reading your article, um, uh, the
+2076	new one you put out this week and,
+2079	um, you made this comment, you said, uh,
+2083	that the shortest path, he said, uh, you
+2086	were talking about, uh, Matt and you said
+2088	he read my piece, had a reaction, then
+2089	took the shortest path from idea to audience,
+2092	meaning that he posted a video on YouTube.
+2094	I think initially I disagree, I disagreed with
+2099	you.
+2100	And then I did.
+2101	And then later I did agree with you,
+2103	but I'm not sure if it's for the
+2104	same reason.
+2105	And so, um, what did you mean by
+2108	shortest path?
+2109	Can you make a, define that?
+2111	Yeah.
+2112	So, um, basically all of the tools, you
+2116	know, Matt had an idea pop into his
+2118	head, right.
+2119	And, uh, and I've, I've looked, I've shared
+2121	this with him.
+2121	It was, it was not what I wrote.
+2123	So let's just establish that.
+2125	Um, but, uh, the title of what I
+2127	wrote, I think triggered an idea in his
+2129	head and the, he wanted to get it
+2132	out as fast as possible.
+2134	And the, and this was how he did
+2136	it, right.
+2136	It was very easy to turn on the
+2138	camera and, uh, and boom, all of a
+2141	sudden he's on YouTube and he's on YouTube.
+2143	Uh, it was easier to put his content
+2145	on YouTube.
+2145	It's easier to find his content on YouTube
+2147	and he has access to the largest potential
+2149	audience on YouTube.
+2150	And so without even thinking about it, it
+2153	was his default reaction.
+2154	And I'm concerned about that for, for audio
+2157	and for podcasting.
+2158	Okay.
+2159	Let me, I'm glad to hear you.
+2161	I'm glad to hear you explain that because
+2162	this is what, there's a lot wrapped up
+2165	in what you just said.
+2166	I think that for, when it comes to
+2169	sort of, um, uh, the, like debundling some
+2176	of that stuff into individual pieces.
+2178	I think some of those individual pieces really
+2180	matter because it would, because if you think
+2183	about it, um, what I was thinking initially
+2185	when you said that was speed, I'm like,
+2187	well, you know, I can, I can record
+2189	an audio in, uh, I can record a
+2192	15 minute audio clip, upload it to, um,
+2195	my podcast host and have it out in
+2197	podcast apps in just as much time as,
+2200	as YouTube as recording a YouTube video, perhaps
+2203	quicker because I'm, I'm not so concerned about
+2205	video edits, but then I'm like, well, but
+2208	here's the, it's really that last part that
+2211	you said, you, you said biggest potential audience.
+2215	And it's the last part that I think
+2217	is kind of the killer and something that
+2218	we're going to have to deal with is
+2221	that if I record audio, upload it to
+2224	my podcast host, and then it gets distributed
+2227	out through the decentralized RSS ecosystem, then if
+2230	I want to share it, I don't know
+2233	what to do.
+2234	Like it's that last step in the chain,
+2237	because what, like what, what Matt did just
+2240	as an example, you know, record a video,
+2243	post the link on social media to YouTube.
+2245	If I record an, if I record my
+2248	podcast, what link am I going to share?
+2251	I mean, episodes.fm, a direct link to
+2255	the Apple podcast web app.
+2258	There's this really hard, almost sometimes like impossible
+2263	idea of that you hit where you're like,
+2266	well, how do I, how do I get
+2268	a link out to this to people?
+2270	That's the benefit of the closed system is
+2273	that it all goes through one entity.
+2276	And so you always have one link.
+2278	It's always a link to Twitter, a link
+2281	to YouTube, a link to Spotify.
+2284	There's this one distribution link and podcasting.
+2288	You have all, what your best hope is
+2291	to get all these little badges for these
+2293	different podcast apps on something like episodes.fm
+2296	because there's one, there's no one single, like,
+2300	um, you know, we've complained about this before.
+2302	There's no one single handler for this thing.
+2305	This like podcast colon slash slash, then something
+2308	that opens your default app on every, on
+2311	every platform.
+2312	And so you, and you, you could say
+2314	that that's a good thing in the sense
+2317	that because there's no default podcast app way
+2322	to specify that per device, that it's kept
+2325	people from, it's kept YouTube even more at
+2328	bay from taking over podcasting because they could
+2330	just register themselves as the default podcast app
+2333	on your phone.
+2334	And now the thing that, you know, now
+2336	we're all screwed, but at the same time,
+2339	it just really makes that last piece of
+2341	the chain that you described.
+2343	That's, that's where everything seems to fall apart
+2346	in my mind.
+2348	Yeah.
+2348	And if I could, you know, let me
+2350	just kind of shortcut to the end here
+2351	a little bit.
+2352	If I could wave a magic wand, let
+2354	me tell you what I really want.
+2356	I would like, uh, the, you know, the
+2359	publishers and the people investing, uh, money right
+2362	now, all of a sudden to become video
+2364	podcast publishers to devote a chunk of that
+2368	money instead to collaboratively building an absolute showcase
+2373	app for podcasting that everybody promotes.
+2377	And right now, you know, a number of
+2379	the publishers have their own apps, but in
+2381	some ways, they're dividing up the pie before
+2383	it's baked.
+2384	And if, if the industry could collaborate on,
+2387	let's build a showcase for what podcasting could
+2390	be.
+2391	And that, uh, and that effort includes the
+2395	people working on the podcast namespace and podcast
+2398	index, right?
+2399	That everybody's working together for this so that
+2402	you have developers working to make the tools
+2404	easier for creators.
+2407	You have interface designers making things more, uh,
+2410	more sticky for consumers.
+2412	And we have, and we start to build
+2414	all of the trappings of the things that
+2416	YouTube has been perfecting for years.
+2418	And then, then we have something that really
+2421	showcases podcasting for podcasting sake.
+2423	And isn't just a feature on an otherwise
+2426	music app like Spotify, uh, or, you know,
+2429	or whatever it is on YouTube.
+2431	But I just, I feel like we're getting
+2432	distracted by video.
+2433	Well, okay.
+2434	Um, a couple of things.
+2438	So first some history, uh, in 2008, podcasting
+2442	was humming along.
+2443	I've told this story before people were like,
+2445	oh, this is great.
+2446	This is fantastic.
+2446	I'm listening to all these different voices, all
+2448	these different kinds of shows.
+2449	And then YouTube comes and Facebook comes and
+2453	Twitter comes and, uh, podcasting is page 23
+2458	below the fold and it, it lingers along,
+2461	grows five, maybe 10% year over year,
+2464	just kind of hobbles along.
+2466	Then all of a sudden 2014, 2016, uh,
+2469	we get cereal and cereal came at a
+2472	beautiful moment because we also had the streamers
+2474	coming in and people were showing up at
+2476	the office, bleary eyed because they had been
+2478	binging five seasons of breaking bad.
+2481	And here was true crime, arguably still the
+2484	most popular category in audio, uh, not video,
+2487	by the way in audio.
+2489	And you couldn't binge it.
+2491	You had to wait for the next episode
+2492	became water cooler talk.
+2494	Um, the most powerful sentence in broadcasting across
+2498	the spectrum is wherever you get your podcasts
+2501	and my experience.
+2503	Um, and I could easily, I could easily
+2505	go with ads.
+2506	It doesn't really matter, but there's 800,000
+2509	to a million people a week who listened
+2511	to the no agenda show.
+2513	And, um, we've only ever done audio, but
+2516	if you look at the stats for whatever
+2519	they're worth, um, 11% listen on our
+2521	website.
+2523	Um, 17% listen on pod verse because
+2526	I've talked about it and told them there's
+2527	a better experience there.
+2529	Um, but ultimately people are coming for the
+2532	content back to the pirate ships.
+2535	You could listen to all kinds of high
+2536	fidelity stuff in the Netherlands, you know, uh,
+2539	on your portable radio, but people would go
+2542	outside, aim their antennas to get the long
+2545	way version of the top 40 hits that
+2547	they weren't getting.
+2548	It's always about the content.
+2550	And I think what you're describing is a
+2553	place where there's the long tail.
+2555	So, Hey, you got some, you got something
+2557	that 10 people like you're part of the
+2559	long tail, you know, uh, the, the buy
+2561	makes more sense.
+2562	You can buy across, you know, this huge
+2564	swath of, um, of content.
+2567	It doesn't really matter what it is as
+2569	long as you get, you know, the metrics
+2570	done.
+2571	And I don't think that's, that's really what's
+2575	going on here.
+2576	Um, there's just like blogging, uh, people, you
+2580	know, people started blogging cause they had something
+2582	to say.
+2582	And then we had RSS feeds of blogging
+2585	of blogs.
+2586	And, uh, then it became like, well, I'll
+2588	just start a blog and I'll stick some
+2590	ads on it.
+2590	I'll make money.
+2591	And it turns out that really isn't, that
+2595	really doesn't work that way.
+2596	People want to read or listen to, or
+2599	watch things that they're genuinely interested in.
+2602	And even, you know, your example of push
+2605	button radio.
+2607	Well, yeah.
+2608	I mean, you, you, you don't have one
+2610	button on your radio.
+2611	You've got five or back in the day.
+2613	Now it's, now you have presets and, uh,
+2615	oh, they're in ads.
+2616	Boom.
+2616	Want to click over here.
+2617	Oh, I don't like that song.
+2618	Boom.
+2618	I'm going to go over here.
+2619	I don't like what he's saying.
+2620	Boom.
+2620	And you know, it's back and forth, back
+2621	and forth, back and forth.
+2624	Um, people come to content and content that
+2627	is desirable will be marketable and will be
+2632	interesting for advertisers.
+2634	Now that we've kind of gotten rid of
+2635	all the, uh, the deplatforming stuff.
+2637	I know you said a bad word or
+2639	whatever.
+2639	I think that's kind of gone by the
+2640	wayside.
+2641	Advertisers are smarter than that.
+2642	Advertisers are smart, but there's, there is no
+2645	easy way for them to buy because there's
+2649	not a single platform.
+2650	I think that's what you're describing where all
+2654	audio goes into.
+2656	And I just don't think that that matters.
+2659	It's when people want some kind of content,
+2662	they will jump through hoops.
+2664	They will beg, borrow, steal to get that
+2667	content no matter where it is.
+2670	And that's the thing that YouTube is not.
+2672	YouTube is millions, hundreds of billions of videos
+2676	of crap and an algorithm that keeps you
+2678	stuck in it.
+2679	And that's, you know, that's a great platform
+2681	to advertise on because, you know, people are
+2683	scrolling and TikTok does the same thing, basically
+2686	Instagram.
+2687	But audio is something that you sit down,
+2690	you enjoy.
+2690	And I believe that if you take out
+2692	the discoverability part, which you're correct on, there
+2695	is no real discoverability other than what's always
+2698	worked in podcasting is, hey, if you heard
+2701	that show, you're going to hear it from
+2702	a buddy that your research probably shows that.
+2704	Rarely do people search for, I want a
+2707	podcast that has X, Y, and Z and
+2709	it pops up and they're good to go.
+2711	The content is what is always left out
+2713	of this conversation.
+2714	I don't care if it's audio, video, or
+2717	a blog.
+2718	The content is what matters.
+2720	Here's the sad truth about that, Adam, is
+2723	that, you know, you brought up radio and
+2725	the five buttons and things like that.
+2727	And, you know, I can tell you from
+2729	years and years of looking at consistent data,
+2731	if you are listening to something at home,
+2734	if you're listening to something at home, right?
+2736	Most of the time today that we spend
+2739	listening to things at home, we are listening
+2741	to streaming or podcasting.
+2743	We are listening to digital audio, right?
+2746	It's well over half of what we're listening
+2747	to, right?
+2748	Same people, same universe, same humans in the
+2752	car, overwhelmingly AM, FM radio.
+2755	It's not just about the content.
+2757	People act differently when the apps are different.
+2759	People act differently in different environments.
+2761	It's just not easy enough in the car.
+2764	Well, that's what I'm talking about.
+2765	Okay.
+2766	Okay.
+2766	Fair enough.
+2767	I think we're in a transitionary period right
+2769	now.
+2771	And Sirius XM, they were very smart.
+2773	They got all the car manufacturers on board
+2776	and probably a large initial portion of their
+2781	listeners came for the playlist.
+2784	We didn't really have an alternative.
+2785	We, I think we had Pandora kind of
+2787	at the time, didn't really have Spotify playlists
+2790	easy, which of course is, you know, secondarily,
+2793	it's killing the artist.
+2795	But then Howard Stern, he was the big
+2797	driver for Sirius.
+2799	And that industry has always been in dire
+2802	straits.
+2803	That's why they had to get together and
+2805	they've got expensive satellites and there's all kinds
+2808	of financial issues they have.
+2811	But they were in the cars.
+2813	TuneIn tried to do this with radio stations
+2817	and they found out that they couldn't really
+2819	make a business out of it.
+2821	The in-car entertainment manufacturers, they tried a
+2826	lot of different things.
+2827	And I think we're just now getting to
+2830	the point where people are plugging in their
+2832	smartphones, but they don't have a way to
+2835	get radio yet.
+2836	I mean, TuneIn kind of, but they, and
+2839	I think the, it always comes down to
+2842	the content in the car, which is what's
+2845	the time, what's the traffic and what's the
+2847	weather.
+2848	I think that's why people are tuning into
+2850	radio in their cars.
+2852	A hundred percent.
+2853	Yeah.
+2853	And that is something that podcasting has not
+2856	cracked yet.
+2858	It's fun.
+2859	This is an interesting conversation because if you
+2863	think about one thing that caught my eye
+2866	over the last couple of weeks was this
+2869	surge to, you know, these, these number ones,
+2874	these charts from Apple and Spotify, they never
+2876	really changed that much.
+2878	I mean, Apple changes more than Spotify does
+2880	because it's more of a popularity trending chart
+2885	than a, than an actual total listenership chart
+2888	and that kind of thing.
+2890	But Spotify one, especially is just, I mean,
+2892	it's Joe Rogan.
+2893	I mean, it's Joe Rogan every single week
+2895	for years now is number one.
+2898	And then all of a sudden somebody else
+2899	goes to number one and that always catches
+2901	your attention because you're like, Whoa, okay, wait,
+2903	something happened.
+2904	And the Mel Robbins podcast went to number
+2908	one on Spotify and in Apple's chart.
+2911	And so they caught my attention.
+2913	I'm like, what, what is this?
+2914	I mean, I've heard the name, but I
+2915	don't know anything about this show.
+2917	So I go and just start doing a
+2920	little bit of research on who this is.
+2922	And, um, you know, find it, find myself
+2925	on her website and just start looking through
+2929	the content on the website.
+2931	That's about her podcast content.
+2935	And it reminded me.
+2937	So what I saw immediately was, I guess,
+2939	you know, this is a, this is a,
+2942	the, the episodes were laid out in a
+2944	sort of grid.
+2946	Um, and then all the titles were, they
+2951	look like they were right out of the
+2952	YouTube playbook.
+2954	So one of the titles was six sneaky
+2956	ways people are disrespecting you.
+2959	And then another one was, if you're feeling
+2960	uncertain and anxious, you need to hear this.
+2963	And, and the next one was get back
+2965	on track.
+2966	Five evening habits to wake up focused, recharged,
+2968	and in control.
+2969	These are all, these are, these are made
+2972	for YouTube titles.
+2975	And it's like, you know, the, the listicle
+2978	format, um, all it's, all it was missing
+2981	was like the shocked face thumbnail, you know?
+2985	Um, but yeah, it's like thing.
+2987	Yep.
+2988	Right.
+2988	But this, so what it reminded me of,
+2990	let me indulge me for a second here.
+2994	What it reminded me of is.
+2996	So I went to a funeral a few
+2998	years ago, the happy portion of the show.
+3001	Yeah.
+3002	This is where we jazz everybody up.
+3004	I went to a funeral, um, uh, a
+3007	friend that lives near me, um, had a
+3010	family member pass away.
+3011	So we go to the funeral.
+3012	This is this huge, it's at a humongous
+3014	mega church and I'm not a big church
+3017	guy.
+3017	I'm like, we, we've, I've never been in,
+3019	in a big church.
+3021	Um, and so in one, I mean one
+3023	like gargantuan mega church.
+3025	And so this is a church that's around
+3027	here and I knew about it, but never
+3030	been.
+3030	So the funeral's in this church and we
+3033	go in and then there's like the, the
+3034	viewing, the bot, the viewing of the bot,
+3036	the wake and all that kind of stuff.
+3037	And then later is the actual church service.
+3041	And so the viewing and everything is in
+3042	this sort of side, uh, chapel area.
+3045	That's, uh, on one side of the parking
+3048	lot.
+3048	And then once that was over, everybody walks
+3051	across, uh, to the main sanctuary, which is
+3055	gigantic.
+3057	And so, um, there's this, I become aware
+3061	of this like low level, um, there's speakers,
+3065	speaker systems throughout the whole entire campus.
+3068	And I get this, I become aware of
+3070	this like low level, like, um, note, this
+3075	just sort of like playing out, you know,
+3077	call it a, you know, call it a
+3079	C sharp.
+3081	It's just playing all the time.
+3083	Just so low, it's almost imperceptible.
+3087	And then we walk across into the main
+3090	complex and there's this, there's still this, this
+3094	note playing on, on, on this, uh, audio
+3098	system throughout the entire church.
+3101	We go in, we sit down, we start
+3104	talking, uh, we, uh, they start doing the,
+3106	you know, family start speaking, all this kind
+3108	of stuff.
+3109	And then at one point in the funeral,
+3111	um, the praise band comes in and just,
+3116	and, and goes into this, the first song
+3120	of, of a few that they played.
+3122	And it was the exact key, exact chord
+3127	to fit that note.
+3129	And it was just like, boom, right.
+3132	And you, you realize, I realized at that
+3136	moment, I'm like, wait, this is all orchestrated.
+3141	This is all one giant, like, this is
+3144	all connected.
+3146	Um, it's an, I've been living in for
+3150	the last two hours in a connected experience.
+3154	That's like so curated and, and sort of
+3158	like manicured.
+3160	And that's what I feel like with, with
+3163	what I'm seeing with YouTube and, and, and
+3167	its influences having a pocket.
+3168	What's happened is people have become so good
+3171	at seeing the YouTube algorithm and what it
+3176	wants that they've perfected it now.
+3182	Um, and now it's, it's getting pushed into
+3186	everything.
+3187	So it's like, it reminds you of that
+3189	Charles Taylor, the idea we talked about a
+3191	few weeks ago of every sort of paradigm
+3193	has built within it, uh, the ingredients that
+3197	will ultimately cause people to shift away from
+3200	it.
+3200	Like it's inevitable that like, like these behavioral
+3203	and social engineering tactics eventually will be discovered
+3207	and replicated.
+3208	And then somebody comes along and brings it
+3211	all together into this perfect package that just
+3214	like drives your brain off a cliff.
+3217	And that like, so that's what I feel
+3220	like is happening here is the YouTube paradigm.
+3223	I mean, we may be at, what I'm
+3224	saying is we may be at peak YouTube
+3226	right now.
+3227	It, if, if it continues down this road
+3230	where everything becomes, you know, I said this
+3232	on the, on the show last week is
+3233	I'm, I'm just as consistently disappointed in my
+3236	YouTube home feed as I am in my
+3240	podcast app feed.
+3242	Um, it just becomes like very quickly, I
+3245	run through a couple of things and then
+3247	there's just nothing else that interests me.
+3249	And I think it's because it's most, it's
+3251	becoming this kind of stuff, six sneaky ways
+3254	people are disrespecting you.
+3255	There's just tons.
+3256	There's so much of that because it feeds
+3258	the algorithm, but it also dries out like
+3263	meaningful content where, where people are doing things
+3266	other than just trying to juice the algo.
+3270	That's really well said.
+3272	I mean, I, I enjoyed that.
+3273	Thank you.
+3275	And, uh, it also kind of exposes a
+3277	truth, which is that I have trained myself
+3279	to speak at C sharp for years, um,
+3282	at that tone.
+3283	So I'm hoping that I thought, I thought
+3285	that sounded familiar, Tom.
+3286	Um, I, I, of course I, I thought
+3289	about you coming on and, and how we
+3291	can help and what ideas we can send
+3293	out there.
+3293	And I personally am someone who believes that
+3296	we have, uh, uh, that we've, we're stuck
+3300	in a direction of the inbox podcast app.
+3302	And I think that's part of the problem.
+3304	And I have advocated for quite a while
+3307	now.
+3307	It's like, have an opinion, have a podcast
+3309	app that has an opinion.
+3310	And I always use the Rachel Maddow app
+3313	as an example, uh, who has literally said,
+3316	I want, you know, how come I don't
+3318	have an app that shows me stuff I
+3319	want to hear.
+3320	And she, she nailed it.
+3322	I wonder if we still have that clip.
+3324	Um, she really nailed it.
+3326	Let me see.
+3327	Rachel Maddow.
+3329	Um, I don't remember what that was called.
+3332	Uh, but she was saying, Oh, the apps
+3335	are no good.
+3335	She was literally saying a version of what
+3338	you were saying, because what she wants is
+3340	she wants to see her shows pop up.
+3343	She wants to see Chris Matthews and, uh,
+3346	uh, you know, and Ali Valshi and, uh,
+3348	and the Midas touch and, you know, all
+3350	the, that's the stuff that she's interested in.
+3353	And there's a huge opportunity to create that.
+3356	And it doesn't even have to be AI.
+3358	You can just feature those types of, uh,
+3360	those types of shows and have an opinion.
+3362	Um, so that's what Fountain does.
+3365	Fountain has an opinion.
+3367	They have a social network.
+3368	They've integrated with Nostr.
+3370	They have an opinion about how you monetize
+3372	and that those money, then that monetization is
+3374	a comment at the same time.
+3377	Um, True Fans has an opinion.
+3379	True Fans wants you to come here to
+3381	be a fan of someone.
+3383	And we need, I think we need many
+3385	more like that, that, that content creators, I
+3389	hate the word, uh, producers can point people
+3392	towards and say, Hey, here's a great place
+3394	where you can, where you can, um, you,
+3396	you can enjoy this platform.
+3398	Now taking into account that there's really, and
+3402	you just look at the numbers.
+3403	Yeah, there's four and a half million podcasts,
+3405	but over the last 60 days, only 427
+3408	,000 have updated the last 10 days, 243
+3412	,000.
+3413	That's a pretty small pool.
+3414	And I'd rather be in that small pool
+3416	than, uh, than on YouTube.
+3418	But what if we made your life, the
+3421	podcast industrial complex is life easier.
+3424	And I'm just going to throw this out.
+3426	What if all of the modern podcast apps,
+3431	which account for, you know, if we could
+3433	get pocket casts, I don't think we can
+3436	get overcast for anything.
+3437	It'd be great if we could.
+3439	Um, if we took a stance and said,
+3442	Hey, we've got to change something about the
+3445	podcast, the advertising side.
+3448	And what if they all reported in actual
+3451	listen times into a nonprofit place where you
+3456	could then have actual numbers.
+3459	These would be numbers that would be a
+3461	sample, but it might be large enough to
+3463	say, Hey, this is probably what's happening across
+3465	the board.
+3465	Would that be something that the podcast industrial
+3468	complex would embrace and say, wow, now I
+3471	really know what my ROI is because I
+3474	know X amount of people heard my ad
+3476	at this particular moment in the show.
+3478	Or is that just pie in the sky?
+3480	No, it's not.
+3481	It's not pie in the sky.
+3482	Right.
+3482	I mean, you know, one of the issues
+3484	I think with the, uh, I have not
+3486	been to the podcast industrial complex.
+3488	It sounds like something in rest in Virginia.
+3491	You are the cornerstone, my friend.
+3493	What are you talking about?
+3494	We are.
+3494	Yeah.
+3494	We are a small company of four humans,
+3497	Adam.
+3497	I don't know that we are in that
+3498	cornerstone mortar.
+3500	You're the mortar of the podcast industrial complex.
+3503	We're, uh, I'm from, I'm in Boston.
+3505	We're the bubbler on the first floor.
+3506	So, uh, we're the bubbler.
+3510	No, I, you know, I, it absolutely would
+3513	help because you know, right now, again, with
+3516	YouTube and Spotify's share increasing every single year
+3519	in podcasting, uh, those are closed systems in
+3522	terms of the metrics that people have access
+3524	to, right.
+3524	You get access to YouTube metrics and they
+3527	define, uh, you know, a view significantly different
+3530	to how you and I might define a
+3532	listen.
+3533	So it would absolutely help and it would
+3534	provide some, uh, some safety and some clarity.
+3537	It's not going to fix everything because again,
+3540	there's a lot of inertia on the buy
+3541	side.
+3542	Uh, but you know, without a doubt being
+3545	able to have player metrics, um, and that's
+3548	something certainly, you know, we, we would love
+3550	to get more and more of from Apple
+3551	as well, uh, would help.
+3553	And it doesn't have to be the whole
+3555	universe, but if it's modelable, it can be
+3557	a proxy for something.
+3559	Uh, and it's a place to start.
+3561	What, what is your daily driver podcast app,
+3563	Tom?
+3564	Uh, for me, it's Pocket Casts.
+3566	Pocket Casts.
+3568	What, so what is your, if you were
+3571	to think of an idea, is it, well,
+3575	let me ask you this first, is it
+3577	Pocket Casts your daily driver because you think
+3581	it comes closest to the vision that you
+3584	laid out or do you, or is it
+3585	just sort of the best of the things
+3588	that you don't like?
+3590	It's habit.
+3592	And that's, yeah, it's habit and habit is
+3594	everything, right?
+3596	The habit and default thinking are everything.
+3598	It's why when somebody tells somebody about a
+3601	show and that person is interested in it
+3604	and they say, where can I find it?
+3605	The other person is very likely to say,
+3608	oh, just search for it on YouTube.
+3610	It's habit.
+3612	What, so what is your, if you, can
+3615	you lay out what your ideal podcast app
+3618	would be?
+3619	Yeah.
+3620	I mean, I think it has a finite
+3621	number.
+3622	Do you see it in your head is
+3622	what I mean?
+3623	I do.
+3624	I, I see it in my head.
+3625	I have a vision.
+3626	Yeah.
+3627	All those years that I was locked in
+3628	a vault in Burma, uh, this vision came
+3632	to me and, and to me, it, it,
+3634	it smells an awful lot like radio and
+3637	it is radio, but it is your perfect
+3640	station, right?
+3640	We can do that with music.
+3643	Uh, we need to be able to do
+3644	it with spoken word.
+3645	And, and I go back to what Adam
+3648	was just talking about, about having an opinion.
+3651	Um, you know, if I am interested in
+3654	true crime right now, I can either assemble
+3657	my own true crime network with, uh, you
+3659	know, a magnifying glass and a bunch of
+3661	searches, uh, or I can settle for one
+3665	company or one publisher's version of that.
+3667	Right.
+3668	But surely there's another middle ground there.
+3670	Surely there's a way that I could push
+3671	my true crime preset, uh, and it's always
+3674	filled with the content that I want.
+3676	Exactly.
+3676	Well, wouldn't this be a pot, an app,
+3678	just an app?
+3679	Cause I, cause when you said push button,
+3681	that triggered a lot of things in me
+3683	and, and Dave and I are actually working
+3684	on a project right now where radio stations
+3687	are now all moving to apps.
+3689	And I think they're right.
+3690	Uh, the apps that they have are pathetic,
+3692	uh, but they're moving to apps for their,
+3697	uh, listen live and, uh, on demand.
+3700	And, and, and it's successful for them in
+3704	many ways, you know, but as long as
+3706	they have the transmitters burning, you know, oil,
+3708	uh, to keep them running there, it's going
+3710	to be hard for them.
+3712	But wouldn't it, your push button be, here's
+3716	my true crime app and you open it
+3718	up and your serendipity and all the things
+3720	you're looking for is right there because, oh,
+3723	here's the latest episode of this one that
+3725	I'm already listening to.
+3726	Uh, here's something that is similar to it.
+3729	It would just be a bunch of, and
+3730	this is what the podcast index was really
+3732	built for to create these types of experiences
+3735	because you can do that.
+3737	You can, you can create an app, which
+3739	is your push button and it will feed
+3742	you stuff, uh, in a, in a certain
+3745	category.
+3746	Isn't, isn't that what you're asking for?
+3748	Yeah.
+3749	I mean, I think a lot of, uh,
+3750	you know, a lot of the creator side
+3753	of things is very focused on the lean
+3754	forward listener.
+3756	Um, and I, I want to also focus
+3758	on the lean back listener, not, it's not
+3761	a false choice.
+3762	Uh, it's a, it's not a, it's not
+3764	a binary thing.
+3765	Um, and I, and here's the thing, and
+3767	I, I listened to the show last week,
+3770	um, and I want to talk about the
+3773	daily sticky thing a little bit, uh, just,
+3775	just for a heartbeat, indulge me.
+3777	Um, and when Dave invited me to come
+3780	on this week after that, I thought, okay,
+3781	there it's they're inviting a vegan to a
+3783	steak dinner just to watch his face.
+3786	Oh man.
+3786	We're lovers, not fighters, brother.
+3789	We love, we love everybody.
+3792	Um, here's, here's the thing that really, here's
+3793	the thing that really concerns me.
+3795	Um, in the, in the article I wrote
+3797	last week, not this week's, I published a
+3798	graph that showed the conversion of people who
+3801	have, uh, ever tried a podcast to a
+3806	monthly consumption to weekly consumption.
+3809	And the ratio of weekly, not even talking
+3812	about daily, the ratio of weekly consumers to
+3814	those that have ever tried it, uh, it's
+3816	50%.
+3817	Right.
+3818	And that smelled bad to me.
+3820	And so I did a gigantic survey about
+3823	it, which I just got back.
+3825	And I'm going to talk about a podcast
+3826	movement evolutions where I compared that exact ratio
+3830	with 15 other types of media that we
+3833	consume.
+3834	And sure enough, it's very close to the
+3836	bottom.
+3837	And yes, Adam, you're right.
+3839	We don't, podcasts are not the same thing
+3841	as the radio.
+3842	They're not the same thing as scrolling through
+3843	your TikTok feed.
+3844	But if podcasting is, you know, 11th or
+3847	12th on that list in terms of actually
+3850	a thing you try versus the thing that
+3852	you make part of your regular existence somehow,
+3854	uh, then it's very forgettable.
+3856	Right.
+3857	And I, and I would like to make
+3859	podcasting more of a, more of a friend
+3861	for people because people don't fire their friends.
+3865	It's just, it feels like podcast, you know,
+3867	podcast apps originally, and they've always been this
+3869	sort of like, it's, it's the radio and
+3874	a little out of Adam said this before,
+3876	it's the radio receiver.
+3877	And, and your, the idea is that you
+3879	just like a radio dial, you're just going
+3881	to go find the content you want within
+3883	your app.
+3884	You know, part of the problem now is
+3886	the, the dot, this dial is now 4
+3889	million ticks long, you know?
+3890	So you, I mean, it takes like 20,
+3892	you know, 20 years to, to find the,
+3896	the thing you want if you're starting from
+3897	scratch with nothing.
+3899	Um, but you know, the, I guess, I
+3902	guess is there, you know, from that, from
+3906	that standpoint, there's no, you're not really the
+3908	entry point.
+3909	It's not surprising what you're saying because the
+3911	entry point into podcast, anything really, it, it's
+3918	difficult.
+3919	It really is just that podcast icon on
+3922	your iPhone.
+3925	Because I mean, the whole debate about what
+3928	is a podcast is, is tedious and, and
+3930	it's boring.
+3932	Um, I mean, really it's, if you, to
+3935	me, if you say that, if you call
+3937	your show a podcast, then when I opened
+3939	my podcast app, it should be there.
+3941	That's the bottom line.
+3943	Yeah.
+3943	If it's not, then it's not, it's like
+3946	turning on the radio and this radio show
+3948	is not the then, you know, it's not
+3950	a radio show, but it feels like if
+3953	you're, whether you land on YouTube or whether
+3957	you land in a podcast app, eventually, if
+3961	you intro into podcasting through some route, eventually
+3966	you're going to hit a show that's not
+3967	on YouTube.
+3969	And so you're going to go have to
+3970	go find it somewhere else.
+3973	And that somewhere else is going to weave
+3975	you back to some sort of podcast app.
+3979	And then you're in the ecosystem in some
+3982	way.
+3984	Um, I don't know if that's ideal, but
+3987	I don't also don't know if it's avoidable.
+3989	You know, so, so Dave and I have
+3991	an interesting proof of concept where we are
+3995	creating, it's an, for all intents and purposes,
+3999	it's a specific podcast app.
+4001	You can get it on a webpage, but
+4004	you can also, there's an app coming as
+4006	well.
+4006	You can get it in an app and
+4008	it's specific to geographic location.
+4012	And so I'll just take my own hellofred
+4015	.fm as an example.
+4017	So I have, um, and just, just call
+4021	it an app cause it will be, but
+4022	it's on a webpage right now and it
+4025	has a live stream.
+4025	The live stream is music exactly like K
+4028	-Love and there's promos for podcasts that are
+4031	in this app.
+4033	And the results of that is that of
+4036	the 100 people a day who listen now,
+4040	100 of those no longer listen to K
+4042	-Love.
+4042	They listen to Hello Fred here in Fredericksburg.
+4044	Why?
+4045	And there's my app before.
+4046	Why?
+4047	Because they get the same music, but it's
+4050	all, it has local content.
+4052	The most important thing of that, by the
+4053	way, for them is it's 73 degrees right
+4056	now on main street in Fred.
+4058	But I find that they all are very
+4061	happy because they know that if they want
+4064	to find the latest podcast from something in
+4067	Fredericksburg, they go to this app and they
+4071	don't care if it's on their phone.
+4072	They don't care if it's on a webpage.
+4074	They don't care if it's on, uh, on
+4076	hellofred.fm. They don't care if it's on
+4078	the church website.
+4080	They, and they all say the same thing.
+4081	I love it because all the stuff I
+4083	want from local from here is right there.
+4085	I don't have to think about it.
+4087	I have to search about it.
+4088	And so that's an app with an opinion.
+4091	And I, and I, and the response I've
+4093	gotten just from a few times, like I
+4095	said, on Rogan, like I think hyperlocal podcasts
+4097	is the way to go.
+4098	I have hundreds, hundreds of emails from people
+4102	saying, wow, I never considered that.
+4104	I never considered I could just do a
+4105	podcast for my town, for my community, for
+4108	my section of the city.
+4109	I had to write up a page for
+4111	people to tell them how to get started,
+4113	hyperlocalpodcast.com.
+4114	And then of course, directly point them to
+4116	Dave Jackson school of podcasting because I can't,
+4119	I can't teach everybody how to podcast.
+4122	Um, I think there's a shift taking place
+4124	now.
+4125	I don't know if it helps the advertising
+4127	side of it, um, but it may for
+4130	local advertising.
+4131	But again, we've, we've gone astray.
+4134	We've been stuck in our same inbox model,
+4137	which can be handy if you just want
+4140	to find something.
+4141	But most people hear about something from their,
+4143	from their neighbor, from their friend, from their
+4145	family member.
+4147	And the serendipity and the discovery is in
+4151	a very small set of things that someone
+4154	else has programmed.
+4155	If it's a specific experience, which we should
+4159	have a hundred of by now.
+4161	Yeah.
+4162	Right down to, um, you know, and I
+4165	can see you can have the true crime
+4166	app.
+4167	You can have the true crime with Gore
+4168	app.
+4168	You can have the true crime with, you
+4170	know, with, uh, only, uh, people getting out
+4173	of jail after 20 years.
+4175	There's a million different experiences we can build.
+4178	And now it come now, this is the
+4180	big one.
+4180	It all comes back to what's in it
+4183	for the app developer.
+4185	This is our major problem.
+4188	App developing an app is hard.
+4190	It's, it's tedious.
+4192	It sucks ass.
+4193	It's a time suck.
+4194	It removes you from your family.
+4196	Um, there's, and the platforms pull the rug
+4199	out from under you at regular intervals.
+4201	There's that happens too.
+4203	Um, although I, you know, I, I, yes,
+4206	it happens.
+4207	Um, so this is the problem.
+4211	We're either developing stuff for love because we
+4214	want to build this.
+4215	And then, and I, I think most of
+4217	the podcast apps that have a premium version,
+4219	I think they're reasonably successful.
+4221	It keeps them, you know, I don't think
+4223	know anyone who's quit their day job except
+4225	for the fountain guys, but they did get
+4227	a, they did raise, uh, some investment money.
+4232	Um, that that's, that's the problem who is
+4236	going to build.
+4237	And we've been, Dave and I, we've been
+4238	talking about this for a year and it's
+4241	not happening because there's no money in it.
+4244	And people are struggling just to build the
+4246	app itself.
+4246	We've made it very easy or much easier
+4248	with the podcast index.
+4249	You don't have to do a lot of
+4250	the heavy lifting, but how do we stimulate
+4254	that growth?
+4257	If it's the advertisers who want something, then
+4261	they need to pony up.
+4264	Yeah.
+4265	I mean, your favorite podcast, like Tom's favorite
+4267	podcast app, uh, pocket cast.
+4269	I mean, they, they really had hard times.
+4273	It's, they were lucky to survive financially when
+4276	WordPress bought them.
+4277	I mean, I feel like they were on
+4278	their last legs because of, you know, NPR
+4281	and all those kinds of things that happened
+4283	with their history.
+4284	It's, it's not, especially at their scale, that's
+4288	not, it's not cheap.
+4289	And yeah, it really comes down to what
+4291	we said a few weeks ago.
+4292	I mean, there's you with, within podcasting, there's,
+4296	there's this, um, you know, feast or famine
+4299	thing.
+4300	I mean, you're, you're not, you're either going
+4302	to be doing it for the love of
+4303	it, you know, or you're going to be
+4304	doing it for, for, for, you know, or
+4307	it's a full-time gig and you're making
+4308	plenty of dough.
+4309	It's, there's really no in between.
+4312	Well, I'll tell you the, the, uh, the
+4313	thing that can, it concerns me and I
+4315	want to step back just, uh, societally here,
+4318	because I, I, Adam, I agree with a
+4320	lot of what you were just talking about.
+4322	Um, my, you know, one of my concerns
+4325	about, uh, you know, again, circling back to
+4327	Dave, you talking about the, you know, optimizing
+4329	for the YouTube algorithm and all of that
+4332	is it sort of creates one country, right?
+4335	And we have been through this before.
+4338	It, it's something, uh, I've, I call it
+4340	the Donny Iris problem.
+4342	And, you know, Adam, as a, as an
+4344	ex DJ, you may remember Donny Iris who
+4348	had hit, uh, Alia, right.
+4351	And, uh, when I, so I've done programming
+4354	research for 30 years and, or, you know,
+4356	back when I started, uh, doing a lot
+4359	of research for radio stations in the radio
+4361	industry, there were massive regional differences in music.
+4365	And like at any time you would do
+4367	a music test in Pittsburgh, Donny Iris was
+4371	number one, right?
+4373	Those days are gone.
+4375	And the regional differences in musical tastes have,
+4378	have disappeared.
+4379	Uh, that that's happened because of centralized playlists,
+4382	uh, it's happened because of the kind of,
+4384	you know, uh, spot of spotification of, of,
+4388	uh, of playlists and national tastes and things
+4390	like that.
+4391	Um, you know, when Ed Sheeran puts out
+4393	a new album, all 20 tracks become the
+4395	top 20 on Spotify, that kind of thing.
+4398	Uh, and so, you know, regional tastes actually
+4402	disappear and that's not a good thing.
+4405	Um, and so when you talk about apps
+4408	with an opinion, a podcast app with an
+4410	opinion or something that's hyperlocal, uh, now's the
+4413	time.
+4414	Because those distinctions will disappear, right?
+4417	If it doesn't matter where you're from, if
+4420	you don't feel a connection, uh, to your
+4422	local community, uh, then we are all going
+4424	to get our media in the same way.
+4426	And we are all going to start making
+4427	the same choices and it's going to be
+4429	increasingly difficult to break out.
+4430	But what happens then, and this is what,
+4432	what I'm seeing, what we're seeing is there
+4436	is an incredible hunger for it because radio
+4439	specific radio's problem is not necessarily digital audio.
+4443	Radio's problem is they've given up on local.
+4445	Facebook has eaten up all the advertising from
+4448	the local retailers.
+4449	So they've, they've given up that it's, you
+4451	know, Elvis Duran used to be the guy
+4453	in New York now is in 15 markets.
+4455	So the only localized part from New York
+4457	is C100 New York and it's 73 degrees.
+4461	That's it.
+4462	And I think people still tune in for
+4463	the 73 degrees part and your local traffic,
+4466	et cetera.
+4466	Um, but I have proof, I have proof
+4470	that people are desiring something that is local
+4474	for them and, and it can be all
+4477	kinds of, I mean, we have a guy
+4478	here who does a five minute weekly podcast
+4480	about what's happening in the state Capitol.
+4482	And why do people like it?
+4484	Because it's Matt, we all know Matt.
+4487	He's a, he's mad.
+4488	He walks around as Ben Franklin on July
+4490	4th and he does that.
+4492	And so, you know, and, and if I,
+4494	I'm not doing it, but I know I
+4496	could go out to retailers and say, I
+4497	have a hundred people a day from Fredericksburg
+4500	listening.
+4500	I can get money for that.
+4502	I can sell that.
+4503	I don't, I don't desire it.
+4504	I don't want to, I don't have to,
+4506	but I could if I needed to.
+4508	Um, so going back to local and having
+4512	an opinion and somehow, somehow creating these, and
+4517	maybe it doesn't have to be an app.
+4519	I'm, you know, I'm just seeing that it
+4522	doesn't have to be an app per se.
+4524	People will type in to what they think
+4527	is their phone.
+4528	You know, I got duck, duck, go.
+4529	Do you have a browser?
+4530	No, but I got duck, duck, go.
+4531	Okay.
+4532	And they type in, you know, hello, Fred,
+4534	D O T F M.
+4537	They don't even know how to type in
+4539	a URL anymore.
+4540	And like, oh, there it is.
+4541	Click, boom.
+4542	Oh, there it is.
+4542	Listen.
+4543	And there are, they're already off listening on
+4545	experience.
+4546	They don't realize that it's a, it's a
+4548	PWA or it's just a webpage.
+4550	They're able to listen to something.
+4552	They can lock their screen.
+4553	They can connect it with Bluetooth.
+4554	That's a stretch, but they do.
+4556	Um, if they're, if they're serious enough about
+4558	it, but they have to be interested in
+4560	it and it only comes from experiences that
+4563	capture people in that moment, but it's all
+4566	going to be fragmented.
+4567	The idea of a podcast app is your
+4570	radio.
+4570	I think that's just over.
+4572	I've said this many times.
+4574	It's just over.
+4576	You know, and yeah, YouTube, you know, the
+4579	algorithm is kind of your, your app within
+4582	an app, right?
+4583	You know, that's, well, I mean, think about
+4585	it, think about it this way.
+4586	I mean, if you have right now, there's
+4587	four and a half million, you know, total
+4589	podcasts in the index, you know, we, and
+4591	we, we understand that not all those update,
+4594	but there's that's four and a half million.
+4596	Imagine some future scenario where there's, where there's
+4600	a hundred million.
+4601	Now there really is no way to centrally
+4604	handle all this stuff.
+4606	I mean, there, it just becomes, you, you're
+4609	gonna be forced in that room, you know,
+4612	in that scenario to, um, like niche yourself
+4616	because there's no, there's not going to be
+4617	a backend that has a hundred, 150 million,
+4621	200 million podcast directory for you to search
+4624	through.
+4625	Um, it's all, it's really only doable right
+4628	now because it's small.
+4632	By the way, I volunteer to do a
+4634	daily, uh, traffic report for hello, Fred with
+4638	fake, fake helicopter noise.
+4641	You're in, you're in, you're in flying above.
+4643	I'm flying above Fredericksburg right now.
+4645	You're in.
+4646	Yeah.
+4647	I mean, we can man the mic for
+4649	every, uh, for every, uh, hurricane.
+4651	Yes.
+4651	I mean, I've all fake high school basketball
+4653	games.
+4653	Well, well, just so you know, the kids,
+4656	uh, at the local high school, they're creating
+4658	a podcast for hello, Fred.
+4660	And it's about the Fredericksburg Billies, our award
+4662	-winning girls basketball team.
+4664	And they're just, they're just going to put
+4666	together a podcast and they love it.
+4668	They're fine with it.
+4669	And you know what they love the most?
+4670	Like people come up and say, Hey, I
+4671	heard, I heard your podcast.
+4673	It's so much more than a like, or
+4675	a thumbs up, et cetera.
+4677	So the landscape is clearly changing.
+4680	I think the most, the biggest breakthrough that
+4684	could happen for digital audio would be for
+4689	all podcast apps to use the lit tag,
+4693	the live item tag live.
+4696	Yeah.
+4696	It's astounding what kind of an experience that
+4699	is when you can listen, you can, you
+4702	can select, I mean, I've been doing live
+4704	streaming, uh, no agenda for almost 17 years.
+4708	And, you know, we have bat signals and
+4711	stuff fires off and the podcast and people
+4713	get the podcast apps just for that.
+4715	Like, Oh, well, when they, when the, when
+4717	the boys go live, then I get an
+4719	alert and I tap on it and my
+4720	podcast opens up and boom, I'm good to
+4722	go.
+4723	You know, when you just check in with
+4725	pocketcasts on that and see where the, because
+4727	that's something that they would be riding up
+4729	their alley.
+4730	They've added a lot of 2.0 features
+4731	that the live seems like a missing component.
+4733	Yeah.
+4734	Apple should add it.
+4734	I mean, they, they could, they could capture
+4736	the entire radio system.
+4739	Everybody could shoot down the transmitters overnight.
+4742	Well, cause then you get your, then you
+4743	get your traffic and your weather right there
+4745	I mean, you know, you get all that
+4746	stuff because it's live.
+4747	Yeah.
+4748	And then, you know, the combination of having
+4750	a live stream in an RSS feed with
+4754	podcasts, whether it's all the same or whether
+4757	like we're doing where you, you have a
+4760	feed of different podcasts that have been selected
+4762	for you in the most recent episode is
+4764	available.
+4765	These are the types of things that we
+4766	have to be thinking about.
+4768	And so as far as podcasting 2.0
+4770	goes, whatever we want to call it, it's
+4773	really about the app development.
+4774	You're right, but it's not about the features.
+4777	It's about the opinions.
+4780	Well, I think it's about shared experience.
+4782	And that I think is what live offers
+4784	you.
+4785	That's one path to shared experience.
+4787	Whether that's, you know, the comments section on
+4789	YouTube or, or everybody, you know, kind of
+4792	checking in a chat in a chat room
+4794	that they're sharing an experience and it's when
+4796	an experience is shared in real time that
+4799	it has velocity, right.
+4801	And then it just doesn't sort of languish.
+4803	So, uh, you know, finding ways to make
+4806	podcast content, uh, more vital and, uh, you
+4811	know, that, that sort of knocks on your
+4813	door a little bit more aggressively and, and,
+4816	and gives you that kind of shared experience,
+4817	I think are all good things.
+4819	Maybe we're approaching this from the wrong direction.
+4821	Maybe the hosting companies should be doing more
+4824	of this work with app developers.
+4827	Hmm.
+4828	You know, maybe, well, yeah, yeah.
+4830	I mean, thinking about it in that regard,
+4833	like if, if the issue is the apps
+4836	aren't, if you may, if you make an
+4840	app experience, wonderful people will, people will talk
+4843	about the app experience and they'll, they won't
+4847	just talk about content.
+4849	They'll be like, Hey, you need to check
+4851	out this app because this app is giving
+4853	me a great experience.
+4855	And radio gives you live podcast apps, give
+4859	you on demand, but there could easily, now
+4863	that we have this live technology in 2
+4866	.0, there could easily be apps can easily
+4869	add the live component in.
+4871	And so, and then now you get both
+4873	in the pod in, in your app.
+4875	And now you've got, now, now you really
+4878	do have a sort of like a, this
+4880	natural transition over to, and, but see, that's
+4884	where YouTube is hamstrung because they're not going
+4887	to do the small niche live thing.
+4892	I mean, that's going to be a local,
+4893	those are going to be local podcasters doing,
+4896	you know, doing, doing their thing because it's
+4898	for the love of it.
+4898	They're not going to, they're not going to
+4900	get, they're not doing this for ad for,
+4903	for RevShare or whatever through YouTube.
+4906	That really could be a way to drive
+4908	podcasting, the podcasting apps as a sort of
+4913	unique experience.
+4914	Well, I'll, and I agree and I'll add
+4916	to that.
+4917	And I, I kind of forget because it's
+4918	so normal for me.
+4919	Whenever I'm doing a podcast, I'm always looking
+4922	to the right out of the corner of
+4923	my eye because there's the, in this case,
+4925	the boardroom during no agenda, it's called the
+4929	troll room.
+4929	And that is an ephemeral experience that people
+4933	just completely.
+4935	So on a show day, we have anywhere
+4936	from two to 3000 people listening live.
+4939	And a portion of that is in our
+4941	chat room, which is just an IRC chat.
+4943	It just scrolls by, you know, it's like,
+4946	it's, you know, someone says something horrible.
+4948	I don't have to worry about it because
+4949	it'll be gone in five seconds.
+4952	And, you know, we have a tag for
+4954	that actually.
+4955	It's never been implemented.
+4957	I don't know why, historical reasons.
+4960	But these types of these types of things,
+4964	even a replay of that, I mean, it's,
+4966	it's all, it can all be built, but
+4968	there's only so many app developers and they
+4972	are set in their particular path.
+4976	And I think it's scary for them to
+4980	change, honestly.
+4982	And, you know, the more I think about
+4984	it, the more I'm thinking, why isn't Buzzsprout
+4987	the media company?
+4988	Why aren't they, why aren't they, why aren't
+4991	they attracting people like, hey, be on our
+4994	true crime app?
+4996	That's interesting.
+4998	You know, they, they, they have the money.
+5001	Yeah.
+5002	They are the, those companies most consistently have,
+5005	have revenue out of the whole deal.
+5008	You know, I'm thinking about, you know, the
+5010	troll room and things like that.
+5011	And, you know, I don't know how many
+5012	research webinars I've done in my life, you
+5015	know, a thousand, uh, and I always do
+5017	them live and I always pay attention to
+5019	the chat room and, you know, at least
+5022	two or three times in the course of
+5024	a webinar, I'll acknowledge somebody saying something in
+5027	there.
+5027	And it doesn't take much.
+5029	Ultimately, people want to feel seen, they want
+5032	to feel seen, they want to feel special.
+5035	And if there are ways that we can
+5036	do that in podcasting, I don't think it's
+5039	a, it's a very difficult lift.
+5041	Just hasn't been tried a lot, right?
+5043	It is part of live.
+5044	It's a part of the live show, certainly
+5046	that you do.
+5047	Uh, but it's, you know, it has to
+5049	become more a part of podcasting.
+5051	If we're going to continue to create that
+5053	shared experience that people want to gather around
+5055	the water cooler or whatever it is and
+5058	start to talk about what we do because
+5060	no one else is coming to save us.
+5063	You're, you're caller number 12.
+5065	Well, uh, we'll give you a, we'll give
+5067	you that experience right now, Tom, as we
+5069	are about to thank some people who've been
+5070	boosting during the show, which is actually sending
+5073	us money.
+5074	It's sending us money through the lightning network.
+5076	It's Bitcoin, which, uh, James Cridland says is
+5079	a Ponzi scheme.
+5083	So hang in there and see how it
+5084	works because people feel special.
+5086	When I call out Cole McCormick with 11,
+5088	11 sats coming in from fountain says I'm
+5090	live streaming Sunday nights.
+5093	He's promoting something.
+5094	I've been enjoying it more and more each
+5095	time I do it.
+5096	Yeah.
+5096	All right, Cole.
+5098	Uh, Marta Linda's code 1701.
+5100	That would be the enterprise boost.
+5102	Did the super comment spaceship booster Graham arrived
+5104	to your spaceship location?
+5106	Why?
+5106	Yes, it did.
+5106	He says, go pirate radio, free radio, uh,
+5110	from my ego netcast site, free radio history
+5113	and pirate radio, uh, radio North Sea.
+5116	Okay.
+5117	That by the way, that's live interaction, Tom.
+5121	That is boobery who just boosted 17,776
+5125	Satoshis, which is about 16 bucks.
+5128	Then he says we're wrapping up the first
+5129	season of the skirmish with the satellite skirmish
+5131	streaming lit May 10th, 2025, four bands, longer
+5135	sets, new artwork.
+5136	And mama Bury is joining the fray as
+5139	a boost alert artist.
+5140	Beware of the blooms.
+5142	And Eric PP just came in with 33
+5145	33.
+5145	Yeah, this, this is, this is see people
+5149	can trigger these sounds live.
+5150	I don't know if you ever listened to
+5151	our show, but they can.
+5152	Yes, I am aware of that.
+5153	Yeah.
+5154	Which you might've heard beeping here and there,
+5156	uh, 22, 22 from salty crayon.
+5159	Dave, here's your beef Wagyu sticks courtesy of
+5162	the beef initiative family owned and operated founded
+5164	by first-generation farmers Sawyer and Abby Cottrell
+5167	in 2021 transitioning from commercial Angus to premium
+5170	Wagyu cattle, beef, beef initiative.com as a
+5174	whole long URL there, which you can find
+5175	on fountain.
+5176	TJ band name, the beef initiative.
+5179	Yeah, well, the beef initiative.
+5181	Yeah, that's a good band name.
+5183	That's sort of like a punk version of
+5184	the style council.
+5187	Oh, poor Paul Weller.
+5188	One 11 sats from sir.
+5190	TJ.
+5190	The wrathful don't know how you pick that
+5192	Christian music plays on your hello Fred stream,
+5194	but you should check out the DC talks
+5196	album.
+5197	Jesus freak.
+5197	One of my top favorite Christian rock albums.
+5200	Door fulls are around just busy surviving.
+5202	Thank you for your courage.
+5203	Okay.
+5204	I'll check that out.
+5205	Thank you.
+5206	202 from salty crayon bat signal activated.
+5209	Yes, of course.
+5209	And we're glad that you caught that.
+5210	And I hit the delimiter there with comic
+5212	strip bloggers.
+5213	So Dave will thank some of the people
+5214	who have supported us with the PayPal's and
+5217	the monthly's.
+5219	Yeah, we got one.
+5220	We got one PayPal this week from the
+5224	guys at buzzsprout $1,000.
+5226	Now you're talking.
+5229	Shot Carla 20 is blaze on the Impala.
+5233	How many?
+5234	How many CPMs would you have to have
+5235	for that?
+5236	Tom Webster.
+5238	I'm really bad at math.
+5241	CPM CPM math go.
+5243	Yeah, I'm really bad at math.
+5245	So don't ask me that.
+5247	We got a couple of boosts.
+5249	Thank you.
+5249	And we're and I've pinged Tom and Kevin.
+5253	We got to get him back on because
+5254	it's been too long.
+5255	Well, we have.
+5256	We have something to talk about.
+5257	We have something to talk about now.
+5258	And it's like, hey, you guys should be
+5260	making apps become a media company.
+5264	See loss on Linux and it's 2222 through
+5266	fountain.
+5267	He says the problem is overcoming known habits.
+5269	People know how a search engine and browsing
+5271	the internet works, even though that may be
+5273	more effort than when you have a podcast
+5275	app set up.
+5276	You don't need to learn the new thing.
+5278	That's why in e-commerce, allowing checkout without
+5281	registering an account is super effective.
+5283	People don't want to do chores like filling
+5285	in your name and everything in a sign
+5287	up page or learning what a podcast app
+5289	is.
+5289	What's RSS?
+5291	What's a good podcast app, et cetera?
+5294	Good points.
+5295	Yeah, I agree.
+5296	Very good points.
+5297	We've got.
+5299	Oh, and then the delimiter.
+5300	We just had one boost from the from
+5301	the weeklies.
+5302	Comedy strip blogger.
+5304	Eighteen thousand and ten sets through fountain, he
+5306	says.
+5306	Howdy, Dave and Adam.
+5308	I'm sure that among your listeners, there are
+5310	people who could use fasting to get healthier,
+5312	not just fat.
+5313	So I recommend free financed by voluntary donations.
+5318	Fasting app from easy fast app dot com
+5321	called easy fast available for iPhone, Android and
+5326	Apple.
+5326	Watch the easiest, most beautiful, comprehensive and accessible
+5330	app for fasting made by someone who actually
+5334	fasts.
+5335	Adam's gal pal DC girl recommended it.
+5338	So it must be good.
+5339	I use it to yoke CSB.
+5341	CSB is an amazing guy.
+5343	He promoted that on Curry and the Keeper
+5345	as well.
+5346	He's he just boosts people and and buys
+5349	the airtime.
+5350	And if you're not into fasting, the beef
+5353	initiative, don't forget about the beef.
+5355	The beef initiative is the thing, man.
+5358	It really is.
+5359	It's you should look at it.
+5360	You should look at beef maps dot com.
+5362	You can find your local rancher and you
+5365	can buy direct from the rancher.
+5367	It's every every month, 20 pounds of ground
+5370	beef.
+5371	It's cheaper to is so it is very
+5375	weird.
+5375	But for some reason, it's cheaper to get
+5378	20 pounds of ground beef shipped to me
+5380	from Texas than it is to buy it
+5382	locally.
+5383	I know it's crazy.
+5384	It's crazy.
+5385	I know.
+5386	I don't know why.
+5387	I mean, like whatever.
+5389	But they they sent me a note the
+5391	other day and was like, would you like
+5393	since you do this so much?
+5394	Do you want one pound packages or two
+5397	pound packages?
+5397	They're like they're now they're like bespoking my
+5400	packaging for me.
+5401	Who was this?
+5401	Was this KNC?
+5403	KNC.
+5403	Oh, nice.
+5404	Very nice.
+5407	Yes.
+5407	Go ahead.
+5408	Well, that was it, right?
+5409	You're done.
+5411	No, I've got monthly.
+5412	So I got new media productions.
+5413	That's that's a boy.
+5416	Todd over blueberry.
+5417	Thirty dollars.
+5418	Thank you, Todd.
+5419	Thank you, Todd.
+5420	Gene Liverman.
+5421	Five dollars.
+5421	Michael Hall.
+5422	Five dollars and 50 cents.
+5424	Timothy Voice.
+5424	Ten dollars.
+5426	Trevor is Satan's lawyer.
+5428	Five dollars.
+5429	Where's the six six six that he used
+5431	to send?
+5432	He's not doing the right numbers anymore.
+5434	No, he's just he's his interest is waning.
+5438	Oystein Berger.
+5440	Five dollars.
+5441	Jorge Hernandez.
+5442	Five dollars.
+5442	And Michael Goggin.
+5443	Five dollars.
+5444	And that's our group.
+5444	Thank you all very much.
+5445	Oystein Berger will be on the live stream
+5447	right after we're done with his his crazy
+5449	music podcast, which you can, of course, boost
+5452	on the modern podcast apps.
+5454	And thank you all very much for supporting
+5456	the podcast.
+5456	This is the podcast in 2.0, but
+5458	you're really supporting the index.
+5459	It keeps everything rolling, keeps the the servers
+5462	humming along.
+5462	Thank you, especially to the bus bus sprout
+5464	guys.
+5465	We appreciate those monthlies.
+5466	That really does help.
+5467	Tom Webster.
+5468	I'm so glad that you came on.
+5470	I'm glad that we got some radio experience.
+5472	Finally, you got a little chance to talk
+5474	with us.
+5475	Get on the mic.
+5476	It's a mic time.
+5477	Get some mic time.
+5478	It's a mic time.
+5478	Yeah, I'm starved for it.
+5480	Do you feel like we've learned anything from
+5481	this?
+5482	Have we have we gotten anywhere?
+5483	Have we have we have we triggered some?
+5486	Will there be a new article that you're
+5489	going to write?
+5489	I guess that's what I'm asking.
+5491	You know, if if we have done nothing
+5494	more than pleasantly pass the time in a
+5497	way where that pleasantry is passed along to
+5500	the audience, that is enough.
+5502	That is that is sufficient.
+5503	But these things are continuing to to ruminate
+5505	in the back of my head and they
+5506	won't disappear.
+5507	That's for sure.
+5508	OK, well, we we really appreciate you coming
+5510	on.
+5511	Say hi to your partner, Brian Barletta.
+5515	And what are you doing this weekend?
+5518	I I'm entertaining two teenage boys this weekend.
+5522	That sounds not really wrong.
+5524	It sounded really wrong.
+5525	Yeah, no.
+5526	Yeah, my yes, I have my wife's sons
+5529	are staying with us.
+5530	OK, OK, all right.
+5532	So video games basically is what you're doing.
+5535	Video games all weekend long at Tom's house.
+5537	You know, and board games.
+5539	We've we're really getting into board games lately,
+5540	which I'm thrilled about.
+5542	So I'm telling you, these kids, man, they're
+5544	going back to some traditional things.
+5546	Are they are these phones, board games?
+5548	Yeah.
+5548	Are they zoomers or they they got to
+5550	be zoomers, you know?
+5551	Oh, for sure.
+5552	Yeah.
+5552	Very nice.
+5553	Dave, are you going to have some downtime?
+5556	Will you be doing sheetrock?
+5558	Oh, no, I'm fixing a I'm fixing a
+5560	mechanical fuel pump on the city.
+5563	I'm already getting 11 miles to the gallon.
+5566	So now I now I find out that
+5568	I'm dumping an extra half gallon between tank
+5570	fill ups on the ground.
+5572	All right, Tom, we'd love for you to
+5574	come back if you next time you write
+5576	a scathing article.
+5577	Be fun to have you.
+5579	And I didn't scathe.
+5580	There was no scathing.
+5581	No, I took it exactly the right way.
+5583	And you're you're you're speaking my language with
+5586	in to a certain degree.
+5588	We may have different approaches to it.
+5591	And I think that you'll see there are
+5593	there are changes ahead.
+5594	A lot is happening.
+5595	And hopefully some app developers and hosting companies
+5598	take this to heart.
+5599	The stuff that we talked about, because I
+5601	think there's a lot of opportunity and it
+5603	definitely is not.
+5604	You're right.
+5605	It's not a video conversation.
+5606	That's that's the reddest of all herrings I've
+5609	ever seen.
+5610	Yeah.
+5610	But it's fun.
+5611	It's fun to do.
+5612	You know, it sells a lot of video
+5613	gear, I'm sure.
+5615	Well, I appreciate you having me on and
+5617	I will give you the the highest compliment
+5619	I can offer is that this show doesn't
+5621	suck.
+5621	Oh, yeah, that's the that's the bar we
+5625	wanted.
+5626	That's exactly where I want to be.
+5627	Thank you very much.
+5628	Boardroom will be back next Friday, right here
+5630	on podcasting 2.0. Podcasting
+5651	2.0. Visit podcastindex.org for more information.
+5657	I mean, cats are more cooperative.

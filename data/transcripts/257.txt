@@ -1,0 +1,1007 @@
+0	Podcasting 2.0 for April 17th.
+4	Two-fif-
+10	Welcome to Podcasting 2.0.
+12	We're back after one Friday off.
+16	to give you all things podcast.
+19	The real podcasting. All things RSS.
+24	board meeting of Podcasting 2.0 and the only boardroom that wasn't a sneaker company previously. I'm Adam Curry here in the heart of the Texas Hill Country and in Alabama, the man who will never
+36	Say hello to my friend on the other end, the one, the only, Mr. Dave!
+46	Jones!
+49	Don't say never.
+51	Anything's possible. Don't tempt me. This is true. This is true. This is true. How you doing, brother?
+57	Good. Yeah. Yeah. Doing good. I'm
+61	Off work today. What?
+63	Well, of course, we already had tax season. Yeah, tax season has come and gone. So you get three weeks of, what was it, two weeks of rest, and then it starts all over again?
+72	Two weeks may be generous because all the things you can't do during tax season you have to do as IT. You have to do after tax season.
+83	You can't make no changes during tax season. How was this tax season? Were people happy? Did they get bigger refunds because of no tax on nothing?
+94	No tax on that. People did get bigger refunds. Okay. It was the headlines I saw were humorous, though. It was like.
+104	Yes, tax refund sizes are up, but not by as much as previously thought. No, it's maybe 8% or 10%, I think. Like 11%. That's pretty good. That is pretty good. Yeah, that's not bad. I would like 11% more money.
+120	I'll take it. I'll take it. Yeah. I mean, like talk about making a negative out of a positive. Oh, well, typical. I was listening to.
+130	First ring day.
+132	So what? What show?
+134	First Ring Daily, it's a very...
+138	in like a niche.
+140	podcast about
+142	It's daily about.
+144	Microsoft stuff. It's only last like.
+147	Oh, okay.
+149	It's just, it comes up.
+151	eat every day.
+152	Another one of those things I listen to for work, but Paul Theriot was talking about.
+157	The insanity, just the craziness of headlines now. And like one of the ones he was quoting was.
+164	this headline that said um these seven things on mars will kill you instantly
+171	And the subtitle was, Number 5 will truly blow your mind. Oh, that sounds like AI slop right there. Oh, it totally is.
+180	There's seven things on Mars that could kill you. I mean, like the number – just the fact that they're – like number one is all – it's the whole thing. Like just the lack of oxygen. Well, yeah. Everything else is just a stupid gravy on top. I mean – The world is insane. Well, the world is – the internet is breaking. The internet is – It is, and I'm so happy about it. Oh, well, let's start there.
+205	Because there's a couple different angles. I know you've been fighting all kinds of things. I'll save the CICD prompt injection for a little bit later on, which I find very interesting, actually. I love – like I don't know how many things can happen in a single week, but this week may have been a record.
+226	Well, tell me about the Claude Code Gemini CLI credential theft because I is a developer now.
+236	until everyone got the 500.
+239	from the API and then suddenly I wasn't a developer anymore, which was kind of fun. What is happening? Is that because people are putting their credentials into Claude and it's getting sucked in there and spitting back or what's happening?
+255	You're catching me off guard. I'm not sure I know what you're talking about. Exposing GitHub credentials through PR titles.
+263	Modern CICD pipelines are a train wreck, says Dave, post Dave on podcast index. My bad. Yeah, you got it.
+271	Yeah, so...
+273	Pull requests. Yeah, the pull. This is a continuation. GitHub actions are having a bad day. What are GitHub actions? They're having a bad month, actually. What are GitHub actions?
+285	So GitHub Actions are a way that you can trigger.
+290	for non-developers, non-SRE sysadmin people.
+295	There's a thing modern code
+299	is distributed to a production system.
+305	typically based on...
+307	call a CI-CD pipeline, which is continuous integration, continuous deployment. Right. A typical flow would look something like this. It would be...
+317	there's a development server or a staging area where things are tested, then... Testing's for pussies. Live, baby. We'll do it live. Oh, you're talking to the king of modifying the production server in flight. Yes, I agree.
+336	We'll leave you with a – I can't do it.
+340	We'll do it live.
+343	We'll do it live! F*** it!
+350	That f***ing thing sucks!
+352	That's Dave. Dave in the dev department. Yes. I'm just less angry about it.
+360	um,
+362	Yes, the...
+365	So what happens is you have this staging environment or this development environment and then things are tested and they go through, tested by people and by automation.
+379	The changes are considered valid and good, and then you promote it to a release.
+385	So then you would typically do some.
+388	it with a version number.
+392	this would
+393	trigger a release or sometimes the release trigger is manual and then that goes once that happens this whole it kicks off a whole slew of downstream
+404	functions that take over.
+407	So once the release is finalized.
+411	All this, this whole, the whole process of getting it over to your production servers that are actually serving traffic to the world.
+418	It's almost out of it.
+420	Practically out of everyone's hands. It just happens. Mm-hmm.
+424	This is.
+426	Kicked off by GitHub actions. And so these GitHub actions can.
+430	you know, uh,
+431	build the project, do things like build a Docker image off the project.
+439	And yeah, then perhaps do a security scan to make sure no malicious packages were included as part of the build because the build is pulling from package managers. So this is all coming from a large language model triggering this through an API on GitHub?
+456	No, it's not large language model. This predates LLMs by a long shot. These are all just, it's code flow. It's DevOps. And it's a good idea. It's considered, you know, you could say like infrastructure as code.
+475	Where you're defining a set of things that need to happen every single day.
+480	single time.
+481	And instead of a human being running, just sitting there running these scripts.
+485	The automation takes over and
+487	It does, and it runs tests at each step of the way to see if anything fails before it deploys.
+492	You know, the idea is it can catch problems before it gets to production.
+496	So, I mean, the ideas involved are not bad, but.
+501	course there's going to be
+503	risks because the risks of automation are always there.
+508	What if somebody gets in – what if somebody figures out a way to get into your pipeline?
+514	And the more steps you have in that chain, the more opportunities there are for something to have.
+525	something malicious injected into it. And this is what happened.
+530	earlier
+532	Let's see, like earlier in March, so the first half of March, the Axios breach.
+537	Right. Yeah. That's what that came from.
+541	LLM breach, all of that stuff has started with, with.
+547	It wasn't GitHub Actions itself that was the problem.
+551	The developer accounts.
+553	of other
+555	Package repositories got breached.
+559	And then they were able to update the things that were called in the GitHub actions.
+566	those injected the malware and so or the info stealers and that sort of thing so um the the biggest one was
+575	Smarks, I think is what it's called. It's a security. It's a GitHub action security scan.
+581	And so the idea here is that you build your production.
+585	build your release bundle.
+587	then it goes through and looks for vulnerabilities in what it just built. And it's, so it's a security scanner, like an antivirus scanner. And.
+596	But somebody compromised that.
+598	And so...
+600	Every time that thing ran.
+603	It was deploying an InfoStealer into the code that you just built.
+608	That took place across.
+612	dozens of huge major repositories. I mean, we still don't know the extent of that.
+618	I think if I'm not mistaken, that's what took down Cisco's. I don't know if you heard about that, but Cisco's entire GitHub private GitHub repository got stolen.
+631	All of Cisco's proprietary code is now leaked. It's been hacked.
+638	That's it.
+639	came from that breach. So this is just a continuation of the same thing of attacking GitHub Actions.
+649	And this thing figured out that.
+651	There was a way that you could.
+654	Use the titles of –
+659	pull requests.
+660	to execute code.
+663	So you could inject a malicious pull request.
+668	And just the presence of that pull request would trigger the action. So like somebody, for instance, our web UI repository for podcast index. It's a great it's a good example of this. When somebody submits a pull request.
+684	to our website repo.
+687	A bunch of automatic checks happen to make sure that because the primary use case for that is people adding.
+697	themselves to the podcastapps.com page. And so...
+702	That's all based on a JSON file.
+706	And the GitHub action that triggers when somebody submits a pull request on that JSON file is it checks the syntax, makes sure that they did.
+715	everything right.
+717	end up pushing to production a broken JSON.
+722	So now, so this means that.
+725	this particular vulnerability.
+728	could have made somebody deploy a malicious pull request to your repo.
+734	The automatic checks happen in certain circumstances.
+738	If they put code in the title, that code would execute.
+742	could scrape your data and send back.
+745	that they're not supposed to have. It's a disaster. This whole thing is so fragile. We don't...
+755	We built systems over the past decade.
+761	that are not ready.
+763	for the way
+765	for how fast things are.
+768	Deployed.
+770	Deployed and yeah, because like.
+775	It's that famous phrase like from Jurassic Park, you know, you.
+779	All you thought about is whether you could. You didn't stop to think about whether you should. Yeah.
+784	And that's what's happening really here is these package managers or package repositories. Like now every time I build something, I just hold my breath.
+795	I'm not kidding. Like I was building something this morning. I was doing a – I was doing a –
+803	some work on the local aggregator for Godcaster this morning.
+809	I needed a composer package.
+814	Put into.
+816	because that runs Laravel.
+818	So it's all handled with Composer, which is PMP.
+822	PHP.
+826	I did composer, you know, install.
+831	I just had this anxiety the whole time watching the screen. I'm like, what's about to take over my computer?
+836	This is code coming from some... In that sense...
+839	Honestly.
+841	What we've been – we complain about AI creating code that we don't read.
+848	or that we don't understand or we never look at? Oh, I mean, that's, if you think about package repositories.
+854	That's been going on for 15 years. We have no idea.
+859	What is in most of these? Just all these apps install. Boom.
+866	Well, you know that.
+868	The
+869	apt-get
+871	The Debian repositories, because it – I feel more comfortable that those have been –
+878	vetted more thoroughly and they're also older packages you don't typically like especially on an lts release what you're getting is typically a package that's been frozen at a version that's actually pretty old
+892	Comparatively speaking, so those Linux repo, Linux distro package repositories are actually
+900	Those do not bother me.
+903	much i would much rather get one of those than something off like npm or p or pip
+910	I mean, or PiPi. Those things have, oh man. I mean, like those things are a train wreck, right?
+918	So I've been thinking about all of these and you'll tell me which one you want to talk about. But all of these different clearly vibe coded systems that have been been brought up to create podcasts. And, you know, it's like the big topic.
+936	The only thing it's bad is just it's just it's flooding systems. You know, podcasting doesn't have a discovery mechanism. You know, I really.
+946	I do have some thoughts on this cloning of titles or close to cloning on titles, close to cloning on images. I have some thoughts on that.
+954	But in general, all of these, you know, so, okay, if someone happens to be searching.
+959	like, oh, I have my podcast app. I'm going to search for a podcast because I don't have anything to listen to.
+966	I'll bet you that that's a very low.
+969	amount of people that are doing that.
+974	positive. Yeah. I mean, so if they're searching for a particular podcast, yeah, that of course is a problem. If there's a whole bunch of clone feeds and things that look like it sounds like.
+984	But I don't think anyone's really, I mean, this is a business that is not going to last very long.
+992	You know the the true way to stop it is to just stop giving away free accounts Or or you know free account, but not if AI or whatever
+1002	Um,
+1004	Uh...
+1005	If anything, it's going to ruin podcast monetization, download-based monetization.
+1012	Because advertised like, well, it's all scam. I don't think anyone's listening to this stuff. So I.
+1018	I view that as generally good, but not good for people like Dave.
+1025	It's because I was trying to update. We get to do this, the podcast. And I'm like, it's not happening. Why is it not happening? And then I waited for an hour, 45 minutes, an hour. Like, this is ridiculous. I don't know what's happened.
+1038	Of course, I thought it was my fault, but it's an RSS.com feed. So those are usually good. I check it. The feed is there. I check the raw feed. Feed's good. So then I wind up issuing a reset, which I don't like doing because I know that it takes a lot of extra resources. And that did get through and that did update the feed, not in the way it should have. And then you come back later and say, well, this is the reason, which is
+1062	crazy process that was, was it searching fountain feeds? What exactly was going on there?
+1069	I don't – I can't give you a step-by-step of exactly – so what I – you mentioned something Wednesday about we get to do this, not updating.
+1079	This being very or being stuck scanning. Yeah, that's why. Well, I couldn't tell if it was stuck. It just it said scanning and it wasn't doing it. So.
+1087	And so later, a little bit later, I looked at it and I was like...
+1091	By that time, it had gone through.
+1095	I don't...
+1096	really see anything. That was probably after my reset though.
+1100	I don't.
+1101	don't know to see this is all very hard to understand because what so i look of course the first thing i do usually in a situation like that is i go look at cloudflare and see if we're just getting you know
+1114	And I didn't see anything that looked out of the ordinary based on – what I mean is out of the ordinary based on what I have seen lately.
+1121	I mean, we're serving a lot.
+1124	I wish we had kept
+1128	I wish I had kept historical traffic charts.
+1132	because
+1133	What we're serving lately is a lot. What's a lot, Dave? Let's see.
+1144	Thank you.
+1148	analytic. Here we go.
+1150	I'm just looking at our Cloudflare stats.
+1156	So over the last 24 hours, we've served.
+1162	322 gigs of
+1169	9.2 million API requests.
+1174	Let's see over the last seven days. This is down significantly.
+1178	from what it was yesterday.
+1181	You can see on the chart it just – when Oscar fixed their issue, it just – it fell off.
+1189	Over the last seven days, we've served two terabytes of data and 75 million API requests.
+1197	I
+1198	How many podcasts?
+1200	are there.
+1202	Well, most of this is just a handful. I can promise you. Yeah.
+1207	But they – so –
+1210	The that's what I mean, that's so up from what it used to be, let's just say a year and a half ago.
+1218	In one sense, I'm really happy that we hold up so well. Stop the hammering!
+1228	I mean, I'm really, it makes me.
+1232	I'm glad that we're able to handle so much traffic. I mean, that's pretty. That's amazing. That's pretty awesome. Yes. Yeah. Considering the shoestring budget we're on. For sure. Yeah. And.
+1243	But then at the same time, it happened so gradually. It's like the boiling frog thing. I never really thought, well, maybe some of this stuff coming from these other places is not organic.
+1257	So, like, fountains...
+1259	Traffic had been going up steadily for a while, and I had noticed I had noted that in the back of my mind. And I just figured.
+1269	serving lots of data. And I'm like, okay, that's fine.
+1275	Then what happened was I went.
+1278	Oscar was like, hey, you know, this...
+1281	Podcast is not updating.
+1284	I looked and I was like, I wonder how many.
+1287	I wonder how many things are in the queue for the aggregators to poll. I wonder what the queue length is for weight.
+1294	I go and I look. That's where you just discovered it. 500,000 podcasts. Waiting for what? To be updated?
+1300	to be pulled, to be aggr- - Oh my goodness.
+1303	be requested and downloaded for aggregation.
+1308	Whoa.
+1309	I mean, we.
+1311	I mean we pull something like –
+1314	something roughly around 2,500 podcasts a minute.
+1319	That should not – the Q should never be that big. Right.
+1324	It should not even – I mean the most I ever really see it get up to is about 1,600, 1,500, and that's just when we get a flood of things all in, and that usually clears out.
+1337	minutes and then it's back to its steady state. This was off the chart. And so I was like, whoa, what in the world? So I go into Cloudflare and I start filtering by what is hitting.
+1348	Like, where's this traffic coming from? So looking at all the paths that are getting hit and the one one I saw up near the top was the.
+1356	Hub notify API endpoint.
+1359	Hmm. Which originally, so this goes back a ways. This is the.
+1364	Mastodon stuff
+1367	No, so...
+1371	If this goes back to the very beginning of the index.
+1376	2020.
+1379	This endpoint was created to support WebSub. Right. Okay. Yes. PubSub. WebSub. Yeah. PubSub. Yes, exactly. That's why it's called PubNotify. So it's notified. This is a mechanism for us to subscribe to WebSub servers.
+1397	for those web sub servers to then ping us when a feed updates.
+1403	that Pub Notify has to be an unauthenticated API.
+1411	just by default.
+1413	And so.
+1415	That is for web sub, but over the years we've said, okay, well, you can use it for other things if you just want to ping us and let us know that, hey, a feed changed and we need...
+1426	Just send your request to here and you can either use the podcast index feed ID or you can use the podcast index feed URL or the podcast feed URL.
+1436	Either one of those will work and we'll just stick it in the queue and pull it.
+1441	And that thing should never be at the top of any list of traffic.
+1448	And what it was, was.
+1452	Fountain was hitting us, was hitting that endpoint with feed IDs.
+1458	At the rate of like.
+1460	millions.
+1462	every 24 hours. And so this
+1467	you know, Oscar went in and
+1469	I started checking his system.
+1471	He was like, oh.
+1472	He's like a bot is just killing us. And so he was getting slammed with some sort of automated bot crap. Someone trying to scrape, scrape podcasts through him, which indirectly came to us. Yeah, exactly. It's my my I don't know the way their system is set up, but.
+1492	I can imagine designing a system such that.
+1498	If.
+1500	certain sequence of events happens on
+1504	It gets requested or a certain number of things happen and it just triggers – it makes your app think maybe there's a new episode. And so then it just sends a request to us to –
+1515	for us to check.
+1518	And normally I'm cool. I'm totally fine with that. Like if somebody has a reason to think that there is a new episode that we need to go get, hey, ping us. Let us know. But this was just somebody abusing their system, and it had this downstream effect.
+1534	So anyway, so I blocked that traffic and then he fixed, you know, he blocked it on his side and then we got it.
+1540	other in this.
+1543	through and just cleared all those backlogs because I'm sure.
+1548	thousand of those requests weren't even real.
+1552	And so then I cleared all that out and then just kind of sort of reset everything back to zero.
+1557	everything's working again.
+1560	There's.
+1561	This is the sort of stuff that...
+1565	that you have to deal with.
+1568	And it's been every single day.
+1571	And you have a wife who has needs.
+1575	She does. Funny enough, she does.
+1579	Yeah, this this is what I was afraid of last year. I was afraid that this year was going to be the beginning of this.
+1588	It has not – it is panned out exactly. It is not disappointed is what you're going to say.
+1594	the way that I thought it would. This is the year of slop.
+1599	Just abusive bots.
+1603	see
+1605	What I've had to – there's just been so much that's happened this week, man. Like I had to –
+1610	finally just started working on the
+1614	I'm like, uh.
+1615	classifier stuff. Yeah, I saw that. Yeah, the LLM is
+1619	classifying it as spam? Yeah. And I'm not happy with the way that's working, but it is, it is working.
+1626	thrilled with it and I'm going to be making this is going to be a long process.
+1631	Well, it's hard. I mean, we used to do that on heuristics, and now it's on who knows. I mean, I have a...
+1640	I have a Quen model running.
+1643	that ingests
+1646	the result of RSS feeds that I have set up. And so I probably get about, each run gets about 350 stories. And the Quen model then has to determine if the stories are worth even looking at. And that's hard. It's hard to tweak that just the right way.
+1669	Oh, oh yeah.
+1672	I don't know if you want to go ahead and dig into this. I mean, I do want to talk about the spam classifier stuff, but maybe you have something else you want to hit. No. Well, actually.
+1681	kind of flows into uh what james and sam were talking about for the first half hour of power this power
+1691	I haven't listened yet, so I don't know what they're saying. This Light Knot Studios, who copied more than 75 podcasts and created AI slop versions that are obviously different audio, different knot copies of.
+1709	the podcast themselves, but you know, uh, history podcast names, you know, all the, uh, very close to the original, uh, successful podcast names. So the only thing I wanted to say, because I heard.
+1725	You know, it's.
+1728	It's not nice, first of all, but I have some experience in this that I just wanted to share because I don't know if James has mentioned it, but I kind of want to turn that upside down for anyone who's dealing with this.
+1742	Well, actually, two experiences. One, a lot of people.
+1746	Start naming their podcast No Agenda.
+1750	And I'd say most not maliciously. He's like, yeah, this is a great idea. We'll call our podcast. No agenda. We'll talk about sports.
+1758	Well.
+1759	I mean, if you are serious about what you're doing and you have a podcast, you need to trademark the name. You just need to trademark the name. It's not. Y'all do, right? Oh, yeah.
+1769	Because now, I mean, every single time this happens, we have to send a DMCA takedown request. We just did one yesterday on Spotify. Spotify is reasonably quick to respond, but we have had to get lawyers involved more than 10 times at least, maybe 20 times.
+1789	Because people are like, well, I don't want to do that. And, you know, I've done it to mainstream. Even my neighbor. She's like, no agenda with Laura Logan. Like, no.
+1800	No, you can't do that. Oh, yeah. That was a you sent that to Fox News, right? Yeah. That's when she was on Fox.
+1806	And then all of a sudden it popped up again in our podcast. Anyway, that's one thing. But I have a lot of experience with something called the Lanham Act.
+1814	And if you, as long as you have your podcast trademarked, and so that would be the name, that's most important. You can also do some trademarking on imaging, but it depends. You have to have kind of the same image. But I have experience with this from the 1994 MTV Networks versus Curry lawsuit, which...
+1837	was filed by MTV, because I had MTV.com, which they gave me permission to use. They didn't care. They didn't care about the internet. We have the AOL keyword. Curry, do whatever you want. That was literally what they said. We have the AOL keyword.
+1853	interested in this domain name stuff.
+1856	So I had the domain name and I used at MTV.com.
+1860	personal site, but it was definitely MTV oriented. So the lawsuit that they filed was under the Lanham Act, which was correct, and they were right.
+1868	So we settled because, you know, it turns out they had said you can go ahead and do this and they hadn't covered their their backsides. And honestly, if they just said, hey, can we have the domain name back? I would have given it to him. So that turned into them suing me under the Lanham Act. I countersued. We settled out of court. Neither party has any further comment.
+1887	I'm still smiling.
+1889	But the Lanham Act is there specifically. In fact, I'll give you the little paragraph about it. Federal trademark law protects brands from consumer confusion. Cortez, would a reasonable consumer be confused about who made, sponsored or endorsed a product?
+1907	Courts look at how similar the marks are, how related the goods are, evidence of actual confusion. And it covers domain squatting. That actually came from my, you know, it was jurisprudence, my lawsuit with MTV.
+1920	brand impersonation, cloned content designed to look like the real thing.
+1925	So the Lanham Act is the way to go. Forget about DMCA and all this stuff and going to the hosting company. You have to go to a lawyer and you have to threaten them with Lanham Act litigation. And that is the end of it.
+1945	If not, then you have to follow through.
+1948	So I just want everyone to know that there is in the United States, at least I'm not sure about outside the United States, but the Lanham Act is the way to go. And any of these podcasts clearly can create confusion. It is obvious to prove that.
+1963	one legal letter should make them go away. If they don't, then you'll have to take it a step further, but you will win that. And unfortunately, if you're in a business, and I've defended all kinds of copyright cases, including the first Creative Commons.
+1980	copyright case. I was the first one to fight that in court. I won. I got zero money, but I won. Wasn't really the point. Yeah. So the Lanham Act is the way to go for anyone who's dealing with this. And we just have to do it. The thing that.
+1995	that, uh, that I'm worried about.
+1998	And.
+2000	I know that Spreaker has a lot of this going on. And so when you combine creating Lanham Act offenses, which a lot of people just don't know how to defend, won't defend, shrug their shoulders, whatever, combined with bots submitting hundreds of thousands of podcasts, the only thing I'm a little worried about.
+2022	is that at some point a company like Spotify will say, well, that's been ruined. You should just come to us and we'll take care of you. And we're safe here because you can do it with our API and trusted partners and you're good to go.
+2038	That's the thing that I'm worried about.
+2040	And maybe I'm giving them an idea, but it's also possible they're thinking about this themselves.
+2046	I'm not clear on what you mean.
+2048	If the RSS infrastructure becomes so polluted with similar names and similar topics and, you know, and we just can't fight the spam or the slop or.
+2061	We don't have a way to help people.
+2064	find what they're looking for when they're looking for it in that particular case.
+2070	I just I don't want.
+2073	companies to go, well, you know, like we're the guys, you know, come to us, we'll protect you. And it just moves away from RSS. That's what I'm talking about.
+2082	The only –
+2084	I can see the logic of how you're getting there.
+2090	The only thing I would say that may...
+2094	is I think that the closed platforms are also fighting the exact same battle.
+2099	I don't think they can make that guarantee. They could say it, but they couldn't live up to it. OK. Because like YouTube is is full. I mean, it's just a slop factory now. Yeah, it is. Spotify is a slop factory. They're all these. Yeah. All these these closed systems are battling the exact.
+2117	problem.
+2118	And.
+2120	I want to be fair to –
+2124	all of the hosting companies.
+2127	there
+2129	It may seem like I'm giving Spreaker a hard time because they...
+2133	They have just become such a factory for slop. Slop factory.
+2139	They're a slop factory. They've become a slop factory. They're a slop slut.
+2146	This.
+2147	The problem is.
+2150	that
+2152	They are really between a rock and a hard place. This is a difficult thing. The light not.
+2159	Studio thing I think that happened to RSS calm. Yeah the and this morning I saw I taught a whole slew of of just scam garbage With phone numbers to call and all the others a full-on scam. Yeah
+2182	fishing campaign.
+2183	I saw this hitting multiple hosts, Buzzsprout, Podio.
+2191	Podbean. It was like three different hosts.
+2194	This
+2195	The rock and a hard place that the hosting companies are in.
+2199	You have to do a free –
+2203	Even if you don't have a full, a true free tier, Black Spreaker and RSS.com and Red Circle.
+2209	Even if you don't have that.
+2211	you still at least
+2213	It's table stakes now that you have to have.
+2216	trial period.
+2218	14 days.
+2219	30 days, whatever it is.
+2221	You just have to.
+2223	A lot of stuff can happen.
+2225	a 14-day or 30-day trial.
+2228	a whole lot of abuse.
+2230	I know for a fact.
+2235	There are people in the hosting companies
+2238	I've taught.
+2241	doing that are
+2243	Every single day they spend, who knows, an hour or more?
+2249	scraping through the trial accounts trying to get rid of this stuff.
+2254	404, these scam feeds. It's hard, man. It's hard.
+2262	What I'm doing on my side is trying to make that job for them easier. I want it to be.
+2274	I want us.
+2276	I want our visibility across hosts.
+2279	a benefit to the hosts. Of course. Yes, of course.
+2284	Because we can see something happening over here on Podbean.
+2289	Before it hits buzzsprout. Exactly. Before it metastasizes. Well, I think, you know, we have hosting companies like RSS.com. I'm just going to be a douche about it now for a second.
+2302	RSS.com, Buzzsprout, the boys and girls over there, Blueberry.
+2309	who support the index.
+2313	So we should be transistor. Yes, we should be supporting them.
+2318	The other ones, I don't know so much, Dave.
+2324	I mean, I'm just saying.
+2327	I understand the sentiment. I just – The evil, mean sentiment that cropped up in me? Yes, yes. That's what that was. Yeah, I did not – that's not what I said. That's what I said. That's what you said.
+2339	I understand that sentiment, but also, like you said, the larger goal, though, is that we want to get some sort of traction on this.
+2350	Most of this is coming from two motives.
+2358	obvious one is
+2361	Add.
+2363	Revenue.
+2365	You throw up a slop cast, you get ad revenue. Slop cast. Yeah, from DAI.
+2371	Yeah.
+2372	You get that? That's one. That's the obvious one. The other one is SEO spam. Yeah.
+2379	And this is just plain Jane.
+2381	SEO web traffic scamming that has been with us forever.
+2387	If I could make one recommendation.
+2391	to the podcast hosting companies.
+2393	be this.
+2397	If you're on a free tier.
+2399	you
+2400	or you're in a trial account.
+2402	Do not give those accounts any web presence whatsoever.
+2409	Right. And also and also mark them as such in the feed. Hmm.
+2416	So that everybody knows to ignore them until they become an actual.
+2423	paid.
+2425	some sort of like a legit podcast
+2429	getting
+2430	You've verified that they are an actual.
+2434	Human of some sort.
+2437	Because I know some of the hosting companies try to block the SEO problem by just having their –
+2445	Podcast web pages that they generate automatically by having them blocked from Google indexing but that doesn't stop it because Those podcasts feeds then flow into other places like Apple podcasts and podcast index
+2460	They flow all over the place.
+2462	And then they'll pop up in other spots in the web, get indexed and turned into HTML.
+2470	Thank you.
+2471	It's not just the straight SEO from the page itself. It's like second-order SEO down the line.
+2481	And what I'm seeing now, I mean, it's not new, but it's been going on for a long time. And I'm looking at this stuff for like...
+2488	every single day for a while.
+2491	And what I'm seeing.
+2493	is
+2495	trends. I'm beginning to see the trends myself.
+2500	And the other SEO, it's not just scam SEOs like online gambling sites in Vietnam.
+2508	It's witches.
+2510	deal and
+2512	Asian gambling sites are a big thing.
+2514	It's not just that. It's also –
+2518	Is that?
+2520	I'm starting – I'm seeing –
+2522	Like local businesses. Oh wow.
+2526	There was one, it was like PJ's heating and air service in Miami, Florida or something like that. And it was on like four different hosting companies. Well, you know what is big now with the Claude Code type?
+2541	things is people are selling. In fact, one of our no agenda producers, not saying that he's doing this, but they'll sell you a marketing system in a box.
+2552	And so you log in, they got a little front end on it, and it's got some Claude code stuff underneath. Claude bot.
+2562	And.
+2563	So it'll build you a website and then it'll do a marketing campaign for you.
+2569	And I think that's what we're seeing here is, oh, okay, I can get a marketing campaign for five bucks a month. All right, so I'll use this. And then it's going off and it's doing its SEO business.
+2579	And it's doing it through stuff like that.
+2583	I just dropped a search.
+2588	in the boardroom is a search for
+2591	You just search in podcast index for PJ slash PJ space HVAC. I see it.
+2598	That's what this is. Wow.
+2600	One of them's on, let's see, that one's on Buzzsprout.
+2604	Some of these have been 404'd and we just have
+2607	We just haven't killed him yet.
+2610	This one's on SoundCloud.
+2612	This is all the same local business.
+2616	Let's see where this one is.
+2618	This one's another one on SoundCloud.
+2623	Where's this one?
+2624	This may be on speaker.
+2627	There's three different ones on SoundCloud. But I saw this same one, PJHVAC. I know I saw it on Spreaker and at least one other place. So this was across four different hosting companies.
+2639	just a trial. It's abusing the trial account. Right.
+2642	Well, I'm glad to see that SoundCloud finally has some traffic.
+2648	PJ Mac, HVAC service and repair company in Pennsylvania. Wow. So, I mean, like there's clearly something that is. Yes. Somebody like you, like what you're talking about out there that is just sort of like SEO in a box. Mm hmm.
+2665	Part of what we're going to do is we're going to throw you out on all the podcast platforms, and you're not really a podcast. We're just going to make one placeholder episode with – that just says – with our phone number and contact information. It's just – it's abuse.
+2680	It's –
+2681	It's service abuse because it's not what.
+2684	intent of these services are.
+2688	Daniel, that PJ Mac HVAC show, that may not be an Apple podcast, but I can tell you for a fact that there are.
+2697	Thousands.
+2699	of shows.
+2701	Of this of varying scam types in Apple podcast because I send the links to them.
+2710	I find them in Apple Podcasts also. So this is not – it doesn't – it's not just a matter of the way we do things by scraping up everything.
+2724	This stuff is getting into Apple Podcasts also.
+2728	And I can bring receipts because I've got them in my email where I've sent them to Ted in the past.
+2734	So these people are good at – these scammers and SEO people –
+2741	They're very good at this stuff.
+2744	They're very good at it.
+2746	And if you can get yourself onto Apple Podcasts, you've hit the jackpot. Well, a lot of that's automatic.
+2757	The automatic is...
+2760	you know, through a lot of the hosting companies.
+2763	That is SEO gold.
+2765	Because now you're coming off of an Apple.com top-level donut.
+2769	Right, right.
+2773	So, I mean, like...
+2775	What I'm going to have to do.
+2780	Let's see. Let me go over.
+2784	just sort of what is happening right now, what I've done this week to try to
+2788	get some sort of
+2791	on this.
+2797	So.
+2799	What's happening now is.
+2803	There's a client process that runs on.
+2809	my local system here.
+2812	because
+2814	Obviously we're running on a budget.
+2816	I need to do local inference for this.
+2819	So.
+2821	have a client processes running
+2824	is looking at the recent slash new feeds.
+2833	It pulls the most recent.
+2838	shows added to the index in the last
+2841	Yeah, it's very cool. It's a cool page.
+2844	Yeah, it runs every one of them through the inference.
+2852	through the Gemmaform model.
+2854	What are you running the Gemma 4 on?
+2858	It's, uh...
+2860	Llama CPP on a Mac Mini. Okay.
+2863	And, uh...
+2864	So it's running on – it runs through that, does a classification, and there's a big – there's this –
+2871	script.
+2873	has the notion of
+2876	bad feeds. I'm just going to put them in two buckets. There's actually six.
+2881	But let's just for simplicity's sake, it has the notion of this is a bad feed, this is a good feed. I'm just going to, let's not get into the meanings of those things.
+2893	And so then it runs like you – it has a local SQLite database that keeps all these things tagged.
+2902	Here's an example of a bunch of feeds that we've done.
+2905	to nuke
+2907	here's a bunch of examples of fees that are legit
+2911	It just makes.
+2913	It sends it to the LLM, makes an inference with a jag.
+2917	prompt.
+2919	says
+2921	yes, this is most likely spam or this is most likely legit. And so you get a, you get a.
+2926	decision that's been made.
+2930	calls the
+2932	Report slash problematic.
+2935	point.
+2936	to report that feed with a reason code and a...
+2940	note about why it was marked as problematic hey is there a way that um here's the thought oh here's a fun thought
+2949	Is there a way that I can add my Vulcan to the process?
+2954	help you with that? What's a Vulcan? My Vulcan 3090 card, baby.
+2961	Vulcan. The Vulcan. Yeah.
+2964	Yeah, I don't know if you know in Birmingham we have this huge statue on top of Red Mountain.
+2969	In the center of Birmingham, it's a statue of Vulcan.
+2973	Roman god of... Oh yeah, you guys are all pagan cult worshippers over there. We are. Once a week we all go and bow to the... The Vulcan. The Vulcan, yeah. So we had this radio station in town called the Vulcan. The Vulcan.
+2994	Rocking, flame-throwing Vulcan, Alabama.
+2998	think anybody can run this.
+3000	script.
+3004	I'll have to think about how that would work.
+3007	But it's definitely – it doesn't require –
+3010	any sort of
+3014	It doesn't run on the podcast index structure, so you can run it in your house. Here's a thought. So here's how people could really help. It does take a lot of VRAM, though. Well.
+3025	I've really gotten into the rented GPU stuff.
+3029	Are you familiar with this? I've rented GPUs, yes. Vast.ai, RunPod, Together.ai is the one I've had the most success with. Grok, G-R-O-K, which has no dev tier, but they have a lot of free stuff right now.
+3044	Um,
+3046	I do a lot with that, particularly Whisper.
+3050	So I'll do a...
+3052	Someone says, hey, this is a great podcast. You should listen to this. I'm like, no, I'm going to listen to it. So I send my bot out, my robot, and it grabs.
+3059	podcast or the YouTube turns it into a
+3062	an audio file, whispers it, and then summarizes, tell me what's in it, if there's any good clips, anything I should get from it. And that costs like pennies because it goes so fast.
+3075	on this rent stuff.
+3078	So if you had like and I think you can set up like almost like I don't know what the term is, but it's like a docker basically where you can have an API endpoint that's stored. So anybody if anybody could just access that. So you could you know, you could just have a whole bunch of machines firing with the same model, the same weights, the same parameters all the time to help.
+3101	in that process. So you distribute the cost and the actual load of the service. I mean, we could fight this stuff.
+3109	Does that make sense what I'm saying?
+3111	I think it, yeah, it does make sense for sure.
+3113	Um,
+3115	The only caveat I would throw in there is...
+3119	this one and this is a
+3121	Because I'm strongly of the opinion right now.
+3126	to train
+3129	Oh, and I don't mean I don't mean necessarily a full training. What I mean is like a fine tune. We're going to have to fine tune a model. OK.
+3138	Because what we really need is not...
+3144	what this thing currently does.
+3147	which is...
+3148	It tries to – which is it –
+3152	What it does is it tells the model, okay, here's a new podcast.
+3158	Here's the title and the description and titles and descriptions of.
+3162	most recent episodes and show links.
+3165	It just gives us a ton of metadata about this new podcast.
+3169	And it says, here's the same data from about a dozen picked at random podcasts.
+3176	from the legit table and about a dozen from the spam table.
+3182	It says, okay, now do your best to make a decision.
+3187	also taking into account
+3188	prompt that we give it with a bunch of parameters about what
+3192	going on.
+3194	That just has context problems.
+3198	What you really want, you don't want to have to provide all of that essentially in a context window.
+3205	What you want is for the model to have that knowledge innately because then you can basically train it on the entire index. So this comes to the point of…
+3219	Love.
+3221	Me and James went back and forth a little bit on the podcastindex.social this week about this topic.
+3230	He wrote it up. The Crickler.
+3233	Riddler.
+3235	Criddled. You got Criddler.
+3240	So.
+3241	He wrote it up as a headline in podcast.
+3244	about
+3245	the spam issue and the 24 hour feed report and all that.
+3250	Oh, which is fine.
+3255	pinged me on podcastindex.social and said, well, you know, and it was making the point.
+3261	He called it censorship. I looked.
+3263	disagree with that fundamentally. I think.
+3267	censorship is.
+3269	censorship is when I say.
+3273	like what you said and therefore I'm going to block you.
+3278	like the, the, the thing, your ideas and what you're espousing.
+3283	This is.
+3285	This is something completely different.
+3288	care less about
+3290	is the form, looking at the structure.
+3294	and the structure is abusive.
+3297	podcasting as a whole.
+3299	It's not censorship. It's self-defense.
+3303	But I think the larger point of what he's saying, I took some good things away from what he said.
+3310	He was – because what he said was …
+3313	One of the unique benefits of Podcast Index is that you have all the feeds.
+3320	And if you block, if you...
+3322	block some from being ingested.
+3325	in it.
+3327	lessens the value of the index and what it is and what it represents. Fair point. And I think he's right.
+3334	but we can tag it.
+3336	And so there was a misunderstanding on his part just because the – it's not – well, some of this is not obvious.
+3348	And that is.
+3350	We have all those feeds.
+3354	I'm not deleting them out of the index. The index really doesn't ever delete anything. Right.
+3359	The only things we ever delete.
+3361	are actually, I mean, like actually remove from the database, like they're no longer even in there.
+3371	mostly things that are not podcasts. Sometimes things get in there and it's just a web page. I was like, well, this is not even a pod. I mean, this is literally not even a podcast. Yeah, right. Yeah, right.
+3381	Yeah, this is a text file or some crap.
+3384	And so like those we remove and then there's just a handful of other things that we removed.
+3391	very specific reasons that
+3394	Honestly, I don't even remember. Yeah.
+3398	But I'm talking about – I mean you could just – you could put that on –
+3402	Mm-hmm.
+3404	All the rest of this stuff that is getting marked, it's just there's a flag in the database that's just this dead equals one or dead equals zero.
+3412	If dead equals one, then it no longer gets served on the website or the API. It's just it's like it's invisible.
+3419	Data is still there.
+3422	And when I say data, I mean the episodes are deleted, but the full feed record with the title, the description, the feed URL, if it had an iTunes ID, the status code, the HTTP status code, how many episodes were in the feed, all of that data, that metadata about the feed, all of that still exists.
+3445	So wouldn't you want to –
+3448	a thought. So when you want to have one or more flags, we already have flags like AI slop, spam, etc.
+3457	have the flags so you can, when you're polling the API, you get whatever you want. If you want everything, then you say, please add these flags. And only if someone actually polls that particular.
+3473	Podcast Enix ID, do we do a scan?
+3478	That makes sense.
+3479	Or was that not useful?
+3483	Run that by me one more time. I'm not sure I followed 100%. So we have everything.
+3487	But instead of it being dead, if you want to query the entire index, including the spam and the slop, etc.,
+3494	query it and you can get the information, get the top level information about the podcast. But only if someone says, well, I really, really need this Abraham Lincoln AI generated history podcast. Only then do we scan that feed.
+3510	So we keep the – That would be a challenge. Oh, okay. That would be a challenge because we just – it's just dead one or –
+3520	Dead Zero.
+3522	Right, but we're working on flags now, aren't we? Are we coming up with – I mean you're flagging something if I look at this report page.
+3530	Yeah, things are flagged as reasons for being marked as dead. Okay, right.
+3539	that's in a separate table so that we'd have to check is
+3543	I think we could do what you're saying, but I think it would be hard. It doesn't mean it's not.
+3549	Doesn't mean we shouldn't do it, but it would be.
+3554	Well, I'm just continuously thinking how can we all work together very simple to the gossip system.
+3561	So we all can help flag things. We all can, you know.
+3565	just
+3567	make it useful for everybody for whatever your use case. So if you really want to have, if you really want to search across all of the slop and everything, you should be able to do that.
+3578	But that these distributed systems are alleviating the load on the ultimate endpoint from the index to make it easier or ultimately, hey, you know, you want to have an index with all the slop in it? Your gossip has it.
+3594	Yeah, so I think James had a good –
+3600	I forget if his idea or mine. I don't remember exactly, but.
+3603	We came up with a good idea, which is.
+3607	index right now
+3609	The core part of the index from day one has been this downloadable SQLite database of all the feeds. Of everything, yeah.
+3617	And so that, what I've always done is I've excluded the dead feeds out of there.
+3624	Just for size constraint and because
+3628	want to distribute things that
+3630	dead because sometimes they're marked dead for a reason. Right.
+3634	Sometimes they're more dead because – It's theft. It's plagiarism, et cetera.
+3639	Yeah, and the creator asked us. Yeah.
+3642	take it down. And so we don't.
+3645	I wanted to just...
+3648	distribute that in a different form that goes against their wishes.
+3653	And so.
+3654	what I think
+3656	My next step is going to be to create a second download.
+3664	And it's going to continue to exclude all of those things that were marked dead in the past.
+3670	Because those things, there is.
+3675	Well...
+3677	I don't know. I'm going to have to think this through. I told James, I said, give me a few days. I'm going to have to think this out.
+3685	cause.
+3687	What we want is a second download that
+3690	Everything in it.
+3693	for
+3695	just for the people
+3698	And then.
+3700	But what needs to be in there.
+3704	Who really wants that? Who really needs that?
+3709	I don't know.
+3710	So it seems like a big lift for a very
+3713	few amount of people who really want all that.
+3716	Well, let me let me tell you, I could tell you this.
+3719	I want.
+3722	And here's why.
+3725	Well, let me finish that first off.
+3728	What we would have to do is in – I think this is the way it would have to work.
+3733	What we'd have to do is we'd have to export it, do a second export.
+3738	It has everything in it.
+3740	And it's going to have to have at least one extra column, probably a few.
+3744	that details if it's dead, why.
+3749	The reason would be out of the MF – out of the problematic table.
+3753	Listing, okay, well, we considered it spam or abuse or slop or whatever. And here's the note on why it was.
+3761	marked as dead, excuse me.
+3765	have that. But then these older feeds.
+3767	We would probably – what we'd probably have to do is if –
+3772	The HTTP status code of the last scan is...
+3777	200 or if it's a valid.
+3779	HTTP access code or response code.
+3783	We would probably have to somehow.
+3787	still not export that.
+3789	Because that's probably an – that is most certainly an indication that that – that we were asked to remove it.
+3797	But then if it's marked dead for some other HTTP status code, like a 404 or something like that, then we could stick that in.
+3804	And say, OK, well, it's obvious why this was removed. This was removed because it's no longer validly served.
+3811	So there's going to have to be some work here to make this function properly.
+3815	But once we do have that second download, this is what we fine-tune the model on.
+3824	So what we'll have to do, because when you fine tune a model, you have.
+3829	You have to create a data set.
+3833	dataset, it's a lot like training a machine learning model.
+3838	What you have is a data set.
+3842	It comes down to here's a bunch of words and then here's a decision.
+3849	is it this thing or that thing? And so what it's just like a whole, it's a lot, it's a series of funnels.
+3856	This is a series of tubes that flow from a bunch of content into what amounts to a single decision.
+3869	And so then you feed that into the fine tuning.
+3873	Thank you.
+3876	There's a bunch of these scripts out there.
+3878	So we can fine tune a GGUF model or something like that on.
+3882	on this data
+3884	from this second download because it's going to have all the valid ones in there and all the spam junk. So what does it take to train or fine-tune a model? That's above my knowledge base.
+3899	But what is the application that does that? What is the system that does that?
+3904	I think there's some – it's easier now than it used to be. I think there's a couple of tools out there. NVIDIA just launched one through Onsloth.
+3915	unsloth studio or something like that that will help it's it makes it easier
+3919	But you can still just do it with a bunch of like PyTorch Python scripts.
+3924	I'll just...
+3927	research to figure this out right now.
+3930	As soon as I have this second download constructed, then I'll...
+3936	headlong into that and try to fine tune a model.
+3941	And it's just got a vast.
+3946	knowledge to pull from to make these decisions. So that's the, when I said that there was a kink to.
+3953	idea of distributing this. That's what I'm.
+3957	We'd have to somehow distribute the model.
+3960	this point, how that works. I like the idea of providing, of being a clearinghouse and providing the information back to the hosting companies. And that's a great idea.
+3971	Yeah.
+3972	Yeah, I think, I mean... That's gonna help a lot. It's gonna help a lot.
+3976	I hope so. This morning.
+3979	We saw this morning started the black magic.
+3983	Black magic?
+3985	Let me see if I can find one of these. Yeah. I mean, this spam feeds are – I mean, they're entertaining to watch sometimes.
+3995	I just want a terminal where I can just watch the spam come by. Like, what do you got? Oh, this is interesting. What do you got here? Oh, OnlyFans.
+4004	Let me see if I can find one of these.
+4009	It might be a little.
+4011	What? Oh, is there? What is that one?
+4014	It's like, I think I posted one on podcast index on social.
+4020	It was like – it's stuff like how to get your girlfriend back.
+4025	And you do it with black magic, and there's a phone number you can call to get them to help you. Oh. Oh.
+4031	Oh, it's rad, man. It's rad. It's super easy to – yeah, here it is. How to get your ex-boyfriend back when he has another girlfriend.
+4040	Call 91741-409-7597. Excellent.
+4045	And it's Black Magic and Val...
+4049	Vashikaran?
+4052	Top Vashikaran specialist Vikram Sharma is a very good astrologer and world gold medalist. Oh, gold medalist in what? Black magic, I guess. I don't know. Hold on a second. Let me pipe my thing in here for a second.
+4066	Pipe it in there. I'm going to pipe it in. Let me connect my phone.
+4070	Should my phone be able to connect?
+4072	I want to dial that number. Let me see. I haven't actually connected. Oh, here we go. Roadcaster. Boom. Pairing.
+4079	That kind of work.
+4081	Hey, citizen. Dave, is there an explicit rule banning AI slop from the podcast index? No, we don't have explicit rules about anything.
+4090	Our only rule is...
+4093	keep it free and
+4095	sensory
+4097	Okay, I got it paired. Now let me go back here.
+4103	I don't believe.
+4105	Rules require meetings, and we don't want to do it. What's that phone number again, Dave? Let me get that. Let me dial that phone number.
+4112	No, no.
+4113	This says 9-1-
+4116	Plus 9-1-DASH. Oh, hold on. That's sketch. Okay, plus 9-1. Oh, yeah. Plus 9-1. 7-4-1. 7-4-1.
+4126	409. 409.
+4128	Seven, five, nine, seven, five, nine. Is this going to cost me a thousand dollars? Oh, I'm sure. Oh yeah, for sure. Let's see if it works.
+4138	is ringing.
+4145	Hello.
+4147	Hi, I'm calling about the black magic to get my boyfriend back.
+4154	Yeah, you're good, man.
+4157	Is Pete.
+4160	Okay, your professional is arriving. What?
+4166	What are you doing by profession?
+4169	I'm calling about this. I had this number. I found it in my podcast to call if I want to get my boyfriend back.
+4178	Okay, no problem.
+4179	Send me the details of your boyfriend and your...
+4182	on the same WhatsApp number named BigTelCity. Yeah, I got to hang up. It's India. I called India.
+4191	None of that. None of that.
+4193	How ineffective is this stuff? This doesn't make any sense to me. Why are you saying...
+4199	Are you scamming?
+4200	I mean, the podcast index for this nonsense is not doing anything for me. They're blasting it all over the world, and then you can't understand what they're saying. You can't understand the dudes. This is no good. This makes no sense. Yeah, this is ineffective. Ineffective. Very ineffective.
+4215	But there was, oh gosh.
+4219	Meanwhile, I didn't get my boyfriend back. So, you know, this is like a double disappointment. This stuff is going straight. This stuff is going straight into the ecosystem. And then there's some then there's some homeschool mom somewhere trying to start a podcast about, you know, Charlotte Mason education and can't get nothing through.
+4243	No traction. That was completely unsatisfying.
+4248	No, I always wanted to laugh much harder than that. This didn't work. Because I wanted to say, okay, here's what you do. And then I wanted you to be like, hi, I'm the boyfriend and I'm here. I mean, we could have had a whole thing going here.
+4261	That's right. I was fully prepared to be your boyfriend. Salty crayon. Did you turn your boyfriend off and turn him back on?
+4272	Exactly. Yeah, yeah, Metis is right. That dude was like, holy shit, somebody called.
+4277	It worked.
+4280	I spent 10 cents on spamming podcast indexes and I got a call.
+4285	C. Los is right. He just said that it was James. James Cridland.
+4293	We can always call back. My boyfriend's name is Sam. We've been having a fight.
+4301	Oh, I screwed up the script. I can't believe it. Oh, what an opportunity.
+4308	Instead I come up with Pete. I'm so stupid. This is James.
+4313	That's funny.
+4315	Oh, man. All right. Hey, we probably should thank some people. Oh, you have the date. Well.
+4320	We got people. I have to clean up my studio. Tina made me commit to it. Like one of those, one of those wife commitment things.
+4327	Oh, OK. I need you to commit to something. So you have a hard out. I've got a I've got no out. And you have I got I got a hard out. Yeah. The studio is absolutely atrocious. It's like I've got no agenda. Chachkis and hats and.
+4344	I've got 8,000 books about scripture and I still have a T-Mobile bag sitting here that I got my phone in. I mean, this is bad.
+4353	really bad. Well, I mean, like we did, we covered basically nothing.
+4361	But there's like 50 things on my list that I have not even had a chance to talk about.
+4369	Well, we can do it next week. We'll do a better job next week.
+4373	We had fun, though. I want to call that guy. OK, new segment of the show.
+4380	Call a different scammer every week. Okay. I'm good with that. Well, we've got to have a better script next time we screw that one up. Oh, yeah. No. But it will be the James and Sam script. Every time. Sam and James. Sam and James. Call a scammer. I don't know. Does anybody still remember the – what was it? Not the janky boys. The jerky boys.
+4403	Remember the Jerky Boys? Yeah, yeah, yeah. The Jerky Boys, man. They were so good at that back in the day. That was like on cassette tapes that people would pass back and forth to each other. Oh, yeah. I think the Beastie Boys made a song about the Jerky Boys, if I can recall.
+4417	because they were calling some guy about cookie puss.
+4422	Oh, hold on a second. The crank anchors. That's another one. Hold on a second. Let me see if I can find this.
+4429	This was a class. You remember, well, you know, the beast. This was actually, uh, let me see.
+4436	Peace to you, boys.
+4438	cookie puss. This was the
+4440	This was the OG Beastie Boys back in the day.
+4447	Bye.
+4460	17 years ago this. Now it's got to be older than that.
+4465	years old.
+4468	you forget this
+4470	Hello?
+4473	Oh, my God.
+4478	the number N-Wing.
+4480	Last minute.
+4482	We'll be right back.
+4485	What's up, bitches?
+4487	And.
+4493	Thank you.
+4494	He's calling about the ice cream cookie puss.
+4500	That was just one step removed from what was the videotapes?
+4509	Faces of Death or whatever. Oh, yeah. Your copy was like an eighth generation. And you always had to skip it at the end because it was the people eating the monkey's brains out of the monkey head on the table with his head sawed off on the top.
+4526	And you'd have a big line of snow at the bottom that you just couldn't get rid of no matter how many times. What was the little thing that you would adjust, the little dial on the forehead? Tracking. Tracking. Yeah, that's it, the tracking.
+4538	Yeah, tracking. Wow. So that whole...
+4541	That whole episode resulted in the one and only boost that came in during the live show.
+4548	From C-Loss on Linux. 4,329 sats. Interesting. That doesn't sound like a right number. I'm on the new helipad, so I'm jacked.
+4559	into oh yeah big big helipad upgrade by eric pp oh yeah oh yeah this thing had this thing had like 75 commits in it i mean it was like oh that's amazing yeah that's amazing let me see he fixed like every
+4573	possible thing. Everything. Everything.
+4576	No, Eric P. said he boosted $33.33.
+4579	It didn't come through to me. No, Dreb said his boost failed.
+4585	Hmm. Hmm.
+4587	I don't know why. But C-Lost, was that a key send? Was that an LN URL? Which one was it?
+4596	Oh, he did. I said four, three, two, one. Somehow I got four, three, two, nine. I don't know why.
+4602	I don't know why that was. Yeah, I see 4, 3, 2, 1.
+4606	Interesting.
+4607	So I got some extra.
+4609	The new helipad now adds eight sats for every transaction. You just get a freebie. Get a freebie. Wait. Let's see. What is this?
+4619	crazy. Did you get it?
+4623	Random look.
+4627	hub export this has become so complicated now yeah silas was that ellen url or was it keysend
+4640	Stay here.
+4645	It says it failed for you, Dave.
+4649	Oh, it did? My note is up, I think.
+4653	nose
+4654	I'm re-exporting the Albeho.
+4656	And I just want to say thank you.
+4657	PayPal. Let me see if that came through too. No, I think I changed. I don't think I have a,
+4663	Fountains sometimes send strange TOV records.
+4668	Let me see. Did it come through?
+4671	strange fire.
+4675	LTV.
+4679	at uncashed payment. I'm looking at...
+4681	The runway too. Let's see it on runway. Interesting.
+4685	Shouldn't be on runway. It should only because I changed everything to my Albie hub.
+4692	helps working
+4697	Drebscott just tried again with fancy new customatic. Okay. Well, I didn't.
+4702	I didn't hear anything.
+4705	I don't see any.
+4706	My lightning note is up and running.
+4708	You're lightning fast.
+4712	Transaction was 11 days ago, though, so.
+4714	that's all about.
+4717	That doesn't sound right. No, this is all just a train wreck.
+4723	Anyway, thank you, C-Loss on Linux, for giving us the only boost I got.
+4730	I do see.
+4732	91 Sats from Oscar about eight hours ago.
+4737	Twice, test one, test two, and then I hit the delimiter. I don't think we got anything else. At least I don't see it on runway either.
+4744	I'm currently exporting out of AlbieHub to...
+4748	Excel spreadsheets.
+4750	This will be fun. It's on 34 out of 79 transactions. Let's see if I have any streams. I don't think I have any streams either. When's my last stream? No, 22 hours ago. That can't be right.
+4767	Lyceum sent 7777 via True Fans and 1111. Oh, here's Eric PP. Okay. I got 3333 from Eric PP. Yeah, I got it. That just came in.
+4780	Oh, it just took a minute.
+4782	Yeah.
+4784	Okay, so that worked, but I didn't hear a pew.
+4787	Yeah.
+4789	Didn't he make some changes to the sound settings? No, I think they carried over.
+4795	I know he added some stuff, right? I think.
+4797	Let me see. I think it does.
+4800	things like MIDI
+4801	numerology.
+4804	No, he's got it in there. He's got the baller. He's got all that. Oh, Eric said he reboosted with Boost CLI.
+4811	What did you, Eric, what did you boost at before, Fountain?
+4814	Maybe.
+4816	Maybe he's – maybe he's sent it with Fountain and –
+4819	I don't know. Maybe Fountain – maybe Oscar's dealing with some issues. Yeah, he has tests. So if he's testing eight hours ago, who knows?
+4829	Yeah, I wonder if...
+4834	bot abuser thing was it could could totally be that
+4838	could be okay.
+4839	He may be fighting a battle, so we'll send up prayers for us. He's fighting a battle that we've already won.
+4849	It's a worship song. We're fighting a battle that he already won.
+4856	Why don't we thank some people, Dave? Okay, I'll do this next.
+4860	Speaking of Oscar, Mary.
+4862	PayPal. $200. Whoa, hold on a second.
+4868	Please.
+4870	Yay, thank you very much Oscar. Okay. Well that will cover that 200 will cover the
+4877	new database upsize we're going to have to do because we're about 75% disk space on the current database server. Is that something that takes a while or is that like a quick thing?
+4890	Uh, it'll take...
+4893	Upsizing will take pro-
+4895	Hour? 30 minutes. Oh, okay. And you're going to do that when?
+4902	Please.
+4904	I mean, I love you guys, but I'm not staying up until 2 o'clock in the morning.
+4909	I'll just do it on like a Sunday.
+4911	Hmm.
+4913	How much dispatch are you using? Yeah, our current box has 650.
+4919	and we're at like
+4923	something what an odd number 640 gigs we just get a terabyte
+4930	Well, the new, the new, the.
+4933	I've been pricing stuff today.
+4935	to try to figure out what to do, 'cause this is what set this whole spam thing off.
+4940	I got a warning about disk space on the database server. And I was like, whoa, what? I mean, because 640 gigs, we should have plenty of space. And then I get in there like.
+4952	We're just thousands of feeds a day.
+4956	let's see, I was looking earlier
+4961	What we're paying now for this VM for the main database is.
+4968	Let's see, it's got 32 gigs of RAM and 640 gigs of disk.
+4974	$192 a month for that VM.
+4979	Upsize it.
+4980	next size. Oh, it's going to be a jump. Oh, it's a jump.
+4986	64 gigs of RAM and 1280, so 1.2 terabytes. Let's basically double the cost from $192 a month to $384.
+4997	But I priced it out, and I was like, okay, well, can we just create a one-terabyte disk? And attach it? And attach it. And attach it. And that would be $100 a month. Oh, okay. So you might as well just go for the whole system. Yeah. It's worth it. Yeah. So they just – it's –
+5016	It sucks. I hate spending money. I hate this crap. You're so good at that. I'm the opposite. I'm like, ah, spend the money. Throw money at the problem. Well, no, not throw money at the problem, but at a certain point, you can only wrap yourself in so many pretzel nuts. Yeah. I think I can trim some stuff other places. It's not going to be much.
+5040	Maybe 30 bucks off the 12th layer bill. Think about all the extra stuff we can do with 64 gigs of room.
+5047	can do more with that. It'll be worth it. Think of all the extra slot podcasts we can index with 64 gigs of RAM.
+5056	Think of all the different Wikipedia scraped Egypt history.
+5060	LLM read articles we can index. Yeah. It's going to be great. And the funny thing is, is that now Wikipedia is all run by slop bots.
+5070	Oh, yeah. Yeah, exactly. So, you know, it's slop creating Wikipedia articles and bots creating slop out of slop. Slop on slop. Slop on slop. Slop on slop.
+5083	Okay, Oscar, thank you. Thank you, Oscar.
+5086	that's
+5088	Boo!
+5090	Five dollars. Joseph Maraca. Thank you, Joseph. Appreciate it.
+5094	$24.20 from Lauren Ball. Thank you, Lauren.
+5098	Mitch Downey.
+5099	Thank you, Mitch. So kind. Yeah, that's the pod verse. And then.
+5105	Mitch has always had a secondary contribution of $10 for him personally. Thank you.
+5110	Christopher Harbaric.
+5112	Thank you, Christopher.
+5114	and Casa Jack.
+5115	$15?
+5118	We got Terry Keller, $5. Richard Turoksi.
+5128	Thank you, Richard.
+5130	Christopher, see Chris Cowan, $5. Paul Saltzman, $22.22. Let me give him a row of ducks here. Where's our ducks? Okay. Here we go. There's my row of ducks. Even though it's not booth, but still $22.22. Row of ducks. Derek J. Vizker, $21. Best name in podcasting. Jeremy Gerds, $5. Thank you, Jeremy.
+5154	Todd Cochran.
+5157	Thank you, Todd, on the cloud.
+5159	Todd up there in the cloud.
+5162	It just...
+5164	It kind of gives me every time. Michael Hall, $5.50. I want to have all kinds of...
+5170	podcast boosts, and I'm going to set up a bot for that.
+5173	So that even when I'm dead.
+5175	PayPal's and Boost will still go to podcast. That's kind of cool.
+5180	Really cool idea. Dead boost. Nice. You just.
+5184	free.
+5187	prepay
+5189	on some cloud hosting provider.
+5192	Yep.
+5195	Set up a node and then just set it to boost.
+5200	to a bunch of different people forever.
+5202	But with like random messages.
+5207	Yeah, just messages just creative messages. Yeah, with like, do you want to get your boyfriend back?
+5215	Call this number.
+5217	Gene Liverman.
+5219	Thank you, Gene. Timothy Voice, $10. And that's it for our PayPals. All right. Let me see if this.
+5230	your spreadsheet came through yet? Has it done it? Has it done its thing? You know, these are always fun to interpret.
+5240	Here we go.
+5246	This stupid spreadsheet is a train wreck.
+5250	Oh my gosh. So why are you doing that?
+5255	I'm sorry. It's just humor. After every no agenda show, I have to do all the executive producers.
+5261	An associate executive producer and put them in the credits and I have to –
+5265	you know, for years, for, for.
+5268	almost two decades. I've been copying pasting.
+5271	these names from the spreadsheet. And of course, if someone's, you know, a knight, you got to have their knight name and all that stuff.
+5279	putting it into the credits. And so I finally just like, hey.
+5283	Claudebot.
+5284	Can you just do this for me?
+5286	And it does it.
+5288	It just does it. It goes into the spreadsheet that's just sitting in my donation folder on the drive. And it knows $200 between $200 and $300 associate executive producer. It finds a night name and just puts it into the credits. Oh, wow. This is the stuff I love.
+5307	Well, that's not this.
+5309	Yet, yet, yet. This is terrible. It's not getting the names. It's not. I've got. OK, I see a Brian. I see Brian Inzminger.
+5323	The best performing comedy shows for ads podcast. I don't know what that's. That's like a pod news boost. Why are we getting.
+5331	this.
+5333	Hope this boost were loaded an old Acer.
+5337	All in one with Umbral.
+5339	I have my Albie hub running there.
+5341	Hope this boost works. Thank you for your show. 73 is Bruce, the ugly cocky 73 is keto five alpha Charlie. Charlie got to renew my license.
+5348	You're on the 10 years.
+5353	Here's some Bitcoin. Let's see, 1842. Here's some Bitcoin. You guys should start.
+5358	government backup more often so it dips more what
+5362	Okay, this is unintelligible. I'm punting.
+5367	I got to figure this out later.
+5370	If you saw this spreadsheet, you would just laugh.
+5374	Well, okay, so we got 4321 from C-Loss. You already read that one. Test boost.
+5382	And then we got the delimiter, Common Street Blogger, 20,000 sats through Fountain.
+5388	A CompStript blogger, all the other boosts are a train wreck.
+5393	Comestrip blogger comes through loud and clear every single week. I know. I know. I don't know why.
+5400	Howdy, Dave and Adam.
+5401	Today, I want to recommend a podcast by James Cridley.
+5406	.
+5416	Yo, CSB, AI, Arch Wizard, PS, Adam. Yes. You spend many hours talking fictitious deities, not even Cthulhu or Roko Boss Basilisk with Jimmy, who, it's a fact, is a fully paid church employee.
+5430	So when you'll give me, not a Skynet employee, a short 33-minute max interview.
+5436	Well, that was a grammatically okay, but very long sentence.
+5442	Yes, comics or blog. I just need a day. A day. I got no time in my life. It's crazy. And I thought I'd have time today, and I committed to cleaning up the studio. It's sentences like that that make you really question Noam Chomsky's theories. Okay.
+5459	We can't get into that, Dave. I got a studio to clean.
+5463	All right. Is that it? That's it with the delimiter?
+5465	Thank you all very much for supporting the podcast index. You know, we want this to be with us for a long time. We feel it's important. That's why we're here. You know, Dave and I both have other things to do, but we love doing it. We do it as a public service.
+5484	You should consider yourself lucky that it's there. I mean, really, just keep the machines running. Dave and Adam get none of this. This goes into the podcastindex.org account, and it funds the machines, the many machines, this space, et cetera, et cetera. The time and the talent is just a bonus that you get from us because we love doing it, and it's important for podcasts.
+5506	It's important for the world, for the universe, I would say. We should get a Nobel Peace Prize. Dvorak says it all the time. We should get a Nobel Peace Prize for this. I agree. I agree.
+5517	um
+5518	And we'll get one right after Donald Trump gets one. Thank you, Boardroom, for being here. And especially, I really I want to thank PJ Mac HVAC Air Duct Cleaning for all the great work that you're doing. Perfectly clean duct work.
+5536	We clean out our ducks, baby. It's great.
+5540	board meeting.
+5542	Have a good weekend, everybody.
+5550	Bye.
+5557	You did you.
+5559	been listening to Podcasting Too.
+5563	in this
+5565	Go!
+5569	It's hard, man.

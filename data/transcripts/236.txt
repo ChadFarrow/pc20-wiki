@@ -1,0 +1,2290 @@
+0	Podcasting 2.0 for September 26th, 2025, episode
+4	236.
+5	No Nancy here.
+8	Hey everybody, the Rodecaster's working.
+11	Don't worry, you won't be subjected to all
+13	kinds of nonsense for hours on end.
+15	No, instead, it is a regularly scheduled board
+18	meeting of Podcasting 2.0 where we discuss
+20	everything going on in podcasting, the history, what's
+23	happening now, and where we are going in
+25	the future.
+26	I'm Adam Curry.
+27	Wait, I forgot to tell you, we're the
+29	only boardroom that rejects work slump in the
+31	office, there it is.
+32	I'm Adam Curry in the heart of the
+33	Texas Hill Country and Alabama, the man who's
+35	my first call in case of a security
+37	breach.
+38	Say hello to my friend on the other
+40	end, the one and the only, the only
+42	pod sage, Mr. Dave Jones.
+48	Are you cleaned up now, are you clean?
+51	Yes, I'm clean, man, I'm clean, I'm clean.
+55	That was kind of interesting.
+56	I have never had a breach in my
+60	life.
+61	You got popped.
+62	I sure did.
+64	That was, I mean, who in their right
+67	mind?
+68	No, but who in their right mind is
+70	thinking, hey, you know what, I'm going to
+72	run a crypto miner on a two gig
+75	Linode instance.
+78	I mean, what are they mining?
+80	They were probably just all kinds of stuff.
+84	I mean, everything you can think of.
+85	They run crypto miners on- Washing machines.
+90	Like home routers and crap.
+94	I mean, if it's got a CPU, they're
+96	going to mine on it.
+100	Collectively, when you're mining on 7,000 hacked
+103	machines, you actually get some horsepower.
+107	So I've always, honestly, I've just always been
+110	too lazy to figure out how to do
+111	all the key stuff.
+113	I'm like, oh, it's SSH.
+115	If it's SSH, then it should be secure.
+117	Then whatever I'm sending should be secure.
+119	How do they actually sniff out my access,
+122	my password, if I'm using SSH from my
+126	machine into the server?
+127	What are they doing that they can sniff
+129	that out?
+131	Well, so the way, it's all credential stuffing.
+135	So you're going to have, there's mass scanners
+139	out there polling for OpenPort 22 all the
+142	time.
+143	Oh, I see that, yeah.
+144	And then as soon as they, they'll get
+147	a list and then they just start throwing
+149	password dictionaries at it as fast as possible.
+152	Can they see usernames?
+161	Don't know about that.
+163	Because I don't have a traditional- But
+166	you had root permit, you had root-
+168	They didn't come in through root.
+170	They didn't come in through root.
+171	They came in through Atom?
+172	No, different names.
+176	None of them were Atom, which is why
+178	I thought it was kind of interesting.
+181	It's like, so how do you guess that?
+183	I mean, it's possible that they came in,
+186	I mean, you haven't really traced that breach
+189	through the logs, but I mean, it's possible
+190	that they came in a different way, but
+193	I would not, that would not be my
+195	first thought.
+196	Interesting.
+198	It's, it could be that- But I'm
+202	pretty sure root access was open.
+204	I'm pretty sure that was open.
+207	So if- So in that case, you've
+209	got root and then you just have to
+211	guess the password.
+213	Yeah, you can look at your, you can
+214	look at your authentication log and see where
+218	the initial hit was.
+220	It should still be in there.
+222	You know, you'll see in your, oh man,
+226	what is the name of that log?
+227	Is it, let's see.
+230	I think it may be in just your
+232	sys log coming in as cron.
+234	I mean, excuse me, as SSHD.
+239	Authentication.
+242	Maybe you need to like, so what happened
+244	was your, one of your boxes got-
+247	Two, two boxes.
+248	Okay, two of your vibe coding boxes got
+250	popped.
+251	Well, one that was actually in production and
+254	it's, you know, it's running an FFmpeg streaming
+257	radio thingamabob with a singular Python script.
+266	And I'm very wary of resources for a
+269	whole bunch of different reasons.
+270	I want to see if I can put
+271	it on a, on a one gig linode,
+273	you know, and keep it even cheaper, even
+276	smaller.
+277	And so I have HTOP running.
+279	I'm like, wow, why is it at a
+281	hundred percent?
+282	And I go looking and it says, okay,
+284	you've got this process called K audit zero
+288	running at 97%.
+290	So that was kind of, that was actually,
+293	it's actually kind of nice because you don't
+295	notice it right away.
+296	You know, it was like my stuff was
+298	still working because it uses very little CPU
+301	and very little overhead.
+303	And there, this K audit zero mining thing,
+310	it just uses CPU.
+311	It doesn't really use a lot of memory.
+314	And so that's how I saw it.
+316	And I'm like, oh crap.
+317	And, and, you know, I could see that
+319	it all happened yesterday because, well, first of
+322	all, I noticed it yesterday and I wasn't
+325	quite sure what it was.
+327	And, but I could see that, you know,
+329	they put in SSH keys and all this
+332	stuff all on the 25th.
+333	So, okay, all right.
+334	Backdoor.
+335	Yeah, cron tabs and all that stuff.
+337	So, I would imagine that, you know, if
+343	you have, if you have anything, if you
+346	have a relatively weak password, it's, it's gonna
+349	be.
+350	Yeah, that's the thing though.
+352	I have, you know, my passwords are generated
+354	by, what do you call it?
+360	Vault warden, bit warden.
+362	So, Your SSH login password?
+365	Yeah, yeah.
+367	It's possible.
+368	So, it's possible that it came in through,
+370	and that's why I would want to do
+372	is check, check the SSH log and see
+374	if that was the actual first hit because
+379	it could have been, they could have come
+380	in through some, through a flaw in some
+382	other part of the system.
+384	I mean, that's possible too.
+386	You have, you have, you know, how much
+388	stuff do you have open on that box
+390	is the question.
+391	Yeah.
+392	And exposed.
+393	You know, which ports do you have open
+395	with running software on it that may not
+398	be secure?
+400	Well, I can see, you know what?
+402	I can see right now, they definitely came
+404	in through root.
+406	Oh, well then that's, that's probably SSH then.
+409	Yeah.
+410	Yeah.
+410	Cause I'm seeing they're trying now.
+413	Oh, really?
+414	Yeah.
+414	Let's see, they're trying port 39550, the port
+420	58232.
+422	That just gotta be a scan then, I
+424	guess.
+424	I just scan the ports.
+426	Well, now what are you, where are you
+428	seeing this at?
+431	In var log auth.log. Okay.
+435	And that's, and those are SSH attempts?
+438	I guess.
+439	It doesn't actually say, it says, yeah, SSH
+444	authentication, authentication failure, root, root, root, root, root,
+449	root.
+450	Yeah.
+450	And then user vios.
+452	Okay.
+453	All right.
+454	So you got, so you got hit by
+456	root then.
+456	Yeah.
+457	Did, had you, did you have a long
+459	password on root?
+461	Yeah.
+461	Oh yeah.
+462	Yeah.
+465	Yeah.
+465	That's, I don't know.
+467	It would be interesting to go back and
+468	see where that first successful login was, you
+471	know, like when it happened.
+476	Let me see.
+477	So that would be, here's how, I'll just
+482	try it one, then we'll give up on
+483	it.
+484	Yeah.
+484	Cotton gin.
+485	He, yeah, he's, he's got it.
+486	He's got root and password logins disabled.
+490	Oh yeah.
+490	They are now.
+492	He's keys all the way down, baby.
+494	Let me see.
+497	Okay.
+498	And this would have to be on the
+500	20.
+501	Oh, interesting.
+503	Hmm.
+506	Binary file matches.
+509	Yeah.
+510	You can ignore that.
+512	What would I be grepping for here?
+515	Well, I mean, just the SSH authentication entries,
+518	you know, SS, var, log, auth, log with
+521	SSH.
+522	You can search it for SSH.
+523	Yeah.
+524	That's interesting.
+525	Nothing past the 27.
+526	That doesn't make any sense.
+527	Well, maybe, I don't know.
+530	So whatever.
+531	As long as you, yeah, as long as,
+534	so, I mean, my standard protocol for this
+537	kind of stuff.
+538	Which I now have.
+539	Thank you very much.
+539	Which you have.
+540	I have the Dave Jones standard protocol.
+542	I'm very happy with this.
+544	If anybody's running servers, you know, Linux servers,
+549	you really, I mean, to me, like bare
+550	minimum is you need to disable, disable root.
+556	If this is in your SSH configuration, you
+557	need to disable root login, disable password login,
+561	disable interactive keyboard login.
+563	Only put your SSH server on a different
+567	port than 22.
+571	Then make, and then enable only key pair
+576	authentication, public key authentication.
+580	And the, what I go, I go one
+584	step further.
+584	Some people don't want to go this far,
+586	but I go one step further and I
+587	restrict access to my SSH port using UFW
+594	to only particular IP addresses.
+598	So I don't, I just, I do not
+600	play around with that stuff.
+602	And it's sometimes, you know, and sometimes it
+604	can be a pain and people don't want
+607	to deal with it because you're on the
+609	road or something and you want to log
+611	into your machine and you, you know, you
+613	can't because you're restricted.
+615	It is a pain, but now with TailScale,
+618	I just restrict everything.
+620	I restrict all the logins to all the
+624	boxes, to my, to the CIDR block that
+630	is part of my residential IP scheme.
+634	And then I just come back.
+635	That way, if I get a new IP
+637	address at my house router, it's not gonna,
+639	you know, I still, I'm still okay cause
+642	I'm on the whole subnet.
+644	And then if I ever need to get
+646	onto it from the road, I just use
+648	TailScale and come back through my house and
+650	just get it that way.
+652	The bottom line is, if you're gone, podcast
+656	index is history.
+660	Hey, Melissa, Melissa.
+661	Okay, just sit in front of the console.
+663	Tell me what you see.
+664	What windows are open?
+666	Oh, this 18 open.
+667	Okay, let me see.
+669	Type in S-S-H.
+671	Go to the dead body.
+673	Is his phone in his pocket?
+675	Can you put his thumb on the authenticator
+678	for me?
+678	Okay.
+679	Hold it in front of his face.
+680	Open his eyes, open the eyelids.
+682	Just open them up with your fingers.
+683	Yeah, okay.
+684	There you go.
+684	Perfect.
+685	Oh, the finger's too cold.
+686	Okay, switch to the face.
+692	That's hilarious.
+693	But not really.
+694	No.
+695	Not really.
+697	Oh man.
+698	And it was, cause you know, I got
+701	a lot going on these days.
+703	So this morning I was like, oh, cause
+705	last night after, after I did no agenda,
+708	I'm pretty tired.
+709	I had modularized, modularized, modularized, modularized, my Python
+718	script, which was actually kind of cool.
+720	Cause you know, and the only reason I
+722	did it is the, the vibe coding machines,
+725	they stopped being able to write the whole
+727	script.
+727	It was like 1200 lines.
+730	And it went, it just kept not completing.
+734	And I learned something else by the way.
+735	If you upload your, this is grok in
+738	this case.
+738	If you upload your scripts, it may truncate
+741	it on the upload.
+744	I said, well, I never had the full
+745	script.
+745	What do you mean?
+745	I uploaded it to you.
+747	Well, no, I never had it.
+748	It got truncated.
+749	Oh, that's good to know.
+751	So it only accepts a certain amount of
+753	input and then you're toast.
+754	Well, unless you paste it in, which is
+756	okay.
+756	That's fine by me.
+758	So I'm like, well, why don't I just
+759	modular, modular.
+762	Why don't I chop it into bits?
+764	I chopped it into bits.
+765	And so I was all excited.
+767	This morning, I got a couple hours like,
+770	ah, it's great.
+771	I'm going to work on this.
+772	I hadn't actually tried it out yet.
+773	I'm sure there were some bugs.
+774	There were, and I'm like, whoa, everything's spiking.
+778	All the machines are spiking.
+779	So I spent a lot of copy and
+781	pasting your instructions on how to do this.
+784	And then once I got it, like, okay,
+786	now I know how it works.
+787	Then I just shored up everything.
+789	Cause I got other machines that haven't been
+791	hacked yet.
+793	And so I started shoring up everything.
+795	But I'm- There's still time.
+797	But I can tell you this box is
+798	just, it's getting hit every second.
+802	Oh, you're- Every second.
+804	You're a target now.
+805	Yeah, now it's trying FTP users.
+808	It's like, it's nonstop.
+810	Oh, really?
+811	Yeah, oh yeah.
+812	My first, my first ever, my first ever
+817	hack experience was at an old job many,
+824	many years ago.
+825	This is probably 96, 97.
+830	I don't remember.
+831	But do you remember the University of Washington
+833	FTP server?
+835	Oh yeah, what was that?
+838	Yeah, it was just kind of like the
+839	standard FTP server that was shipped with like
+842	Red Hat 6.
+844	Yeah, yeah, yeah.
+846	And FreeBSD and all that, you know, OpenBSD,
+849	they all used the UWFTP, the University of
+853	Washington FTP server.
+855	And so I fired it up because I
+859	needed to, I needed to push some files
+863	up from a different location and forgot to
+867	turn it off.
+868	It was only going to be temporary and
+870	forgot to turn it off.
+871	And of course, I mean, like within 24
+875	hours, it was hit.
+877	I got a call saying, hey, our website,
+880	like the front page of our website has
+882	something weird on it.
+883	And I'll go and look at it.
+885	The website had been defaced.
+887	You know, this was back in the days
+889	where hacking wasn't really for money yet.
+892	People just wanted to like deface your website
+895	so they could say, I've been here, look,
+897	I own you.
+898	Exactly.
+899	Back when it was fun, in the good
+901	old days.
+902	We were just having fun, man.
+903	Don't get your panties in a bunch.
+905	Yeah, back before ransomware and all that.
+907	And so I was like, I mean, I
+909	was, gosh, I don't even know how old
+911	I was, 20.
+913	I was like, oh crap, you know, freaked
+916	out, finally figured out where it came from.
+917	And from like then on, I've been Mr.
+921	non-standard port, firewall, everything, just like so
+926	paranoid.
+927	It only takes once.
+928	It only takes once.
+929	No kidding.
+930	So the SSHD config you gave me, that
+933	basically shuts everything off.
+934	There's no, they can't log in any other
+936	way than with the public key.
+941	Right, okay.
+942	Right, yep.
+943	Because I can see that actually trying to
+945	use the password, which is an actual path
+947	on the machine, which is an odd combination
+952	to try.
+954	Now, it's a file path they're using as
+956	the password?
+957	Yeah, I just saw it, just tried that,
+959	trying everything.
+959	This guy's like, man, my Bitcoin, my Bitcoin's
+963	on that machine.
+964	How do I get my Bitcoin?
+965	How do I find that Bitcoin?
+966	Is that Bitcoin on my machine somewhere now?
+969	Man, I had four sats on there, dang
+971	it.
+971	Can't be much more.
+974	Okay, that tells me, actually, that may be,
+979	if they're using a file path, that could
+980	be a file traversal vulnerability and some sort
+987	of web thing that you have going on.
+989	I'm presuming that they were already in there.
+992	I mean, they could be looking at NGINX,
+997	because port 80 is open, 8,000 is
+1000	open, 8080 is open.
+1003	But they're not on those ports, though.
+1006	If they're able to upload, if you have
+1009	a file traversal vulnerability or a file upload
+1013	vulnerability in one of the web, in one
+1016	of your web things that you're serving, then
+1020	that would allow an attacker to upload something
+1023	to the box into a location on the
+1026	file system they specify, then come in later
+1029	and address that file they uploaded in an
+1036	SSH login or some other attempt.
+1039	So they could be, essentially, they backdoor you
+1042	by uploading through an existing open hole in
+1047	your web.
+1049	I mean, I would, you know, there's no
+1051	telling what's in that Python script that you're
+1053	using.
+1054	It may have- Could be all kinds
+1058	of groovy stuff in there.
+1059	It may be allowing all kinds of stuff.
+1061	I mean, is it using like Jenkins or
+1063	some sort of Python?
+1065	No.
+1066	Jenkins?
+1067	Web framework or something like that?
+1069	Unfortunately, I am using Flask on, I wonder
+1074	if Flask has a vulnerability.
+1076	It could, yeah, it could.
+1078	It's a very common thing in CMS is
+1081	to allow- Stick something in there.
+1085	Like, oh, I got something for later.
+1086	Upload.
+1087	A little candy, a little candy for later
+1088	on, everybody.
+1090	Bastards.
+1091	Nah, so far, it seems they're having trouble.
+1094	Okay, we're good.
+1095	Yeah.
+1096	Anyway, so do you have anything on, I
+1100	got some stuff, I don't know, do you
+1101	have anything on your list for today?
+1104	Oh yeah, I've got tons of stuff, always.
+1108	And if I could bring up my notes.
+1113	You go ahead, I'm trying to bring it
+1113	up.
+1114	Well, the main thing, I guess, there were
+1116	two things on my list.
+1118	The big thing was AI tagging, which Power
+1121	had, we're talking about that quite a bit
+1123	on the show this week.
+1124	It's on my list too, yep.
+1125	And then censorship is podcast index.
+1130	Is it really censorship resistant?
+1133	Well, you know, the AI tagging thing, I've
+1136	also got that on my list.
+1137	And I've also, I just got some, I
+1139	mean, I think we just need to probably
+1141	talk about AI stuff in general.
+1143	I mean, not that we don't talk about
+1145	it every freaking week.
+1147	Well, for two years, everyone's been saying, oh
+1150	yeah, yeah, AI is a new thing in
+1152	podcasting.
+1153	And here we are.
+1154	Surprise, surprise.
+1157	It's here.
+1159	I mean, I think the word that hit
+1162	me this morning was after listening to James's
+1168	interview.
+1169	Yes, with what the lady's name?
+1172	Janine.
+1172	Janine.
+1173	Wainthright.
+1174	No, not Wainthright.
+1175	Janine something.
+1178	Wainthright.
+1180	Right, Janine Wright.
+1183	Janine Wright.
+1183	Co-founder, CEO of Inception Point AI, yes.
+1187	I mean, the thing, the word that hit
+1191	me this morning was creative hyperinflation.
+1195	I think that's what, I think that's what
+1198	we're beginning to live through.
+1200	I like that, creative hyperinflation.
+1203	Yeah, I mean, like I wrote, as I've
+1209	been thinking about this on and off all
+1211	week, and we talked a little bit about
+1216	this last week, where if there's a way
+1219	for somebody to farm content for money, it's
+1223	gonna happen.
+1225	That, you know, like that guy Tanner Campbell
+1229	from a long time ago, I think, did
+1231	we have him on the show?
+1233	No, I don't remember if we did.
+1234	No, I don't think so, no.
+1236	But I mean, he had this whole thing
+1237	where he's like, here's how you make money
+1240	in podcasting.
+1243	You go and buy, you put your podcast
+1247	on Spotify using Anchor, then you go buy
+1250	a bunch of Facebook ads pointing to your
+1254	Spotify podcast.
+1259	And then you buy, then you do, and
+1262	that gives you enough hits to enter Spotify's
+1266	mark, like a creator advertising program or whatever.
+1272	And that gets you, it was this whole
+1274	formula, this spreadsheet saying how you could take,
+1279	you could launch a show and within six
+1283	months have X number of dollars coming in
+1287	through ad revenue using, you know, essentially farming
+1291	the system.
+1292	Yeah, sure.
+1294	And, you know, that's how this stuff works.
+1300	And AI is the latest version of a
+1306	farming scheme.
+1308	I mean, that's what we're dealing with, the,
+1312	you know, in Inception Point or whatever, you
+1315	know, I think that's the name of that
+1317	company.
+1317	Inception Point AI.
+1319	Yeah, that's what this is.
+1321	This is just a, this is a ad
+1323	revenue farming mechanism.
+1327	And that's not to say, like, that doesn't
+1330	mean that it's, I'm not making a moral
+1333	judgment on it at this point, because people,
+1336	lots of people have been doing this since
+1338	the web started.
+1340	This content farms, quote unquote, have been around
+1343	for many years now on the web.
+1346	And at scale, at a high enough scale,
+1354	okay, well, let me back up and do
+1356	it like this.
+1357	So when I'm thinking about whether the index
+1360	should ingest this stuff or not, you know,
+1365	right now we are, and I don't, I
+1367	do not anticipate that we would stop.
+1371	But in general, digital has a huge drawback.
+1379	And that is that creating new information that
+1384	will then have to be stored forever is
+1387	too easy.
+1390	There's not enough of a cost to it.
+1393	You know, imagine if there were a book,
+1396	like a physical book, okay.
+1398	Imagine if there was a book creation machine
+1401	that someone create, that someone built.
+1404	In this book creation machine, there's actually a
+1409	short story that's very similar to this.
+1412	I'll have to look it up and find
+1413	a link to it later.
+1415	Or it's not about this kind of thing,
+1416	but it's very similar.
+1419	Imagine if there was a book creation machine
+1422	that would create new books at a rate
+1427	of like 10 trillion books a day.
+1433	Within a few years, the entire surface of
+1437	the earth would be covered seven feet deep
+1439	in books.
+1440	With books, yeah, a lot of books, a
+1442	lot of books.
+1443	So that's essentially what we have now with
+1448	LLMs. We have the ability to create virtually
+1454	infinite amounts of, quote, creative.
+1460	And that information, if it is then pumped
+1466	into standard channels of distribution, it is going
+1473	to overwhelm the digital platforms that exist.
+1479	So this is actually very interesting because I
+1482	kept hearing James talk about, well, whatever the
+1486	advertisers want.
+1487	And my initial response is, what?
+1490	Advertisers don't determine what we do.
+1493	But now I get it because the advertisers
+1496	are effectively being duped.
+1498	Well, and the question is, are they being
+1500	duped?
+1501	When it comes to downloads, yeah, I think
+1503	so.
+1505	And so when you have in your model,
+1509	so you have 3,000, you have 5
+1512	,000 podcasts creating 3,000 episodes a week.
+1515	And you can hear that they have two
+1519	ads in front of every single one of
+1520	them, which probably are not even listened to.
+1525	And we know from my own experimentation, you
+1527	can create download bots quite easily.
+1531	There's only one hosting company that really blocks
+1533	anything that they don't see as an approved
+1536	user agent.
+1539	Everyone else, if you use Mozilla, obviously.
+1545	In fact, everyone accepts Mozilla, but not from
+1548	certain IP addresses.
+1549	So if you're building a bot farm on
+1552	Linode, you're gonna be disappointed by at least
+1555	one host.
+1556	But in general, from what I see, I
+1560	could do that for every other hosting company.
+1564	And in fact, I could do a version
+1566	of what we did when we initially filled
+1568	up the podcast index is I could just
+1570	get a million, a million downloads, 4 million
+1573	downloads or 4 million accesses, whatever you wanna
+1576	call it, over time.
+1578	And that would be a nice little bit
+1581	of pocket change.
+1583	I don't think I'd get rich on it,
+1585	but yeah, it'd be nice.
+1586	Yeah, just some nice little coin in my
+1588	pocket.
+1589	And so that's the problem.
+1591	The whole AI tag is not for you,
+1593	not for me, not for Joe, the listener,
+1595	because Joe, the listener will know very quickly,
+1597	oh, that sucks.
+1598	Or it's AI, but I kind of like
+1600	the information, but it's the advertisers.
+1603	That's who everyone's trying to protect in this
+1606	is it's going to flood the advertising ecosystem.
+1609	And that's where the problem is going to
+1611	be.
+1611	I think that's what you're saying.
+1613	Yeah, because this is essentially a audio version
+1617	of what if it was done on Google,
+1620	we would call kind of click fraud.
+1624	Yeah, kind of, complete.
+1626	Not just kind of, it is click fraud.
+1630	I recommend everybody listen to James's interview with
+1634	the- Janine Wright.
+1637	With Janine Wright.
+1639	What was your takeaway?
+1640	What's your takeaway from it?
+1647	She seemed very uncomfortable.
+1650	To me, that was a general sense that
+1653	I got.
+1654	And I don't blame her, I would be
+1656	too.
+1658	If there was, I commend her for coming
+1661	on the show.
+1661	Sure.
+1662	And actually doing the interview.
+1666	But I think she did sound uncomfortable.
+1670	I also think that this sounds very much
+1672	like a company who's looking to get purchased.
+1675	I don't think this is a long-term
+1677	thing for them.
+1679	This seems to me more like a, hey,
+1683	look what we're doing.
+1685	Somebody, we've got some really cool tech.
+1689	Somebody needs to come buy us.
+1692	And to me, that feels like what this
+1694	whole thing is.
+1695	It's just essentially like an idea flip.
+1699	Interesting.
+1700	But, and so in that regard, having, being
+1704	on an interview like this, this is an
+1706	all news is good news type situation.
+1710	People get mad.
+1712	Maybe people in the podcast industry get mad,
+1714	but that doesn't really mean anything in the
+1716	ultimate scheme of things if they flip the
+1719	company and get paid.
+1721	So for their admittedly pretty cool technology.
+1726	And, but then, but, I mean, long-term,
+1733	who knows how this thing goes?
+1738	I think James's questions, I think what he
+1746	was getting at was obvious, which is, it's
+1750	not about the AI part.
+1754	It's about, is there a human doing anything?
+1758	Is there- Oh, even writing the script.
+1761	Yeah, even writing the script is where James
+1762	was going.
+1763	Right.
+1764	Yeah, and if there's not, if there's absolutely
+1767	no human oversight whatsoever, then it really is
+1771	just like the book generator machine.
+1775	Yeah, but the point is some of it
+1777	may actually be enjoyable.
+1779	Some of it may be what people like.
+1782	In fact, a lot of it may be
+1786	what people like.
+1787	If you look at the comments on some
+1789	of these AI podcasts, yeah, a lot of
+1792	them are like, this is crap, this is
+1794	no good, this is AI.
+1795	But some of them are like, well, well,
+1796	I do that knitting stitch differently and it
+1798	works quite well for me.
+1801	You know, so not everyone, clearly not everyone
+1803	thinks it's slop.
+1806	Yeah, my question would be, does anyone think
+1810	that it's, does anyone understand that it's actually
+1814	AI?
+1815	Yeah, I think a lot of people do.
+1818	The ones who respond positively.
+1822	Do you think- They might not, no,
+1823	they might not.
+1824	They might not, they, I don't know.
+1827	I mean, a lot of people are talking
+1828	to their AIs and they don't seem to
+1830	have a problem with it.
+1831	So if they don't mind their own personal
+1833	AI talking to them, maybe they don't mind
+1835	a podcast AI.
+1837	You know, not everybody in the world is
+1839	normal.
+1840	Hey, man, some people are weird.
+1843	Wow, is this a new discovery that you've
+1846	made?
+1847	Like somebody who gets their knitting tips from
+1850	an artificial intelligence voice, that's- Yeah, you'd
+1854	be surprised.
+1854	I'm willing to say that not everybody is
+1856	like, you know, a hundred percent.
+1860	I've been reading this book, I just started
+1863	it.
+1864	Do you know a guy named Paul Kingsnorth?
+1867	No, I don't think so.
+1869	Lives in Ireland and he's got an interesting
+1874	background.
+1875	He's a Catholic brother, but he came from
+1881	an, like an ecology, what would you call
+1885	that?
+1886	Like a, he was part of, do you
+1887	remember Earth First?
+1891	Why does this ring a bell?
+1892	I can't recall it.
+1894	They were like a, they were like a
+1898	70s version of stop the oil or whatever
+1906	those people are that like glue themselves to
+1908	the street.
+1909	Oh, X something.
+1916	Yeah, I know what you're talking about.
+1919	Yeah, like it was, they were like a
+1922	radical environmentalists.
+1924	Okay, and I'm, I don't, yeah, I think
+1927	that's a fair thing.
+1928	I think they would accept that they were
+1930	radical environmentalists.
+1931	I think that movement collapsed.
+1934	There's actually a book about it that I
+1936	have on the shelf.
+1938	I haven't even read it yet.
+1939	I've only perused it, but it's about the
+1946	Earth First movement and how it collapsed and
+1949	set back environmentalism a long way.
+1951	But he was a member of that and
+1953	that kind of thing.
+1954	But anyway, so he just wrote a book
+1955	called Against the Machine.
+1961	And it's a book just about modernism, industrialism,
+1969	technology, technologism, that kind of thing.
+1971	It's a very, it's just a book that
+1974	you would think is pretty fitting for our
+1979	time.
+1982	And I've got, I actually wanna read a
+1984	section of this real quick, because I think
+1987	this is kind of like, I think he
+1988	captures something here.
+1990	He says, and forgive me for the length
+1993	of this.
+1994	He says, meanwhile, out in what is fondly
+1996	called the real world by people who often
+1998	don't know very much about reality, you are
+2001	living in a metastasizing machine, which is closing
+2005	in around you, polluting your skies and your
+2007	woods and your past and your imagination.
+2010	If you have the kind of sensibility which
+2012	prefers Lothlorien to Isengard, this means that you
+2015	are a character in a tragedy rather than
+2017	a heroic epic.
+2019	Most of the things you like are fading
+2021	away.
+2022	The great forests and the stories made in
+2025	and by them, the strange cultures spanning centuries
+2028	of time, the little pubs and the curious
+2031	uninhabited places, the thrumming temples and dark marshlands
+2035	and crooked villages and folktales and conviviality and
+2039	spontaneous song and old houses, beaches and wild
+2043	hilltops, the chance of getting lost in the
+2046	rain forever or discovering something that was never
+2048	on any map, a world without maps, a
+2052	world without engines.
+2054	This world you can see is on the
+2056	way out.
+2057	If it is not already long gone, the
+2060	one thing is manifesting to replace it is
+2062	a left brain paradise, all straight lines and
+2066	concrete car parks where the corn exchange used
+2069	to be.
+2070	The future is STEM and chatbots and cashless
+2073	parking meters and economic growth and asteroid mining
+2078	forever and ever.
+2080	There is no arguing with it.
+2081	You can feel the great craters that it
+2083	makes in the world.
+2085	You can feel what is being tarmacked and
+2087	neatened and rationalized into oblivion in the depth
+2091	of what is leaving, but you cannot explain
+2093	or justify it in the terms which are
+2095	now the terms we live by.
+2097	You just know that something is wrong.
+2100	Everybody tells you that you feel this because
+2103	you're infected with something called nostalgia or that
+2106	you picked up a dose of Luddite-ism
+2108	or romanticism at a party or in a
+2110	doctor's waiting room.
+2112	Basically, there is something wrong with you.
+2114	You don't understand progress, which is always and
+2117	everywhere a good thing, but you can feel
+2119	something going on that is not a good
+2121	thing and it doesn't matter how many lies,
+2123	damn lies or statistics are produced to prove
+2125	otherwise.
+2126	You can feel this as something enveloping you.
+2129	The Welsh poet R.S. Thomas described it
+2131	chillingly in his poem, Other, in a verse
+2135	I've never forgotten since I first read it.
+2137	The machine appeared in the distance, singing to
+2141	itself of money.
+2144	Its song was the web.
+2146	They were caught in, men and women together.
+2150	The villages were as flies to be sucked
+2152	empty.
+2153	God secreted a tear.
+2155	Enough, enough, he commanded, but the machine looked
+2157	at him and went on singing.
+2161	Now, that's depressing.
+2164	It reminds me a little bit of, what
+2168	was the Neil Stephens' book?
+2170	I think it was, was it Snow Crash?
+2172	I think it was Snow Crash.
+2173	Snow Crash, yeah.
+2174	Yeah, where the only thing left in real
+2176	life was food delivery and FedEx.
+2180	Yeah, right.
+2181	Everything else was online and everything got hacked
+2184	all the time, basically.
+2185	It says, he says, you can feel something
+2189	going on that's not a good thing, and
+2191	it doesn't matter how many lies, damn lies,
+2193	or statistics are produced to prove otherwise.
+2196	You can feel it's something enveloping you.
+2199	That's what I heard in that interview.
+2201	Yeah.
+2202	Is, look, this is fine.
+2205	What we're doing is fine because let me
+2207	give you some statistics.
+2209	Let me tell you why in 24 months
+2214	everything's going to be AI and none of
+2217	this is even going to be an issue
+2218	anymore.
+2220	None of those arguments truly matter because you
+2223	could tell that what James was was, was
+2226	uncomfortable with this.
+2229	He's uncomfortable with something about the way this
+2232	thing is being done.
+2233	Yeah.
+2234	And I think the uncomfortableness is what Paul
+2237	Kingsnorth is referring to here.
+2239	It's, and it's like we talked about a
+2243	couple of weeks ago, being part of the
+2248	push right now with AI is to get
+2253	us to be comfortable with it because so
+2258	many of us are.
+2260	It's an attempt to flood the zone with
+2262	so much AI content that we become sort
+2269	of numb to the thing that is, you
+2274	know how sometimes you have like a, I
+2281	think a lot of us have had this
+2282	experience in the past.
+2284	Somebody new comes into our life, somebody that's
+2288	like a new acquaintance or friend of the
+2291	family or something like this.
+2293	And this new person comes in and, you
+2295	know, and starts to, you know, through connections
+2297	that we have in the community or whatever.
+2300	And this new friend begins to be around
+2304	us more, around our family more and that
+2306	kind of thing.
+2307	And there's something that just makes you uncomfortable
+2310	about this person.
+2311	You can't pinpoint it.
+2313	You can't, there's nothing explicit that they have
+2317	done that is, that you can point and
+2320	say that I don't like, I think this
+2321	person's dangerous or concerning or whatever.
+2324	But there's just something about that person that
+2326	you just, that bothers you, makes you uncomfortable.
+2330	You think they may not be trustworthy or
+2332	whatever.
+2335	And the longer you sort of deny that,
+2339	that sort of, that internal feeling you have,
+2344	you numb yourself to it.
+2346	And then you may find out later, you
+2347	know, this guy ends up, I don't know,
+2351	in jail or something.
+2354	Your concerns were validated.
+2358	And you think, you know, I knew there
+2361	was something wrong with that guy.
+2362	I knew it the whole time, but I
+2366	sort of seared my conscience against it.
+2368	Right.
+2370	And I think that's what's happening now with
+2372	a lot of the, with AI.
+2374	I think we are getting, we're getting, this
+2378	is a, we're living through a phase of
+2381	desensitization.
+2385	Oh, for sure.
+2386	You know?
+2387	Yeah, oh, definitely.
+2389	And honestly, I think that's why podcasting is
+2394	so wonderful because I don't believe any AI
+2398	in our lifetime will be able to recreate
+2402	a human being speaking in your head.
+2406	Video takes away so much of the recognition
+2410	that, hey, this is not real, because it
+2413	just, you look at something and your brain
+2415	goes, that's real.
+2417	And audio is a whole different beast.
+2422	Yeah.
+2423	I guess I would say to that, but
+2429	what if it does?
+2431	Okay.
+2432	Then you become jelly.
+2436	What more can I say?
+2438	You're screwed.
+2441	Nate, this is acclimation to institutification.
+2448	There's a- More of it, as far
+2450	as I'm concerned.
+2452	The more, that's the only way.
+2454	The more slop we create, the more that's
+2457	published, which I'm actually quite happy with, publish
+2461	as much slop as possible because ultimately that's
+2465	going to lead to entropy.
+2466	I just don't see any, I don't see
+2467	how they can protect themselves against it.
+2470	It just seems impossible.
+2473	So we might as well go now.
+2475	I mean, again, the no agenda art generator,
+2478	which for 15 years, people have been making
+2481	art and uploading it.
+2483	They've all stopped.
+2484	Every single one of them who was making
+2486	art by hand.
+2488	And they've either gone away or some of
+2492	them may be doing some prompting, but it's
+2495	crap.
+2495	I mean, it's so disappointing.
+2497	Yeah, there's a couple of people who have
+2500	gotten around some of it, but you can
+2502	see it.
+2502	You can see the washed out images.
+2504	Everything's orange, the cartoon phase, or everything's a
+2507	cartoon.
+2509	Now you can just see these things ingesting
+2511	crap and spitting it back out.
+2513	And it's just worse.
+2515	I can literally see it.
+2517	And now you're, an academic paper could be
+2521	written about the no agenda art generator.
+2523	Absolutely.
+2525	Someone should do that.
+2527	And you can see, and now what happens
+2530	is your, is the no agenda show album
+2536	art is almost indistinguishable from something like the
+2542	media round table.
+2543	Yes.
+2544	Whereas used to, they used to be complete.
+2546	You would never associate those two, but now
+2548	you scroll through your list.
+2550	Since y'all are both essentially having AI
+2553	generated artwork, they just kind of blur into,
+2557	they look like they're the same thing.
+2558	Yeah.
+2559	And orange is the predominant color for some
+2561	reason.
+2562	I'm not sure why.
+2563	That's true.
+2564	Yeah, I don't know why either.
+2565	Orange just seems to keep popping up.
+2567	Everything, faces are orange, backgrounds are orange.
+2570	Orange is a favorite color.
+2572	Fish are orange.
+2574	It's just weird.
+2576	I'm scrolling.
+2576	It's like, everything's orange.
+2578	Everything is orange.
+2579	I don't have an answer.
+2581	And there, that's another part of the desensitization.
+2584	I think that one thing I took away
+2587	from James's interview was just, he was pushed.
+2593	Sadness.
+2594	Sadness.
+2595	Sadness.
+2596	I heard sadness is what I heard.
+2598	Melancholy.
+2599	Yeah, right, right.
+2601	But it's the, he was respectful and did
+2605	not push too hard, but it was the
+2607	thing, it was the, what was unsaid was
+2610	just as powerful.
+2612	Yeah.
+2612	And it made me think, you know what,
+2615	I need, I have got to resist being
+2619	consumed by just, oh well, it's the future.
+2626	I'm going to push back on that.
+2628	I'm going to resist even harder.
+2631	On a personal level, you mean?
+2634	Yeah.
+2634	Yeah.
+2635	I mean, like, you know, and ultimately I
+2640	don't think that, I don't think that we
+2645	need to ban anything out of the index
+2650	unless it gets out of control.
+2651	Now, if it gets out of control and
+2653	you end up with the automatic book creation
+2656	machine and people start pumping in a million
+2658	podcasts a day, we are going to stop
+2662	that.
+2663	We're going to, there is a threshold somewhere
+2666	of which I do not know where it
+2667	is at right now, but there is a
+2669	threshold of which we have to take action
+2671	against this.
+2673	Yeah.
+2674	I don't think it's going to get that
+2676	far.
+2676	I just don't see it.
+2678	I mean, the thing with podcasts is there's
+2680	no real discovery mechanism.
+2682	YouTube, yes, there's this discovery mechanism.
+2685	And there's lots of ways you can get
+2687	the algos to kick in and do things.
+2690	And once you reach certain levels, then you're
+2692	kind of golden.
+2693	You can fly along and that's when AI
+2695	will be perfect.
+2696	I mean, just go look for any topic
+2697	on YouTube and you have to go through
+2700	all the AI generated slop before you get
+2703	to something useful, an actual human being.
+2706	But with podcasts, like what's the recommendation machine?
+2708	This may be the biggest downside to podcasting,
+2711	which is you really only hear about other
+2713	podcasts from other people in other places.
+2716	Like, oh, that's a good podcast.
+2717	Oh, I'll go look it up.
+2718	The biggest downside to podcasting may be its
+2721	biggest defense.
+2725	Okay, that's an interesting thing because that was
+2727	part of what they were...
+2728	Okay, one of the things she said in
+2731	there was she was talking about the Charlie
+2734	Kirk thing.
+2735	And she said, she gave the example of
+2738	when Charlie Kirk was assassinated, we had a
+2742	podcast out about that within like two hours,
+2745	I think is what she said.
+2746	Hey, there were books that were published the
+2747	day before.
+2749	Oh, really?
+2750	Well, that's interesting.
+2752	If you believe the telegram groups, yeah.
+2754	Oh, the telegram, okay.
+2756	Such a, so trustworthy.
+2757	The old, hmm, how could this book be
+2759	published on September 9th when Charlie Kirk died
+2762	on the 10th?
+2763	Hmm, hmm.
+2764	Coincidence?
+2765	Interesting coincidence, yeah.
+2766	All right, okay.
+2767	Yes, like, so she's like, well, we had
+2770	a, we had a podcast out within two
+2773	hours about Charlie Kirk and it went to
+2776	number three on Spotify's list if you searched
+2778	for Charlie Kirk.
+2779	Wow.
+2780	Okay, now, this caught my attention.
+2784	Yeah.
+2785	Because that's not the way that works.
+2790	I'm sorry, but if you don't just create
+2796	a podcast, name it something that is like
+2800	some other search term and have it show
+2804	up at the top of the list of
+2806	a platform like Spotify or Apple or even
+2809	us.
+2810	That you do not get, ranking is not
+2813	as simple as naming.
+2816	So there's, I don't know what, the only
+2820	way that happens is if you pair it,
+2824	if you pair your podcast that you just
+2826	created and stuck into the directory, if you
+2830	pair it with some sort of traffic generation.
+2833	Yeah, of course.
+2834	You have to have- Popularity.
+2835	Yeah, search, search, search, search.
+2838	Right, because you don't just create a podcast
+2841	called Charlie Kirk and it instantly show up
+2843	in the top three.
+2845	Well, I would say that people probably went
+2847	searching for Charlie Kirk on Spotify and they
+2850	came across it.
+2851	And if you, you know, juice the machine
+2854	a little bit, it might move up far
+2856	enough for people to catch it.
+2858	But if, how, let me, I'm going to
+2860	go to podcast index right now and search
+2863	for Charlie Kirk, Charlie Kirk.
+2867	And I mean, there's, there's like 30 results
+2874	that show up immediately.
+2876	I mean, Inception Point AI, let's see, that
+2880	is one, two, three, four.
+2884	It's number four and number five.
+2886	Number four, yeah, I see four and five,
+2888	yeah.
+2888	How did it get to that level that
+2891	fast?
+2892	Well, only you know how that works.
+2896	It works through traffic.
+2898	Right, so you don't think people just searching
+2901	for Charlie Kirk biography or Charlie Kirk death?
+2905	Those are good titles to search on.
+2909	If you search- Let's listen, let's listen
+2911	for a second here.
+2911	I'm going to get an ad, of course.
+2913	When it comes to results.
+2914	Okay, I'll wait for the ad to go.
+2917	Yeah, I'm giving him money.
+2920	Yeah, I'm sorry.
+2923	No, I mean, I have to admit, there
+2929	must be a lot of metrics.
+2932	There's either a ton of metrics- So
+2934	you're saying you have to have some kind
+2935	of juicing machine inserted in order to get
+2939	it there.
+2940	It just can't happen organically.
+2942	I would love to know if they're using
+2945	something like MOPOD or something like that.
+2947	At Pismata Valley University, I'm James Carter.
+2950	And in this third and final installment of
+2952	our series, we turn to legacy, investigation, and
+2956	the broader implications of this tragedy.
+2959	My role as- They did three episodes
+2961	on one day.
+2964	Released at 6.59 PM, 7.01 PM,
+2967	and 7.03 PM.
+2969	So they made it look legit too.
+2976	This has got to be, there's got to
+2980	be something like one of those services that
+2983	are being employed to drive traffic is all
+2986	I can think.
+2987	No, possible.
+2988	You just don't go to the top of
+2992	the chart organically that fast.
+2995	It's just not possible.
+2999	So, I mean, this is not really, to
+3001	me, it's not really about the AI so
+3005	much as it's about like, you could do
+3007	this same thing that they're doing.
+3009	You could do that with a thousand anonymous
+3012	Indians.
+3014	You know?
+3014	I mean, at enough scale, at a big
+3017	enough scale, people, if you have a sufficient
+3022	quantity of people, you can also churn out
+3026	as much content as this does.
+3028	Yeah.
+3029	I mean, you know, if you hired a
+3031	thousand anonymous Indians as, you know, like Amazon
+3034	did for their, you know, for their stuff,
+3039	you could pump out just as much content.
+3043	3,000 episodes a week.
+3046	And, you know, and it would, all people
+3048	just copying, pasting off Wikipedia or something.
+3051	Yeah.
+3052	So, I mean, to me, it's not this
+3055	particular company.
+3058	Yes, they're doing it with AI in order
+3060	to, you know, increase their profit margin, but
+3064	they, you know, it's, this is not, the
+3067	AI is not the most interesting part of
+3070	this to me.
+3070	It's just, how exactly are they juicing this
+3076	stuff into the charts?
+3078	Right, okay.
+3078	So, bottom line, it doesn't really hurt podcasting.
+3083	It could hurt platforms like the index.
+3087	If we're, you know, if there's a million
+3088	submissions a day, the trillion book problem, that
+3093	could just be a resource drain that becomes
+3094	a problem.
+3096	But it doesn't actually hurt podcasting to me
+3099	in any way.
+3100	It hurts advertisers because they're being scammed.
+3105	That's- And the loop is, you know,
+3108	now the loop is complete because we already,
+3111	we know that download scams are happening whether
+3114	it's by putting something in a game that
+3116	no one actually listens, it's just a download.
+3119	There's a million different ways to do it.
+3121	And Silicon Valley is filled with companies who
+3124	do this, you know, just before the board
+3125	meeting.
+3126	Look at our traffic, it's up, it's amazing.
+3128	We're spiking, we're doing great, give us more
+3130	money.
+3131	It happens all the time.
+3133	But now the creation part is what's complete.
+3138	And so it's, for all intents and purposes,
+3140	it's legit.
+3141	You know, it's not something I'm interested in,
+3144	but it's legit.
+3145	It's no less, to me, it's like, all
+3147	right, so you created it with AI and
+3149	there's content and it may or may not
+3151	be interesting to me and it may or
+3152	may not be something, a voice that I
+3154	want to listen to or copy that I
+3156	think is useful, but it's legit creation.
+3160	You know, my example is always Eddie Van
+3164	Halen.
+3165	Eddie Van Halen would, he really, when, what
+3170	was the, what was their big album when
+3174	they still had David Lee?
+3177	What was the one with John and...
+3180	Oh, 1984.
+3182	84, exactly.
+3183	So that was kind of when studios were
+3188	really, really upgrading and, you know, punching in
+3193	and just creating these unbelievable solos that you
+3199	just listened to it like, wow, this guy
+3201	is amazing.
+3202	So then they went out on the road
+3204	and Eddie Van Halen had to learn how
+3206	to play those licks that he had basically
+3208	created in the studio.
+3210	So this is nothing new.
+3213	And he really couldn't actually replicate it the
+3216	way that it sounded on the record.
+3217	It was almost a physical impossibility, just you
+3221	don't have enough fingers.
+3224	You know, you can't place them.
+3225	That's what happened to the band Alabama, the
+3228	fiddle player, they got studio musicians to come
+3231	in on...
+3233	Sweet Home Alabama?
+3235	No, no.
+3236	That was Lynyrd Skynyrd, I'm sorry.
+3237	Yeah, yeah, yeah.
+3239	You know, the band Alabama had, I forgot
+3243	which song it was.
+3244	They had one song where the studio fiddle
+3246	player just, I mean, he just set the
+3248	strings on fire.
+3250	And the fiddle player for Alabama was like,
+3253	ho, ho, ho, ho there, champ.
+3254	You're gonna have to calm that down.
+3255	There's no way I can play that.
+3257	He's like, I can't play that in concert.
+3259	So they had to like, he had to
+3260	tone it down so the real guy could
+3262	play it.
+3262	Yeah, but my point is like, we've always
+3265	had fake stuff.
+3266	You know, Milli Vanilli.
+3269	They got a Grammy.
+3270	They didn't even sing on the record.
+3272	I mean, anything can be done.
+3276	So if we wanna label it, no one's
+3279	gonna adhere to it.
+3280	The people who are in this game, they're
+3282	not gonna label their content as AI.
+3284	They're not gonna.
+3285	It's not for the listener.
+3287	This is all about the advertiser.
+3289	And James kept saying it as such.
+3291	Well, it's up to the advertisers, what they
+3293	want.
+3294	Okay, well, so it's an advertiser problem.
+3296	To me, it's not a podcasting problem.
+3299	You know, I might actually listen to one
+3300	of these podcasts.
+3301	I don't know.
+3302	It could happen.
+3303	I'd be like, oh, that's interesting.
+3304	It's AI, but the content industry.
+3306	It could be.
+3307	You don't know.
+3307	Charlie Kirk shows say that they're hosted by
+3310	James Carter, a seasoned national news anchor with
+3313	a calm, authoritative presence.
+3315	It says nothing in here that is AI.
+3318	The description was written by AI though.
+3321	No, but that's fine.
+3322	You know, they're not going to say it.
+3324	And why they shouldn't have to.
+3327	They use the podcast namespace in their feed.
+3329	So I'm happy.
+3330	Oh, well, good for them.
+3330	These guys, they rock.
+3333	Spreaker.
+3334	They're awesome.
+3335	Spreaker gave them the air legitimacy.
+3338	Awesome.
+3340	So now that would, as far as tagging,
+3344	I mean, I don't, I cannot think of
+3348	a way to do it, honestly.
+3350	No, there's no, it's like explicit.
+3353	Now you're either going to have to have
+3354	a way for people to complain and say,
+3356	hey, this should have an explicit tag or
+3358	this should have an AI tag.
+3359	And then the feed is no longer the
+3362	source of truth.
+3364	The minute we allow that.
+3366	I've been wrecking my brain trying to think
+3368	of a way to, that this would work.
+3370	And I just can't.
+3373	Nobody's, I mean, if.
+3376	But I don't really care.
+3378	The thing is who benefits and who's hurt.
+3382	This company benefits short-term and who gets
+3387	hurt?
+3387	Well, the advertisers, I'm sorry.
+3391	You've got a crap metric to start with.
+3394	Fix that.
+3395	How about that?
+3397	If the core problem is not AI podcast,
+3400	the core problem is the download metric.
+3404	That's the core problem.
+3407	Yeah, I mean, there's just not.
+3412	Yeah, so yeah, Nathan's right.
+3413	I mean, solving the advertiser problem, that's just
+3419	not something a tag is going to do.
+3421	No.
+3421	It's just not.
+3422	No.
+3423	It's not.
+3424	Unfortunately, this is one of those examples of
+3427	trying to use.
+3429	And by the way, it's only dynamically inserted
+3434	ads.
+3434	That's the problem.
+3435	It's not for host reads.
+3437	Yep, yep, because there's not going to be
+3439	any.
+3439	Yeah.
+3439	Because nobody's going to buy that content.
+3441	Good, well, good.
+3442	Then that scourges out of my life too.
+3445	Well, I mean, honestly, the dynamic insertion, I
+3451	mean, if you're buying dynamic insertion as an
+3456	advertiser, you deserve what you get.
+3459	Yeah.
+3459	Because that's bottom of the barrel stuff anyway.
+3462	Yeah, yeah, exactly.
+3465	I mean, I don't know.
+3467	I just cannot, for the life of me,
+3469	imagine how this would work.
+3471	The exact people who are going, who you
+3475	would want to tag are the ones that
+3478	are not going to put the tag in
+3479	there.
+3479	So it doesn't matter.
+3481	Yeah, exactly.
+3482	So this does flow into censorship because, and
+3485	classic government censorship is one thing, but at
+3489	a certain point, Adam and Dave are going
+3492	to say, well, this is hurting our system,
+3495	this flood of a trillion books, we're going
+3498	to have to censor this, which is a
+3500	form of censorship.
+3501	Like, no, you can't be in our index.
+3503	And that would be the only reason that
+3505	I would pull that trigger is because it
+3508	is essentially out of platform self-defense.
+3512	Yes, platform self-defense.
+3515	I mean, there's no other, because, I mean,
+3517	what is being said, I mean, we've said
+3521	this since the very beginning, we're just not
+3523	going to get involved in that.
+3524	That's up to the apps.
+3526	The apps can layer on top of us
+3527	and decide to show whatever they want.
+3529	We're not going to be pulling stuff off
+3532	based on content.
+3533	Exactly.
+3534	But, you know, unless it's locally illegal to
+3538	us.
+3539	Now, I'm sorry.
+3541	Go ahead.
+3541	No, but if we have to play self
+3544	-defense because we're getting overwhelmed with a certain
+3546	type of garbage content, like AI generation or
+3550	Vietnamese poker SEO, I mean, yeah, we're going
+3554	to pull those off.
+3555	Those are fun.
+3557	Give me access to API.
+3559	I need right access to API.
+3562	Urgent, urgent.
+3562	Urgent, urgent.
+3563	Dave, Dave, Dave, I need access.
+3567	It's amazing they got your name.
+3570	I mean, they were hounding us for a
+3572	couple of weeks.
+3573	Dave, Dave.
+3573	I think they finally gave up.
+3574	Give me right access API is very important
+3577	for our podcast platform.
+3579	Why did you not respond?
+3581	You actually did respond once.
+3584	We take care of spam.
+3585	It's good.
+3585	Look now.
+3586	Yeah, yeah, we, yeah, shaking now we got
+3588	rid of it all.
+3589	Okay.
+3592	Oh man.
+3594	Well, so just because there's so much, I
+3597	think we talked about it on the last
+3598	show.
+3598	There's so much confusion about the FCC.
+3601	And to be fair, in other countries, there
+3605	are organizations who police content.
+3607	And this is certainly happening in the EU
+3610	and certainly happening in the UK.
+3613	And I don't believe they have any jurisdiction
+3617	over podcast index.
+3619	They could certainly block us, I guess, on
+3620	a network level.
+3622	That'd be cool.
+3623	It would be something different.
+3625	Be fine.
+3626	Yeah, it'd be fine.
+3627	So that's certainly something they can do.
+3629	In the United States, it really comes down
+3631	to one thing and that's liability.
+3633	And the reason we can do this at
+3635	all is because of section 230.
+3637	Yeah.
+3638	And of the Communications Decency Act, I think
+3641	it is.
+3643	And that says that we can have content
+3647	that is created by other people.
+3650	And if there's something, if there's some form
+3655	of, what's the term I'm looking for?
+3657	Slander or the other term, you have slander,
+3661	you have- Libel.
+3664	Well, in essence, if someone says, I'm going
+3668	to kill this person and it's in a
+3671	podcast or in a description somewhere, we are
+3674	not liable for that.
+3676	And if they change section 230, which I
+3679	highly doubt they will because that would kill
+3681	everybody.
+3682	That would kill Facebook.
+3683	That would kill X, everything.
+3688	Every social media site, even Google could run
+3692	into trouble then.
+3693	So I doubt they're gonna get rid of
+3694	that.
+3695	But there's no organization, no governmental agency in
+3699	the United States that can stop us from
+3701	doing anything we want to do, except for
+3705	the courts.
+3707	And if that happened, if they changed section
+3709	230, well, that could be difficult.
+3713	Then we're just back to bloated apps with
+3716	the whole index on it.
+3719	I don't know what else we can do
+3720	in that case.
+3722	SQLite download or whatever, yeah.
+3724	Yeah, you just pull in the whole thing.
+3726	Yeah, I don't, I mean, there's no, yeah,
+3730	we're not gonna, I think some, maybe in
+3735	the beginning of when we started the index,
+3737	it got a little confused that what we
+3743	were saying was- Right wing nut jobs.
+3749	Yeah, like Alex Jones and stuff like that,
+3751	which is just like, that's not the case.
+3754	I mean, there's no, it does not matter.
+3759	That was just who happened to be the
+3763	target for censorship at that time.
+3765	But the targets for censorship change constantly.
+3771	That's always been the case.
+3774	And your particular political quote enemy today maybe
+3780	is- Could be you tomorrow.
+3784	Yeah, it could be you tomorrow.
+3786	So the thing is just complete, we're just
+3789	completely neutral hands off.
+3791	And that's the only way you can make
+3792	anything like that work.
+3794	It's just the only, it's the only way
+3796	you maintain credibility.
+3797	But for sure, Spotify and Apple and others,
+3800	I think they take stuff off all the
+3801	time.
+3802	We know this, we know this from the
+3804	hosting companies.
+3805	I used to get a lot more in
+3806	from Todd, but he died, that sucks.
+3809	Like Todd would give you all the dirt.
+3811	Todd, that was, I miss you, Todd.
+3813	That was cool.
+3815	Oh, no hacker.
+3816	There is no username Celine on my server.
+3820	Stop it.
+3821	Celine?
+3821	Yes.
+3822	They're just rolling through the whole index.
+3825	I saw Nancy, I saw Celine, I saw
+3827	emo.
+3828	Nancy?
+3828	Nancy.
+3830	No username Nancy.
+3833	No, no Nancy here.
+3835	Yes, there's no Nancy here.
+3837	That like, you should name all your SSH
+3840	users Nancy.
+3842	Yeah.
+3843	Hi, I'm Nancy.
+3845	Hi, I'm Nancy.
+3846	How you doing?
+3847	Isn't that an old timey term to call
+3851	somebody like a wuss?
+3853	Yeah, you're Nancy.
+3854	Yeah, oh, absolutely.
+3855	That's right.
+3856	You Nancy.
+3857	There's no Nancy on this server, go away.
+3861	That's funny.
+3865	Go ahead.
+3866	I was going to move on to something
+3868	else.
+3868	Yeah, sure.
+3869	Did you see the X402 foundation on Coinbase?
+3873	The X402 transactions?
+3876	Yeah, well, there's been a lot of movement
+3879	on the 402 thing.
+3880	It's very interesting.
+3882	Because I think Cloudflare is doing something as
+3886	well.
+3886	Yes, yes.
+3887	Cloudflare is partnering with Coinbase to create the
+3893	X402 foundation.
+3895	The foundation's mission will be to encourage the
+3897	adoption of the X402 protocol an updated framework
+3899	that allows clients and services to exchange value
+3903	on the web, there's my favorite word, using
+3906	a common language.
+3907	In addition to today's partnership, we are shipping
+3909	a set of features, blah, blah, blah, SDK,
+3912	et cetera, et cetera.
+3914	And the way I see this, this is
+3916	your programmable money.
+3918	This is what we were trying to do
+3921	and succeeded with the Lightning Network and with
+3924	Bitcoin.
+3925	And I think that they've probably got a
+3927	very, very decent idea here with 402 payment
+3933	required response.
+3935	And what you're talking about, and I'm gonna
+3937	have to rely on you for this because
+3939	I have not researched it.
+3940	So you're talking about the Coinbase thing right
+3942	now?
+3942	Well, it's a foundation.
+3944	So it's Coinbase and Cloudflare, they're both in
+3947	it.
+3948	And the idea here is to fully bring
+3951	402 out of the like- The dungeon.
+3954	The dungeon, the Bitcoin dungeon and make it
+3960	where it's multi-currency.
+3962	Well, what they're using it for is pay
+3966	-per-crawl.
+3968	You see the Cloudflare guy, who seems like
+3971	a pretty decent guy, actually.
+3973	I read a long interview with him.
+3974	Yeah, I think so too, yeah, yeah.
+3975	He said, look, everybody, all the AI companies
+3978	are just crawling all of your crap all
+3981	day long.
+3982	Put your stuff behind our Cloudflare wall, wall
+3987	of protection, and you can allow bots to
+3992	crawl your website, but they have to pay
+3994	for it.
+3995	And it's an automatic process through this X402
+3997	protocol.
+3998	They call it pay-per-crawl.
+4001	Which, I mean, think about that with the
+4003	index.
+4004	We should set it up regardless.
+4006	You never know, we could make some bank
+4007	on that.
+4008	Pay-per-crawl, everybody.
+4010	Man, bot fighting is like a freaking full
+4012	-time job.
+4013	So, interesting thought.
+4017	But it can easily be turned around and
+4019	used for good in a positive manner by
+4023	incorporating it into value-for-value transactions between
+4026	podcast apps and podcasters.
+4030	The way I see it, I don't see
+4032	any way it wouldn't work or any downside
+4034	to it.
+4036	The upside is probably because it's unavoidable that,
+4040	and I've said this before, that Stablecoin is
+4042	going to be in our lives all the
+4044	time, everywhere.
+4047	It's a fact, it's just coming.
+4051	Then it may not call it Stablecoin, just
+4054	be, here's a dollar, you know?
+4055	How much?
+4056	Oh, you owe me 10 bucks.
+4057	Okay, here's 10 bucks.
+4058	Oh, you want to boost me three cents?
+4060	Here's three cents.
+4063	And I think it'll be fee-less, probably.
+4068	So, the idea here is that perhaps we
+4076	could change, I'm trying to think this through.
+4083	We could perhaps modify the value tag to
+4091	use the 402 for payment.
+4096	Yeah, but I don't even think you have
+4097	to modify it much.
+4098	You just have to add, here's another option.
+4102	Right.
+4103	I mean, they got code and everything.
+4105	They got code, man, sample code.
+4108	Let's run it.
+4109	Let's run it, Nancy.
+4110	Yeah, right, just download that thing and run
+4112	it.
+4112	Let's run it, Nancy.
+4115	SSH Nancy run code.
+4118	I think, this is, yeah, this is interesting
+4121	because I never really thought about, and when
+4123	I've thought about 402, I always thought about
+4125	it in terms of like what Sam is
+4128	calling secure and Sam and Russell call secure
+4132	RSS.
+4135	You know, and that's clearly working on TrueFans
+4139	and Fountain and Pod2 and, but using it
+4144	for, if we had a common API, okay,
+4152	all right, well, how would this be?
+4154	Suppose there's a common API defined and let's
+4160	say it could be a continuation or a
+4164	fleshing out of Alex's MetaBoost API spec.
+4168	Yeah.
+4169	So you have that as the interface and
+4172	then a hosting company or publisher would publish
+4177	the callback to that in a value tag.
+4188	Let me give you the examples, the examples
+4190	they list, okay?
+4192	Which is, and someone's going to do this.
+4194	Someone is going to do this, whether it's
+4196	us or not, I guarantee you.
+4198	So the examples they give, they say X402
+4201	can be used to monetize traditional use cases,
+4203	but also enables monetization of a new class
+4205	of use cases.
+4206	For example, an assistant that is able to
+4209	purchase accessories for your Halloween costume from multiple
+4211	merchants.
+4212	So that's like an AI agent.
+4213	Okay, fine, whatever.
+4215	Then they have an AI agent, which could
+4218	also just be a person on a web
+4219	browser, pays per browser rendering session instead of
+4223	committing to a monthly subscription fee.
+4226	And the third example, an autonomous stock trader
+4229	that makes micropayments for a high quality real
+4232	-time data feed to drive decisions.
+4235	So in my mind, it's like you can
+4238	listen to this podcast for free, but if
+4241	you enable your X402, then you will automatically
+4246	make micro, and I don't know if they
+4247	have like an open-ended payment or if
+4249	it's like an invoice that has a number
+4252	on it, but you can then decide to
+4255	make payments in real-time micropayments for the
+4258	high quality real-time data fee of MP3
+4261	information that comes back.
+4263	It's the same thing.
+4264	They're just thinking of in commerce and I'm
+4267	thinking value for value.
+4272	So, you know, it would say payment, let
+4275	me see, payment required.
+4277	Okay, we know that.
+4278	I just don't know if it can be
+4279	open-ended.
+4281	Chad F., does it do keysyn?
+4285	Well, that is, it's funny, but that's actually
+4288	the question, is does it do bolt 12?
+4291	You know, does it, can you have an
+4293	open-ended payment requirement or does it have
+4296	to be a specific number?
+4298	This, I don't know.
+4300	Well, it's just, if you're, if you ping
+4306	the, if we're doing X402 or
+4315	L402, I don't know why they could call
+4319	it X.
+4319	I don't know what that's all about, but
+4321	if there's a 402 endpoint that you're hitting,
+4327	then you're gonna get some, you know, you're
+4329	gonna get some sort of token and then
+4332	you could use that to make your payment.
+4335	And then I'm just thinking that the API
+4337	that it's gonna call can hold all of
+4342	the, because we're gonna have, you know, what
+4348	we need is an API that is like
+4352	the abstraction layer between whatever the currency is
+4356	gonna be and whatever, and what the payer
+4361	is sending.
+4366	Because it could be anything on either side
+4369	and it's just gonna get, you know, it
+4371	would just get translated.
+4374	I don't, this is interesting.
+4375	I'm gonna have to think about this.
+4380	Because I can see how this would solve,
+4386	Bolt12 is just a different form of LNURLP.
+4396	It's the same thing.
+4398	Really, Bolt12 is just LNURLP, but it's been
+4403	pulled completely into the Lightning protocol.
+4407	Here, you have an answer.
+4409	X402 supports variable payment amounts, which can be
+4413	adapted for open-ended donations where users specify
+4416	different values.
+4417	The protocol uses HTTP 402 responses to find
+4420	payment details, including the exact amount in stable
+4424	coins like USDC and allowing flexibility per request,
+4428	such as basing the amount on user input
+4430	or parameters in a donation flow.
+4433	While it's primarily designed for automated micropayments, AI
+4437	agents, it can handle custom amounts for purposes
+4440	like donations through appropriate client-server implementations.
+4444	So there'd have to be a back and
+4445	forth.
+4446	Like, hey, I wanna send you three cents
+4448	a minute.
+4449	Okay, I'm gonna give you a three cents
+4451	a minute token.
+4455	Something like that.
+4456	Right, Nathan says 402 is just the HTTP
+4459	response.
+4459	I don't believe the version of Cloudflare Coinbase
+4461	will support Lightning Network.
+4463	No, I understand that, Nathan.
+4465	I understand that.
+4466	What I'm trying, what I'm thinking, I'm not
+4468	being clear because I'm trying to think this
+4470	through in real time.
+4471	What I'm saying is that if the value
+4477	tag is changed to support instead of raw
+4480	Lightning, if it's changed to support 402 in
+4486	whatever flavor that is, whether, you know, this
+4489	thing X402 or- Then you need an
+4492	API to do some back and forth, is
+4494	what you're saying.
+4494	Right, right, because right now the API is,
+4497	when you're talking about a Lightning value tag,
+4500	the API that you're communicating with is already
+4502	defined.
+4503	Right.
+4503	It's defined by the RPC, excuse me, by
+4507	the either, you know, REST or RPC or
+4510	Keysend or Bolt11, all those things, all those
+4513	layers of that stack are already there and
+4515	we know what they are.
+4517	So that's why when you define the method
+4518	equals Lightning, that you know how to interface
+4523	with that.
+4523	So if we change the available value tag
+4526	method to be something like X402, then the
+4531	question is, what does the API look like
+4533	on the other side of it?
+4535	And we know that X402 is going to
+4539	be defined.
+4540	Yeah.
+4541	That's clear.
+4542	They're going to define that, but it's going
+4546	to be, everybody can implement it.
+4549	And so each person's implementation can have its
+4553	own flavor.
+4556	And so what I'm thinking is that if
+4560	we have an X, if we have a
+4562	flavor of X402 that is tuned to podcasting's
+4571	need, it can be backwards, it can be
+4574	compatible with X402 in the general sense, but
+4577	that it can also have baked into it
+4581	the metadata stuff that we need so that
+4583	that is an exchangeable.
+4585	Right.
+4585	Because I'm imagining that X402 itself is not
+4588	- There's no metadata.
+4590	I don't know this.
+4590	No, there's no metadata.
+4592	Nothing.
+4592	Or just something generic.
+4594	Right.
+4595	Something generic, just like, who knows what that
+4598	is?
+4598	I haven't looked at the spec yet, but
+4600	if it's just something generic, we may be
+4602	able to take and shoehorn in the metadata
+4606	spec that we need it to be.
+4610	So yeah, I know I'm referencing Lightning, but
+4612	I know they're two separate things, but I
+4613	think this, we could make this, we could
+4620	make this work, I think.
+4622	I think so too.
+4627	Okay.
+4629	Gonna have to, gonna have to think about,
+4632	I wonder, I mean, does anybody have example
+4633	servers up yet?
+4634	Maybe Cloudflare?
+4635	Yeah, I have a, they got all kinds
+4639	of stuff on Cloudflare, hold on.
+4641	Okay.
+4641	I'll give it to you.
+4643	Because, you know, Alex started writing that MetaBoost
+4646	spec, MetaBoost API, I mean, we could, we
+4653	could just modify 402 to accept the thing
+4658	we need it to be.
+4659	That's what I would kind of hope for
+4662	in this.
+4666	And they're taking contributions to the protocol.
+4670	So get your code in now.
+4672	Yeah.
+4672	Well, they got a, they got a GitHub.
+4674	I wonder where that is, let me.
+4676	Yeah, it's in that link I just sent
+4678	you.
+4679	The Coinbase X402 thing?
+4681	Yeah.
+4682	Vue docs, I wonder if that's- Hey,
+4683	they have a free app.
+4685	They have a free app.
+4686	A free app?
+4687	Yes, a free app.
+4688	The free app that makes your internet safer,
+4690	now available for even more devices.
+4692	What does this app do?
+4693	Okay.
+4694	It's Warp.
+4696	It's the Warp.
+4699	GitHub Coinbase X402, here we go, okay.
+4702	So it's GitHub.com slash Coinbase slash X402.
+4708	There you go.
+4711	And yeah, it looks like CloudFlare's, yeah, CloudFlare
+4715	agent docs, they're also the X402.
+4717	So we need to figure out where all
+4719	this stuff crosses over.
+4722	One line of code to accept digital dollars,
+4724	no fee, two second settlement, 0.001 cent
+4728	minimum payment.
+4731	That's cool.
+4734	Open standard, the phone will never force reliance.
+4736	Yeah, okay, we just need to read through
+4738	this.
+4740	I'm glad you brought this up because I
+4741	had seen it multiple times this week and
+4744	just had not gotten into it.
+4745	Yeah, it's, you know, you know me.
+4748	I'm like, this is beautiful.
+4751	It's got a payment sequencing, the OCV1 protocol
+4755	sequencing, it's like payment method.
+4757	Yeah, the question I have is just, where
+4761	is the, do they have anything like a
+4764	sandbox?
+4766	That I don't know.
+4767	Up and running that you can hit and
+4769	see what it does.
+4770	Yeah, I haven't looked at it yet.
+4772	Not that deep.
+4774	I've been fighting hackers who are now at
+4776	N for Nokia.
+4778	Oh, they're just going through the alphabet.
+4782	Went from Nancy to Nokia, took them a
+4784	half an hour.
+4785	Oh boy, you guys, I'm telling you.
+4787	Yeah, I'm telling you.
+4787	You're going to be there all day.
+4788	I hope they packed a lunch.
+4789	It's kind of fun.
+4790	It's kind of fun to know that someone
+4791	is desperately trying to do this.
+4795	All these things are probably coming from like
+4797	some hacked home router in Brazil, you know?
+4802	Oh, it's actually, no, some of it's coming
+4804	from Linode.
+4807	Interestingly enough.
+4808	So they're, you know, using a Linode to
+4810	hack a Linode.
+4812	And- Oh, really?
+4813	Some of it, yeah.
+4814	A lot of people.
+4815	Yeah, what is this one?
+4817	Hostingmail, servermail.org is another fine one.
+4821	Oh, it's giving you reverse name.
+4823	I've got trace routing some of them.
+4824	Oh, you're tracing, okay.
+4826	Yeah, so they've hacked in all kinds of
+4828	stuff.
+4829	Like, oh, I got someone's mail server.
+4830	Cool, we'll use this.
+4833	Great, great, yeah.
+4835	And you know what?
+4835	There's a lot of hacked servers out there,
+4837	that's for sure.
+4838	Oh yeah, I bet.
+4839	It's unbelievable.
+4841	Let's see, where is this one coming from?
+4845	Oh, interesting.
+4848	Dude, I think, what's this from?
+4851	Global, telemark.brazil, yeah, Brazil.
+4855	Yeah, the reason I said Brazil is because
+4858	I think Brazil had a huge, I think
+4861	they had millions of home internet routers that
+4864	were of one particular kind that had like
+4867	a horrible flaw in them a few years
+4868	ago.
+4869	Oh, and they're all pwned.
+4870	Yeah, it's like the botnet army of the
+4872	universe.
+4873	Nice.
+4874	Hey, let's thank some people, Dave.
+4878	I heard some boost coming in, which is
+4880	nice.
+4880	We got Chad F with 333 and Dreb
+4884	Scott with 12345.
+4887	12,345 sats.
+4889	Go, Nanaia, podcasting.
+4890	Yes, I'm with you.
+4893	Anonymous from CurioCaster222.
+4898	AI has already ruined V4V music.
+4900	Well, it's ruined all music.
+4901	I mean, has it really ruined music?
+4903	Has it ruined V4V music specifically?
+4907	I don't know.
+4907	I mean, has it ruined music?
+4910	I don't listen to AI stuff.
+4912	Some stuff, I don't know.
+4913	I mean, I think Taylor Swift is basically
+4914	AI anyway.
+4916	Yeah, there you go.
+4917	SaltyCray on 236.
+4918	AI dumbing the world down with one bad
+4921	search and song at a time.
+4923	Yes.
+4925	Chris, you know, 1800 sats.
+4928	Stacker.news is up to 26 different lightning
+4930	wallets you can connect.
+4932	I'd recommend anyone make a free Stacker.news
+4935	account just to look at stacker.news slash
+4938	wallets page, see how many different options are
+4940	out there.
+4940	Would love to see these options in P2
+4942	.0 apps.
+4945	Oh, I have to take a look at
+4946	that.
+4948	Bad signal received from SaltyCray on 777.
+4952	Heard that during the opening of the show,
+4954	I think.
+4956	And anonymous podcast guru user with 408 sats.
+4961	Oh, I love that guy.
+4961	Yeah, he's a good guy.
+4963	Any updates on the wallet stuff?
+4964	The arguing and blaming people is starting to
+4967	turn even more people away or at least
+4968	making them feel like they're doing something wrong
+4970	for using the tools available to them.
+4973	Well, I don't know.
+4975	What's the update?
+4978	Is there any update?
+4980	On what?
+4980	I don't know, on the wallet stuff.
+4982	What is the wallet stuff?
+4984	I'm not sure.
+4985	Like, you know.
+4986	Is it my Albi or something?
+4987	I guess.
+4987	I mean, I guess the ongoing KeySend versus
+4991	LNURL.
+4992	I mean, that's.
+4994	Well, I mean, that to me, it's just
+4995	a done.
+4995	It's just that argument's over.
+4998	KeySend's just a redheaded stepchild.
+5000	It's never gonna go.
+5001	Nobody supports it.
+5003	So, I mean, you can't.
+5007	Your massive users are on strike in Cash
+5010	App and in those kind of apps.
+5013	And they're just not gonna, they're just never
+5015	gonna support KeySend.
+5015	They're not gonna do KeySend.
+5016	It's just not.
+5017	It doesn't matter what I think about it
+5019	or anybody else.
+5020	It just matters what happens.
+5021	And that's the way the universe is moving.
+5023	So, I mean, I'm not blaming anybody.
+5026	No, no.
+5027	Blame anybody.
+5028	It's just the way, just this life.
+5031	I mean, we're not, you know.
+5033	You can't, you just, that's just the way
+5035	it's gotta be.
+5036	So we gotta adapt.
+5038	And I think we got a good spec.
+5039	The Bolt 11 stuff is, LN address works.
+5043	You know, the metadata thing is a problem,
+5045	but, you know, I don't, I'm not convinced
+5048	that we actually need the metadata.
+5050	I'm just not, you know.
+5053	We have, when you send somebody a PayPal,
+5056	you see, a lot of times all you
+5058	see is a little, a short note in
+5060	their name.
+5061	And that's fine.
+5062	And that's fine.
+5063	Because what matters is they gave you money.
+5066	That's the way I see it.
+5067	So, I just, I'm not, if there was
+5070	something more specific you were talking about, you
+5072	know, to respond, but I don't, I just
+5075	think that's where we're at.
+5076	I think that's just, that's the future.
+5079	No, I love cotton gin.
+5081	Apple just controls the podcast index.
+5083	It's just the way it is.
+5084	It's what the universe wants.
+5085	No, they don't.
+5086	So that's patently not true.
+5088	What?
+5089	I don't know.
+5090	This is, they think you're lame.
+5093	You're lame.
+5093	Lame answer.
+5094	You need to support Keysend.
+5096	I can't make Cash App support Keysend, or
+5100	Strike, or Coinbase.
+5101	I can't do, I mean, like, they're just
+5104	not going to do it.
+5104	I don't know what I can do about
+5106	it.
+5106	I mean, okay.
+5108	That's where, I mean, that's where all the,
+5112	most of the Bitcoin is.
+5113	That's literally where the money is.
+5115	Literally.
+5116	Yeah.
+5116	Yeah.
+5118	My entire claim to starting this project, yeah,
+5121	exactly.
+5121	And that's what we did.
+5122	We totally did that.
+5124	Apple doesn't control the podcast.
+5125	Apple doesn't control podcasting.
+5127	That's exactly why we added the value for
+5131	value because we had programmable money through the
+5133	Lightning Network.
+5134	It was very cool.
+5135	And then Keysend went away, and then the
+5137	wallets went away.
+5138	And so now we have to fish or
+5140	cut bait.
+5141	Either we use LN addresses and everyone is
+5144	happy with it, or we don't.
+5146	Yeah, I mean, Brian on the index this
+5148	week, Brian showed the RPC calls for LND.
+5158	Now, they will not let you send Keysend
+5161	directly through the RPC calls.
+5164	The- Oh, really?
+5166	They're broken.
+5167	Really?
+5168	On LND, they won't let you do that
+5171	anymore?
+5171	On LND, they deprecated the RPC call that
+5175	had the pub key in as a destination
+5178	address.
+5179	The new RPC call, Brian of London is
+5183	who I'm talking about, the new RPC call
+5185	in LND that's meant to replace the deprecated
+5188	one does not have a public key property
+5192	in it to send to.
+5194	So whenever that other one, which is marked
+5196	deprecated, whenever that other one goes away, Keysend
+5199	is gone.
+5201	Well, I think what we need to do
+5202	because this pops up all the time, aren't
+5205	you using Keysend to receive these boosts?
+5207	Okay, good.
+5208	I'm going to remove all the Keysend and
+5210	we'll just use LNURL.
+5214	That's fine.
+5214	I really think there's a disconnect going on
+5217	here.
+5219	BitPunk, yes, nobody ever said that it doesn't
+5222	work right now for everything.
+5226	What we're saying, people don't understand, some
+5236	Keysend still works.
+5239	Okay, I'm just going to lay this out.
+5241	This is the truth as far as I
+5243	understand it right this second.
+5246	Some Keysend still works across the board.
+5250	Okay, that is a fact.
+5256	Keysend does not and will never work on
+5260	hosted wallet solutions where most of the easy
+5269	onboarding is like CacheAppStrike, et cetera.
+5274	The deprecation that we were talking about with
+5278	Keysend is one layer removed than what you
+5283	think it is.
+5285	Keysend itself is still supported in LND.
+5291	The API, LND's own API, the RPC calls
+5296	for LND that support Keysend, that has been
+5306	deprecated, okay?
+5308	So the RPC call to send a payment,
+5314	they deprecated version one of that call and
+5317	replaced it with version two.
+5320	Version two does not support a public key
+5324	as the destination address, which is what you
+5326	have to do to send Keysend.
+5330	So the call that supports Keysend in LND
+5334	RPC has been deprecated, even if Keysend itself
+5338	has not been deprecated as a feature.
+5341	Because it doesn't matter if Keysend is still
+5346	in there.
+5347	If you can't get to it, then you
+5349	can't send it.
+5351	And the quote, some guy named Brian, he's
+5357	the guy that's quoted in Lightning Lab's documentation
+5360	about how to send Keysend.
+5363	That's the some guy named Brian.
+5365	They literally used his code as the example
+5368	in their own documentation.
+5371	And if you want a better explanation for
+5374	this, look back on the podcast index social
+5376	from back after the show last week.
+5379	And Brian piped in and gave links to
+5383	the documents showing the deprecated API calls.
+5386	This was discussed right after the show because
+5389	nobody believes that there was a deprecation issue
+5393	going on.
+5394	And the confusion is, it's Lightning Labs.
+5399	Don't blame me, blame them.
+5401	Because they've deprecated the APIs that allow that
+5404	stuff to be sent.
+5406	Now, the marquee tag in HTML is also
+5409	deprecated, but it's still supported by a whole
+5412	bunch of browsers.
+5413	But nobody, but everybody's gonna use CSS animations
+5417	instead of marquee because nobody knows when it's
+5419	gonna go away.
+5420	Because it's officially been deprecated.
+5422	So look, just, I don't know what else
+5425	to say.
+5426	It feels like a losing battle.
+5428	So I don't see why we're gonna continue
+5430	to fight this.
+5431	Yeah.
+5432	Well, I'll switch our feeds to LNURL.
+5438	That's easy.
+5439	And we may not get boosts with metadata,
+5443	but we'll get payments if people still wanna
+5445	send money and support the index.
+5447	So I got no problem with that.
+5449	Look, I don't like it.
+5451	I don't like it.
+5453	I love KeySend, I love the way it
+5455	worked.
+5455	It was so simple.
+5457	But you're shooting the messenger here, man.
+5461	Yeah, exactly.
+5465	Okay.
+5467	Why don't you read some of the last
+5468	boosts we'll ever receive?
+5473	The Bruce, the ugly quacking duck, 2222 through
+5478	podcast guru says, love the testing 73.
+5481	Thanks guys.
+5483	You're welcome, Bruce.
+5484	And let's see, we got, oh wait, we
+5488	got Tommy.
+5490	Yeah, here it is.
+5490	Commissioner blogger, 13710 through fountain.
+5493	He says, howdy Dave and Adam.
+5495	Although I'm agnostic now, in childhood I was
+5499	Christian and I even visited the Vatican several
+5502	times.
+5502	And today I want to recommend a podcast
+5504	that can be found by searching for quote
+5507	the Charlie Kirk show unquote in podcast apps
+5510	or at www.charliekirk.com.
+5514	After Charlie's murder, new episodes are still being
+5517	published.
+5517	Thanks to Daniel J.
+5519	Lewis for the hint.
+5520	Yo, CSB.
+5522	Thank you.
+5523	We got some, we got some monthlies.
+5525	We got Chris Bernardik, $5.
+5528	Michael Kimmerer, $5.33. Dreb Scott, $15.
+5533	Christopher Reimer, $10.
+5535	James Sullivan, $10.
+5537	Cohen Glotzbach, $5.
+5539	Jorge Hernandez, $5.
+5541	And Michael Goggin, $5.
+5543	All right.
+5544	Well, thank you all very much for supporting
+5546	the Podcast Index Project.
+5548	It all goes into the funds to keep
+5550	this thing rolling and to keep us indeed,
+5552	keep podcasting independent from Apple or anybody else
+5555	for that matter, which is the entire mission.
+5558	Go to podcastindex.org.
+5560	You can read our mission.
+5561	It's right there on the homepage.
+5563	And below it is a big red donate
+5565	button.
+5565	We do accept your fiat fund coupons.
+5569	And just hit that button to send us
+5571	some.
+5572	I feel like we're ending on a downer
+5574	here, Dave.
+5575	Man, I know.
+5576	I just want like, the boardroom just went
+5579	nuts.
+5580	Went hostile.
+5581	Hostility, hostility.
+5583	We have, what do you call it?
+5586	Activist investors on the board.
+5588	It's a hostile takeover.
+5590	Hostile takeover.
+5591	All right, everybody.
+5592	We'll be back with new lightning addresses on
+5595	the Node next week.
+5596	Join us then for the board meeting of
+5597	Podcasting 2.0. I
+5613	think they're cool.
+5615	You have been listening to Podcasting 2.0.
+5619	Visit podcastindex.org for more information.
+5623	Go podcasting!
+5626	I mean, that is hilarious.

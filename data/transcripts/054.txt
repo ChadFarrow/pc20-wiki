@@ -1,0 +1,1570 @@
+0	podcasting 2.0 for September 17 2021, Episode 54 Power to the
+6	People. Okay, maybe not as cryptic as some might think.
+12	Everybody is time once again, it's the board meeting of
+15	podcasting. 2.0 we've got everything that's happening at
+19	podcasts index.org all about every development in the
+22	namespace and of course, the gossip and the good stuff from
+25	podcasts index dot social. I'm Adam Curry here in the heart of
+28	Hill Country, Texas, and in Alabama, whatever you do, don't
+31	call him Tiny Tim Say hello to my friend on the other end Mr.
+34	Dave Jones. You Yo, what up? Did you see the game yesterday?
+41	Yeah, no, I watched the MTV Video Music Awards foolishly.
+46	Okay, I was trying to be more manly because we like we went
+49	all emotional last week.
+51	Now, I'd like you did a live sad puppy and that paid off man did
+56	a good job.
+58	By the end of the show. I mean, like we were we were like one
+61	step away from crying from dirty dancing.
+67	We were gonna crack open a Chardonnay and have a rough day.
+72	Yeah. Yeah, so this is a special a special board meeting. Reason
+78	being I forget what was your problem this Friday?
+82	We're going to be in Chicago. Oh yeah. Melissa we we our
+86	anniversary was last month so we didn't have a chance to do
+89	anything for it. So we're going to riot fest
+92	oh my goodness Music Fest Yeah, Chicago. Oh wow. You know the
+96	keepers got Oh, right. Are they saying you need to be vaccinated
+101	is that the
+102	they said they're going to have testing you can have either a
+105	negative test or vaccine going negative test and they said they
+110	would have testing at the gate?
+112	gate? Yes. That's interesting was just like yeah, coffin my
+117	direction. No, you're good. Well, it tells me it does take a
+121	few minutes at least it said 20 to 30 minutes Okay, well if they
+126	could do that the gate that'll be really interesting. I
+128	am afraid of this review like a repeat of our Bitcoin Miami
+133	conference gate.
+137	Bitcoin fire festival is that what you mean? Yes, exactly. And
+141	I would suggest getting a test outside of the at the gate
+144	business.
+146	Well, they said that you could have you could do the at home
+148	test. But what you have to do is get the test like take the test
+153	at home and then and then do their little submit it through
+158	an app and get an email and I'm like,
+161	Yeah, I wouldn't trust that that's what I like about Rogen.
+166	He just has a nurse there he's just sit there and she does the
+169	whole thing and gives you the results and just hang out
+172	Yeah, we're not we're not fancy enough to have we are nowhere
+174	near
+176	the nurse level. Wait a minute. That depends of course. Get a
+182	nurse for Tiny Tim Yeah, nice All right, ma'am. So and we have
+191	a guest today who we're going to be talking to in a moment and
+194	and we need to work we Yes we do. We need to coordinate some
+197	some schedule some time. Since he's he's on the other side of
+201	the firmament.
+204	What is it with us and Australians? I mean, oh, I can
+209	tell you is the center of the podcast Bitcoin universe for
+212	some reason?
+213	Well first of all, I'm happy that we have our allies with us
+219	because the French were definitely starting to make some
+222	noise in podcasting, you know, cast a pod guys and we have to
+225	push them back a bit with some English speaking people. English
+231	is in quotes there is right. To me. What we'll talk about it. I
+237	think Australians have some very similar qualities to Americans.
+244	I think so too.
+245	So it's it's really born from rebellion. Yeah, exactly. The
+249	pioneering spirit, the rebellion, you know, the slave
+253	bracelets, all of that stuff is very much like America. That Do
+258	we need to talk about any? Anything in the namespace?
+263	Because I know we kind of we didn't get to that we just
+265	talked about namespace for being being up.
+270	Yeah, let's see. I had a bunch of stuff listed out to talk
+276	about last week that you didn't even get to in my real Bhumi and
+280	here's this you know, memo?
+281	Yeah, you're in the bunker video here. Yeah. It's a little boom
+285	Yeah. You don't have anything on the walls yet. You need to use
+287	some stuff on the wall. Yeah, I
+289	got I got nothing in here.
+292	In do what we used to do when we were kids, egg cartons.
+296	I've got this. I got this little thing. Is this how But Oh,
+300	no. What is that?
+301	Is this any different?
+302	I don't know. Yeah, a little bit. A little bit. Yeah, sounds
+305	better.
+306	I can like stuff this behind the mic. Oh, yeah, I
+308	was gonna say what I do in any hotel room. Just put a pillow
+312	behind the mic. Good to go. Sounds like you're perfect. It's
+316	your spot on. I don't even I don't even I don't even hear the
+319	drywall.
+320	I fix that with with 75 cents for the phone. Yeah, I got a
+327	bunch of stuff here. One thing we need to talk about is pod
+331	paying. Not necessarily namespace quick. But like, at
+336	Alex, he released pod pain pipe writer, right like 1.0? Yeah.
+341	Dan? Yeah. The Hive writer. Yeah. Nice.
+343	Now, this is this is a script that you can run that will write
+347	to the blockchain live way.
+350	Yeah, what this is, so for people who don't understand sort
+354	of the chain of, of components in in pod pain.
+362	Maybe, maybe we should explain what it is first, just a
+364	refresher of what pod ping does. Yeah,
+367	pod ping, takes incoming feed URLs, podcast feed URLs, and
+374	writes them to the hive blockchain. And the reason it
+377	does that is because hive is a public blockchain. And anybody
+381	can read from it. But you can only write to it if you have
+385	record posting keys. And so that's the way that it works to
+390	what you have, what you need, is you need some way to get these
+394	URLs and place them on the blockchain in a in a way that
+399	you're using posting keys that are meant to have been blessed
+404	by a sort of a master posting account. And I'll take it
+409	one step back, just for one second, the concept behind pod
+413	ping is to circumvent the issues Apple is having as an example.
+418	So or, or any aggregator instead of having to go and check 4
+424	million feeds, we have over four and a half million, or have
+428	schedules when it's most efficient, which is just a huge
+431	waste of resources, because all you're doing is checking to see
+433	if something's new, instead of this being a pool operation. pod
+437	ping turns this around. And the hosting companies or even self
+441	posters can send their URL through the system. And then
+445	that in theory gets picked up well certainly gets picked up by
+448	podcast index, but by any other aggregator making the full
+452	publish to App round trip time about 40 seconds instead of two
+457	days with Apple sometimes.
+460	And I'll say that I do not for the life of me understand why
+465	this has not proceeded fast, like more adoption faster. I
+469	just do not understand it. It's a no that. I know that big
+474	players are looking at it. But honestly, I mean, this is a this
+479	is a rapid feed update notification system that is
+483	built specifically for podcasts. And
+486	it's decentralized by its very nature. Yes.
+489	So that's that's the decentralized part is the part
+492	that Alex is working on. Specifically, this one
+496	component, the part that takes I've, excuse me the part that
+500	takes the URL and writes it to hive to the blockchain. But he
+506	didn't that's the part of the he's been darker rising and
+510	cleaning up the code and re engineering everything to make
+513	it bulletproof.
+514	Oh, cool. So I can just load a Docker and then fire off a
+517	script and it'll work.
+519	Exactly nice. Yes. And you'll have you'll have a set of
+521	posting keys Browns already made you so you get high power. You
+526	already have.
+526	I have high power. high power.
+534	Yes, every anime vision you can think of you have this now.
+537	Cool. So any like what this is at 1.0. Now he released it
+544	today. Nice. I haven't even had a chance to load it yet. But so
+550	what what pod pink cloud does is takes that component hive writer
+559	and puts a front end on it for HTTP and an author in an
+564	authentication mechanism. And it makes it where hosts don't have
+570	to run their own. They don't have to run the hive writer
+572	themselves will Whoa. It's like, it's like us hosting it for
+576	them.
+576	Right. Or I could host it for them. Anybody could host the
+579	hive writer for Yeah,
+580	yeah, exactly. So that's that pink cloud is just the hive
+584	writer with a web server front end on it. Got it. Cool. Yeah.
+590	Yeah. So and his his progress on that now allows me to go and
+598	modify the front end To fit the next step of what we're doing
+605	with live notifications, and all that kind of stuff,
+607	we're really in a very interesting place. If you just
+610	look at the the overall media podcast reporting, the stories,
+614	the trends, we're in a place when I, you know, I feel these
+618	things very much the vibe on different apps and services. And
+623	I would say we're in a spot right now, where Apple is seen
+626	as you as the boomer app, like this thing. Yeah, yeah, it's
+630	just crusty. You know, it's not really fresh the way that people
+634	expected the refresh to be Spotify is just getting
+638	slaughtered everywhere. As as not a great podcast app. Not a
+643	great experience, I would say. And this is, you know, of
+646	course, I smile about this and think Well, yeah, and new
+650	podcast apps calm. That's where everybody should go find
+653	something new. It may not be the slickest just yet, but man,
+656	we've got cool features. We're really, really making the
+659	experience something new. And I'm excited about the live tag
+663	for the next step. Yeah, I
+664	really want to get let us be the guinea pig on that. I mean, we
+669	feel like we can
+670	this show. Yeah. Oh, okay. All right. All right. Well, I
+674	mean, we got so what we need to Steven, only Steven B. To help
+679	us put live tag into Curio blaster. Yep. Then we can throw
+683	that in there. And then as soon as I get pod ping cloud,
+688	engineered to send a live notification. We can get we can
+693	get that thing a shot. And
+694	I can just give a stream URL as the enclosure. Is that
+698	the idea? Yeah, it'll be an alternate enclosure. Love it. By
+702	the
+702	way. Thank you, Steven B. I published no agenda, I think
+706	already told everyone that did that with the RSS generator,
+709	built into Curio caster very enjoyable experience. There's
+714	one thing that that I forgot is the channel image. And within an
+719	hour, Steven had put in a sync channel Image button. big red
+724	button works really well. And I think what I saw him post is
+728	that he's going to do with you right now if you want to create
+731	a new episode, you can copy the previous episodes contents, I
+735	think now that you know now upon loading the entire feed, he'll
+739	also pull in the value blocks which would be incredibly cool
+743	to be able to have that as a template cuz there's a lot more
+745	options than I was comfortable with for putting it in for the
+749	last show, as we promised, and then we all got busy, I guess.
+754	Well, there we need to ask our guest today.
+757	Yeah, for like a lightning node. Yeah. If not, then we'll give
+761	him one. Yeah. I've got my
+765	make this stuff work.
+769	So we've already talked talk so much about why we just bring
+771	them in. Yeah, sure. Yeah. Hold on a second. Do you have the
+775	keys? Wait.
+777	Yeah, there you go.
+778	Oh, no, no, that's not that's not the right one.
+781	That's a big kitchen. It's a big one. Those big jam.
+784	There we go. Ladies and gentlemen, please welcome to the
+788	board room. The man who has more degrees than a Texas summer sun
+792	Bitcoin evangelists. He's a BMG, and me and GSC and an MBA and an
+796	element op. Please welcome hosmer cook.
+800	Great to be here. Thanks for having us. Big fan. Big fan of
+804	what you guys do. And yeah, can't wait to rip in we'll be
+808	hitting the boost plenty of times today. I'm sure.
+810	Oh, man. He's already he's already into the into the
+814	league. Now Haas is it has Haas Haas, how do you how do we
+818	pronounce your first very unique?
+821	Yeah, it has like mess. Okay. Has so like there's that that
+825	like the that? I always say? Like the avocado. So there's an
+829	avocado that like the popular branded avocados? Yeah, the Hass
+833	type avocado.
+835	The reason I said Hoss is because we have Haas racing in
+839	the United States. Yes, yes. spelled the same way not doing
+843	they're not doing too well.
+845	They're not doing too well. The Formula One at least in the US.
+850	touchy subject. So you're in in Australia, I think it's morning
+855	for you. And we really appreciate you coming on Dave
+858	set this whole thing up. And he's, I'm actually gonna let
+862	Dave get us going here because I think Dave was the one who
+865	really was concerned about getting some good information
+868	about Bitcoin in general, which we always love getting but also
+872	about the energy consumption, you are the man to go to and
+875	lots of people are excited about this interview.
+878	Yeah. So one of the reasons I wanted to get you on has is
+882	because in especially in podcasting, there's a lot of
+886	like environmental, social awareness around, you know, just
+890	energy usage and climate change and all this kind of thing. And
+894	I know that whenever it's a topic now, I mean, it's been for
+897	a while, but really sort of the Fudd has been escalating. You
+902	got you have articles in the New York Times now just led this
+905	past week about Bitcoin in you're using more energy than
+909	100 whole countries and all this kind of jazz. And so, you know,
+913	I think a lot of it, if you read through it a lot of is just your
+916	typical sort of Fudd that I want I wanted to get you on, because
+920	I know some people within the podcast world are going to be
+923	concerned about that we don't want to maybe maybe we should
+927	jump to this other crypto or something that's less, you know,
+930	environmentally damaging. But I really do feel like a lot of it.
+934	A lot of the stuff right now specifically, a lot of it is
+938	just, it's just fun. I mean, I read the New York Times article,
+941	I don't know if you saw it, but I mean, there's some of this
+943	stuff, and there was just lies, it's just flat out not true.
+946	So, so like a lot of it. So So here's the thing. So here's a
+950	cover or statement, which I think will will, will set the
+955	tone for the rest of the podcast. So these people are not
+962	interested in energy. People are interested in power.
+970	Oh, wow, I love that.
+972	Okay, and then, and then that this sets the tone for the rest
+975	of the conversation, because the numbers are what the numbers
+978	are. And the numbers are coming out of our ears. It's how the
+981	numbers are framed. Right? So if these guys actually cared about
+986	energy, like Bitcoin doesn't use any energy, like, sure, maybe it
+989	uses as much as Ireland, but Ireland doesn't use any energy.
+997	Yeah, yeah, I love those comparisons is like how much
+1001	Island doesn't they still use candles? But yeah, Bitcoin is
+1004	more.
+1006	So one of the one of the things that I like about your approach,
+1010	though, is you focus, you tend to focus on emissions. Because
+1016	you can, you can claim energy usage in a lot of different
+1021	ways. So like, for instance, a lake, I mean, a lake is is a
+1024	huge consumer of energy, solar and geothermal, it consumes a
+1029	lot of energy, but its emissions output is negligible. So the
+1032	energy consumption doesn't really doesn't really tell you
+1036	anything about his impact on the environment, it's really
+1038	emissions output, and you you tend to you show in a lot of
+1042	your material that the emissions output of Bitcoin is very small,
+1047	yet so so again, so going back to the coverall, statement,
+1052	power versus, versus versus energy, because this is more of
+1058	a of a quest for power and control and whatnot. You know, a
+1065	lot of effort has been put into, and a lot of success has been
+1069	had in conflating terms. So the conflation of the word energy,
+1076	and the word electricity. To a lot of these people, it means
+1080	the exact same thing, whereas, you know, all, all electricity
+1084	is energy, but not all energy is electricity. So on the contrary,
+1088	only about 20% of the energy we produce as a civilization is
+1093	electric energy. The rest is transport hate, and waste. But
+1100	now they've conflated, you know, electricity and, and an energy.
+1106	That's a bad thing. They've also conflated energy with emissions.
+1111	And you know, all energy use is dirty. And the only way we can
+1115	clean ourselves is by stop, like, using energy.
+1119	My favorite my favorite house is conflation of carbon dioxide,
+1124	which is now just carbon. Yeah, it's another one. That's one of
+1127	my favorites.
+1128	And, and not just that, carbon dioxide with greenhouse gases.
+1136	Like it like, again, it's like electricity and energy. So all
+1140	carbon dioxide is a greenhouse gas, but not all greenhouse
+1144	gases are carbon dioxide, right? Yeah, you know, for example, is
+1149	a huge one. So so because of the conflation of electricity and
+1156	energy, people think that Bitcoin needs electricity to
+1160	run. This is incorrect. Bitcoin just needs energy to run and
+1167	therefore Bitcoin can eat methane from a from a natural
+1172	gas flare, for example. So it's so so this is basically also
+1177	what the debate is. So Adam, Dave, I'm on the clock here.
+1180	I've got 30 seconds, explained the profundity of Bitcoin to me
+1185	and the justification of his energy use go.
+1189	Okay, I hide this Adam Curry Hill Country, Texas. I'm going
+1194	to answer this by saying, I think it's because Bitcoin fixes
+1197	everything.
+1199	This Explain God and give three examples.
+1203	So this is this is basically where we're stuck. So yeah,
+1206	like, you know, what's what's the right approach to answering
+1211	you know, answering this Fudd I suppose, you know, as as Bitcoin
+1216	and as a as a Bitcoin community, there is no there's no such
+1220	thing as as a wrong approach to answering this Fudd as long as
+1226	you know more and more people do it in their own particular way,
+1230	I think we will eventually, you know, break down a lot of
+1235	barriers, but but I feel that the whole debate is just
+1239	hamstrung because of the of the pollution in, in the
+1245	definitions. All the waters have been muddied. And it's very,
+1249	it's very difficult to define, you know, what the terms of this
+1253	of this discussion, even our I think
+1255	there's also a pure problem in the difference between Bitcoin
+1262	economics, the network, how it functions, and which of course,
+1268	has pros and cons for certain people who I think there's
+1272	people who are genuinely concerned about the environment
+1275	or power. I'm good either way, I have my own thoughts about it.
+1281	So the friends The New York Times article, both of those
+1283	people were climatologist they work at NGOs, you know, it was
+1286	all three people. They were really just anything to be in
+1289	the in the papers saying, Oh, well, you know, it was almost a
+1293	virtue signal article. Then there's a lot of people who use
+1297	that argument, Elizabeth Warren, Senator Warren as an example, to
+1301	discredit Bitcoin, where she is really much more interested in
+1304	the monetary aspect. And, and I think she's one of the people
+1311	who is behind the CBC, or CBD, central bank, digital currency
+1315	bill from a year and a half ago. So this this these different
+1320	camps. And it's one thing to have to explain to a banker who
+1324	just hates Bitcoin and only sees the US dollar, because they have
+1327	complete control over making it versus someone who says, Well,
+1333	I'm a democratic socialist, here are my questions. Isn't isn't it
+1338	true that eventually, only the rich people will have all the
+1341	Bitcoin, and it's going to kill us within 10 years because of
+1345	climate change? So those are kind of the two things that I
+1347	deal with. And both have to be approached in a different way, I
+1350	think,
+1351	Oh, yeah, absolutely. Like, the thing is, like, you know, sit me
+1357	down with a, with a socialist, who is genuine, who is a genuine
+1362	socialist, and is genuine about socialism, and its goals and all
+1366	that kind of stuff. And also sit me down, like with a genuine
+1370	environmentalist, or just 15 to 20 minutes, and I'll have both
+1375	of them signing up for a job at Great American mining
+1379	stack and stats.
+1382	Because Because seriously, if you are concerned about the
+1385	environment, really genuinely concerned about like, you know,
+1390	global warming and the future, and, and like, and you are not a
+1394	Bitcoin or you are not a serious person,
+1398	can you explain this?
+1401	Sort of, for example, so, yeah, like plastic pollution, we order
+1405	all this, you know, cheap ship from China, ends up in
+1409	landfills, spend spend, spend, we got to have inflation. And,
+1414	you know, none of that is causing global warming. It's,
+1418	it's my VA, that's like that's causing global warming. It's not
+1422	like it's not the actual, you know, Fiat monetary system
+1426	itself. You know, ridiculously Miss allocating capital, cheap
+1431	money, money out of thin air, just driving by, by by spend,
+1435	spend spend. So, you listed, you know, some of my some of my
+1442	credentials early on. Yes. So, I'm not getting into
+1445	credentialism but one of those was was a was B and which is my,
+1450	my Bachelor of Engineering. So I was, you know, and still am a
+1453	civil engineer two days a week these days. But when I was doing
+1459	my environmental engineering subjects,
+1462	there's a lot of work there these days for the civil
+1463	engineers narra K. barricades there.
+1472	But the but the main focus, like, like when we were doing
+1475	like environmental management, you know, like coursework was
+1480	like running out of stuff.
+1483	Right? Yeah. Like we
+1485	are running out of shit basically, like, so when when
+1488	when the term says that we came up with sustainability, right,
+1493	which is like a term that's come up from like the 70s and 80s. It
+1496	basically meant to say we are running out of shit. We are
+1501	running out of fresh water. We're like we're running out of
+1503	stuff. Like we need to be sustainable. Right? And we've
+1507	lost all of this, like we've got it like, like, you'd have to
+1511	talk to a civil engineer to really like understand the
+1514	beauty like of landfilled. And like landfill technology and how
+1520	many billions of lives have been saved, you know, through urban
+1524	sanitation. Like, we need to stop throwing things away like
+1528	that sustainability. And we cannot move, like, to a
+1533	sustainable society without sustainable money. Yeah, so
+1537	totally agree. So like, so if you're not a Bitcoin, or like,
+1541	you're not a serious, you know, environmentalist, you're not a
+1544	serious socialist. What the socialists forget is if I have a
+1548	million Bitcoin, and you know, I decided to like, you know, build
+1553	a naval, you know, Empire, a evil capitalist, you know, pig
+1557	Empire or whatever. Like, if I spend this million Bitcoin,
+1561	like, there's no reprints for me, like, I have to figure out a
+1565	way to make this million Bitcoin back, and most likely, I won't.
+1570	So if they want, like, fair bell curve, wealth distribution, like
+1573	I'm not gonna say, it's gonna happen in a year, but in 1000
+1577	years, yeah, Bitcoin will probably have like a good bell
+1580	curve distribution, with like, three standard deviations away
+1584	from the mean, like ultra super whale rich, you know, 3%, three
+1590	standard deviations from the mean, on the other side, like,
+1592	you know, super poor, but you have a big enough strong enough
+1595	like middle class that can, you know, look after the ultra poor
+1599	without needing like, government intervention. Like I really do
+1603	believe that the only way to this utopia is through Bitcoin
+1608	and, and even Bitcoin is not a quick way there. But it's
+1614	probably our strongest weapon, like in the fight to get there.
+1619	So for people that believe what I believe, yeah, fuckin a, let
+1624	it use as much power as Argentina.
+1628	That's one thing that I would add that I was thinking about
+1630	today is, I mean, even if, even if the worst case points brought
+1634	up by, you know, by bitcoins detract, or the energy
+1639	detractors from Bitcoin were true, may not throw out, do a
+1644	lot of this stuff lately, because it's just, it's just not
+1646	true. But even if even if some of these things were true, that
+1650	still doesn't mean that Bitcoin should be stopped or attacked,
+1653	or, or, you know, that kind of thing. Because some things are
+1656	just worth spending the world's energy on things like, I mean,
+1661	we have, there are things that are worth spending energy on
+1664	food, clothes, vaccines, air conditioning, house
+1668	construction, I mean, we spend resources, devise energy and
+1673	resources, devising ways to make those things better all the
+1676	time. And to me, if you can spend resources on a better
+1682	money, better money is one of those things that's worth
+1686	spending energy on have having a money that doesn't, you know,
+1690	harm people through inflation, and politically motivated
+1693	banking and on all the Million Ways that that governments have
+1697	screwed up money. That to me that's worth spending energy on.
+1702	Is it probably we've people have been put under a spell. Now this
+1705	is what happens when you have very powerful forces who are
+1709	100%, anti Bitcoin, have just launched this with all of these
+1714	comparisons, as you say, yeah, sure, Ireland, Okay, great, they
+1718	don't use any energy, they don't really don't use much. I don't
+1722	even know if, if that's the right approach to some of these,
+1728	some of these questions, I just feel like we have to come at it
+1732	from a very different way, instead of always on the
+1735	defensive, I that's why I kind of like the idea of you know, if
+1737	you can easily explain moving forward, how it solves all these
+1741	problems, which is just hard and it has to be individualized. But
+1745	maybe you should just take a different tactic and just club
+1749	these people over the head and move on.
+1751	So that's what it says. So that's why I'm saying like,
+1753	eventually, though, you will have like, you know, a socialist
+1757	that has been sat down and orange pilled and he goes and
+1761	orange pills, his socialist friends in their socialist way.
+1764	You know, the beauty of Bitcoin not having a marketing
+1767	department is that we are the marketing department, right?
+1773	There's just no cmo telling us what to do. We just, you know,
+1775	work for Bitcoin. And, like, off we go, you know, like, and, you
+1783	know, you know, with with time, eventually, like, the numbers
+1788	like the numbers start to speak for themselves. Now, I'm not,
+1792	I'm not a fan of like, rules and you know, forcing people to do
+1796	things but I think Anyone that writes an article similar to
+1803	like the New York Times article, like from last week should also
+1809	be forced to short Bitcoin. They don't have to disclose what how
+1815	big their short position is because they do have to disclose
+1817	that a short has been opened based on their research into
+1822	like coming up with these things. So anyone that tells you
+1824	like Bitcoin uses as much, you know, per transaction as a house
+1828	that uses two months, like I tell them to go and short
+1832	Bitcoin.
+1833	Let me let me break here's a here's an example that we keep
+1837	talking about this. Some of these articles that have they've
+1839	come out with with so here's one example from the New York Times
+1843	article is globally, estimates of bitcoins you use of
+1846	renewables range from about 40%, almost 75%. But in general,
+1852	experts say using renewable energy to power Bitcoin mining
+1856	means it won't be available to power a home or a factory or an
+1858	electric car. That's just the dumbest statement ever. If so,
+1863	if I've got 10 solar panels on my house, that means this 10
+1866	less than the guy down the street can have on his house. I
+1868	mean, is that what we're talking about? I mean, it's just like
+1870	childhood level stuff.
+1874	Ya know, that like that one that one is, is like definitely like,
+1879	like, that one's just a straight out lie. Bitcoin is generally
+1884	speaking non rival. The Yes, Bitcoin does use a lot of solar
+1889	and wind. But the reason it does is because it buys the solar and
+1894	wind very cheaply, and advise it very cheaply, because this solar
+1899	and wind would have probably gone to waste otherwise. So
+1903	it's, it's definitely not taking taking away from like charging a
+1908	kid's toy car. But in terms of charging, like vehicle vehicles,
+1914	like here are the numbers. So remember how I told you not all
+1918	energy is electricity. So in terms of the the whole world's
+1924	grid, we make 26,000 terawatt hours of energy per year, so
+1932	26,000 just you know, road vehicles, passenger vehicles
+1940	worldwide needs about 26,000 by itself. So to get every
+1947	passenger vehicle turned electric and charging on the
+1951	grid, we need to double the world's grid. And we haven't
+1954	started on trucks yet.
+1955	Right? Right. You know, wait, wait, wait, this is gonna
+1959	deliver a great new high paying union jobs. The green new deal
+1964	was gonna be groovy
+1966	Yes, super groovy.
+1970	How does a good decent civil engineer get wrapped up in this
+1975	evil Bitcoin? What happened? When did you get orange pilled
+1979	So, so I've I just finished the get this have a have a look at
+1984	how hilarious This is. So again, this isn't correct. You can read
+1987	credentialism and humble bragging This is probably a
+1990	confession of regret. So I sat through a one year MBA program
+1996	at the University of Oxford, right, starting in September
+2000	2012. And I did not hear the word Bitcoin mentioned
+2006	once. Oxford everybody. Yeah,
+2009	I discovered it in my summer break. During my MBA on Reddit,
+2014	and the Winklevoss twins, they finished their MBA at Oxford the
+2017	year before me so they were the outgoing class and during my MBA
+2022	at Oxford of all places, right you just you know, quote unquote
+2028	elite MBA you pay all this money to go and like basically if
+2033	they're not teaching you Bitcoin, they're not teaching
+2035	you anything really. But, but basically, soon as i as soon as
+2042	I read about it, I you know, I said I was a civil engineer
+2044	before worked on mega projects. So I like built like the the
+2048	Sydney DSL plant, highway projects, rail projects, you
+2053	know, because I always had this you know, fetish for, you know,
+2056	having like having as much impact like as possible being
+2060	you know, being an environmentalist, being socially
+2061	responsible, all that kind of stuff. But yeah, when I found
+2065	Bitcoin, I said this is the only infrastructure worth worrying
+2069	about. Nothing, there is nothing more important than Bitcoin.
+2075	Like yet wells are important highways are important, but
+2078	nothing is more important than Bitcoin.
+2081	He said a couple of your articles that I think people
+2086	should read. One of them is called Bitcoin energy use versus
+2092	other industries. You can look at this this one I thought was
+2095	really good too is projecting bitcoins future future energy,
+2099	use I think that one is excellent. You said something
+2104	you said in here, you said in 10 short years, it's likely that
+2107	Bitcoin won't admit anything at all. Can you? Yes. Is that too
+2112	big of a thing for you to run through real quick?
+2115	Not at all. So So basically, the all people need to know is that
+2120	the world of Bitcoin mining is as brutally competitive, as you
+2125	can imagine. Absolute cutthroat, a race to the absolute bottom.
+2132	If you can't get your hardware at absolute rock bottom prices,
+2135	you have to get your energy at rock bottom prices. And the
+2139	trend is energy at rock bottom prices is tending to be
+2143	renewable. Most likely by the end of the decade, not because
+2149	they're environmentalists, like miners probably don't give a
+2152	shit about the environment. Just maybe they do. Who knows, but
+2156	it'll be just cheaper to use curtailed solar and wind because
+2160	it's going to waste anyway. And not only that, the oil field is
+2165	a very real thing. Eating up all of this methane, so if you would
+2169	have to use all of the world's methane so all of the world's
+2174	vented methane could power Bitcoin 20 times. And and if we
+2179	would actually pipe all of the vented methane into like Bitcoin
+2182	mines, we might accidentally probably cause, you know, global
+2185	cooling.
+2188	That may be coming anyway, whenever the government says
+2191	warm, I go cold. Yeah. And I'm old enough to remember when it
+2196	was going to be the global cooling. So I'm just a little
+2198	confused there. What I find fascinating with and learning a
+2204	little bit more about how grids work. I lived in Texas through
+2208	the snow Snowmageddon where we were without electricity for
+2212	several days, for five days, it was quite interesting, we were
+2215	not known was prepared for Ford. Now, as that turns out, that's
+2220	also been highly politicized. Because as you look under the
+2222	hood, it really has nothing to do with the infrastructure. It
+2225	was really more about the exchange, and basically, Enron,
+2229	shady ness, and people just not turning shit on because they
+2232	couldn't make enough money on it. But as I've learned about
+2234	it, I see that, you know, of course, good republicans that
+2238	everybody is here, we pitched the mono, it's the William
+2241	wooden Mills, they froze. But what I've come to learn is that
+2244	the windmills are actually a problem, because they have to be
+2247	turned off at certain times during the day, because they're
+2249	just generating too much electricity, the grid can't take
+2252	it. Because balance,
+2255	it's it's quite funny. So like, there's a concept. It's called,
+2257	like grid congestion. People ask me, you know, what's grid
+2260	congestion? I say, you know, what's road congestion? I say,
+2266	well, when the roads fall by say exactly, there's a limit to
+2269	like, how many electrons you can put into a wire.
+2273	And it has to be balanced, and it has to be balanced and supply
+2275	has to be within the range of the demand.
+2280	So so you know, and that's like, that's a it's only developing.
+2285	But this is an area where like, Bitcoin will show its true
+2288	colors as being that source of, of balance. Exactly.
+2293	And this is, this is what I want to ask you, if it's even
+2295	possible, I noticed your field of expertise. So now I'm seeing
+2299	people talking about and implementing the containers, you
+2303	know, very much like the methane burn off. So they take the
+2305	container to the wind farm, hey, you know, you guys, you got to
+2308	shut it down. No, don't just power our stuff or mind for a
+2311	bit everybody, everybody's happy. In California, the people
+2316	who were sold this grandiose deal, have put solar panels on
+2320	your home, you you can sell it back to the grid. That's now
+2324	over. Now, the grid guys are saying, No, we're gonna charge
+2328	you instead of giving instead of letting buying it from you, is
+2333	there a way? Right is even feasible with just dreams that I
+2338	have, that we could somehow harness all of that excess solar
+2342	panel energy that people are going to get dinged for and
+2346	converted into mining and some efficient way? Or would that
+2349	really have to be decentralized people running machine to their
+2351	own home?
+2352	So I know, at the, like, at the home level. I know, like, in
+2359	over the other side of the of the of the iron curtain up in
+2362	Brisbane, there's a there's a suburb in Brisbane, like the
+2367	government has shelled out, like 8000 bucks per home as a grant.
+2374	If each home installed like a $25,000, solar and battery
+2380	array, and they were to mate and they were going to test out a
+2383	virtual grid between the 60 homes. Oh, okay. Like betting
+2389	terms, but in terms of like Bitcoin as a balancing tech.
+2394	Like it's underneath our noses. Yeah, it's
+2397	right there.
+2398	It's everywhere. But the So here's an example i a local
+2402	example I have so in the city of Adelaide, in Australia, small
+2409	small city, very, very high renewable content by quite
+2414	random, you know, you know, power supply versus the demand.
+2420	So there are times of the day where the an electricity
+2424	provider will pay you to take electricity. So you don't really
+2430	need a container, you don't really need a set up, you just
+2433	find a existing industrial unit.
+2439	They need to imbalance so they're gonna pay peep, it's
+2441	just like negative interest rates, this is great, basically.
+2445	So you're not mining, so you're not mining all day, right? Just
+2449	whenever they lay you for it, obviously, you factor this into
+2452	your average costs, you find yourself like a little
+2454	industrial unit, you get yourself like maybe a little
+2458	high upfront cost, but extremely low maintenance, immersion bike
+2464	rack, so you're still probably talking maybe 200 grands worth
+2468	of kit to like, make it you know, worthwhile to actually pay
+2471	rent, you know, add an industrial unit. And, and, and,
+2478	and that's basically it, that's, that's enough for basically a
+2482	one man band, like kind of investment and like, you know,
+2486	find little places, wherever, wherever you can find it,
+2490	that's, that's becoming quite popular. Now, hiring out an
+2495	empty unit that already has electrical info already in
+2498	place, you know, whacking, you know, 30 boosted up, this
+2505	NINETEEN'S immersed and you rarely have to check on him.
+2510	And, and, and it's great. So, so look, where there's money to be
+2517	made, where there's profit to be made, like, I don't believe in
+2520	that efficient market hypothesis. I like there's
+2523	always ways of money to be made that people haven't found yet.
+2527	And so long as there's money to be made, like, I don't want to
+2531	get to philosophy, philosophical over here and be a dick. But I
+2534	just want to talk about like, energy. Like, just, you know,
+2539	the rabbit hole that is the concept of energy. to like, this
+2545	is, you know, the, it's, you know, the entire universe
+2548	somehow constituted together, like, you know, it formed life,
+2554	you know, life evolved, you know, into us. And for the past
+2557	100 or, you know, odd 1000 years, we've been figuring out
+2561	better ways to like harness it, you know, to grow our
+2565	civilization. So, energy is a is a extremely, extremely amazing
+2571	and humbling thing. And really, it's, it's the only thing, it's
+2575	the only thing that matters. So as long as there's ways to, you
+2578	know, to make energy to make money. You know, Bitcoin will,
+2586	will, will will be a winner.
+2589	What do you see in the field of a nuclear infusion, I guess
+2593	what's also being talked about now?
+2595	So nuclear is is one of my favorites. Because of you know,
+2599	nimbyism, like it's unfortunately Doa like that that
+2606	propaganda war has has unfortunately been lost. I
+2608	think.
+2611	That's, I like it a lot. I want the backyard nuke have kept up
+2615	with those developments is getting getting pretty doable
+2618	for a neighborhood.
+2619	Yeah, I used to think the first guy that, you know, the, that
+2622	the inventor of the backyard nuke, I thought he'd be the
+2627	first trillionaire but I think Satoshi will get there first.
+2632	Now, but the world is an energy place. So eventually, so what
+2637	like, in a perfect, like, my perfect world, where like, you
+2641	know, my brain, like, you know, is, uh, you know, has ascended
+2644	to the next level and it's the year you know, 20 2300 or
+2649	whatever it is, and humans have like a big mastery of you know,
+2655	energy and technology, like I say, like the the pursuit of
+2660	Bitcoin, like taking up the majority of our harnessed
+2665	energy.
+2667	Wow. Like, I
+2668	think the energy industry will develop in terms of like, we
+2673	don't have enough energy on earth to like to mine
+2677	Why are they not doing this around plants? Why are these Why
+2680	are the energy companies not doing this already? Look,
+2683	volatility
+2684	is my is my opinion. So in the long, long ago, so like as part
+2688	of my like life as a civil engineer, I spent three years in
+2692	the toll road business. So basically, you know, the toll
+2697	road business is great for a pension fund, so the pension
+2700	funds all invested in toll roads, because like they know by
+2704	the day, like what their cash flow is, and, you know, they can
+2708	match this cash flow, you know, with their pension liabilities.
+2713	And, you know, the average, you know, retiree, you know, is
+2716	claiming their, you know, is taking their, you know, the
+2718	perpetual cash flow for, you know, 2530 years, they need an
+2723	asset that, you know, lives that long, so tollroad is perfect.
+2727	Now, a power plant is also perfect. So, you know, you build
+2732	a nuclear power plant, it's all good. And you've got, you know,
+2736	mining clients, you know, for whatever it is for at least
+2740	three years, or sorry, for at least 30 years. And that's, you
+2743	know, fantastic.
+2745	And that's, that's my next question the mining formula with
+2748	the with the havening. And so, you know, the reward gets cut in
+2755	half, and then I think we'd rather have two and a half,
+2757	three years to go for the next one. And just back of the
+2762	napkin, like 2130 2140, maybe we'll be around the final
+2766	Bitcoin to be mined, how will energy consumption change over
+2770	time? Do you have any view on that?
+2773	So so my view, so it's the it's the long term equilibrium view.
+2779	So long term equilibrium, like in EQ, and as an economic
+2782	concept is like something we never reached just like an
+2785	ideal, because of the nature of competition, and, and it is
+2790	perfect, it will be in mining, you'd expect that in long term
+2794	equilibrium, the average cost to mine a coin, or rather, the cost
+2801	expended to collect, you know, the fee revenue, at that point,
+2805	whatever the reward is, will be equal like the market price of
+2810	bitcoin? Right? There's always going to be somebody alive,
+2813	waking up in the morning saying, okay, you know, I have, you
+2817	know, X dollars to dry mine Bitcoin, or do I buy it?
+2821	Will it still be the same amount of energy consumption as we move
+2825	through that curve? Or does that remain constant?
+2830	Look, like hard to tell. But the thing is, like, if it's clean,
+2837	who cares?
+2839	Right? If there's zero emissions, if this is basically
+2842	free of call, you know, free of Vini harmful effect or call,
+2846	it's
+2846	still very important, like it is of utmost importance, that work
+2850	is done. But like, if it's clean, emission free work for
+2856	what it's worth, like, you know, it doesn't matter if, if
+2860	civilization is using half of its energy to secure its base
+2865	money. Like, I don't think that's a bad thing. That makes
+2868	me sleep very well at night, that, you know, half of people's
+2871	energy is going into making sure that like I, you know, I can
+2875	stay sovereign and not inflated and my money secure, like, on
+2879	the contrary use 90%. for all I care.
+2884	Yeah, it's all about education. I mean, people have no idea. The
+2890	same democrats socialists, who I speak to, do not even know that
+2897	the Federal Reserve is they don't understand how money is
+2900	created. They just they don't know where it's coming from.
+2903	There's 00 knowledge of this. And, you know, for us, you know,
+2908	I mean, maybe for over a decade, I've been saying, Oh, you know,
+2911	Federal Reserve is is governmental is Federal Express,
+2915	it still works, you can still make that gag and people go what
+2919	really I know that. So there's, it's, it's such a head, it's
+2923	hard for people to wrap their head around when they don't
+2926	really understand money at all.
+2930	Yeah, look, to understand Bitcoin, you have to understand,
+2933	like, so many things. So like, I always, like, you could like go
+2937	back to satoshis resignation. So he's, you know, like, he's,
+2946	there's a famous Bitcoin talk forum post of his back in 2010.
+2952	You know, they'll be writing a press release, slash dot. And,
+2957	and he was saying, you know, sorry to be a wet blanket. You
+2962	know, writing a description for this thing for general audiences
+2965	is bloody hard. Yeah, there's nothing to relate it to. Right.
+2971	So So even though I've been a culprit, you know, of comparing,
+2974	you know, Bitcoin to other things, or you know, you know,
+2979	using analogies comparing it to like a startup business, by
+2983	default, every comparison like anyone ever makes, like any take
+2989	on Bitcoin, by default is going to be a shitty take, sometimes
+2993	useful, but like there is nothing there is nothing nothing
+2997	we can comprehend. That is like Bitcoin, sort of sort of, to be
+3003	put on the clock and say, you know, justify why it uses point
+3007	1% of the world's energy in 30 seconds. Like it's a, it's a
+3012	very, very difficult task. But you know, some context can at
+3017	least be set, especially when you look at, you know, the other
+3021	big industries. So just like, you know, Bitcoin uses more than
+3026	Argentina, then Alright, fine. The US Army uses more than 18
+3031	times as much as Argentina. Yeah, no
+3033	kidding. Yeah. And that's just the army doesn't include the
+3036	Marines. are you adding a adding the Navy?
+3038	That's, that is, as I call it, the long dick of the United
+3042	States Armed Forces. That's the entire thing. Well, it used to
+3048	be a long day. So I don't know about like, days days. So
+3052	no, no, no, like, we knows we got a super super circumcision
+3055	over there in Afghanistan. Yeah. We got we got a vasectomy maybe
+3060	is more appropriate. What was? I'm sorry, Dave, go ahead.
+3065	Yeah, this is one of the things that you said on one of your
+3070	articles, I can't find it right now. But he essentially said
+3072	that, I mean, you've got an excellent track record of
+3075	predicting, multiple years in advance, bitcoins, total energy
+3080	usage. And you've done it multiple times. And when you
+3084	said basically, that, you know, this, that you are not
+3087	predicting energy use is based on technical reasons, not as an
+3091	engineer, but as the bit as an with as an economics, that your
+3098	economics are informing your, your predictions more, more so
+3102	than anything, and I was looking at one of your articles, you're
+3105	talking about the perito principle, z, also known as the
+3108	8020 rule stays that 20% of the market participants control 80%
+3112	of the market. And then you flip over here to this, literally,
+3116	you flip over to the new york times article, and it says, in
+3119	fact, operations have consolidated so much now that
+3122	only seven mining groups own nearly 80% 80% of the computing
+3125	power of the network. I mean, what you know, can you talk
+3129	about that just how your, your prediction of looking at in the
+3134	future and seeing energy usage is more of an economic thing
+3138	than it is an engineering thing.
+3141	So So basically, I want to just briefly touch on the Bitcoin as
+3146	a as a religion aspect. So there's very little belief in
+3151	Bitcoin, everything's in front of us. Like, it's easy to trust,
+3155	there's no there's there's no faith. But there's like one
+3159	aspect of faith or one assumption, and it's in the
+3162	white paper, it's the assumption that 51% of the nodes are going
+3167	to be honest and act in their own self interest. Right. So we
+3170	believe that at least 51% of people aren't stupid, like
+3174	they're gonna do rational things quite money, brother, that's
+3178	pretty good. I know. I'm starting to doubt it as well,
+3181	but so far, like we've been okay. So far, like in terms of
+3185	like, like, making profit, I think everyone like, follows
+3190	their interest in that regard. And if people do, like, look out
+3195	for their like, own best interest and be greedy and be
+3198	selfish, like the these are what you sort of can predict can
+3203	happen in a repeat game, based on Game Theory. So this is just
+3207	this is the the Bitcoin hypothesis, like this is
+3210	effectively just the game theory. that's spelled out in
+3214	the white paper. So if like, so, if you believe that, you know,
+3217	people are going to like behave in that way, then this is
+3221	probably, you know, like, as they, as they say, like, show me
+3225	the incentive, and I will show you the outcome.
+3228	Right, and the incentives are clear.
+3231	Yep, profit. And so the outcome is profit maximization.
+3236	Also, I mean, so there's this one of our one of the people in
+3242	the in the podcasting 2.0 group, was very anti Bitcoin, I would
+3248	say, Is that fair to say anti Bitcoin, but it really was quick
+3252	to say, I don't understand it, it's shit. It's funny money. And
+3256	with my, oh, say, five, six weeks, this gentleman has gone
+3262	from funny money to internet token, which is a start. It's
+3266	not at all understanding where we're at, but it at least the
+3270	mechanics are becoming clear. People are saying, okay, I it
+3274	has use for me now, and that's in the context of podcasting.
+3277	2.0 I think I actually think that we are part of the game
+3281	theory
+3284	with But well, you know, if you have this is one thing I've been
+3287	thinking about too, when when you take you know, you see the
+3292	utility of the thing first and so, the problem part of the
+3296	problem with with Bitcoin now is that it's Having to fight this
+3301	idea of investment and that it's that it's an investment and yes,
+3305	it has that aspect of course it does
+3307	what's called a reward period. Dave Well, anything that
+3310	anything that
+3311	can be considered anything that's an asset, it could be it
+3314	can be an investment and yes, that's what it is. But when you
+3317	think about it in terms of, of a money, you know, it's this is
+3322	I've been prone to saying this lately, this Bitcoin is the only
+3327	if you take all of quote unquote cryptocurrency Bitcoin is the
+3331	only one of them that acts like a money. And that that's the
+3335	thing. I mean, like lots of things had lots of
+3337	cryptocurrencies have utility, whether it's NF T's or
+3341	blockchain blockchains, you know, these they have, they have
+3344	utility, but Bitcoin is the only one that feels like a money in
+3350	and that's where its utility lies is in the money aspect of
+3355	it. And so, like, when you when you begin to see it as a, as a
+3360	money, that changes to, in my opinion, that that changes the
+3365	perspective and it changes the ideas that are in your head
+3367	about what it is.
+3369	The, the not, it's not about what it is. It's it's almost
+3377	like what it's about what it's not so like, I was saying, like
+3383	you know, there's, there's, there's nothing at all, there's
+3387	nothing at all quite like it. Yeah, so like, it's it's like, I
+3393	wish, like, you know, English was a more expressive language.
+3396	Maybe that's why the French guys were starting to catch up to us.
+3399	Yes, like, I don't know how to explain the profundity of like,
+3403	try to imagine anything in the world, like nothing is like
+3407	Bitcoin. So when you're looking at money, you want it to be
+3410	completely useless at everything. Except being money
+3415	like you just want it to be money or rather, you want
+3420	nothing else in the universe to be like it. So it so it stands
+3424	out on its own as money and and Bitcoin really. It it. Like when
+3434	it stands on its own. I wish I had I wish I had nicer, nicer
+3439	words than that. No, you're right, you're right and get to
+3442	that true inclusion. It's, it's, you know, more than just, you
+3447	know, a handful reading a handful of tweets and a couple
+3450	of YouTube videos. So it's just got to be a prolonged
+3454	decentralized effort.
+3456	I had such a beautiful experience with my daughter and
+3460	my sister. They live in the Netherlands. And just recently,
+3464	I was able to finally go over for a quick visit. And my mom's
+3469	widow, he's almost 80. And he had received because my mom was
+3473	American, they've been married. Even though he's Dutch, he had
+3476	received her stimulus checks. You know, there was it 614 100
+3481	and a 1600. And he had already figured out what my daughter had
+3485	figured out is, hey, Adam, you know, you can't cash these, no
+3488	bank will take them I said, Isn't that beautiful? This is
+3491	literally a guarantee from the United States Treasury on this
+3495	sign, look at it, look at the sign of your signature, and they
+3499	won't honor that. And I said given to me, and I took them
+3503	back, I deposit them in my in my bank account here in the US. And
+3507	then I got him set up with bit my money, which is these are
+3511	really good folks in Europe. And they they can act as a bridge
+3517	between the European I forget the name of it, the European
+3520	financial system, and Bitcoin. But when when when I was back, I
+3525	said okay, I just deposited in the bank and just make sure they
+3527	clear, it shouldn't be a problem, which you still have to
+3529	wait two days before the damn system works. And he was he's
+3533	very aware of what he's aware of all this time, because you've
+3535	been sitting on these checks. And then I say, okay, it came in
+3538	as cleared. I'm gonna send you about $2,000 in Bitcoin right
+3541	now. And, and I even said, you know, 10 minutes, he says, Oh,
+3547	no, I already got a notification. And it would and
+3550	it's these moments when people see that who are used to either
+3553	a remittance, or an overseas transaction or a wire, where
+3557	they just go Holy shit, and he said, You know what, I think I'm
+3561	just gonna let it sit there and Bitcoin. I don't think I wanted
+3564	my bank account. And now I think I've won.
+3568	Yeah, totally. Yeah.
+3570	Like, so like, I always tell everyone like, you know,
+3575	Bitcoin, Bitcoin, you know, doesn't need anyone and it'll
+3579	like, it'll win on its own eventually, just based on you
+3582	know, how the game theory will, will play out. But there's no
+3586	harm in pushing it along.
+3589	Not so you mentioned you do several civil engineering twice
+3593	a week. You write tons of articles. I mean, what do you
+3597	do? What is your daily routine, like?
+3600	So daily routine like is is like I split my construction duties
+3605	out there throughout the week usually takes up takes up my
+3609	mornings because they start early but things that things are
+3612	locked down at the at the moment relatively locked down so I've
+3615	got a bit of a lighter load and the rest of the time is is is
+3620	all Bitcoin so yeah happy blocks 700,000 to you guys are we there
+3625	was a couple of days ago that I like I missed like my retirement
+3630	date. So I've gone from five days civil engineering down to
+3634	two and the rest is is Bitcoin so does your cat writing your
+3638	withdrawal having Yeah, I've been through several now.
+3642	Over time though.
+3644	Yes. I'm having Yes. First of
+3648	all, I want to I want to focus more on Bitcoin. So doing a lot
+3651	of Bitcoin work consulting advisory and the UK could be
+3655	starting a new role very soon with a Bitcoin fund. So keep
+3662	your eyes peeled. No, actually, I wasn't on that. But But yeah,
+3666	so hopefully, you know, working working hard at it sees just got
+3671	to see what happens with this whole Corona stuff here in you
+3673	know, where
+3674	are you in Australia?
+3676	So in Sydney, so Oh, lockdown.
+3678	Yeah, you are until you're there with Toba dictator Damn.
+3682	That's that's download. I'm
+3684	sorry. No, that's that's, that's Melbourne have that guy. Right?
+3686	That's Yeah, that's, that's Melbourne. And you've got what's
+3690	the lady's and Gladys Gladys? There you go, Gladys.
+3693	Good old Gladys. poor poor Gladys, man. You know, look, a
+3698	lot of times people just got to remember. Well, I don't know
+3702	about like, like, you know, all politicians, but some
+3706	politicians. Like, like, they're not prepared for stuff like
+3710	this. Yeah. I mean, this, she she wouldn't have signed up for
+3714	this shit if she knew like, there was gonna be pandemics and
+3717	stuff like, these people are not ready for this kind of stuff.
+3720	Like, oh, really, you know, do their best, but they're not
+3722	gonna, you know, do the best.
+3725	I take what's happening in Australia quite seriously. With
+3730	with my podcast, we followed everything very, very closely.
+3733	In the beginning, all the numbers saw very quickly that
+3736	there was a lot of changes and a lot of uncertainty, a lot of
+3738	things that were wrong. And I always thought Australia was
+3742	behind. But I think you're leading us by six months. I'm
+3745	very very, very fucking concerned about it. Because this
+3750	zero COVID policy just seems like a pipe dream, man. Seems
+3754	like it just seems very difficult.
+3758	So there is a split now. So So our red versus blue. Like is the
+3765	opposite.
+3765	Yeah, yes. So our blues is our red the
+3769	liberals. blues are still the liberals with the liberals or
+3772	the conservatives. Right? And well, so the states have split
+3781	amongst like red and blue lines. But the you know, the
+3786	Conservative government has basically said look after 70%
+3790	double Vax, right, like you guys on your own, like we're not
+3794	giving federal aid anymore if you want to stay locked down
+3796	like you can, but you got to come up with it with from state
+3800	money.
+3800	Right.
+3804	Yeah, which which the modeling, which is pretty reliable,
+3808	because like, like, we've got a pretty consistent daily rate in
+3811	about a month. People here will be 70% double jabbed. And like,
+3818	we'll see what happens.
+3820	Well, I really do hope the best for you guys because it's a it's
+3823	just painful to watch.
+3825	So look, for me just more time to run the numbers and and bide
+3833	my time. I think. I think we'll be okay. So when they say
+3838	Bitcoin is hope, they really do mean it.
+3841	We want to be we want to be mindful of your time do you need
+3845	to do you had another thing?
+3848	Yeah, yeah, I've actually got a got a head off and speak with a
+3851	gg who says who says hi? Yeah, in the name of Satoshi.
+3858	There we go. Do you have a lightning node?
+3861	Do you have I do but it's in the middle of a migration. Because I
+3866	want to really investigate. Like I've been checking out buzzes
+3869	stuff. And I really want to check out like building like a
+3873	kick ass properly redundant node and like, and like start playing
+3879	around with pool and all that kind of stuff. So now that it's
+3881	posted 700,000 I've got a lot of that time. So hopefully next
+3886	time I'm on will I will have I will have a semi permanent one,
+3892	or rather my permanent one online and we can and we can do
+3895	that. As soon as you have that. Let us know we'll put it in the
+3898	in the value block for this episode. And in perpetuity
+3902	you'll you'll receive SATs for every single time someone
+3904	listens or boosts that episode. It's great. And hopefully we can
+3909	get you back sometime around blocks 700,050 or we'll figure
+3914	out we'll figure out a good block.
+3917	Yeah, yeah, for sure. So that look rule of thumb. We move at
+3922	about 1000 blocks a week, right? Give or take, right depending on
+3926	the difficulty and whatnot. So 750 will be around a year from
+3930	now.
+3930	Okay, let's talk to you before then. It'll be more fun. Yeah,
+3934	absolutely.
+3935	725 you're going to drop to one or only working one day a week
+3938	so you
+3940	are just working one normal day a week that's just one extra
+3944	Bitcoin
+3944	day pass where can people find you online? We were delivered
+3947	just like this and so
+3948	people can find me on Twitter and friar pass FIHA s s. And you
+3956	can also just find me on Bitcoin magazine. You can you can look
+3960	me up there has McCook I've got maybe seven or eight articles
+3964	over there. And I'm I'm going at a pretty good clip. I've got a
+3968	I've got another big long read out today called World Peace and
+3972	the Bitcoin charity. Oh, talk about how you know Bitcoin is
+3978	the is the greatest charitable effort man has ever known. So I
+3983	always call it Adam. It's the it's only the second ever
+3987	charity. Where where the donors also get rich. First Bank, the
+3998	Clinton Foundation.
+4004	Excellent. Well, I'll be sure to link to that. Article. Really
+4007	appreciate your time. Ha Say hi to GG for us. And, and thanks
+4010	for joining the board the board meeting and we'll we'll have you
+4013	again. We'll have you on as soon as we can.
+4017	Absolutely pleasure. Pleasure being on thanks for having on
+4020	and, yeah, boosting the name of Satoshi Take care.
+4024	Thanks. Take care. Thanks. Bye bye. Okay, hold on a second.
+4029	Dave. Let me just close the door.
+4036	What a great guy.
+4037	Fantastic. Completely different voice and, and speaking manner
+4042	than I expected.
+4044	Yeah, that you look at his profile pic and stuff. And I'm
+4047	like, this
+4047	is gonna be a total total nerd. He's gonna be kind of like,
+4051	academic. You know, I don't know, just I had a whole
+4054	different vibe. This is great. What a great guy.
+4057	Awesome, very cool. We want to thank some people. Yeah, let's
+4060	definitely do that value for value. That is the mantra.
+4064	That's how we survive. That's how the project survives and
+4067	survives based upon you. And you just heard it here. If you are
+4071	boosting in the name of Satoshi to the show. You are not only a
+4077	being philanthropic, but you're going to get rich. And if not
+4080	just go to hostas, Twitter and say Hey, what's up
+4085	promised riches as promised
+4087	to get rich. So we still take cookbooks Fiat fund fun coupons
+4095	at podcast index.org go down the bottom and click on the red
+4099	Donate button and you'll be able to send something through
+4101	PayPal. And we also have our booster grams for you want to
+4105	start with booster grams because I saw good ones come through.
+4108	Let's do cut books first. Okay, box it is. I've got them.
+4113	Because I've got them on top of the pile
+4115	or raincoat go go for Cox.
+4118	Benjamin Bellamy gave us $50 he says no, sorry. No, no nice.
+4125	Thank you for bringing effing magic to podcasting. I'll be
+4129	bringing podcasting 2.0 to the Amsterdam Amsterdam podcast
+4133	festival. Oh, yeah. 24 Yes, very cool. Put your podcast on the
+4138	map. And he says I'd love to hear Adam say that in Dutch
+4142	podcast on the maps.
+4144	Oh, that's a very that's a very American expression. We think
+4148	what the Dutch saying wouldn't be okay. Here comes it's gonna
+4155	be hard for freshmen for any person if you're not Dutch
+4159	actually cuz it's gonna sound like I have gastrointestinal
+4163	issues. Ready to yell podcast up the cardstock
+4171	do that.
+4173	Do that again. Shorter the Dow podcast up the cardstock.
+4179	And now, as the French say it is time for low boost. Hello that
+4188	says go live podcasting and Viva boos. Let's see. Oh, Ed Ryan,
+4199	and Rob I ended radio ink magazine Business Journal, he
+4203	gave us $50. And he says, I always listened to the show
+4208	Saturday morning when riding my bike to the beach is a 45 mile
+4211	ride. 45 miles that I start at 3:45am holy crap. Dave story
+4220	about having shingles. The cop writing his wife a ticket was
+4222	fabulous storytelling. Yeah, if I rode smms if I rode the guide
+4231	you would you did one way trip. I would come back on a
+4236	stretcher.
+4237	Thank you. medivac. But you'd come back. Yeah.
+4242	All right. That's our that's our cookbooks. We got some booster
+4244	grams. Let's see. Mr. Graham from Chris 482-248-2572. That is
+4252	not his birth name. He says that's from the fountain nap.
+4257	And he says, ignore my previous booster Graham. Oh, Chris. I
+4260	didn't even see your previous booster ignored. I found the
+4264	extract to the GitHub. Oh, that's for extracting booster
+4268	grants from your node. Yes. saves me from digging through
+4270	reason.fm spam to search for a response from Dave. Looking
+4275	forward to playing with the script. And he gave us 20,001
+4278	says
+4279	nice. Thank you very much.
+4283	Yes. Let's see. Brian of London. So he gave us multiple boosts
+4293	here. And he says it is working really nicely. Okay,
+4298	thank you.
+4299	I guess he's talking about cast ematic that's the that's the
+4302	boosting. Cool Yeah.
+4304	Okay. Cool. He must have he's he's testing out his his life
+4309	lightning to have gateway money machine
+4313	is money changer. Yeah. It's kind of I imagined like Brian
+4319	standing there. The digital Brian has one of those coin
+4322	changes on his belt is like, okay, ching ching. Here we go.
+4326	Hyper
+4329	leverage shoots up orders and down.
+4334	Total Rube Goldberg? I love it. I love it. Hey, we just have to
+4338	say there is another crypto that works with podcasting. 2.0 you
+4342	can you can use hive.
+4345	I have no idea how it works. But it works. I have high power so
+4349	I'm down. Now you're good. Let's see. Sir. Bill gave us 1000 sets
+4355	and he says boost for Tiny Tim. gonna live with me forever.
+4363	Yeah, you bet. 10 years from now the podcast comes Hey, are you
+4368	the shingles guy?
+4373	What's your name? Right.
+4376	Gimme, gimme, gimme. Steven crater gave us 1000 says and he
+4380	says appreciate your sharing your story. Well, thanks. Now I
+4385	appreciate you Steve. who say 500 stats from Dave Jackson. Oh,
+4393	yes. Dave thank you so much for continuing to do leading the
+4397	bleeding. It is it is it is bleeding the leading or leading
+4402	the bleeding and
+4403	then is it fair to say friend of the show? That that's just a
+4413	friend of the pod. Stewart just throw it all out there Dave go
+4417	ahead friend of the pod.
+4419	pod bud. Jackson he gave us 500 SATs and he says thanks for the
+4427	personal story Dave I got a ticket but my universe to the to
+4430	pick up my diploma. They will not get a penny from me for the
+4434	for the alumni draws Yeah, right. Exactly. Yeah, give it to
+4439	him day,
+4439	right. All right.
+4441	11 123 SATs, both from kyron Oh, our buddy Cameron from
+4448	Immortals. Yeah pod buddy. He says I totally agree with their
+4453	totally agree with there being an incentive for apps to play
+4456	around with their features and settings. I use breeze for
+4458	streaming a podcast with chapters that are fixed part of
+4462	my schedule 2.0 pod land testing my own podcast, pod friend for
+4467	new podcasts and sending them booster grams Curio Castor for
+4471	long booster gram messages when I am on the laptop fountain for
+4475	small easy tests of pods that are just getting into the 2.0
+4478	features.
+4480	I have the same like when I flew to Holland. I used a combo of
+4487	breeze and pod verse now. Yeah. And that worked really well. So
+4495	nice.
+4496	The whole bottom half of the front page, the first page of my
+4500	I like the whole bucket
+4501	is all as podcast. I have it in a folder.
+4505	Okay. Let's see who we got here. Oh kyron again 5522 SATs and he
+4512	says, well that mix up at the end was incredible boost and
+4515	again just for
+4516	the good job, Ruthie that was not one like that a lot. That
+4521	thing
+4521	was crazy. See guy gave us 3838 so 3838 set, he says, says Dave,
+4531	I really appreciate getting a peek into the Jones story go
+4533	podcasting and go beach towels.
+4536	beach towels,
+4538	and beach towel deficient right now.
+4541	I saw some was booming. someone tweeted something at me today
+4545	and I immediately told that the no agenda shop guys, they should
+4549	look in that. What was it? I'm gonna take a look at it. You say
+4552	that they have that T shirt? The Are you even in the index, bro?
+4556	I've got that T shirt. You have it? Okay, I don't even have
+4559	that. Cool.
+4560	Yeah. Now by everything. They put out
+4563	a lot of cool stuff. Let me see what was it? Someone had a
+4566	great, great quality to me. Oh, yes. Like, join the boost to get
+4570	boost the gram revolution.
+4573	That's a good one. I like that.
+4575	If you ain't boosting you ain't supporting.
+4578	Oh, yeah. No, I
+4580	was. Just go ahead.
+4582	No,
+4583	I was gonna say I was listening to sounds profitable. And had on
+4588	this delightful young lady. She's running a firm that
+4593	represents podcasts for I think mainly host endorsements, but
+4598	also streaming ad insertions. And their company focused on
+4602	kind of the rest. So not the big names. They've got this whole
+4606	large level in the middle. And I'm just listening to the
+4609	numbers. I'm like, Oh, my God, I want to call this lady and say,
+4614	why don't we want to talk to all of the podcasts you represent
+4617	and making some real money. If they can do host endorsement,
+4622	they can endorse their own show and learn how to do a value for
+4625	value ask. And they'll make more money, and they will end and the
+4629	agency would make more money. Anyway, I decided a way to wait
+4634	probably half a year and then I'll have you call her. That's
+4636	the way that you get shit done. I call it like a washed up MTV
+4642	guy. And
+4644	you know, Brian Barletta is is a great guy. I had a, we probably
+4649	talked for an hour. We had his probe in three weeks ago. I
+4654	don't know three or four weeks ago, I can't I can't remember.
+4657	But we were supposed to it was supposed to be me and him and
+4661	Dan Benjamin doing a thing on the ulsd stuff on sounds
+4665	profitable. And Dan's schedule got mixed up. And so we weren't
+4670	able to do it. But me and Brian. And we didn't find out until
+4674	right before the thing was about start. So me and Brian just
+4676	ended up basically on a zoom call just with each other. And I
+4679	mean, we talked for like my entire lunch break. And he's a
+4683	great guy. He's got a lot of good ideas grill. This story has
+4687	no point other than than to just say, Oh, I think he's a great
+4690	guy. He's a go getter. Yeah. I wouldn't mind doing, you know,
+4693	working with him a little bit more. Yeah. He's not like he's
+4698	realistic. I mean, he's in the ad tech thing, but he's not sold
+4702	out to, you know, no other model like, like he's trying to make
+4707	the whole thing better and work. And so I don't think that I
+4712	think that he's absolutely somebody who just gets it. Yeah,
+4715	I mean, we we had him on our show.
+4717	Yeah, absolutely. Yeah.
+4720	Anyway, Mary, Oscar gave us 7777 SATs. That is numerology for
+4727	sure.
+4730	We recognize it now.
+4732	The conversation around misinformation in free speech is
+4734	one that's the most important of our time and what better place
+4737	to have it then on the pot in the podcasting 2.0 board room.
+4745	3333 sets from watch man, and he says podcasting 2.0 reignited my
+4752	desire to start producing shows again, nice unofficial,
+4756	unofficial sports book podcast and taking more of it taking
+4760	Marvel plus it'd be talking. Talking Marvel plus fans
+4763	rejoice. Good podcasting.
+4768	Tell me what you need. Man. I know that I know the CEO of
+4770	Marvel.
+4772	Oh, nice. Yeah. Real nerd. A real
+4776	real super nerd. Yeah, I'm not talking about the I mean, he's
+4782	now co CEO because the CEO CEO, but I think he's he's kind of
+4787	slipping out the back. Because he's, like Disney material. He's
+4790	like, he's like Trump's best friend.
+4794	Is this hard? Like I may be lying here, but I've thought I
+4798	remember hearing recently that Marvel Like executive
+4801	leadership. They're like they're older, right? I mean, they're
+4805	older guys.
+4806	Oh, yeah. The, what's his name now sour owl, or, you know, some
+4812	super New York Jewish business guy. And he's got to be in the
+4818	70s. But ever since they, you know, Disney acquired them. It's
+4822	like he is not Disney material. To the CFO who I know has now
+4827	kind of become like a co CEO, you know, he's more of an
+4830	operator. And they also don't own the cinematic universe.
+4834	That's, that's a separate unit. But if you want somewhere to
+4838	comics, let me
+4839	know. Oh, so he's on the comics.
+4842	And also NF T's actually the new huge NF T's.
+4846	Man, they guess Marvel gets so screwed back in the 90s when
+4849	they get so desperate for money and they sold rise to
+4852	everything. I mean, they're doing fine now, obviously, but I
+4854	mean, man, they talk about
+4857	that. Yeah. Which Yes, what you do
+4860	see 49 44,949 SATs 4949. From John's Bert. He gave he says, Kj
+4869	says get better. Dave. I'm fine, man. I'm
+4875	sorry. I'm already looking for bleach cures for you,
+4879	though. Yeah. Unless you bleach and bleach the flick, see 10,000
+4888	SATs from bleach pliki bobber be at no agenda social.
+4895	flicky, Bobby. Right. Okay.
+4897	And he says and he just says boost. 10,000 SAS. Thank you,
+4904	buddy. Thank you. 5000 SATs from anonymous. That's embrace so
+4909	they're all anonymous. He says Duke dude named Ben here. Thank
+4915	you for the work you were doing to keep our speech free. Oh,
+4918	man. Thank you. Cuz he actually is there a dude named Ben?
+4923	Yes. Just a couple actually. I think nice.
+4926	Now. Getting some do cross over here.
+4929	Oh, yeah. Oh, yeah. Well, yeah, we already have the rownum Oh,
+4933	so it should be rownum opes.
+4935	Let's put panaroma Oh, no, Romano poner Romano and
+4942	anonymous. fries gave us 1000 SATs and he just and he or she
+4947	just says Happy anniversary. Thank you. Thank you. Yes.
+4949	That's from the 50
+4952	coming from breeze. Yep.
+4955	Same Bill. Bill Prague's. He goes 500 says he says no idea,
+4960	would it but maybe the Wim Hof breathing could help with that.
+4965	Oh, Wim Hof. Oh, my goodness with shingles. Yeah. Wim Hof
+4968	Dutch guy. He's the one that does the ice baths. You've got
+4971	to see this guy. He controls everything in his body with
+4977	breathing, and particularly with ice water. And this is what Oh,
+4981	yeah. This guy's amazing. He injected himself with E. coli.
+4987	Just to prove that he would not get sick through his technique.
+4990	And he did Oh, shit. Yeah. And he did not. You've got it's,
+4994	it's mind boggling. This guy.
+4997	Okay. Okay, here, I'm gonna say I was thinking about this the
+5002	other day. This brings me brings it up to my mind. The the part
+5011	we're removing some of the problem I have some of the
+5014	problem with COVID is we're removing the power of the human
+5019	body. The testing, okay, it's the testing. Oh, I'm sorry, the
+5023	the constant testing all the time. But stop.
+5028	Word PCR is never even intended to be a test. That is the
+5034	biggest scam is the testing.
+5036	Agreed. And the here here's my angle on it, though. The testing
+5042	is removing the power of placebo. The placebo power of
+5047	the mind is incredibly real works. If you think you took
+5052	something and it light. And we don't even know how often this
+5056	happens. In fact,
+5057	in men in medicine, placebo is called the placebo problem by
+5061	the scientists.
+5063	Yes. Because it actually there's a certain percentage of the time
+5067	where the placebo effect is the thing that heals not the
+5071	medication, or not, whatever it is your take. That's the whole
+5074	idea. I mean, like, that's how the was there was that thing
+5079	where you take little bits of stuff and dissolve it in water
+5082	and micro dosing? No, no, no. Like I keep wanting to say
+5086	apothecary, but that's not that's not compounding is
+5091	something that somebody will correct me if I'm wrong. Yes,
+5096	it's like you take these little bits of mineral or a little bit
+5100	Have something and you'll dilute them in large amounts of water.
+5103	And it's put in the new take it and it's supposed to have these
+5105	effects. But like it's all placebo, but it's super
+5110	powerful. But if you test test test all the time, then you're
+5114	making the mind depend on the test and not the you point wash
+5119	away, guys.
+5121	Well, I'll make it one one step worse. In all the vaccine
+5127	trials, they had a control group. And the control group, of
+5130	course, gets the placebo. And you need the control group to
+5133	see, you know, what's the difference between the actual
+5137	medication and people who believe they got the medication,
+5141	or at least they don't know. If it's double blind, the doctors
+5145	don't know either. But it wasn't. And what they did was
+5148	after I think, like, two months, they said, All right, everyone
+5153	who's in the control group, we're just going to give you the
+5155	vaccine. So now we have no control group and no placebo
+5161	effect to to look at the study,
+5166	yet see that we they should have just when they say okay, if you
+5170	get the vaccine, you never have to test again. Then, if you're
+5174	fine, from then on out, you're good, like placebo. It doesn't
+5178	matter if if any of it doesn't matter what worked. It's just
+5182	you stop testing and you're like, you're good.
+5185	And you cannot mention placebo without talking about us
+5189	counterpart, no CBOE news. Nice the opposite. The no CBOE I've
+5195	never heard of this. Oh, yeah. Oh, no. I learned this from mo
+5198	actually, even though I'd heard of it. He really took me down to
+5202	CBOE. He said most, you know, CBOE a detrimental effect on
+5207	health produced by psychological or psychosomatic factors such as
+5211	negative expectations of treatment or prognosis. Oh, so
+5216	these are the opposite testing is probably a no cebo effect.
+5221	Oh, yeah. Cuz you're, you're, you're so worried that you now
+5224	come up positive. Yeah, I'm having this right now. Yeah.
+5226	Because we're going to we're going to Chicago and I'm so
+5229	afraid. I know. I'm fine. But I'm so afraid it's going to come
+5232	back positive. Maybe I'm going to make it positive.
+5235	That's why I whenever I see those pharmaceutical commercials
+5238	Come on TV at night, I turn I mute the sound and I don't look.
+5242	I'm I'm so afraid if I keep watching that shit. I'm gonna
+5245	have psoriasis. I'm gonna have I'm gonna have like what I
+5249	already have Tardive. tardive dyskinesia. Although it's not
+5252	from that I have the same symptoms. He knows like holy
+5256	crap art. Oh, rheumatoid arthritis. I'm depressed. I just
+5260	want to shoot myself now. I'm very I seriously you asked Tina.
+5265	I just turn it off. Just turn turn off the sound. I don't want
+5268	to hear it and we do not watch. Definitely afraid of
+5272	him half. Yeah.
+5274	You need to see this guy. You love him. Okay.
+5279	Thank you, Bill.
+5281	Let's see yes. Oh, another great tip from your podcasting 2.0
+5285	board meeting
+5287	5000 stats from anonymous. This is called a bear boost from the
+5293	boost guy in the clip you play. intergalactic? boombox
+5297	here's from the guy Thank you he was just lazy didn't want to
+5304	fill out his name in the front field that would be great by the
+5308	way if that's stuck
+5310	Oh, what
+5311	if the if the from field instead of always being default
+5315	anonymous if it had your name?
+5318	Oh, yeah, yeah. breeze they I guess they just want to keep
+5323	everything
+5324	oh yes right breeze has no name although I did mention that to
+5327	Roy said your name is also as well. Let's first see how the
+5331	how the boosts work. Okay. booster grabs with a mouse. This
+5335	is great.
+5337	b mozzie says Brian mozzie Brian mozzie says thanks for sharing
+5343	your stories. Dave. Very powerful. 10,000 SATs
+5347	Thank you. Thank you so much.
+5349	I released that one cracks me up. Okay, we got some money,
+5355	especially since boost boosters are now on hold again in the US.
+5358	I mean, Fauci can't get this boost together, but we got
+5362	boosts.
+5363	Well, I keep looking for the word but like I'm trying to find
+5366	more ISOs and I can't find any that are good. Motor booster
+5371	questions. They'll show up, though. She's quest.
+5375	Okay, Jeremy Cavanaugh gives $10 and these are monthly guys at
+5379	Jeffrey Rutherford give us $5 Alex gates $25 in math still
+5385	marveled the fact we get a consultant to pay us which is
+5388	awesome.
+5390	That is great as well. We also we also had Haasan I mean, he's
+5395	a consultant to we are winning right now. We are super winning.
+5400	Yes, everything for free Dave including your work we knew
+5407	this true. Chris Cowan $5 David Norman he he that cannot be
+5412	found he gave us $25 Derek Fisker hope your baby's doing
+5417	good day. Derek Vickery It was $21 Damon, Cassie, Cassie, jack
+5424	$15 Damon and Derek both both been around for a long time.
+5427	Appreciate you guys. Paul Saltzman $22.22
+5432	it's always always good with him his numbers, always check in to
+5435	two to two.
+5436	And Soren Miller also a longtime are $10 Thank you, sir. That's
+5441	it, guys.
+5442	Thank you very much because you are really helping this happen.
+5448	It's the time the talent the treasure, we see what we have
+5451	some people given all of it. It's so much appreciated. This
+5454	is it. Look at what's happening. We're just a year into this. And
+5457	we have we're on we got runway, you know, we're rolling. Yeah, I
+5462	would say we have liftoff actually.
+5464	I want to get I want to get live working. And then we've got
+5467	we've got Facebook, we don't have a guest next week we got
+5470	phase four tags we can talk about a lot. We can get back to
+5472	podcast stuff next week. Okay, talk
+5475	Oh, and I'm sure all kinds of shit will happen in the
+5477	meantime, something something will pop up that we have to fix.
+5483	Something will happen in podcasting, we need to go save
+5486	dammit.
+5489	The Yeah, but yeah, I'm excited about live. I want us to be the
+5496	guinea pig. And maybe we can try to I want to try to get at least
+5501	one live stream a guinea pig test live stream out the door.
+5505	Like, I don't know, in the next couple of months. I don't know
+5509	if that's realistic. But now, will we be the end of the year?
+5513	Will we Okay, so having some standing in the arena? The
+5521	minute we go live is the minute we say holy crap we need we need
+5526	a feedback loop. Because the whole so you know I have the IRC
+5531	chat which is the troll room. So the minute we when you're doing
+5535	live it's what's cool about live is that you have the the
+5539	immediate response from people on the other end. So I know that
+5546	but we're not quite there with comments, but if we're doing
+5551	live does the does your boosted gram reader script, also known
+5555	as the BRS does it? Does it pull in in real time? So if people
+5560	are boosting us while we're doing live when we see these
+5563	come in? Because if so I will have a boner from here to Tokyo.
+5568	Sorry. It's just that would be so cool. That doesn't work.
+5571	No, it doesn't do it. Full time. It may excuse me real time it's
+5576	delayed currently, but I can up check time where it'll check
+5582	like once a minute,
+5583	you need to boost the grandpa delay. You need to boost the
+5586	grandpa Ping.
+5588	Stop your rofi send an email was like, Hey, we need per chapter
+5595	episodes.
+5598	I gave you a mix, man. What's your problem? But the thing is,
+5603	the whole point of the mix was Dave have you built it yet? So
+5605	here's roofie Maker of the mix going Hey, he can do anything
+5609	that Dave guy he's a magician.
+5610	I know I can do crap right now know that this is this is not
+5617	this is not doable. This is bad. We're not we're not doing this.
+5621	I do. I do think it's funny though.
+5623	Yeah. Well, I mean, I can boost the check time. And we will they
+5627	will be delayed by like one minute. Yeah, I
+5629	mean, I mean, that's 10 seconds for the stream buffering. Yeah,
+5633	no, that's fine. Yeah, it's doable, right? For you
+5636	hilarious.
+5637	The podcast index dot social could be a makeshift, you know,
+5642	feedback loop from the beginning, I guess.
+5645	Well, I'm just saying we're going to need it. We're going
+5648	we're going to need it because that's the beauty of live live
+5652	really comes to life when and that's why YouTube Live works.
+5656	You know, it's the it's the comments as people being or the
+5658	super chats all of that. So we'll basically do live with
+5662	Super Chat only.
+5664	I've got a I gotta think about this. This is
+5668	one day, you can do it.
+5671	No, it's too late. It's too late to be thinking about doing
+5674	things. All right.
+5676	So what do we need to get that well, that's gonna we still have
+5679	a little bit to go Don't we? Can we? can we how I mean, do we
+5682	have receiving side for the live tag? No. Okay. All right. Well,
+5689	if we can get the transmission side maybe someone will build a
+5692	radio receiver for it.
+5696	You know, by the way, cat see cast Last dose. Yeah, they
+5701	released some support for podcasting. 2.0 tags podcasting
+5705	hosts couchbase Oh, fantastic. They did. Today they released
+5711	support for funding locked. And what else was it?
+5718	Let me look it up real quick. All right. I'll take it. Welcome
+5720	to the party guys. Yeah.
+5723	Good. Yeah. Good tag. If funding locked in good tag, there's a
+5728	there's also another host did is doing a few tags that I'm not,
+5733	I'm just not gonna say because I'm not sure if they want to
+5735	announce it, you know, themselves. But there's another
+5738	host is also putting in some tags. So we the on the
+5741	production side on the hosting side, we're starting to see some
+5745	things pick up here.
+5746	Yes. And the Castro West guys and gals. Put in a poll
+5750	requests. Yeah, put in a poll request that we can get you on
+5753	the new podcast. apps.com page. Yes, yes. anyone wanting to make
+5757	sure you're on this page has grown man. This is so cool.
+5763	Yeah. And we're, I'm working to get Franco on the show now from
+5769	cast ematic. And so we'll have him on, hopefully soon. This
+5775	week, we learned that the developer of cast ematic is also
+5778	a physician, his day job.
+5780	Can he write a prescription for ivermectin?
+5783	No, he's not a van.
+5790	I got my crack as I need my pace doctor.
+5796	I mean, like, I wasn't expecting that. He's like, Oh, come on. By
+5799	the way. During my day job. I'm a physician. And we've
+5801	got all kinds of great people of all kinds of fantastic
+5806	backgrounds. This is what I love so much about this project. And
+5810	that's what podcasting is. Really is,
+5813	as I so what do you know? Okay.
+5819	But what do you know? We could use that one more often. Yeah.
+5824	Let's save that one.
+5825	The Yeah, that's, I've been going for a while you, that's
+5829	about all I got. No, I
+5832	don't think I have anything else. Or have that article.
+5837	There's some bullcrap on. We are talking about Spotify. And I
+5841	guess the only Yeah, just again, for people who want to try some
+5846	of this stuff out Curio caster, but you can mess around with
+5851	with your own feed. Or you can actually look at how other
+5854	people's feeds are built. And you can experiment with some of
+5859	the tags. I think we're now showing up with our police.
+5861	We've got the host of the person stuff working. I saw our faces
+5865	appear. So let's
+5868	figure out how to get them into the channel.
+5870	I think I think Steven B already put a fix in for that. I'm not
+5877	sure he works so fast.
+5879	He's probably just doing the same thing with the image.
+5881	Probably just thinking it out. Yes. And lifting it up to the
+5884	top. Yeah.
+5886	Yeah, so no more of these things that we're discovering now.
+5890	Like, yeah, oh, yeah, channel level overrides. I mean, all
+5893	these all these little things is really great. This this is a
+5896	self hosting revolution coming. I see more, more and more people
+5900	talking about it, more people are interested in it. ipfs is is
+5905	cropping backup, although, man, we've had a lot of trouble with
+5908	the database replication or download with ipfs. Do we know
+5912	what that is? What Where's breaking because it just sours
+5915	me on the whole the whole thing.
+5917	It's the daemon. It's the ipfs daemon daemon. It's, it's is a
+5922	daemon or daemon.
+5923	I say daemon. Okay, but you write a DA mo n.
+5927	Yeah, I'm gonna say daemon, because everybody else seems to
+5929	say it's ipfs daemon, that it crashes and it crashes once or
+5935	twice a week. And I've got it auto reviving itself. But um,
+5941	I've, you know, I'm going to be on the so what I'm going to do
+5943	is I'm gonna start putting it in object storage also, just
+5945	because I'm tired of people having a bad experience, right?
+5949	Yeah, that's been I've been good. So I'm also going to be on
+5953	the ipfs podcast. Oh, good. In a week or so. week or two? Yeah,
+5958	that gets
+5958	Flat Earth guys.
+5960	Yes. Yes, you got you
+5963	gotta you gotta. You gotta lay some firmament first on them.
+5966	that'll blow their minds. I don't know. Why not. Try this
+5970	one. crater Earth. This is a new one I've been looking at.
+5974	And I've not heard this term. Yes. crater
+5977	Earth. Well, we're actually in a crater on a much larger Earth.
+5982	So the whole earth our idea of Earth is in a crater. Yeah,
+5986	think about
+5988	Oh, okay. Okay, cozy. So that's what so you get the ice ring?
+5992	Yes. It's actually that's just the
+5995	rim of the crater. It's the crater rim. Yes, exactly like
+5999	this. I like this. A lot. Yeah, I'll send you the YouTube
+6001	videos. This is from actually I think it's a bridey on this one.
+6004	This doesn't. This won't fly on YouTube.
+6010	La Eric the other day in the chat, he was like, also, Moon
+6013	equals fake.
+6018	I heard I heard another NASA guy. But when I was, Oh, it was
+6023	during the MTV Video Music Awards, which I just just
+6028	tickled me this So, MK Ultra man, don't let your children
+6031	watch that. And they had to the obligatory shot to the, to the
+6036	space station with, you know, male and female astronauts, you
+6041	know, the whole thing equitably divided, you know, they're,
+6044	they're hanging on their wires as their wires hanging off the
+6047	wires for the green screen with the CGI. But they but they are.
+6053	They literally said, We can't wait to go to the moon and
+6056	beyond. Like, does anyone read the scripts? They keep doing
+6061	this? I've heard so many NASA people screw up over this. Yeah,
+6064	one day we'll get to the moon and even further. I'm like,
+6067	squeeze me. I my parents got me out of bed. I was like for the
+6073	watch this kid. Oh my I
+6075	almost bought you this the other day. There was a thing that a
+6079	buddy of mine sent me it was an auction for one of the a piece
+6083	of the or like an is like a negative of the of the original.
+6090	Some of the original footage from the one of the Apollo
+6094	missions, and it was like an auction thing like some kind of
+6098	online auction. I think this was like a one of the copies of the
+6101	film they did. It wasn't like the it wasn't original original,
+6104	right. But it was like some of the reprints. And it was like, I
+6108	don't know, 20 frames on a little, you know, what do you
+6112	call it? It's not cellophane, it's whatever that fill
+6115	cellulose. Cellulose. Yeah, say Lloyd. Yeah. Is it was like,
+6119	about I don't know about 20 frames on the little strip. And
+6122	the auction was like, you know, it's like 50 bucks or whatever.
+6125	I was like, oh, man, it was just and so he sent it to me. He's
+6129	like, Hey, here's your here's your proof of the moon landing
+6132	and I was just screwing around with him. I was like, man,
+6134	listen, Nevada to me. Do you?
+6135	Do you know that? NASA has admitted they lost all of the
+6141	moon landing. Yes. I mean, these guys just they make it so much
+6147	fun. Yeah, they do. I really, really appreciate it. Mark Hall.
+6152	He gave me a T shirt for my birthday. I'm trying to find
+6155	there's a picture of it. And it's like a moon landing film
+6160	crew. The crew t shirt. Very, very funny. Very funny. All
+6170	right. Well, then, I think we're good for now. Enjoy Chicago have
+6174	a you know, congratulations. How many years you guys been
+6176	married? 22 years. 22 years and they never had a fight? Nope.
+6182	Unbelievable one. All right, everybody remember to support us
+6186	to boost when you can. And thank you very much for supporting
+6190	podcasting. 2.0 Dave have a have a great week. Have a great trip
+6194	and we'll talk to you next week in the boardroom.
+6196	Alright man, see you.
+6199	Where we'll be expecting all of you here your seat will be ready
+6202	the coffee will be hot and the dose will be fresh. Until then
+6205	take it easy. Bye bye.
+6222	You have been listening to podcasting 2.0 visit podcast.com
+6227	for more information.

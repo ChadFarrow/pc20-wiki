@@ -1,0 +1,1856 @@
+0	podcasting 2.0 for August 19 2020 to Episode 98 It's a
+6	girl Friday. Hello everybody, welcome once again to podcasting
+11	2.0 The one and only official board meeting of podcasting. 2.0
+16	the progression of podcasting. Hey, no, it will change things
+21	by the time we hit 20 Everything happening in podcast index.org
+25	The namespace which we'll be talking about today and of
+29	course everything that goes on in podcast index dot social. I'm
+32	Adam curry here in the heart of the Texas Hill Country and in
+35	Alabama, the man who put the V in value for value say hello to
+38	my friend on the other end ladies and gentlemen, Mr. Dave
+41	Jones.
+44	I told I told our top secret guests like as as we were
+50	getting ready to launch I said you know usually the way this
+54	happens you went you you did a pre show go to the little
+57	podcasters I said okay, usually how this happens is while when
+64	Adam goes goes into the intro, I'm just I'm furiously typing
+68	and trying to post these things to Twitter and Mastodon all at
+73	the same time. And but this time I'm going to be all calm and get
+76	it done set up and good. Yeah, free
+79	and then what happened? I'm currently right in the middle of
+82	furiously typing.
+86	Oh, indeed.
+88	We did. Did you? Did you look at the clips
+93	I got your clips I didn't I never look at anybody's clips.
+96	That's
+97	no don't even look he didn't know and look at the names or
+99	anything. Yeah, I
+101	looked at the names and I saw something that I saw previously.
+104	But otherwise now I have no idea.
+108	You need to take special attention to the ISO yeah,
+113	there's I believe there's two of them.
+114	Yes the fruit one
+118	there's there's that one there's there's another one because I
+122	had to I had to go to the defense of another chicken from
+126	a halt this Oh no.
+131	Wait a minute. Are you down to one chicken at this
+134	point? No, I saved this one's life. We're literally saved this
+138	chickens live up to man. Take some coffee. And I hear you're
+144	all this nuts in the backyard. And I know, I know the sound
+150	this time you know didn't like you remember when you had
+153	chickens? When you had your kitten when you had your kids?
+157	Your kid and
+158	I've spent several years trying to forget but okay, if you want
+162	to bring me back to that pain? Yes. Little little I still have
+165	some I still have Oh, little infant. Okay. Christina 30 years
+169	ago. Yeah. Okay.
+170	And you could always tell as the parent you could tell the
+173	difference between uh,
+175	oh, yeah. Yeah, of course. Of course. Yeah.
+180	Well, this way it is with chickens. You can tell bulk
+183	distress versus just by a sound Sure. Versus an egg is coming
+187	out distress and yeah, like, and I hear distress. And I ran I ran
+193	out in this hole was standing on top of the chicken. Oh, no. And
+198	the ending was just like a hawk Hawk now Hakan can mess with
+201	you. This Hawk was about a foot tall
+212	dam and when pew pew this was a special Hawk is a second this is
+218	cool. Hold on
+224	that's what I should have done. I should have brought a bullet
+228	pellet rifle. And by the by the backdoor. This chicken was so
+232	sad though. I mean, like, I saw the Hawks standing on and you
+236	could look at his face. And it's like, it's like it's over.
+240	It is and now you already struck at him.
+243	I don't know what he did. But I went out there and you know, and
+247	clap my hands and he flew off and then the chicken get jumped
+250	up and ran under the deck. So okay.
+252	Oh, man. Good to go. Chickens. Dave Jones. Save your chickens
+257	everywhere.
+258	Yeah, our yard has evidently become known as the most halt as
+262	the place to get cheap fresh.
+265	Like cafeteria.
+268	Good. Meat, meat and three.
+271	Well, I had a very I had a very late night myself not fighting
+275	with with Hawks. I did learn a lot about lnd last night.
+280	Yeah, I was such a douche. You. You were clearly dealing with
+285	something and I just want the best.
+287	So everyone went to bed. So let me explain the product. Let me
+291	explain the problem. I'll tell you what happened. Okay, okay.
+294	So all of a sudden podcast index is not routing to my node at
+299	home. And that's kind of my monitor, you know. So I have
+303	very like a 1% split of a lot of different shows just so I can
+307	see the booster grams, etc. And it's not routing anymore. Now I
+312	have channels I can key send from the index to my note all of
+316	that works. And I'm just like, What is going on here? And so,
+320	you know, I had three or four channels, I had this mysterious
+323	channel for something called Justin Trudeau, which has just
+327	been sitting there for a while but has been sending SATs.
+331	Is it him? Is it actually I don't know.
+333	But Justin Trudeau is node is connected to a lot of podcasting
+336	2.0 stuff. And, and I have to be honest, that the name really
+340	turned me off. So, yeah, so I'm messing with all this. Alright,
+344	let me close these channels, let me get rid of fucking Justin
+347	Trudeau stuff, well, then nothing came through booths
+350	wouldn't come through. So apparently, the Justin Trudeau
+353	channel had been providing me with at least some booster grams
+358	for quite a while and the podcast index channels were
+360	doing nothing. And then as I'm looking around, I'm seeing that
+364	there's different channels across the board. With, you
+372	know, some that we've open to other nodes that have this
+374	similar problem. That's like, Okay, let me see what's going
+377	on. So I really can't figure it out. I do not know what's
+382	happening. Now, of course, I've updated my Umbral, we've updated
+385	the podcast index node, everyone's running on lnd 15.01,
+389	slash beta up your butt. Who knows what that is? If all it
+393	could be anywhere at this point. So I ping Graham, and this is
+397	now 930. Because okay, I'm just not getting I'm not getting
+401	boosts. I'm not getting streaming SATs, nothing.
+405	For those people that don't know, Graham, he's He does, He
+408	doesn't sleep he's made of metal. And in Vudu, I mean, he's
+412	so just like, at any time of the night he in response,
+415	at 1115, he cut out. He's like, man, I was up really late last
+422	night, I gotta hit the hair, I'm gonna make mistakes. It's okay.
+425	It's alright. But we did figure out a couple of things. And one
+427	is that my chant, none of my channels were syncing to any, to
+434	any other channels. So my node wasn't syncing to any other node
+439	through a channel. And it turns out, there's a set number,
+443	channel sync peers, and that's default is three. And
+447	apparently, our node had none. So that was part of the problem,
+451	because, well,
+453	now I don't I don't understand what what is the setting or
+457	configuration parameter do.
+460	So when you open it, so what you have channels that are open, and
+465	the way that your node tells the rest of the world, what channels
+469	you have open is by an update to the graph. And the graph itself
+473	works through the peers. So when your node starts up, by default,
+479	it selects three peers. I don't know what criteria I'm sure that
+482	it has some. And it then syncs your graph with that peer, and
+486	then that peer supposedly will sync with, you know, so that's
+489	kind of how the graph gets out there.
+491	It's the it's the gossip is the way it gossip, the gossip.
+493	Yes, thank you. Now, meanwhile, I'm looking at the logs. And I'm
+497	trying to find out, why are these sets not coming through.
+499	And this is a, this was very educational for me, the way
+505	developers sometimes communicate through logs,
+510	or lack thereof?
+512	Well, so I would get these error messages consistently, which to
+516	me meant, okay, it's trying to send me one sat or something.
+520	And it would say, can't can't re forward, insufficient bandwidth
+525	to forward HPLC. So I kind of understand the HPLC and
+532	forwarding that and that's no way to decipher where it's
+534	trying to forward to. But insufficient bandwidth is a
+538	weird term. So the first thing I do is I'm like, oh, maybe my
+541	node popped on, on this on the Starlink. And let me I'm looking
+546	at bandwidth, right? I'm like, maybe Tor is under attack.
+550	Graham said that too. Now, there's been some DDoS on Tor to
+555	maybe somehow my node came back up and switch to the satellite
+559	network. And maybe that's the problem. So it took me a good 45
+562	minutes before I was able to find in some GitHub issue. No,
+566	no, this is just how we report when there's not enough
+569	liquidity to get to wherever suppose and forward considering
+575	payment fees, etc. Okay,
+578	tear this is a terrible, very bad, terrible way to describe
+583	it. The word choice here is typical, developer complete,
+590	garbage like condition that should that term should never
+594	have been used for that description,
+595	but I can also see in building the light and light Lightning
+600	Network and I can see Adam and de fucking around building this
+603	and then we'll be like, Hey, man, it's just like the old
+606	peering of bandwidth. You know, let's, so we'll just we'll just
+610	look at it as bandwidth not as value. You know, I don't know, I
+613	can see how that happened. But down the road Young. Exactly, I
+619	would have said, this is a great name, and then you would have
+621	gotten down and now let's not do so. So. Okay, so basically, any
+628	channels that were created when these peers were not syncing,
+631	never got synced to the graph, and were acting kind of as just
+635	private channels, because no one knew about them. And apparently,
+639	l&d does not go back later and say, Hey, let me check and make
+642	sure that everyone's everyone's communicated to the graph. So
+646	you know, it just took me a long time to close and open channels
+651	and make sure that they were showing up on em boss, and then
+655	we finally got to work. And as you can hear, there's many
+657	pupils coming through. So. And once again, I'm amazed that any
+661	of this shit works at all. Oh,
+666	is same. So you sent me this is this is related in this. In
+674	terms of terminology. You had sent me a document about
+681	lightning node Connect? Yeah, maybe about a week ago or so a
+685	couple weeks ago. And had written in my notes, we didn't
+689	talk about it at the time on the last show, but I'd written in my
+692	notes, this, this type of language in a spec is
+695	infuriating. And in a in, here's the quote, this is from this,
+700	the spec for lightning node Connect. Lightning node Connect
+704	is a protocol that allows a node operator to safely and easily
+708	connect a web or mobile application valency does not
+712	require the node to expose any ports. Instead, the application
+716	and the node are connected through a proxy server called
+718	the mailbox, the connection between node and application are
+721	end to end encrypted. Okay. From that wording, do you have any
+728	idea of what this thing? No, no, I
+729	have no clue. I don't even remember what I sent you. I know
+733	it was something that I liked. But I don't think I read the
+736	specs or anything. I think I just read like the marketing
+739	doc.
+739	This is the top line paragraph graph of the intro.
+743	Why did I even send that to you? Why did I send that to you?
+747	I mean, what's not? What's an operator? What does that mean?
+749	Is that is that the you know, is that me? Because I mean, is that
+752	a human being? Because I can't connect to some mobile
+755	application? Was it allowing the operator to connect? I don't
+758	know what this means. I don't know. Developers should not
+761	write documentation. Or logs,
+764	yet. Seems like you're very good at it. Yeah, well, I'm the
+769	exception. Well, speaking of, of documentation, I'm very pleased
+782	that James Cridland heard the call, took took up the challenge
+786	and started building the podcast namespace.org.
+793	Very green. Now,
+796	he did exactly what I hoped would be done is take take the
+800	whatever branding, make it your own, you know, make sure it's
+803	all connected, you know, don't try and make an island. And he
+806	seems to make it open if people jump in. I don't know if he does
+810	he have collaborators yet if people offered to help, because
+814	that's going to take some time to fill all that out. Man,
+817	there's a lot of writing to be done. And a lot of work.
+820	Let's go to edit this website, which is a GitHub repository.
+824	And this website. Yeah, let's see what the commits are. Every
+831	single commit is James Kirtland. So nobody is helping with this
+833	web site.
+835	That's, that's not cool people. James Shea.
+837	But But James, this has about 5000 commits here. So he's, he's
+842	Holy crap. He's doing he's he's doing the Lord's work. That's
+845	for sure. Yeah. What's it is James created, there's
+848	github.com/james Cridland slash podcast. namespace.org. If
+852	anybody wants to go and pitch in,
+854	like, you can just go to podcast. namespace.org. Yeah.
+858	And
+858	then you can click on the edit this website at the very bottom
+861	left. Oh, I
+862	see what you're saying. Okay.
+865	And that will take you to the GitHub repo. Yeah, I
+867	like this a lot. I like it a lot.
+870	Can you tell me this party? Because James was saying this
+873	morning that as part of trying to find example, screenshots and
+876	stuff like that for these tags. He's trying to find, as is, you
+881	know, based on the news today, obvious why. He's trying to find
+886	examples of transcript transcripts on various apps and
+891	how in screenshots and demo videos. Do we know if podcast
+898	addict does too Transcripts because I could have sworn it
+902	did.
+904	I think I have it. I think I have podcast addict Toronto
+909	is it it's showing transcript in the supported tag list on the
+915	site, but he said he couldn't you he, he couldn't get it to
+918	work and I don't have an Android phone so I don't know how to
+922	test it.
+923	I do have an Android phone. Let me test I will in fact, I will
+927	test one with episodes. We test this one we see visit that's the
+942	show notes. Okay, hold on a second.
+946	Unnecessary devices. Now let me add paddle. Well, here's here's
+953	something Okay. Here's something that we need to we need to talk
+957	about with with James. He doesn't have transcripts in his
+960	own shows.
+961	No, I thought he did. I think pod land has no iPod news pod
+965	way. And now I'm pretty sure pod land has transcripts? I think
+968	so. I've seen them I've just don't they come out of
+974	Buzzsprout automagically.
+976	No, you gotta do it. I think it's an extra step when they
+979	hold on.
+981	While you're looking at the feed while I'm like I'm not gonna
+983	argue with that. If you're looking at the feed, and I'm
+985	gonna
+986	Well, I'm I'm opening it right now. Looking at the guy yeah,
+990	you live white man speak with forked tongue. Let me see.
+993	Oh, here it is. Okay, we're both right. How can that they did not
+998	have any transcripts up until up until the last two episodes are
+1003	the first ones that have transcript. Okay. So Well, the
+1006	first 90 episodes did not have to let
+1009	me say something about transcripts. Because the news is
+1014	there was a lawsuit against I think Sirius XM, who own where
+1019	they own Sirius podcast, one XM, whatever, they have
+1023	Pandora building on Pandora.
+1025	Right? But they have, they have a podcast, what they buy that
+1029	pod bean, they bought something. Anyway, so that egg, they got a
+1032	lot of shows high end talent, etc. So someone and I happen to
+1039	know a lot about this. I know a lot about the American with
+1042	Disabilities Act, I know all the ins and outs dealt with it in
+1047	many different versions, my wife has dealt with it. And all
+1052	positive, because the bottom line is complying with the ADA,
+1059	the Americans with Disabilities Act comes into play when, when
+1063	it is something that is a public good. So in the case of the
+1070	Ronald McDonald, house, charities were Tina worked.
+1074	Whenever they did a video on their website, they had to have
+1079	not just a captions or transcript is different, but
+1083	captions, they also had to have, you know, a secondary track that
+1088	says man enters the room with a blue manager's room with a blue
+1092	sweater on, you know, that kind of stuff. Because that is a
+1096	public good that people, the public need to be able to find
+1100	out about to make use of this facility, even though it's
+1102	private. It's a private nonprofit. Okay. Now, for
+1108	entertainment shows, I do not see the need for that.
+1112	Personally, I don't see why not. Um, let's just put that upfront,
+1116	it makes no sense. It's super easy. There's tons of places you
+1120	can get it, it makes no sense to just integrate that it really,
+1125	it's crazy not to do that. However, I do not believe any
+1131	company should be forced, certainly not. And I think
+1134	James's words were big commercial companies should be
+1138	forced to do anything. You know, if it's under the guidelines of
+1142	a public thing, you know, then alright, that's different. But
+1144	it's not just, you're a big commercial company. In fact, I
+1147	really despise that. Because the next thing that's going to come
+1151	down the pike is even though he jokingly does it, if you're a
+1154	commercial podcast every single time you mentioned someone who
+1158	sponsors you, you have to say it, I'm sponsored by them.
+1162	That's what this leads to. So I'm not a fan of mandating that
+1166	just because, you know, just, you know what I mean? I think
+1172	the law is fair, when it's a public good. We need the same
+1176	like we need wheelchair ramps and different bathroom
+1181	facilities. I'm okay with all that. That makes sense. And
+1184	that's been argued and that's been you know, there's laws
+1186	about that, but not just because you're big and commercial.
+1191	No, I I'd say I think I think I would agree with that just
+1195	because you're big and commercial angle to that I think
+1199	the plant The playing field has to be fair, across the board. I
+1204	mean, otherwise, you run into a situation where you have just
+1207	like was in the US for that I'm sure a lot of other countries
+1211	for a long time, you had this, you had Amazon that enjoyed a
+1216	note, a no state tax, you know, lifestyle where they didn't have
+1221	to pay state taxes, therefore, there was always an advantage to
+1225	ordering Amazon versus shopping at your local store. Because the
+1228	local store had to pay you had to pay local city and still in
+1231	state taxes when Amazon did not. And so it was just basically a
+1235	huge unfair advantage. Propping up of a big corporation. I mean,
+1240	in well, we saw the same thing during the pandemic. Yeah, the
+1243	local mom and pop shops got shut down, you know, in droves. And
+1247	the only the only stores that could stay open were Amazon.
+1251	Amazon, Walmart. Right?
+1254	Right. Yeah, sure. Sure.
+1257	Yeah, oh, there just has to be there has to be balance in the
+1261	way the law is applied. Otherwise, you end up with with
+1266	it, otherwise, you end up with favoritism in one direction or
+1269	the other, you know, the big companies should not be unfairly
+1272	punished themselves. Small companies should not be unfairly
+1274	punished. They shouldn't. Everybody should be equal under
+1277	the law. I don't. I think the problem here though, and then
+1281	having to figure that out is what qualifies, I guess what
+1285	qualifies as a public? As a public good, because we can, we
+1290	can see this, this is what this is what case law becomes what it
+1296	becomes? Because Absolutely, when you when you first
+1299	published something like, you know, when you when you put in
+1301	an amendment to the to the US Constitution, about interstate
+1305	commerce, or, you know, equal protection, will they go in
+1310	meaning one set of things will then eventually they always
+1313	become, you can morph lots of things to fit the definition of
+1318	that other of that original meaning sure, in the like, I'm
+1322	not sure that there's a clear, public good seems, seems vague
+1327	enough to be able to apply a lot of a lot of stuff to it. I
+1333	prefer, like, you know, I mean, maybe it's just my libertarian
+1337	tendencies here. But I prefer the idea of let letting you
+1347	could call it the marketplace, but I don't, I don't really like
+1349	that term in this in this scenario, you could let pressure
+1353	be applied by by people who have an interest in so I mean, you
+1360	know, the lawsuit is one thing, but then also, boycotts are long
+1366	standing, you know, unions cropped up for this reason, in
+1371	the day, like that society will self correct a lot of things
+1377	without have without needing the hand of government do it. And
+1382	you know, and I understand that, you know, there's always going
+1385	to be counter arguments to this, I don't really want to get
+1387	involved in that. But, but you can see, society shifts in lots
+1392	of ways over time, that did not depend on the government to do
+1397	things sometimes in spite of the government trying to do it. Look
+1401	at a look at marijuana legalization that never came
+1404	from government that purely came in it was it was ripped from the
+1408	hands of government by by society. And, and the public
+1413	said, we're not going to handle it, we're not going to take this
+1416	anymore. We want this thing to change, and it's going to change
+1419	in
+1420	it. And that's how we wind up with 87,000 More IRS agents
+1425	because we're so against it. I have definitions for you. Okay,
+1431	although none of this was written with any online media in
+1436	mind. And most of it only applies to video not even to
+1439	podcasts. I don't think audio has, as has been addressed
+1444	specifically in any of the law. Captioning or transcripts are
+1449	required for public entities, including state and local
+1453	governments of both internal and external communications, and
+1456	places of public accommodations, which are public or private
+1461	businesses used by the public at large, private clubs and
+1466	religious organizations are exempt. So there's still a lot
+1469	of wiggle room in there
+1471	in public or private businesses used by the society at large. I
+1474	mean, that that could be easily be a podcast app. Yeah,
+1478	yeah. Yeah. Okay. But But bottom line is we I think what you said
+1486	is it these companies who don't do it, when they easily can, I
+1491	mean, certainly we have it, we have it on this show. They
+1495	should just be shamed. I don't have to penalize them. I don't
+1498	give a shit about that. I don't want that I I despise that part
+1501	the most.
+1502	I think people do not appreciate. I think many people
+1507	do not appreciate the power of, of the public. Social wave OMA,
+1516	I don't really know what term to us.
+1519	Oh, no, no, no, no, they care, but only when it's about a
+1522	celebrity or something else. They do not get you're gonna
+1525	trust me on this. Yeah. This has been going on for a long time.
+1530	There's not enough people who care to make noise about this.
+1534	They don't care. Do you hear that? Deaf people? People don't
+1536	care. People don't care about you. And I can't believe I said
+1540	that. Do you hear that deaf people
+1542	will never be invited on to the Deaf podcast.
+1544	Yes, I will. They love me. They love me. Deaf and Blind.
+1547	podcasters love me, man.
+1550	They're just getting to this part of the Braille so
+1552	not Braille.
+1555	or what have you. How does that even work? If you're actually
+1557	deaf? You got to have something you can't listen to a
+1559	podcast. That's why you need a transcript. Oh, because you
+1563	still got eyeballs? Yeah, yeah,
+1565	exactly. That's it's I would say it's more for people who are
+1570	hard of hearing but we have so many foreign listeners who love
+1573	it. It's like oh, you know, I miss some stuff and I can read
+1576	along and it's it kind of helps. And I grew up in a country that
+1580	had subtitles so it's second nature for me and I see only
+1584	benefit
+1585	the beautiful The beautiful thing about podcast transcripts
+1588	too is that like what I was just saying about taking time to
+1592	catch up like it is on television or or actual Braille
+1596	if you have to read Braille because I evidently don't know
+1599	the difference between blind people and deaf people sorry the
+1605	there's a reason for that by the way is a completely free from
+1609	this week but the you know podcast transcripts every every
+1613	example of a podcast app I've seen there that does transcripts
+1616	they're like immediate man there Johnny on the spot. It's
+1619	tracking really good. Yeah. With the spoken word. Yeah. No delay
+1624	like there is with closed can own broadcast television.
+1626	Now well, that's real time stuff. And yeah. Okay, what else
+1632	was I going to say here?
+1636	Well, I get the the idea about what I totally lost my note
+1646	here. Oh, I've got I brought some some clips. I had a in
+1653	this. This may also work into this week. If you think of it
+1658	anytime we need to stop and bring our guests and just
+1660	Yeah, after you. Let's do some clips and we'll bring our guests
+1663	and I think would be appropriate.
+1665	Maybe we should bring together a guest in first and do clips with
+1668	the Are you sure but the guest
+1670	Yeah, she commands a lot of attention.
+1674	I'm 100% in favor of this.
+1676	Ladies and gentlemen, please welcome to the podcasting 2.0
+1680	boardroom one of the first video value for value podcasters Hey,
+1685	it's alright Brian of London I know three speak was probably
+1688	before would also dame of the no agenda roundtable. And friend
+1695	please welcome Dane Jennifer.
+1699	Hey, guys.
+1700	Hey. Yeah, we got a full on Hey, guys night. Yeah,
+1705	I was wondering if I should do the NPR. Hi. Well, I
+1708	was I was that would have been actually let's let's re intro
+1712	you. I wanted to just so people know who named Jennifer is she's
+1717	been around since almost the beginning of this show as well
+1720	with her perfect jingles. Now
+1722	it's time for some hot namespace talk.
+1728	Which we subsequently banned for a while because we felt you
+1732	know, there was like no women on the show ever broke that rule.
+1737	But yeah, we fix it. Yes. We fixed it. Yeah, your
+1741	ESG score is up by one. Yes.
+1744	The token woman.
+1746	Yeah, sorry. I'm white and sis and hetero. So I don't
+1751	know. Yeah. Well, welcome to The Club. Yeah. But you're female.
+1755	So you have woman point? Yeah, exactly. Get some point. We get
+1758	some points for that. You know, and I was talking with with Tina
+1762	last night. And it was kind of like, what to what exactly does
+1769	Dame Jennifer do? You know, because you have all these
+1773	talents. You organize? Regular meetups, you organize meetups
+1777	for no agenda. You've organized I think you do Bitcoin meetups.
+1783	You clearly the queen of Charleston. You know you took
+1791	such good care of us when we were there and everybody knows
+1793	you as like, oh Jennifer. And and you know you're you're it's
+1800	It's fascinating, smart person. And I like Thank you. What does
+1804	she do? Other than other than jingles other than videos? You
+1812	know, this animated no agenda is, I mean, you're the first
+1815	ever saw using this tool. And I mean, you've been you've I don't
+1819	know how many you've produced so far, but it's unbelievable. It's
+1822	been unbelievable for the show. You know, you do corporate
+1827	voiceovers, I think you do marketing, you know. And now, do
+1830	you just have a trust fund and you hang out with people or do
+1833	you have a job?
+1835	Yeah, according to you that I have an island off the coast of?
+1840	Yeah, exactly. Yes. You have that island. And then you just
+1843	come inland for a bit to hang out with the plebs?
+1846	No, I, I have been. I was well married. And my neck will
+1853	marry well.
+1855	We were all well married her. Yeah.
+1857	Unfortunately, that has ended. And so is that
+1861	the scent now? Is that the same for roses? Is that the same as
+1864	what they used to be called a kept woman? Were you a kept
+1867	woman?
+1868	No, I just
+1870	know, because I knew you before the divorce.
+1873	Yeah, I wasn't I mean, working? Yeah, he, he owned a small IT
+1880	services company
+1882	on this island? Yeah, of course. This was when we
+1885	were in, in Chicago. And so I, I kind of started working in the
+1890	business. And then I would just pick up I became kind of a Girl
+1892	Friday. So these small, whatever.
+1898	Now it makes so much sense. Okay,
+1900	I don't know what this term mean. Can you explain to me
+1902	girlfriend, let
+1903	me let me try. And let's see if that matches up with Jennifer.
+1905	Because I've hired many girl and boy Fridays, these are this
+1909	makes so much sense. In a company, typically someone who
+1913	was in early at the formation at the startup, you know, employee
+1917	number two or number three. And this is just a person who may be
+1921	applied initially, to be to, like office management or
+1928	whatever. And they turn out to be so skilled in so like from
+1933	software integration packages to you name it, all kinds of stuff.
+1937	And so it's kind of like this person is in every meeting. And
+1941	it's when no one knows what the fuck to do is like, Hey, do you
+1944	know how to do it? Don't worry, I'm I'll figure it out. Does
+1948	that kind of match?
+1950	Ah, absolutely. If there were, if there was something that, you
+1953	know, the client would throw up against the wall, and if it
+1957	sounded interesting, I'd figure it out. So yeah, so I do have
+1962	some marketing and yeah, of course, the voiceover but I also
+1966	did, like, I've got certified as a Microsoft, Small Business
+1970	Server Administrator.
+1975	All Over the Map.
+1977	I wasn't I wasn't meeting planner for a long time. Did a
+1981	huge conference of 7000 people in New Orleans. Yeah, like so.
+1984	Girl Friday, it just seems to kind of be the best. So that's
+1989	why I'm not surprised that people don't know what I do.
+1991	Because, you know, it's kind of Jack or Jill of all trades. And,
+1995	and I hate saying that. It does sound cheesy, but no, it just
+1999	fits what yeah,
+2001	it just clicked for me like oh, okay, totally makes sense. Well,
+2006	yeah. So we're even perhaps even more appreciative of of the time
+2011	talent and treasure that you put in of which it's all three
+2015	because you actually charge actual money for the stuff that
+2017	you're doing for us Yeah, you're not just hanging out doing a
+2023	little bit of podcasting and by the way, the animated no agenda
+2027	I mean, that's those are serious productions. It's that's not
+2031	just something you throw together how long does it take
+2033	you to do each minute worth of work if you can calculate it
+2036	that way?
+2037	I I'm down to not including listening to every episode twice
+2043	to three hours per minute. Well, you know, you have to listen
+2046	twice and then you know, but there were there was a few
+2053	months where there was just nothing funny because I like to
+2057	bring
+2058	OH, OH
+2068	That came out wrong. It was not funny because the humor was in
+2072	like,
+2073	Hold on. Hold on a second.
+2076	Let me dig in the grave.
+2080	Nevermind. I was going through a divorce and my boyfriend broke
+2085	up with me. Come on, you guys.
+2088	That's what wasn't funny. Was was not funny at all.
+2093	No, there were just things were so bleak that I think even the
+2097	small bits of humor. It was just It was really hard for me to do.
+2101	But I've gotten it down to about about three hours per minute
+2104	what now that I kind of, yeah, but they're only three minutes
+2108	long, three and a half hours at work. Yeah, but there's a sweet
+2114	spot because we, you know, you can see when people drop off,
+2119	and we can hold them until almost the three minute mark,
+2122	which I think is pretty good. Yeah. And so I don't I, you
+2126	know, I enjoy doing the longer ones. But if you're going to
+2130	lose them at three minutes, you know, don't leave the punch line
+2132	to the end. So
+2134	yeah, you learned you learned a lot about doing video for sure.
+2138	Yeah, it's been really fun. And my third anniversary is your
+2141	50th anniversary.
+2143	Oh, man. Is that when you did the first one? Yeah, it
+2147	was for the for the 12th anniversary because I was short
+2151	on cash flow at the time. And I thought, well, I can't
+2153	contribute treasure. I'm trying to learn this to me Girl Friday,
+2156	trying to learn this tool for a client. And it suggested
+2161	starting with an audio clip that was already produced and my
+2164	client didn't have our script ready for what she wanted me to
+2167	work on. So Sharpton had just said, gurgles Kurt you Yeah,
+2174	instead of and I'm gonna say it wrong instead of Gamble's
+2179	girdles. And it was like the funniest thing I've ever heard.
+2182	And I, you know, got together
+2184	and showed that to your client. That's not funny,
+2189	but I also I sent it to you guys for you know, like a happy
+2194	anniversary. Didn't put it on YouTube or anything. And then
+2197	the views started to go up and I went What the heck happened? And
+2200	I saw that. Adam, you had tweeted it.
+2202	Oh, wow. Here we go. Have you turned that into a business? Was
+2207	that? Is that part of your business now? animations and
+2211	things?
+2212	No, it's just a hobby. I did. I did. Okay, I've done like three
+2215	other very small projects for people. But they were friends.
+2220	So
+2221	well. It's the shit blows me away every single time. It
+2226	really does. Yeah, no, it does. Tina and I the one thing what
+2230	does a new AMA? Oh, man, because that's something we get? Because
+2235	that's new. I don't know what's going to come and pray and you
+2238	edit these things. You edit out all the non funny things. In
+2241	fact, you could have edited out several months worth of non
+2245	funny things.
+2248	I can't believe
+2250	you have no idea how red my face?
+2253	Come on. Jennifer, we're friends. Yeah, you can do
+2257	anything. You know, the minute I mean, actually very early on,
+2263	you got this up and running on no agenda tube and you got the
+2267	value for value running. Take us through how that came about and
+2272	and the steps that you went through? And just what was your
+2274	experience as someone who clearly configure stuff out. But
+2279	this was new as a so Yang,
+2281	and you're also one of the first very few people were using value
+2286	for value with video. So this is yeah, this is instructed except
+2290	for three speak, which of course was there before?
+2294	I keep forgetting? Yes. Okay. He's going to the hive Dao and
+2298	Brian of London are going to, they're going to take away our
+2300	donations now.
+2306	I don't remember the chicken and egg story. And Alex gates may
+2310	remember better than I do. But when he created no agenda tube,
+2315	I immediately went there. Because I had started getting a
+2318	couple of takedowns on YouTube.
+2321	What will you do? And oh, this was animated. No agenda. Yeah.
+2326	And you know, why don't you know why got taken down? We were
+2329	telling the truth. That wasn't funny. It was not funny. But
+2334	these guys are not funny. Just kidding. Yeah. No, your answer
+2337	was correct. Because never gonna live that out. I'll stop. I'll
+2341	stop now. Stop. No, you're right, because we tell the
+2343	truth. But it also what you edited is always funny. It's
+2347	always funny.
+2348	Well, that's the that's the goal. Otherwise,
+2351	why bother? Yeah, yeah. Because the
+2353	you're I'm trying to bring people to the show. And humor, I
+2357	think is the best way to attract people. And so Alex was working
+2363	on no agenda tube. And either he started to think about doing his
+2369	own fork of it was based on peer tube, listening to you. Why, you
+2376	know, pick things up. I'm a little bit of a.
+2380	So you have a GitHub login.
+2382	I just realized I ended up I used to, and then I just got
+2388	because of the you know, the upcoming a hackathon. But um, so
+2395	he he did a ton of work on his fork too. Make it podcasting 2.0
+2401	compatible and every once awhile he would reach out and you know,
+2404	tell me to do something or something had changed and you
+2407	know, Can I check it out and so anytime I would post on I call
+2411	it YouTube then I would also put it on a no agenda tube and then
+2418	so first to support video I think was pod brand and or curio
+2422	caster I don't remember who was first of those. And then I think
+2426	the only one other one is pod verse, right that supports video
+2432	of the new apps you pod
+2433	verse does
+2434	your pod verse, pod friend cheerio caster? Fountain.
+2440	Right. And that's what's weird. I get fountain SATs every once
+2443	in a while and I'm like, What are you people doing?
+2448	Yeah, so that's interesting. I guess the audio works. Just
+2452	listening to Hey, listen a lot.
+2459	So Alex, just shout to you. Because Oh, because you will be
+2463	uploading stuff on on no agenda tube got it. Okay, cool. Yeah,
+2467	yeah. I just love seeing how these things come together. You
+2469	know, this is such a interesting community. Yeah,
+2473	I think I mean, he he gets 100% of the credit of really, I, you
+2477	know, I'm sure that at some point, I asked him, because I'm
+2481	kind of annoying in that way. Like, hey, you know, there,
+2483	you're talking about XYZ on podcasting. 2.0, can we have
+2487	that, but it was probably already on his roadmap. He
+2492	always seemed to kind of already have things in mind. So
+2496	Alex was born with a plan in every day of his life is just
+2499	working the plan. That's the way it goes much. I'm only a little
+2504	bit kidding.
+2507	Yeah, so that's kind of the history I you know, I would love
+2510	to see a more apps support it. But I know that it's a
+2514	completely different codec. And you have to deal with all of the
+2518	different, you know, resolutions and bandwidth and all that
+2522	stuff. So I know, it's not an easy problem
+2524	for the long term. Alternate enclosure will help that. But
+2528	that's like, Yeah, I think of any, like, of any of the tags or
+2533	any of the future, you know, forward looking things. I really
+2537	think alternate enclosure is probably the one that is the
+2539	most far in the future, because it's going to just I think it's
+2544	quite it's complex, because they know you're dealing with
+2547	different, like you said, different codecs and things like
+2549	that. And that's people, even developers don't want to deal
+2552	with that stuff. Exactly what they want. They want to just
+2555	roll up in there with an mp3 and be done in lunch. So yeah, yeah.
+2560	I mean, one day,
+2561	one day, I was surprised that I was surprised to learn, I would
+2565	say that the pod pod versus the player they're using for the for
+2570	their app that it somehow is not appropriate to do per minute
+2573	streaming SATs, which is a shame. I know. They'll get to
+2576	it. I didn't realize. I wonder what that what that person when
+2581	would that problem is, anyway, not a big deal. I'm amazed any
+2585	of this crap work is so cool.
+2587	So would it be? Would it be fair to say that, would it be fair to
+2591	describe your job as your consultant?
+2595	Yeah, I mean, that's kind of that's what I call myself on
+2598	unlike LinkedIn, and I need new business cards, because right
+2602	now they're, they're like, so cringe, because I've had them
+2605	for 10 years. And they essentially say Jack of all
+2608	trades.
+2609	Yeah. Well, here's your business card. Okay. If you if you have a
+2613	company and you want to be successful, hire this woman.
+2617	There we go. I like it. That's your business card right there.
+2620	I look, you've done so much for me personally for the show. And
+2626	then the minute we were talking about hackathon for podcasting
+2631	2.0 who raises their hand
+2634	me Yes.
+2637	developer, you clearly
+2639	have the Bona fie days is how you say that word bonus, or is
+2643	it bonafide
+2644	bonus depends on if you're from Alabama, it's bonafide.
+2649	Well, you You clearly have the bona fides and then so Speak for
+2653	yourself South Carolina.
+2656	Now, sorry, you
+2659	know, you've clearly got you know, got the skills to to
+2663	consult on this topic. So what what, what do you what are your
+2668	out of the gate salts?
+2670	Um, well, I I talked to a good friend of mine who is an
+2674	entrepreneur, but also a developer and he has started a
+2677	few companies and been successful. And so I said, Can
+2682	you look at that he's aware of, okay,
+2685	so those are the things that see the you were like, you're like
+2688	developer, I'm like, check. That's me. Entrepreneur. We
+2693	started Potkins a process index check. That's me. And then you
+2696	said successful and I was like, that's where that's where So I
+2704	have a pen and paper by the way, I'm writing these down because
+2706	this is your consultant. So we this is the session, this is the
+2710	session. This is
+2710	this is just the first meeting, you know, we're gonna have to
+2713	have multiple them. But
+2716	what, what? Thank you. Meetings? No, I got into podcasting to
+2723	avoid that.
+2724	Screw this hackathon. This is already about
+2727	me. Now. This is my, this is my weekly mean, it's the one
+2729	meeting I need.
+2730	No, you know, we can I can do this all in writing to, not to
+2735	worry. But that one of the first things that he pointed out
+2738	because he's aware of what podcasting 2.0 is, but he'd
+2741	never looked at the code or anything. So I sent him to the
+2745	GitHub, I sent him to the API documentation. And he was like,
+2749	first things first, where is the high level flowchart? And I
+2755	won't, I'll, I'll bring it up. And I assume that I will be on
+2762	me to create, which is fine. I don't, I don't mind it'll help
+2766	me
+2766	to create the high level flowchart of podcasting. 2.00 my
+2771	god, that would be that would be astounding. Create the
+2775	high level flowchart and then do a pull request on James's
+2778	podcast. namespace.org. You go, I mean, then you've earned every
+2783	bit of the zero money that
+2786	Hey, she's in the split today, we're gonna give her a healthy
+2788	split. Okay. Okay. Yeah, so boost boost for Dame Jennifer
+2793	boost,
+2793	if please. Because, you know, if we're, if we're trying to
+2797	encourage developers who are either just involved in Bitcoin,
+2803	but have not listened to any of these shows, or are just
+2808	interested in podcasting, but I've never listened to your
+2810	show, because the only way that I've ever learned anything about
+2813	what you're doing is via the Show podcast, and we can't
+2818	expect somebody to go back and listen to 97 episodes.
+2822	Yeah, I agree with that. Yeah. Yeah.
+2825	Oh, speak for yourself. I love college level course.
+2831	Well, it is, if they have the time, but I love what James
+2834	Cridland is doing. I took a look at it the first time that he
+2837	posted about it on podcast, index dot social. So I don't
+2843	know a couple days ago, I haven't looked at it lately. So
+2846	I'm going to use that. But I also just kind of like the
+2850	simplicity of your slide deck, Dave, that you gave me that. I
+2856	sent you that right? Yeah. and simplicity of that, too.
+2861	Let me ask you the quick, though, is, is this going to be
+2865	a successful presentation with this, we're using this slide
+2868	deck.
+2870	I, I always like slides that are clean, simple and
+2875	understandable. And that is exactly what you had. I loved
+2879	how it looked. Now I am going to want to listen to the recording.
+2883	Just for my own understanding because I'm going to start I'm
+2886	going to have to field questions. I'm guessing he's
+2889	gonna say what's gonna happen. I'm going to do my intro. I'm
+2891	going to do 13 minutes. I'm gonna give Dave an extra two.
+2896	And then Dave is going to start going through the namespace. And
+2899	he's and he's just gonna get to block tag, which is number two,
+2904	and we're gonna be out of time.
+2906	Bullshit. I'm going to have you practice race. No, I'm not I'm
+2913	winging this zero practice. First time I do. I'll be the
+2918	first time I practice.
+2919	I'm a former corporate conference planner. Clients were
+2923	Arthur Andersen and Accenture that that no rehearsal doesn't
+2927	fly. So it's a good thing. I am not your meeting planner at
+2931	Podcast Movement.
+2932	So in my in my stint in my day, job life, I do presentations on
+2938	a fairly regular basis. Oh, so this will be easy for you. Yeah.
+2942	And so and it's all slide based. And I have developed on the fly
+2950	capabilities that most normal humans do not have. So I have
+2953	this in my bag of tricks that I can speed up and slow down
+2958	according to what is necessary to get the job done. I have a
+2961	complete half complete and unjustified confidence in my own
+2964	abilities to get this
+2965	No, I'm sure it is justified. Are they going to have a
+2968	countdown clock for you?
+2969	I hope so.
+2973	They better be No. I'm so excited about our session. I'm a
+2976	little bummed now about new media show was doing something
+2981	live on stage. And and Greenlee reached out to me hey, we're
+2985	gonna have Caitlin would you want to join him? Like yeah,
+2987	that'd be kind of fun to have James and meet together. But now
+2989	they've got like 18 people on stage for 45 minutes like six
+2995	literally six or 45 minutes like that's that's not productive.
+3000	It's too much. I think it's too much. Maybe I should bow out.
+3003	Yeah, belly about gracefully. You should demure.
+3009	Alright, so back to the hackathon. Yes.
+3012	So but beyond the flowchart that the other concern that he had,
+3019	was that it, because when he I played him the clip when it
+3023	first came up in July, and debut proposed it and you said, no
+3030	rules just do something cool.
+3034	Yes, it sounds exactly. Right. Yeah. And
+3038	Greg was like, no, no, no, you're gonna need to tell these
+3041	guys what they want. Meaning, you know, you're gonna need to
+3046	be a little more specific. So I had an idea and tell me what you
+3050	think. So we've been talking about pimps.
+3053	See, for a while this is.
+3057	Dave's notetaker?
+3059	Wait. So we've been, you know, this has been recorded. Dave,
+3062	you can go back and listen.
+3064	You could just read the transcript. There you go.
+3068	There you go. So you've been talking about pimps and I love
+3071	the idea of the pimp database. So I wonder if there's not a way
+3081	because a little black book now it's just
+3084	I know, right? So if, if we were to kind of use the pin database.
+3091	Sidenote, sounds ridiculous, as kind of a trial of these are
+3097	some ideas that maybe you developers should think about
+3102	for the hackathon.
+3103	Okay, so what you're saying, If I can just try this, you're
+3106	saying, you'd like to develop whatever that means, the pimp
+3111	database, we start feeding shit in that becomes the base for the
+3115	hackathon.
+3116	I think so I think that we've got to give these guys and say,
+3121	guys, that really will be primarily men, let's be honest.
+3125	But we need to give them some kind of structure, especially if
+3130	they're coming at this completely new. And, and if we
+3136	can also, the other thing that I feel like I need to communicate
+3141	somehow, is, these are the apps that are already utilizing the
+3146	namespace in these ways. And that's what your slide deck was
+3148	really helpful. Because you had those screenshots of, you know,
+3153	here's, here's chapters, and here's a screenshot of a of an
+3157	app that's already using it. So that's something I'm still kind
+3163	of noodling through is, how do we tell people there are things
+3168	that they can look at to see how their current implementation is?
+3172	How could you improve upon it, make it better do it
+3175	differently, blah, blah, blah, you know, it gets cool, quote,
+3178	unquote.
+3179	So okay, so the the slides, it sounds like what can happen as a
+3184	step one is that after the flowchart is that, this the, the
+3191	slide deck, post, talk, the, we could try, we can post the talk,
+3197	if possible, if this podcast movement would give us
+3200	permission, we can post the talk, and then and then and then
+3205	post the slides, and then use that as sort of a, like a, some
+3211	guardrails and say, Okay, here's the, here's the tags you have
+3215	available to you, and the protocols you have available to
+3219	you take these things, and, and then get some inspiration from
+3224	the talk. Right, and go and do something along. You know,
+3228	that's, that's your that's your, what do you want to say, that's
+3232	your that's your set of parameters is, is the things in
+3235	the talk to get you to get the juices flowing?
+3238	Yeah, and then we have the pimps that the community can
+3243	contribute to have, you know, these are things that I've, you
+3247	know, seen lacking or would like to see, or you know, that and I
+3252	kind of see, amps may be coming from listeners, and producers or
+3260	meeting podcasters more than current developers, but I could
+3264	be wrong, because, oh, no,
+3266	I think that's, that's critically important that
+3269	podcasters and listeners have ideas that developers don't
+3272	think of, and vice versa. It's absolutely and I would say, we
+3276	have to make sure that it's not just, you know, new tat we don't
+3282	necessarily need new tags, but here's all this stuff. Here's
+3285	all this data, here's how it's categorized. What can I do with
+3288	that? Right? To create make?
+3292	Yeah, and you know, and there are so many other I mean, I was
+3296	also thinking well, what a hosting company one it, can we
+3301	kind of have three different buckets we could have, we want
+3305	to do something cool. For a listener, we want to do
+3307	something cool for a podcaster. We want to do something cool for
+3310	a hosting company. I'm not sure how much the hosting companies
+3313	need or want anything. But it was just kind of the third
+3319	audience that was a potential.
+3322	They want stuff that I think they definitely want stuff.
+3324	Because what the one thing that hosting companies really want to
+3327	know, is what listeners want. They they really want to know
+3333	that because they don't. I mean, they get some feedback. But the
+3337	feedback is, the feedback really doesn't come from the listener,
+3341	the feedback always comes from the the podcaster. You know, I
+3346	want to I want to get this and, you know, you rarely have so you
+3350	don't really have a scenario where a listener is listening to
+3353	a podcast on Apple podcast, says, you know, this, it'd be a
+3356	great idea for this thing to be a part of this podcast for this
+3359	feature to be part of this podcast. Let me look up the
+3361	hosting companies who this petition them, like that doesn't
+3366	happen. Right? The podcasters themselves have to communicate
+3370	that through. So if no, I think the hosting companies definitely
+3374	want as much input from all parties as possible. They, they
+3379	they really thrive there, their businesses thrive on, on feature
+3384	development and pushing. So out there, I think they would be big
+3386	fans of that.
+3387	So how do we get you started with the database? Have you
+3392	already thought about this? Of course I
+3394	have. But I wanted to talk it through before I even move too
+3400	much further forward. But I guess, I mean, I can build
+3404	something or I can find a tool, I bought a domain. And I have a
+3408	landing page for it. That's just super cheesy. So that if you're
+3411	at Podcast Movement, and you run into somebody who might be
+3415	interested in you, they at least have a place to go and it's just
+3417	it's PC.
+3422	Two zero.com 209
+3423	Yeah, two, zero, the numerals. So that'll be kind of the
+3427	landing to some people. And I don't know if that's where we
+3432	host the pimp database or
+3436	anything. Specifically, do you have any skills with setting up
+3439	databases?
+3441	I used to? It would I would need to clear some cobwebs.
+3445	I don't think we need that. I don't I don't think we need to
+3448	go to that level. I think because the GitHub repo, I think
+3452	that that's the way to do it. One is, yeah,
+3455	yeah. That's what I mean, it's built for stuff like this. And,
+3458	okay, the GitHub, the namespace repo. Also has a wealth of
+3465	issues that have already been created in and of ideas that
+3467	people had. Yeah, yeah. True. True, that nobody's picked up
+3472	and done anything with.
+3474	So you can raise a nice thought you didn't like the way it was
+3478	being communicated? Or
+3480	I remember I remember Dave saying that, too. Yeah.
+3485	I do. I don't like the way this is communicated.
+3490	About the structure, like the structure you'd have with issues
+3494	or something or something you'd write it
+3495	wasn't working for you.
+3496	It's It's messy. I mean, it's messy. But I guess what I'm
+3499	saying is like the so what I've what I've started doing is, is
+3504	when there's now that we have the pimp system, whenever,
+3507	whenever a new one is put, like the first one is the Verify tag,
+3511	wait,
+3511	we don't have a pimp system. Where's, where's where's
+3515	the pit? The PIP system is the GitHub is GitHub projects. I
+3521	started creating a project
+3523	Oh, I didn't know I didn't know this was taking place
+3526	did we've not discussed unless you do not discuss this in the
+3529	board meeting. So the what I did with PIP two, which is the
+3533	Verify tag as I put it as a project,
+3536	and then when you have a project, then you can have
+3538	comments and shit under that you can link issues to it. And
+3541	you can you can assign it, you can assign sub tasks of the
+3546	project to different developers and blah, blah, blah, but it's
+3548	just my way of tracking it. So you know, but I think the just
+3554	dig through the issues list is probably a great place to start.
+3561	Just to get
+3561	brainstorming convert them to camps, do we reach out to you or
+3568	do a pull request or I don't know how I just
+3571	yeah, you can just you can just put you know, if somebody sees
+3574	something, they can put it to me. I can I can I can also spend
+3578	some time digging through there because I can probably spot
+3581	things pretty quick. Right? That has there's a lot of stuff in
+3585	there that was just like nah, this is not good. But I think
+3589	one thing Adam said was was important that we don't we want
+3594	it to be clear. You said this, be specific. And one thing to be
+3598	specific on is we don't want new tags. We want, okay, existing.
+3603	We want the existing we've got to we're getting way in for in
+3607	front of our skis here because you're 18 tags into this thing
+3612	and a few protocols. And and we still have, you know, apps that
+3618	only support one tag. Right? So if there was, we don't want new
+3622	tags. So that's one guardrail. And then the more general idea
+3628	is, take what's already there already available
+3631	and do something cool with that bill. How about a cool search?
+3636	You know, there's all kinds of stuff that I can come up with
+3639	Discovery discovery, yes. The elusive discovery? Yeah. Now
+3644	we've been talking about so. So how would a Normie, like a
+3649	listener who's not going to be on GitHub? Should I build
+3654	something for them to submit to me, and then I can transfer them
+3657	to GitHub or what are you? What do you think? Well, I think
+3661	I think we should just make a new repo a column on Yeah. 22?
+3666	Yeah, I think so. Yeah. And then there's an enlisted have,
+3671	hopefully, normally, this is for developers. So developers need
+3675	to de they'll already know how to do these things, right? To
+3680	submit issues. And
+3681	a hackathon is kind of by default. I mean, it's important
+3684	that podcasters and listeners are welcome. But it's really a
+3688	developer thing.
+3690	Yeah, in the in your your site, your hack, PC 20 hackathon.com.
+3695	That that can can be the the sort of explainer and gore and
+3700	Gabriele setup. And then they say, and then you pass them off
+3704	to write a hackathon 2022 repo.
+3707	Okay. Yeah, that's kind of what I was thinking. I mean, either
+3710	we need, we need like an onboarding for people who heard
+3715	about it sounds interesting. But, you know, had the
+3718	experience that Greg did, which was like, Where what? You know,
+3724	like, I need a flowchart.
+3726	What is this float? Can I ask you about the flow chart?
+3728	Because this is, what is the flow chart? Charting?
+3731	I don't even want to know, I just want to have it. Yes. I
+3735	want a flow chart. Well,
+3736	here's what is the chart? What is the flow? What flow is being
+3740	charted?
+3740	If. So that was one of the things that I need to and you
+3744	just reminded me, I made myself a note, I need to ask him for an
+3747	example of one. And I was gonna go to one of his companies and
+3751	see if his, like, his API has a flowchart and just see, you
+3755	know, well, I like are you?
+3757	Are you? Sure? Yeah.
+3760	Right. So that's, I'm not 100% Sure. But it was something that
+3764	was the first thing he was looking for, which is kind of a
+3767	schema, you know, of like, what's going on here.
+3770	When I think of flow chart, with podcasting, 2.0, I think of
+3777	something I've wanted for a long time. Is a is like a motion.
+3783	This is this sounds like, sounds so much like an old man, when I
+3786	say this motion graphic, like, that's dumb term, but like, a
+3792	graphical representation of the flow of Satoshis as they go
+3797	through the value for value network system. With with, with
+3803	motion showing the showing flow?
+3807	Yes. Where money goes in? For value for value, that will be
+3810	cool. Yeah,
+3811	value for value. Yeah.
+3813	That's just the one that's like one piece of the pie. And
+3816	they're really
+3817	talking more about a visual description of the API. sounds
+3823	like to me,
+3823	I'm gonna, I'll double check with them. Because I told him, I
+3827	said, I bet I'm gonna have to do it. And so I may have more
+3831	questions. But, you know, and I will probably have questions for
+3836	you, Dave. As I start to kind of understand. And then, you know,
+3842	try and figure it I mean, I will try and figure I went to
+3844	Montessori. So I learned
+3846	I can get a steady learner.
+3849	Is that where you learn how to eat clay and stuff?
+3852	I didn't eat dirt, but
+3855	that's my way of you. Kids are cool, man. They get it
+3860	suit. You're just you're really well taught the funny thing is I
+3863	when I meet someone at a party, I can tell Yeah, it's very
+3869	weird. It's like it's kind of a superpower.
+3872	Well, there's there's something else now when you when you hit
+3875	the party's because you have a new glow about you. Hola Dave.
+3879	Grab this you got that sword. Oh, yeah. I'm gonna grab that
+3884	because we now need to officially pronounced the KU as
+3889	David Jennifer data now your official name So here's your
+3901	scissors. Here's your scissors. Yes, your sash your scissors. We
+3907	really appreciate this, Jennifer and of course, we're here for
+3910	for anything. Anything you need, let us know. And we'll jump in
+3915	and whatever we can.
+3916	Yeah, I mean, we're gonna have to down the road. It's not
+3920	something we need to obviously solve today. But then how do we
+3923	start, you know, organizing the presentation of what these
+3927	developers have come up with? And then some kind of voting
+3931	process. Do we do like a sweet 16? And, you know, we'd
+3935	like, Oh, man. Yeah, like the tournament? They like NC double
+3940	Yeah. Double A tournament? I'm not familiar. Yeah, well, you
+3943	have like, you know, you have a bracket of 64. And then it goes,
+3946	the winners go to 32. Then the 16 teams into a didn't afford
+3949	then did the? Oh, okay. Yeah. Yeah. So
+3953	you're kind of pairing? Brackets, brackets. So yeah,
+3957	brackets, there's, there's the word. Thank you. Um, so you know
+3961	that that's something else. But I mean, we're not there. Like,
+3964	right now, I think that the primary thing is get people
+3968	involved and interested, who, if they heard about it, and could
+3973	get their head around, it would love to contribute? Oh, and
+3978	what's the what's the money? Like, can we start saying that
+3981	there's money, there's a bounty or is there,
+3984	it's going to be value for value, the voting will will be
+3986	done with Satoshis, I would presume.
+3989	But here's, here's my own, here's the plan, the only plan
+3993	I've come up with for the, for the SATs for the for the prize
+3996	money is, is create, I like your idea for like a blog or bracket
+4004	or whatever you you know, have some sort of an initial voting
+4008	that goes through where you could get it down to maybe four
+4011	projects. And then then we could create, like four different
+4020	podcasts with each with, with each description, just just one
+4026	episode, just describing what the, what the project is. And
+4030	then everybody sends SATs to the project that they think worst
+4035	is, is the winner. And then just add up, whoever gets the most
+4039	SATs is the winner and then they get they get the prize, they get
+4042	the whole kitty. That's that was the only thing I had, there may
+4046	be a much better way and open to, to all that we I mean, we
+4050	could just, you know, we could The other alternative is just
+4053	how about this and
+4055	change the future and win valuable prizes? That's, that's,
+4061	that's there. Right there. Yeah, change the future, and win
+4065	valuable prizes?
+4068	Well, we, we could just say, you know, put $1 value on it.
+4072	$500 $1,000. Now, whatever.
+4076	Value, value, value for value, watch this. We're gonna figure
+4081	this out real quick. These things present themselves. Okay,
+4086	I would not start off with, Hey, we got you. First of all, we
+4089	don't have 500 bucks. We can't promise anything. True. That's
+4093	true. Then, you know, it's like people should be here for the
+4096	fun of it. Normally, people pay you to come to the hackathon.
+4103	What do you think? What do you think about about doing it
+4105	purely through podcasting to do podcasting app boosts? Yeah,
+4109	something like that. I like that a lot. And you have four
+4112	different podcasts or two different pods. I mean, two
+4114	different podcasts per project. And it's just one episode. Like,
+4117	this project is about the alternate enclosure tag and
+4121	blah, blah, blah, blah, blah. And then they just vote. That
+4125	sounds extremely boring.
+4127	Now that does that sounds like a shit idea. We're gonna have to
+4130	think about it. Let's Yeah, stick a pin in it, everybody. I
+4135	don't know how to do. What are most hackathons? It is not
+4140	always money involved in a hackathon is there
+4145	I don't know that I would I want money
+4148	or lots of free pizza.
+4150	Maybe as also people just like, you know, like fans of some
+4154	technology. They go and do a hackathon. It's about getting
+4157	together and doing it.
+4159	Yeah, this is a virtual though there's no
+4161	I know. But But Is that not the actual kind of idea of a
+4165	hackathon. So what if it's virtual right so what are the
+4168	differences that make yeah but you because it's virtual you got
+4172	to pay people
+4173	No, but I mean that but here's it's not that but it's the
+4178	painting the painting to me is more a function of of this of
+4184	putting on display the power of value of the value for value
+4187	Lightning Network and and podcasting 2.0 value tag like
+4193	it's
+4194	no no I agree with I agree with that. But there's two things one
+4198	is, if we if we say up front, oh, there's Gonna be a prize.
+4200	Now we can't say that value for value reward, whatever, we have
+4205	to figure out the mechanism, because so if someone sends 5
+4209	million SATs to one project, can the other projects ever be a
+4213	winner? You got to put some, some parameters in there.
+4218	We'll see that's okay. So here's, here's when I said,
+4220	create four podcasts, or two podcasts, or whatever this is,
+4225	my idea was that we, we have a wallet that's going to receive
+4229	the SATs, and we are watching in the voting, the SAT voting, then
+4234	when the winner is determined, then we say we send all those
+4238	sets to the winner.
+4240	No, I understand. But how do you determine the winner? Whoever
+4245	gets the most, no, but that's what I mean. That's, that's,
+4248	that's going to be that's not going to work because whoever
+4251	gets the most sets is like, okay, so I'm a big baller. And I
+4255	really liked this project. And I said 10 million SATs. Who's Who
+4259	else is gonna win? Right? Yeah, so we have to we have to come up
+4264	with so I liked the idea of maybe aiming like gaming it
+4268	okay. Yes. Yeah. Yes, like gaming it? Totally. We got to be
+4273	careful of that. So maybe
+4276	you just have donations of, you know, if you want to give toward
+4281	the bounty to encourage development. Great. Here you go.
+4287	Put it to this, donate at this time, or put this in your boost
+4290	or whatever. And then the voting be completely separate. And it'd
+4295	be, you know, however you want blue ribbon panel writing. Um, I
+4301	Well, that I don't know, that I I haven't really thought
+4305	through. I kind of like the community voting. But I also
+4308	think maybe it does just need to be like a board, quote, unquote.
+4312	Alright, I gotta I gotta read some booster grams because
+4314	people are tripping out now. Because no, no, no, not at all.
+4317	Not at all. But we're lit Of course. And so right off the
+4321	bat, Todd Cochran. 10,000 SATs blueberry will commit to
+4325	contributing to cash pool if this is the way you want to go.
+4328	Well, no, no, that's cool. Well, just send us the cash. We'll
+4331	take care of it.
+4333	Yeah, we'll we'll make sure it gets to the right place.
+4337	floydian slips 3200 People go to hackathons, because they are
+4340	passionate about a project. They aren't bounty hunting events.
+4344	And that's kind of what I thought but I I liked the idea
+4347	of using the value tag. Maybe it's putting someone in your
+4352	splits. I mean, there's all kinds of we just got to work on
+4355	that. Pay two or 50,000 SATs congratulations Dame Jenny bear.
+4362	Okay, not quite sure. Booper of noses 800 SATs thank you for
+4370	brave noses. And then Holy moly. Darren O'Neil podcast
+4376	shot caller 20 plays only
+4380	100,001 SATs from Darren says oh yeah, you're a big drop. It's a
+4386	pleasure to hear Dame Jennifer bringing some levity to an
+4389	otherwise non funny show.
+4397	Oh, that's gonna be on my headstone.
+4401	2222 from McIntosh who says missing the show live today. I'm
+4404	sure it'd be awesome hit me with go podcast. We got blueberry
+4411	with the Oso religious 7777 the striper boost Hey, Dame Jennifer
+4416	can't wait for a Nashville roller rink. Meet up part two.
+4420	Yeah, I met him in February. There you go. Yeah.
+4424	Sam Sethi responding Dave with another 1000 SATs. We do have
+4429	transcripts. Occasionally it's missing. Occasionally it's
+4432	missing but pod land does does okay.
+4436	My apologies but deficits here apologies.
+4440	Captain Egghead, go V four V with a row of ducks 2222 Thank
+4445	you. And let me see what oh my goodness. There you go. We have
+4451	blueberry and blueberry also hits it hard how
+4455	long 20 is played on am Paula 100,001
+4460	equaling Darren O'Neil old ladies, BTS will be live
+4465	following this Cummings no agenda on Sunday. Come get us an
+4468	ad. Come get some action on banned Radio dot live or a new
+4473	podcast app new podcast apps.com We'll be rocking out hard with
+4478	the gematria boost bot in the green room chats these goats are
+4482	going to sacrifice themselves.
+4485	So this this Gematria boost bot thing he explained it later. And
+4490	it's like there's there's a certain code if you if you send
+4495	them if you send boosts of a certain amount it it ends up
+4498	displaying a certain amount Would you string
+4501	Yes and it's fingered fires a different sound as well.
+4505	Yeah. And so it's like a game trying to figure trying to get
+4508	like decipher this shinda since that's the
+4511	shit I expect out of a hackathon. Yeah, that's boost
+4515	bots. These these are by the way, these are pretty good
+4518	examples. These are cool hackathon. Hackathon things.
+4522	leaderboards? Oh, my goodness voting. How about a voting
+4526	system? Yeah, voting. Yes, it'll be handy. Very handy. Yeah.
+4532	Pfeiffer there's nothing like a dame especially when it's Dame
+4535	Jennifer
+4552	that's still my second favorite. Well, maybe my favorite anime
+4558	had no agenda. I did that really early.
+4562	Yeah, I remember I remember. Yeah. And I
+4564	every once in a while. It'll come up in my recommendations.
+4567	And I'm like, Okay, I'll watch that one. It's cute. Yeah,
+4571	anyway.
+4574	Let me see Sam Sethi again 1000 SATs Hi, chaps and Jennifer I
+4578	know you start about now my Friday night I have my
+4580	notification set in pod verse. I seem to let go live or waiting
+4584	but where how can I see what actual time you go live in the
+4587	apps well that's it there is a scheduled time that is that is
+4594	posted I guess it's not surfacing.
+4597	I guess pod verse doesn't Yeah, I guess it doesn't display that
+4600	I wonder if curio caster does I'm going to be going right now.
+4603	Let me see me does curio caster show and I'm talking directly
+4609	because I know he's in the chat room sorry. He will tell me if
+4613	curio caster shows the time of the upcoming Yeah, I
+4617	can't see that now because we're already live. Okay engaged
+4621	stream stream engaged Let's rock 1000 SATs from Lehman creations
+4625	Thank you very much.
+4628	says yes curio Castro does display the upcoming time.
+4632	Another 7777 from Pfeiffer obligatory plug for the Sunday
+4637	morning to our folk hour on the no agenda streamed live Sunday
+4640	mornings at 9am. Central Standard Time. Okay, these plugs
+4645	are very interesting. Let's see we have another 1000 from sands
+4651	Sam Sethi and then 10,001 from blueberry pod verse boosting for
+4656	mobile fields so permissionless totally filled match. Congrats.
+4661	There you go. tilled it pimpled Yeah.
+4664	Okay, that's a good that's a good phrase.
+4666	And thanks. Thanks to meet us for the 20,069 SATs said pre pre
+4673	show and he just says what up nerds. And let's see 3200 Now
+4680	from Florida and slips per diem Jennifer's request I switch to
+4683	no agendas category from comedy to news. 19 148 SATs from Brian
+4692	of London Hello Brian of London. He says Let me tell you about
+4696	coin voting. He has a little son emoji with the sunglasses
+4702	because of course that means that we have to do this in hive.
+4708	Right Of course. No, no, it's not gonna happen.
+4713	Of course popping seems really cool.
+4715	I was gonna say any cool app from anything I don't care as
+4718	long as it's integrating what we're doing is great.
+4721	Absolutely. It's great. Yeah, pod ping is is beyond this. It's
+4726	incredible sometimes to read these comments which are
+4730	completely egged on by Brian of London himself. Of course. You
+4735	know people gonna like putting on this podcast that to put
+4738	always they're building a database with hive that she
+4741	called man. Like cheese wheeze people. Like there was a whole
+4746	thread Roy forwarded me today. The Ellen URL guys are all like,
+4751	well, how come we don't have value for value with ln URL? Oh,
+4755	really? Yeah. And, and Bumi was in the thread from Alby and Roy
+4761	and everyone's like, well, you know, it would work but you
+4765	know, we're doing up to 10 splits. Now. It's, yeah, but the
+4768	Ellen URL, you know, it's just one of those really emotional
+4770	conversations. And I have to say, Roy, and Boomi they talked
+4775	him off and he's like, Okay, I'm gonna go learn key send those
+4780	things sometimes, you know, people get real passionate about
+4782	technology, especially because Ellen URL has been around it's
+4785	very, for enlightening standards and ancient protocol. And
+4789	they've gone really far with Elon bits and, and all this
+4793	stuff is just, there are some significant differences to it
+4796	for us. Elon, URL
+4798	author, I mean, all these ed that Do the same thing. It's the
+4802	same thing, though. It's always the same thing. Go build
+4805	something.
+4806	Yes, please build it exactly. Don't
+4808	don't complain about not don't complain about things not
+4811	existing, just make it exist. That's, that's, that's still the
+4816	age old problem with people don't not understanding open
+4819	source is that it's not about asking for things. It's about
+4822	making the thing, right. I mean, that's what that's the
+4827	hackathon. Well, but
+4828	you know, what I've noticed. And, and you notice, it's
+4831	extremely obvious on the consumer side, but also, I
+4835	think, to some degree on the developer side, you know, we've
+4838	been so spoiled with Silicon Valley companies being funded
+4843	with very cheap money, which is over with all kinds of apps and
+4849	things that pop up and are free, and it's all expected to work
+4853	immediately. And, you know, I'm not even gonna let this morning,
+4856	you know, at this pace of shock, like, holy crap, what's cool,
+4861	every time I want to do this, it freezes. And I was just, I was
+4864	just letting it go. Because, you know, and I wasn't trying to be
+4866	defensive, but I immediately I go into defensive mode, like,
+4870	well, this is like two guys or one guy, and you know, yeah, but
+4875	you, IT people, it's the same with I don't understand two
+4880	point I understand value for I don't get it, you know, and
+4883	people are not they're used to it being spoon fed, stuck in
+4888	their face completely managed, completely helped. You know, and
+4894	developers, I think, sometimes also have this idea of like,
+4898	well, listen, index, guys, why don't you do Alan URL just
+4902	implemented? You know, not knowing at all, you know, at all
+4906	what we're about, or, you know, or how this works, or what we're
+4909	trying to accomplish? It's the modern age of technology, people
+4914	have been extremely spoiled. And, you know, it's like, Ah,
+4918	this, like, people upgrade their phones every year. Right?
+4922	Kidding me. So, well,
+4926	we got an iPhone in the mail. It was just like an anonymous gift.
+4929	So people send me stuff all the time.
+4933	Where do I get in on that? Like, how do I get an action? What?
+4936	Well, okay, making cartoons. Yeah. Yeah, that's yeah.
+4940	You got to start a podcast without me. Now, it's like Tina
+4945	and I, we get all kinds of cool stuff. cutting boards, bottles
+4949	of wine, you name it. Yeah, that's, I mean, we really do the
+4954	show for the alcohol,
+4955	as well as the fever five that way.
+4957	Yeah. Cutting Board, shall we? Thanks for more of our value for
+4961	value donors, Dave. And I would like to say I'm so delighted to
+4966	hear the leading podcasting podcasts, all soaking in value
+4973	for value. I hear new media show pod land, pod news. Doing
+4983	booster gram segments. You know, I love it. That's cool. Oh,
+4988	yeah. Well, and you know, and the money's getting better.
+4992	People are understanding higher amounts, you know, and that's
+4995	why we do have some cut offs. Because of course, there's a lot
+4998	of people do a lot of comments for low sat numbers on on
+5003	fountain. But it's kind of work it it's interesting, because I
+5008	hear pod land, you know, I'll hear James do not pod on pod
+5011	news. And it sounds like he's just getting you know, 10 SATs,
+5014	20 SATs at SATs where people leaving comments on a daily
+5018	episode. And he's not really pitching it's short show. So I
+5022	understand he's not really pitching value for value.
+5027	Whereas it pod lands I think the numbers are much higher. There
+5031	any any I heard him I caught him actually saying, you know, if
+5034	you get some value from this show, like wow, okay. There we
+5037	go. Yeah.
+5038	Mindset, no answer. Yeah. Yeah, we on that. Just real quick
+5043	before we do the donations on that thing. You know, about the,
+5050	you know, just about the apps and about the, you know, we had
+5053	a really good discussion with Pocket Casts that people from
+5057	Pocket Casts.
+5058	Yes. First automatic and then Pocket Cast. Yes, we did. And
+5062	early in the week, and we, you know, we, they were gracious
+5066	enough to, to have a zoom call with us, and we pitched pitched
+5071	all the podcasts and
+5073	I'll tell you the pitch. We would like you to declare the
+5076	namespace, the podcast namespace and every single product you
+5079	have including Pocket Casts WordPress, everything, and they
+5085	win and literally they went well, that sounds like a good
+5089	idea. So anyway, we're we're waiting. This is a Todd Cochran
+5098	moment we're waiting just to get some time. information on them,
+5100	we can just talk about a couple things because it was very
+5103	informal. We just don't want to violate any trust at this point.
+5105	But we're super pleased. As you know, I've known Matt for a long
+5110	time. But he really did build a company with people who give a
+5115	shit. And they really care about open source, they care about
+5118	open systems. That's what they do, obviously.
+5123	I will say confidently that, that Pocket Casts is in
+5127	fantastic hands with being big and automatic. Yeah. And I can't
+5132	think of a I can't think of a better place for them to have
+5135	landed than this grid in May. Yeah. Good, good, good things
+5139	are gonna come out of this. I mean, we can, one thing I can
+5143	say about our talk with them is that they, they already knew
+5147	about this, I mean, or excuse me on the Pocket Casts, they they
+5150	already knew about podcasting 2.0 and had plans around it. It
+5155	just, they, they had a lot, you know, the automatic
+5158	transmissions been big and stuff. So they gotta get through
+5161	some stuff. But they, they already knew about the stuff.
+5163	And it was a really helpful zoom call to be able to just dig in
+5168	to the details, because they, they knew generally about
+5171	everything, but they didn't know a lot of the details. And we saw
+5173	we did some deep dives on, on the different tags and the way
+5176	things work and stuff and really just got to talk, you know,
+5180	and but what I liked the most about it is they really saw I
+5184	mean, it was a no brainer for them that like, well, so people
+5188	are publishing with these, with this extra data and these
+5191	features. Yes. Well, why why wouldn't we that sounds like
+5195	that's stupid not to.
+5197	Yeah, I don't think people realize that how many phase
+5201	there are out there that declare the POC test namespace? It's,
+5204	it's, you know, 400,000 plus at this point, yeah, that's a
+5207	wow, did you did you ever have a chance to check Dave and see of
+5212	those 400,000? How many are in the 90 Day Count of updates? Not
+5218	done that? That would be something cool to see to see if,
+5223	if 2.0 feeds are updated more frequently? Or what percentage
+5227	they are, that number may be very small, I don't know. But
+5230	the point is, when you have people creating content,
+5234	possible 140,000, or whatever it is that at Buzzsprout. Another
+5239	100,000 rss.com, you know, 200,000, I have no idea. The
+5243	hundreds of 1000s can put in all kinds of tags a lot of these
+5247	guys have and people are doing it. This is why I was so
+5252	confident to say within a year Apple will have implemented one
+5255	or multiple namespace tags. And the reason why is if they don't
+5263	they're not business people, then that they have no business.
+5266	And if Apple knows anything, they know how to run a business.
+5269	It's just it makes me insane. I mean, if everyone is going to
+5273	adopt this, everyone will except maybe Spotify, they may not. But
+5278	if you want a competitive advantage when the creators are
+5280	making it, they're putting it in there that you go.
+5285	Listen to you, Girl Friday, she'll tell you what's right.
+5288	Yeah, I would love to go back to Pocket Casts as my daily driver
+5292	used to be I love that user.
+5294	Oh, why did you drop it? Because of 2.0 features? Yeah,
+5297	cuz I wanted to play around with SharePoint. I wanted to support
+5300	the project. And so I you know, and I move around, but, but I
+5304	still have it installed on all my devices. I still love it. I.
+5308	So that's cool. I can't wait to hear more.
+5310	What do you love about it? Because that would help
+5313	developers listen to the show. And they need to know these
+5315	things. Okay, the,
+5317	the original reason that I subscribed, I paid for a
+5320	subscription was that it across any device, I was synced up. So
+5326	if I start listening to no agenda on my phone, and then I
+5329	come to my PC, and then I go later on my iPad, they that app,
+5335	new word that I was, yep. Which I loved it, you have lots of
+5342	options per podcast options. So there are certain ones that I
+5348	want to be alerted. There are certain ones that I want to
+5351	automatically download and add to the queue. So they have this
+5355	really nice queue that you can establish and you can say I want
+5359	to put this at the beginning of the queue or the end of the
+5361	queue. I love that. Yeah, I am a I am a huge, huge fan of Pocket
+5369	Casts and every once awhile I still dip my toe in because I'm
+5371	like, oh,
+5373	there's no shame in that game.
+5376	And and they just make it really easy to subscribe to, you know,
+5381	if you have the RSS feed. It's like as long as you know how to
+5384	find that. It's easy because I as a test part, one of the first
+5388	things I did when I went on no agenda tube was I put the RSS
+5392	feed into Pocket Casts and said Do they support video? Sure
+5396	enough, it worked. I just put it in the Yeah, so they They've
+5400	been supporting video for a while, because I did that. It's
+5404	been over two years. Yeah. So I'm a huge, huge podcast fan. So
+5412	that's exciting.
+5413	Oh, good. Well, we're excited. Hopefully they are listening to
+5416	the show, and they will hear fervently desire there to be.
+5421	Very, very interesting, though, the reasons that you were drawn
+5425	to it.
+5426	Yeah, that kind of stuff. Hearing hearing listeners
+5430	describe why they like certain apps that is so valuable,
+5435	because it's not, it's one thing to get a request for something
+5439	from from somebody, and it says, Hey, can you please support? Can
+5444	you please support an X feature? It's another thing to hear a
+5448	sort of, sort of case study where you can listen to a user
+5452	who loves an app describe exactly why they love the app,
+5457	because then you may not want to replicate that that may not be
+5460	the identity that you're looking for in your app. But you can,
+5463	you can understand the thinking there and say, Okay, I may be
+5467	able to expect to take this and adapt my app to do something
+5472	like this, that gives that gives the same feeling but for my
+5476	audience in the way I want to do things and then you can expand
+5479	your user base that way I think I think it's valuable, very
+5482	valuable. We're gonna do some some donations booster grants.
+5486	Yes.
+5487	And thank you in advance everybody who pre boosted and of
+5490	course, you can go to podcast index.org bottom of the page.
+5494	There's a big red button donate button you can still reach us
+5497	with your Fiat front coupons. Almost no one does anymore. We
+5500	do appreciate those monthlies. So we really lucked out really
+5506	appreciate the moment we blew out the monthlies.
+5508	No, no, no, the
+5510	the Pay Pal is not used anymore. Everyone's just boosting right
+5514	now. This was a strong Pay Pal week. Oh, okay.
+5517	What happened? All right. We
+5518	hit we hit it hard. I mean, I don't know what the call went
+5521	out. Evidently. And I don't think it was us. Maybe draft put
+5524	something in the chapters because
+5526	we got we got some help. Okay. All right. All right.
+5531	The route I mean, right off the top row voice blueberry
+5535	podcasting says $250
+5537	Wow, oh, my
+5540	Sakala 20 is blades on the Impala. Nice. Thank
+5545	you. Very,
+5547	thank you for what you were doing the blueberry team. Oh,
+5550	thank you, blueberry team. Thank you, blueberry team. They're
+5552	a handsome team.
+5553	They are the beautiful team. Richard, he wakes me up, this is
+5561	anonymous is nice as soon as $200. And he says it's been a
+5569	while. So I will send via old style of transfer, still have
+5572	not been able to, I still have not been able to understand how
+5576	I'm going to keep track of the boost transactions for the IRS
+5578	effectively just helping out anonymously, okay, so that's not
+5582	something you have to worry about. For sending now. For
+5586	sending when you donate when you when you give away SAS you
+5591	don't, that is not something that you have to then convert to
+5595	monetary value it convert to US dollar value at the moment, and
+5599	then account for that as income on your taxes. You are gifting
+5603	you're gifting that asset to another person. And so it's it's
+5608	it's a non transaction on your point on your part. The
+5611	receiving party has to count that as income at the value at
+5617	that time. Right? Yes. So you don't have to go through
+5620	anything.
+5621	And also it's not a cheap it's not charitable, therefore not
+5624	tax deductible in case that was what you were saying. Yes, or no
+5628	charity dammit. We're going broke in a capitalist way. I was
+5632	gonna say profit but no, no, we'd like profit. We just don't
+5637	expect it. It's a difference.
+5640	Down the road. It's a mindset. It's a mindset. Thank you very
+5645	much evolving dollars. Got $100 from AD Ryan. Hey, radio Inc.
+5652	Oh, nice. Thank you, Ed. Yeah, and he says Save the chickens
+5664	the The chickens are still strong. They were still too they
+5670	were too strong in the back of in the backyard when I get here.
+5672	So we're still good. $100 from New Media Productions. And it
+5679	says Hey, guys, Todd Cochran here. No podcasting. Oh.
+5688	Wow. Professionally and privately. Thank you, man.
+5691	This makes me think that this makes me think that Todd doesn't
+5694	know that the blueberry team donated $250 They just they
+5701	basically went, went into his wallet when he wasn't looking.
+5705	Dollars ads not looking. I got an idea.
+5709	He showed up to the office and said, Hey guys, I donated $100
+5713	to podcasting. 2.0 And they're like, oh, oh, okay.
+5721	It's so appreciated. I mean, from Todd but also from his
+5725	team. That's, that's really nice. I like that. I mean,
+5727	that's how it's supposed to work. This is how value for
+5730	value works. We come up with shit, we host it and then they
+5733	have to do all the work.
+5736	As a security professional though, I would I do have to
+5739	recommend that Todd change his Pay Pal password because his
+5741	name is evidently is Brian $50 from our buddy Dave Jackson at
+5748	the School of podcasting. Hey,
+5749	Dave Jackson, thank you so much. Also, you know, he's, he's in
+5754	round two, podcasting. 1.0 He taught 10s if not hundreds of
+5759	1000s of people how to podcast. He's back doing it with
+5762	podcasting. 2.0
+5763	Throwing out videos. Good. Good, fun discussion the other night
+5768	with the podcasting power. Podcasting Power Hour.
+5772	Oh, yeah, I checked into that. That was kind of interesting.
+5778	I don't like the format. I hate Twitter spaces. No,
+5780	I mean, either I what I think is so funny is that you have people
+5784	who are listeners and then and they just are they get to ask a
+5788	question and then just go on for hours and hours about themselves
+5792	is like I don't kind of like that format that much is boring.
+5797	Yeah. Especially the guy is like, why can talk I can no
+5801	problem talking. You see, I just need to be able to hit one
+5803	button on my phone and that button that just kind of did the
+5805	podcast got to be because I that's what I need. I just could
+5808	I bet I could tell you I can talk for hours and hours. That's
+5810	not the problem.
+5811	Oh, that was like, Yes, I believe that. Yeah, that is the
+5814	problem. Actually No shit. But that yeah, that was that was
+5819	that was interesting. I appreciate them asking me on and
+5821	fun, fun questions. Good. Good chance to explain some value for
+5826	value.
+5826	You're always a pleasant voice to listen to, in an interview.
+5830	Appreciate that. Yeah, it does have a little bit of NPR vibe to
+5834	it, but in a good way. Does
+5835	it kind of Oh, yeah. No, no, but
+5837	in like a smoky cigar kind of green visor kind of way. So it's
+5842	like, imagine you dim the lights and there's one naked ball now a
+5847	desk lamp with one of those flexible necks. And that Dave's
+5851	got his green visor on his in front of his monitor. And he's
+5855	like, Well, let me tell you about the namespace.
+5858	We've got a we've got a donation from there it is listed in Berg.
+5863	OYSTEIN bariga OYSTEIN bariga. $49.99 Okay.
+5869	It's not working for me. Okay.
+5871	All right. Always, always done. Bear sad. Boy, same bear. This
+5877	time better? I think so. Okay. $49.99 Thank you. And the note
+5884	is donation.
+5887	And our reply is thanks. It's thank you
+5892	we got some boosts Yeah.
+5895	Let's get some let's get our bluestone
+5897	blueberry 1776 through fountaining says snip first.
+5902	Okay, what that means I
+5904	don't know. Got it for
+5906	lavish synth 9999 and he threw fountain needs to survival cash
+5914	What do I need gosh you're still not following that. Mitch will
+5919	see as a test boost is a very long complicated test boost
+5925	meanest meet us excuse me, said 3333 through fat and he says
+5929	boost for humanity
+5940	Roy scheinfeld
+5943	Roy is back now he he started texting me very angry.
+5948	He did he was he was
+5950	always boost. I always boost it's on day. This is all on
+5954	Dave. I'm gonna read it to you. I'm gonna read it. I'm gonna
+5957	read it verbatim.
+5959	He was not angry in his texted me.
+5962	He says I can beat the Israeli accent. Yes, I doubt him. I can
+5967	be distracted but I will never forget to boost if you don't see
+5972	my boost. It's on Dave. I said I sent you the boost to check.
+5977	This is not Israeli but this is French.
+5982	I don't know what that was is yeah, that's pay Panthers. My
+5987	actual Hebrew sounds better than that.
+5989	Yes, it does. I've witnessed your Hebrew it's actually quite
+5994	compelling
+5996	for a non for non Hebrew speaker and that's right.
+6000	54,321 SAS from Roy to read it. Okay, he says Check out the new
+6009	podcast features in breeze next my top podcasts and different
+6013	layouts.
+6014	Yeah, you can do tiled layout of all the I love that I love the
+6018	tiled layout of all the images to cover art because no agenda
+6022	always changes it's always something different I love that
+6026	tile as well and also the improve something with the
+6029	syncing to the graph much faster you know sometimes Yeah, with
+6034	Breeze you know, you'd you'd start playing and it wouldn't be
+6036	paying anything like what's going on you do you know, go to
+6039	a menu developer get info
+6042	in your phone start heating up. Oh,
+6045	that's gonna that's my bug gets hot. I know. I'm finally
+6051	sentenced. Let's just see. Thank you, Roy.
+6056	And I also have a make good because Roy did booths last
+6059	week. 54 321. I have yet to decode the note though. Because
+6064	I ran out of time. So I have there will be make good two.
+6068	There'll be double double make good next week when I would
+6071	decode his note No.
+6072	extra boost then.
+6077	I love you Reuters and it is only 2500 SATs from Mike Dale
+6083	and he says go podcasting.
+6085	Yo Yo Yo yo yo go podcast.
+6091	Ga Orwell's in his one. Essay 1111 through fountain. He says
+6095	Do you guys know how many podcasts get on board to podcast
+6098	and to point out in a month? You know,
+6103	can I stop for one second? There is a delivery of beef. I just
+6109	want to grab
+6110	that. And go for it. From Texas slim.
+6113	It is from KFC cattle. Yeah, nice. Yeah. But here's the
+6118	conundrum. UPS was delivering two things today. One is the
+6124	beef box. The other is a birthday present that Tina
+6128	ordered for me. And she said You absolutely cannot look at the
+6132	box. Because when you see the box, you'll know what it is. And
+6136	it won't be a surprise. And so of course you see the bunks
+6139	well, so I saw the guy walk by up to the front of the door and
+6145	Phoebe heard him too. And, and so I went without my glasses,
+6150	which I promised her. I peeked through not the window itself,
+6154	but through the shade. And I can see there's all kinds of boxes
+6157	so I can't pick it up. I'm gonna have to wait until she comes
+6160	home. I'm sure. I'm sure another I'm sure another two and a half
+6163	hours won't ruin the beef. It's not indirect. It's pretty it's
+6167	not direct sunlight so no problem. They look everyone's
+6173	like what's in the box. Come on. Come on. No, no, no, no lie. I
+6177	don't lie open the box. I'm not going to do it. Spell it not
+6181	going to do it at all. In fact, I'm gonna text my wife right
+6185	now.
+6188	These two grand 1330 C 13 337. From the mere mortals podcast
+6193	through fountain in. Karen says Dave putting on a clinic Jones.
+6197	That's right. This was a cold call me in high school.
+6200	Not a clinic. Really.
+6201	You know, that's what I said last week. I said I'm going to
+6203	put on a clinic you
+6205	Ah yes, yes, yes. Yes.
+6209	11 111 from forged fo very gamer name. Dismissed. You must be a
+6216	gamer. He or she through fountain says I've got nothing
+6220	to say. All right. Well, thanks Satoshi stream 55 5209. He, he
+6230	they have Satoshi stream says I like podcast index.
+6234	We'd like you to thank you. We'd like you Satoshi St.
+6238	Jean Everett 3333 through fountain and he just says boost
+6242	with a couple of beers. Oops. Sorry
+6250	I don't know what happened.
+6253	Let me try this
+6261	blaming creations. Everybody. Andy sent us 1000 Sastre caster
+6265	Matic says you didn't hurt my feelings. Dave. I said you could
+6267	leave it it wasn't a huge deal. Okay. Thank you, Andy. I
+6271	appreciate that. I sent another 1000 sets. Thank you, Andy.
+6276	Appreciate it. Anonymous sent 3333 through pod verse and says,
+6281	Oh, this must free from the pod verse team. Maybe Mitch says pod
+6285	verse mobile V for V is live in F droid.
+6288	Yes, yes. Yes, it is. I'm really digging it works Fanta except
+6292	for the streaming stats per minute. It's responsive. It's I
+6297	love that it comes to F droid Since I'm running graphing now
+6301	it's cool
+6303	1000 stats from Chad Pharaoh and Chad says test boost from pod
+6307	verse on F Droid and success it worked. Auburn Citadel sent 49
+6312	for 90 through fountain and he says Dame Jennifer boost please
+6317	do
+6318	we have a gym Jennifer boost?
+6320	I have here's your cue to boost you know you want to me that's
+6323	what it is.
+6327	Here's your boost you know you want to
+6331	that's what everybody wants
+6336	4242 from pirate Hodel the fountain he says plus one for
+6341	Team Nano.
+6343	No Emacs, Emacs.
+6345	No, no, that's crap. So when I say Nano, I actually am using
+6351	nano but when I when I run it, what I type is Pico.
+6357	God that's the word pico pico no
+6360	now is an alias do
+6363	you use do you use pine pie so
+6368	you've never used pine no pine the email client
+6372	have never used pine I've used mud I've never use pine
+6375	you're much my go to but pine I think pine specifically comes
+6380	with the PICO editor by default I think
+6385	I will make standard and I'll do this till the day I die. Is pico
+6392	dash W or no for no word wrap like that. It's just it is
+6398	ingrained in my finger muscles that that's that's all I can do.
+6401	Whereas I always start everything up with Word Wrap
+6405	with Word Wrap yeah I do yeah. Well wasn't pine was pine not
+6411	email was was pine messing it
+6413	up. That said pine comes with Pico. I guess it is it may be as
+6417	the editor for for even for pine email.
+6420	Yes What I thought but Pfeiffer says pine is not email. I
+6425	thought pine was email. feel dumb now?
+6431	I don't know. Well,
+6432	it's not that important.
+6435	Stop show.
+6436	No, don't stop. Please don't stop the show. Whatever.
+6438	10,000 says from River City mystery through faculty says
+6442	thank you for all you do for the podcasting community. Appreciate
+6445	your efforts to ensure that podcasting remains a platform
+6447	for free speech. Matt digue er de da, de IG. I'm gonna say dig
+6453	that deep river city mystery River City. mystery.com. All
+6457	right. Thank you, Matt. Appreciate it. 3333 for starship
+6462	Alvis fountain and he says can't wait for LIVE TAG functionality
+6466	and fountain mousse to do Bucha
+6474	rest of Calavera give us 2222 through fountain and he says no
+6479	gang what? Oh pew pew go pocket
+6484	where my emacs bros add where am I? Where am I vi sisters that
+6489	come on what's going on? Here?
+6491	Is my name my nano sister from another mister on the other end
+6496	here is the James Cridland 1001 SAS through fountain. He says
+6500	are you really quoting the apple specification, which only ever
+6503	refers to Apple? Because it's the apple spec? I love I love
+6508	this. The incredulity is dripping off kind of are you
+6514	really quoting the apple specification? Parentheses,
+6518	which only ever refers to Apple because it's the apple spec
+6521	close parentheses to suggest that Apple has written the spec
+6524	for the whole podcasting. They have not. They have written a
+6528	spec for Apple podcast clients only. That is literally all
+6532	Apple cares about. Yeah, I want to just I just want to get wide
+6537	recognition here that I read this booster Graham with the
+6542	full amount perhaps more amount of incredulity and sarcasm.
+6548	Yeah, he actually intended Yes,
+6550	you'll get credit for that. Yes, well done. Okay. All done.
+6553	Yes. And yes, that's exactly what I did. James 3960 SATs from
+6559	Casper Zealand.
+6560	Thank you. Denise says boost a heart love
+6563	your unbelieving umbrella and ventures. Thanks.
+6567	Yours are particularly fun your umbrella adventures? Yeah.
+6571	Fun is not what I would call it. Mitch 2222. This is one more
+6576	test boost. Got it. Mitch boost Bucha 69 through Yale from Yale
+6581	through pod verse and he says Hell yeah, pod verse Now beer
+6584	live cheers from Gitmo nation. wienerschnitzel.
+6588	Nice.
+6591	See, that we get that there's some test booths, okay.
+6596	Anonymous 4500 SATs through cast ematic is make Get up for
+6600	playing the podcast with an empty wallet. I rarely look at
+6603	the app or possible.
+6605	Yeah, when someone runs out of SATs you gotta make that clear.
+6608	devs Yeah,
+6610	yeah, this should be like a buzzer or something.
+6613	Yeah.
+6615	Three haptic feedback when your wallet runs dry starship Elvis
+6621	again 3333 through fountain he says keep doing what you do. We
+6625	will nice. See dubs 10,000 101. From pod Oh through the podcast
+6630	index website. Hey. Says boosting from podcast index.com
+6636	With lb.
+6637	Nice, fantastic.
+6638	Moritz from lb as soon as 2100 says through also through the
+6643	podcast index website. It says Have fun at podcast moving in
+6647	Dallas, please spread the word about podcasting 2.0 and value
+6650	for value we plan on
+6651	that's why we're going bro in to spread the word.
+6657	Brian of London in the hive Dao for 45,899
+6662	Nice nice. Thank you.
+6664	He's in he said some Hebrew. Oh, and this is going to be yes.
+6670	Entertainment for Hebrew speakers as I butchered this it
+6672	says the rev Tov Leeroy be mid Benito
+6678	Arif Tov means good evening. Almost like a missive. I can
+6682	find this because it did it go through the email.
+6686	No, it came directly off the node. It was a Bookstagram
+6689	Oh, but when when was it sent? I
+6691	guess is my question. I can copy and paste it into single chat
+6694	and now you're talking. Let's give it if you want to give it a
+6696	whirl.
+6698	Oh, here we go. Arif Toffler, Roy B Mitch. So he's saying no,
+6704	it's
+6704	not a C that's a T naught v dash v. And
+6707	now here's what he says is Good evening, Roy. Meet Mitch. That's
+6711	exactly what it says. But is that Oh, hello? Of course not. I
+6718	have no idea what it says. My Hebrew is extremely limited.
+6725	Is it read Arif?
+6728	Arif Tov is good evening that I actually know.
+6731	Okay, let's just do this was Google Translate.
+6736	Oh, you really think you can you just paste the translate from
+6741	Hebrew? Yeah, it works. Okay. What is good evening to Roy in
+6745	his bed. Yeah, it was close.
+6748	There we go. That word.
+6753	We just pasted all those squigglies into translate and it
+6755	did it. Oh, I know. I know. I couldn't I forgot to read from
+6760	right to left. That was my mistake.
+6762	That's what it was. is actually Mitch and Mitch robe. Red.
+6768	Really good at Trump's got a love grid. Jeff's got 55,555
+6774	SATs through fountain. Oh, beautiful
+6776	drive. Thank you so much.
+6778	Do you want to know what the boost message was? Course?
+6781	Boost booster. Got it. All right.
+6785	And you get the baller. You get the baller Tito
+6788	ballers ready. Alright,
+6791	Lyceum through fountain give us 221,905 sets
+6800	Sakala 20 is Blaze on a
+6804	quarter mil bro.
+6806	It is nine rescue and he says rands day boost. What is rands
+6811	day Oh,
+6812	I and Randy.
+6814	r a n d s de Ranz de i and Rand
+6818	Yeah. Hi. Nice. birthday or something? I think so. Yeah.
+6821	What was what was the amount again? Dave?
+6824	221 905-221-9519. Maybe? Let me see. European format.
+6835	Iron Rand day. Let's, you know, there's this thing. May 19.
+6839	Called the internet. Yeah, you know, iron Rand days February 2.
+6844	So I don't know. That's. I don't know what this is. Maybe talking
+6847	about Rand. You know, the military industrial complex. I
+6850	don't know. Oh, wait, wait, wait, wait, wait, was she born
+6852	in 1905? Oh, hold on a second. Because this is two to 1905.
+6858	Let me see. Iron Rand was born in 1905. No. Code. Nice. Well
+6870	done, Dave. Well done.
+6871	Thank you. Thank you. And Ron's birthday February 2 1905. It was
+6876	the literally the second line of the histogram of waste. Okay,
+6882	please buy beer for James Crillon for adding the booths
+6884	number to the histogram numerology pays page. Best
+6888	premise with your presentation at Podcast Movement in Dallas,
+6891	go podcasting Martin lindskog co host of the secular foxhole
+6894	podcast, podcast. Thank you so much, Mark. appreciate that so
+6900	much. The delimiter comma street blogger
+6903	guy there he is.
+6906	33 And he says, howdy datamined Dave likelihood of World War
+6911	Three still is significantly higher. Evil Russia invaded
+6915	whole Ukraine. So please enter AI duck cooking in your web.
+6919	Yes,
+6920	this is because this will save the world you see.
+6924	Philosophy this non sequitur
+6927	is Putin getting you down? What AI dog cooking into your browser
+6933	and everything will go away.
+6936	Make Putin angry enter AI dot cookie into the sea. So please
+6945	enter AI cooking in your web browser or podcatcher to relax
+6948	from that looming war with silky voice with silky voice of Gregor
+6953	who will William Forsythe Foreman from kin so podsafe Yes,
+6956	with Rocco's best Liske Yo, what is Rocco's? Bessell Liske?
+6961	I don't know but
+6963	I'm not looking. We've been to many searches on this.
+6968	I also I do the intro for that just you know, he never mentions
+6973	me for AI. Yeah, all I do is I say that episode number, a
+6978	podcast about cooking No.
+6981	Never listen to the listen to the silky voice of data from the
+6987	database never know. I think he has to make good on that.
+6993	We got some monthlies.
+6995	Please Okay, thank you everybody for thank you everybody for
+6998	participating in value for value using the apps new podcast
+7003	apps.com sending the value boosting booster grabbing
+7006	streaming sites. We have lift off we love you.
+7012	Monthly Pay Pal subscriptions Derek J Fisker great name $21
+7017	David Norman our buddy a hypercaloric $25 Paul Saltzman
+7021	$22.20 Thank you, Paul. Appreciate you. Damon. Damon
+7026	Cassidy Jack $15. longtime supporter, thank you, Damon.
+7030	Jeremy Garrett's $5 Timothy Hudgens, my buddy $25 and Thomas
+7035	Sullivan Jr. $5
+7037	and thank you all so much and a reminder that some of you may be
+7041	eligible for a podcasting 2.0 certified t shirt, depending on
+7046	your on your donation amounts. What's the what's the 125 is
+7051	that the level Dave?
+7053	That's $125 120 Fest. That's
+7056	correct. So if any of you go into Podcast Movement, you know
+7061	maybe something look cool and just saying, Hey, do we have any
+7064	we can wear any cool to you? Are we going to coordinate Bobbsey
+7067	Twins style Hi. Random a day random a day. How about I have
+7073	I'm with him and you do with him?
+7077	It's just about podcasting. 2.0
+7081	It says on the front it says asked me about podcasting. 2.0
+7085	on the back it says boost me bitch I'm telling you this.
+7089	That's that's how we should
+7092	you almost let that out of the bag. I'm glad you pulled it
+7095	back.
+7096	That was that was actually gone. That was actually an accident.
+7099	Okay, I'll tell you what happened. This is very bad. I
+7102	spit on my screen when I said boosting. Like Like, just rub
+7105	that off with my finger. That screen. It is a touchscreen.
+7108	Yes.
+7109	Yeah. You saved that one from disaster. Because that's for
+7112	episode 100.
+7114	Hey, it's coming up two more episodes. 100 It's gonna be fun.
+7118	What are we doing for our one?
+7119	record something that's very innocuous and innocent. To
+7122	counteract with the math jingle?
+7125	Yeah, yeah. Okay, good. Listen, the introduction at Griffith or
+7130	something? Yes. Dave, Jennifer informed informed me earlier
+7136	that we, you know, it was it's terrible that episode 100 is not
+7142	the episode we're doing our podcast movement when we've
+7145	we've hit the off by one problem.
+7148	Right. We couldn't Well, Oh, well.
+7150	It could have been could have been great. Yeah.
+7154	And we're just gonna it's just gonna be you and me. Right? No
+7156	guests. We're not We're not by anyone. weaselly an interaction.
+7158	Okay, now they can stay in the hall.
+7160	Exactly. Now, we should have like monitors outside in the
+7163	hall. So I can sit there and listen to us. The overflow room
+7166	overflow room. All right. Do we have anything else? Jennifer?
+7172	Thank you so much for of course, for being here. Thank you for
+7176	offering your help with the hackathon. Thank you for
+7179	becoming the dame of the pink database. And but just thank you
+7183	for being a really super nice person. And and always jumping
+7187	in and your your good energy, real good energy. We really
+7191	appreciate that.
+7192	Thank you,
+7194	Dave. A little less good energy, but I do love you brother. No,
+7200	no don't hit me with everybody that's it boosts a lot. You
+7205	helped them Jennifer out as well. We'll see you next time at
+7208	the board meeting for podcasting 2.0
+7226	You have been listening to podcasting 2.0 Visit podcast
+7230	index.org For more information, boost boost boost

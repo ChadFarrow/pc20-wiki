@@ -1,0 +1,1788 @@
+0	Adam Curry: podcasting 2.0 February 23 2024 Episode 168
+9	Hello, everybody. Hello everybody in the boardroom
+11	Welcome to the official board meeting of podcasting point oh,
+16	everything happening at podcasting index.org That new
+19	fancy website podcasting two.org Of course, all the things
+23	happening with a namespace we have a special guest today. One
+26	of the members of the board and everything happening in podcasts
+29	index dot social. This is the boardroom that runs its own LLM
+33	on local machines. I'm Adam curry here in the heart of the
+36	Texas Hill Country and an Alabama the man who is looking
+42	to survive against the ESPYs AI say hello to my friend on the
+46	other end. Mr. Dave Joe.
+49	Dave Jones: Nobody survives against CSB on a did I mean,
+53	we'll just make a mockery of view with his cartoons
+56	Adam Curry: did I see him typing a prompt and it created an RSS
+59	feed with an enclosure is that what is that what I saw? Yeah.
+64	Dave Jones: Yeah. And then somebody else said, Hey, try
+66	this. And he's like, No, you do it. Okay, I don't want to.
+70	Adam Curry: Oh, that already sounds super suspicious.
+75	Dave Jones: I've been playing with the NVIDIA chat with RTX
+78	tool.
+78	Adam Curry: Do you? Do you have the card that you need for that?
+81	Yeah, you have an NVIDIA card. Mm hmm.
+84	Dave Jones: Get a 3050 It's not a powerful card, but you don't
+87	need much you'll all you need is is eight, you need a 3000 series
+91	card. And you need which 3050 is like $200 so you can get like
+98	you know a 3000 series RTS card minimum and you need a minimum
+102	eight gigs of RAM on board cards. So that's what this has.
+105	So you can run it nuts. I mean, it's not fast, but it's me but
+109	it's doable. But the cool like the interesting thing is like
+112	use it loads up all the stuff and it's got a pretty beefy
+116	model it's like 30 Gig oh that's quite large. Yeah, it's pretty
+120	big it's the Miss Mistral model Yeah. And it was I don't know
+127	God who knows with all these local these LLM 's they have
+130	like a genealogy tree that's hard to trace now but but it's
+135	got it's got a big model and then you put this guy in a
+140	folder and you drop in PDFs txt files or Word documents into
+147	this folder and then have it regenerate regenerate this ra G
+153	which is like it takes the model and then it applies the model to
+158	your local set of material. So then you're you're basically
+165	it's like an adjunct to training for the for the model itself. So
+169	it only it really only will tell you stuff about this about what
+173	you train it with. Do
+175	Adam Curry: you Do you remember back in the day when we were
+179	talking like a 3050 you would automatically think that means a
+183	carburetor for your motorcycle and a big model a big models
+187	that you were dating a Kardashian I mean, what has
+190	happened to our what has happened to our conversation?
+192	Man? My
+193	Dave Jones: truck has an auto line 1100 Fulbrighter Exactly,
+197	exactly.
+198	Adam Curry: Let me take a look at when I'm so I have the I have
+201	the LLM are running on the Start OS and let me see what models I
+206	have. I have Yeah, the biggest one I have is 7.5 gigs. That's
+214	the new ma llama two and the Metho max which is five so yeah,
+220	that's a that is a beefy model I don't have something that big.
+223	Dave Jones: Oh it's like 32 Gig download huge wow it's huge but
+228	it's a drop the podcast namespace into it back into it
+232	as the only training material and edited
+234	Adam Curry: do you have to say learn this is that we have to do
+236	we just say hey, suck this in. What is the what prompt do you
+240	give when you do that?
+241	Dave Jones: Yeah, you hit the suck this in button.
+243	Adam Curry: Really? There's I'm not even gonna question I'm sure
+248	there is.
+249	Dave Jones: You hit the stop button and it sucks it in and it
+252	regenerates everything it takes depending on how much material
+255	you give it. It can take a long time but like with just that
+259	document it took I don't know a minute and it
+261	Adam Curry: keeps that and it stores that forever.
+264	Dave Jones: Yeah, I mean, it's it trains it retrains the it
+267	retrains the wow. This is the part I don't understand because
+270	there's this thing called an RA G so it's like
+273	Adam Curry: a it's a reg basically. What you get it's a
+278	reg it
+279	Dave Jones: creates the reg of the model and then and then you
+284	and then you wipe stuff with it. But you get but so I asked it
+287	something last data said well, I told it as a generate a podcast
+292	and 2.0 chapters file with chapters at these times at these
+298	time markers with these titles. Just basically gave it a basic
+301	task that it should know how to do off them off the namespace
+305	and, and if the first the chapters file came out good. The
+310	next thing I asked it to do was created an RSS feed item tag
+316	with an mp3 enclosure and, and HLS stream as the alternate
+323	enclosure. And it complete it partially filled. fell down. He
+329	gave what he gave me as a live item, not an item. Okay.
+333	Adam Curry: Impressive is still impressive. No, it
+335	Dave Jones: was good. It was good. But it started making up
+337	attributes like it was a hallucination is attribute
+342	attribute hallucination. And so that it was making it for the
+348	for the enclosure tag it gave it like a a bit rate attribute and
+352	a height attribute and all these weird things,
+355	Adam Curry: correct it or you just say you suck. I'm what do
+357	you do at that point?
+358	Dave Jones: But yeah, I did say you suck. I said that a couple
+361	times. But then also, you could also pull in just I think he
+365	could just pull in more spec. They could just keep pulling in,
+368	you know, like, if, because I didn't pull in the RSS 2.0. spec
+371	itself. I didn't pull in the iTunes namespace like, I think
+374	you could just keep piling material in here to give it more
+377	to work with. And it would give you better answers. But
+381	Adam Curry: oh, man, that's great. So pretty soon just have
+384	that thing show up to the podcast.
+387	Dave Jones: Yeah, that would be good. And then and you wouldn't
+389	even need me. We wouldn't need we can just AI generate the
+392	guest. Yeah.
+395	Adam Curry: That's pretty cool, though.
+397	Dave Jones: It's I mean, it's fun. It's so
+399	Adam Curry: fun is the key word. I mean, would you actually put
+402	something like that under production for any action? Can
+405	you see yourself creating a cron job to do something like that?
+410	Dave Jones: And no, like, I know, I guess, let me talk about
+416	AI for just a second. Because I've been I've got some thoughts
+417	on this. I haven't really, I guess, I don't know, I haven't
+422	really spent time trying to figure out my thoughts on it in
+425	general. And I guess, like the AI tool, I guess I've just got a
+434	couple of thoughts after listening to especially
+436	listening to Todd.
+439	Adam Curry: Todd. I know, I know. Like, oh, it's so great. I
+442	don't have to do it. I don't have to show up. I just throw it
+445	on there. But if we're looking to add the believer he usable
+449	believers definitely as a follower of the Chad G pts.
+453	Dave Jones: And I cannot tell I'm not gonna take that away
+454	from him. I mean, clearly, there's some. I think what we
+459	have to, here's my, here's where I think I stand right now is if
+467	so, I guess number one, two, these AI tools being built for
+471	that are being built for stuff like podcasting, they work, you
+475	can see that they will work well, when they're targeted for
+480	specific tasks, or processes. Yes, yeah. Where in this, I
+484	think this is key, where there's a human approval step at the end
+489	of that pipeline. Yes, which is, which itself is not too time
+493	consuming. So you could say something like, give me a bunch
+496	of chapter, you know, give me chapters for this. Here's the
+499	transcript, give me a bunch of chapters for this with markers
+504	at this, these few key points, and just try to generate some
+508	titles. And then it gives you that thing, and then you can
+513	just quickly scan the title, see if they make sense for you.
+517	Maybe hit a couple of previews and see if they make sense. Like
+521	if it if it can do some of the grunt work, and then give you a
+525	thing to quickly reviewed and make sure for you to sign off on
+529	to me that that's the best use case for the of this.
+532	Adam Curry: I mean, I've used it. I use my old models that I
+535	said, and I'm going to blow my cover on this one, but Mark void
+541	zero, you know, he started his own IT company. And his number
+545	one client is no agenda. That's his first client. Yeah, so we
+549	want we wanted to help them out. Yeah, exactly. And so he said,
+553	Would you mind writing me a recommendation? blow my cover
+559	here. So I went into my, into my, my starred nine. And I gave
+564	it you know, like, I don't know, maybe two or three sentences.
+568	And it pooped out a very decent review. It was flowery. So you
+572	know, I cut out some of the flowery nonsense and send it to
+576	him. He's like, wow, this is so great. And I didn't have the
+578	heart to tell him that. An LM had done it. But for that, I was
+583	like, Yeah, that's actually you know, just looking at it. It's
+586	very, I'd say reasonably close to what I would have done for a
+590	glowing review. It was not bad at all.
+593	Dave Jones: It's really hard to contain to keep in your mind
+598	that this is Is not that when the AI is pre is when the when
+604	the model is giving you results, the language model. I'm gonna
+608	I'm trying to be specific say language model not not AI,
+612	because it's this is, this is different. So when it's hard to
+618	remember this, and when you're using it, but I think it is
+622	actually critical to remember is the LLM is not it doesn't know
+626	anything. No, in the sense that we mean that we all understand
+631	what that term is. And these language models don't know any,
+634	all they know is, is likelihood of a word to come after another
+640	word in a particular context. They're just regurgitating
+644	language patterns. Yeah, it's
+646	Adam Curry: a parlor trick. Your brain goes, Wow, it's talking to
+649	me. Right?
+651	Dave Jones: And you may come out with something very useful.
+653	Adam Curry: You may not, but you may not.
+656	Dave Jones: When I say when I say, give me an item, an RSS
+661	podcast item, with an HLS ID alternate enclosure in it, you
+667	immediately see a thing in your head, because you know what
+670	those words mean? This thing only knows the language models
+674	only know, the text that it seen before and the arrangement of in
+679	the order of the words in the symbols that those texts appear.
+683	And so it's not actually able to give you what you want, in the
+688	sense that it knows what you want. No, it's just
+693	Adam Curry: like, in my in my example. It's it's learned
+697	hundreds 1000s I don't know 10 1000s of glowing reviews
+700	probably sucked it in from Yelp. And, and it knows that Yeah,
+705	okay. Well, it's this kind of business. Here's the next word.
+708	Here's the next word. Yeah. I mean, that's that, I can see
+711	that. And a professional writer sees that. I mean, Tina helps
+715	people out with resumes all the time. And they'll say, Okay,
+721	well, I did a start and she'll get the document just to chat
+725	GPD she'll know right away you can do to me? Yeah, of course.
+729	Of course you can see it. And I think eventually, with, you
+733	know, these co pilots and all this coding stuff, I think
+736	people will also I mean, again, it's like, Okay, God created the
+742	world in six days. And the seventh day, he had to take a
+746	break, because it took effort and energy. That's the part that
+751	cannot be missing from the creative process, the energy and
+756	the effort. And the there's something soulful and spiritual
+760	that goes into creating things. So to regurgitate and create
+765	things that have existed before. And, you know, I mean, I see
+769	this with a no agenda Art Generator, go look at a no
+771	agenda, art generator.com artists have been creating
+774	artwork for the no agenda show for 12 over a decade, there's
+779	35,000 images in there. And ever since Dolly, and stable
+784	diffusion and all these other different programs, many more
+788	people are uploading stuff that is soulless. I'm looking at you
+791	comments from Blogger, it's soulless. I mean, it's soulless.
+794	And it doesn't, it rarely gets picked, sometimes someone has
+798	figured out how to use it and how to, I guess go through
+803	several iterations and inject actual humor, which is very hard
+807	to do. I haven't seen ai do humor very well, or love or
+813	passion or any of this, it just does. So then and when you look
+817	at it on mass, and you see me you can see the the changeover
+821	in the work that's submitted, and most of it that was
+824	beautifully rendered. But no, it's just it's not funny. It's
+828	not there's no it has no soul. That's it. The
+834	Dave Jones: The other thing I thought of was AI tools. Like
+838	the stuff that's being built right now with these sort of
+842	like third party startups that are coming up. Those are all
+845	those startups those I'm sorry, but those guys are toast the
+850	podcast hosting companies Yeah, I think Buzzsprout was the first
+853	one to do it with there was a co co host or something like that.
+858	And then transistors doing it, but blueberry, they're all in
+863	rss.com They're all going to start doing this I mean, they're
+866	all just because basically all these third party tools now to
+870	do AI stuffs for to support podcasters the hosting companies
+873	themselves are just gonna pull that the debt scalability in
+876	Adam Curry: house yeah, and those those little companies
+878	will all go broke because I mean, right now this is the
+881	investment climate you know, the climate This is where all the
+883	investment money's going into. Oh,
+886	Dave Jones: in video, man, I mean, they're just printing
+889	money right now is ridiculous. I would not be. I'm going to, I
+896	gotta I gotta prediction. I would not be surprised if in the
+899	end next three years in video buys entail. Oh, that's very
+904	Adam Curry: possible. That's possible. It will also be the
+908	best short of our lifetime. Once everyone figures out what
+911	bullcrap this all really is. Whenever they pivot to quantum
+916	computing, whatever comes next comes next. I mean, remember it
+919	was machine learning just a year ago. Yeah, it's all it's all
+923	branding. It's all brand new stuff anyway. It's not gonna
+928	save podcasting. Yeah, that's in podcasting doesn't need saving.
+934	No, no. But I've been, I've been doing my, my show prep. And I
+939	have a question, why is there this? And maybe it's just the
+942	podcast industrial complex, which I loved is one of the most
+948	singularly unhelpful terms in my vocabulary. This growing your
+954	podcast. You know, I'm a little sick of the term. Because the
+960	whole world seems to be about growing your podcast. And you
+965	have to have X amount of downloads. And I like to people
+969	grow their tennis game or their golf game, or just have fun
+973	playing golf. And playing tennis. Not everybody has to be
+978	a pro. Is that I mean, am I missing something here that,
+983	that you get into podcasting, it has to be a profession?
+988	Dave Jones: It's, it's the math of CPMs is all about, it's about
+994	it's all about the advertising. How
+996	Adam Curry: about how about serving a community? I
+1000	Dave Jones: had this issue with that dude, that was around for a
+1002	while he bailed out of podcasting. But he was making
+1005	waves all the time about how Spotify was the future of
+1010	podcasting. I forget that dude's name we used to work.
+1015	Adam Curry: Where do you come from?
+1017	Dave Jones: He was like, he's like a podcast consultant. Man,
+1019	I cannot remember his name. But he was a podcast consultant. And
+1022	he was like, writing these articles and arguing with people
+1025	about how part of Spotify was, was the way that all creators
+1029	and all podcasters in the future, were going to be able to
+1032	make the most money. Yeah, and all of his arguments were based
+1035	on on advertising math, if you have this many. So I mean, he's
+1042	basically a formula like if you have the I mean, Dolby das would
+1045	love this. It's like a formula of, you know, math formula of,
+1050	if you put this if you have this many listeners and this much
+1055	growth rate, and you get this CPM and this much reach and
+1058	this, this level of engagement, and bla bla bla bla bla and you
+1061	put it all into this formula, you're rich,
+1063	Adam Curry: you got a plastic egg with a ring inside.
+1067	Dave Jones: And I was like, I was like, Well, yeah, but that
+1069	does any. Anybody stopped to ask the listeners what? Like if
+1073	they're willing to participate in this formula? Because I'm not
+1076	sure that it's as easy as all that. Because if we all did
+1079	that, this formula breaks down I mean, this
+1082	Adam Curry: Oh, yes. Oh, yeah. Well, it's this the same type of
+1085	people who are telling you, you know, what you should do what
+1088	your what your you know, your how you do a podcast and you got
+1093	to choose your topic. I got a I got a one idea. Start a music
+1098	podcast. This is an open field. Don't don't start a podcast
+1104	about talking something, whatever the topic is. There's
+1108	already one there. Start a music podcast.
+1111	Dave Jones: I've gotten an even better, maybe not better idea.
+1114	I've got another idea. Start an audio book.
+1117	Adam Curry: There you go.
+1119	Dave Jones: I mean, just start doing audio book podcasts and
+1122	put put value for value tags in it. I mean, he talks about
+1126	Greenfield like we, every every third week, excuse me two out of
+1132	every three weeks that I listened to America this week
+1135	podcast, the short story that they talk about is not available
+1139	anywhere unknown in audio infuriating. I mean, you listen
+1143	to that show, find out what audio book there are, excuse me,
+1146	what what short story they're talking about. It'll take you an
+1150	hour, an hour and a half to record it. Throw a value tag in
+1155	there and launch it out there and be and done boom, you're the
+1160	only game in town you that's that's the only Ste and most of
+1163	these are all very old public domain stories. They're all
+1167	usually like, like 19th century Russian literature. They're just
+1175	old stuff. But it's like you, you're the only one that at that
+1179	point. You're the only available source of this story in audio
+1183	and you have a value tag where you can go to
+1186	Adam Curry: what's the what's the the open source, public
+1193	domain website the printing press guy, the printing the
+1198	printing press guy What's the Gutenberg Gutenberg? I think
+1202	it's Project Gutenberg Thank you. You can go to Project
+1205	Gutenberg you can find all kinds of books classics, even that are
+1210	public domain and start reading and recording. Yeah, I actually
+1214	started I started it with Tom Swift. Which I at the time I was
+1218	blown away to the Tom Swift books. You have read those Tom
+1221	Swift books, and never have no you know of them Tom Swift and
+1224	electric electric grandmother and all that stuff is flying
+1227	machine.
+1228	Dave Jones: One Tom Swift, kind of like Hardy Boys. But yeah, a
+1231	pretty Hardy
+1232	Adam Curry: Boys. Yeah, he was an inventor. And you know, he
+1234	had a flying machine. And then he has submarine and Victor
+1238	Appleton, which is not even that's a pen name that several
+1241	authors used.
+1243	Dave Jones: And I like Mark, like Mark Bognor again, Mark.
+1246	Exactly.
+1247	Adam Curry: And I actually started reading a couple of
+1249	those for an audio book project. A while back now of course, I
+1253	never completed it. But that's because other things got in the
+1256	way. But I was like, this is kind of fun to read all kinds of
+1259	stuff like that. I was. I was invited to listen to this crew.
+1265	I was invited to something called the V for V roundtable. I
+1269	heard about it was it's a podcast, and it was so new. I
+1274	didn't realize it was episode number one. And they had asked
+1277	me to be a guest and it was Jimmy V. Sir Lee Bray. And Sir
+1283	TJ the wrathful. And it was actually it was really it was
+1287	quite it was quite adorable. Until they got to the part where
+1291	they're like, Yeah, we want to do a V for V awards. I'm like
+1294	no, no stop now just stop and they said lady Well, we really
+1299	just wanted an excuse to hang out or they find do a meet up.
+1304	Awards are so Fiat to me these days is like it's the antithesis
+1308	of of podcasting. It's really the opposite
+1312	Dave Jones: of the for V for just they wanted to do awards
+1315	for just music just for anything.
+1316	Adam Curry: I think for music. Yeah, I think from us, okay.
+1319	Dave Jones: That's like how can you do that funny though? I
+1323	would watch it I would watch the music course.
+1326	Adam Curry: What a train wreck that would be.
+1328	Dave Jones: No I would that's why
+1332	Adam Curry: these days award shows are so wrong because it's
+1335	a business model. You charge people to submit. And I was
+1339	never used to be that way used to be. You know your peers. And
+1343	who can be appear in this bit. It's impossible. All of this is
+1347	an arachnid and an arachnid NISM. What is it
+1350	Dave Jones: an anachronism that I think you're talking about
+1353	spiders. I think that's what yeah, that yes, arachnophobia.
+1356	Adam Curry: That's my problem. But an arachnid. I can't say the
+1358	word no.
+1360	Dave Jones: anachronism, anachronism.
+1361	Adam Curry: And anachronism. anachronism. Yes.
+1365	Dave Jones: Vestigial?
+1366	Adam Curry: Yes, definitely. There you go. Perfect.
+1370	Dave Jones: Do we want to dare venture into this into the fees
+1376	discussion?
+1378	Adam Curry: Why don't we bring our guests in because he'll be
+1380	he'll be more fun to talk about. He's been waiting patiently for
+1384	about 20 minutes here. He is no stranger to the boardroom. And
+1391	he has been in the podcasting 2.0 projects from very early
+1396	days. And he is as far as I know, the first guest ever who
+1401	sent his own questions. Which I thought was just great. He's
+1409	like, hey, we you're going to be on the pocket? Yeah, here's some
+1414	I have some that was it. Here's some talking points. I thought
+1416	we could talk about tomorrow. Yes, perfect. We would like to
+1420	welcome back to the boardroom. A fan favorite ladies and
+1423	gentlemen all the way from France. Benjamin Bellamy. Those
+1427	rollerball know that Bonjour to you, buddy. How are you? We're
+1433	good. We're good. And we appreciate you coming on. We
+1436	know that it's about eight o'clock at night. I guess now in
+1440	it
+1440	Benjamin Bellamy: is eight o'clock sharp.
+1442	Adam Curry: I have an important question. Right off the top that
+1446	you are you in Paris? I forget if you're in Paris. I am in
+1450	Paris. Yes. So what's up with the farmers? How's that gone?
+1455	Did they really are they really pouring a cow poop into
+1458	government buildings because I love that idea. Yeah,
+1461	Benjamin Bellamy: but no in Paris there weren't allowed to
+1463	get into Paris. So we haven't seen them. And actually, it
+1469	didn't last very long. So have their back to their farms now.
+1473	Adam Curry: Yeah. But is that resolved? Are they happy now?
+1475	Because they seem pretty angry.
+1480	Benjamin Bellamy: Is this a political podcast? No,
+1483	Adam Curry: no. I like farmers. I'm just purely interested in
+1486	because you're seeing these protests around the world. And
+1491	no one in America ever talks about it and our farmers. I
+1493	don't know what they're doing. They're not pouring cow manure
+1496	in anywhere. And you see it all all over Europe. I'm just
+1500	Curious, is that is that fixed? Are they happy? I mean, do you
+1503	guys have food to eat?
+1505	Benjamin Bellamy: No, nothing is fixed, but they got home because
+1511	the only thing that they managed to to get is to, to be allowed
+1521	to use pesticides and everything and to stop all the ecological
+1527	loads.
+1528	Adam Curry: So the climate change stuff. Yeah.
+1532	Benjamin Bellamy: So like the climate. Yeah. So they say, good
+1539	enough, but they'll probably be bad, like next year or within
+1543	six months, but I'm just impressed.
+1545	Adam Curry: I'm impressed with the French farmer that impressed
+1547	with the Dutch farmers and the Germans. I'm just impressed with
+1549	it. Because we don't have anything like that. That
+1552	Dave Jones: happens now. We did we put on we don't protest. We
+1555	Adam Curry: put on pink pussy hats and walk around. Yeah,
+1558	that's
+1558	Benjamin Bellamy: all cool. You probably have to be really
+1562	careful when you're watching the news, because it's like, a huge
+1566	magnifier.
+1568	Adam Curry: No, no, you're kidding. No way, Benjamin. You
+1574	mean the news is full
+1576	Benjamin Bellamy: of crap. It isn't. But like the country
+1581	weren't just like a crap and the fire and it was very localized.
+1588	Adam Curry: Yeah. Gotcha. crap and fire crap and fire. Great
+1591	show title. Yes.
+1593	Dave Jones: Right off the bat.
+1596	Adam Curry: Brother, we are so happy that you that you're back
+1599	in the boardroom? Because I mean, you wanted to give us an
+1602	update on Casta pod because it's been How long has it been? It's
+1604	been over a year and a half. Maybe since we last had you on?
+1609	Benjamin Bellamy: I think it's way more it's I think it's two
+1611	years. Yeah, I was here on episode 29.
+1615	Adam Curry: Wow. Yeah. So well. So
+1617	Dave Jones: that's very nervous about, tell us about Cassiopeia.
+1620	But I also want to tell I want you to explain the cast pod
+1623	index as well.
+1626	Benjamin Bellamy: Oh, sure. Well, castor pod, as you know,
+1630	is our open source hosting platform, which we've been
+1634	developing for three years now. We started exactly when you guys
+1639	started podcasting. 2.0. So, yeah, that's over three years
+1644	now. And we've moving forward, we have a huge roadmap, and
+1651	many, many things coming this year. Think we have new new
+1661	tags, we just added the medium one with our contributors. We
+1671	have 51 contributors that are working on Casta bird now,
+1677	mainly for other translations, but also on some book
+1681	corrections and features. Now,
+1686	Adam Curry: just so not everybody knows we have cast a
+1688	pod.org, which is the Open Source Self, you can self host
+1692	it. And then I think you have cast a pod.com, which includes
+1695	hosting for a small fee. Is that still in place? Yeah,
+1699	Benjamin Bellamy: that's correct. We just like copied
+1702	what WordPress is doing. We right, we'd like to, we like to
+1706	think that we are the WordPress for our podcast. In a sense that
+1712	we use the same technology, which is PHP, MySQL. If you want
+1717	to self host on a very cheap shared hosting, you can unzip a
+1722	zip file, and then run the wizard, and you're ready to go
+1726	and podcasts. And we also have two websites the.org casper.org,
+1732	where you can download the whole server, and on kasturba.com
+1739	within like one minutes. You subscribe, you enter your credit
+1744	card, and you're ready to go. And you can use your own domain
+1749	name and like it's your home, your podcasts, right and you own
+1755	your data, your audience, everything belongs to you. And
+1759	Adam Curry: can you give us an idea of how many people are
+1761	using self hosted versus hosted? And I just have no you've been
+1765	around. You've been doing this for a while. So I'm just curious
+1767	how the how the uptake has been.
+1772	Benjamin Bellamy: I cannot give you the exact numbers for a very
+1775	simple reason. We don't have any. Anything within Cassiopeia
+1782	that tells you when someone installs it, we don't know so
+1785	and they are quite a bunch of podcasts that are using customer
+1792	pod self hosted and that are not registered on the podcast index.
+1797	Oh, really. I've yet found some of them. And quite often,
+1801	usually, I'm aware of them when John Spurlock says, Oh, this is
+1808	something that's Cassiopeia podcasts, but she's trying to
+1812	use a p3. But since it's not in the podcast index, I cannot
+1818	process it. Ah,
+1819	Adam Curry: is this is this on purpose is it just don't want to
+1824	be in the index, or it's not known to them.
+1828	Benjamin Bellamy: I think we can call that a bug. Basically, what
+1832	we should be doing is, when the wizard ends, the castor pod
+1838	installation system, we should add a button do you wish to
+1844	register to podcast index? And my guess is that most most
+1850	podcasts that are not in the podcast index, it's just because
+1854	they don't know what that exists. Okay, we
+1857	Dave Jones: probably got a real, I got a real easy way for you to
+1859	do that, then you can, you can just send positing the as you
+1864	send a pod pay we have, we have the our web sub hub also acts
+1870	acts as a pod ping generator. So you can call pub dot podcast
+1876	index.org Pub notify, and then just send the pod paying in his
+1880	No, there's no authentication keys required. If you just send
+1883	this in that as soon as somebody rolls in new, a new cast a pod
+1888	instance, then we'll pick the feed up and everybody else
+1890	should see it too. Yeah,
+1892	Benjamin Bellamy: then we know that there are many, many ways
+1894	of doing that. It's just something that it we have a huge
+1900	pile of, of tasks are on our to do list. And that's something
+1905	that we should have done years ago, and we still haven't
+1909	Adam Curry: we know how this works. Benjamin, no worries. No
+1914	worries, Dave and I still have to go on vacation together. Not
+1917	this at the bottom of the stack.
+1919	Dave Jones: We're very lucky what but yeah, exactly. Exactly.
+1924	What if so. So this is an interesting, I don't want to
+1929	derail you, but I just I'm trying to make a mental note to
+1931	come back to this because Mitch, Mitch from pod verse is also
+1935	trying to transition more into being a maintainer and building
+1940	up a community around pod verse that will contribute open source
+1944	code. And it sounds like Castor pod has is been pretty slick.
+1950	It's been successful to a degree with getting people to be tasked
+1954	with building a code contribution community.
+1959	Benjamin Bellamy: Yeah, but it's, we're not there yet. There
+1963	are still work to do. Am I encouraging anyone who wants to
+1966	get involved to to get on our GitLab server on the code that
+1972	casper.org And there could the number of issues we have on
+1980	GitLab is so long that we could use a hand so and just to answer
+1987	your questions without we forget about it. I think there are
+1991	between 305 100 podcasts using Castor pod right now to give you
+1997	an idea so that's quite a lot because like a year ago, there
+2004	were like a dozen or so so yeah, it's like I think we have like
+2011	plus 30% Every month but yeah, that could be we could have like
+2019	10 times this amount if you see the number of of blogs using
+2024	WordPress we're not on the same scale here. Even if you're
+2031	looking at podcast generator which was the the the open
+2038	source system that I've been I was using before we we developed
+2044	Castor pod they are more podcasts using podcast generator
+2049	now. So there's still a huge room for for growth. Are you
+2057	Adam Curry: still still funded? partially or entirely for the
+2061	for the project by government net? And yes Annelle net? Oh,
+2069	that's that NLnet is that now European? What like is that now
+2075	EU money and l net? Or is L net? Where did they get their funding
+2078	from? I forgot
+2079	Benjamin Bellamy: Yeah. From from EU EEA. European Union.
+2082	Yeah. Yeah, partly still, too. So we are still partly funded by
+2089	NL net European Union. And that's just a small part of our
+2096	what it really costs in the end, of
+2099	Adam Curry: course. Of course, they should force all those all
+2102	those people at the EU to use cast the pod for their podcast.
+2106	Yeah, I don't think they do. I know they use all kinds of
+2109	stuff. And I follow a lot of EU podcast, but they're never on
+2113	cast a pod to my knowledge.
+2116	Benjamin Bellamy: Yes, some are getting there. I think the one
+2121	of the problem that we have both Yasin and me is that we're, I
+2129	guess, not that bad developing stuff, but we're not that good
+2133	for setting them. Even if it's setting for free. So
+2143	Adam Curry: when government I find if you make it 10,000
+2146	euros, that's when they all want to have as you say, you want it
+2149	the wrong way with these government people. Yeah, they
+2152	don't like free, they can't be good. We need to get something
+2155	from Boeing. That cost a lot of money.
+2157	Dave Jones: I like the way you said that. We're we're not bad
+2160	at developing things. But we're not good at selling things. Yep,
+2165	pretty much that pretty much no, that that's most open source
+2168	Adam Curry: projects best. Right? That's right.
+2172	Benjamin Bellamy: Let's we have pretty good feedbacks from the
+2175	whole community. We have a local radio networks that are using
+2180	Castor pod now. So we're getting there. Yeah. The future is very
+2189	interesting. I'm very excited about what this year will bring.
+2194	Dave Jones: How much am many of your, how many caster pod users
+2199	do you have a feel are French versus outside of France? Is
+2203	there? What does that look like?
+2208	Benjamin Bellamy: I think it reflects the number of podcasts
+2210	that they are like worldwide. Obviously, we have another maybe
+2222	5050 podcast French podcasts using gastropod. So that like
+2228	10%. But if you compare that to the number in the podcast
+2233	indexed, I looked this morning, they were 90,000 podcasts in
+2241	French. So I don't know if they're Canadians or French,
+2247	Swiss, or Belgium. But so that lets that know 107 compared to
+2256	like 2 million in English, right, and I guess like eight
+2262	800,000 in Spanish, and maybe 300,000 in Portuguese. So the
+2271	market, the podcasting market, for a French language is still
+2277	in the very, very early stages.
+2280	Adam Curry: i i We were talking about AI just a little bit ago.
+2283	And I have a theory about this. You know, one of the things that
+2286	all it comes is come around like three times now it's like, oh,
+2290	this company will now transcribe your podcast into five different
+2296	languages with natural sounding voices. And when I'm always
+2299	surprised by is that it's never the other way around. I don't
+2303	hear any. And this is what my question would be. Are there any
+2306	companies who are saying we'll take your French spoken podcast
+2310	and turn it into English? That will be part one of the
+2313	question. And part two is, are there actually any podcasts that
+2317	have been trans morphed into French from English that are
+2321	doing anything in France? I mean, is this just total
+2323	vaporware that no one's using it?
+2326	Benjamin Bellamy: Not that I know of? And I don't know. And
+2332	the Yeah, the podcasting market is really, really different from
+2336	everything else that we know why. My guess is because it's a
+2344	hippie stuff from the beginning. Like the fact that
+2349	Adam Curry: like hippie stuff, all right, there's another show.
+2353	Benjamin Bellamy: The fact that it's still uses technology from
+2358	the 90s, where you can choose the hosting company, you can
+2364	choose the index, you can choose the app for playing the podcast,
+2369	make it really difficult for big corporations to make money out
+2373	of it. And so they tend not to be interested in it, I think.
+2378	And even if you look at the the dynamic or do insertion markets
+2388	for advertising, on podcasting, it's tiny, really, really small
+2393	compared to the radio industry. It's really small. It's the
+2397	beginning and eventually it's going to grow That's for sure.
+2401	So, some, some companies are interested in that. But it's so
+2406	difficult because it is distributed. And it's not like a
+2411	closed silo as it can be on YouTube.
+2415	Adam Curry: It's interesting because I was in Italy last
+2418	year, September. And I think it was, I think it was Spotify. But
+2425	something had happened. And all of a sudden, Italy was crazy
+2429	about podcasts. And they had never really picked it up
+2431	before. And I don't know if it was one certain. My my nephew
+2438	and nieces were like, oh, yeah, no, this this one guy, and he's
+2440	doing a podcast and this comedians doing a podcast, and
+2443	somehow it just caught fire. And all of a sudden the whole
+2447	country was all nuts about podcasting. It seems like, you
+2451	need to have that one spark. And then it takes off. And I don't
+2455	and I get I think it might have been Spotify that that that did
+2458	that. And they did something good. On me, what are the
+2463	podcasts? And so there's so few are there like, you know,
+2466	mainstream entertainers doing podcasts? You mean
+2469	Benjamin Bellamy: in France? Yeah. Basically, the whole
+2473	industry here is if it is. organized and by the radio
+2486	networks, right. I was looking at some numbers. In France 67%
+2497	of every audio consumption is done on the radio networks. And
+2503	only 10% is podcasts. Right. And in this 10 percents, three is
+2511	for indie podcast, and seven is for the radio podcasts. Gotcha.
+2517	So the radio industry is still very, very strong.
+2521	Dave Jones: But you trust those numbers, you trust those
+2523	numbers? Where that where's the measurement for that coming
+2526	from?
+2527	Benjamin Bellamy: Even if you don't trust them? The difference
+2530	is so so big that okay, yeah, at some points. And yeah, you can
+2535	see that people are still listening. I think 60% of French
+2542	people are listening to the radio, like every day. So we
+2547	have a very strong radio culture here.
+2552	Dave Jones: It's funny to me how that how that works in different
+2555	in different in different cultures, like I had heard
+2559	somebody telling me as maybe a year ago that, like, Japan has a
+2565	really intense fax machine culture, if you go to Japan,
+2569	it's just they fax everything. This is I mean, still to today.
+2572	I mean, this is not some, this is not we're not talking about
+2575	two decades ago, like the right now they, it's just become part
+2579	of their culture. And it's like, almost to an identity level.
+2583	There's some things we we just you go across the border, and
+2587	it's like a whole different set of priorities people have about
+2592	how they consume different media, how they interact with
+2595	with with other people. That's pretty, that's pretty
+2600	interesting, because from the outside looking in, especially
+2603	looking at the index data, French podcast, seems podcasting
+2609	in France, to me from the outside seems to be very, like,
+2617	insular, I guess, more. And maybe that's not this. This is
+2623	maybe a negative connotation. What I mean is like, it seems
+2626	sort of like they like Radio France doesn't want their stuff.
+2632	distributed in this feels like there's a lot of it's local
+2638	first, maybe that's the best way to describe it. Like we yeah,
+2641	probably, like France, like French podcasts or for our for
+2645	the French. They're really not for anybody else first. Yeah,
+2648	Benjamin Bellamy: we don't get even many Canadian podcasts like
+2653	French speaking Canadian podcasts. We don't get that many
+2656	of them. So yeah, you're probably right. And the thing
+2660	is, if you watch Netflix in France, you'll get many, many US
+2665	programs and from everywhere, but
+2669	Adam Curry: it's called democracy bad. That's how we
+2671	spread democracy.
+2673	Benjamin Bellamy: The main reason for that is probably the
+2677	closed caption. So this is probably where the transcript
+2685	tag will change everything that Apple is going to use it. Maybe
+2695	that will change many things.
+2698	Adam Curry: Is there a need Oh, this is interest. Sing. Now I
+2701	grew up in the Netherlands where I believe people learned English
+2704	by watching American and am British but American television
+2711	shows with subtitles. In fact, I'm really good at watching
+2714	anything with subtitles, because that's just how we roll. And
+2718	this is how my daughter's learned English. Yes. So is it?
+2722	Should we be creating? or should there be services that create
+2727	translations of transcripts?
+2730	Benjamin Bellamy: Not necessarily. Because if you have
+2732	an English spoken podcast with English subtitles, usually is
+2738	going to be enough. You can maybe you need the French
+2743	transcription and translated if you're very young, but the you
+2749	know, the problem with the American accent is that we don't
+2752	understand anything that you say really, especially if you're if
+2755	you're from Texas.
+2757	Adam Curry: Okay. Okay, so keep going.
+2760	Dave Jones: So when I say that I sat down yesterday and played
+2762	the guitar across the same way to
+2769	Benjamin Bellamy: but the thing is, we are there are very, very
+2772	few person listening to American podcast in France, because it's
+2778	really hard to understand. The underside lists. You already
+2784	are, you took about a sparkle and I think that serial was the
+2787	one you guys had in the US.
+2791	Adam Curry: Yeah, that region, that region in reignited
+2793	podcasting in 2015, or something. 2016. Yeah,
+2797	Benjamin Bellamy: 14, I guess. But yeah. And I listened to that
+2802	show, and I really loved it. But I have to admit, like, there was
+2805	hard to follow on some, yeah, some details. And the thing is,
+2808	like, I can do the dishes, or Iran or stuff like that, but I
+2814	need, like 90% of my brain, if I want to listen to a podcast
+2820	that's in English, yeah. And I cannot understand anything else.
+2823	Whereas if it's in French, I can do it. But
+2826	Adam Curry: I gotta tell you, I mean, I would really love to see
+2828	French independent podcasts, I saw this happen in the
+2831	Netherlands, it kind of happened over the past four or five
+2834	years. A few guys, you know, really were pushing it hard. And
+2838	then they, and then just something happened. And he got a
+2841	couple of shows. And then all the kids all sudden, were
+2843	listening to podcasts. I mean, they can happen. It just had
+2848	just maybe it's a cultural thing. But I think it can happen
+2851	in every country. And it just seems like it will be so
+2853	enriching for the culture in
+2857	Benjamin Bellamy: it, because there are some really, really
+2860	good podcasts in France. The thing is, you need the audience
+2864	to meet the podcast. And that's something that's not automatic.
+2870	And you need probably people to move from the radio to the
+2875	podcast, and there's a discoverability issue. That's
+2880	the program that everyone says, If I'm a listener, where do
+2885	where do I get podcasts? How do I find them? And if you're a
+2888	podcaster, how do I get discovered, right? And again,
+2893	transcription, from my point of view will change everything.
+2897	Adam Curry: Okay? Because tell us now that Apple is doing that
+2899	tell us.
+2901	Benjamin Bellamy: The thing is, if you look at the podcasting
+2905	ecosystem now, in terms of SEO, we are exactly at the point
+2910	where we were for the web in 1995.
+2915	Adam Curry: You're still using Internet Explorer.
+2918	Benjamin Bellamy: Yeah, or Netscape or mosaic how I was
+2923	using links, links. Yeah, there
+2925	Adam Curry: you go. That's a real man uses links. Absolutely.
+2929	Dave Jones: All the way down to the blood. Yeah,
+2931	Adam Curry: it does images. Now, you know, links is pretty has
+2933	developed over time.
+2936	Benjamin Bellamy: And back then, we were using Yahoo, and
+2941	AltaVista and these search engine, they only looked at the
+2947	title and maybe some meta metadata. And that sets and this
+2954	is what podcasting is right now. Looking for podcasts in Apple
+2959	podcasts is impossible. If you're looking for something,
+2963	the keyword needs to be in the title, otherwise, you're 100%
+2967	sure that you won't find it. Right. So we are still just
+2973	looking searching within the title and some metadata. If you
+2978	are lucky. Not that we are getting the transcription and my
+2982	guess is that Apple podcasts pushing transcription will make
+2989	everyone using it. Because so far it's been three years since
+2994	like cassava has been using transcription and pushing them.
+2997	But we know that that's not enough. And you heard the guys
+3002	that eclipsing three weeks ago when they say yeah, it's useless
+3005	because no one is using it. Yeah, my guess is that yeah,
+3009	probably they're looking at it right now.
+3013	Adam Curry: Yeah. Because Apple, because Apple added it. Now
+3016	they're looking at it, of course.
+3017	Benjamin Bellamy: So I'm using one of our snowball effects Now,
+3021	regarding the translation, the transcription, sorry. And, and
+3026	we meaning that now, it will be possible to index everything and
+3031	to index the content and to know exactly what it's talking about.
+3035	And the discoverability will change radically, radically.
+3041	Dave Jones: So it how many. So when it comes to OP three, how
+3046	many? Are there any French podcasts that you have no, of
+3050	using op three, because I would love to see what the
+3052	consumption? I would love to see what the app app breakdown is.
+3057	And see what what apps people are using in France to listen to
+3063	French podcasts?
+3065	Benjamin Bellamy: Oh, yeah, that's very easy. I don't have
+3068	the number is going to be app already. But actually, no, there
+3074	is no, there is no rule. It really depends on the podcast.
+3080	It depends also on the country. But it's Yeah, depends on the
+3083	podcast, like a podcast talking about open source. And there are
+3088	many of these using castable. Use usually, Apple and Spotify
+3094	are not the first ones. So it depends on the audience. You can
+3100	have surprises
+3101	Adam Curry: everywhere. No, I agree with that. I, I love the
+3106	individual stats that op three delivers. I see I see my stats,
+3110	I see pod verse and podcast guru up there very high, sometimes
+3115	higher than Apple or any other app you write it depends on
+3119	audience. And that's by the way, I I'm not a big fan of looking
+3122	at, you know, who's number one across everything. You know, to
+3126	me, that's a senseless award shows.
+3129	Benjamin Bellamy: Yeah, and that's not the point at all of
+3132	Opie three. And I know that John's said it, he, there's
+3136	there is no top 10 on the on the mp3, he doesn't want it good.
+3140	Good. That's that's not the goal for that tool. But nevertheless,
+3144	it's interesting to see and to get numbers on how it's used.
+3150	But in the end, you know that if a host says listen to my podcast
+3155	on Apple podcast and give me stars, guess what this is where
+3159	the user will go. If you say use something for a new podcast
+3163	apps.com That works. In the end, if everyone says that, in the
+3169	end, you know that people will switch and move to a platform
+3173	where they can have more features. Or
+3179	Dave Jones: let me push back on that for a second, though,
+3181	because that's that's it's sort of it's circular, though.
+3187	Because when somebody when you're listening to a podcast,
+3190	and somebody says, listen to us on Apple podcast, you're already
+3194	listening to the podcasts or you're already listening to it
+3196	on something. So now I can see that you would switch that could
+3201	cause you to switch to a different podcast app. But how
+3205	did they even get into that to begin with? But how? I guess
+3209	what's the entry point into being able to initially even
+3213	hear the podcast in order to hear somebody say I wish you
+3216	would listen to us on this other thing?
+3221	Benjamin Bellamy: The exact same mechanism. Like when you used to
+3225	go on a websites with Internet Explorer, and they said, Yeah,
+3229	you better use Chrome
+3230	Adam Curry: or Firefox. Yeah. Yep. Same. That took years. But
+3233	it worked. Yeah,
+3235	Benjamin Bellamy: eventually it works. And also, you also have
+3240	to, to know that many listeners, they discover the podcast on the
+3246	podcast websites, yes. And they click play within Firefox or
+3251	Chrome or Internet Explorer, maybe? I don't know. So that's
+3257	the entry. Usually that's the entry points, because still
+3262	going back to discoverability, and search engines, if you
+3268	there's that many goods search engine for podcasting. So if you
+3273	look by you're probably searched in Google, and Google will lead
+3279	you to the website.
+3282	Adam Curry: That's how I've so no agenda. Yeah, it's been
+3286	around a long time. But we have we've never asked for ratings
+3291	never and we have as many five stars as one stars on Apple. We
+3297	think we might have been featured once 10 years ago. But
+3301	we've I mean, we've never marketed never spent a dime on
+3305	it. We've just asked our listeners to do that. I think
+3307	that's so underrated. And we ask your listeners to to tell
+3312	people, there's no discovery really? Yeah, we buy now where
+3318	we have a lot of top placement in in search engines. But I just
+3326	I don't know I, to me, it's like, you want people to tell
+3330	other people. That's the best way, that's someone who's
+3333	actually going to go and get it. I'm the number of people who
+3336	said, I was looking for news with no agenda, I can count on
+3339	one hand.
+3342	Dave Jones: But I was, you know, I'm thinking that I think pod
+3346	roll will help this a lot. It will help bring, bring some
+3349	linkage between podcasting. And I think publisher feeds, when we
+3353	get that one across the finish line, I think those two things
+3356	are going to help build a structure that's crawlable, like
+3360	in a way that we've never had before, where there is actual
+3364	linkage between shows, instead of depending on instead of
+3369	depending on Google, and these are in or for depending on just
+3374	textual, like machine learning or something which is really not
+3378	going to get you to where we want to be, we want to use what
+3382	you want is recommended as a recommendation engine that's
+3384	based on pure money. That's yeah, humans in your own sphere.
+3391	Like so. Because if I'm listening to if I'm listening to
+3395	a show, I want, I may not, I may not want to listen to the show
+3400	that the hosts of that show or listening to, but at least May I
+3406	probably want to know those shows exists. So that can give
+3410	them a shot. They can try it out. It
+3412	Adam Curry: wasn't a recommendation, a big push for
+3413	you, Ben.
+3415	Benjamin Bellamy: Yeah. It's something that I wrote like,
+3418	three years ago, almost. Yeah, I remember. Yeah. And if you're,
+3425	if you look back at my example, about SEO, there was a radical
+3431	change in SEO when Google started working and indexed the
+3437	whole pages and all the contents. So that's one key
+3441	feature that we need. And my guess is that that will have
+3445	that with the transcriptions. The other part for Google was
+3449	the PageRank. If you remember, it's impossible to see it, but
+3453	it still exists, the page rank. So like a rates be between zero
+3460	and 10, I guess, that allows to sort the results for the engine
+3467	regarding the query that you entered. And it was calculated
+3471	with the links from one page to another and the more inbound
+3476	links you have, the better your page rank is. And that's also
+3480	something that we probably need on the on the podcasts and the
+3485	pod roll. can help for that, because you can link from one
+3490	podcast to another. Because if you take a step back, that's
+3493	something really weird that's since all these years, there is
+3499	no link between podcasts, no connection at all. We build the
+3505	internet on the hyperlinks, but we didn't put any of them for
+3512	the podcasting. So patrol is about that. The recommendation
+3520	tag that I wrote a specification for so I guess it was three
+3525	years ago, was clearly to to enable that to say this podcast
+3532	was based on another one that talks about the same subject, or
+3538	is I recommend this other one or so that you can have links and
+3544	have like a graph of all the podcasts. Right? I think the
+3549	recommendation, recommendation tag didn't work eventually
+3554	because it was too complex. So probably at some points. I won't
+3561	give up. But it probably needs to be rewritten from scratch.
+3566	Well, the
+3566	Adam Curry: thing was the thing with POD roll, which I think is
+3568	a start of what of what we're talking about here is everyone's
+3573	busy, but I'm just looking at the at the Apps page. I think
+3577	the only app that supports it is while true fans and pod friend
+3582	and no other app seems to be supporting it, which is a shame
+3585	because it's it's it's so it's such an obvious good feature.
+3589	And we've seen the success of a blog role and and as just as you
+3596	said, you can start to build these these links and these
+3598	connections. Maybe the that'll come in when we do the
+3601	publisher, the publisher tag, that. I mean, it ultimately is
+3606	just a matter of what, what the app developers have time for and
+3610	what they feel like implementing. So we have no, we
+3612	have no control.
+3614	Dave Jones: It seems like something new. as an app
+3617	developer, it would not be too complex. But when you finish,
+3620	when you finish an episode, you know, or you are alongside an
+3624	episode, there's somewhere visually you can indicate, well,
+3627	here's here's some other podcasts that this show
+3629	recommends. To me, because the linkage and everything is
+3632	pretty, it's there. It's really straightforward. And I think,
+3638	you know, I just doesn't seem like a, it doesn't seem like a
+3640	big lift. That to do that is like, Well, does. Wait does cast
+3646	a pod? Do y'all do pod roll yet? Ben? No, no. Okay. Any plans on
+3653	that?
+3656	Benjamin Bellamy: It's on the roadmap, but on top of exactly
+3661	in
+3661	Dave Jones: the list, right? In the list. Yeah, I guess you.
+3666	What can we talk about? Wait, let me let me take a detour
+3670	here. I want to talk about social a little bit because one
+3673	of the biggest things about cast apod in this has been from the
+3677	very beginning. And I will cop to this that I early on and one
+3683	of the developer roundtables that that we had, you, you and
+3688	your scene got on to the zoom. And we're saying that podcasting
+3694	really did benefit from having a deeper integration with activity
+3699	pub. And I did not understand activity pub enough at the time
+3703	to see to see the power of what you were talking about. But I've
+3707	totally, I've totally changed on that. I totally understand what
+3711	you were saying now. And I think activity pub, and RSS. I think
+3717	they're just perfect bedfellows. And I think so cast apod has
+3724	been from the beginning. And activity pub centric experience.
+3730	I think it's basically designed around activity pub as a first
+3735	class citizen. And what I'm trying to do now after I wrote
+3740	the activity pub, the index activity pub bridge, what I've
+3745	been trying to do is figure out a way to link a podcast owner to
+3751	an activity pub identity. So that you could say, Okay, this
+3757	podcast, which now has a has an actor on the fediverse. This
+3764	other actor is the owner of this podcast, so that so that that
+3769	owners actor object gets a lot of get some preferential
+3774	treatment, I guess, and becomes important as a link to the, to
+3781	the podcast. And so we've thrown around a bunch of ideas. And
+3786	when I was with Nate, like Nathan gathright came up with
+3789	some ideas, and he, you know, we could say, well, let's just goes
+3794	back to your proposal, when you first embroiled in social
+3797	interact, you had a separate tag for social sign up, and then a
+3803	tag just called social. And but then Nathan said, you know, and
+3808	when we could go back to that, we could say, Okay, well,
+3811	here's, here's a podcast, and we define a tag where you can
+3815	explicitly say, the owner of this podcast, is this activity
+3820	pub handle. But you could also say, Well, let's look in the
+3826	person tag. And we could add an attribute there. Or we could do
+3830	a web finger lookup on the URL that's in the person tag, and
+3837	try to discover an activity pub object from that. Do you have
+3841	any ideas around what you think makes the most sense?
+3847	Benjamin Bellamy: Well, I think you, you need to keep that as
+3850	simple as possible. I'm not very comfortable with the fact that
+3854	you have many actors, because you don't know how this will
+3859	behave on the other platform on the fediverse. And we have many
+3865	feedbacks from users saying, Well, I'm a bit lost because I
+3869	have, I have an account on the fediverse forum. For Mastodon, I
+3874	have one for pixel fed, and I have one for a custom bird and I
+3878	wish I had only one of them to group them or so I think it's
+3883	the same idea of I need like a master one or but the thing is,
+3890	I like to have separate things like my podcast is exists by
+3896	itself. It's a thing on the fediverse and If I have me as a
+3902	user or as a podcaster, and other accounts on Mastodon, I
+3906	think that's great. And the good thing is that on the favors, all
+3911	these actors can talk to each other and they can share and
+3917	like and comments, and talk together. But if you take a step
+3923	back and think of what it was before the fediverse, well, you
+3927	had an email address, and you had a Facebook account and a
+3930	Twitter account and a SoundCloud account exactly the same. The
+3935	big difference is that all these accounts could not talk
+3938	together, thanks to the fediverse, they can talk
+3942	together. So you still have to, to have an accounts for a
+3949	specific task of road that you want to do. And I think that's
+3955	good that you, you need to have separate interfaces or stuff,
+3961	because it's not the same role. But in the end, since they can
+3965	talk together, well, that's good. And probably you you can
+3972	use, like, something that we don't have in Casper, that we
+3976	have to add it in any future that has mustard on, you can you
+3985	can say a who, which website owns this accounts. So that's,
+3992	in the end, you'll be able to proceed on your accounts. You
+4000	see what I mean? Yeah,
+4001	Dave Jones: cuz what I could see is like that right now, the
+4005	bridge, you can follow a podcast, as an as an actor, you
+4009	can follow a podcast on the fediverse through the podcast,
+4012	index bridge. But if that was a cast a pod podcast, then what I
+4020	would want to do probably is forward those requests
+4025	basically, treat that as as if the account had moved from the
+4030	bridge to the to cast upon itself,
+4034	Benjamin Bellamy: which through that hassle, I think that's too
+4037	complex. Where you're going to draw, you
+4040	Dave Jones: wouldn't, you wouldn't want to redirect them
+4042	to the official cast upon instance,
+4046	Benjamin Bellamy: I would have the link on my bio and say, my
+4050	podcast is here. Subscribe,
+4052	Dave Jones: instead of doing it at the activity level, yeah.
+4056	Okay, keep it so yeah, either way, either way. I just want
+4059	like if you have a podcast, and you have a cast apod so if you
+4065	have if your podcast is on the fediverse. But then you also
+4070	have an account on the fediverse. I just want to know
+4073	that you are the one who's the podcaster. Yeah.
+4079	Benjamin Bellamy: Yeah, so that's something that we have to
+4082	add to gastropod. Like he's, you know, it, we're
+4087	Dave Jones: gonna add that how would you do it? Like, what
+4089	would you bow would your design be?
+4092	Benjamin Bellamy: Or your you add metadata rail, you know, and
+4095	to, and that's, it's
+4098	Adam Curry: the same set the method? Yeah.
+4100	Benjamin Bellamy: And you do it both ways. So right, now we've
+4104	cast it, but there is no way to do it either way. But that's not
+4109	something very difficult to do. It's just a link.
+4112	Dave Jones: But what would it look like in the RSS feed,
+4114	though? So if I'm declaring my past,
+4117	Benjamin Bellamy: that's not RSS. That's not in the RSS, you
+4120	have to put that on the web page.
+4123	Dave Jones: Right now, I understand. But with from an RSS
+4126	standpoint, how do we know? How do I how does the index, I want
+4130	to wait for your index to know? Oh,
+4133	Benjamin Bellamy: you can add the link in the RSS the same,
+4135	you would add it in the HTML page? You just have. You need
+4139	the app, Id the player to look into the RSS feed and, and
+4145	verify if if everything's okay.
+4149	Dave Jones: Yeah. So with the the link, so that you would have
+4153	to the link, I think link is an atom tag, right? You'd have to
+4156	declare the atom namespace and bring that in with the row.
+4161	Okay. Yeah, we've got some options here. I mean, that's
+4165	because that's really where I want. It's really where I want
+4169	things to be. Because the social interact stuff is working really
+4172	well. I mean, I think that tag is great. It's just, it's, it's
+4180	lacking this one bit of information, which is where are
+4184	the people who host the show? Like who are they on the
+4188	fediverse M, we have to be able to we have to be able to go from
+4193	a podcast that declares its its its presence on the social on
+4199	the on the on the phone refers to who are the people who are
+4202	involved? And I think, I think that probably ends up landing in
+4205	some point
+4206	Adam Curry: that person tag. Yeah, person tag with a rel
+4209	equals Yeah. Yeah. Sounds like the easy way to do it.
+4212	Benjamin Bellamy: In the HTML page, it's just like a h ref.
+4216	And then the link to your, your a mastodon account rel equals
+4221	me. So you could put the same in the RSS exactly the same. Yeah,
+4228	but the thing is, if you do that, it's you have to, it's not
+4233	going to be very symmetric, you have to think of which app we'll
+4240	try to verify and how those that's going to work. But that's
+4246	how I would do it. Just to say I'm the owner of this.
+4251	Adam Curry: Right? I
+4253	Benjamin Bellamy: am, sorry, just together make to step backs
+4259	about the whole fediverse and activity web stuff, because we
+4265	know it's complex. And not all users understand why we're doing
+4269	that. The whole point of Castile pod when we began working on it,
+4274	was to make sure that podcaster stay in control, and Ghana don't
+4282	get ripped off of their their value. And the value of a
+4285	podcaster is the content and the audience. So the fact that
+4289	caster pod is open source and can be self hosted, ensures that
+4294	you can self host your content, your mp3 and metadata, and no
+4299	one can remove that from you. And for the audience, the
+4306	activity pub stuff, the failover stuff ensures that you have a
+4310	direct contact between your podcast and your audience. And
+4316	your audience can talk, share like and and comment your
+4322	episodes from your podcast with no middleman. And there's no
+4329	one, no one that can cut the connection between your podcast
+4335	and your audience. That's something really important. So
+4338	it's not just for fun, because we thought it's a cool feature
+4342	to have little stores on the castor pod websites. And in that
+4346	you can see the comments on the gastropod. website. It's it's
+4350	really important that there's no middleman between the content
+4355	and the audience. So great content. Yeah,
+4358	Adam Curry: no, go ahead. I'm sorry. Finish your question.
+4360	Finish your thought.
+4361	Benjamin Bellamy: When you when you when you create a podcast on
+4365	Casta pod no one can steal what you created. Neither the content
+4372	nor the audience.
+4374	Adam Curry: Day Have you been I know you've been looking at? Oh,
+4376	I saw some threads about blue sky. What am I now to understand
+4380	that there could be a bridge between a podcast through the
+4386	index activity pub and then ultimately bridge through to
+4390	blue sky?
+4392	Dave Jones: That the I think people are making Blue Sky
+4394	bridges. Okay, I don't
+4396	Adam Curry: because that doesn't mean it's real federal That to
+4398	me is real. fediverse when that stuff happens was
+4401	Dave Jones: that I think the blue sky stuff that I saw this
+4403	week was about them federating amongst themselves Okay, all
+4407	right, like because you said that you could have other
+4409	personal data servers within blue sky but I don't and I know
+4414	there are projects going that will that will bridge
+4417	Adam Curry: Federer I sure hope so. I sure hope so because I
+4420	really enjoy the the nostril BRIDGES I mean, I love following
+4423	people who are on nostra except for the long numbers or whatever
+4430	but but I it to me it's like I see more and more of a you know,
+4434	the and I have my own my own Mastodon instance. I love having
+4438	it kind of the hub of all these different social networks to me
+4441	that's that's That is the true fediverse There.
+4444	Dave Jones: It feels like the activity pub. It feels like
+4447	activity pub fediverse is sort of the hub that these other ones
+4451	are attaching detaching to Yeah, yeah it's like it's like you
+4454	have you know, imagine it as like Mickey Mouse's head with
+4458	the Fed or you know with activity pub as the as the as
+4461	the face in the the blue sky is one of the ears and nostrils the
+4465	other ear. Got it? That's what it feels like.
+4470	Adam Curry: Let's let's take a little break here gentlemen,
+4472	let's play a little bit of music as we'd like to do here on the
+4474	so we can keep our stats up there and that our says blue.com
+4477	stats page. Nice. Benjamin, I will tell you, disappointingly,
+4484	I could not find or nor do I have a way to find any French
+4487	songs in that are up on value for value. I would love to have
+4493	some Shawn songs to play. I've found some Japanese should have
+4497	told me
+4500	Benjamin Bellamy: I would have looked for it
+4501	Adam Curry: I mean there's unfortunately there's no way to
+4504	really find out I don't think if a song is in the French language
+4509	is there I don't think there is
+4513	Dave Jones: but it's the language tag in the RSS yeah so
+4516	certainly
+4516	Adam Curry: now with music Well if you find any Benjamin I love
+4519	I love short songs
+4521	Benjamin Bellamy: yeah I think it's if I have to
+4524	Adam Curry: that's okay thank you that's fine take it away
+4527	we're gonna play new artists Emily Rana nice and short this
+4532	one I think people like it this is called someone else clothes
+4559	Unknown: as a stranger in my house in my house
+4586	own house in my house someone else someone else
+4621	there's a stranger in my house in my house but it's easy
+4628	someone else someone
+4658	wish I could kick you and change the lungs
+4675	will make excuses
+4698	Adam Curry: Emily Rana, someone else I'd like this song for a
+4700	number of reasons one because it's it's kind of like the
+4704	Ainsley Costello Poppy vibe. And you need that these days too,
+4708	because I believe this is an artist who assigned with phantom
+4712	power music. And I really like what those guys are doing
+4716	because they're they're taking some very simple concepts of
+4720	record promotion, they email me with, you know, three, three
+4724	songs a week, this is what we recommend. This is who we're
+4727	working with, you know, it's called promoting, as marketing.
+4731	I really enjoy that because that we need that kind of stuff to
+4735	build to build more of a, a system and ecosystem. And I will
+4741	make my plea once again to the to the app developers, I would
+4745	love for you to look at your TLV records. What you're sending, I
+4749	have no idea if you're boosting for a song for many of the apps,
+4755	and if you feel like it, adding that reply to in your TLV record
+4760	is just so joyous. I love sending SATs back to people I
+4765	know it's a it's another one of those things you put on your
+4767	list but man and I think the split kid only sends the artists
+4772	which is completely unhelpful. But I know Stephen, Stephen P is
+4776	very busy. So yeah, that's my that's my weekly plea to look at
+4781	your TLV records because it really makes a difference to see
+4784	what and for the artists to because they get a boost to
+4787	grammar they don't know. They don't know. They just see
+4790	booster Grand Ball. They don't end they don't know what song it
+4792	was for anything.
+4794	Dave Jones: I'm gonna I'm resisting the urge to get into
+4796	fee discussions here because I'm afraid everybody would just draw
+4799	their forehead into the wall.
+4801	Adam Curry: I don't know I think activity pub got me ready to
+4803	shoot myself. But you know, a few
+4808	Dave Jones: will say it will say I want
+4810	Adam Curry: to say where? Let me see. Then I wanted to just
+4816	because you were so kind to send through a bunch of questions, I
+4819	wanted to roll through your needs, you had three we need.
+4824	And so we just walked through those for a second. Because, you
+4827	know, seems like seems like it's something you want to talk
+4830	about. I don't know.
+4836	Dave Jones: Worse and an ad, yeah,
+4838	Adam Curry: analytics tags source tag and a tag to create
+4842	an ad ecosystem. Or we could talk about why affiliation is
+4845	the only solution to save the internet from online ads.
+4850	Benjamin Bellamy: How many? How much time do we have?
+4853	Adam Curry: Well, we got we got two minutes.
+4860	Benjamin Bellamy: I'd be very quick. No. Since fade seven is
+4868	closing on June. The First I was thinking that maybe we could add
+4873	a little, little. Yeah, a few more tags so that they don't get
+4880	bored.
+4881	Adam Curry: Oh, okay.
+4884	Dave Jones: Yes, thank you. All right, thinking of maybe Okay,
+4886	Adam Curry: so All right. Let's talk about him.
+4890	Benjamin Bellamy: Yeah, so we talked about the recommendation
+4892	tag that's probably need complete rewrites. I was
+4897	thinking about an a podcast analytics tag, because the other
+4902	day I was looking at some podcasts in mp3, and you have to
+4907	find the UID and see if it exist. And if you get a four,
+4912	four, it's mean that it's not there. So maybe just add a link
+4916	to the OP three page for this specific podcast. So that you
+4921	know if it's worth looking there, if it's here, and that's
+4926	very easy to do very cheap. And that will help promoting or p3,
+4932	I guess. I was also thinking about adding, and this was not
+4939	in my email, because I've been, I found a diver a dozen other
+4944	tags, where I was asleep last night. I think we need a country
+4949	tag because we know what language is. Is a podcast which
+4956	language it is, but we don't know from each country. So we
+4961	don't know if it's in English. If it's for US, UK, or Australia
+4965	or wherever. If it's French, we don't know if it's from Africa
+4969	from Belgium or Canada, Canada or France.
+4975	Adam Curry: Are you talking about using the ISO 3166? Code?
+4980	Exactly? Yeah, yeah.
+4983	Benjamin Bellamy: That would be cool as well. Even if not
+4986	everyone uses it, it will give you a real idea of the numbers.
+4992	Because we really can tell now, unless we know that all of them.
+4999	And so
+5003	Dave Jones: something like the location tag location tag is
+5006	what the is what the is the location that the podcast is
+5009	about. But the country tag would be where it's originated.
+5012	Origin.
+5012	Benjamin Bellamy: Yeah, exactly. Because if you use the location
+5016	tag, to specify where the podcast was recorded, James
+5024	Cridland will get you. And yes.
+5029	Adam Curry: Because yes, which is why no one uses it. I'm
+5032	afraid to do it wrong. I don't want Cridland to slap me. Yeah.
+5038	That's, I'm a fan of that. I mean, people, people use it, or
+5043	PayPal, uses the 3166. And I always appreciate that when we
+5049	have donations for no agenda. Because no matter what we are
+5052	town, and believe me, there's a lot of Paris. You know, then you
+5057	can really see what country it is. And I I'm all for that. I
+5060	think it's a good idea. And I know most of them by heart, you
+5062	know, just because of the country stickers and that your
+5065	Europeans use. Yeah, on the cars.
+5071	Dave Jones: As I like to two letters like is that the two
+5072	letter codes?
+5074	Adam Curry: Yeah, yeah, it's exactly what I guess. Okay.
+5078	Benjamin Bellamy: I think we also need a source tag to know
+5083	where the podcast was originally broadcasted, or published. So
+5089	if, if before being a podcast, it was a Twitch live, or it was
+5094	a live item, or it was maybe on YouTube or on A radio network so
+5102	that you know where it was before being a podcast. Or maybe
+5106	it's a rerun. And that could be very useful in France, where,
+5112	you know, we don't do everything the same way.
+5117	Dave Jones: Oh, you mean that if if, if there's a podcast episode
+5121	you're listening to, you would want to know whether that
+5124	originally was like a radio program?
+5126	Benjamin Bellamy: Exactly if what we call native podcasts,
+5130	which means it was published as a podcast first, or if it's a
+5135	rerun or not. are a few radio podcasts? Yeah. And it would, it
+5144	would provide useful information to know where it was published
+5149	in the first place. Yeah, okay. So it's a URL. And if it's
+5154	empty, it means it's what we call in French. Podcasts.
+5158	Native, native. Native native. Yeah. Okay. Yeah. You speak
+5164	French?
+5164	Adam Curry: May we? Speak of James Cridland? For just a
+5171	moment. You interviewed him for? What magazine? Was
+5176	Benjamin Bellamy: that for? Loop? Podcast? Magazine? Yes.
+5179	Adam Curry: The podcast magazine, which is a? I mean,
+5181	that's a beautiful product.
+5183	Benjamin Bellamy: Actually, it is. Yeah. 200 pages as a
+5186	Adam Curry: real? What's the circulation of that? There's a
+5189	lot of people and how do you even distribute that? Do you
+5191	have to order it? Or can or is there put them at newsstands? Do
+5195	you throw them out? Your car window? How do people get those?
+5199	Benjamin Bellamy: Know you subscribe on podcast.
+5201	magazine.fr.
+5203	Adam Curry: And then you get it in the mail? Yeah. And yes,
+5210	it's,
+5211	Benjamin Bellamy: it's published by a guy named Philip chapeau.
+5216	Who is also
+5218	Adam Curry: like, that's like Phil hat. Is that his name?
+5220	Philip? Chapeau. Phil hat.
+5223	Benjamin Bellamy: Exactly. Yeah. Actually, James Cridland calls
+5227	him Mr. Hats.
+5228	Adam Curry: There you go. Mr. Hat? Yes. You sent me some
+5235	clips. Which I did. I didn't know that. That you recorded it.
+5241	Was that from the interview that you recorded? And then you just
+5244	transcribed it? Or did you publish these somewhere? No,
+5248	Benjamin Bellamy: no one. Ever heard that before?
+5251	Adam Curry: Oh, well, can I play the one where you ask James
+5253	about me? Because obviously, it's about me. I think that's
+5256	the most important clip, please.
+5259	Benjamin Bellamy: Oh, here we go. Oh, you know,
+5261	Adam Curry: wait a minute. I had it set. You did? Left. Right.
+5264	Really? One second? You did you on left and him on?
+5268	Benjamin Bellamy: Right. Yeah.
+5270	Adam Curry: You have to play it on mono? Yes. Okay, that takes a
+5273	second here. Here we go. Let's see if this works.
+5276	Benjamin Bellamy: You know, Adam Korea doesn't mince his words
+5280	when she disagrees with someone. And that includes you. Are you
+5287	getting along?
+5289	Unknown: Yes, I think so. Yes, I think so. Absolutely.
+5291	Absolutely. He and I are both he and I are very similar.
+5297	Actually, we both are very obsessive about, about what we
+5302	are interested in. And that means that if people either
+5307	don't get it or are, you know, willfully not getting it, then,
+5312	you know, we will be we will not be particularly happy about
+5315	that. But no, you know, I think what is what is exciting about
+5323	the whole podcasting 2.0 ecosystem is that actually,
+5328	people are incredibly passionate about what they are, what they
+5333	are doing. And sometimes that means that people that people's
+5337	ideas clash, and that's actually great. I would much rather that
+5340	than interminable. You know, meetings, people saying one
+5345	thing and doing the other and blah, blah, blah, at least you
+5347	know, where you stand. So that's a good thing.
+5350	Adam Curry: Oh, that was kind of him. Yeah, I agree. I'm totally
+5355	on board. That's, I
+5357	Dave Jones: agree to Yeah, agree to it's better. Like, it's
+5359	better to have people get super pissed off. Yeah. And then gripe
+5363	at each other and figure it out, and then figure it out, figure
+5365	it out. Yeah, figure it out and move forward. And then you're in
+5369	then everybody's fine. I mean, that's one thing. That's one
+5371	thing that defines this group more than any other open source
+5375	project I can ever remember. Exactly. Yeah. The passion and
+5380	the disagreement, but then everybody just moves on and
+5383	gets. We just push stuff out. It's more it's wonderful.
+5387	Adam Curry: That's why I say we I was gonna say Sam Sethi you
+5390	didn't have to send a note of apology for what you said about
+5393	me this week. He sent me he sent me an email. I'm sorry in
+5397	advance for my passion. was like I Have a curry. There's Adam
+5400	curry that was like, brother you don't? I've given up my right to
+5403	be offended long time ago. It's all good. And I love your
+5406	passion.
+5408	Benjamin Bellamy: And you have to say when you disagree to, to
+5411	find meaning point in the end. Yeah. Yeah. Which leads me to my
+5418	last tag. We go because this one I think it's it's something on
+5427	which Adam and I strongly disagree. Beautiful here we go I
+5433	think we need a podcast add tag for advertising. Oh,
+5438	Adam Curry: for a very Why would you think I would disagree with
+5440	that I'm already interested I like this I just the fact that
+5443	you're thinking about it makes me interested.
+5448	Benjamin Bellamy: I think you disagree because you're not so
+5450	much in the advertising. industry or a that's not the way
+5457	you you wish to promote podcasting. My point of view is
+5463	that we we cannot let YouTube and we cannot abandon the
+5471	podcast advertising to YouTube, or to Spotify or to anyone. And
+5478	there's something I was quite surprised when I first looked at
+5484	it, the numbers of the how many YouTube channels they are? I
+5490	don't know if you know that. No. Yeah, because no one knows.
+5495	Because obviously YouTube's they keep these hidden and secrets.
+5502	But we think they are around 30,000 youtube 30 million,
+5511	sorry, 30 million YouTube channels, which compared to 4
+5517	million podcasts is quite impressive. And the reason why
+5523	is, I guess that people try and build channels on YouTube,
+5530	because they have a dream that they will be able to monetize
+5534	and to make money out of it. Even if they don't know there is
+5538	no number of how much money you can get from a YouTube channel.
+5544	Like not if you're the first one or in the top 10. But if your
+5548	average, what's the median income from a YouTube channel
+5554	$2. But the thing is, the dream works. And YouTube manage to get
+5564	everyone on on its platform. And my fear is that, even though so
+5571	far, it doesn't work at all. Eventually, they managed to get
+5577	every podcaster in the world on their platform, because it's
+5581	easy. You don't pay for the hosting, you get all the tools
+5585	you need. You get the social network, you get the search
+5590	engine, you get the player, and you get the monetization
+5593	monetization parts. And as soon as they get everyone on board,
+5600	and it's across silo, and they have a monopoly, it's game over.
+5606	Probably some of us will still fight for an open and
+5612	interoperable podcasting across system. But you know, that
+5618	doesn't wait very much. myself, when I'm looking for a video on
+5624	the internet, I'm going to YouTube. So that's a huge risk.
+5631	So I think we need a really open an interconnected advertising
+5639	system for the podcasting industry. And one, we're all the
+5645	counterparts all the actors can share the same goal, because so
+5651	far, if you're looking at how things are working, if you're a
+5655	podcaster, you can add inserts an ad like audio ad, but the app
+5662	will get nothing out of it. And on the other end, if an ad puts
+5668	an advertise an advertisement on the app, like podcast addict
+5673	does, the podcaster will get nothing. So
+5676	Adam Curry: let me jump in here. Are you suggesting just let me
+5680	see if I'm following along and add tag that is an open call
+5684	that says you can add an advertisement to this podcast
+5689	and then there's here's some parameters, etc. So that
+5692	everyone knows. So you're building an open ecosystem so
+5695	that advertisers and advertising companies could come from the
+5699	outside and just utilize that
+5703	Benjamin Bellamy: and share revenue between the host, the
+5707	app, the podcaster.
+5711	Dave Jones: So this sounds like this sounds sort of like what
+5716	Google is trying to do in the browser with their new would get
+5721	the name of it with this new thing where they're essentially
+5723	turning the browser into the ad auction platform. But you're
+5728	saying that so instead of having a centralized ad,
+5735	Adam Curry: or host only, or a hosting company only, that's
+5738	kind of how I see it working now, as the hosting companies
+5740	are doing a lot of that work,
+5742	Dave Jones: or sandbox. Thank you. Thank you.
+5745	Benjamin Bellamy: Yeah, but the thing is, we need to be first to
+5751	write down this specification so that it meets what we need, what
+5756	we think would be the right thing to do. For one thing,
+5760	there's something really cool that I like a lot about the
+5763	podcasting ecosystem, is that there is no cookie. There's
+5768	never been any cookies in the podcasting apps. So right now,
+5774	if you're listening to a podcast with audio insertion, maybe it
+5779	will be geo localized. But that's about it. Because the
+5785	attack doesn't know anything about you as a listener. When
+5790	you go on the websites, they have your whole history for the
+5796	past six months, when you're listening to a podcast in a
+5799	podcast app, they know nothing, which is a really good thing in
+5802	my point of view, because I think that advertisements should
+5809	be contextual,
+5811	Dave Jones: for energy, here's
+5812	Benjamin Bellamy: what I hear rely.
+5815	Dave Jones: Here's what I would like to see. If if this is
+5819	something that the advertising we we hear all the time from the
+5823	ad people from media roundtable was sounds profitable. I mean,
+5832	there's there Magellan, there's, I mean, all endless numbers of,
+5836	of advocates and advertising agencies within podcasting and
+5840	audio in general, if this is something that they want to have
+5845	as an open specification for, for this type of thing, if the
+5850	if they're sear if if like, if that's something they want, I
+5854	would like that, I would say they should write it, they
+5856	should write the specification, submitted to the net to the
+5859	namespace and let everybody hash it out.
+5861	Adam Curry: And the part that I like Benjamin, and that's where
+5863	you where you grab my attention is that everybody shares in it,
+5867	the host, the podcast, and the app, that part I like, I like a
+5872	lot. But I'm with Dave, like, hey, you know, you guys are
+5875	always talking about it. Here's your opportunity. Go build it.
+5878	Right it Oh, yeah. But
+5880	Benjamin Bellamy: I don't think if we wait for the ad tech to
+5883	write that. I don't think that's going to go well. They're
+5887	probably tried to reproduce what they've been doing on the
+5892	internet for the past 20 years. And I don't like that as, as a
+5897	as a user. Ad
+5899	Dave Jones: Tech is abandoning podcasting. Anyway, eventually
+5902	on the long term, then, I mean, they're, they're gonna bail out,
+5906	they're already trying to create a narrative of transition that
+5909	podcasting is is converting to video. Which is completely not
+5915	completely not true. That but it's because the money is
+5918	leaving podcasting and going to YouTube. So the ad agencies and
+5923	the digital advertising market is trying to create this
+5926	narrative so they can follow the money over to YouTube and bail
+5929	out of podcasts. And I think I think they're leaving anyway. So
+5933	I don't think we're choosing any of that.
+5935	Benjamin Bellamy: Which is exactly my point. I don't
+5937	abandoned everything to YouTube. So
+5941	Dave Jones: I guess but I guess what I'm saying is that if they
+5943	all leave there won't be anybody to even run this system anyway.
+5949	Benjamin Bellamy: I'll be here.
+5954	Dave Jones: You already I mean, you add
+5957	Benjamin Bellamy: I'm fine. We've 100% of the market shares.
+5961	Adam Curry: Yeah, you write it up. I vote yes. I vote your
+5965	vote. I'd love to see it. Yeah, I'd love to see it. We'll call
+5968	it the cast to
+5968	Dave Jones: add tag. Yes.
+5974	Adam Curry: Let's thank a few people as we near the end of our
+5978	time here today in this board meeting which has been just
+5982	lovely to to catch up with our our good old friend there.
+5985	Benjamin bellick Bellamy from from France. We have a number of
+5991	boosts that came in Dobie das RSS blue with 1000 SAS just came
+5995	he says I just sent a booster Graham about how I hate fees and
+5998	all of it went to the artist To
+6005	Bouverie 808 a boob burry booths this time next week. Homegirl is
+6011	an ad. This this is how I like advertising. This time next week
+6015	homegrown hits featuring Dame DeLorean Mary Kate altra and
+6019	dacb Cooper will have the first ever bootable disco ball. I
+6023	found a guy who's got a big big rehearsal space in Minneapolis.
+6028	He wants to host an onboard day where we bring in all the bands
+6031	that use the space onboard them and get them on stage for a set
+6035	during the live stream. And he says I'm going to need V for V
+6039	music videos. And blueberry is very, very jacked up about all
+6044	the music stuff. I love that. Of course he was a big part of the
+6049	Ainsley and just loud concert he has phantom power phantom power
+6054	music our 2000 SATs boosting for the Dutch Duke of decentralized
+6058	music thanks Adam and Dave love you to rove ducks from anonymous
+6064	you're seriously simple podcasting WordPress plugin is
+6068	very easy to use for an average user like myself What are you
+6073	saying who has the seriously simple podcasting WordPress
+6075	Dave Jones: a simple that's a cat that's what is the name of
+6081	that forgot to totally forgot the name of the host it's it's
+6085	escaping me. It's a guest host Thank you Nathan.
+6089	Adam Curry: catch those. Another 808 from blueberry dramatic been
+6093	adding all the music feeds we've hosted to our pre show feed for
+6096	pod roll can't wait to see it display fully somewhere. There
+6099	you go. People are publishers. We have a pod roll. I got a pod
+6102	rollin on my podcast now. D wave DW ev 1789 Mercy Benjamin for a
+6109	fantastic platform so proud to be contributed to the project.
+6113	Are you familiar with D wave? Yeah. Okay. And Matt madeiros
+6121	1000 SATs coming in from true fans. He says you're thinking
+6124	Dave about Tanner Campbell. Tanner, can. Whatever happened
+6129	to him? Whatever
+6130	Dave Jones: happened? Yeah, he calls waves for a long time. And
+6133	then he just he waves away to substack and he said one day he
+6138	said I'm not going to do this anymore by
+6143	Adam Curry: Joe Martin music with 2100 sets and he says SATs
+6146	greater than streams. Hear that? Sir Brian of London 1948 This
+6151	week's episode better be full of Janessa quoi? I think we had
+6155	beaucoup Shanice ACWA kala Mona. I listened to striper boost 7777
+6161	listening live while preparing for my long drive back to
+6164	Missouri from California this weekend. This is her libre i
+6168	love playing here in value verse thank you all for your hard
+6171	work. Where are we with categories? Also Are we ever
+6175	going to get more Tor con seven May God bless you my brothers
+6179	sir libre. Yes, where's your kid man? northmor torque on now
+6184	Dave Jones: my my my son is currently trying to find a
+6188	welding gig so he has no time for for torque on paint. You
+6192	Adam Curry: think you think that the there'll be plenty of
+6195	openings for welders is
+6198	Dave Jones: there is yeah there is he's just he's a PCB and he
+6201	doesn't have his certification yet. Okay. Fully Certified. So
+6206	he's trying to try to find a gig where he can work and still go
+6210	to school to get his finisher certification.
+6212	Adam Curry: Dred Scott, the Bruce Wayne podcast in 2.0 with
+6215	a nice Rav ducks 22,222 Who says boosting MC boost boost boost
+6220	back at you drip and drip of course also does our chapters we
+6224	appreciate that salty Crayon 1111 here on upbeats ranch doing
+6229	things a little differently going forward might hurt some
+6232	feelings, but Bitcoin basic education is needed. We got too
+6236	many clueless cattle running around with no border collie to
+6239	guide them where to go wave Lake is Cargill. Okay he's cargoes
+6245	like the big big big ag we don't get from there anymore next the
+6250	bucket of Lb eggs in one basket is to fall from now on it's
+6254	grassroots grass finished musicians that get to come into
+6257	the ranch ITP
+6259	Dave Jones: like grass finished moose musicians
+6263	Adam Curry: Yeah, well we definitely need if we need to
+6266	get Royer we need more more solutions for wallets for sure.
+6272	For sure. I have resorted to telling people that you know
+6275	what you can't do have to be afraid of Bitcoin you can buy it
+6278	right through you're right on Wall Street right through your
+6281	broker through your your for your your ETF. It's official.
+6287	It's real. It's not to it's not a scam. And let me see I think I
+6294	think that's it. Yeah. Then I hit the delimiter. So Dave over
+6298	to you know,
+6298	Dave Jones: yeah, we got some Guess pay pals this week? We got
+6302	Buzzsprout our friends over there with $1,000 monthly
+6308	donation
+6309	Unknown: Sakala 20 is played on EMTALA.
+6314	Adam Curry: Thank you so much, guys. That's I mean, Trent.
+6317	Dave Jones: You're trying to get them back. Yes. Still trying to
+6319	get them back back on the show can't Yeah, but we this like,
+6322	scheduling chaos. So it's
+6324	Adam Curry: not on our end.
+6327	Dave Jones: History. Yeah, we'll get them on soon. And right,
+6332	right behind that Marco arm and $500 Yeah, another.
+6337	Adam Curry: Saqqara plays only Impala. There was an interesting
+6342	remark on the podcast weekly review that we don't give Marco,
+6346	any shit for not adding any podcasting 2.0 features that I'm
+6353	paraphrasing. And I would say that the genesis of what Dave
+6358	and I are doing here is the podcast index, which is to keep
+6363	a free and open ecosystem for podcasting, specifically podcast
+6368	apps. Marco supports us with not just treasure but time and
+6372	talent, we have a correct me if I'm wrong, we have a
+6375	synchronization with his database and our database. And
+6378	he uses us as a fallback. And whenever he finds something we
+6382	don't have he automatically plugs it in. And, you know,
+6386	there's all these features that just came along, and we've just
+6389	stuck it in for the ride. I mean, that was not anything in
+6392	our initial mission statement. You know, for the same reason,
+6397	I'm sure. Podcast weekly review doesn't call out Buzzsprout for
+6401	not adding several features. We appreciate Marcos support.
+6406	Dave Jones: Well, I'm not going to call out any indie app
+6408	developer for anything. I can't, I can't run their business, and
+6412	I can't tell them what to do. But he also Yeah, he provides
+6416	time with syncing and giving us a constant stream of new feeds.
+6421	And he donates $500 a month. Yeah. So that his own
+6426	competitors can have an index to use. I mean, it's like it's
+6429	really hard to criticize that. Exactly. I mean, it's, I don't
+6433	know what to say. I mean, you
+6435	Adam Curry: said exactly that. No, you're exactly right. I
+6437	mean, it's. And yes, he's funding his own competition. So
+6441	that's beautiful. I love that. Yeah. kawaman where
+6444	Dave Jones: his mouth is, yes. Really hard to criticize
+6446	anything about that in front end in likewise, Franco Celerio $100
+6451	on when
+6451	Adam Curry: you hit him a big ball to Sakala
+6454	Unknown: 20 blades on him Paula
+6457	Dave Jones: cat from CAST ematic. And you just says thank
+6460	you. I mean, there's another there's another app developer,
+6462	giving money to the index to support us so that other app
+6466	developers, one of which I emailed with yesterday, who's
+6470	creating a sermon like religious podcast based app. Oh, and he's
+6477	trying to figure out, you know, what, how to use the index, and
+6480	I've been helping him. Oh, cool. And it's like, cool. You know,
+6484	there's, there's Marco and Franco, and Mitch and all the
+6490	all these app developers that are providing the money to fund
+6493	the index to help other people who can't afford it, who are
+6496	just starting out, and I just think that's, I mean, that's
+6499	great. Yes. And let's see, we got Oh, Thomas homestead
+6504	homestead media $25 And he says, caught my four year old running
+6509	full speed with an open pair of scissors. Yeah, that was a good
+6511	reminder to sense of value. Yes.
+6514	Keep up the great work Thomas.
+6516	Adam Curry: Nothing like teaching your kid Good. Good.
+6518	Good practices early on.
+6520	Dave Jones: Yeah. Let's see we got some boosts we got. Thank
+6524	you, Thomas. De Jackson. The legend 2000 says three true
+6529	fans. Oh, great tune. Yeah, sure which to
+6534	Adam Curry: do which Sam we need some to V record info brother. I
+6538	know he's working on it.
+6540	Dave Jones: Pot home berry or buddy over there. 20,000 SAS
+6543	through podcasts guru says great timing. Live is currently in
+6546	beta for select users and pod home it's almost ready for the
+6549	mainstream including an ice cast server hosted by adding the chat
+6554	tag is something that will make this a more complete feature.
+6557	Yes. Nice. Yep. Nice. We didn't even talk about that a funnel as
+6561	the chat tag over the past weekend so no,
+6564	Adam Curry: I saw it you asked for eyes on I looked at it and
+6566	went okay, I looked at it I hope it's okay.
+6569	Dave Jones: We had what I asked for feedback and I got one reply
+6573	which was Barry saying looks good. I consider that to be
+6579	successful deployment. Yes. Okay, good. Our W Nash 2000 SATs
+6584	through fountain he says still missing the Delta Sierra.
+6588	Adam Curry: Well, to Delta share, Charlie, is that what he
+6591	means?
+6593	Dave Jones: A decent Delta Sierra I'm not sure what he
+6595	means.
+6596	Adam Curry: Well, it used to be the daily source code was also
+6598	known as the Delta Share. Charlie I'm not sure what the
+6601	delta shear is.
+6603	Dave Jones: I don't know. Gene been 2222 He says another great
+6608	boardroom discussion Keep up the good work well Thank you Jean
+6611	for your monitoring and all everything else you do. Oh,
+6614	there's elite boost from Gene 137 to cast ematic he says also
+6617	the fountain boost bought in the splits it seems broken it's
+6620	showing no route
+6622	Adam Curry: that may be something I have to change me
+6624	right down my list because they changed the LG nodata Yeah, I
+6629	think I have to change that. Okay, found some boost.
+6633	Dave Jones: We got Oscar coming up here in the next good weeks
+6637	and we're gonna discuss a lot of that type of stuff with him
+6640	good. Kevin Bay 50,000 says Oh, thank you guys. God verse. Says,
+6645	Dave, watch Guys and Dolls if you haven't seen it yet. One of
+6648	my favorite musicals of all time Sinatra and Brando is a classic.
+6652	i We watched it three weeks ago. And and and I did technical
+6659	theater, the lighting for guys and dolls when I was in high
+6662	school.
+6662	Adam Curry: Did you like it? So did you like the music? Great,
+6666	Dave Jones: great musical.
+6667	Adam Curry: What are you watching this week?
+6669	Dave Jones: Let's see. This week. We watched we actually we
+6673	watch something that wasn't a musical. We watched. Oh, no. We
+6678	watched Roman Holiday be seen that movie. Ah. Is that where
+6683	you pick and who's the who's the Breakfast at Tiffany's?
+6690	Adam Curry: Audrey Hepburn? Audrey Hepburn? Sure. I've seen
+6695	it at some point. Yes, she's
+6696	Dave Jones: the British princess who goes to
+6700	Adam Curry: they wind up riding around on Vesper scooters a lot.
+6703	Yeah, okay. I've seen it
+6706	Dave Jones: as a good movie, but then we also we also watched
+6710	Julie Andrews in Sound of Music. We're about halfway through that
+6713	sound of
+6714	Adam Curry: music. I love that. I can watch that over and over
+6717	again.
+6718	Dave Jones: Julie Andrews playing the guitar that's now
+6721	Adam Curry: that part I could do without but I just like the you
+6724	know, like when they're running from the Nazis, and they're all
+6727	hiding. It was spooky and scary when I saw it as a kid and I
+6730	still love it.
+6731	Dave Jones: Also bonus points for using the phrase
+6734	flibbertigibbet which is always a good turn Liberty Jouvet. Yes.
+6739	Are you are you a fan of musicals? Benjamin? Yeah. Is are
+6747	their French or their French? They're
+6749	Adam Curry: miserable. And baby. Lamb is
+6753	Benjamin Bellamy: true. Yeah, many of them are. Regarding
+6758	movies. Check Domi if you heard of him was very famous. And he
+6766	inspired like lala land. And really
+6770	Adam Curry: interesting. When I was a kid, when I was 13 or 12.
+6777	I live in a very small village outside of Amsterdam. And on
+6779	Sundays, they would have a movie for the kids at like the kind of
+6786	town hall ish was what it was. And the movies I liked the most
+6790	were Louie, Louie funa Yeah, and I mean, he had the like the the
+6796	crazy Citro n ds that I think that thing could fly. If I
+6801	remember if I recall, did you ever watch any of those movies?
+6804	Louis?
+6804	Benjamin Bellamy: Yeah, yeah, sure. Sure. That very famous,
+6807	probably most famous. funny movies in France. Yeah.
+6813	Dave Jones: The only a somehow French is it. Francoise Hardy.
+6818	As she was dubbed in my ear, she she ended up in my Spotify
+6822	playlist and I'm, I'm a huge fan. Now. I don't know what
+6825	she's saying. But yeah, we need you to send me some French
+6831	musicals because my wife has been learned. She's, oh, she
+6834	speaks French. She speaks French very well. And she's been
+6838	learning French for years now. And she's, she's very, she
+6842	speaks it very well. So but she was just saying today that she
+6846	wants to do a more immersive French on Fridays. And so she
+6850	wants to basically start listening to French podcasts.
+6854	Basically everything French on Fridays so that she can get get
+6858	deeper into it. And need some musicals for I think she would
+6862	like dicey
+6862	Benjamin Bellamy: Stinky Cheese. Cheese. Yeah, she got she can
+6866	watch crystal Funabashi movies. Record good.
+6872	Dave Jones: Let's see we get say that was Kevin Bay. Thank you.
+6875	Kevin guna Gomez into pod verse 3456 sets congrats with the
+6880	impressive stats guys. Hopefully we can get over the 69 million
+6884	sets in 2024. Thank you, man, Franco. Oh, this is Frank. Yeah,
+6889	this is Franco from cast. ematic 10,000 says coming in, cat suck.
+6894	You have a chance go see Rocky Horror Show hands down my
+6897	favorite musical Cats.
+6900	Adam Curry: And I hate the animal cats. He just hates the
+6902	musical Cats. Yes. Yeah,
+6903	Dave Jones: I agree. Thank you, Frank. Ah, sir Brown of London
+6907	11 948 Mega Israel boost cast ematic he says definitely saw
+6912	Mamma Mia in the West End to Oh, yeah. No, I think it originated
+6918	there. Maybe a comic strip blogger that delimiter 30,000
+6922	Different and he says, How do you Dave and Adam? Oh boy, hold
+6927	on to your dentures for grumpy old Ben's podcast. Join our two
+6930	grumpy hosts Darren, the unemployed O'Neill from the
+6934	windy city of Chicago and Ryan, the Amazon delivery driver
+6938	bemrose from the land of caffeine and rain Seattle, as
+6942	they dive headfirst into the madness of today's world from
+6945	their cozy bunkers. It's like listening to Statler and Waldorf
+6948	from the Muppets, but with sarcasm and less felt more info
+6953	www dot grumpy old bands.com Yo CSB Thank
+6956	Adam Curry: you comics for Blogger always promoting other
+6959	podcasts that's really appreciated. That wasn't that
+6962	should have had an add tag
+6965	Dave Jones: add tag next time CSP funny news your use chat GPT
+6968	to make it whenever
+6969	Adam Curry: whenever people do like adds in value for value
+6973	notes. It didn't never bothers me.
+6976	Dave Jones: No, not me. Never. It's funny because they're fun.
+6979	They take they care. Yeah, they like it is personal. And
+6982	Adam Curry: we don't have to wait for the advertising
+6984	company. Just send us a check. You know, it's immediate.
+6988	Dave Jones: It doesn't have to it doesn't break in halfway
+6990	through a word.
+6991	Adam Curry: Yes. And we don't have to have a meeting with the
+6993	client. I love it. It's really good. It's very good.
+6996	Dave Jones: We got some monthly see. We got we got Satan's law
+6999	your five $5 from Down Under, which seems appropriate.
+7003	Adam Curry: I have not listened to his episode yet. I've been
+7007	resisting I've been resisting Satan.
+7011	Dave Jones: I just I just love that Satan's lawyer lives down
+7013	under this. Thanks so much. Michael Gagan $5 Charles current
+7019	$5 Thank you guys. James Sullivan. $10 Christopher Raymer
+7023	$10 Sean McCune $20 Think shone. Cohen glotzbach Which I'm sure
+7028	I've also mispronounced 1000 times please tell me if I'm
+7031	wrong. $5 Kevin Bay $3.81 from the 2.0 Endowment Fund. Thank
+7036	you. Thank you. And Jordan Dunnville $10
+7041	Adam Curry: Wow, good reads Dave. Oh, and right on time
+7048	beautiful. It now being? What is it? 10? No. 930 in Paris, the
+7055	beautiful lights of Paris over the sand as lovers stroll by the
+7059	waterway. Can you see any of that where you are?
+7064	Benjamin Bellamy: No, because I had to shut down the corroding
+7067	to make sure there is no April. So I see nothing.
+7071	Dave Jones: Then just cinder blocks and calling in plaster.
+7074	Benjamin, we
+7075	Adam Curry: appreciate you so much, man. You've been you've
+7077	been at this very, very early in the game. Well, as you said, we
+7080	kind of start at the same time. And you've just been a great
+7084	supporter and we love what you do with Casta bot. One last
+7087	question I had for you Has there ever been or have you considered
+7090	Docker rising this and getting it onto Umbral or my preference
+7094	start nine
+7096	Benjamin Bellamy: it is Deckard. I think you can install custom
+7101	pod on the you know host Docker we have a Kubernetes
+7106	installation and Sybil scraped everything so we have a
+7113	wonderful community doing all that stuff borrows so we don't
+7118	have to do and regarding the umbrella I think it's I don't
+7125	know if someone did it but there there are official Docker images
+7130	so should be pretty easy to do.
+7133	Adam Curry: If anyone out there as it knows what to do, I mean
+7137	if you start nine I would love to have cast the pot and start
+7141	nine because they're going to do open networking soon so you
+7145	won't have to deal with just Tor and I and I I would love to try
+7149	that out here at home so if anyone wants to take that
+7151	Dockerized stuff and package it up which is a little bit beyond
+7153	my paygrade I think it'd be great I will promote it that's
+7156	for sure.
+7157	Dave Jones: Cast a pod on our on the on the on the umbrella or
+7161	the start nine plus IPFS podcasting for distribution
+7164	Adam Curry: really a great win, win win win it will be
+7167	phenomenal. Absolutely.
+7169	Benjamin Bellamy: PFS won't be that easy. On the other hand,
+7172	yeah,
+7172	Adam Curry: we already have IPFS podcasting.
+7175	Dave Jones: It already works you know Yeah, so
+7177	Adam Curry: where are you been? Man
+7183	Dave Jones: we got it. Have you Yeah, have you seen that working
+7187	been?
+7189	Benjamin Bellamy: I had a quick look.
+7192	Dave Jones: Yeah, you check it out. It's it's good but like for
+7195	for somebody who's hosting out of their house and can't afford
+7199	it would just fall down on the, you know, the bandwidth demand.
+7203	That's, that's a great solution. Yeah.
+7207	Benjamin Bellamy: The thing is, it requires quite a bunch of
+7213	refactoring castparts which is why we had a deeper look into
+7219	that yet.
+7221	Dave Jones: So with Pell You mean for you mean to put the
+7222	prefix in? Yeah. Oh, I see what you mean. Okay. Yeah. That makes
+7229	it well, I guess the Yeah. Because you're, you're uploading
+7231	directly, okay. Yes. What you make is you'd have to, you'd
+7235	have to put the D enclosure on a CDN and then put the prefix in.
+7239	Yeah, we'd have
+7240	Benjamin Bellamy: to change some stuff. First. Yeah. But we'll
+7244	get there.
+7245	Adam Curry: No doubt. I mean, this is what's so beautiful.
+7247	It's like there's no rush. We'll get there. When we get there.
+7250	The podcast is gonna be around for a long after we're gone.
+7254	That's the part that I love, love knowing. And
+7257	Dave Jones: don't ever feel bad or apologize for having a long
+7260	to do list. Because if your to do list is too short, that's
+7263	when you burn out.
+7266	Adam Curry: All right, gentlemen, Benjamin. Thank you
+7268	very much. We appreciate you.
+7270	Benjamin Bellamy: Thank you. Thank you. Thank you. I'd like
+7272	to add two things. If, of course, follow me of course.
+7277	First, there's one subject that we couldn't talk about is the
+7281	podcasting 2.0 logo, so we'll have to do that some other time.
+7286	Because Daniel JD always asked me if I could have a look and
+7291	make a nice logo for this. I don't know if you could see the
+7295	thread on Mastodon I have not Yeah. And last I do eat snails
+7306	and frogs
+7310	Adam Curry: you know what we actually eat snails here in
+7312	Texas. It a Bavarian restaurant Believe it or not. So I'm with
+7317	you on that. I'd like to ask our go the frog we've
+7320	Dave Jones: been we've been in frogs and Alabama Yeah. Before a
+7323	year before
+7324	Adam Curry: France Yes. Exactly. Oh
+7326	Dave Jones: yeah. With frog frog gig frog Gagan is a Do you know
+7330	frog Gagan? Do you know that bit now? Frog gigging is you take a
+7336	little it's like a spear and it has like a trident on the end of
+7340	it with three prongs. Yeah, you get frog gig and then you get
+7345	you go and you just pop one of them in great and throw them all
+7349	in a bucket and then you come back and cut their legs off and
+7351	eat them.
+7352	Adam Curry: See See we're not barbarians here. No. I knew that
+7358	we get we eat snails we eat frog we also eat squirrels. But
+7362	that's maybe for the foreign for another another episode. We have
+7367	been known to eat a squirrel or two roadkill. Roadkill frog
+7371	Gigan Alright everybody. Thank you so much, brother, Dave.
+7374	Thank you have a great weekend, my brother and don't worry about
+7377	that to do list. I'll see you guys okay. Viva la que viva la
+7382	podcast. Thank you very much Benjamin. We love you, man. And
+7386	of you too. Thank you very much to everybody in the chat room,
+7389	which is known as the boardroom we convert it. We'll be back
+7392	next week with another episode of podcasting 2.0.
+7413	Unknown: You have been listening to podcasting 2.0 Visit podcasts
+7417	index.com. For more information,
+7420	go podcast.
+7423	Benjamin Bellamy: James Cridland will get you
