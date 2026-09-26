@@ -94,6 +94,10 @@ regenerate() {
 
 regenerate mentions scripts/update-mentions.mjs
 regenerate timeline scripts/update-timeline.mjs
+# The transcript search's corpus. Same caption cache as the mentions, so a new
+# episode's text reaches the search on the run that cites it. It rewrites only
+# the episodes whose text moved, and never deletes one merely absent from the cache.
+regenerate transcripts scripts/update-transcripts.mjs
 
 # Nothing git can see means the vault change was to a file that is not published
 # (a template, a daily note, a note marked publish: false) and no source moved.

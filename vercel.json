@@ -13,5 +13,8 @@
       "source": "/data/(.*)",
       "headers": [{ "key": "cache-control", "value": "public, max-age=300, must-revalidate" }]
     }
-  ]
+  ],
+  "functions": {
+    "api/search.js": { "includeFiles": "data/transcripts/**" }
+  }
 }

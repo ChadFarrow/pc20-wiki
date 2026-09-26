@@ -227,6 +227,18 @@ pre code {
   line-height: 1.4;
 }
 
+.search__transcripts {
+  margin-top: 0.25rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 0.25rem;
+}
+
+.search__results li.search__transcripts a {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--accent);
+}
+
 .search__empty {
   padding: 0.6rem;
   color: var(--ink-soft);
@@ -1048,6 +1060,13 @@ pre code {
     font-size: 0.72rem;
   }
 
+  /* A fourth link does not fit one row at 390px: the search box shrank to
+     nothing. On a phone the transcripts are reached from the search dropdown's
+     last row instead, which is where a reader looking for something already is. */
+  .masthead__nav a.masthead__wide {
+    display: none;
+  }
+
   /* GRAPH and QUEUE measured 42x20, under the 44px touch minimum. The padding is
      free here: the search input already sets the height of the row. */
   .masthead__nav a {
@@ -1175,6 +1194,217 @@ pre code {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.82em;
   color: var(--ink-soft);
+}
+
+/* ---------- transcripts ---------- */
+
+.page--transcripts {
+  /* One column, like the timeline: the results are the page. */
+  display: block;
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
+.transcripts__lede {
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  margin: 0 0 1.4rem;
+}
+
+.tsearch {
+  margin: 0 0 0.8rem;
+}
+
+.tsearch__label {
+  display: block;
+  margin: 0 0 0.35rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+}
+
+.tsearch__row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tsearch__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  font: inherit;
+  font-size: 1.05rem;
+  padding: 0.55rem 0.9rem;
+  color: var(--ink);
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+}
+
+.tsearch__input:focus,
+.tsearch__go:focus-visible,
+.tsearch__more:focus-visible,
+.tsearch__back:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.tsearch__go {
+  flex: none;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0 1.1rem;
+  color: var(--paper);
+  background: var(--accent);
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.tsearch__go:hover {
+  background: var(--accent-soft);
+}
+
+.tsearch__status {
+  min-height: 1.6em;
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+.tsearch__results {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+}
+
+.tsearch__episode {
+  padding: 1rem 1.2rem;
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+}
+
+.tsearch__episode + .tsearch__episode {
+  margin-top: 0.8rem;
+}
+
+.tsearch__ep {
+  margin: 0 0 0.45rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+}
+
+.tsearch__ep strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.tsearch__count {
+  color: var(--ink-faint);
+}
+
+.tsearch__moments {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tsearch__moments li {
+  /* The timestamp is a fixed-width rail, as in the mentions list. */
+  display: grid;
+  grid-template-columns: 4.6rem 1fr;
+  gap: 0.6rem;
+  align-items: baseline;
+  padding: 0.3rem 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.tsearch__moments li + li {
+  border-top: 1px dashed var(--rule);
+}
+
+.tsearch__at {
+  display: inline-block;
+  min-height: 24px;
+  padding: 0.1rem 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.tsearch__text {
+  overflow-wrap: anywhere;
+}
+
+.tsearch__text mark {
+  color: inherit;
+  background: color-mix(in srgb, var(--accent-soft) 28%, transparent);
+  border-radius: 2px;
+  padding: 0 0.1em;
+}
+
+.tsearch__more,
+.tsearch__back {
+  min-height: 28px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.8rem;
+  color: var(--accent);
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.tsearch__more {
+  margin-top: 0.55rem;
+}
+
+.tsearch__more:hover,
+.tsearch__back:hover {
+  border-color: var(--accent);
+}
+
+.tsearch__cap {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--ink-faint);
+}
+
+.transcripts__source {
+  margin-top: 2.4rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.transcripts__source p {
+  margin: 0 0 0.6rem;
+}
+
+.transcripts__source ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+@media (max-width: 34rem) {
+  .tsearch__episode {
+    padding: 0.85rem 0.9rem;
+  }
+
+  .tsearch__moments li {
+    grid-template-columns: 1fr;
+    gap: 0.1rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -20,7 +20,7 @@ import { createServer } from 'node:http';
 import { spawn } from 'node:child_process';
 import { readFile, writeFile, mkdir, rm } from 'node:fs/promises';
 import { extname, join, resolve, dirname, normalize } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = resolve(ROOT, 'public');
@@ -55,10 +55,23 @@ const TYPES = {
   '.txt': 'text/plain',
 };
 
+/**
+ * The transcript search is the one route that is not a file. Locally it is
+ * answered by the real function in api/search.js, reading the real corpus, so
+ * the check drives the same code Vercel runs.
+ */
+async function searchApi(req, res) {
+  const { GET } = await import(pathToFileURL(join(ROOT, 'api', 'search.js')).href);
+  const response = await GET(new Request(new URL(req.url, 'http://localhost')));
+  res.writeHead(response.status, Object.fromEntries(response.headers));
+  res.end(Buffer.from(await response.arrayBuffer()));
+}
+
 function serve() {
   const server = createServer(async (req, res) => {
     try {
       const url = new URL(req.url, 'http://localhost');
+      if (url.pathname.startsWith('/api/search')) return await searchApi(req, res);
       // Decide this before joining — join() drops the trailing slash that says
       // "this is a directory".
       const pathname = decodeURIComponent(url.pathname);
@@ -173,6 +186,13 @@ async function main() {
     client = await connect(target.webSocketDebuggerUrl);
     const { evaluate, send } = client;
     await send('Page.enable');
+    // Records an uncaught error or rejection on every page loaded after this, so
+    // the "no errors" checks below have something to read.
+    await send('Page.addScriptToEvaluateOnNewDocument', {
+      source: `window.__err = false;
+        addEventListener('error', () => { window.__err = true; });
+        addEventListener('unhandledrejection', () => { window.__err = true; });`,
+    });
 
     const go = async (path) => {
       await send('Page.navigate', { url: `${ORIGIN}${path}` });
@@ -237,6 +257,14 @@ async function main() {
     await type('zzzznothingmatches');
     await sleep(200);
     check('an empty result says so', await evaluate('!!document.querySelector(".search__empty")'));
+
+    await type('podping');
+    await sleep(200);
+    check(
+      'the header search offers the transcripts',
+      (await evaluate('document.querySelector("#search-results .search__transcripts a")?.getAttribute("href")')) ===
+        '/transcripts/?q=podping',
+    );
 
     await evaluate('document.getElementById("search-input").dispatchEvent(new KeyboardEvent("keydown",{key:"Escape",bubbles:true}))');
     await sleep(100);
@@ -364,6 +392,84 @@ async function main() {
     await go('/queue/');
     check('the writing queue page renders', (await evaluate('document.querySelectorAll(".queue__item").length')) > 0);
     await shoot('queue');
+
+    // ---- transcripts ----
+    await go('/transcripts/');
+    const waitFor = async (expression, tries = 80) => {
+      for (let attempt = 0; attempt < tries; attempt++) {
+        if (await evaluate(expression)) return true;
+        await sleep(100);
+      }
+      return false;
+    };
+    const tsearch = (text) =>
+      evaluate(`{
+        document.getElementById('tsearch-q').value = ${JSON.stringify(text)};
+        document.getElementById('tsearch').requestSubmit();
+      }`);
+    const status = () => evaluate('document.getElementById("tsearch-status").textContent');
+
+    await tsearch('podping');
+    // The first query pays for loading the whole corpus.
+    await waitFor('document.querySelectorAll(".tsearch__episode").length > 0', 150);
+    const groups = await evaluate('document.querySelectorAll(".tsearch__episode").length');
+    check('the transcript search returns episodes', groups > 0, `${groups} episodes shown`);
+    check('the status counts every match, not just the rows shown', /^[\d,]+ matches in [\d,]+ episodes/.test(await status()), await status());
+    const at = await evaluate('document.querySelector(".tsearch__at")?.getAttribute("href")');
+    check('a transcript result opens the audio at its moment', /^https:\/\/.+\.mp3#t=\d+$/.test(at ?? ''), at);
+    const marks = await evaluate('[...document.querySelectorAll(".tsearch__text mark")].map((m) => m.textContent.toLowerCase().replace(/[^a-z0-9]/g, ""))');
+    check(
+      'every highlight is the query as the transcriber wrote it',
+      marks.length > 0 && marks.every((m) => m === 'podping'),
+      `${marks.length} marks`,
+    );
+    check('the address carries the query, so a result can be shared', (await evaluate('location.search')) === '?q=podping');
+    await shoot('transcripts');
+
+    const more = await evaluate('document.querySelector(".tsearch__more")?.textContent ?? null');
+    if (more) {
+      await evaluate('document.querySelector(".tsearch__more").click()');
+      await waitFor('/ in E\\d+\\. /.test(document.getElementById("tsearch-status").textContent)');
+      const episodes = await evaluate('new Set([...document.querySelectorAll(".tsearch__ep strong")].map((e) => e.textContent)).size');
+      check('one episode can be opened in full', episodes === 1, `${more} → ${await status()}`);
+    } else {
+      check('one episode can be opened in full', false, 'no episode offered "Show all"');
+    }
+
+    await tsearch('ab');
+    await sleep(100);
+    check('a query too short to run says why', /at least 3/.test(await status()), await status());
+
+    await tsearch('zzqxjkvw');
+    await waitFor('/No matches/.test(document.getElementById("tsearch-status").textContent)');
+    check('a transcript search with no matches says so', /No matches/.test(await status()), await status());
+    check('no errors on the transcripts page', !(await evaluate('window.__err === true')));
+
+    // A phone, emulated properly: --window-size only crops a desktop layout.
+    await send('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 3, mobile: true });
+    await go('/transcripts/?q=value%20for%20value');
+    await waitFor('document.querySelectorAll(".tsearch__episode").length > 0', 150);
+    const overflow = await evaluate('document.documentElement.scrollWidth - document.documentElement.clientWidth');
+    // Name the culprits, innermost first, so a failure says where to look.
+    const wide = await evaluate(`[...document.querySelectorAll('body *')]
+      .filter((el) => el.getBoundingClientRect().right > document.documentElement.clientWidth + 0.5)
+      .filter((el) => ![...el.children].some((c) => c.getBoundingClientRect().right > document.documentElement.clientWidth + 0.5))
+      .slice(0, 3)
+      .map((el) => el.tagName.toLowerCase() + (el.className ? '.' + String(el.className).split(' ')[0] : '') + ' "' + el.textContent.trim().slice(0, 20) + '"')`);
+    check('the transcripts page fits a phone with no sideways scroll', overflow <= 0, `${overflow}px over${wide.length ? `: ${wide.join(', ')}` : ''}`);
+    // WCAG 2.5.8: 24 × 24 CSS px for anything tapped on its own.
+    const small = await evaluate(`[...document.querySelectorAll('.masthead__nav a, .tsearch__go, .tsearch__more, .tsearch__at')]
+      .filter((el) => el.getClientRects().length > 0)
+      .map((el) => [el.textContent.trim(), el.getBoundingClientRect()])
+      .filter(([, r]) => r.width < 24 || r.height < 24)
+      .map(([text, r]) => text + ' ' + Math.round(r.width) + 'x' + Math.round(r.height))`);
+    check('the transcripts page has no tap target under 24px', small.length === 0, small.slice(0, 4).join(', '));
+    await shoot('transcripts-phone');
+    const searchWidth = await evaluate('document.querySelector(".masthead .search").getBoundingClientRect().width');
+    // A fourth nav link once squeezed this to 0px. The design leaves it ~73px at
+    // 390px; 48px is the floor below which it stops being a place to type.
+    check('the header search is not squeezed out on a phone', searchWidth >= 48, `${Math.round(searchWidth)}px wide`);
+    await send('Emulation.clearDeviceMetricsOverride');
   } finally {
     client?.close();
     server?.close();

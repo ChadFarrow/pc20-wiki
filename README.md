@@ -87,6 +87,7 @@ An allowlist, because the vault is personal and the site is not:
 | `npm run lint:notes`     | Build with warnings fatal — a deliberate tidy-up pass          |
 | `npm run update:mentions`| Rebuild `data/mentions.json` from the sibling repos            |
 | `npm run update:timeline`| Rebuild `data/timeline.json` from the curated milestones       |
+| `npm run update:transcripts`| Rebuild `data/transcripts/` (the search corpus) from `captions/` |
 | `npm test`               | Unit tests plus an end-to-end build with a link check          |
 | `npm run check:browser`  | Drives the built site in headless Chrome (`-- --shots` for PNGs) |
 | `npm run serve`          | Serve `public/` at http://127.0.0.1:8088                       |
@@ -180,13 +181,14 @@ somebody saying the word — so four gates cut roughly 24,000 raw hits down to 1
 page shows at most 4 transcript episodes under at most 8 curated ones. The rules and the
 measurements behind each threshold are in `CLAUDE.md`.
 
-**The captions are not in the repo.** `npm run fetch:captions` fills a gitignored `captions/`
-cache (264 files, ~39 MB) from the show's server; `update-mentions` then reads it as a plain
-directory of files, like every other source. Each path is overridable by flag or environment
+**The raw captions are not in the repo.** `npm run fetch:captions` fills a gitignored
+`captions/` cache (270 files, ~39 MB) from the NAS mirror or the show's server;
+`update-mentions` then reads it as a plain directory of files, like every other source. The
+cue text alone is committed, for the transcript search — see below. Each path is overridable by flag or environment
 variable, and every one is printed before it is read.
 
-**Regeneration runs on every publish.** The launchd agent now runs `update:mentions` and
-`update:timeline` before it builds, so an alias added in Obsidian reaches the site on the
+**Regeneration runs on every publish.** The launchd agent now runs `update:mentions`,
+`update:timeline` and `update:transcripts` before it builds, so an alias added in Obsidian reaches the site on the
 same run. A sibling checkout that is missing is logged and skipped, and the committed data
 stands; the build still warns when it notices drift.
 
@@ -231,12 +233,35 @@ which is dropped rather than published: a placeholder on the page is worse than 
 entry. Most of those cannot be written from the archive at all, since chapter titles stop
 at E145 and show notes at E100, and 117 milestones fall outside both.
 
+## Transcript search
+
+`/transcripts/` searches every word said on the show — 258 episodes, 482,049 caption cues —
+and links each result into the audio at that second. It is the one part of the site that
+is not static: the text is 27 MB, so `api/search.js` runs as a Vercel function, holds the
+corpus in memory, and sends back only the matching rows (the newest 100, with a count for
+every episode, and all of one episode on request). A query takes 5–40 ms once the corpus is
+loaded, and the first one after an idle spell about half a second. Answers are cacheable at
+the CDN for a day.
+
+It matches the way the mentions do: five squashed characters or more ignore spaces and
+punctuation, so *podping* finds "pod ping"; anything shorter matches whole words, so *Tor*
+does not find "story". The page names every episode it cannot search, and why.
+
+The corpus is `data/transcripts/NNN.txt` — one file per episode, one cue per line as
+`seconds<TAB>text` — plus `index.json` with each episode's title, date and audio link.
+It is committed because the function needs it and Vercel never sees `captions/`, and it is
+split per episode so a new episode is a new file rather than a new 10 MB blob in history.
+`update:transcripts` writes only what moved, drops stubs and the duplicated pairs the same
+way `update:mentions` does, and never deletes an episode that is merely missing from the
+cache.
+
 ## Deploying
 
 Live at **https://pc20-wiki.vercel.app**.
 
 Vercel builds `main` on every push, configured by `vercel.json` (`npm run build` →
-`public/`, `cleanUrls`, `trailingSlash`). Canonical URLs come from `SITE_URL`, falling
+`public/`, `cleanUrls`, `trailingSlash`, and `includeFiles` so the search function ships
+with `data/transcripts/`). Canonical URLs come from `SITE_URL`, falling
 back to the Vercel production host — so a custom domain needs `SITE_URL` set, and
 nothing else.
 

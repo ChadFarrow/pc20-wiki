@@ -53,7 +53,8 @@ test('the build produces a page for every note', () => {
   assert.ok(pages.has('queue/'), 'the writing queue exists');
   assert.ok(pages.has('graph/'), 'the graph page exists');
   assert.ok(pages.has('timeline/'), 'the timeline page exists');
-  assert.equal(pages.size, noteCount + 4, 'every note, plus home, queue, graph and timeline');
+  assert.ok(pages.has('transcripts/'), 'the transcript search page exists');
+  assert.equal(pages.size, noteCount + 5, 'every note, plus home, queue, graph, timeline and transcripts');
 });
 
 test('every internal link lands on a page that exists', () => {
@@ -529,4 +530,61 @@ test('a milestone with written context shows it on the timeline', async () => {
   assert.equal((html.match(/class="entry__note"/g) ?? []).length, written.length);
   // No entry still carries the seeded placeholder into the published page.
   assert.doesNotMatch(html, /TODO: add context/);
+});
+
+test('the transcripts page states the coverage the corpus actually has', async () => {
+  const doc = JSON.parse(await readFile(join(ROOT, 'data', 'transcripts', 'index.json'), 'utf8'));
+  const html = pages.get('transcripts/');
+
+  assert.ok(html, 'the build produces /transcripts/');
+  assert.match(html, new RegExp(`${doc.coverage.episodes} episodes with a transcript, up to E${doc.coverage.newest}`));
+  assert.match(html, /<form class="tsearch" id="tsearch"/);
+  assert.match(html, /src="\/assets\/transcripts\.js"/);
+});
+
+test('every episode the search cannot see is named on the transcripts page', async () => {
+  // "No results" and "no transcript" are different facts, and the page is the
+  // only place a reader can tell them apart.
+  const { coverage } = JSON.parse(await readFile(join(ROOT, 'data', 'transcripts', 'index.json'), 'utf8'));
+  const html = pages.get('transcripts/');
+  const hidden = [...coverage.stubs, ...coverage.duplicates, ...coverage.unpublished];
+  for (const episode of hidden) assert.match(html, new RegExp(`\\bE${episode}\\b`), `E${episode} is not named`);
+});
+
+test('the transcripts page is reachable from every page', () => {
+  for (const [path, html] of pages) {
+    assert.match(html, /href="\/transcripts\/"/, `${path} has no link to the transcripts`);
+  }
+});
+
+test('the transcript corpus holds exactly the episodes its index describes', async () => {
+  const dir = join(ROOT, 'data', 'transcripts');
+  const { coverage, episodes } = JSON.parse(await readFile(join(dir, 'index.json'), 'utf8'));
+  const files = (await readdir(dir)).filter((name) => /^\d+\.txt$/.test(name));
+  const numbers = files.map((name) => Number(name.slice(0, -4)));
+
+  assert.equal(files.length, coverage.episodes);
+  assert.equal(Math.max(...numbers), coverage.newest);
+  // A stub or a duplicate must never be searchable: one of each duplicate pair
+  // is not that episode's transcript.
+  for (const episode of [...coverage.stubs, ...coverage.duplicates]) {
+    assert.ok(!numbers.includes(episode), `E${episode} is searchable but should not be`);
+  }
+  // Every searchable episode can be labelled and linked.
+  for (const episode of numbers) assert.ok(episodes[episode]?.a, `E${episode} has no audio link`);
+});
+
+test('the build still works when the transcript corpus has not been generated', async () => {
+  const out = await mkdtemp(join(tmpdir(), 'pc20-notranscripts-'));
+  const { stdout, stderr } = await run(
+    'node',
+    ['scripts/build.mjs', '--out', out, '--transcripts', join(out, 'nothing-here.json')],
+    { cwd: ROOT },
+  );
+  const built = await readdir(out);
+  await rm(out, { recursive: true, force: true });
+
+  assert.match(stderr + stdout, /data\/transcripts\/ is missing/);
+  assert.match(stdout, /built \d+ notes/);
+  assert.ok(!built.includes('transcripts'), 'a page was built with no corpus behind it');
 });

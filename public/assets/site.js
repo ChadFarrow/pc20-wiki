@@ -88,8 +88,16 @@
       return;
     }
 
+    // The notes are one question; what was said on the show is another. The row
+    // is last so arrow keys reach it after the notes, and first-by-default only
+    // when no note matched — then Enter goes straight to the transcripts.
+    const transcripts =
+      squash(query.toLowerCase()).length >= 3
+        ? `<li role="option" class="search__transcripts"><a href="/transcripts/?q=${encodeURIComponent(query)}">Search the transcripts for “${escape(query)}” →</a></li>`
+        : '';
+
     if (!matches.length) {
-      results.innerHTML = `<li class="search__empty">No note matches “${query.replace(/[<&]/g, '')}”.</li>`;
+      results.innerHTML = `<li class="search__empty">No note matches “${query.replace(/[<&]/g, '')}”.</li>${transcripts}`;
     } else {
       results.innerHTML = matches
         .map(
@@ -106,7 +114,7 @@
             <span class="search__summary">${escape(note.summary)}</span>
           </a></li>`,
         )
-        .join('');
+        .join('') + transcripts;
     }
     results.hidden = false;
     input.setAttribute('aria-expanded', 'true');

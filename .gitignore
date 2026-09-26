@@ -12,12 +12,14 @@ public/data/
 public/graph/
 public/queue/
 public/timeline/
+public/transcripts/
 
 # content/ is a synced copy of the Obsidian vault and IS committed:
 # Vercel has no access to iCloud, so the build reads only what is in the repo.
 
-# Caption cache — ~39 MB (264 files), filled by scripts/fetch-captions.mjs, never committed.
-# What gets committed is the derived data/mentions.json, same as everything else.
+# Caption cache — ~39 MB (270 files), filled by scripts/fetch-captions.mjs, never committed.
+# What gets committed is derived from it: data/mentions.json, and data/transcripts/
+# (the cue text alone, one file per episode) for the transcript search.
 captions/
 
 # Screenshots from `npm run check:browser -- --shots`

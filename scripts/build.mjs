@@ -38,6 +38,7 @@ import {
   renderQueue,
   renderGraphPage,
   renderTimelinePage,
+  renderTranscriptsPage,
   summarise,
 } from './render.mjs';
 
@@ -52,6 +53,7 @@ const CONTENT = arg('content', 'content');
 const OUT = arg('out', 'public');
 const MENTIONS = arg('mentions', 'data/mentions.json');
 const TIMELINE = arg('timeline', 'data/timeline.json');
+const TRANSCRIPTS = arg('transcripts', 'data/transcripts/index.json');
 const strict = process.argv.includes('--strict');
 
 /*
@@ -193,6 +195,27 @@ async function main() {
     warnings.push('data/timeline.json is missing — run `npm run update:timeline`');
   }
 
+  // The transcript search's corpus. Optional like the others: without it there is
+  // no /transcripts/ page. Its text is read by api/search.js, not by the build —
+  // only the coverage figures are needed here.
+  let transcripts = null;
+  try {
+    transcripts = JSON.parse(await readFile(TRANSCRIPTS, 'utf8'));
+  } catch (err) {
+    if (err.code !== 'ENOENT') throw err;
+    warnings.push('data/transcripts/ is missing — run `npm run update:transcripts`');
+  }
+
+  // Both generators read the same caption cache, so if the mentions have seen a
+  // newer episode than the search has, the search generator was not run.
+  const captionsSeen = mentionsDoc?.sources?.find((source) => source.id === 'captions')?.newest;
+  const searchable = transcripts?.coverage?.newest;
+  if (captionsSeen && searchable && searchable < captionsSeen) {
+    warnings.push(
+      `data/transcripts/ stops at E${searchable} but the captions reach E${captionsSeen} — run \`npm run update:transcripts\``,
+    );
+  }
+
   // A typo'd element name would silently render "0 of 129 apps", which reads as
   // a finding rather than a mistake.
   const elements = knownElements(apps);
@@ -243,7 +266,7 @@ async function main() {
 
   // Generated directories are cleared so a renamed note cannot leave its old
   // page behind, published forever at a URL nothing links to any more.
-  for (const dir of ['notes', 'data', 'queue', 'graph', 'timeline']) {
+  for (const dir of ['notes', 'data', 'queue', 'graph', 'timeline', 'transcripts']) {
     await rm(join(OUT, dir), { recursive: true, force: true });
   }
 
@@ -281,6 +304,7 @@ async function main() {
   await writePage('queue', renderQueue({ nodes: graph.nodes, graph, nodesBySlug, baseUrl: BASE_URL }));
   await writePage('graph', renderGraphPage({ baseUrl: BASE_URL }));
   if (timeline) await writePage('timeline', renderTimelinePage({ timeline, markdown, baseUrl: BASE_URL }));
+  if (transcripts) await writePage('transcripts', renderTranscriptsPage({ transcripts, baseUrl: BASE_URL }));
 
   await mkdir(join(OUT, 'data'), { recursive: true });
   await writeFile(
@@ -340,6 +364,7 @@ ${[
   '/queue/',
   '/graph/',
   ...(timeline ? ['/timeline/'] : []),
+  ...(transcripts ? ['/transcripts/'] : []),
   ...graph.nodes.filter((node) => !node.stub).map((node) => `/notes/${node.slug}/`),
 ]
   .map((path) => `  <url><loc>${BASE_URL}${path}</loc></url>`)
@@ -358,7 +383,8 @@ ${[
     `built ${notes.length} notes, ${stubCount} stub(s), ${graph.edges.length} links` +
       `${withAdoption ? `, ${withAdoption} with adoption data` : ''}` +
       `${withMentions ? `, ${withMentions} with mentions` : ''}` +
-      `${milestones ? `, ${milestones} milestones` : ''} → ${OUT}`,
+      `${milestones ? `, ${milestones} milestones` : ''}` +
+      `${transcripts ? `, ${transcripts.coverage.episodes} searchable transcripts` : ''} → ${OUT}`,
   );
 }
 

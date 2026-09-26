@@ -143,6 +143,7 @@ function siteHeader() {
   </div>
   <nav class="masthead__nav">
     <a href="/timeline/">Timeline</a>
+    <a class="masthead__wide" href="/transcripts/">Transcripts</a>
     <a href="/graph/">Graph</a>
     <a href="/queue/">Queue</a>
   </nav>
@@ -704,6 +705,84 @@ ${siteFooter()}`;
     description: 'What the PC 2.0 Wiki is linked to but has not written yet.',
     canonical: `${baseUrl}/queue/`,
     body,
+  });
+}
+
+/** `[22, 46]` → `E22 and E46`; three or more take commas. */
+function episodeList(numbers) {
+  const names = numbers.map((n) => `E${n}`);
+  return names.length < 3 ? names.join(' and ') : `${names.slice(0, -1).join(', ')} and ${names.at(-1)}`;
+}
+
+/**
+ * The transcript search page.
+ *
+ * The page is static; the search is not. public/assets/transcripts.js sends each
+ * query to api/search.js and draws the rows it gets back, because the text is
+ * 27 MB and a reader should not download it to find one phrase.
+ *
+ * The footnote is load-bearing in the same way as the mentions' source footer:
+ * "no results" has to be distinguishable from "no transcript", so the episodes
+ * the search cannot see are named, each with its reason.
+ */
+export function renderTranscriptsPage({ transcripts, baseUrl }) {
+  const coverage = transcripts.coverage ?? {};
+  const episodes = coverage.episodes ?? 0;
+  const newest = coverage.newest;
+
+  const gaps = [
+    coverage.stubs?.length
+      ? `${episodeList(coverage.stubs)} — the server still has a “Transcript is Processing” placeholder`
+      : null,
+    coverage.duplicates?.length
+      ? `${episodeList(coverage.duplicates)} — the server publishes one transcript under two episode numbers, and nothing says which episode it belongs to`
+      : null,
+    coverage.unpublished?.length ? `${episodeList(coverage.unpublished)} — no transcript was ever published` : null,
+  ].filter(Boolean);
+
+  const body = `${siteHeader()}
+<main class="page page--transcripts">
+  <article class="transcripts">
+    <h1>Transcripts</h1>
+    <p class="transcripts__lede">
+      Search every word said on the show — ${episodes} episode${episodes === 1 ? '' : 's'} with a transcript${
+        newest ? `, up to E${newest}` : ''
+      }. Each result opens the audio at that moment.
+    </p>
+    <form class="tsearch" id="tsearch" action="/transcripts/" method="get" role="search">
+      <label class="tsearch__label" for="tsearch-q">Search the transcripts</label>
+      <div class="tsearch__row">
+        <input type="search" id="tsearch-q" name="q" class="tsearch__input" maxlength="100"
+          placeholder="podping, value for value, Tor…" autocomplete="off" spellcheck="false">
+        <button type="submit" class="tsearch__go">Search</button>
+      </div>
+    </form>
+    <p class="tsearch__status" id="tsearch-status" role="status" aria-live="polite"></p>
+    <ol class="tsearch__results" id="tsearch-results"></ol>
+    <noscript><p class="tsearch__status">The transcript search needs JavaScript.</p></noscript>
+    <div class="transcripts__source">
+      <p>The transcripts are the machine captions the show publishes with each episode, so
+        they carry its mistakes: a name misheard, a compound split in two. Spaces and
+        punctuation are ignored for anything five letters or longer, so <em>podping</em>
+        also finds “pod ping”. Shorter searches match whole words only, so <em>Tor</em> does
+        not find “story”.</p>${
+        gaps.length
+          ? `
+      <p>Not searchable:</p>
+      <ul>${gaps.map((gap) => `<li>${escapeHtml(gap)}</li>`).join('')}</ul>`
+          : ''
+      }
+    </div>
+  </article>
+</main>
+${siteFooter()}`;
+
+  return pageShell({
+    title: `Transcripts — ${SITE_NAME}`,
+    description: `Search the transcripts of ${episodes} episodes of the Podcasting 2.0 podcast, with every result linked to the moment in the audio.`,
+    canonical: `${baseUrl}/transcripts/`,
+    body,
+    extraHead: '<script src="/assets/transcripts.js" defer></script>\n',
   });
 }
 
