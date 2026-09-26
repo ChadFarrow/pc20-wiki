@@ -89,6 +89,7 @@ An allowlist, because the vault is personal and the site is not:
 | `npm run update:timeline`| Rebuild `data/timeline.json` from the curated milestones       |
 | `npm run update:transcripts`| Rebuild `data/transcripts/` (the search corpus) from `captions/` |
 | `npm run episodes`       | Pull new episodes in now and publish them — what the two agents do on their timers |
+| `scripts/make-launcher.sh` | Put "Update PC20 Wiki.command" on the Desktop — `npm run episodes` on a double-click |
 | `npm test`               | Unit tests plus an end-to-end build with a link check          |
 | `npm run check:browser`  | Drives the built site in headless Chrome (`-- --shots` for PNGs) |
 | `npm run serve`          | Serve `public/` at http://127.0.0.1:8088                       |
