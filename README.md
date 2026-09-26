@@ -158,8 +158,8 @@ test/             node --test
 ## Episode mentions
 
 Every note can say which episodes of the show discussed its subject, deep-linked into the
-audio at the moment it came up. That is **949 mentions across 44 of the 60 notes and 220
-episodes**, generated and committed:
+audio at the moment it came up. That is **951 mentions across 45 of the 60 notes and 221
+episodes** (2026-09-26), generated and committed:
 
 ```sh
 npm run update:mentions                        # rewrite data/mentions.json
@@ -174,12 +174,12 @@ the network: chapter titles and show notes from `../pc20-archive`, curated miles
 `../pc20-timeline`, and the clip checklist from `../pc20-clips`. Somebody decided each of
 these was about its subject, which is what makes them the better tier.
 
-*Transcript* — **177 mentions**, quoted and labelled `transcript`, from the show's own
+*Transcript* — **179 mentions**, quoted and labelled `transcript`, from the show's own
 captions. The curated sources stop early: chapter titles reach E145 and show notes E100,
-while the show is at E266. Captions are the only source that reaches, so **40 of the cited
-episodes are cited by nothing else**, and ten notes — `Tor`, `Reverse Proxy`, `Macaroon`,
-`Payment Channel` and six more — have a citation for the first time. They are also the weakest source — a caption line is only
-somebody saying the word — so four gates cut roughly 24,000 raw hits down to 177, and the
+while the show is at E272. Captions are the only source that reaches, so **41 of the cited
+episodes are cited by nothing else**, and eleven notes — `Tor`, `Reverse Proxy`, `Macaroon`,
+`Payment Channel`, `OnlyBoosts` and six more — have a citation for the first time. They are also the weakest source — a caption line is only
+somebody saying the word — so four gates cut roughly 24,000 raw hits down to 179, and the
 page shows at most 4 transcript episodes under at most 8 curated ones. The rules and the
 measurements behind each threshold are in `CLAUDE.md`.
 

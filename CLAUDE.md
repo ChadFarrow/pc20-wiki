@@ -51,7 +51,7 @@ are needed only to regenerate.
 | Repo | What this takes from it |
 |---|---|
 | `pc20-archive` | 2,631 chapter titles with timestamps (eps 12, 23, 68–145) and 100 episodes of show notes (E1–100) |
-| `pc20-timeline` | 204 curated milestones, the era/kind/tag vocabulary in `content/eras.yml`, and `data/episodes.json` (E1–E266) |
+| `pc20-timeline` | 204 curated milestones, the era/kind/tag vocabulary in `content/eras.yml`, and `data/episodes.json` (E1–E272 on 2026-09-26; refreshed Fridays by `refresh-episodes.sh`) |
 | `pc20-clips` | `pc2-clip-checklist.md` (65 flagged moments after dedupe) — and the matching algorithm, ported from `app/search.py` |
 
 ## Architecture
@@ -195,8 +195,8 @@ Matching thousands of hand-written labels against 60 titles goes wrong in ways o
 the output catches. The tests pin the cases already found; the report finds the next one.
 Run it and read it after any change to the rules, then tune `EXTRA_DENY` or vault aliases.
 
-Current output: **949 mentions across 44 of 60 notes and 220 episodes** — 772 curated and
-**177 from the transcripts**, the second tier described below.
+Current output (2026-09-26, captions to E272): **951 mentions across 45 of 60 notes and 221
+episodes** — 772 curated and **179 from the transcripts**, the second tier described below.
 
 ### The transcript tier (`captions-lib.mjs`)
 
@@ -204,12 +204,14 @@ The captions are a **fifth source and a worse one**, and every rule here exists 
 that. A chapter title is somebody deciding "this bit is about X"; a caption line is only
 somebody saying the word. Under the plain matching rules above, 481,956 cues from 256
 episodes produce roughly **24,000 hits — about 31× the entire curated dataset**, and almost
-all of them are worthless. Four gates cut that to 177.
+all of them are worthless. Four gates cut that to 177 on the calibration set (179 on
+2026-09-26, with six more episodes).
 
 **Two cue counts appear below, and they are not a contradiction.** Every calibration number
 in this section was measured over **481,956 cues from 256 episodes** — every file that was
-not a stub, before the duplicate rule existed. The generator now reads **473,986 cues from
-252 episodes**, because four files (50, 51, 248, 249) are two duplicated pairs it drops. The
+not a stub, before the duplicate rule existed. The generator now reads **482,049 cues from
+258 episodes** (to E272 on 2026-09-26): four files (50, 51, 248, 249) are two duplicated pairs
+it drops, and E267–E272 arrived after the calibration. The
 calibration figures stay on the set they were measured over; `data/mentions.json` is the
 authority for what is read today.
 
@@ -257,7 +259,7 @@ a *filter*: a note keeps only the episodes where its hit count is at least `LIFT
 its own mean over the episodes that cleared the dwell floor. Because max ≥ mean always, lift
 can never empty a note, and where counts tie — which a floor of 2 makes the ordinary outcome
 — it does nothing at all and the cap decides alone. Ties go to the **newer** episode, because
-E146–E266 is what nothing else cites.
+E146 onward is what nothing else cites.
 
 Raising lift to 1.5 costs ten notes their only citation, including `Reverse Proxy`, whose one
 line — "reverse proxy on it to basically proxy those WebSocket from Dobby" — is the case the
@@ -298,9 +300,9 @@ drop the talk".
 This held for the curated sources and the transcripts moved it, but only so far. 23 notes had
 no mentions; probing all of them turned up exactly one recoverable by alias (StartOS ←
 `start9`), because chapter titles stop at **E145** and show notes at **E100** and most of
-those tools came up after that. The transcripts reach E266, which is why 41 notes now carry
-one and **40 episodes are cited by nothing else**. **12 of the 56 matchable notes still have
-nothing** — Lightning.Pub, RaspiBlitz, extractlv, NIP-46 and the rest are simply not in any
+those tools came up after that. The transcripts reach E272, which is why 42 notes now carry
+one and **41 episodes are cited by nothing else** (2026-09-26). **11 of the 56 matchable notes
+still have nothing** — Lightning.Pub, RaspiBlitz, extractlv, NIP-46 and the rest are simply not in any
 source. Do not go hunting for more aliases expecting a yield.
 
 ## The timeline
@@ -570,7 +572,8 @@ searched against the raw cues with every gate off. Ten are absent from the archi
 spelling tried — the show has never said "RaspiBlitz", "Bitcoin Connect", "NIP-46" or
 "extractlv" once. Two match only as false positives that the gates correctly reject:
 `Lightning.Pub` on "lightning PUBKEY" and "a real lightning pub", `OnlyBoosts` on the ordinary
-phrase "only boosts". The exception is **Podping Gossipwriter**, E251 at 3346s: "this new
+phrase "only boosts". (OnlyBoosts has since been named for real: E267 and E272 say
+"onlyboosts.social", and it gained its first two citations on 2026-09-26.) The exception is **Podping Gossipwriter**, E251 at 3346s: "this new
 gossip writer into the pod ping" is a true mention, and it is invisible twice over — the
 title squashes to `podpinggossipwriter` and never meets the split words, and it is a lone hit,
 which gate 3 exists to drop. An alias of `Gossipwriter` fixes the first half. Nothing fixes

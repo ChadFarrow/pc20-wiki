@@ -12,7 +12,7 @@
  *
  * This is the ONLY file here that uses the network, and that is the point:
  * update-mentions.mjs reads files and nothing else, the same contract it has for
- * the other four sources. captions/ is gitignored — 264 files at ~150 KB
+ * the other four sources. captions/ is gitignored — 270 files at ~150 KB
  * is about 39 MB, and what gets committed is the derived JSON, as it already is for
  * mentions and the timeline.
  *
@@ -84,7 +84,7 @@ const name = (episode) => `PC20-${episode < 10 ? `0${episode}` : episode}-Captio
  * the cache stays short at exactly the episodes most likely to have finished since —
  * eight of them when this was written. Reading the file to tell the two apart costs
  * one read per episode and lets an ordinary run heal the cache. `--force` could only
- * do it by pulling all 264 files down again.
+ * do it by pulling all 270 files down again.
  */
 async function state(target) {
   const text = await readFile(target, 'utf8').catch(() => null);
@@ -114,7 +114,7 @@ async function main() {
     if (held === 'ready') continue;
     if (held === 'stub') retried += 1;
 
-    // One bad episode must never end a run of ~266 sequential requests: a DNS
+    // One bad episode must never end a run of ~270 sequential requests: a DNS
     // failure, a refused connection or a reset partway through takes down the
     // whole process otherwise, and report() never runs — so the operator learns
     // nothing about what did land. The cache itself is always fine either way
