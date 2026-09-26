@@ -422,25 +422,22 @@ agent (installed with the publish agent by `scripts/install-agent.sh`):
    episode line changed — `build-episodes.mjs` restamps `generated` on every run, so a raw
    diff always differs. It pushes only when that commit is the only one ahead of origin, so
    the author's unpushed work is never published by a timer;
-2. runs `fetch-captions.mjs`, which copies from the NAS where it can and asks the server for
-   the rest.
+2. runs `fetch-captions.mjs`, which asks the show's server for what is missing or a stub.
 
 It never builds or publishes. `auto-publish.sh` runs every generator on every pass, so the
 new episode reaches the mentions and the transcript search within 15 minutes of arriving
 here. Log: `~/Library/Logs/pc20-wiki-episodes.log`; quiet runs log nothing.
 
-**It is separate from `auto-publish.sh` because of the NAS.** It reads an SMB share and two
-remote servers, and any of them can stall; `auto-publish.sh` holds a lock while it runs, so a
-stall inside it would stop notes publishing too. Every step here runs under a `perl alarm`
-limit (macOS has no `timeout`). A read blocked inside the kernel on a dead SMB mount can
-outlast the alarm; launchd then simply does not start the next run until it ends, and
-publishing is unaffected.
+**It is separate from `auto-publish.sh` because it uses the network.** It talks to two
+remote servers, and either can stall; `auto-publish.sh` holds a lock while it runs, so a stall
+inside it would stop notes publishing too. Every step here runs under a `perl alarm` limit
+(macOS has no `timeout`), and each caption request has its own 30 s limit.
 
-**The NAS is an accelerator, not a dependency.** Unmounted, the fetcher goes to the server
-for everything and the run logs one line saying so. The share itself is kept current by
-`pc20-archive/sync-nas.mjs` (its own agent, every 6 hours), which writes through a
-dot-prefixed temp file that `captionEpisode()` never matches, so this job cannot copy a
-half-downloaded file off the share.
+**Nothing in this repo reads the NAS.** `/Volumes/pc20-archive` is the owner's personal
+backup of the show's files, kept by `pc20-archive/sync-nas.mjs` on its own agent. The wiki
+used to copy captions from it first; that was removed on 2026-09-26 at the owner's request,
+so an unmounted, stale or hung share can never change what the public site publishes. Do not
+add a NAS read back as an optimisation — the saving is one request per new episode.
 
 ## Staleness
 
@@ -515,10 +512,11 @@ They were not, and the section that said so is what the transcript tier replaced
   `https://mp3s.nashownotes.com/PC20-<NN>-Captions.srt` (single digits zero-padded — `PC20-7`
   is a 404, `PC20-07` is not), skipping what is present **and usable** — a stub is asked for
   again, and the run says how many cleared; `--force` refetches everything. It is the only
-  script here that touches the network, and it prefers `/Volumes/pc20-archive` if that share
-  is mounted. It asks for episodes up to the newest in `pc20-timeline/data/episodes.json`;
-  that was a literal `266` until 2026-09-26, and only the NAS copy was hiding it — with the
-  share unmounted, no later episode would ever have been fetched. It writes through a temp
+  script here that touches the network, and it reads nothing from the NAS (see *New
+  episodes arrive on their own*). It asks for episodes up to the newest in
+  `pc20-timeline/data/episodes.json`; that was a literal `266` until 2026-09-26, and only a
+  copy off the NAS was hiding it — from the server alone, no later episode would ever have
+  been fetched. It writes through a temp
   file and a rename, because `auto-publish.sh` reads the cache on its own schedule, and every
   request has a 30 s limit.
 - **The generator still reads only files.** `update-mentions.mjs` reads `captions/` exactly

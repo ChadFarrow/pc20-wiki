@@ -16,9 +16,11 @@
  * is about 39 MB, and what gets committed is the derived JSON, as it already is for
  * mentions and the timeline.
  *
- * If the NAS share is mounted, copy from it first — it is the same data where it has
- * it, and free. It is not authoritative: it lags the server and carries the same
- * stubs, so whatever it cannot supply is still fetched.
+ * The server is the only source. The NAS share at /Volumes/pc20-archive holds the
+ * same files, and this once copied from it first. It no longer does: the share is
+ * the owner's personal backup of what is on the internet, not an input to a public
+ * site, and a backup that is unmounted, stale or hung must never decide what the
+ * wiki publishes. The cost is one request per new episode.
  */
 import { mkdir, readdir, readFile, rename, writeFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
@@ -31,7 +33,6 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = resolve(
   arg('captions') ?? arg('out') ?? process.env.PC20_CAPTIONS ?? join(ROOT, 'captions'),
 );
-const NAS = process.env.PC20_NAS ?? '/Volumes/pc20-archive';
 const HOST = 'https://mp3s.nashownotes.com';
 const EPISODES = sourcePath(ROOT, 'episodes', 'PC20_TIMELINE_EPISODES', '../pc20-timeline/data/episodes.json');
 
@@ -41,8 +42,8 @@ const REQUEST_TIMEOUT_MS = 30_000;
 /**
  * The newest episode to ask for.
  *
- * This was a literal 266 once. The NAS copy happened to carry E267-E272, so the
- * cache kept up — but with the share unmounted, no episode past the literal would
+ * This was a literal 266 once. A copy off the NAS happened to carry E267-E272, so
+ * the cache kept up — but from the server alone, no episode past the literal would
  * ever have been fetched, and the ceiling warning in report() was the only sign.
  * The episode list in pc20-timeline is rebuilt from the live feed, so it knows.
  */
@@ -91,56 +92,12 @@ async function state(target) {
   return isStub(text) ? 'stub' : 'ready';
 }
 
-/**
- * Copy what the share already holds, so the network is asked for less.
- *
- * A pre-fill, not a substitute. The share is a copy someone made, and a copy goes
- * stale: when this was written it held 257 caption files to the cache's 264, missing
- * E260-E266 entirely, and carried the same eight "Transcript is Processing" stubs.
- * It is also no help for a stub — a stub there overwrites a stub here and nothing
- * moves. So take what is useful and let main() go to the server for the rest.
- */
-async function fromNas() {
-  try {
-    const files = (await readdir(NAS)).filter((file) => captionEpisode(file) !== null);
-    if (!files.length) return 0;
-    let copied = 0;
-    let stale = 0;
-    for (const file of files) {
-      const target = join(OUT, file);
-      if (!flag('force') && (await state(target)) === 'ready') continue;
-
-      // A stub for a stub is not a copy worth making: it rewrites the file, leaves
-      // the cache exactly as short as it was, and reports as progress.
-      const body = await readFile(join(NAS, file), 'utf8');
-      if (isStub(body)) {
-        stale += 1;
-        continue;
-      }
-      await writeAtomic(target, body);
-      copied += 1;
-    }
-    console.log(`copied ${copied} file(s) from ${NAS}`);
-    if (stale) console.log(`${stale} still a stub there too — the server gets asked instead`);
-    return files.length;
-  } catch {
-    return 0;
-  }
-}
-
 let LAST;
 
 async function main() {
   LAST = await lastEpisode();
   await mkdir(OUT, { recursive: true });
   console.log(`writing to ${tilde(OUT)}\n`);
-
-  // The share is a head start, never the whole job. It short-circuited to report()
-  // here once, on the assumption in the header that it holds the same data. It does
-  // not: it was seven episodes behind the server the day this was written, and it
-  // carries the same stubs. Returning early meant a mounted share silently capped
-  // the cache at whatever someone last copied onto it.
-  await fromNas();
 
   let fetched = 0;
   let missing = 0;

@@ -182,14 +182,14 @@ page shows at most 4 transcript episodes under at most 8 curated ones. The rules
 measurements behind each threshold are in `CLAUDE.md`.
 
 **The raw captions are not in the repo.** `npm run fetch:captions` fills a gitignored
-`captions/` cache (270 files, ~39 MB) from the NAS mirror or the show's server;
+`captions/` cache (270 files, ~39 MB) from the show's server;
 `update-mentions` then reads it as a plain directory of files, like every other source. The
 cue text alone is committed, for the transcript search — see below. Each path is overridable by flag or environment
 variable, and every one is printed before it is read.
 
 **New episodes arrive on their own.** A second launchd agent runs `scripts/refresh-episodes.sh`
 every 6 hours: it rebuilds the episode list in `../pc20-timeline` and refills `captions/`
-(from the NAS mirror where it can, the show's server for the rest). The publish agent picks
+from the show's server. The publish agent picks
 the new inputs up on its next pass.
 
 **Regeneration runs on every publish.** The launchd agent now runs `update:mentions`,

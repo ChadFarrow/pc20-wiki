@@ -6,17 +6,20 @@
 #
 #   1. pc20-timeline: rebuild data/episodes.json from the live feed, and commit it
 #      when an episode was added or changed.
-#   2. here: fill captions/ — from the NAS share where it has the file, from the
-#      show's server for the rest.
+#   2. here: fill captions/ from the show's server.
 #
 # It does not build or publish. auto-publish.sh runs every generator on every run
 # (at most 15 minutes apart) and publishes whatever moved, so a new episode reaches
 # the mentions and the transcript search on its next pass.
 #
-# Kept apart from auto-publish.sh on purpose. This job reads an SMB share and two
-# remote servers; any of them can stall. auto-publish holds a lock while it runs, so
-# a stall inside it would stop notes publishing too. Here a stall costs only this
-# job, and every step has a time limit.
+# Kept apart from auto-publish.sh on purpose. This job talks to two remote servers,
+# and either can stall. auto-publish holds a lock while it runs, so a stall inside it
+# would stop notes publishing too. Here a stall costs only this job, and every step
+# has a time limit.
+#
+# It does not touch the NAS. The share at /Volumes/pc20-archive is the owner's
+# personal backup, kept by pc20-archive/sync-nas.mjs; the wiki takes everything
+# from the internet, so the backup's state never reaches the public site.
 #
 #   scripts/refresh-episodes.sh
 
@@ -74,9 +77,6 @@ fi
 # ---- 2. the caption cache ---------------------------------------------------
 
 cd "$REPO" || exit 1
-if ! mount | grep -q ' on /Volumes/pc20-archive '; then
-  log "NAS share not mounted — captions come from the show's server alone"
-fi
 
 before=$(ls captions 2>/dev/null | wc -l | tr -d ' ')
 if limit 900 "$NODE" scripts/fetch-captions.mjs > /tmp/pc20-refresh-captions.log 2>&1; then
