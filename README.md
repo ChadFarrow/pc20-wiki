@@ -189,7 +189,7 @@ cue text alone is committed, for the transcript search — see below. Each path 
 variable, and every one is printed before it is read.
 
 **New episodes arrive on their own.** A second launchd agent runs `scripts/refresh-episodes.sh`
-every 6 hours: it rebuilds the episode list in `../pc20-timeline` and refills `captions/`
+every Friday at 22:00, after the week's episode is out: it rebuilds the episode list in `../pc20-timeline` and refills `captions/`
 from the show's server. The publish agent picks
 the new inputs up on its next pass.
 

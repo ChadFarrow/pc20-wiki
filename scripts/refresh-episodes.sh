@@ -2,7 +2,9 @@
 #
 # Brings a new episode into the wiki's inputs, without being asked.
 #
-# Run by launchd every 6 hours (launchd/com.chadfarrow.pc20-wiki-episodes.plist.template):
+# Run by launchd on Fridays at 22:00, after the week's episode is out
+# (launchd/com.chadfarrow.pc20-wiki-episodes.plist.template). `npm run episodes`
+# runs it by hand and publishes at once:
 #
 #   1. pc20-timeline: rebuild data/episodes.json from the live feed, and commit it
 #      when an episode was added or changed.

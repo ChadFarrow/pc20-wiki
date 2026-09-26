@@ -415,7 +415,7 @@ do the same or use `vercel dev`.
 
 ## New episodes arrive on their own
 
-`scripts/refresh-episodes.sh`, run every 6 hours by the `com.chadfarrow.pc20-wiki-episodes`
+`scripts/refresh-episodes.sh`, run Fridays at 22:00 local time by the `com.chadfarrow.pc20-wiki-episodes`
 agent (installed with the publish agent by `scripts/install-agent.sh`):
 
 1. rebuilds `pc20-timeline/data/episodes.json` from the live feed, and commits it only when an
@@ -507,7 +507,7 @@ They were not, and the section that said so is what the transcript tier replaced
   since the transcript search — the cue text itself in `data/transcripts/`. That second one
   was a deliberate change of policy, made by the owner on 2026-09-26: the full text is now
   readable in the public repo. The show serves the same text publicly already.
-- **Fetched by a launchd agent now, every 6 hours** — see *New episodes arrive on their own*.
+- **Fetched by a launchd agent now, Fridays at 22:00** — see *New episodes arrive on their own*.
   `npm run fetch:captions` fills the cache from
   `https://mp3s.nashownotes.com/PC20-<NN>-Captions.srt` (single digits zero-padded — `PC20-7`
   is a 404, `PC20-07` is not), skipping what is present **and usable** — a stub is asked for
