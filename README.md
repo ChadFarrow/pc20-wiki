@@ -254,7 +254,9 @@ the CDN for a day.
 
 It matches the way the mentions do: five squashed characters or more ignore spaces and
 punctuation, so *podping* finds "pod ping"; anything shorter matches whole words, so *Tor*
-does not find "story". The page names every episode it cannot search, and why.
+does not find "story". A match that crosses a space must still join whole words, so *nostr*
+does not find "no straight", while *podping* still finds "pod pings". The page names every
+episode it cannot search, and why.
 
 The corpus is `data/transcripts/NNN.txt` — one file per episode, one cue per line as
 `seconds<TAB>text` — plus `index.json` with each episode's title, date and audio link.

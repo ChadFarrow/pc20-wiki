@@ -91,6 +91,59 @@ test('a short query matches whole words only, so "tor" does not find "story"', (
   assert.deepEqual(hit(result), ['35@30']);
 });
 
+test('a long query does not join the end of one word to the start of another', () => {
+  // Each of these squashes to contain "nostr", and none of them says it. They are
+  // from the archive: E33, E108, E96, E114, E189.
+  const words = buildIndex([
+    {
+      episode: 1,
+      cues: cues(
+        [1, 'that app has no structure to pass'],
+        [2, 'was that a Diet Dr. Pepper no straight up'],
+        [3, 'per minute boosts or Beano street streaming'],
+        [4, 'Spotify exec Dawn Ostroff have heard'],
+        [5, "There's no string."],
+        [6, 'should use nostr. It does not'],
+      ),
+    },
+  ]);
+  const result = searchTranscripts(words, 'nostr');
+  assert.deepEqual(hit(result), ['1@6']);
+  assert.deepEqual(marked(result.results[0]), ['nostr']);
+});
+
+test('a long query still finds a split word that carries an ending', () => {
+  const words = buildIndex([
+    {
+      episode: 1,
+      cues: cues(
+        [1, "we'd get 25,000 pod pings in three seconds"],
+        [2, 'the moment you guys start pod pinging'],
+        [3, 'if all the podcast indexes'],
+        [4, 'the chapter spec says'],
+        [5, 'the value split. So this scale'],
+      ),
+    },
+  ]);
+  assert.deepEqual(hit(searchTranscripts(words, 'podping')), ['1@1', '1@2']);
+  assert.deepEqual(hit(searchTranscripts(words, 'podcast index')), ['1@3']);
+  // "chapter s|pec" and "split. S|o" end partway into a word that is not an ending.
+  assert.equal(searchTranscripts(words, 'chapters').total, 0);
+  assert.equal(searchTranscripts(words, 'splits').total, 0);
+});
+
+test('the passage around a result marks by the same rule as the search', () => {
+  const words = buildIndex([{ episode: 1, cues: cues([1, 'Dr. Pepper no straight up'], [2, 'should use nostr. It']) }]);
+  const passage = transcriptContext(words, 1, 0, 2, 'nostr');
+  assert.deepEqual(passage.lines.map((line) => marked(line)), [[], ['nostr']]);
+});
+
+test('a long query still matches inside one word, which is how the captions spell Nostr', () => {
+  // The captions write Nostr as "nostra", "nostre" or "nostril" 289 times, as "nostr" 59.
+  const words = buildIndex([{ episode: 1, cues: cues([1, 'I have been hearing about nostre'], [2, 'your nostril login']) }]);
+  assert.deepEqual(hit(searchTranscripts(words, 'nostr')), ['1@1', '1@2']);
+});
+
 test('a short query is case-insensitive', () => {
   assert.deepEqual(hit(searchTranscripts(index, 'TOR')), ['35@30']);
 });

@@ -386,6 +386,19 @@ with no separators, so "pod ping" and a phrase straddling a caption break both m
 shorter queries match whole words over the cue text, so `tor` does not find "story". A
 match that runs from one episode's last cue into the next episode's first is dropped.
 
+**One rule the mentions do not have: a squashed match that crosses a word break must join
+whole words** (`holdsAsWords`). It must start where a word starts, and end where a word ends
+or before an ending (`s`, `es`, `d`, `ed`, `er`, `ers`, `ing`, `ings`) shorter than the part
+of the word matched. Inside one written word, a match still always holds. Without the rule,
+"nostr" found "no straight", "Beano street" and "Dawn Ostroff" — 29 false cues of 382 — and
+"there" found "the reason" and "right here" in 4,432 cues. The prefix match inside a word
+must stay: the captions write Nostr as "nostra", "nostre" or "nostril" 289 times and as
+"nostr" 59 times. (They also write "noster" 423 times, which no squashed match of "nostr"
+can find.) The cost, measured: "Podcasting 2.0" written with a digit straight after
+it (12 of 2,674 cues). The mentions do not need the rule, because their dwell and lift gates
+drop a lone stray hit; `data/mentions.json` held none of these. The highlight ranges use the
+same rule, so a snippet never marks a match the search did not count.
+
 **Limits that keep the load bounded:** a query needs 3 squashed characters and is cut to
 100; the first answer is the newest 100 rows (500 inside one episode), with a count for
 every episode so the page can say "802 matches in 156 episodes" and offer each; the page

@@ -21,6 +21,11 @@
  * - **Fewer, match whole words.** Squashed, "tor" finds "story" and "generator";
  *   see SQUASH_MIN.
  *
+ * And one rule the mentions do not have: **a squashed match that crosses a word
+ * break must join whole words** — see holdsAsWords. Without it "nostr" finds "no
+ * straight". The mentions get by without it because their dwell and lift gates
+ * drop a lone stray hit; a search shows every hit, so it cannot.
+ *
  * Pure, like every other *-lib.mjs here: strings and plain objects in, no
  * filesystem, no network.
  */
@@ -161,6 +166,65 @@ function wordPattern(query) {
   return new RegExp(`(?<![a-z0-9])${words.join('[^a-z0-9]+')}(?![a-z0-9])`, 'gi');
 }
 
+/** What a split word may still carry after the match: "pod ping|s", "pod ping|ing", "podcast index|es". */
+const ENDINGS = new Set(['s', 'es', 'd', 'ed', 'er', 'ers', 'ing', 'ings']);
+
+/** The per-character form of squash(): true for what squash() keeps. */
+const isWordChar = (ch) => ch !== undefined && /[a-z0-9]/.test(ch.toLowerCase());
+
+/**
+ * Does a squashed match, at `[from, to)` in the written `text`, join whole words?
+ *
+ * Squashing exists to rejoin a word the transcriber split — "pod ping". It must
+ * not join the end of one word to the start of another: squashed, "no straight",
+ * "Beano street" and "Dawn Ostroff" all contain "nostr".
+ *
+ * - **Inside one written word, a match always holds**, as before. That is how
+ *   "nostr" finds "nostra", "nostre" and "nostril": the captions write Nostr
+ *   those ways 289 times, and as "nostr" 59.
+ * - **Across a space or a caption break**, it holds only if it starts where a word
+ *   starts, and ends where a word ends or before an ending from ENDINGS that is
+ *   shorter than the part of the word matched. The second half keeps "pod
+ *   pings" and drops "no str|ing".
+ *
+ * Measured in cues on the full archive, before → after: "nostr" 382 → 353, and
+ * all 29 lost were false; "there" 29,301 → 24,869 ("the reason", "right here");
+ * "splits" 649 → 568 and "chapters" 1,201 → 1,155 ("split. So", "chapter spec").
+ * "podping" 802 → 800 ("iPod ping", "pod pin goes"), "podcast index" 2,164 →
+ * 2,162, "value for value" 2,132 unchanged. The cost: "Podcasting 2.0" written
+ * with a digit straight after it, 12 of 2,674, and one doubtful cue each for
+ * "homepod Verse" and "alive items".
+ */
+function holdsAsWords(text, from, to) {
+  if (![...text.slice(from, to)].some((ch) => !isWordChar(ch))) return true;
+  if (isWordChar(text[from - 1])) return false;
+  let end = to;
+  while (isWordChar(text[end])) end++;
+  if (end === to) return true;
+  let start = to;
+  while (isWordChar(text[start - 1])) start--;
+  return ENDINGS.has(text.slice(to, end).toLowerCase()) && end - to < to - start;
+}
+
+/**
+ * holdsAsWords for a match in the index's squashed string: `length` squashed
+ * characters, starting `offset` into cue `first` and ending in cue `last`.
+ * The written cues are read from index.text, where '\n' separates them, so a
+ * caption break is a word break.
+ */
+function holdsInCues(index, first, last, offset, length) {
+  const text = index.text.slice(index.textStarts[first], index.textStarts[last + 1] - 1);
+  let seen = 0;
+  let from = 0;
+  for (let k = 0; k < text.length; k++) {
+    if (!isWordChar(text[k])) continue;
+    if (seen === offset) from = k;
+    if (seen === offset + length - 1) return holdsAsWords(text, from, k + 1);
+    seen++;
+  }
+  return true;
+}
+
 /**
  * Every cue a match starts in, ascending, each once.
  *
@@ -177,10 +241,9 @@ function matchingCues(index, query, sq) {
 
   if (sq.length >= SQUASH_MIN) {
     for (let at = index.squashed.indexOf(sq); at !== -1; at = index.squashed.indexOf(sq, at + 1)) {
-      push(
-        cueAt(index.squashedStarts, index.count, at),
-        cueAt(index.squashedStarts, index.count, at + sq.length - 1),
-      );
+      const first = cueAt(index.squashedStarts, index.count, at);
+      const last = cueAt(index.squashedStarts, index.count, at + sq.length - 1);
+      if (holdsInCues(index, first, last, at - index.squashedStarts[first], sq.length)) push(first, last);
     }
   } else {
     for (const match of index.text.matchAll(wordPattern(query))) {
@@ -227,8 +290,12 @@ function rangesIn(x, query, sq) {
         origin.push(k);
       }
     }
-    for (let at = squashed.indexOf(sq); at !== -1; at = squashed.indexOf(sq, at + sq.length)) {
-      ranges.push([origin[at], origin[at + sq.length - 1] + 1]);
+    for (let at = squashed.indexOf(sq); at !== -1; ) {
+      const range = [origin[at], origin[at + sq.length - 1] + 1];
+      // A match the search would not count is not marked, and the next one may overlap it.
+      const holds = holdsAsWords(x, ...range);
+      if (holds) ranges.push(range);
+      at = squashed.indexOf(sq, holds ? at + sq.length : at + 1);
     }
   } else {
     for (const match of x.matchAll(wordPattern(query))) {
