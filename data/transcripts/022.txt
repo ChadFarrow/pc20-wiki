@@ -1,0 +1,1929 @@
+0	Podcasting 2.0 for January 29th, 2021, episode 22,
+6	this train is rolling down some imaginary tracks, like Ruby on Rails.
+17	It's Friday once again,
+18	time for a board meeting of the Podcast Index Podcasting 2.0 project.
+23	I'm Adam Curry in Austin, Texas,
+26	and now the man who spends $16 to learn 64 new languages, Dave Jones.
+33	I like it when you make developer jokes. That's good.
+37	Well, you know, I'm basically a developer hag.
+43	Yeah, that's like me making philosophy jokes.
+46	Yes, precisely.
+49	In college, my short time that I spent in college, I was a philosophy major.
+55	Oh, really?
+56	I was, yes.
+57	How long did you last?
+60	About two years.
+61	Oh, man, I did three months. That was it.
+63	Yeah, it was about a year and a half longer than I expected the last,
+67	but I gave it a good, I have willpower.
+69	I'm like, all right, I think, I like the communication classes,
+72	I like the broadcast classes, and I'm like,
+74	but I'm already running the radio station,
+76	and everyone's running around smoking weed and drinking beer.
+79	I come from Amsterdam. I don't need this shit.
+82	Yeah, that was like, you know, back when I was in school, I was like 94,
+86	and so that was going to be, like, I was a cis admin already as a day job,
+90	and I was like, I'm not learning anything here that's going to help me put food on
+94	my table, and I've already got a wife and a kid coming.
+97	I'm like, this, nah, it's not working.
+99	Oh, man, shotgun wedding, huh?
+101	Yeah, yeah, yeah.
+104	I heard about you guys down south.
+106	With the angry dad with the gun?
+107	Oh, yeah, oh, yeah.
+109	Well, it's time for our board meeting.
+111	How are you, Dave?
+112	How was the week?
+115	It's doing pretty good.
+117	It's a little busy, but it's doing fine.
+120	Has AP written an article yet about how podcasting
+124	allowed the GameStop thing to happen?
+128	I think the sequence is as follows.
+130	First, we have to determine that they were obviously alt-right,
+134	white nationalist, Nazi, KKK, quadroons, racists, who voted for Donald Trump.
+139	Then, then we can say, and they have podcasts.
+143	Yeah, that's right.
+144	And they radicalize, they self-radicalize.
+146	That's right, that's right.
+148	Yeah, and they listen to the Orange Pill podcast with Max Keiser, and ooh,
+154	and they're building secret systems with Podcasting 2.0.
+159	Oh, yeah, there's a tag.
+160	There's a tag for that.
+161	They got tags.
+163	You're going to short GameStop with your tags.
+166	So, I made my developer joke about languages,
+169	but I think it's kind of a big deal, I think.
+173	You did something with language,
+175	which I just saw some responses from a couple of the developers.
+179	I'm like, okay, whatever you're doing here is good.
+183	Oh, yeah, thanks.
+183	Well, you know, part of the issue that we've seen with the language stuff in the RSS
+190	is that not all the, well, a couple of things.
+194	Not all the podcast feeds specify the language element.
+199	Ah.
+199	And then, if they do, they're not always accurate.
+204	And so, I figured it's best to try to, like, at the very beginning,
+208	when I was first designing the database, the table schema, I said, okay,
+213	there's going to be a language.
+216	And the news is going to be an issue.
+217	There's going to be a language field,
+219	and then there's going to be a detected language field, or language detected.
+223	Uh-huh.
+224	And so, that language detected field in the news feeds table has been sitting there
+229	just unused for months now.
+232	And so, I finally got around to doing the work to get it, to get that thing rolling.
+239	And so, there's going to be, what it's doing right now is it's going through,
+244	and it's just categorizing each language that it detects in the feed.
+249	Uh-huh.
+250	And so, there'll be, in the API responses, in the future,
+254	once this process finishes, in API responses, there'll be both of those fields.
+259	There'll be a language and a detected language that's going to be returned.
+263	Ah, very nice.
+264	Yeah, maybe it was the international devs who were like, oh, this is nice, finally.
+269	Yeah, I think there's a lot.
+271	So, what prompted me to start to kind of pick this ball up was I've gotten like two
+279	or three emails over the last couple of months from people from other podcast
+286	platforms, not hosting platforms,
+290	but just like guys that do audio work in the podcast world.
+295	And they have, and all three of them have asked me, have said,
+300	somebody told me about y'all's work,
+303	and I'm wondering how much data you have around languages and podcasts.
+309	Huh.
+310	And so, and I don't know why this is a thing right now.
+314	Somebody can enlighten me maybe, but, you know, it was enough of, well,
+318	everybody's asking about this.
+320	I mean, it's not got to be that hard.
+322	So, I'm just going to do that, and then I'm going to dump out the next feed dump.
+326	Well, this, let's look at it this way.
+329	People has different portals per country, obviously.
+335	Mm-hmm.
+336	Mm-hmm.
+336	So, I can see where someone presenting something in a different country might want
+341	to be able to highlight the language of that country,
+343	no matter what their project is.
+347	I don't know.
+347	Do you remember the guy that gave us a list of podcasts from Kazakhstan?
+355	Yeah, of course.
+356	Yeah.
+357	I listen to all of them.
+358	They're great.
+359	They're groovy.
+360	Yeah, he was highlighting the issue with having, you know,
+365	in Kazakhstan, they have whatever.
+368	Oh, funky-ass characters.
+370	Well, no, no.
+371	He was saying that they had two language, two primary languages.
+374	They had Kazakh and Russian.
+378	And so, even though you have the same country,
+380	there's like two major languages spoken there.
+382	Right, right.
+383	And just so that a podcast is from Kazakhstan doesn't mean it's going to be a
+389	particular language.
+391	So, the language actually becomes pretty critical.
+393	Yeah, yeah.
+394	Or, you know, whoever wants to pay us more, Putin, we'll just change the language.
+402	You guys can't have Kazakh.
+405	Oil money.
+406	I'm on oil.
+407	You will take some of that.
+409	I've got two, and this is completely off topic,
+412	but I just heard this on the way home for lunch.
+418	One phrase that irritates the hell out of me is, does that make sense?
+424	I don't know why.
+426	I think I sometimes say that to you.
+428	I say it, too.
+429	Oh.
+430	I think that's what irritated me is I heard it, and I was like, God, it's annoying.
+434	And I was like, wait, I did that this morning.
+436	I hate that I do that.
+438	Why?
+438	What's wrong with it?
+439	Does that make sense?
+440	I mean, that's asking someone for their opinion, for their input, for their…
+445	Because I think it's filler.
+448	It becomes like, you know, or right.
+450	And I need to be efficient in my life, damn it.
+453	I listen to podcasts at double speed.
+456	Get to the point, people.
+458	Tell me what you want.
+459	It's as annoying to me as, like, far left, far right, mid-center right, center left.
+464	Yeah, I hear you.
+465	Well, I have lots of things like that that irritate me.
+468	Sure.
+469	Anyway.
+469	But that's not important.
+471	That's not important right now.
+474	No, it's just talking about language that brought that up in my head.
+477	Yeah, I know.
+478	I'm just doing an important just because I like doing it that way.
+481	No, I think we're… No, I think we'll have a pretty good… I'm just watching.
+487	I've been going through there and I've been spot checking.
+488	So, like, every… I don't know.
+491	I'll just eyeball it once in a…
+493	You know, once every hour or so and grab a couple
+496	of them and make sure that it's not
+497	detecting some crazy language.
+499	Right.
+499	That's not true.
+501	Yeah, but it's pretty…
+503	It's been dead on accurate so far.
+506	Anyway, it's going.
+509	I think we're going to have something pretty nice when it's finished.
+511	Cool.
+511	I heard on Pod News, Cridland,
+515	he says 5% of all the feeds he has in his database are
+520	podcasting 2.0 compliant.
+523	That seems low to me.
+526	I don't know.
+527	Really?
+528	Yeah.
+528	That actually have it?
+529	No, I don't know.
+530	Of all the podcasts?
+532	Well, I mean, you've got… Let's see.
+534	Shit, 5… I was happy with 5%.
+536	I'm like, okay, that's a real start.
+539	Let me see.
+540	What… So, I mean, Buzzsprout themselves have 80-something
+544	thousand Podcast 2.0 enabled feeds.
+548	Right.
+548	So, what's 5% of 1.5?
+552	300,000.
+554	No, that's too much.
+555	30,000?
+561	I'm really bad at this.
+563	All right.
+563	Me too.
+564	So, 10% would be 170,000, right?
+571	That would be 10%.
+572	And 5% would be 35,000.
+577	75,000.
+578	75,000.
+578	I'm sorry.
+579	Yeah.
+579	So, it's just Buzzsprout.
+582	There you go.
+582	We've solved the riddle.
+584	See, that's the thing is it's not.
+585	It's not just Buzzsprout.
+586	It's also Fireside.
+587	And it's also… I don't…
+589	Well, someone's jacking us with their numbers.
+592	Yeah, Cridlin.
+593	What are you doing?
+596	What are you doing, Cridlin?
+597	Get us some… What this always does,
+600	you've got to be careful because this will spawn five new threads,
+605	arguments from every hoster about who has more.
+611	Arguments.
+612	Oh, yeah.
+613	Hosing arguments.
+615	Spats.
+616	Hey, congratulations to Podstation.
+620	Yeah, yeah.
+620	Integrating value for value with the Keysend with streaming sats.
+624	Very cool.
+626	I have a lot of UX ideas, of course.
+630	And the minute I'm using it, I'm like, I'm not getting the satisfaction.
+634	Why am I not getting the satisfaction?
+635	It's because I'm not seeing a counter.
+637	You know, when you're in Sphinx chat, you see the sats go down every minute.
+643	And that's even not the way I want it.
+645	It's not as satisfying.
+646	But when I popped open the log, and for those who don't know,
+649	Podstation is a Chrome plug-in.
+652	And it's lickety-split very fast.
+654	And it's always there in my browser menu.
+656	So whenever I'm doing something in the studio, it's real easy.
+660	Like, pop.
+660	Okay, I got this.
+663	Lickety-split.
+664	Lickety-split.
+665	Sorry.
+665	Boomer.
+666	Boomer.
+666	Boomer language.
+669	My wife makes fun of me for saying Johnny on the spot.
+672	So you pop open the log, and you see the payments.
+675	And you see it accruing, the number of payments.
+678	And something about it was really exciting.
+680	And of course, I'm sitting there with my own podcast.
+686	I'm looking at my own wallet, like, oh, there it goes.
+688	I'm paying myself.
+689	Oh, it's so cool.
+690	Oh, look at it coming in.
+692	You're going to go blind.
+695	That's right.
+696	Satoshi Nakamoto comes around and pokes your eyes out.
+701	Also, congrats to Podverse 3.0 in beta.
+704	Tried it out today on Graphene OS.
+707	Yeah, it's because you're on Android.
+709	I got screwed because I can't try to install it.
+713	And he gave it to me and then jerked the rug out from under me.
+716	What happened?
+718	He said they're not ready for iOS yet.
+720	They're waiting on App Store approval or something like that.
+723	Of course.
+725	Yeah.
+725	The Indian giver.
+727	Oh, wow.
+728	Racist much, Dave Jones, man.
+731	You sure you have young kids?
+735	I mean, how come they're not busting your ass on this kind of language?
+738	Is Indian giver?
+739	Has that been taken away?
+740	Oh, my God.
+741	No, yeah.
+741	I'm sure that's taken away.
+743	It implies that Native Americans are cheats.
+749	You're a racist, too.
+750	It's not Native Americans.
+751	It's indigenous peoples.
+753	Actually, American Indians is how they prefer to be called.
+756	I have on good authority.
+758	Oh, okay.
+759	Well, we're all wrong.
+759	Yeah, and everything I see is they like Washington Redskins.
+763	It's like, hey, we had a team.
+764	And no more.
+765	Anyway.
+765	Oh, yeah.
+765	I heard that, too.
+766	No team for you.
+768	Yeah.
+768	Shut up.
+770	But it's great.
+772	Real fast.
+773	Real simple.
+774	They have the chapter images integrated.
+778	Super slick.
+779	Oh, nice.
+780	It's on default.
+781	So when you're playing the episode, it shows you the time code from when to when.
+787	It'll display, and then it pops the next one.
+790	I didn't see any way to jump, which tickled my fancy.
+795	I didn't see a way to get the full list of chapters to jump around,
+798	which is not how I want people to use it anyway.
+801	But that I couldn't find.
+802	And they don't have transcript in.
+803	They just ran out of screen real estate.
+806	So you were happy for lack of a feature.
+808	Oh, yeah.
+810	Groovy.
+810	If it's in there, keep it hidden.
+812	I don't want people jumping around.
+814	Yeah.
+814	But I love the transcript.
+816	And not so much because I need to see what's being said.
+819	But for the like what pod friend has is, you know, you can search the transcript.
+825	You have this is a a major, major lifesaver.
+830	So often someone will say or even I'm thinking,
+834	can we talk about that or more more to the point?
+838	My co-host, John C.
+839	Devorak, will say, no, I never said it.
+842	That's exactly how he sounds.
+844	That is a true representation.
+846	Yes.
+847	And so that I can at least find if I kind of know the general episode,
+853	I can find stuff
+855	on bingit.io, which is our search engine that looks to the show notes.
+859	OK, here's the topic.
+860	What episode was it?
+861	Go to the episode.
+862	Click on the search.
+863	Boom.
+863	And Tom Schuring, who's in Australia, who I've known for decades.
+871	He's my official digital archivist.
+874	He has been doing he's been backdating archives of all the shows.
+879	And so no agenda specifically.
+881	He's been uploading them to otter dot A.I.
+884	And he's building a search engine of the entire transcripts of the show,
+887	which is now, you know, one thousand three hundred and sixteen transcripts.
+890	So there's a lot of cool shit you can do.
+893	And what's cool about it is, you know, we have protocols, you know, we have SRT.
+899	And so it's easy to shuttle things around and, you know,
+902	kind of what's expected and more
+903	people can contribute to that work.
+908	It's I find that incredibly useful because the number one thing they say,
+912	yeah, I was on that show.
+914	And it's like two or three hours.
+915	Like, you're not going to go skipping around.
+917	It's easier to just type in some words and you're there.
+921	If he needs my stop word list for the people search,
+924	I'll be glad to give it to him because
+925	that that can that can give you some real juice.
+928	Oh, well, I'm sure he listens.
+929	So I'm sure he'll like because I've been thinking
+932	about somebody sent me an email asking
+935	about just general episode search.
+937	So once the once the person tag gets baked in, that's so good,
+942	we'll be able to flip the
+944	person search to use the person tag.
+946	Nice.
+947	But then we still need we still need like a general episode search.
+951	And so, like, I'll just turn the person search
+954	into a general episode search because here's
+956	like I find myself searching using the using the person search,
+962	but just putting in other
+965	stuff that I know are not people's names.
+966	And it like it gives me a bunch of good a good, you know, criteria,
+971	like a bunch of good results.
+972	So like things like the word podcasting is not in the the stop the stop word list.
+980	So I get that'll return.
+981	Right.
+982	So if I put in like podcasting L&D or something like that, you know,
+989	you're going to get some hits from other things.
+993	Sure.
+994	Yeah.
+994	I know.
+994	It's not sorcery.
+995	I understand.
+996	You can only do so much.
+999	But it's help.
+999	But it's helpful.
+1000	Like and so like if we had the general what I'm
+1004	doing is resisting the urge to to go and
+1008	put and put all that stuff in the freedom.
+1010	Yeah.
+1010	And and I'm going to try and help you resist what what seems to me, you know,
+1016	look, Apple is doing on the fly transcription or at least they say they are.
+1021	Everyone's going to be doing on the fly transcription
+1024	so they can help you find shows.
+1026	It seems to me that now that we have kind of a
+1029	standard and SRT is the one that I've seen applied the most.
+1034	Yeah.
+1034	Daniel J.
+1035	I hear you.
+1036	It should all be JSON.
+1037	I know.
+1038	But we just happen to have this.
+1041	It seems like such an opportunity for someone
+1044	to create another project that's not you and
+1046	I, Dave, another project which is podcast transcripts
+1050	and you can just upload your transcripts or
+1053	it'll automatically pull in from your feed if you have them included,
+1056	which is the way to go.
+1058	And that will be a kick ass search engine.
+1061	Some search nuts will have so much fun with that like you.
+1065	So that's why I'm really going to try and help you resist.
+1067	They would have a lot of fun with that because that is where all the juice is, man.
+1073	Well, like pod.
+1074	OK, so here's an example.
+1076	Here's something for pod verse.
+1078	Mitch, do do the value, do the value blog, do the lightning stuff,
+1084	because when you have
+1085	clips that is that is a way to not only fund pod
+1090	verse with with your one percent off that,
+1094	but also to that's a that's a money machine for
+1098	the for podcasters that if they have good
+1100	content and that content gets clipped a lot.
+1103	Think about me.
+1104	You know, we've talked about before,
+1106	like the clipping and sound bites and those kinds of
+1108	things are like they're like the hand claps on medium.
+1114	Yeah, yeah, exactly.
+1115	Like like hearts, hearts, hand claps.
+1117	Yeah.
+1118	Yeah.
+1118	Yeah.
+1118	But you get paid.
+1119	But in this but in this scenario, you get paid for it.
+1122	Yeah.
+1122	Beautiful.
+1123	Yeah.
+1123	You're not just clicking a stupid icon on a Web site.
+1126	You're actually like there's real value behind that.
+1128	Along those lines, just as a as a side note, you'll be talking this morning.
+1133	We had a Zoom call with the executive director of
+1136	Ronald McDonald House Charities Central Texas
+1138	where Tina used to work.
+1140	She was chief marketing, chief communications officer.
+1144	And because of all the people that are moving to Austin, you know,
+1147	we've got Oracle and Tesla
+1148	and Apple people and Google and God knows what else.
+1152	And basically, California.
+1154	Yeah.
+1155	To your detriment.
+1156	Yeah.
+1157	We have a very two to the best children, pediatric surgeons in the United States.
+1165	And so it's a very popular place to come to, to Austin Dell Children's mainly.
+1170	And the Ronald McDonald House, for those who don't know it,
+1173	what they do is they offer rooms
+1175	and, you know, kitchen and food and Internet and, you know, computers,
+1180	whatever you need
+1181	and privacy and all kinds of stuff and a sense of community, really,
+1184	at the house where you can stay.
+1186	And there's no charge for anybody, whether you're a billionaire or off the street.
+1192	And, you know, they do suggest if you can, you know, toss us 40 bucks a day.
+1196	Anyway, so they need to add.
+1198	They have 23 rooms now that they're going to add, I think,
+1203	65 and they need $30 million.
+1207	And in the next two years, over the next two years, I said, well,
+1211	I promise you this is that I'm going to put you in my value block
+1216	and I'm going to set you up with a wallet and, you know, and I'll,
+1220	and I know the, I'll know everybody there.
+1223	So I'll set up the CFO and, and, and, you know,
+1226	whenever someone listens to any of my shows, you know,
+1228	piece of my action is going to go straight to you guys.
+1231	And they're like, really, you can do that?
+1233	Oh, yeah.
+1234	That's so cool.
+1235	And I thought, you know, if you go to podcasterwallet.com in the future,
+1238	just as an idea, I'm, I'm, this is not something we should do.
+1242	Um, I can easily see where there would be a box that said, Hey,
+1246	do you want to add something for a couple of charities or for a charity?
+1250	You want to add one for your own charity, but we could have pre-populated,
+1254	uh, nodes drop down.
+1255	That's a great idea.
+1257	Isn't that cool?
+1258	Yeah, it does.
+1259	It's just like the checkout line at the, at the grocery store.
+1262	Exactly.
+1263	Exactly.
+1264	Exactly.
+1265	That's super cool.
+1266	Like, okay, for, well, I've got, I'll, uh,
+1268	I see you're running a McDonald house and I, and I raise you a,
+1273	a Birmingham civil rights Institute.
+1275	I mean, when you start tackling, we, we went there on MLK day.
+1279	Like, uh, well, I got that day off, uh, this year.
+1283	And so, uh, on Martin Luther King's, uh, it was his birthday, I guess.
+1287	On Martin Luther King's birthday, we went, uh, me and my wife,
+1291	my wife is very, she's very involved with, um, uh, civil rights, uh,
+1296	activism and that kind of thing.
+1298	And so she said, why don't we all go to the Birmingham civil rights Institute?
+1301	Cause I'd never been, she's been many times.
+1303	And so, um, and this is a treasure that like, no,
+1307	so few people know about it's, uh, it's downtown.
+1311	And so we're, it's only just a few blocks away from me.
+1314	We went and, uh, you know,
+1316	spent half a day there just going through it and it's so good.
+1320	It's just, it just chronicles all of Jim Crow and, uh, uh,
+1325	and all the civil rights activism.
+1328	Cause you know, Birmingham, Alabama was just like ground zero.
+1331	Oh, totally ground zero.
+1333	And, uh, every, everything was racist.
+1336	Yeah.
+1338	We invented racism.
+1339	Yeah.
+1339	You're very good at it.
+1341	I love that you're now married to Melissa X.
+1343	That makes it that much better.
+1344	Melissa X.
+1346	I got to tell her you said that.
+1347	Please do.
+1348	I love her.
+1350	Yeah.
+1350	She, uh, but she's like, let's go.
+1353	And so we went and we spent half the day and I was thinking there,
+1356	like they go through all
+1357	these, um, you know,
+1358	it's like room by room and you have narration narrators and that kind of thing.
+1362	I was thinking, man, it would be so good if this place had had a podcast,
+1369	did a podcast and I'm,
+1371	I'm fired up now after hearing you talking about
+1375	that to help them start a podcast and
+1378	then, and put the value block in it.
+1380	Sure.
+1380	Um, that's the funding that that's, that's awesome.
+1383	And the more you think about digital money, the more excited you get, the more,
+1388	and just even this very simple, um, process that we've invented.
+1394	And I'll say that we invent, you know, royalties aren't new, but this idea is,
+1399	and, uh, and the
+1400	idea that you can change your royalties easily, uh, your royalty structure.
+1405	Um, I mean, you could even do this with multi-seg wallets, so it can't change list.
+1409	You have two or three or five of seven.
+1411	I mean, there's so many different things you can do.
+1412	It just is mind boggling, mind boggling.
+1414	And shout out to Ryan Gentry for mentioning us in the lightning labs newsletter.
+1420	That was very cool.
+1420	That was a good blog post.
+1422	Yeah.
+1422	Our names are Adam Curry and Dave Jones, but otherwise, thanks, man.
+1427	Yeah, douche.
+1429	Thanks, Ryan.
+1433	Uh, we're going to get to our guests momentarily
+1435	who have been patiently waiting in the wings.
+1437	Um, I wonder what that's like.
+1439	I mean, typically on a show, like, I guess they,
+1442	they interview right away and they cut
+1444	it in later and we just force our guests to listen to our crap for 20 minutes.
+1449	It's, it's, it's building pent up demand, so it just unleashes,
+1452	unleashes creative energy.
+1454	It really does.
+1455	And, uh, and I can't wait to do some hot namespace talk with these two gents.
+1460	Uh, we have the co-founders of rss.com podcasting, uh,
+1465	with us here on podcasting 2.0.
+1468	We have Alberto Betela and Ben Richardson, gentlemen.
+1472	Hey guys.
+1473	Hello.
+1474	Did I pronounce that right, Alberto Betela?
+1477	That was perfect.
+1479	Alberto is from Italy originally.
+1482	He's one of those radicals from, uh, from, uh, Barcelona.
+1490	A mix of Italian and Spanish.
+1492	I mean, not Barcelona.
+1494	What do I say?
+1496	I'm really confused.
+1498	Your sister lives in Italy.
+1500	Catalonia.
+1501	Catalonia.
+1501	That's what I was, that's what I wanted to say.
+1503	Catalonia.
+1503	Yeah.
+1504	Yeah.
+1504	Those guys.
+1505	Where's Willow?
+1506	She's in, Willow's in Italy.
+1507	Yeah.
+1507	My sister is in Firenze.
+1510	Oh.
+1511	All right.
+1511	Now I have to ask.
+1512	This will be great.
+1513	Have you ever heard?
+1515	Of Alessandro Paci?
+1518	Oof.
+1518	I, I, I don't think so.
+1520	Okay.
+1520	It seems like a common surname, but I, I don't.
+1523	I don't know.
+1523	He's a, he's a comedian.
+1524	And, uh, I guess he did like some famous Italian movie that,
+1529	that kids pass around about
+1531	Pinocchio, only it's the X-rated version of Pinocchio.
+1534	Does this ring a bell?
+1535	I heard something about that, but I never saw it.
+1538	See, I see.
+1540	I'm telling you, my boy is famous.
+1542	It's the X-rated Pinocchio.
+1544	Yeah.
+1546	The only thing you know about, uh, about a culture that's not American, Dutch,
+1551	is their, is their porn.
+1553	It's not porn.
+1554	It's like, it's kind of like, it's like faces.
+1556	Remember faces of death?
+1558	And these guys are too young.
+1559	I'm sure.
+1559	Oh yeah.
+1560	I remember that.
+1561	Faces of death.
+1562	Big regret of my life.
+1563	Yeah, man.
+1563	Like we had the VHS and was the 20th copy.
+1566	And some guys, some guys had a Betamax.
+1569	It was, oh, it's better quality.
+1570	And, uh, or Phillips 2000.
+1572	I had a copy on Phillips 2000.
+1574	That was the great system.
+1576	And, and it was just all these horrible ways that people die.
+1579	And, you know, and everyone always was like, dude, dude, wait for it.
+1581	When you wait until they eat the monkey brains at the end, you know?
+1584	So the guy got pulled, he got his arms and legs drawn and quartered.
+1588	This is so cool.
+1590	Man, you just brought up some repressed memories.
+1593	I need to loosen you guys up.
+1595	I need to get you ready.
+1597	Yeah.
+1597	And you, yeah, we had a buddy that's like, it's real, man.
+1600	I swear.
+1600	I swear it's all real.
+1601	Yeah.
+1602	So these guys are OG, uh, to the space and the industry.
+1606	Alberto goes back to shit, man.
+1608	Almost the beginning to 2004, 2005.
+1612	Is that where you guys started out?
+1613	Or did you meet later on?
+1614	What happened?
+1615	Oh yeah.
+1616	So 2005, uh, we met, uh, uh, we met in 2017.
+1621	Oh crap.
+1622	Okay.
+1622	No, all right.
+1623	But that, but we, we go back a few years.
+1626	All right.
+1627	Yeah.
+1627	Alberto's, uh, he's OG in the sense that, uh, when he was doing,
+1632	I think his master's thesis,
+1634	his professor said, Hey, I want to syndicate my lectures.
+1637	Can you build me a podcast?
+1639	This is what I've been dreaming of.
+1643	Yeah.
+1645	So, uh, so yeah, 2005,
+1646	he built that for his professor and then turned it into podcast generator,
+1650	uh, and then put it open source.
+1652	Cause he's a very sharing guy.
+1654	And, uh, so that's when he got started.
+1658	Yeah.
+1658	That's so the thesis, but Alberto, this thesis, I got it.
+1662	I just got to read this title.
+1663	Okay.
+1664	From effective, from effective computing to empathic adaptive systems,
+1669	inference and induction
+1670	of emotion in ecologically valid context to foster
+1674	novel paradigms of human computer interaction.
+1677	Now, look, listen, that is clearly about sex robots.
+1681	I was going to, that is so hot.
+1684	I mean, I agree.
+1686	That's exactly the, the, the topic of the thesis.
+1688	Did you read it?
+1690	Uh, no, I can't read it.
+1691	I can't find it.
+1692	It's, it's locked behind a million academic journal paywalls.
+1695	No, but that, that, that, that thesis, uh, it comes later, uh, actually in 2005,
+1701	I was still in Italy in the small university of Bergamo in the,
+1704	in the North close to Milan.
+1706	Oh, yeah, yeah, yeah, yeah.
+1707	And, uh, and yeah, and then that, that my, my supervisor told me,
+1711	why don't we do university podcasting?
+1713	And I said, pod what?
+1714	And then I searched and I found the two names.
+1717	I thought I found the Adam Carey and the one.
+1720	And I said, okay, okay.
+1723	That's what podcasting is.
+1724	And we launched, uh, an educational podcasting in, in,
+1728	in the university 2000 in 2006 and
+1730	the engine called podcast generator was released
+1733	open source and it's still alive today.
+1735	It's a, it's a CMS for, for podcast publishing.
+1741	Thank you.
+1743	Wow.
+1744	And so is the, is the, now rss.com,
+1746	is it based on that original code or just the, the, whatever
+1751	concepts or how much of that is, uh, is in your, is,
+1754	is floating around legacy in your life.
+1756	So the first version, the MVP that we launched, uh, uh,
+1761	in early 2018 was based fully on podcast generator.
+1765	Ben and I met before and we said, okay, let's try, uh, let's try to maybe Ben,
+1769	you can, you can introduce how you, how did you reach out to me?
+1773	Yeah.
+1774	So, um, I, I was running rss.com with a feed reader on top, uh,
+1778	based off of Ben Ubo's
+1780	feed bin and swimming against the current, uh, for RSS readers.
+1786	Um, but I kept getting customer support requests asking, you know,
+1790	how do I get my podcast feed?
+1791	And I was like, what are these people, you know, maybe I need to, you know,
+1795	satisfy some demand here.
+1797	So this was already a company.
+1798	You were already providing services.
+1800	Yeah.
+1801	I had a feed reader on it.
+1802	Um, and you know, it was a great product,
+1805	but just not commercially viable in many respects.
+1809	And so after a while, I thought I just should find a way to help people podcast.
+1814	And, um, I looked for, you know,
+1816	something that was open source immediately honed in on podcast generator.
+1821	I read up on Alberto a little bit.
+1823	He, I saw, he spoke, uh, English, Italian, and Spanish,
+1826	and I speak English, Italian, and Spanish.
+1828	And so I sent him a quick note, just hoping somehow he would reach back out to me.
+1832	Um, and he did, he, uh, he wrote back and said, let's talk.
+1835	And he's like a three letter domain, you know, that's, that's awesome.
+1839	Yeah.
+1840	And so it was, it was enough, it was enough, uh, to pique his interest.
+1843	And, um, you know, we just started talking about, you know, what it could be.
+1847	And, you know, Alberto, uh, was the CTO of a successful, um, mobile app,
+1852	uh, at the time.
+1853	And, uh, so yeah, anyway,
+1855	we got talking about a side project and he just said, let's put
+1858	podcast generator out there, um, on the cloud and let's see what happens.
+1862	And it just kind of took off.
+1865	Knowing a thing or two about domain names, when did you acquire rss.com?
+1869	Were you the first to register?
+1870	No, I was not the first to register.
+1872	I, I got, uh, rss.com from Ron Sheridan back in 2013 and, uh, Ron, uh,
+1879	I don't know his middle name.
+1881	Maybe he got it, uh, originally.
+1882	I'm not sure.
+1883	I think it was registered, um, towards the late nineties, but,
+1887	or maybe it was, yeah, early.
+1889	I don't remember.
+1890	So you paid big money for it or it was,
+1892	it was not the cheapest thing I've ever done in my life.
+1895	I've, I've, I've, I've, I've, uh, traded a couple in and, uh,
+1898	had some lawsuits over others.
+1901	Yeah.
+1901	Well, so, you know that, you know, yeah.
+1903	So, um, I had to research the legalities, uh, pretty heavily before, um,
+1908	jumping in, but it was, uh, yeah, it was serendipitous.
+1911	I mean, I knew I wanted to put something on there that was an end use.
+1914	Cause I think Weiner got a million bucks for weblogs.com.
+1919	Now his timing was impeccable.
+1921	Yeah.
+1921	Yeah.
+1922	It's gotta be usually.
+1923	Yeah.
+1924	That was very good.
+1925	And, uh, I once got a bud.com, uh, for my client Budweiser.
+1930	No, I, I, I didn't have it.
+1931	My client was Budweiser and we were putting them on the internet.
+1935	We built all their websites and he had,
+1937	and this old geezer who was just a fan of the beer had bud.com.
+1942	And, uh, and so they called us and, you know, how do we get this from this guy?
+1946	I said, well, let me talk to him.
+1947	So he called them up and said, Hey ma'am, you're putting this on the internet.
+1950	Oh, that's so cool.
+1951	So, you know, but you know, bud.com, you know, you of course have your rights,
+1955	but man, they
+1956	would really, uh, really appreciate if we can come to some kind of understanding.
+1959	It's like, well, um, can I get a case of long neck signed by, uh,
+1965	by August Bush the third?
+1967	I'm like, yeah, I think I can erase that for you.
+1970	Yeah.
+1970	You took your marker out right there,
+1972	went down to the corner store and sign them five cases.
+1975	We actually had, uh, the fourth, give him a call to, you know, I was like,
+1980	you know, but the guy really didn't care.
+1982	He was just like, I love the brand.
+1984	I love it.
+1984	And the, and the idea that he got, you know, signed and talked to, to Woody,
+1988	who was, uh, August Bush the fourth.
+1990	Um, it was great.
+1992	Yeah.
+1992	So yeah, it's, uh, fun, fun stuff.
+1995	That domain name is.
+1996	Yeah.
+1997	I mean, nowadays they'll send you a, I can't remember.
+1999	It's a Uderp or usurp or whatever, where, uh, you're not, you know,
+2002	commercially using it.
+2003	They'll, uh, they'll take you down and take your domain.
+2006	Oh, really?
+2006	Who does this?
+2008	I mean, anybody can file with, uh, if you're not using it.
+2011	Oh, really?
+2012	Well, no, you can be using it, but then, uh, they can say, well, you're using it.
+2016	Uh, you shouldn't be, yeah.
+2018	And, and it's, my business was, uh, you know,
+2020	came before yours and you're a squatter.
+2023	And I mean, you've got to be really careful in this.
+2024	I've had curry.com for shoot, man, what?
+2027	30 years almost.
+2029	And, uh, and I get offers all the time or no, I should say,
+2032	I get people saying, Hey,
+2033	what do you want for it?
+2034	Like, okay, delete.
+2036	Uh, from time to time, someone will say 50 grand.
+2039	I'm like, no, man.
+2040	Yeah.
+2041	That's where I got, that's where I got lucky with
+2043	Ron Sheridan is I reached out kind of like
+2045	that, um, and he, he wrote me back.
+2049	He's like, typically I wouldn't write anybody back cause it's a bunch of idiots.
+2051	But for some reason I wrote you and I'm like, well, this is, this means something.
+2055	Let's go, Ron.
+2056	Let's, you know, let's get this done.
+2057	So you guys teamed up and then, uh, um, I mean, just tell me the,
+2062	how it went from there.
+2064	I mean, between then and now three, four years, what's the path been for you guys?
+2069	Yeah.
+2069	So, well, when we teamed up, we launched our MVP,
+2073	which was podcast generator with a layer of,
+2076	payment layer on top of payment processor.
+2079	It was Stripe.
+2080	And for the first, uh, you know, year and a half, we started growing, you know,
+2084	at the beginning, it was just Ben and myself, uh, and it was a side project.
+2088	But then, uh, so we launched in January, 2018.
+2093	And around summer, we got, uh,
+2094	Brian helping us with marketing and especially with our blog
+2098	to write, uh, original content to attract, uh, organically,
+2102	you know, possible users.
+2103	And then we got on board the first engineer, David,
+2107	who started to help with both engineering
+2109	and customer support.
+2111	Nice.
+2111	Why do they need an engineer?
+2112	They got you.
+2113	Yeah, really?
+2114	What's wrong with that shit?
+2115	No, that's great.
+2117	So, yeah, Alberto's, uh, you know, got a day job and plus.
+2123	Um, and, uh, so this is like kind of been one
+2125	of those things that we can get done on the weekends.
+2128	Uh, but fortunately he has so many contacts.
+2132	Davide was, I think in either his master's or his PhD program, um, and,
+2136	you know, they're good friends.
+2138	And so they were able to work together.
+2140	How much of, how much of podcast generator code is still running, uh, RSS.com?
+2146	Today, zero, but until January, uh, 2020 last year,
+2150	it was a whole podcast generator.
+2153	So for two years, we did a big, uh, big, uh, big code revamp.
+2156	It was a monolith in digital ocean.
+2159	And we started to have podcasters, uh, you know, at the beginning that grew,
+2164	one of them was bought by sport, uh, Fox sport.
+2167	Right.
+2167	So when they would tweet, everything would go, go down or systems down.
+2171	So we started working on.
+2172	Right, right, right, right, right.
+2174	Like the old days, man.
+2175	Perfect.
+2176	Yeah.
+2176	Good times.
+2178	But then we, we, we launched a great platform, AWS, you know, uh, we, we,
+2182	we really worked on microservices.
+2184	Now we are, we are very proud of the tech we have.
+2186	Um, so now we are very happy with what we have.
+2189	Are you concerned at all?
+2190	Just hearing that, you know, you rely at least partially on AWS,
+2193	that if there's someone who
+2195	has some content that's flowing through your pipes that they don't like,
+2198	and they get, uh, someone gets all huffy.
+2201	I mean, dealing with that, have you seen any cancel culture,
+2203	anyone coming to you and saying
+2205	you got to do something?
+2206	No, I mean, not, uh, on the U S side.
+2209	Anyway, we freak not frequently,
+2211	but occasionally we'll handle a customer support request, come
+2214	in and take down somebody.
+2216	And, um, you know, I, uh, I, uh, I think I side with most, uh,
+2220	podcast hosting companies.
+2221	It's just not, not a place we want to wait into.
+2225	So AWS, uh, you know, we think they've got a great product and that's what it is.
+2230	It's a product and we want to, you know, offer our customers the greatest, uh,
+2234	you know, content distribution, uh, that we can.
+2237	And so, yeah, AWS is going to be who we're with, but I don't,
+2241	I don't think they want
+2242	to, um, you know, wait into the weeds on this sort of stuff.
+2245	Well, I can only say from experience, they do have a system because I got a,
+2249	I got a notification
+2251	once because of just its index page for, uh,
+2255	no agendas archive and someone issued, uh, you
+2259	know, that sent whatever process there is at Amazon.
+2262	Somehow I got an automatic email that said, okay, this is hosting a racist content.
+2267	And, uh, what do you say?
+2269	No, it was, uh, COVID health misinformation.
+2271	Oh no, COVID health misinformation.
+2273	Thank you for correcting me.
+2275	Yeah.
+2275	Which is also racist, believe me.
+2278	Um, and, uh, and I just replied saying, oh, this is just a list of links to, to
+2282	the individual show.
+2283	So I don't know what you're talking about.
+2284	And then it was like, thank you for satisfying our request.
+2288	I mean, usually it's just people trying to check the boxes, um, you know, because of
+2292	whatever sort of protocols that they've put in place.
+2295	I love, I love reporting.
+2297	You know, I, I'm the admin for, uh, no agenda social.com and,
+2301	and here's what people will report.
+2304	Cause I look at the reports.
+2305	So they'll see something on the, on the public federated timeline,
+2309	which is like sticking
+2310	your head in a sewer, you know, in a, in a sewage river.
+2313	That it's just scrolling by.
+2315	So, okay, you're, you're there, right?
+2316	I know you're there.
+2317	And then they'll see something, which is, I mean, really rank, you know,
+2321	some, whatever porn picture it is, but it's always obfuscated.
+2325	This is, this is what I like about Mastodon is by default,
+2328	you can just have all of your
+2330	porn pictures fuzzed out.
+2332	So in order to see what's in the picture, you have to actively click on it.
+2336	So, you know, people who actively click on it and then go, oh no, and report it.
+2340	I'm like, what is wrong with you?
+2342	Don't click on it.
+2346	So weird.
+2347	You know, was it the wrong porn?
+2349	Maybe that's why they're reporting it.
+2351	I'm disgusted.
+2351	I expected something else.
+2353	It's misinformation.
+2355	They expected Pinocchio.
+2357	Yeah.
+2358	We want that.
+2360	We want that Pinocchio movie.
+2361	They're looking for your dissertation.
+2364	So you guys now are, you know,
+2365	we were talking before the show and you mentioned that you're
+2368	up to like 12 employees.
+2370	I said, oh, well, that's a magic number.
+2372	Cause when you have 12, you might as well have 20.
+2375	And so, you know, what are your plans?
+2377	I mean, do you, are you just going to keep growing organically?
+2380	Are you thinking of, I don't know, what do you, where are you at?
+2384	Because the space is not big, but you know,
+2386	there's definitely competitors and maybe people on the prowl.
+2390	Yeah, we are definitely growing.
+2392	We're growing a lot, but at the same time,
+2395	we live in a great time in human history where
+2398	technology can help keep our head countdown, should you say?
+2402	So, uh, I mean, the, the scale is very manageable.
+2406	We, we, uh, Alberto and I both have experience in, um,
+2410	managing large teams and this is not
+2413	something that we want to, I mean, we, I wouldn't wish that on my worst enemy.
+2417	Um, so there, there has to be super compelling reason to, to, you know,
+2423	increase the size of the team.
+2425	And so we're extremely selective, um, and thankfully we can be, uh,
+2431	because we can, you know, project our growth and we know exactly
+2435	what we need based on our product roadmap.
+2436	And, uh, so far so good.
+2439	So yeah, uh, hopefully we don't grow headcount, but we're definitely growing, uh,
+2443	in all the other respects.
+2444	Cool.
+2445	Well, I mean, with product roadmap, does the product roadmap include, uh,
+2449	tell me it includes the podcast namespace.
+2452	Hold on a second.
+2452	Hold on a second.
+2453	Hold on.
+2454	There we go.
+2455	It's time for some hot namespace.
+2458	Oh, I was waiting for you to rip the clothes off of her, Dave.
+2461	Dave, thank you so much.
+2463	It's exactly what we need is some hot namespace talk because these guys,
+2467	I don't think they're in our, uh, cubby hole, so to speak, just yet.
+2472	No.
+2472	So we, we do include the namespace and we already
+2476	have implemented and rolled out the locked tag.
+2479	Ah, there it is.
+2482	I was waiting for the plan.
+2483	Hold on.
+2483	Hold on.
+2484	Let's just do it one more time and just make sure we feel hot.
+2489	Yeah.
+2490	He's a dominatrix.
+2491	He's got us locked up with his lock tag.
+2496	We are, we are also sending all our shows to podcast index.
+2499	I think from the, uh, the week.
+2501	Oh yes.
+2502	Yeah.
+2502	That's right.
+2502	You're updating.
+2503	Yep.
+2504	Absolutely.
+2504	Yeah.
+2504	And we are going to roll out.
+2506	Oh, thank, thank you for creating podcast index.
+2508	Of course.
+2509	And, uh, we are also rolling out all the next, uh, uh, let's say the next, uh,
+2514	tags, um,
+2515	in the, the ones that were approved in phase one in the next couple of weeks in,
+2520	in, in, in our staging environment.
+2521	And we are, we are running QA cycles.
+2523	Oh no, no.
+2524	Hey, if anyone appreciates that this is not a small undertaking, it's Dave Jones.
+2530	Uh, and I've, I've been enough around enough to know.
+2534	So that's really cool.
+2535	I'm very happy to hear that.
+2537	That's very nice.
+2537	And I'm so happy that you're doing the implementation
+2541	and it's as pleased as I am that Libsyn has
+2543	opened something up to allow people to do stuff.
+2548	Uh, and I'm not quite sure.
+2550	I haven't investigated myself yet.
+2552	Um, you know, the, the, the actual implementation of the tags into the,
+2557	into the UI for your customers
+2559	is, is really appreciated.
+2561	Exactly.
+2562	You know what the challenge is there was, uh, as you say, UI and UX.
+2566	Now our, uh, because we attract most of our users organically,
+2570	we don't spend much in marketing.
+2572	We really, uh, we attract people who are starting podcasting.
+2576	So, and we, we run a lot of surveys, uh, with our users.
+2579	For example, the last one was, uh, uh, um, let's say net promoter score survey.
+2584	Uh, and we got a thousand, 200 replies.
+2588	We got a great NPS and also we got a word cloud
+2591	through hot chart about what they said.
+2594	Right.
+2595	Yeah.
+2595	And everyone is saying we, you know, easy, simple.
+2598	So that's our, our, our trademark if you want.
+2601	So our problem with all these tags was how can we keep it easy and simple.
+2605	Yes.
+2606	So we are, we, we, we, we will show it very soon,
+2609	but we have a way to fade in and fade
+2611	out tags and create an advanced mode in a, in a, in a simple mode.
+2615	Oh, so the old advanced mode.
+2618	All right.
+2619	Turn the remote, turn the remote control over granny.
+2623	Although we probably won't name it advanced because it's not a problem.
+2627	Scare people.
+2628	Advanced mode is also known as normal mode.
+2631	Right.
+2631	Yeah.
+2632	Advanced is the new normal, but we are going to change the name,
+2635	but we are going to find
+2636	a way so that we introduce slowly to new podcasters, all these options.
+2642	Otherwise they get overwhelmed.
+2643	So that, that's the result of our U S research.
+2646	Yeah, this was a Tom Rossi at Buzzsprout told me, he said, if you had, he said,
+2649	if you put a box on your UI, somebody's going to stick something in it.
+2653	So you got to be really careful.
+2656	Hey, I can, I can paste something in here.
+2659	Yeah.
+2659	Yeah.
+2660	He's like, you gotta be real careful when you put a box up there.
+2662	Yeah.
+2662	Yeah.
+2663	I always paste JSON, just throw it in there everywhere I can.
+2666	My JSON aggregator.
+2669	On the phase two, on the phase two stuff, this, uh, with podcasts, uh,
+2674	see person and
+2675	location, I mean, that'll be final, that'll be sort of finalized and closed,
+2681	uh, on the 31st.
+2682	So a couple of days from now, like what do y'all,
+2685	I'm guessing y'all are going to look
+2688	at those tags phase one first.
+2690	Yeah.
+2691	And then like person or location.
+2692	What do y'all think about those?
+2694	Yeah.
+2694	I mean, those are the ones that get me super excited.
+2698	The phase two stuff.
+2699	Um, we talk about that all the time.
+2702	Um, you know, we, we even at one point had a,
+2705	an intern that was a tour guide in Madrid, Spain.
+2709	And I just keep, you know, telling Alberta,
+2712	like we need to build what Dave and Adam are
+2715	building and the other guys so that she can like podcast her.
+2718	She didn't have to tour guide anymore.
+2719	She just builds a tour guide podcast.
+2721	So these things are cool.
+2723	Yeah.
+2724	Yeah.
+2725	You know, but even I'm, I see it so clearly in my head and it goes back to what,
+2730	you know, to your history, Alberto is, I've always wanted, um,
+2735	a lecturer professor to say, shit, I've
+2738	got a great course here.
+2739	I want to put it up and then it'd be able to clickety, clickety,
+2744	clack upload done and
+2745	immediately turn around.
+2746	And it's available on a whole plethora of apps with all kinds of options.
+2750	And at the same time, I think, you know, a different UX, if you will,
+2755	needs to be created.
+2757	People who have different needs, like, like, you know,
+2760	when I hear a location podcast, man,
+2762	I can envision a completely different type of app that handles that in,
+2767	in a certain way.
+2768	I mean, you know, why wouldn't a map be the main feature of the main page?
+2772	You know, um, as, as you hear the audio, the map moves, I mean,
+2776	there's a million things I can come up with.
+2779	I fully agree.
+2780	And actually the main, the main challenge in implementing podcast index,
+2785	um, namespace is just the UX in our opinion.
+2788	Yeah, of course.
+2790	So, yeah.
+2791	And, and, and so also, for example, other, uh, other feature like, uh,
+2795	imaging donation through lightning network, right?
+2798	Great idea.
+2800	It's not as simple as having, for example, Stripe.
+2804	So the, ideally the user doesn't want any friction.
+2808	They would like to just add their credit card once and just click.
+2811	And then donations are, you know, sent automatically every X minutes.
+2815	That's the UX layer that we have to fine tune as a, as a, as a, you know,
+2820	in, in the field.
+2822	No, I understand.
+2822	And I think that that is, uh, what, um,
+2825	I love the way you're talking about it because
+2828	the approach is correct.
+2829	In my opinion, a lot of, uh,
+2832	hosting companies have been the tool and we've had a tool and
+2836	the tool worked pretty much the same way for years.
+2839	The only additional tool we had was some authoring tools, um, for, uh,
+2845	chapters in the file.
+2848	And that's about it.
+2850	Um, so now everyone is, and I understand, you know, it's like, oh, now you're tasked
+2855	with, it's not a matter of adding some tags.
+2859	You have to actually invent a tool because yes, it is UX and it's not just a tag.
+2864	It's like, okay, how do I get someone if they want to make chapters?
+2867	What is that experience like?
+2869	And yeah, that's hard.
+2872	That's really hard.
+2872	No one's done it.
+2873	No one has thought about it.
+2874	And I love that you guys are going through that process in a structured way.
+2879	It sounds right.
+2882	Yeah.
+2882	And there is a topic here, for example, the hosting itself.
+2885	So we don't like to be labeled necessarily as
+2888	a hosting company because we actually offer a tool.
+2892	Uh, I think you spoke perhaps the last episode about the EPFS, right?
+2897	What happens if we start to host there?
+2899	Yeah.
+2899	I was going to bring that to you next.
+2901	Okay.
+2902	So that, that's the point, right?
+2903	So I thought about that when I was listening to, to the episode,
+2906	I was speaking with Ben and
+2908	we said, if this happened, we would leverage EPFS.
+2911	We would save a lot of money in bandwidth for AWS, right?
+2914	That's right.
+2915	Yeah.
+2916	Because we, what we,
+2917	our value is in the tool and that's why we want to keep it simple.
+2920	So hosting, podcast hosting, it's not necessarily the best description of,
+2925	of what we feel we are offering to our users.
+2928	Give me a description.
+2929	I'd love to use a different word.
+2932	Oh man.
+2932	We'll pay you for that word.
+2934	Okay.
+2934	I mean, I prefer content platform, you know, it's content distribution.
+2939	It's it's, and that content.
+2941	So you want to cover the entire supply user chain.
+2944	Hosting is just a small part of that, but then you have to applaud,
+2947	you have to distribute.
+2948	And that's the whole point.
+2949	That's what we think.
+2950	Yeah.
+2951	It's really, it's really a podcast design tool or designer suite.
+2956	Creation.
+2956	True.
+2957	Yeah.
+2957	Yeah.
+2957	Oh, I hate the word creation, by the way.
+2959	Why am I, why am I doing, okay.
+2961	You know what?
+2961	I will work on that.
+2963	And if I come up with something,
+2964	I will of course pass it on to you and sometimes come up with stuff.
+2967	We got marketers in this house.
+2969	Um, at the same time, uh,
+2971	how can we work together to make your bandwidth go away and how can we push IPFS?
+2979	What, what pieces do we need to put in place to make this work?
+2983	And, and I, and I'm really stepping out because
+2985	this is where the namespace gets sizzling hot
+2988	because we have disagreements over how to do this.
+2991	Yeah.
+2992	It's a complex question.
+2995	All right.
+2995	So what we're talking about is an alternative enclosure in essence.
+2998	Exactly.
+2999	Exactly.
+3000	So that's the point.
+3000	Like, uh, perhaps, uh, the, the, uh, a gradual shift would be the best option.
+3006	So you have an alternate enclosure.
+3008	So people wanted to use or leveraging IPFS, even clients, right.
+3012	That use that, uh, would, would go through that, uh, you know,
+3016	the file system and, uh,
+3017	the others would just go through a normal CDN.
+3019	That, that would be my, my, my, my guess.
+3021	And that's the way I keep suggesting it, but no one, no one loves me.
+3025	No one picks up on it.
+3026	They're like, man, I'm going to shut up non-developer.
+3028	I don't know what you're talking about.
+3029	I mean, it's, it's, it's not so easy to plug into IPFS, meaning there are a lot,
+3034	there are a lot of pieces that have to fall into place.
+3036	Right, no, I'm just talking about purely about where do you put this?
+3040	Where do you, how do you alert the aggregator that there's an option?
+3044	And I, and I think what you said is make it initially, uh,
+3048	a separate tag in the namespace.
+3051	Uh, but that, that I can't get anyone to agree with me on that except you.
+3055	Or one tag, the enclosure tag with another attribute, which is a IPFS.
+3062	Yeah, I think that's the argument.
+3064	And, and I don't know what it is.
+3065	I think people are worried that X amount of
+3068	apps will not be able to understand it or
+3070	aggregators will puke over it.
+3072	I'm not sure.
+3073	Dave, Dave, way in here.
+3075	Well, I think when you, I'm swimming, I'm drowning.
+3077	Yeah.
+3078	Um, I think what happens when you,
+3080	with this kind of stuff is there's always a couple of
+3083	things that have, you don't want to be tied to one specific protocol.
+3087	And so everybody immediately, when you bring up, okay, let's do IPFS, uh,
+3091	it's like, yeah, but we need to generalize this,
+3094	this tag to where it's not just IPFS specific, because
+3098	what if we want to distribute it over some other DHT?
+3101	And so like, then you get into this flame, this,
+3104	this sort of back and forth debate about
+3106	how much to generalize it.
+3108	Because it's 20 years from now, if IPFS was superseded by some other thing,
+3111	you don't
+3112	want some legacy, you know, thing just hanging around this, that was too specific.
+3117	That seems like the argument that you always get into.
+3119	And, but then you got to,
+3121	but I'm not so sympathetic to that because you got to plant your flag somewhere.
+3125	I mean, RSS, uh, podcasting wouldn't exist, uh, without,
+3130	without Weiner planting the flag
+3133	and saying, okay, and here's how we do it.
+3134	It has to be HTTP.
+3136	Yeah.
+3137	Well, I mean, you need someone to go Leroy Jenkins on it.
+3140	Yeah, exactly.
+3141	Let's just do it.
+3142	You know, I mean, cause we could, we can say,
+3144	we could spend a lot of time saying, well,
+3146	we need to make the value tag support, uh, lightning, hive, web monetization,
+3151	blah, blah, blah, blah.
+3152	And I, and I'm sympathetic to some of that and I,
+3155	and I want those things to happen, but
+3157	I don't want it to hold back things to hold back the progress forward.
+3161	Well, you're the man, you're the man with the keys in my mind.
+3164	I, I, it's my mission to convince you and I have not done that yet.
+3168	So I don't know if you're just, if you're waiting for the IPFS stuff.
+3173	No, just for alternative, you know, cause another part of that conversation is,
+3177	uh, well, we want to be able to do lower resolution for people
+3181	who live in Zimbabwe and which is completely true.
+3184	I've, I've done that.
+3185	Uh, you know, we want torrents.
+3186	I, I, I get it all.
+3188	So we just have to figure out what will work.
+3190	And I, and of course I agree that in 20 years, if it's hive,
+3194	then it should be working with hive.
+3197	Um, you know, that's, that's an obvious one, but to me,
+3201	I just feels like throw it in a namespace.
+3204	And, you know, if you've got an alternative to me, it's an alternative right now.
+3207	And IPFS, here's how you address that.
+3209	And it's torrent.
+3210	Here's how you address that.
+3211	I mean, well, I don't think we need to be afraid to, I think the,
+3215	the sort of the baseline
+3216	on that is we don't need to be afraid to put things
+3220	in there that may ultimately fail because
+3222	I mean, there's things in the original RSS aspect that aren't used anymore.
+3225	Of course, stuff that is misnomers.
+3227	Absolutely.
+3228	So can we, can we create with a number of the RSS
+3231	platform tool creation hosting companies?
+3234	Can we create a consortium of such of sorts
+3238	where we're all hosting gateways and maybe pinning stuff?
+3243	I mean, uh, Ben, is this, uh, is there,
+3246	is there any crossover talk or any real communication
+3251	with your, um, uh, frenemies?
+3255	Well, so I would call them friends possibly.
+3258	I mean, so, um, yeah, I mean, so there was, um, the first ever, um, the podcast,
+3265	uh, convention I went to was right before COVID hit.
+3268	And, uh, I met, uh, Todd from Blueberry there.
+3272	Um, and I got talking with him and was super like, I almost relieved that, um,
+3279	I mean, he's an open guy.
+3281	I listened to his podcast now.
+3282	I love kind of learning from him.
+3284	Who's been in the space for so long and the others,
+3286	I try to listen to as much as I can.
+3288	That said, um, you know, as I introduced myself and talked to him, he said,
+3291	oh man, you should
+3292	have been at the RSS coalition meeting we had, uh, before kickoff this morning.
+3297	They had great food.
+3299	Yeah.
+3300	The, the, the shrimp was delicious.
+3302	So, um, but that said, like, you know, there's constantly, uh,
+3308	a demand or desire to get
+3310	everybody involved, but, um, it's extremely difficult because we're fragmented,
+3317	um, through so many ways.
+3318	I mean, location, no, nobody's in Silicon Valley that I'm aware of.
+3322	Um, you know, so creating a network,
+3324	the network effect is basically going to revolve around,
+3327	you know, a Slack channel like it was for RSS coalition.
+3332	Uh, but then there's no real drivers.
+3334	There's no, um, so how about this?
+3336	Cause it seems to me, and I'm glad you said friends.
+3339	It seems to me that, and maybe we kick this off.
+3343	I don't know.
+3343	And we can probably, we can certainly, uh, help if every,
+3348	if all of the similar companies
+3351	or at least enough of them all collaborate on an IPFS, uh, gateway.
+3357	So you're also pinning and hosting for your colleagues.
+3360	I think you could, uh, all like rise your,
+3365	raise your bottom line by maybe 20%, maybe more.
+3370	Yeah.
+3371	We could host it, right?
+3372	Yeah.
+3372	And we, we can host some of, we can have a node.
+3374	We'll do a, I mean, Dave,
+3376	Dave seems to be able to run like fucking Google on $300 a month.
+3380	I don't know how he does it, but Dave's got all this wacky shit and it's like, Oh,
+3384	look, it costs six bucks for what?
+3386	No, for everything.
+3388	So there's, there's definitely, and I'm, you know, you guys are in the band with the
+3392	game, so you understand it.
+3393	But if we kick that off, I mean,
+3394	would you be interested in trying to figure this out?
+3396	Because it's the, and I understand namespaces, all this stuff is slow,
+3402	all of it's slow, but
+3403	even just getting it started takes, you know, a couple of people, you know,
+3408	and I think we,
+3409	we can help, you know, the first person to jump in, we'll pin everything.
+3412	We'll do every, whatever we can.
+3414	Yeah.
+3415	I mean, before we get into the specifics there, let me just take the moment to just
+3419	say, thanks for jumping in.
+3421	Like you guys, you know,
+3422	I was getting a little frustrated with what I was reading on the RSS
+3426	coalition about, you know, how we could improve the namespace,
+3430	but there was just never really any movement.
+3432	And I just watched it start to die before me.
+3435	And I had so much hope and I'm sure everybody in there too felt like, you know,
+3439	Oh no, this is happening again.
+3441	We're not getting anywhere.
+3442	And I talked with James Cridland the first time I ever talked to him,
+3445	I'm like, James,
+3446	this is not going to work out.
+3448	Like, what can we do?
+3449	And he said, Oh, just wait till I do this, uh,
+3452	this release on Monday or Tuesday, whatever it was.
+3455	And you're going to, you're going to see that there's this podcast index.
+3458	He didn't even name it.
+3459	He didn't name it.
+3460	He was under embargo, but he's like, you'll be surprised.
+3464	Did we ever embargo any one day?
+3466	Well, yeah, I told him to shut the hell up.
+3468	No, that was last week.
+3470	No, no, no.
+3471	He was definitely not wanting to Trump the news basically.
+3475	So, all right.
+3477	And so we waited and I mean, that's, we, listen,
+3480	we were like your first fans just because
+3483	we knew what we were looking at.
+3485	You know, you guys have supported us in ungodly ways.
+3491	And you really, you've, whatever value you got, you have returned.
+3495	So we appreciate it.
+3496	This is a mutual love society.
+3498	We're happy to do it because Alberto and I sat
+3500	around talking for at least two weeks.
+3502	Like, how can we improve?
+3504	I mean, and I know Todd had that same conversation eight years before us.
+3508	I mean, it was just a continual problem.
+3511	Uh, and so we're happy to support financially
+3513	just because we know the amount of work that you saved us.
+3516	Like it literally, we were just staring down the barrel of a, just now was that,
+3520	was that for the search and the index part?
+3522	That's really where, were we able to help you guys?
+3524	No, I mean, just in the, in the, um, just in the namespace, like how,
+3529	how it's like got new life in it.
+3531	I mean, it's been resurrected almost.
+3532	We were looking at, you know, what was, you know,
+3535	RSS feeds used to be in Facebook, for
+3537	instance, they're no longer there.
+3539	And as I was looking at the silos that were happening
+3542	with Spotify kind of gobbling things
+3544	up and then killing off an RSS feed, like I could just see the writing on the wall.
+3548	Like this is going to happen the same way it's happened to all these other things.
+3551	You, you no longer have RSS access.
+3553	You have to go get API keys and then that's the keys to the kingdom.
+3556	They can kick anybody out.
+3557	Like it was just going to be a restriction.
+3559	On that note, Dave.
+3561	Yes.
+3562	API keys.
+3563	Quick mention.
+3564	Okay.
+3565	Go ahead.
+3567	It's your idea.
+3569	You're going to open it up.
+3570	Oh yeah.
+3571	Yeah.
+3571	We're, uh, we're, I've got some more thinking to get to do on this, but we're,
+3577	I think, you know, we have talked before when I hijack your brain.
+3580	Yeah.
+3580	You man, I have, I'm sitting here staring at my dog trying to do something horrible.
+3586	Uh, but the, the, uh, remember he's only doing it because he can Dave,
+3591	Dave, uh, he tries to screw me at everything.
+3596	They, so the original idea was to take, uh, was to go in the other direction.
+3601	So, uh, if we would say put the value stuff, uh, into a higher, uh, higher key,
+3607	uh, permission level, then we started thinking, you know, this looks,
+3611	it makes more sense going the other, other direction.
+3614	So then we put the value, uh, responses, value tag responses,
+3619	keep those in the API, just
+3621	like everything, just like it is right now,
+3624	but then open the API to where anybody can
+3626	query it with, without API keys.
+3630	And for the very reason you just mentioned, that's why I brought it up.
+3633	Yeah.
+3633	If we do it that way, then we're a direct, um, what would you call it?
+3639	We're, we're a direct alternative to an iTunes lookup
+3643	because they don't require API keys and
+3645	we get the benefit of being able to cache the
+3647	heck out of everything with cloudflare.
+3649	So then we can, because what pro what the problem is now with,
+3654	with caching is that if you have
+3657	a, if you have a, uh, a rotating API access hash in your header,
+3662	everything has to come
+3663	through and hit the hardware.
+3664	So if we can, if we open everything up and just
+3668	remove the API requirement altogether, uh,
+3671	for, for certain, you know, limited things like just being able to find the,
+3677	uh, that that's
+3678	if we just open everything where you can, anybody can get what is also in,
+3684	in the feed, then,
+3686	uh, that sort of solves a lot of problems, makes it, makes it more widely available.
+3692	And, uh, yeah, I think that's,
+3694	that's definitely what we're going to do here in the next few weeks.
+3698	Open is always better.
+3700	Perhaps the challenge there is that if you have a public endpoint,
+3704	you need to implement some logic.
+3706	If you have an API key, you can just block it easily.
+3710	And you, you have access control, but imagine you have a peak of users.
+3714	It can be also, uh, you know, some scraping engine.
+3717	It's, it's harder.
+3719	You need to add.
+3720	If someone is scraping, then could you please just go download it from us?
+3725	We make it available.
+3726	The whole thing, no need to scrape.
+3729	Yeah.
+3729	See, that's what we've tried to avoid by dump,
+3731	by doing a public feed dump onto archive.org
+3734	is like dumping our whole DB or not the whole one, but the feeds table.
+3738	Cause most people scrape in order to get the feed URLs.
+3741	And so we've dumped everything publicly, all the feed URLs so that we can,
+3746	so that if somebody starts scraping, we just say, stop, stop doing that.
+3751	Just go download the CSV file.
+3753	It's all there.
+3754	It works.
+3754	It works amazingly well.
+3755	I'm so surprised and delighted by how courteous everyone is, how, you know,
+3761	people ask before they start hitting our, you know,
+3764	before they start hitting the end point at all, you know,
+3767	Hey, I'm doing this.
+3768	This is okay.
+3769	I mean, it's, it's been really delightful.
+3771	Yeah, but you're right though, Alberto, we are going to need some, some logic there.
+3775	And that's what I'm thinking through before we
+3777	pull the trigger is trying to make sure that
+3779	we can, uh, defend ourselves properly.
+3782	If somebody starts doing, you know, getting some shenanigans.
+3785	It could be great if you could send a 501 or
+3789	five or five zero zero response saying, go
+3792	download the whole dump of the feed.
+3795	Give them a link.
+3797	Yeah.
+3797	In the, in the 500.
+3799	Yes.
+3799	Yes.
+3799	In the 500, right?
+3800	Why not?
+3802	Yeah.
+3803	That's, that's a great idea.
+3804	And so it's a little bit more complicated, um,
+3807	rate limiting behind Cloudflare because
+3810	so Cloudflare allows you to rate limit in their system, but it costs you money.
+3814	And it's one of those AWS type money costs where you don't know in advance what it's
+3820	going to cost you because it's like, okay, you can rate limit,
+3824	but every time the rate
+3826	limit kicks in, it's going to cost you this many cents,
+3829	fractions of a cent per, per request.
+3831	And it's like, you're going to put a debit card there.
+3834	A debit card is a thousand dollars limit.
+3836	Right.
+3837	Yeah.
+3837	Right.
+3837	It's the only way to go.
+3839	Yeah.
+3839	And so we're, uh, so, but, but then if you're trying to rate limit on that backside
+3843	of Cloudflare, they, you, you only get the, the source IP,
+3847	the true source IP address in a header.
+3849	And so I've got to put that into some NGINX voodoo
+3853	so that we can actually like have some
+3856	sort of defense there for exactly the reason you mentioned.
+3859	Yeah.
+3860	Well, that was hot.
+3863	No, no, it's probably, now that everybody's gone.
+3867	Now that we're all alone, just the four of us.
+3869	We'll start crumpling paper.
+3870	And I'll start it off by saying this is a value for value project.
+3876	Check the entire podcastindex.org, which includes, uh, your developer site.
+3881	And, uh, we also have a podcastindex.social and
+3885	we gladly highlight all of the people who
+3888	are working with us at our new podcastapps.com or podcastindex.org slash apps.
+3894	And if you go to podcastindex.org down at the bottom, if you scroll down,
+3898	you'll see a big red donate button, uh,
+3900	also a QR code to send us some Bitcoin through lightning or set up
+3903	a little subscription.
+3904	Uh, that's all we ask for is if you're getting value out of it,
+3907	then just return it one way
+3908	or the other with your time, your talent or your treasure.
+3911	And again, uh, big thanks to Alberto and Ben who have, uh,
+3914	who have supported the project
+3916	financially more than anybody.
+3918	Uh, it's really, really appreciated.
+3920	And, but it's all every number, whatever the value is, it's your number.
+3923	It's your value.
+3924	So who do we thank today, Dave?
+3927	Uh, the number for Thomas Carson, uh, was $10 a month subscription.
+3933	Uh, thank you, thank you, Thomas.
+3936	There's no note.
+3937	Yeah.
+3937	Right.
+3937	And you can write notes.
+3938	We love reading the notes and just put that in your, uh, in your transaction there.
+3942	Yeah.
+3943	And, uh, that, let's see, I still don't have,
+3946	I'm going to do the repo and we're going
+3948	to, uh, we're going to put, uh, monthly supporters in the re in the GitHub repo.
+3953	Yeah.
+3953	Yeah.
+3954	Yeah.
+3954	Yeah.
+3954	So we can do pull requests.
+3956	Yeah.
+3957	Yeah.
+3958	Donate through a pull request, please.
+3961	Uh, see, we've got 1111, uh, says, uh, Hey guys, keep this anonymous,
+3968	a small contribution
+3970	for those doing the work as podcasting builds back better.
+3974	Can I get some R2D2 karma?
+3977	Oh crap.
+3978	I wasn't expecting that.
+3979	Yeah.
+3979	Hold on a second.
+3980	Go do your search.
+3981	Yeah.
+3982	I got R2D2 karma.
+3984	Of course I do.
+3986	You've got karma.
+3993	Let's see what we got.
+3995	Uh, Oh, well we got 1111 last time.
+3998	And this, uh, this is 2222.
+4000	Oh, beautiful.
+4001	Yeah.
+4001	Yeah.
+4001	Uh, let's see.
+4003	Preserve, uh, from John lips, uh, preserving podcasting.
+4007	Oh, here we go.
+4009	Preservingpodcasting.com is forwarding to show my support.
+4012	Ooh, that's cool.
+4014	Hold on.
+4014	Put that forward to the forward to us probably.
+4017	So let me see preserving podcasting.com.
+4022	Let me just check.
+4024	Hold on a second.
+4025	I love domain names.
+4028	Uh, Oh, I perverting podcasting.
+4030	Hold on a second.
+4031	Perverting.
+4032	Yeah.
+4032	That goes somewhere else.
+4036	Uh, it doesn't seem to be, uh, that goes to anchor.
+4040	Preserving podcasting.
+4041	No, it doesn't go anywhere yet.
+4043	Maybe it hasn't worked it out yet.
+4044	Okay.
+4045	Okay.
+4046	Uh, let's see.
+4046	But thank you.
+4047	The, uh, preserving podcast, preserve pod, preserve podcasting.com.
+4052	Oh, you sent me down the wrong hole here, man.
+4055	Hold on.
+4055	I was thinking perverting podcasting.com.
+4058	Yeah, it's better.
+4058	We should probably, yeah, we should probably get that.
+4062	Preserve podcasting.
+4063	Uh, yes.
+4064	Reserve podcasting.com.
+4065	Go straight to podcast index.
+4067	Beautiful.
+4068	The waves in the proverbial internet pond have
+4071	people sitting up and paying attention.
+4073	Podcasting 2.0 is a beacon of hope that is sorely
+4076	needed for these dark days of winter.
+4078	Oh, um, you made fun of the way I read things earlier.
+4084	I'm self-conscious.
+4085	Oh, I did not.
+4086	I'm so self-conscious.
+4088	I can't.
+4089	You're a pro.
+4090	You're inhibiting me.
+4091	Yes, that's right.
+4092	But that's it.
+4093	That's our group, man.
+4094	Sad puppy.
+4096	And thank you, Dreb Scott,
+4097	for popping that up just in time as I view it here on my Podverse 3.0 beta.
+4103	I saw it.
+4103	I saw it.
+4104	The, uh, podcast, the, uh,
+4106	I fully expect sex robots at some point in the image chapter aren't, Dreb.
+4112	Oh, hell yeah.
+4114	And know that just by, uh, participating in our grand value for value scheme,
+4118	uh, with podcasting, you are actually also supporting Dreb Scott.
+4122	What did you put him in for?
+4123	Five, five, uh, 5% on the cut?
+4126	Yeah, 5%.
+4126	Beautiful.
+4127	He's, he's a man who's getting paid.
+4129	That's right.
+4130	I mean, don't spend it all in one place, Dreb.
+4133	Yeah.
+4133	Don't spend all, don't spend all 75 cents of that at once.
+4136	What?
+4137	You're doing it on an annual basis.
+4138	Oh, okay.
+4139	An annual basis.
+4143	Somehow, somehow it is so exciting.
+4146	You know, you see the Satoshis coming in or even
+4148	going out and it's an exciting feeling.
+4151	Uh, and I know you guys are talking about it, Ben and Alberto.
+4154	And, uh, I know that, you know,
+4156	we have a long way to go before we're ready for you most likely.
+4160	Uh, but it seems, it seems like, go ahead.
+4162	Yeah.
+4162	I was just going to say, Adam, uh, you know, with RSS in particular,
+4166	kind of as a, as the
+4167	big thing, but even on the little stuff, like you're,
+4170	you're connecting the virtue cycle,
+4172	the, the cycle of, you know, value for value.
+4176	Um, and it's something that RSS needs like in the, like as a, as a protocol, uh,
+4181	you know, that's where it was lacking.
+4183	It's just, uh, you know, the steward to kind of take it to the next level.
+4187	And I just want to say thanks for that.
+4188	Like, but even on the small, like macro or micro scale with each podcast, like,
+4193	you know, connecting all the, all the players kicking out
+4197	the ones that don't need to be there that
+4199	are just kind of leeching, uh, you know, on the transaction, so to speak.
+4202	Those are, you know, that's super valuable.
+4205	And I think it's going to help podcasting in general, uh, you know, as,
+4208	as new people
+4209	get in and they're not going to get, you know, advertising sponsors probably.
+4213	And especially if they have,
+4214	they have content that advertisers don't want to put anything
+4217	with, but if there's a message that resonates with anybody, they,
+4220	they can see the value returned.
+4222	And so I think it's just, I just want to say thanks for what you're doing.
+4225	Cause it's, it's sorely, sorely needed.
+4228	Um, and this isn't the only industry where it's needed, but it's, it's, uh,
+4232	and it's you and it's everybody on the Macedon.
+4234	I mean, it's, there's so many people involved, but you know, you're,
+4237	you're help leading the
+4238	charge and, um, you know, we're grateful.
+4240	The, well, thank you.
+4241	And, uh, and, uh, and back at you and, uh,
+4244	our mission is really to make it as easy as
+4247	possible for you to integrate.
+4248	I mean, I envision you've got your,
+4251	your customer who likes simple and easy and all they have
+4255	is, you know, they just have their wallet baked right into, uh,
+4258	to your system in their control panel.
+4260	They, they see that they can send it, uh, you know, to their Venmo or, you know,
+4264	put it into dollars any way they want.
+4267	And it should just have a ticker.
+4268	And then of course you could do all,
+4269	you can add all kinds of stuff to your statistics,
+4271	but that seems like such a logical fit.
+4274	Uh, and yeah, we have, go ahead, Dave.
+4277	Yeah.
+4277	We're going to have a discussion about, uh, yes.
+4279	Promote this on Tuesday.
+4281	Yeah.
+4281	On Tuesday of next week, this is all central time, uh,
+4285	my time Tuesday of next week at noon.
+4288	Yeah.
+4288	Yeah.
+4289	We're going to have a, uh, just a, just a Q and a type thing.
+4292	And it's all, it's just about L and pay because
+4295	L and pay is probably the way that most people
+4298	at this moment will need to integrate, um, lightning into their apps.
+4302	And so it's on my calendar, believe it or not.
+4305	I won't add anything valuable to the discussion, but, uh, no, no,
+4309	but I think it will be valuable
+4311	to see, because, you know, like for, for you guys, it's, you know,
+4316	lightning is a, is a
+4318	difficult thing and it's difficult by nest by necessity because it's, um,
+4323	you know, it involves multi-layered money handling.
+4327	And so if you, what,
+4328	what the difficulty of lightning comes in is having to open channels,
+4332	keep them funded, um, you know, spin up a node.
+4336	It's a, it's, there's a lot of complexity.
+4338	Peering, routings, fees.
+4340	Yes.
+4340	All that.
+4341	And so, and all that stuff can bite you in the butt.
+4342	So, uh, what, uh, Garma said on, um,
+4346	on the mastermind is he communicate with Tim and I didn't know that.
+4351	I didn't know this.
+4352	I thought Tim was still working on inbound keys in.
+4354	No, I guess he's already got it working evidently.
+4357	And so like the way that it looks to me is that
+4361	a host like RSS.com could replicate an L and pay system.
+4365	Yeah.
+4366	Basically call the L and pay API, spin up a wallet and it has inbound keys in,
+4370	and you don't have to worry about the liquidity and all that kind of stuff.
+4373	The reporting is almost built in all web API.
+4377	It's all there.
+4378	Yeah.
+4378	I think that is a pretty, that's, that could be really strong.
+4382	Cause that means you could put in,
+4384	you could spin up a wallet and put that information directly
+4387	in the feed and then not have to host any of that jazz yourself.
+4392	But the cool thing though, is I think once we,
+4394	this is sort of going to be like a, you
+4396	know, Vulcan mind meld on Tuesday to where we try to, uh, anybody has,
+4401	you know, questions and information and all that kind of stuff.
+4404	We can just brain share this stuff.
+4405	Then if over the next time period, whatever time period this is,
+4410	if we can figure out how
+4411	all this stuff works and figure out that it's solid and prove it out,
+4415	then that could be a real option for, for hosting companies to, to go,
+4420	to be able to integrate lightning without
+4422	having all the complexity of having to go learn lightning.
+4427	Possibly.
+4427	Yeah.
+4428	Great.
+4428	Yeah.
+4430	Yeah.
+4430	I don't know.
+4431	Yeah.
+4432	It would be great if you, if you, if you guys could make it or all, all of the,
+4437	uh, RSS tool and dye companies can, if, if all, you know,
+4442	if everyone can join in because, oh yeah.
+4446	And you should probably make it say upfront, Dave, now I'm thinking about it,
+4450	say this will be recorded and record it.
+4455	So the comic strip blogger knows it's being recorded.
+4457	And if he doesn't want to be on it, then no, I'm, I'm,
+4460	I'm sensitive to people's privacy.
+4462	So it's never a problem.
+4464	You just got to say it.
+4464	And so it doesn't want, you know, then they can take their own action.
+4467	Yeah.
+4468	But yeah, I, I'd like to see more of that because, and there'll be other players.
+4473	Uh, I hope Graham's going to join, um, from voltage, you know, cause what we're kind
+4479	of starting to get good at is, uh, is kind of orchestrating a little bit,
+4485	you know, it's like, okay, we've got him over here and can you talk to him?
+4489	And, you know, it's like, and then we have some API stuff and some glue and, and the
+4494	collaboration is really beautiful to watch.
+4498	So we, we just, uh, we'd love as much as we can get much,
+4502	much collaboration one way or the other.
+4504	Yeah.
+4505	We love watching it too.
+4506	Yeah.
+4508	Sorry, Dave, didn't mean to speak over you there.
+4511	No, you're fine.
+4512	No, I got high hopes for it.
+4513	I think, I think, uh, I think L the L and pay model is the, is the way forward.
+4518	Um, I really do because there's just,
+4521	otherwise the complexity is just a little too much to overcome.
+4527	Yeah.
+4527	Yeah.
+4528	I think, yeah, I agree with you.
+4530	Yeah.
+4530	And it was, it would,
+4531	it was another one of those fortuitous things that we bumped into
+4533	Tim is, is just like, Oh, okay.
+4536	This is, and it wasn't his first words.
+4538	Like, Oh, I've been waiting for business people to show up.
+4541	He's like, I've been sitting around with this thing for a year.
+4544	Like no one's doing anything with it.
+4546	Yeah.
+4546	We were, we were like, how are you, how do you monetize?
+4548	And he's like, I don't, I don't know how, I don't know what to do.
+4552	You know?
+4553	Well, we basically, if, you know, if it all works out,
+4555	we've given him a way to monetize,
+4557	which is the same we're doing for the app developers.
+4560	Let me ask you this, uh, Ben, what do y'all,
+4563	this has been in the back of my mind too.
+4566	At least so I, uh, in, in the industry that I'm in, uh, for my day job,
+4572	the software vendors
+4574	that we have almost to almost all of them have
+4577	sort of an early adopter beta type, you
+4580	know, program that you can get in where you say, you know, our company is a,
+4585	is sort of a bleeding edge company and we want to test all the new software.
+4588	We know there's going to be bugs.
+4589	We know it's going to screw things up.
+4590	We want to have the newest and we want to test the new stuff before it's ready,
+4596	but I don't see any podcast hosting companies that
+4599	offer that type of thing where it's like,
+4602	okay, you have a beta group who are the bleeding edge guys that are like,
+4606	we want, we want the new stuff.
+4607	We want the new features before anybody else gets it.
+4610	And we're willing for our stuff to break a deal.
+4614	Do y'all have, is that a possibility to have something
+4617	like that where you could test this stuff?
+4619	Yeah, we could sandbox maybe a little bit.
+4622	What we've done in practice in the past is just rolled something out and called it a
+4627	beta and let it get beat up by our users.
+4630	And that's how we have really kind of optimized
+4634	the easy and simple aspects of things.
+4637	But for the more sophisticated things, Alberto,
+4640	let me have you answer on that regard.
+4644	Yeah.
+4644	I mean, I think the only issue, at least for us, is human bandwidth, right?
+4650	It's just, we have 12 people in the team, three engineers.
+4653	I don't know, just in 2020, we had over 1,200 improvements, bug fixes,
+4659	and also we rolled out new features.
+4661	But if we start to have features plug, beta testing,
+4664	we need to really increase the team size.
+4667	And this also implies creating new processes, right?
+4671	We were talking about that at the beginning.
+4673	So 12 people is a good number.
+4675	But if we double the team, then we are going to go slow for a while.
+4680	So it's just a matter of human resources at the moment for us.
+4683	We would love to start to have a beta program
+4686	with new features just for a few selected.
+4688	I really like how you approach that.
+4692	That's the best approach I've heard.
+4694	I'm sure other people do this,
+4695	but just you're verbalizing it beautifully and totally on board.
+4699	Understand it, get it.
+4700	And I know you're going to get there in your own time and it'll be right.
+4705	Yeah.
+4705	He's got a lot of practice on me.
+4707	I sit there and say, let's do this.
+4709	Right.
+4709	It's like Adam and Dave.
+4710	I know.
+4710	I can tell the dynamics.
+4712	I know.
+4712	Exactly.
+4713	Yeah.
+4714	Today, we had a call before our conversation.
+4719	And well, Ben told me, oh, I love the new player of the new podcast users page.
+4725	I love it.
+4726	It's new.
+4726	We have to roll it out in the next couple of weeks.
+4728	He told me, can we show a chapter from podcast index?
+4731	I said, we don't have them yet.
+4733	I always liked it.
+4735	Yeah.
+4736	Go faster.
+4737	Go faster.
+4738	That's right.
+4739	Alberto, he really is.
+4741	He's world class in so many things.
+4743	And one of them is just managing expectations and setting a proper, you know,
+4749	speed, you know, max speed is what it is.
+4752	It's not, you know, fantasy speed.
+4755	Yeah.
+4755	I think that in the IT world, I mean, like programming, ops,
+4761	all of the IT in general, there is a severe lack of soft skills.
+4768	There always has been.
+4770	And if you, I mean, if you have, it's not enough,
+4772	if you want to be successful in IT,
+4774	it is not enough to just have a bunch of tech chops.
+4776	You have to have, you have to have some chops,
+4779	but the soft skills are way more important.
+4781	That's where, that's where you can actually make something technological make sense
+4786	and work for people in the real world.
+4789	It's, it's always been a problem.
+4792	Wouldn't agree more.
+4795	Well, gentlemen, uh, go ahead.
+4798	No, I said, I, Dave should have said, does that make sense?
+4802	I was expecting you.
+4806	All right.
+4808	It takes a foreigner to put you in your place.
+4811	Now I know how it works.
+4812	Yeah.
+4813	Yeah.
+4813	You just, you got to start speaking Dutch to me.
+4816	No, shut up.
+4817	Alberto and Ben, thank you both so much for joining us today.
+4820	And I wish you a lot of success.
+4822	You've, you're at a magical moment, not only in, uh, in podcasting, I think,
+4826	but, uh, certainly in your own company's, uh, growth and, uh, and evolvement,
+4831	evolvement, development,
+4832	uh, and congratulations.
+4834	Whenever I see any kind of entrepreneur succeeding is beautiful.
+4837	Really, really, really love seeing that.
+4839	And, uh, you know, whatever you guys need, um, we're, we're just a hop away.
+4844	Yeah.
+4845	Well, likewise, I mean, we, uh,
+4847	we feel a kinship to a lot of the things that you guys are pushing forward.
+4851	So, um, we definitely feel like we need to amplify, uh, all of those things.
+4857	Very cool.
+4858	Thank you so much.
+4859	Oh, no, you're more than welcome.
+4860	Dave, anything for you for, uh, the round table?
+4863	Oh, yeah.
+4864	Uh, I'm about to get a cup of coffee.
+4866	I'm about to go with coffee number five for the day.
+4868	I'm getting ready for part.
+4869	We put you to sleep, man.
+4871	No, no, no.
+4872	I'm fired up.
+4873	I mean, so it's reversed.
+4874	It's the ADHD, man.
+4876	I got to calm it down.
+4877	All right, everybody.
+4878	We will be back next week with another meeting of the board of directors and,
+4883	uh, we'll do it right here on podcasting 2.0.
+4886	See you then.
+4898	You hope you have been listening to podcasting 2.0.
+4905	Visit podcastindex.org for more information.
+4910	Podcasts are cool.
