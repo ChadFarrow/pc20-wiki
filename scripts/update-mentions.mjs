@@ -123,6 +123,21 @@ async function readCaptions(dir) {
   return files;
 }
 
+/**
+ * pc20-archive's Whisper transcripts, kept by fetch-captions.mjs in
+ * captions/archive/ for the episodes the server has none for. collectCaptions
+ * reads one only where the server's file is a stub, a duplicate or absent. No
+ * folder is no archive.
+ */
+async function readArchive(dir) {
+  try {
+    return await readCaptions(join(dir, 'archive'));
+  } catch (err) {
+    if (err.code === 'ENOENT') return [];
+    throw err;
+  }
+}
+
 async function readMilestones(dir) {
   const files = (await readdir(dir)).filter((file) => file.endsWith('.md')).sort();
   const entries = [];
@@ -237,7 +252,8 @@ async function main() {
   let collisions = [];
   try {
     const files = await readCaptions(SOURCES.captions);
-    const collected = collectCaptions(files);
+    const archive = await readArchive(SOURCES.captions);
+    const collected = collectCaptions(files, archive);
     stubs = collected.stubs;
     duplicates = collected.duplicates;
     collisions = collected.collisions;
@@ -245,13 +261,19 @@ async function main() {
     sources.push({
       id: 'captions',
       path: tilde(SOURCES.captions),
-      episodes: files.length - stubs.length - duplicates.length - collisions.length,
-      newest: Math.max(0, ...files.map((file) => captionEpisode(file.name) ?? 0)),
+      // Counted from what was read, not from the server's file count less its
+      // gaps: an archive transcript can stand for an episode with no file there.
+      episodes: new Set(collected.candidates.map((candidate) => candidate.episode)).size,
+      newest: Math.max(0, ...[...files, ...archive].map((file) => captionEpisode(file.name) ?? 0)),
       stubs,
       duplicates,
       collisions,
+      archived: collected.archived,
       records: collected.candidates.length,
     });
+    if (collected.archived.length) {
+      console.log(`  from pc20-archive, none usable on the server: ${collected.archived.join(', ')}`);
+    }
     if (stubs.length) console.warn(`  ! still processing, no transcript: ${stubs.join(', ')}`);
     // Two URLs, one transcript. Named rather than dropped in silence, for the
     // same reason a stub is: "nothing was said" and "we have no transcript"

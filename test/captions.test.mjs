@@ -117,6 +117,14 @@ test('isReadout drops the boostagram readout, which no frequency count can see',
   assert.ok(isReadout('Got some booster grams.'));
 });
 
+test('isReadout drops "boost-agrams", the way Whisper hyphenates the word', () => {
+  // pc20-archive's Whisper transcripts write it with a hyphen, which the
+  // server's never do. Squashed, "boost-agrams" is "boostagrams", so without
+  // this the Boostagram note took its first transcript citation from E222.
+  assert.ok(isReadout("and they're the boost-agrams,"));
+  assert.ok(isReadout('all the boost-a-grams'));
+});
+
 test('isReadout drops the spoken intro, which the written isStructural misses', () => {
   // The written rule is tuned to "Podcasting 2.0 for <date> Episode N: <title>".
   // Spoken, it has a comma and no title, so that rule returns false for it.
@@ -289,6 +297,93 @@ test('collectCaptions reports each colliding episode once, and sorted', () => {
     { name: 'PC20-009-Captions.srt', text: full(11) },
   ]);
   assert.deepEqual(collisions, [9]);
+});
+
+test('collectCaptions fills a processing stub from the archive, and names it', () => {
+  // E22 has said "Transcript is Processing" on the server since 2021, and
+  // pc20-archive made one with Whisper. The server's stub is still read first,
+  // so the day the server finishes, its own transcript wins again.
+  const { candidates, stubs, archived } = collectCaptions(
+    [
+      { name: 'PC20-22-Captions.srt', text: 'Transcript is Processing …' },
+      { name: 'PC20-07-Captions.srt', text: full(12) },
+    ],
+    [{ name: 'PC20-22-Captions.srt', text: full(15) }],
+  );
+  assert.deepEqual(stubs, []);
+  assert.deepEqual(archived, [22]);
+  assert.equal(candidates.filter((c) => c.episode === 22).length, 15);
+  assert.equal(candidates.filter((c) => c.episode === 7).length, 12);
+});
+
+test('collectCaptions never lets the archive replace a usable server transcript', () => {
+  const { candidates, archived } = collectCaptions(
+    [{ name: 'PC20-07-Captions.srt', text: full(12) }],
+    [{ name: 'PC20-07-Captions.srt', text: full(15) }],
+  );
+  assert.deepEqual(archived, []);
+  assert.equal(candidates.length, 12);
+});
+
+test('collectCaptions fills both halves of a duplicated pair from the archive', () => {
+  const { candidates, duplicates, archived } = collectCaptions(
+    [
+      { name: 'PC20-50-Captions.srt', text: full(12) },
+      { name: 'PC20-51-Captions.srt', text: full(12) },
+    ],
+    [
+      { name: 'PC20-50-Captions.srt', text: full(14) },
+      { name: 'PC20-51-Captions.srt', text: full(15) },
+    ],
+  );
+  assert.deepEqual(duplicates, []);
+  assert.deepEqual(archived, [50, 51]);
+  assert.equal(candidates.filter((c) => c.episode === 50).length, 14);
+  assert.equal(candidates.filter((c) => c.episode === 51).length, 15);
+});
+
+test('a duplicate the archive does not cover stays out, even once its twin is filled', () => {
+  // Filling E50 leaves the server's copy under E51 with no twin beside it. It is
+  // still one text served under two numbers, and it must not start counting as
+  // E51's just because the other copy was replaced.
+  const { candidates, duplicates, archived } = collectCaptions(
+    [
+      { name: 'PC20-50-Captions.srt', text: full(12) },
+      { name: 'PC20-51-Captions.srt', text: full(12) },
+    ],
+    [{ name: 'PC20-50-Captions.srt', text: full(14) }],
+  );
+  assert.deepEqual(duplicates, [51]);
+  assert.deepEqual(archived, [50]);
+  assert.deepEqual([...new Set(candidates.map((c) => c.episode))], [50]);
+});
+
+test('collectCaptions fills an episode the server never published', () => {
+  const { candidates, archived } = collectCaptions(
+    [{ name: 'PC20-07-Captions.srt', text: full(12) }],
+    [{ name: 'PC20-10-Captions.srt', text: full(11) }],
+  );
+  assert.deepEqual(archived, [10]);
+  // Still one contiguous run per episode, as the straddle matcher needs.
+  assert.deepEqual([...new Set(candidates.map((c) => c.episode))], [7, 10]);
+});
+
+test('an archive stub fills nothing, and the server stub is still named', () => {
+  const { stubs, archived } = collectCaptions(
+    [{ name: 'PC20-22-Captions.srt', text: 'Transcript is Processing …' }],
+    [{ name: 'PC20-22-Captions.srt', text: full(3) }],
+  );
+  assert.deepEqual(stubs, [22]);
+  assert.deepEqual(archived, []);
+});
+
+test('with no archive, collectCaptions behaves as it always did', () => {
+  const { archived, duplicates } = collectCaptions([
+    { name: 'PC20-248-Captions.srt', text: full(12) },
+    { name: 'PC20-249-Captions.srt', text: full(12) },
+  ]);
+  assert.deepEqual(archived, []);
+  assert.deepEqual(duplicates, [248, 249]);
 });
 
 const note = (title, slug, data = {}) => ({ title, slug, data: { type: 'concept', ...data } });

@@ -723,12 +723,17 @@ function episodeList(numbers) {
  *
  * The footnote is load-bearing in the same way as the mentions' source footer:
  * "no results" has to be distinguishable from "no transcript", so the episodes
- * the search cannot see are named, each with its reason.
+ * the search cannot see are named, each with its reason. So are the episodes
+ * whose text is not the show's own captions but pc20-archive's Whisper
+ * transcripts (`coverage.archived`): a reader quoting one should know that.
  */
+const ARCHIVE_CAPTIONS = 'https://github.com/ChadFarrow/pc20-archive/blob/main/captions/README.md';
+
 export function renderTranscriptsPage({ transcripts, baseUrl }) {
   const coverage = transcripts.coverage ?? {};
   const episodes = coverage.episodes ?? 0;
   const newest = coverage.newest;
+  const archived = coverage.archived ?? [];
 
   const gaps = [
     coverage.stubs?.length
@@ -766,6 +771,15 @@ export function renderTranscriptsPage({ transcripts, baseUrl }) {
         punctuation are ignored for anything five letters or longer, so <em>podping</em>
         also finds “pod ping”. Shorter searches match whole words only, so <em>Tor</em> does
         not find “story”.</p>${
+        archived.length
+          ? `
+      <p>${escapeHtml(episodeList(archived))} ${archived.length === 1 ? 'has' : 'have'} no usable
+        transcript on the show’s server — a “Transcript is Processing” placeholder, one
+        transcript published under two episode numbers, or none at all — so the text searched
+        for ${archived.length === 1 ? 'it was' : 'them was'} made with Whisper for
+        <a href="${ARCHIVE_CAPTIONS}">pc20-archive</a>.</p>`
+          : ''
+      }${
         gaps.length
           ? `
       <p>Not searchable:</p>
