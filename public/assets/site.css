@@ -1246,7 +1246,9 @@ pre code {
 .tsearch__go:focus-visible,
 .tsearch__more:focus-visible,
 .tsearch__next:focus-visible,
-.tsearch__back:focus-visible {
+.tsearch__step:focus-visible,
+.tsearch__back:focus-visible,
+.tsearch__moments > li.is-openable > .tsearch__text:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 1px;
 }
@@ -1315,7 +1317,7 @@ pre code {
   padding: 0;
 }
 
-.tsearch__moments li {
+.tsearch__moments > li {
   /* The timestamp is a fixed-width rail, as in the mentions list. */
   display: grid;
   grid-template-columns: 4.6rem 1fr;
@@ -1326,7 +1328,7 @@ pre code {
   line-height: 1.5;
 }
 
-.tsearch__moments li + li {
+.tsearch__moments > li + li {
   border-top: 1px dashed var(--rule);
 }
 
@@ -1352,6 +1354,7 @@ pre code {
 
 .tsearch__more,
 .tsearch__next,
+.tsearch__step,
 .tsearch__back {
   min-height: 28px;
   font-family: 'IBM Plex Mono', monospace;
@@ -1372,6 +1375,7 @@ pre code {
 
 .tsearch__more:hover,
 .tsearch__next:hover,
+.tsearch__step:hover,
 .tsearch__back:hover {
   border-color: var(--accent);
 }
@@ -1407,6 +1411,85 @@ pre code {
 .transcripts__source ul {
   margin: 0;
   padding-left: 1.2rem;
+}
+
+/*
+ * A row opens into the passage around its match (transcripts.js). The passage
+ * takes the whole row; its paragraphs keep the rows' timestamp rail.
+ */
+.tsearch__moments > li {
+  scroll-margin-top: 5rem;
+}
+
+.tsearch__moments > li.is-openable > .tsearch__text {
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.tsearch__moments > li.is-openable:not(.is-open):hover {
+  background: color-mix(in srgb, var(--ink) 4%, transparent);
+  box-shadow: -0.6rem 0 0 color-mix(in srgb, var(--ink) 4%, transparent),
+    0.6rem 0 0 color-mix(in srgb, var(--ink) 4%, transparent);
+  border-radius: 4px;
+}
+
+.tsearch__moments > li.is-open > .tsearch__at,
+.tsearch__moments > li.is-open > .tsearch__text {
+  display: none;
+}
+
+/* Its own timestamp is hidden, so a tint for it would only wash over the whole passage. */
+.tsearch__moments > li.is-open.is-playing {
+  background: none;
+  box-shadow: none;
+}
+
+.tsearch__passage {
+  grid-column: 1 / -1;
+  /* transcripts.js holds the scroll position itself when "Earlier" adds text. */
+  overflow-anchor: none;
+}
+
+.tsearch__passage:focus {
+  outline: none;
+}
+
+.tsearch__paras {
+  list-style: none;
+  margin: 0.35rem 0;
+  padding: 0;
+}
+
+.tsearch__paras > li {
+  display: grid;
+  grid-template-columns: 4.6rem 1fr;
+  gap: 0.6rem;
+  align-items: baseline;
+  padding: 0.2rem 0;
+}
+
+/* The paragraph that holds the match the row was opened from. */
+.tsearch__paras > li.is-hit {
+  background: color-mix(in srgb, var(--accent-soft) 7%, transparent);
+  box-shadow: -0.6rem 0 0 color-mix(in srgb, var(--accent-soft) 7%, transparent),
+    0.6rem 0 0 color-mix(in srgb, var(--accent-soft) 7%, transparent);
+  border-radius: 4px;
+}
+
+.tsearch__foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tsearch__note {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+  color: var(--ink-faint);
+}
+
+.tsearch__note:empty {
+  display: none;
 }
 
 /* The row whose audio is in the player. */
@@ -1505,7 +1588,8 @@ body.has-player {
     padding: 0.85rem 0.9rem;
   }
 
-  .tsearch__moments li {
+  .tsearch__moments > li,
+  .tsearch__paras > li {
     grid-template-columns: 1fr;
     gap: 0.1rem;
   }

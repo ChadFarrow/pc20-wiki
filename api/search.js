@@ -1,10 +1,15 @@
 /**
  * GET /api/search/?q=<query>[&e=<episode>][&from=<row>]
+ * GET /api/search/?e=<episode>&cues=<from>-<to>[&q=<query>]
  *
  * The transcript search. The whole site is static except this: the text is
  * 27 MB, so it is searched here and only the matching rows go to the browser.
  * The rules live in scripts/transcripts-lib.mjs; this file only loads the
  * corpus and speaks HTTP.
+ *
+ * The second form is what a result opens into on the page: the cues of one
+ * episode by their place in it (each row's `n`), with the query marked. The
+ * presence of `cues` selects it.
  *
  * The corpus is read once per instance and kept. On Vercel an instance serves
  * many requests, so only the first search after an idle spell pays the load —
@@ -19,7 +24,14 @@
 import { readFile, readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 
-import { buildIndex, parseCorpus, corpusEpisode, searchTranscripts } from '../scripts/transcripts-lib.mjs';
+import {
+  buildIndex,
+  parseCorpus,
+  corpusEpisode,
+  searchTranscripts,
+  transcriptContext,
+  TRANSCRIPT_CONTEXT_MAX,
+} from '../scripts/transcripts-lib.mjs';
 
 let loading = null;
 
@@ -61,12 +73,29 @@ export async function GET(request) {
   const from = rawFrom === null || rawFrom === '' ? 0 : Number(rawFrom);
   if (!Number.isInteger(from) || from < 0) return json({ error: 'bad-from' }, 400, true);
 
+  const rawCues = params.get('cues');
+  let span = null;
+  if (rawCues !== null) {
+    if (episode === null) return json({ error: 'bad-episode' }, 400, true);
+    const found = /^(\d+)-(\d+)$/.exec(rawCues);
+    span = found && [Number(found[1]), Number(found[2])];
+    if (!span || span[0] >= span[1] || span[1] - span[0] > TRANSCRIPT_CONTEXT_MAX) {
+      return json({ error: 'bad-cues' }, 400, true);
+    }
+  }
+
   let loaded;
   try {
     loaded = await load();
   } catch (err) {
     console.error(`transcript corpus failed to load: ${err.message}`);
     return json({ error: 'unavailable' }, 503, false);
+  }
+
+  if (span) {
+    const context = transcriptContext(loaded.index, episode, span[0], span[1], params.get('q') ?? '');
+    if (!context.count) return json({ error: 'no-episode' }, 404, true);
+    return json(context, 200, true);
   }
 
   const result = searchTranscripts(loaded.index, params.get('q') ?? '', { episode, from });

@@ -494,6 +494,92 @@ async function main() {
       (await evaluate('document.querySelectorAll(".tsearch__more").length')) === 0,
     );
 
+    // A row opens into the passage around its match. A row a few minutes in, so
+    // there is text before it for "Earlier" to reach.
+    await evaluate(`{
+      const row = [...document.querySelectorAll('.tsearch__moments > li.is-openable')].find((r) => Number(r.dataset.t) > 300);
+      row.id = 'check-row';
+      row.scrollIntoView({ block: 'center' });
+      row.querySelector(':scope > .tsearch__text').click();
+    }`);
+    await waitFor('document.querySelectorAll("#check-row .tsearch__paras > li").length > 0', 150);
+    const passage = await evaluate(`(() => {
+      const row = document.getElementById('check-row');
+      const text = row.querySelector(':scope > .tsearch__text');
+      return {
+        open: row.classList.contains('is-open'),
+        paras: row.querySelectorAll('.tsearch__paras > li').length,
+        hits: row.querySelectorAll('.tsearch__paras > li.is-hit').length,
+        marked: row.querySelectorAll('.tsearch__paras > li.is-hit mark').length > 0,
+        snippetHidden: text.getClientRects().length === 0,
+        expanded: text.getAttribute('aria-expanded'),
+      };
+    })()`);
+    check(
+      'a click on a result opens the passage around it',
+      passage.open && passage.paras >= 3 && passage.hits === 1 && passage.marked && passage.snippetHidden && passage.expanded === 'true',
+      JSON.stringify(passage),
+    );
+    await shoot('transcripts-passage');
+
+    const edge = (which) =>
+      evaluate(`(() => {
+        const times = [...document.querySelectorAll('#check-row .tsearch__paras > li > .tsearch__at')].map((a) => Number(a.dataset.t));
+        return ${which === 'first' ? 'times[0]' : 'times[times.length - 1]'};
+      })()`);
+    const stepButton = (label) =>
+      `[...document.querySelectorAll('#check-row .tsearch__step')].find((b) => b.textContent === '${label}')`;
+    const passageTop = 'document.querySelector("#check-row .tsearch__passage").getBoundingClientRect().top';
+
+    const firstBefore = await edge('first');
+    const topBefore = await evaluate(passageTop);
+    await evaluate(`${stepButton('Earlier')}.click()`);
+    await waitFor(`Number(document.querySelector('#check-row .tsearch__paras > li > .tsearch__at').dataset.t) < ${firstBefore}`, 150);
+    const firstAfter = await edge('first');
+    const topAfter = await evaluate(passageTop);
+    check(
+      '"Earlier" adds the text before, and the passage holds still',
+      firstAfter < firstBefore && Math.abs(topAfter - topBefore) <= 2,
+      `${firstBefore}s → ${firstAfter}s, top moved ${Math.round(topAfter - topBefore)}px`,
+    );
+
+    const lastBefore = await edge('last');
+    await evaluate(`${stepButton('Later')}.click()`);
+    await waitFor(`(() => { const a = [...document.querySelectorAll('#check-row .tsearch__paras > li > .tsearch__at')]; return Number(a[a.length - 1].dataset.t) > ${lastBefore}; })()`, 150);
+    const lastAfter = await edge('last');
+    check('"Later" adds the text after', lastAfter > lastBefore, `${lastBefore}s → ${lastAfter}s`);
+
+    const hereBefore = await evaluate('location.href');
+    const para = await evaluate(`(() => {
+      const a = document.querySelector('#check-row .tsearch__paras > li:not(.is-hit) > .tsearch__at[data-src]');
+      a.click();
+      return { src: a.dataset.src };
+    })()`);
+    await sleep(200);
+    check(
+      'a paragraph timestamp plays in the page and marks its paragraph',
+      (await evaluate('location.href')) === hereBefore &&
+        (await evaluate('document.querySelector(".tplayer audio").getAttribute("src")')) === para.src &&
+        (await evaluate('!!document.querySelector("#check-row .tsearch__paras > li.is-playing")')),
+    );
+
+    await evaluate(`${stepButton('Show less')}.click()`);
+    const shut = await evaluate(`(() => {
+      const row = document.getElementById('check-row');
+      const text = row.querySelector(':scope > .tsearch__text');
+      return !row.classList.contains('is-open') && text.getClientRects().length > 0 && text.getAttribute('aria-expanded') === 'false';
+    })()`);
+    check('"Show less" closes the passage and shows the snippet again', shut);
+
+    await evaluate('document.querySelector("#check-row > .tsearch__text").focus()');
+    await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13 });
+    await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13 });
+    await sleep(100);
+    check(
+      'Enter on a focused result opens it too',
+      await evaluate('document.getElementById("check-row").classList.contains("is-open")'),
+    );
+
     await tsearch('ab');
     await sleep(100);
     check('a query too short to run says why', /at least 3/.test(await status()), await status());
@@ -507,9 +593,13 @@ async function main() {
     await send('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 3, mobile: true });
     await go('/transcripts/?q=value%20for%20value');
     await waitFor('document.querySelectorAll(".tsearch__episode").length > 0', 150);
-    // With the player open, since it is the widest thing that can appear.
+    // With the player open, since it is the widest thing that can appear, and one
+    // passage open, since its buttons and paragraph timestamps are tapped too.
     await evaluate('document.querySelector(".tsearch__at[data-src]").click()');
+    await evaluate('document.querySelector(".tsearch__moments > li.is-openable > .tsearch__text").click()');
+    await waitFor('document.querySelectorAll(".tsearch__paras > li").length > 0', 150);
     await sleep(300);
+    await shoot('transcripts-passage-phone');
     const overflow = await evaluate('document.documentElement.scrollWidth - document.documentElement.clientWidth');
     // Name the culprits, innermost first, so a failure says where to look.
     const wide = await evaluate(`[...document.querySelectorAll('body *')]
@@ -519,7 +609,7 @@ async function main() {
       .map((el) => el.tagName.toLowerCase() + (el.className ? '.' + String(el.className).split(' ')[0] : '') + ' "' + el.textContent.trim().slice(0, 20) + '"')`);
     check('the transcripts page fits a phone with no sideways scroll', overflow <= 0, `${overflow}px over${wide.length ? `: ${wide.join(', ')}` : ''}`);
     // WCAG 2.5.8: 24 × 24 CSS px for anything tapped on its own.
-    const small = await evaluate(`[...document.querySelectorAll('.masthead__nav a, .tsearch__go, .tsearch__more, .tsearch__next, .tsearch__at, .tplayer__close')]
+    const small = await evaluate(`[...document.querySelectorAll('.masthead__nav a, .tsearch__go, .tsearch__more, .tsearch__next, .tsearch__step, .tsearch__at, .tplayer__close')]
       .filter((el) => el.getClientRects().length > 0)
       .map((el) => [el.textContent.trim(), el.getBoundingClientRect()])
       .filter(([, r]) => r.width < 24 || r.height < 24)

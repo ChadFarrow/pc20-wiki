@@ -247,7 +247,8 @@ and links each result into the audio at that second. It is the one part of the s
 is not static: the text is 27 MB, so `api/search.js` runs as a Vercel function, holds the
 corpus in memory, and sends back only the matching rows (the newest 100 first, with a count
 for every episode; then 500 more each time the reader presses "Show more", until every match
-is listed; and all of one episode on request). A query takes 5–40 ms once the corpus is
+is listed; and all of one episode on request). Click a result to read the passage around it —
+about 40 seconds each side, in short paragraphs, with "Earlier" and "Later" for more. A query takes 5–40 ms once the corpus is
 loaded, and the first one after an idle spell about half a second. Answers are cacheable at
 the CDN for a day.
 

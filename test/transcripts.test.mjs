@@ -13,6 +13,8 @@ import {
   TRANSCRIPT_QUERY_MAX,
   TRANSCRIPT_RESULT_CAP,
   TRANSCRIPT_MORE_CAP,
+  TRANSCRIPT_CONTEXT_MAX,
+  transcriptContext,
 } from '../scripts/transcripts-lib.mjs';
 
 const cues = (...lines) => lines.map(([seconds, text]) => ({ seconds, text }));
@@ -200,4 +202,64 @@ test('an overlong query is cut to the maximum', () => {
 test('buildIndex does not depend on input order', () => {
   const shuffled = buildIndex([...ARCHIVE].reverse());
   assert.deepEqual(searchTranscripts(shuffled, 'value'), searchTranscripts(index, 'value'));
+});
+
+test('a row carries its cue\'s place in the episode', () => {
+  const rows = searchTranscripts(index, 'podping').results.map((row) => `${row.e}@${row.t}#${row.n}`);
+  assert.deepEqual(rows, ['203@5#0', '203@9#1', '35@10#0']);
+});
+
+test('transcriptContext returns the cues asked for, by place in the episode', () => {
+  const context = transcriptContext(index, 35, 1, 3);
+  assert.equal(context.count, 4);
+  assert.equal(context.from, 1);
+  assert.equal(context.to, 3);
+  assert.deepEqual(
+    context.lines.map(({ n, t, x }) => [n, t, x]),
+    [
+      [1, 14, 'ping went out to every app'],
+      [2, 20, 'that is the whole story'],
+    ],
+  );
+});
+
+test('transcriptContext stays inside its episode', () => {
+  // E35 is followed by E120 in the joined index; asking past its end must not reach it.
+  const context = transcriptContext(index, 35, -5, 99);
+  assert.equal(context.from, 0);
+  assert.equal(context.to, 4);
+  assert.equal(context.lines.length, 4);
+  assert.ok(context.lines.every((line) => !line.x.includes('nothing to see')));
+});
+
+test('a match across a caption break is marked in both lines', () => {
+  const [pod, ping] = transcriptContext(index, 35, 0, 2, 'podping').lines;
+  assert.deepEqual(pod.ranges.map(([f, t]) => pod.x.slice(f, t)), ['pod']);
+  assert.deepEqual(ping.ranges.map(([f, t]) => ping.x.slice(f, t)), ['ping']);
+});
+
+test('a short query marks whole words in the context, as the search does', () => {
+  const [, , , tor] = transcriptContext(index, 35, 0, 4, 'Tor').lines;
+  assert.deepEqual(tor.ranges.map(([f, t]) => tor.x.slice(f, t)), ['Tor']);
+  const story = transcriptContext(index, 35, 2, 3, 'Tor').lines[0];
+  assert.deepEqual(story.ranges, [], '"tor" must not mark "story"');
+});
+
+test('no query, or one too short to search, marks nothing', () => {
+  for (const query of ['', 'ab']) {
+    assert.ok(transcriptContext(index, 35, 0, 4, query).lines.every((line) => line.ranges.length === 0), query);
+  }
+});
+
+test('an unknown episode has no cues', () => {
+  assert.deepEqual(transcriptContext(index, 999, 0, 10), { e: 999, count: 0, from: 0, to: 0, lines: [] });
+});
+
+test('transcriptContext caps the span', () => {
+  const many = buildIndex([
+    { episode: 1, cues: Array.from({ length: TRANSCRIPT_CONTEXT_MAX + 50 }, (_, i) => ({ seconds: i, text: 'boost' })) },
+  ]);
+  const context = transcriptContext(many, 1, 0, TRANSCRIPT_CONTEXT_MAX + 50);
+  assert.equal(context.lines.length, TRANSCRIPT_CONTEXT_MAX);
+  assert.equal(context.to, TRANSCRIPT_CONTEXT_MAX);
 });

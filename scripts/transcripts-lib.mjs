@@ -45,6 +45,9 @@ export const TRANSCRIPT_EPISODE_RESULT_CAP = 500;
 /** Rows in each later page — what the page's "Show more" asks for with `from`. */
 export const TRANSCRIPT_MORE_CAP = 500;
 
+/** Cues in one transcriptContext answer. The page asks for 25 at most. */
+export const TRANSCRIPT_CONTEXT_MAX = 100;
+
 /** 7 → `007.txt`. Padded so a directory listing and a git diff sort by episode. */
 export function corpusName(episode) {
   return `${String(episode).padStart(3, '0')}.txt`;
@@ -101,10 +104,14 @@ export function buildIndex(episodes) {
   const textParts = [];
   const squashedParts = [];
 
+  // Each episode's cues as `[first, end)` — episodes are contiguous, since the list is sorted.
+  const bounds = new Map();
+
   let i = 0;
   let textAt = 0;
   let squashedAt = 0;
   for (const entry of sorted) {
+    bounds.set(entry.episode, [i, i + entry.cues.length]);
     for (const cue of entry.cues) {
       episode[i] = entry.episode;
       seconds[i] = cue.seconds;
@@ -123,6 +130,7 @@ export function buildIndex(episodes) {
 
   return {
     count,
+    bounds,
     episode,
     seconds,
     text: textParts.join('\n') + '\n',
@@ -201,6 +209,11 @@ function snippet(index, i, query, sq) {
     if (j >= 0 && j < index.count && index.episode[j] === index.episode[i]) parts.push(cueText(index, j));
   }
   const x = parts.join(' ');
+  return { x, ranges: rangesIn(x, query, sq) };
+}
+
+/** Where the query sits in `x`, as `[from, to)` offsets, by the same rule the search matched with. */
+function rangesIn(x, query, sq) {
   const ranges = [];
 
   if (sq.length >= SQUASH_MIN) {
@@ -223,7 +236,7 @@ function snippet(index, i, query, sq) {
     }
   }
 
-  return { x, ranges };
+  return ranges;
 }
 
 /**
@@ -260,8 +273,55 @@ export function searchTranscripts(index, rawQuery, { episode = null, from = 0, l
   const results = scoped.slice(from, from + cap).map((i) => ({
     e: index.episode[i],
     t: index.seconds[i],
+    // The cue's place in its episode — what the page asks transcriptContext for.
+    // `t` cannot stand in: two cues can start in the same second.
+    n: i - index.bounds.get(index.episode[i])[0],
     ...snippet(index, i, query, sq),
   }));
 
   return { query, total: cues.length, episodes, results, truncated: scoped.length > from + cap };
+}
+
+/**
+ * The cues `[from, to)` of one episode, counted from its first cue, with the
+ * query marked in them — what a result opens into on the page.
+ *
+ * `from` and `to` are clamped to the episode, so a request can never read into
+ * the next one, and the span is cut to TRANSCRIPT_CONTEXT_MAX.
+ *
+ * The query is matched over the lines joined with spaces and each range is then
+ * split onto the lines it covers, so a match on a caption break ("the pod" /
+ * "ping went out") is marked in both halves. A query too short to search marks
+ * nothing; it is not an error, because the text is what was asked for.
+ */
+export function transcriptContext(index, episode, from, to, rawQuery = '') {
+  const bounds = index.bounds.get(episode);
+  if (!bounds) return { e: episode, count: 0, from: 0, to: 0, lines: [] };
+
+  const [first, end] = bounds;
+  const count = end - first;
+  const a = Math.min(Math.max(0, from), count);
+  const b = Math.min(Math.max(a, to), count, a + TRANSCRIPT_CONTEXT_MAX);
+
+  const texts = [];
+  for (let k = a; k < b; k++) texts.push(cueText(index, first + k));
+
+  const query = String(rawQuery ?? '').trim().slice(0, TRANSCRIPT_QUERY_MAX);
+  const sq = squash(query);
+  const ranges = sq.length >= TRANSCRIPT_QUERY_MIN ? rangesIn(texts.join(' '), query, sq) : [];
+
+  let at = 0;
+  const lines = texts.map((x, k) => {
+    const start = at;
+    at += x.length + 1;
+    const own = [];
+    for (const [rf, rt] of ranges) {
+      const lo = Math.max(rf, start);
+      const hi = Math.min(rt, start + x.length);
+      if (lo < hi) own.push([lo - start, hi - start]);
+    }
+    return { n: a + k, t: index.seconds[first + a + k], x, ranges: own };
+  });
+
+  return { e: episode, count, from: a, to: b, lines };
 }

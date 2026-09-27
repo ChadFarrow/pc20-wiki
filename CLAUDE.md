@@ -30,7 +30,7 @@ The site is four things layered:
 ```sh
 npm run build            # compile content/ → public/. This is what deploys.
 npm run build:strict     # warnings fatal (same as lint:notes)
-npm test                 # node --test — 267 tests, ~5s
+npm test                 # node --test — 278 tests, ~5s
 npm run serve            # http://127.0.0.1:8088
 npm run check:browser    # headless Chrome against the built site
 npm run sync             # mirror the vault into content/ (needs the vault)
@@ -91,8 +91,8 @@ goes stale silently unless something warns (see *Staleness*).
 | `scripts/update-timeline.mjs` | CLI: milestones → `data/timeline.json` |
 | `scripts/transcripts-lib.mjs` | the transcript search: corpus format, index, matching, snippets |
 | `scripts/update-transcripts.mjs` | CLI: `captions/` → `data/transcripts/` |
-| `api/search.js` | the Vercel function — loads the corpus once, answers `GET /api/search/?q=&e=` |
-| `public/assets/transcripts.js` | the `/transcripts/` page: debounced queries, grouped rows, show-more paging, `?q=` in the address |
+| `api/search.js` | the Vercel function — loads the corpus once, answers `GET /api/search/?q=&e=&from=` and `?e=&cues=` |
+| `public/assets/transcripts.js` | the `/transcripts/` page: debounced queries, grouped rows, show-more paging, rows that open into their passage, `?q=` in the address |
 | `scripts/browser-check.mjs` | drives the real built site over CDP |
 
 `*-lib.mjs` files are pure functions over strings and plain objects — no filesystem — so
@@ -400,6 +400,20 @@ rather than opening a second heading, and drops an episode's "Show all" once it 
 Loading everything at once was the rejected design: "the" is 130,323 rows, 26 MB of JSON.
 The button is `tsearch__next`, not `tsearch__more`, because `browser-check` clicks the first
 `.tsearch__more` and expects a per-episode button.
+
+**A row opens into the passage around it.** A click anywhere in a row but its timestamp
+(or Enter on its focused text) asks the same function for that episode's cues by place —
+`?e=<episode>&cues=<from>-<to>&q=` — and shows about 40 s each side, with "Earlier" and
+"Later" for 24 cues (~80 s) more. Each search row carries `n`, its cue's place in the
+episode (`index.bounds` gives each episode's range), because `t` cannot: two cues can start
+in the same second. `transcriptContext` clamps to the episode, so a request can never read
+into the next one, caps the span at `TRANSCRIPT_CONTEXT_MAX` (100), and marks the query over
+the joined lines before splitting each range, so a match on a caption break is marked in both
+halves. The page, not the function, joins the cues into paragraphs (a sentence end breaks one
+after 3 cues, and 8 is the limit — 90% of the show's sentences fit): it regroups every loaded
+cue after each step, so no seam shows where two answers meet. "Earlier" measures the passage
+before and after and scrolls by the difference, so new text appears under the button pressed;
+`overflow-anchor: none` keeps the browser from adjusting as well.
 
 **The corpus.** `data/transcripts/NNN.txt`, `seconds<TAB>text` per cue, plus `index.json`
 (episode facts, stubs, duplicates, and `unpublished` — episodes with no caption file at

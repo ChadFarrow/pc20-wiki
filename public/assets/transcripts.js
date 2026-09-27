@@ -20,6 +20,11 @@
  * a modified click (new tab, new window) and a page with no JavaScript still work.
  * mp3s.nashownotes.com answers range requests, which is what lets the player seek
  * into a two-hour file without downloading it first.
+ *
+ * A row opens, on a click anywhere but its timestamp, into the passage around the
+ * match: about 40 seconds each side, with "Earlier" and "Later" for 80 more. The
+ * cues come from the same function (`&cues=<from>-<to>`, by the row's `n`) and are
+ * joined here into short paragraphs, each with a timestamp that plays.
  */
 
 (() => {
@@ -76,6 +81,21 @@
     }
     span.append(text.slice(at));
     return span;
+  }
+
+  /**
+   * A timestamp that plays episode `e` from `t` in the page player, or plain
+   * text when the episode has no audio link.
+   */
+  function timeLink(e, t, fact) {
+    if (!fact?.a) return el('span', 'tsearch__at', stamp(t));
+    const time = el('a', 'tsearch__at', stamp(t));
+    time.href = `${fact.a}#t=${t}`;
+    time.setAttribute('aria-label', `Play E${e} from ${stamp(t)}`);
+    time.dataset.src = fact.a;
+    time.dataset.t = String(t);
+    time.dataset.label = `E${e}${fact.t ? ` · ${fact.t}` : ''} · ${stamp(t)}`;
+    return time;
   }
 
   const plural = (n, one, many) => `${n.toLocaleString('en')} ${n === 1 ? one : many}`;
@@ -173,17 +193,20 @@
         groups.set(row.e, group);
       }
 
-      const fact = facts[row.e];
       const li = el('li');
-      const time = fact?.a ? el('a', 'tsearch__at', stamp(row.t)) : el('span', 'tsearch__at', stamp(row.t));
-      if (fact?.a) {
-        time.href = `${fact.a}#t=${row.t}`;
-        time.setAttribute('aria-label', `Play E${row.e} from ${stamp(row.t)}`);
-        time.dataset.src = fact.a;
-        time.dataset.t = String(row.t);
-        time.dataset.label = `E${row.e}${fact.t ? ` · ${fact.t}` : ''} · ${stamp(row.t)}`;
+      const text = marked(row.x, row.ranges ?? []);
+      // The row opens into the passage around it (see open()). An answer from
+      // before rows carried `n` cannot say where the cue is, so it stays shut.
+      if (Number.isInteger(row.n)) {
+        li.dataset.e = String(row.e);
+        li.dataset.n = String(row.n);
+        li.dataset.t = String(row.t);
+        li.classList.add('is-openable');
+        text.setAttribute('role', 'button');
+        text.setAttribute('aria-expanded', 'false');
+        text.tabIndex = 0;
       }
-      li.append(time, marked(row.x, row.ranges ?? []));
+      li.append(timeLink(row.e, row.t, facts[row.e]), text);
       group.moments.append(li);
       group.rows++;
       view.rows++;
@@ -341,6 +364,176 @@
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
     play(link);
+  });
+
+  // ---- a result opened into the passage around it ----
+
+  const AROUND = 12; // cues each side of the match when a row opens: ~40 s at 3.5 s a cue
+  const STEP = 24; // cues that "Earlier" or "Later" adds: ~80 s
+  const PARAGRAPH_MIN = 3; // a sentence end breaks a paragraph only once it has this many cues
+  const PARAGRAPH_MAX = 8; // and nothing runs longer; 90% of sentences fit in 8
+  const passages = new WeakMap();
+
+  /**
+   * Cues → paragraphs. A caption is a few seconds of speech and often stops
+   * mid-sentence, so a column of them reads badly. Built here, over every cue
+   * loaded so far, so a step "Earlier" leaves no seam where two answers meet.
+   */
+  function paragraphs(cues, hit) {
+    const out = [];
+    let current = null;
+    for (const cue of cues) {
+      if (!current) {
+        current = { t: cue.t, x: '', ranges: [], size: 0, hit: false };
+        out.push(current);
+      }
+      const offset = current.x ? current.x.length + 1 : 0;
+      current.x = current.x ? `${current.x} ${cue.x}` : cue.x;
+      for (const [from, to] of cue.ranges ?? []) {
+        const last = current.ranges[current.ranges.length - 1];
+        // A match split across a caption break reads as one mark, not two.
+        if (from === 0 && last && last[1] === offset - 1) last[1] = to + offset;
+        else current.ranges.push([from + offset, to + offset]);
+      }
+      current.size++;
+      if (cue.n === hit) current.hit = true;
+      if (current.size >= PARAGRAPH_MAX || (current.size >= PARAGRAPH_MIN && /[.?!]["')\]]?$/.test(cue.x))) {
+        current = null;
+      }
+    }
+    return out;
+  }
+
+  function draw(state) {
+    const t = playing && state.paras.contains(playing) ? playing.dataset.t : null;
+    state.paras.replaceChildren(
+      ...paragraphs(state.cues, state.n).map((p) => {
+        const li = el('li', p.hit ? 'is-hit' : null);
+        li.append(timeLink(state.e, p.t, state.fact), marked(p.x, p.ranges));
+        return li;
+      }),
+    );
+    // The paragraph in the player was redrawn; mark its successor.
+    if (t != null) mark(state.paras.querySelector(`a.tsearch__at[data-t="${t}"]`));
+    state.earlier.hidden = state.from <= 0;
+    state.later.hidden = state.to >= state.count;
+  }
+
+  /** Load cues on one side of what the passage holds — or, the first time, around the match. */
+  async function grow(state, side) {
+    if (state.busy) return;
+    let a;
+    let b;
+    if (!state.loaded) [a, b] = [Math.max(0, state.n - AROUND), state.n + AROUND + 1];
+    else if (side === 'earlier') [a, b] = [Math.max(0, state.from - STEP), state.from];
+    else [a, b] = [state.to, Math.min(state.count, state.to + STEP)];
+    if (a >= b) return;
+
+    state.busy = true;
+    state.earlier.disabled = state.later.disabled = true;
+    state.note.textContent = 'Loading…';
+    const params = new URLSearchParams({ e: String(state.e), cues: `${a}-${b}` });
+    if (state.query) params.set('q', state.query);
+
+    try {
+      const response = await fetch(`/api/search/?${params}`);
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || response.status);
+      const top = state.passage.getBoundingClientRect().top;
+      if (!state.loaded) state.cues = data.lines;
+      else if (side === 'earlier') state.cues = data.lines.concat(state.cues);
+      else state.cues = state.cues.concat(data.lines);
+      if (!state.loaded || side === 'earlier') state.from = data.from;
+      if (!state.loaded || side !== 'earlier') state.to = data.to;
+      state.count = data.count;
+      state.loaded = true;
+      state.note.textContent = '';
+      draw(state);
+      // The new text goes in above what the reader was looking at. Hold the
+      // passage still, so it appears under the button they pressed.
+      if (side === 'earlier') window.scrollBy(0, state.passage.getBoundingClientRect().top - top);
+    } catch {
+      state.note.textContent = 'Could not load this passage. Try again.';
+    } finally {
+      state.busy = false;
+      state.earlier.disabled = state.later.disabled = false;
+    }
+  }
+
+  function open(row) {
+    let state = passages.get(row);
+    if (!state) {
+      const e = Number(row.dataset.e);
+      state = {
+        e,
+        n: Number(row.dataset.n),
+        fact: view?.facts[e],
+        query: view?.query ?? '',
+        cues: [],
+        from: 0,
+        to: 0,
+        count: 0,
+        loaded: false,
+        busy: false,
+      };
+      state.passage = el('div', 'tsearch__passage');
+      state.passage.tabIndex = -1;
+      state.passage.setAttribute('aria-label', `E${e} around ${stamp(Number(row.dataset.t))}`);
+      state.earlier = el('button', 'tsearch__step', 'Earlier');
+      state.later = el('button', 'tsearch__step', 'Later');
+      const less = el('button', 'tsearch__step', 'Show less');
+      for (const button of [state.earlier, state.later, less]) button.type = 'button';
+      state.earlier.hidden = state.later.hidden = true;
+      state.earlier.addEventListener('click', () => grow(state, 'earlier'));
+      state.later.addEventListener('click', () => grow(state, 'later'));
+      less.addEventListener('click', () => shut(row));
+      state.paras = el('ol', 'tsearch__paras');
+      state.note = el('p', 'tsearch__note');
+      state.note.setAttribute('role', 'status');
+      const foot = el('div', 'tsearch__foot');
+      foot.append(state.later, less);
+      state.passage.append(state.earlier, state.paras, state.note, foot);
+      row.append(state.passage);
+      passages.set(row, state);
+    }
+
+    row.classList.add('is-open');
+    row.querySelector(':scope > .tsearch__text').setAttribute('aria-expanded', 'true');
+    state.passage.hidden = false;
+    // The snippet that had the focus is hidden now; the passage takes it.
+    state.passage.focus({ preventScroll: true });
+    if (!state.loaded) grow(state);
+  }
+
+  function shut(row) {
+    const state = passages.get(row);
+    const inside = state.passage.contains(document.activeElement);
+    const text = row.querySelector(':scope > .tsearch__text');
+    row.classList.remove('is-open');
+    state.passage.hidden = true;
+    text.setAttribute('aria-expanded', 'false');
+    if (inside) text.focus({ preventScroll: true });
+    // A long passage closing can leave its row above the screen.
+    if (row.getBoundingClientRect().top < 0) row.scrollIntoView({ block: 'start' });
+  }
+
+  const toggle = (row) => (row.classList.contains('is-open') ? shut(row) : open(row));
+
+  list.addEventListener('click', (event) => {
+    if (event.target.closest('a, button')) return;
+    const row = event.target.closest('.tsearch__moments > li.is-openable');
+    if (!row) return;
+    // A reader who dragged across a line to copy it is not asking to open or close it.
+    if (!(window.getSelection()?.isCollapsed ?? true)) return;
+    toggle(row);
+  });
+
+  list.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    const text = event.target.closest('.tsearch__moments > li.is-openable > .tsearch__text');
+    if (!text) return;
+    event.preventDefault();
+    toggle(text.parentElement);
   });
 
   async function run(raw, episode = null) {

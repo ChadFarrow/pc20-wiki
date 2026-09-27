@@ -97,6 +97,36 @@ test('a malformed `from` is a 400, not the first page', async () => {
   }
 });
 
+test('`cues` returns one episode\'s cues by place, with the query marked', async () => {
+  const { response, body } = await call('e=35&cues=0-2&q=podping');
+  assert.equal(response.status, 200);
+  assert.deepEqual(
+    body.lines.map((line) => [line.n, line.t, line.ranges.map(([f, t]) => line.x.slice(f, t))]),
+    [[0, 10, ['pod ping']]],
+  );
+  // Clamped to the episode: it has one cue.
+  assert.equal(body.count, 1);
+  assert.equal(body.to, 1);
+  assert.match(response.headers.get('cache-control'), /s-maxage=\d+/);
+});
+
+test('a malformed `cues` is a 400, and it needs an episode', async () => {
+  for (const cues of ['abc', '5-2', '3-3', '0-999']) {
+    const { response, body } = await call(`e=203&cues=${cues}`);
+    assert.equal(response.status, 400, `cues=${cues}`);
+    assert.equal(body.error, 'bad-cues');
+  }
+  const { response, body } = await call('cues=0-2');
+  assert.equal(response.status, 400);
+  assert.equal(body.error, 'bad-episode');
+});
+
+test('`cues` for an episode with no transcript is a 404', async () => {
+  const { response, body } = await call('e=999&cues=0-2');
+  assert.equal(response.status, 404);
+  assert.equal(body.error, 'no-episode');
+});
+
 test('a short query is a 400 with a reason', async () => {
   const { response, body } = await call('q=ab');
   assert.equal(response.status, 400);
