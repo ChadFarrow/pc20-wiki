@@ -20,7 +20,10 @@
  * The same caption rules as update-mentions.mjs, through the same
  * collectCaptions: a "Transcript is Processing" stub is skipped, and the two
  * byte-identical pairs the server publishes (50/51, 248/249) are dropped both,
- * because one of each is not that episode and nothing says which.
+ * because one of each is not that episode and nothing says which. Where
+ * captions/archive/ holds pc20-archive's Whisper transcript for such an episode,
+ * or for one the server never published, that is read instead, and the episode
+ * is listed on `coverage.archived` so the page can say where its text came from.
  *
  * A file is removed only for a reason: its episode became a stub, a duplicate
  * or a collision. An episode that is merely absent from the cache keeps its
@@ -56,6 +59,20 @@ async function readCaptions(dir) {
   return files;
 }
 
+/**
+ * pc20-archive's Whisper transcripts, which fetch-captions.mjs keeps in
+ * captions/archive/ for the episodes the server has none for. No folder is no
+ * archive, not an error: every episode then stands on the server's file alone.
+ */
+async function readArchive(dir) {
+  try {
+    return await readCaptions(join(dir, 'archive'));
+  } catch (err) {
+    if (err.code === 'ENOENT') return [];
+    throw err;
+  }
+}
+
 /** What is committed now: episode → file text. */
 async function readCorpus(dir) {
   const corpus = new Map();
@@ -76,8 +93,10 @@ async function main() {
   announce(SOURCES);
 
   let files;
+  let archive;
   try {
     files = await readCaptions(SOURCES.captions);
+    archive = await readArchive(SOURCES.captions);
   } catch (err) {
     fell('captions', err);
     // --allow-missing: with no cache there is nothing to say about any episode,
@@ -86,7 +105,8 @@ async function main() {
     return;
   }
 
-  const { candidates, stubs, duplicates, collisions } = collectCaptions(files);
+  const { candidates, stubs, duplicates, collisions, archived } = collectCaptions(files, archive);
+  if (archived.length) console.log(`  from pc20-archive, none usable on the server: ${archived.join(', ')}`);
   if (stubs.length) console.warn(`  ! still processing, no transcript: ${stubs.join(', ')}`);
   if (duplicates.length) console.warn(`  ! same file served twice, episode unknowable: ${duplicates.join(', ')}`);
   if (collisions.length) console.warn(`  ! two files named the same episode, kept the first: ${collisions.join(', ')}`);
@@ -152,6 +172,7 @@ async function main() {
       duplicates,
       collisions,
       unpublished: sort(unpublished),
+      archived,
     },
     episodes: Object.fromEntries(numbers.filter((e) => facts[e]).map((e) => [e, facts[e]])),
   };

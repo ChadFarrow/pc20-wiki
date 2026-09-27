@@ -16,9 +16,17 @@
  * is about 39 MB, and what gets committed is the derived JSON, as it already is for
  * mentions and the timeline.
  *
- * The server is the only source. The NAS share at /Volumes/pc20-archive holds the
- * same files, and this once copied from it first. It no longer does: the share is
- * the owner's personal backup of what is on the internet, not an input to a public
+ * The server comes first. Where it leaves an episode without a usable
+ * transcript — a "Transcript is Processing" stub, one of a byte-identical pair,
+ * or no file at all — the pc20-archive project publishes one made with Whisper,
+ * on GitHub Pages under the server's own file name, and that copy is kept in
+ * captions/archive/. The server's file stays where it is, so collectCaptions can
+ * prefer it again the day the server finishes; nothing here has to remember
+ * which episodes were filled.
+ *
+ * Neither source is the NAS. The share at /Volumes/pc20-archive holds the same
+ * files, and this once copied from it first. It no longer does: the share is the
+ * owner's personal backup of what is on the internet, not an input to a public
  * site, and a backup that is unmounted, stale or hung must never decide what the
  * wiki publishes. The cost is one request per new episode.
  */
@@ -27,13 +35,15 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { flag, arg, tilde, sourcePath } from './source-lib.mjs';
-import { captionEpisode, isStub } from './captions-lib.mjs';
+import { captionEpisode, collectCaptions, isStub } from './captions-lib.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = resolve(
   arg('captions') ?? arg('out') ?? process.env.PC20_CAPTIONS ?? join(ROOT, 'captions'),
 );
 const HOST = 'https://mp3s.nashownotes.com';
+const ARCHIVE = 'https://chadfarrow.github.io/pc20-archive/captions';
+const ARCHIVE_DIR = join(OUT, 'archive');
 const EPISODES = sourcePath(ROOT, 'episodes', 'PC20_TIMELINE_EPISODES', '../pc20-timeline/data/episodes.json');
 
 /** A request that stalls must not hang an unattended run for ever. */
@@ -148,7 +158,81 @@ async function main() {
     );
   }
   if (failed) console.log(`${failed} failed — rerun to pick them up`);
+  await fillFromArchive();
   return report();
+}
+
+/** A folder's caption files as `{ name, text }`, the shape collectCaptions reads. */
+async function readCache(dir) {
+  let names = [];
+  try {
+    names = await readdir(dir);
+  } catch (err) {
+    if (err.code !== 'ENOENT') throw err;
+  }
+  const files = [];
+  for (const file of names.filter((entry) => captionEpisode(entry) !== null).sort()) {
+    files.push({ name: file, text: await readFile(join(dir, file), 'utf8') });
+  }
+  return files;
+}
+
+/**
+ * Ask pc20-archive for every episode the server leaves without a transcript.
+ *
+ * The gaps are worked out with collectCaptions, the rule the generators use, so
+ * this asks for exactly what they would read. A copy already held is kept, like
+ * a server file (`--force` asks again). A 404 is normal — the archive makes a
+ * transcript only for the episodes it was asked to — and costs one request per
+ * run until one appears.
+ */
+async function fillFromArchive() {
+  const served = await readCache(OUT);
+  const { stubs, duplicates } = collectCaptions(served);
+  const held = new Set(served.map((file) => captionEpisode(file.name)));
+  const absent = Array.from({ length: LAST }, (_, i) => i + 1).filter((episode) => !held.has(episode));
+  const gaps = [...new Set([...stubs, ...duplicates, ...absent])].sort((a, b) => a - b);
+  if (!gaps.length) return;
+  await mkdir(ARCHIVE_DIR, { recursive: true });
+
+  let fetched = 0;
+  let kept = 0;
+  let failed = 0;
+  const none = [];
+  for (const episode of gaps) {
+    const target = join(ARCHIVE_DIR, name(episode));
+    if (!flag('force') && (await state(target)) === 'ready') {
+      kept += 1;
+      continue;
+    }
+    try {
+      const response = await fetch(`${ARCHIVE}/${name(episode)}`, {
+        signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+      });
+      if (response.status === 404) {
+        none.push(episode);
+        continue;
+      }
+      if (!response.ok) {
+        failed += 1;
+        continue;
+      }
+      const body = await response.text();
+      if (isStub(body)) {
+        none.push(episode);
+        continue;
+      }
+      await writeAtomic(target, body);
+      fetched += 1;
+    } catch {
+      failed += 1;
+    }
+  }
+  console.log(
+    `pc20-archive: ${gaps.length} episode(s) with no usable transcript on the server — ` +
+      `fetched ${fetched}, ${kept} already held${none.length ? `, none for ${none.join(', ')}` : ''}`,
+  );
+  if (failed) console.log(`pc20-archive: ${failed} failed — rerun to pick them up`);
 }
 
 /** What the generator will actually be able to read. */
@@ -167,6 +251,11 @@ async function report() {
   stubs.sort((a, b) => a - b);
   console.log(`${files.length} file(s) in ${tilde(OUT)}, ${files.length - stubs.length} usable`);
   if (stubs.length) console.log(`still processing: ${stubs.join(', ')}`);
+
+  const { archived, stubs: open, duplicates } = collectCaptions(await readCache(OUT), await readCache(ARCHIVE_DIR));
+  if (archived.length) console.log(`read from pc20-archive instead: ${archived.join(', ')}`);
+  const unsearchable = [...open, ...duplicates].sort((a, b) => a - b);
+  if (unsearchable.length) console.log(`no usable transcript anywhere: ${unsearchable.join(', ')}`);
 
   // A short cache looks exactly like a complete one once the loop has stopped
   // at LAST. If the highest usable episode IS the ceiling, the show may well

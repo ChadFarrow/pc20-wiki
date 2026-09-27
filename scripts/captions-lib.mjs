@@ -131,11 +131,16 @@ export function densest(seconds, window = DWELL_WINDOW) {
  * judges this pattern redundant with `denyForms` and deletes it would
  * reopen that gap — the readout is what the pattern exists to catch, and the
  * readout is also the only place the note's own name appears in speech.
+ *
+ * It allows a hyphen as well as a space: pc20-archive's Whisper transcripts
+ * write "boost-agrams", which the server's never do. Measured over the cache on
+ * 2026-09-27: no hit in the server's 270 files, 2 in one of the 14 Whisper files
+ * (E222) — the line that gave `Boostagram` a transcript citation before this.
  */
 export const TRANSCRIPT_BOILERPLATE = [
   /\d{3,}/,
   /podcasting\s*2\.?\s*0\s+for\b[^]{0,40}\bepisode\b/i,
-  /\bboost\s?a\s?grams?\b|\bbooster\s+grams?\b|\bboost\s+grams?\b/i,
+  /\bboost[\s-]?a[\s-]?grams?\b|\bbooster\s+grams?\b|\bboost\s+grams?\b/i,
 ];
 
 /** Is this cue the show reading out its own plumbing? */
@@ -191,8 +196,24 @@ export function isReadout(text) {
  * not proven to disagree, so there is no reason to distrust either one; the
  * first file for an episode (input order) is kept and the rest are dropped and
  * named on `collisions`, the same treatment a stub or a duplicate gets.
+ *
+ * THE ARCHIVE fills the gaps, and only the gaps. `archive` holds the Whisper
+ * transcripts pc20-archive publishes for the episodes the server has no usable
+ * transcript for (https://chadfarrow.github.io/pc20-archive/captions/): the
+ * "Transcript is Processing" stubs, both halves of each duplicated pair, and
+ * E10 and E244, which never had a caption file. An archive file is read for an
+ * episode only when the server's is a stub, a duplicate or absent, so a server
+ * that finishes processing wins again on the next run, with no list to edit.
+ * The episodes filled are returned on `archived` and leave `stubs` and
+ * `duplicates`, which keep naming only what is still unsearchable. A
+ * duplicate is judged against the server's files alone: filling one half of a
+ * pair does not make the other half a unique — and so trusted — transcript.
+ *
+ * The archive settled which episode each pair belongs to — E51 and E248, by
+ * matching each against a transcript of both episodes' audio — but that
+ * changes nothing here: the rule above never needed to know.
  */
-export function collectCaptions(files) {
+export function collectCaptions(files, archive = []) {
   const candidates = [];
   const stubs = [];
   const duplicates = [];
@@ -225,22 +246,44 @@ export function collectCaptions(files) {
     parsed.push({ episode, body, cues });
   }
 
+  const usable = [];
   for (const { episode, body, cues } of parsed) {
     if (copies.get(body) > 1) {
       duplicates.push(episode);
       continue;
     }
+    usable.push({ episode, cues });
+  }
 
+  // The archive fills only what the server left without a transcript. An
+  // episode the server has — even as one half of a duplicated pair whose twin
+  // the archive filled — is never read from here.
+  const served = new Set(usable.map(({ episode }) => episode));
+  const archived = [];
+  for (const { name, text } of archive) {
+    const episode = captionEpisode(name);
+    if (!Number.isInteger(episode) || served.has(episode)) continue;
+    const cues = parseSrt(text);
+    if (cuesAreStub(cues)) continue;
+    served.add(episode);
+    archived.push(episode);
+    usable.push({ episode, cues });
+  }
+
+  for (const { episode, cues } of usable) {
     for (const cue of cues) {
       candidates.push({ source: 't', episode, seconds: cue.seconds, text: cue.text });
     }
   }
 
+  const filled = new Set(archived);
+  const open = (list) => list.filter((episode) => !filled.has(episode)).sort((a, b) => a - b);
   return {
     candidates,
-    stubs: stubs.sort((a, b) => a - b),
-    duplicates: duplicates.sort((a, b) => a - b),
+    stubs: open(stubs),
+    duplicates: open(duplicates),
     collisions: [...new Set(collisions)].sort((a, b) => a - b),
+    archived: archived.sort((a, b) => a - b),
   };
 }
 

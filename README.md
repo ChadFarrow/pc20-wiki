@@ -184,14 +184,18 @@ page shows at most 4 transcript episodes under at most 8 curated ones. The rules
 measurements behind each threshold are in `CLAUDE.md`.
 
 **The raw captions are not in the repo.** `npm run fetch:captions` fills a gitignored
-`captions/` cache (270 files, ~39 MB) from the show's server;
-`update-mentions` then reads it as a plain directory of files, like every other source. The
+`captions/` cache (270 files, ~39 MB) from the show's server. Where the server has no usable
+transcript — eight "Transcript is Processing" placeholders, one transcript under two episode
+numbers twice, and two episodes never captioned — it also fetches the Whisper transcript that
+[pc20-archive](https://github.com/ChadFarrow/pc20-archive/blob/main/captions/README.md) publishes
+for that episode, into `captions/archive/`; the server's own file wins again whenever it
+becomes usable. `update-mentions` then reads it as a plain directory of files, like every other source. The
 cue text alone is committed, for the transcript search — see below. Each path is overridable by flag or environment
 variable, and every one is printed before it is read.
 
 **New episodes arrive on their own.** A second launchd agent runs `scripts/refresh-episodes.sh`
 every Friday at 22:00, after the week's episode is out: it rebuilds the episode list in `../pc20-timeline` and refills `captions/`
-from the show's server. The publish agent picks
+from the show's server, and from pc20-archive for the gaps. The publish agent picks
 the new inputs up on its next pass.
 
 **Regeneration runs on every publish.** The launchd agent now runs `update:mentions`,
@@ -255,8 +259,9 @@ the CDN for a day.
 It matches the way the mentions do: five squashed characters or more ignore spaces and
 punctuation, so *podping* finds "pod ping"; anything shorter matches whole words, so *Tor*
 does not find "story". A match that crosses a space must still join whole words, so *nostr*
-does not find "no straight", while *podping* still finds "pod pings". The page names every
-episode it cannot search, and why.
+does not find "no straight", while *podping* still finds "pod pings". Every episode to E272
+is searchable. The page names the 14 whose text is pc20-archive's Whisper transcript rather
+than the show's own captions, and it would name any episode it cannot search, and why.
 
 The corpus is `data/transcripts/NNN.txt` — one file per episode, one cue per line as
 `seconds<TAB>text` — plus `index.json` with each episode's title, date and audio link.

@@ -551,6 +551,22 @@ test('every episode the search cannot see is named on the transcripts page', asy
   for (const episode of hidden) assert.match(html, new RegExp(`\\bE${episode}\\b`), `E${episode} is not named`);
 });
 
+test('every episode read from pc20-archive is searchable, and the page says where it came from', async () => {
+  // Their text is a Whisper transcript, not the show's own captions, and a
+  // reader quoting one should be able to tell.
+  const dir = join(ROOT, 'data', 'transcripts');
+  const { coverage } = JSON.parse(await readFile(join(dir, 'index.json'), 'utf8'));
+  const html = pages.get('transcripts/');
+  const searchable = (await readdir(dir)).filter((name) => /^\d+\.txt$/.test(name)).map((name) => Number(name.slice(0, -4)));
+  for (const episode of coverage.archived ?? []) {
+    assert.ok(searchable.includes(episode), `E${episode} came from the archive but is not searchable`);
+    assert.match(html, new RegExp(`\\bE${episode}\\b`), `E${episode} is not named`);
+  }
+  if (coverage.archived?.length) {
+    assert.match(html, /href="https:\/\/github\.com\/ChadFarrow\/pc20-archive\/blob\/main\/captions\/README\.md">pc20-archive</);
+  }
+});
+
 test('the transcripts page is reachable from every page', () => {
   for (const [path, html] of pages) {
     assert.match(html, /href="\/transcripts\/"/, `${path} has no link to the transcripts`);

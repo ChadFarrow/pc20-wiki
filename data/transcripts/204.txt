@@ -1,0 +1,1802 @@
+0	Podcasting 2.0 for December 13th, 2024, episode 204. Here comes the Universal app.
+7	Hello, everybody, as we get closer to Christmas.
+11	I don't know, we all just seem to be happier.
+15	Don't you agree?
+16	It is time for Podcasting 2.0.
+18	This is where we talk all things podcasting.
+21	The past, the present, and the future.
+23	We are, in fact, the only boardroom that serves
+26	Grandma's special eggnog during the season.
+29	I'm Adam Curry here in the heart of the Texas Hill Country and in Alabama,
+32	the man who eats Enterprise Software for breakfast and spits it out at lunchtime.
+36	Say hello to my friend on the other hand, Mr. Dave Jones.
+41	Hello, hello, hello, hello, hello, hello, my friend Mr. Dave Jones, yes.
+47	Hello.
+49	Yes.
+50	Hello.
+50	It was, you had a tough week, man.
+53	The beginning was tough.
+54	Yeah.
+55	The ending is better.
+56	Yeah.
+57	The beginning was, you know, day jobs, software meltdowns, but we survived.
+64	The vendor is fixing things.
+66	We're in better shape.
+68	Whenever you take the time to post on podcast, index.social,
+72	that something's going on, and I think you posted,
+75	enterprise software is the worst or something.
+78	Let me see.
+79	No.
+79	It is.
+81	And that's it.
+82	You know, it's just like, just like a random, you know, just like a,
+85	like a Tourette's move.
+87	You're like, just blast something out onto, like,
+90	I just need to share this with people who will understand my pain.
+94	Yeah, because just, just having a bloop, bloop, bloop,
+97	about four or five likes come through, it makes you feel better.
+101	It de-stresses.
+102	Do you see those?
+103	Do you see those?
+104	Because when you hit on, hit the little, on the Mastodon,
+107	you hit the little star button.
+108	Do you follow those?
+109	Do you watch those in your notifications when that happens?
+112	I just wonder if people do that.
+114	Yeah, I've got, um, I use,
+116	I don't know how other people use likes or favorites or whatever you call it in the
+122	Mastodon world, but, or activity pub world,
+125	but I use them when I don't really have time or maybe the thing that I'm responding
+131	to is not, maybe it doesn't need a reply or I don't have time to reply.
+136	And I just want to let the other person know that I saw it.
+139	Yes.
+139	That's what I do as well.
+141	I just wondered if people actually view it that way.
+144	So you do.
+144	That's good.
+145	I don't know.
+145	Yeah, I, I, I tend to see that that's what other people are doing,
+149	but they may not be using it in the same way.
+151	I may be misinterpreting their results.
+153	I like Bemrose in the, in the boardroom.
+156	Nobody knows how to use likes in the Mastodon world.
+158	No, I think you're probably right.
+159	No one, no one knows.
+161	No one knows how that thing works.
+163	Nobody knows what they're supposed to be.
+165	Okay.
+166	Hey, I had, like, I had a brainwave before we started
+170	the show and I just wanted to share it.
+172	Okay.
+173	I was listening to, uh, to the, to the homework.
+177	Hour.
+178	I was listening to, uh, Pod News Weekly Review,
+181	hoping to hear something about Dave Weiner,
+183	but apparently they cut all that out of the show.
+188	Wait, they talked about it and then cut it?
+190	Yeah, pussies.
+191	I wonder if it, I wonder if it, I wonder if it,
+193	I wonder if it's going to be in the, wait, is it in the Pod News?
+197	The Extended Edition?
+199	Yeah, what is it?
+200	Pod News Extra?
+200	The Director's Cut.
+202	Pod News.
+203	I wonder if they left it in the Pod News Extra.
+205	Let me see.
+206	Uh, no.
+207	Okay.
+208	All right.
+208	Well, oh, wait, wait.
+210	From the Cutter Noon Floor?
+212	No.
+213	No.
+214	Oh, anyway.
+215	That's where they, whatever podcast that's,
+218	whatever feed that's in is the same one where, um, the other six hours of Brian,
+222	of Brian's, uh, Hive Talk is.
+225	They're in the same place.
+226	That's the one, yeah.
+227	No, but it, it was about, uh, Apple's, uh,
+230	podcast and that they have made it progressive web app compatible.
+237	Oh, I'm glad you brought this up because I want to, um,
+239	I've got thoughts on that too.
+240	Okay.
+241	Um.
+242	No, no, you go, go ahead.
+243	No, actually, because we've been dealing with progressive web apps in our,
+247	in our project.
+249	Why don't you, I wouldn't mind if you went first and then I,
+252	then I can give you my brainwave because it just might excite you.
+257	I mean, I didn't have anything super, uh, important other than just like,
+262	I guess mine was more of a political take on, on it.
+266	It's, it's, it just makes me laugh that that was their answer to getting something
+271	onto the Android app store without paying the, without, without paying the, the,
+276	the Google play store tax.
+277	Right.
+278	Right.
+278	It was by doing a PWA, which is exactly what people have to do to get onto their,
+283	to get around their tax.
+285	It's just like this implicit acknowledgement that it's a,
+289	that the whole thing's just a, a rip off.
+291	Um, but, but I wondered my, on the technical side of things,
+297	I didn't hear them say whether it was a, an offline, whether it was offline capable.
+306	No, it's not because, okay.
+308	Because that's a big,
+309	so there's a difference between just being a PWA and being a PWA,
+314	like a full function PWA, where you have offline capability,
+318	because that requires, that requires what's called a service worker.
+322	And that's a more complicated.
+324	We used to have those in Amsterdam.
+326	They had red lights in their windows.
+328	Is that something different?
+330	They take sats now.
+331	Oh, nice.
+333	Bolt 11.
+335	Bolt 11.
+336	Please.
+337	What kind of wallet do you have?
+338	Service worker.
+340	Sorry.
+341	Got to go to the next window.
+343	Ellen URLP.
+346	Well, so, you know, and I'm thinking about this and yes,
+349	I understand that what they're doing and why they did it, but it just,
+354	it hit me like a lightning bolt.
+356	Because, you know, with the project we're working on,
+360	I've been showing people how to install the Godcaster as a progressive web app.
+368	And you can see that when you say, oh, is it an app?
+371	I say, yeah, let me install it for you.
+373	And I do it.
+374	And then they don't, they're like, oh, great.
+376	It's, I don't know how you did that.
+377	I wasn't paying attention.
+378	By the way, oh man, I've learned just from time to time,
+382	you should ask someone to do something and watch how they do this on their phone.
+388	So they're like, okay, so how do I get to this?
+391	And I'll give the boardroom the URL.
+393	I say it's hellofred.fm.
+395	And they'll open up DuckDuckGo.
+398	And search for hellofred.fm.
+400	And just type in hellofred.fm.
+404	Actually, I'm going to do that.
+405	Well, now, of course, right now it's just a URL forwarding.
+409	So it goes to mp3.nashownotes.com.
+412	So that's completely useless because it doesn't show up in search.
+415	But people, it seems like people are losing the understanding of a URL.
+423	They're just going to, it's either that or it's a Google app.
+426	They're not even opening Safari.
+429	They're not even typing it into an address bar.
+432	They're just, oh, well, I got DuckDuckGo, which is also a browser.
+436	And they just.
+436	Can I, can I stop, stop the.
+439	Stop the show?
+440	Stop the flow?
+441	Stop my important information?
+442	Yes.
+443	I want to.
+443	Yes.
+444	Stop your important information.
+445	Because I have more important information.
+447	Your information always supersedes my important information.
+453	Why is, why does your Hello Fred have two players in it?
+460	Two players.
+461	I don't understand this.
+461	Two players.
+462	For me, it does.
+464	Let me see.
+464	This is totally inside baseball at this point.
+466	But I'm very, like, I have two.
+469	No, I only, oh, that's interesting.
+473	What is that?
+474	I don't know.
+476	What does your outline look like?
+478	This, well, this is not an outline.
+480	This is a static file.
+482	Do you have, have you somehow pasted the code twice or something?
+485	That's very possible.
+487	Hold on a second.
+488	That's interesting.
+489	It's like there's two players in here.
+491	Yeah, I, that, I had not even noticed that.
+495	Hold on a second.
+498	Yeah, Chad F. said he sees two also.
+501	This is no good.
+502	Hold on a second.
+502	What's going on here?
+503	Well, now we have to stop the show.
+505	Yeah, stop the show.
+506	What's the hellofred.html?
+509	Hold on a second.
+510	Where is this thing?
+511	It's very possible that I did something stupid like that.
+516	Let me open it up.
+518	Edit with Notepad+++.
+520	Let's see.
+522	How'd you get Notepad+++, I only have Notepad+++.
+525	That must be a later version.
+528	So, Dave, do me a favor and just take a look at that HTML file that it points to.
+536	Okay.
+536	Content with Page Source.
+539	Player Assets.
+541	This is old code.
+543	Oh.
+544	You need to paste, you need to cut,
+546	you need to grab a fresh copy of the player code.
+549	Oh, well, that explains it.
+551	Hold on a second.
+552	Now, where do I put this?
+552	This is actually really old, actually.
+555	No wonder people are like, how does this thing work?
+558	I don't understand what this thing is that you've built.
+560	It makes sense.
+561	This is pre-production.
+563	So, I just do the dibs in the body?
+566	That's where I do it?
+567	If you just go to your widget, I mean, not your widget,
+571	but your player preview page and do copy player code,
+574	it'll give you what to paste in there.
+577	Right, but I'm looking at the, what do you mean?
+582	I don't understand what you just said.
+584	Like on your dashboard.
+586	Yeah, but where do I put it in that page?
+588	Do I put it in the body, between the body tags?
+591	Yeah, in the body.
+592	That's what I meant.
+593	Okay, hold on a second.
+594	Hold on.
+594	We're doing this on the fly.
+596	We're doing it live.
+597	Let's watch it update live in real time.
+599	Hold on.
+601	Uh-huh.
+601	Yeah, he says.
+602	I'm hitting refresh.
+604	Okay, let's see.
+605	Refresh.
+606	I'm going to do a hard refresh.
+607	Yeah, I'm doing a hard refresh.
+609	Control-Shift-R for the uninitiated.
+612	They're still doing the same thing, I think.
+614	You caching somewhere?
+616	I might be.
+618	I don't know.
+621	You got old code.
+624	Well, I just put the new code in.
+626	Yeah, but it's still not that day.
+630	Let me look at a local copy.
+631	Yeah, the local copy works.
+633	So it's probably caching.
+634	Okay.
+635	Yeah, local copy works.
+636	Hard R.
+636	Yeah, hard R.
+637	Anyway, so thank you for alerting me to that minor issue.
+643	Let me see.
+643	What does it do in the progressive web app?
+647	Yeah, no, it's good there, of course.
+648	All right.
+649	So I'm watching this nightmare unfold, right, of how people, just in general,
+656	a web browser doesn't even seem to be in people's mind anymore.
+661	Like, I'm not going to type in, hello, Fred, period, FM.
+665	No.
+665	No, I'm just going to search for everything.
+667	But I'm safe because I got DuckDuckGo.
+670	And so I'm just like, wow, the web, the end of the web is near.
+674	I don't know how to use a URL, but I know I'm safe because I'm using DuckDuckGo.
+679	So then I realized, and I tried this out on Tina,
+683	and we have been looking at this all wrong.
+686	We have been psyoped by Apple and others into this progressive web app.
+692	Because, of course, when I said to Tina, you know, a progressive web app?
+695	She said, I'm never going to use that.
+698	That's a bunch of lefties, she said.
+700	I'm not using a progressive web app.
+703	That was her interpretation.
+705	She'd never even heard of the term.
+707	This has all been a political psyop.
+711	Yes.
+711	I'm like, well, this is no good.
+713	And then all of a sudden it dawned on.
+714	And I said, well, what do you think?
+716	I don't want your left-wing app.
+718	I don't want your lefty app.
+719	I'm not interested in that.
+721	She doesn't want a righty app either.
+723	And I said, so what do you think a universal app is?
+728	She said, oh, that's an app that I can install on any device anywhere.
+732	No, that's the app where everybody that uses it goes to heaven.
+735	No, listen, you ruined my whole reveal.
+741	Oh, sorry.
+742	If you say to someone who has no idea, we have a universal app.
+747	Well, what is that?
+748	Oh, this app works on any phone.
+751	You don't have to worry about updates.
+754	It synchronizes across your phones.
+757	You can have it on an Android, on an Apple, on a Windows, on a Mac,
+761	on your tablet, on your iPad.
+763	You don't have to worry about, once you install it,
+766	you don't have to worry about anything.
+769	It synchronizes and it's good to go forever.
+772	You never have to log into your app store.
+774	Well, how do I do it?
+775	You install it like this.
+776	And on every single browser, this is the thing that they screwed up.
+781	When you go to either save to home screen or save to desktop,
+786	it literally says install.
+789	And thanks to that, people believe that they just installed an app.
+794	But it's not any app.
+796	No, this is better than the app store.
+798	It's a universal app.
+800	Oh, oh, I want that.
+803	Why do you want that?
+804	It's a pain in the butt.
+805	I've got to go download an app for my iPad.
+808	I have to download an app for Windows and for Mac.
+811	I can just do this once and it synchronizes anywhere.
+814	Yes, that's a universal app.
+816	So I think we just get rid of this PWA name and just call it a universal app.
+824	The name Progressive Web App is a horrible name, honestly.
+829	Because what does it even mean?
+830	Exactly.
+832	Nobody even knows what it means.
+833	What does it mean to PWA?
+835	Like, it's like a progressive JPEG.
+838	Do you remember those?
+840	Progressive.
+841	No, it was a progressive GIF, I think it was.
+844	Yeah, where it just like loads in a little bit at a time so it starts out blurry.
+847	It would take forever to see her boobs.
+854	Everybody over 40 understands this joke.
+859	For the first few seconds, it's like watching Scrambled HBO.
+865	Everybody over 40 understands that joke, too.
+868	Scrambled HBO.
+869	Who remembers that?
+871	So, I mean, like, it's a terrible name because nobody understands the progressive.
+877	You know, the word progressive means that it's
+881	going to load parts at a time or whatever.
+884	It's like, what is that even?
+885	So here's my question.
+887	Nobody understands this nomenclature.
+888	Here's my question.
+889	So when you hit a web page that you can install as a universal app,
+894	I believe there's a way to trigger a pop-up that says install this.
+899	I've seen it happen.
+900	I don't, and maybe it's, I don't know, maybe it's just,
+903	I've seen it and people just doing it and it's not an actual way to try.
+907	I don't know what it is.
+909	But you're saying that you don't know how that install thing pops up?
+912	How that triggers.
+912	What I would love is if it says, I mean, if you have a,
+918	I'm just going to call it universal app.
+922	I'm never calling it a PWA ever again.
+924	If you have a universal app that you want people to install,
+928	which does require a small tweak on the web page.
+931	You want to have, now the thing that's a little complicated is all the different
+937	ways that browsers install this.
+939	Some call it save to desktop.
+942	Some call it, you know, iOS calls it save to home screen.
+944	Yet you get to it from a share menu.
+947	Is there any way to bypass that first step so that you just get that boom,
+952	install screen?
+954	Okay.
+955	The install, let me.
+957	So in iOS, you have to hit your share button and you scroll down and it says,
+963	add to home screen.
+965	But then when you add to home screen,
+966	I think it actually uses the word install, doesn't it?
+970	No.
+970	Oh, Android does.
+972	Android does.
+972	Android does.
+973	Yeah.
+974	Yeah.
+975	Android does.
+976	iOS, you share sheet, add to home screen, done.
+982	That's all you get.
+984	Android, add to, you know, Android, you do the same thing you do.
+991	I think it's, um, I forgot what the, actually, I got my phone here.
+997	Hold on a second.
+997	I mean, the, the, I think that we think we need to attack this nonsense,
+1002	these app stores head on by just saying,
+1005	and of course it doesn't work for every single app because a lot of apps
+1009	need native features, but for the stuff we're doing,
+1013	install this as a universal app and put
+1015	it right, right there.
+1016	One app works everywhere.
+1019	Never log into an app store again, syncs across all of your devices.
+1023	Don't worry.
+1024	Updates are automatic.
+1025	Never have to do that.
+1027	Never.
+1027	I mean, the main thing, never log into the app store.
+1030	I know on iOS, I see people complaining all the time.
+1034	Oh, oh, I got, oh, I got to get my password.
+1036	Oh, I got to use my, who got to look at my face.
+1038	You know, it's like the app store is always asking you to reauthenticate.
+1044	So I want to take the pain that they're,
+1048	that they're providing and use the universal app
+1051	as something that's far superior.
+1056	And I can tell you, I'm on the phone right now and I can,
+1059	I can immediately tell you why
+1061	nobody knows what a URL is anymore because this is, I'm on the Android phone.
+1068	Uh, this is Android, uh, gosh, 14 or something like that.
+1074	And if I launch Chrome,
+1076	what I get is a start page and there's a box, there's just a box.
+1080	I'm looking for the address bar.
+1082	There's no bar.
+1083	You just get a box that says, sir, in the, in the box, in the input box,
+1087	it just says search or type URL.
+1090	Right.
+1091	So it's all, uh, what do they call it?
+1095	The universal, uh, universal browser box or something like that.
+1098	That's what they've renamed the, what we used to call the address bar.
+1102	Right.
+1102	Right.
+1102	Is now called something, something new.
+1105	It's they've called, they've got a word for it.
+1107	It's like the universal box or something.
+1109	And it obscure, it, it, it munges together search and Omnibar.
+1116	That's it.
+1116	Thank you.
+1117	Omnibar.
+1118	The Omnibar.
+1119	It munges search and, and addresses together into one incomprehensible.
+1126	But not at the top.
+1127	It does it in the middle.
+1129	Yes.
+1129	It's not even at the top or the bottom.
+1130	It's just kind of like, you're like, what?
+1133	Right.
+1134	Right.
+1135	Well, on, on Chrome on windows, it has a bar at the top and it, this is very,
+1141	very interesting what they've done here.
+1144	They have Chrome colon slash slash what's dash new,
+1147	which I guess is their, their homepage.
+1150	Anyway, I, I just thought, and if anyone can really experiment with this,
+1155	it's Sam Sethi with, uh, with true fans.
+1159	And I would say Ellen beats.
+1161	And there's a couple others.
+1163	I mean, just positioning it as this, this is a universal app.
+1170	Here's how to install it.
+1171	No app store needed.
+1173	I think if you even say that no app store needed,
+1175	people might see that as a benefit.
+1178	Oh, no app store needed.
+1180	Oh, okay.
+1180	I'll do that.
+1182	Cause in your head, you know, uh, put one on my tablet.
+1185	I have to install it again from the app store.
+1188	I have to get a different version, all this different stuff.
+1192	It's just positioning.
+1194	And I think we've been looking at it incorrectly.
+1198	Okay.
+1199	Your, uh, hello, Fred is, uh, fixed proper now.
+1202	Yeah.
+1202	Good.
+1203	Good.
+1203	Looks right now.
+1203	So I'm going to the PWA.
+1205	So let me go.
+1206	Um, uh, yeah, it's add to home screen, same terminology on, on Android.
+1212	Okay.
+1213	And what, yeah, then on Android, after you hit that,
+1216	it pops up and it says you get two options.
+1218	You get install or create shortcut.
+1220	So if you tap install, that's when you can just put the, put the, drag it right on.
+1225	Yeah.
+1225	Yeah.
+1225	That works well.
+1226	And the button says install.
+1227	Install, which is beautiful.
+1228	Beautiful.
+1230	So anyway, I'm, I'm just thinking it's language.
+1233	It's just language.
+1234	It's just a, a, a, a screen or a page or something
+1238	and explains the benefits of why you
+1241	want to install a universal app and then just put it in there.
+1244	I think just, so the same people who don't know what an address bar is,
+1251	I think that we
+1252	can sigh up, sigh up them right back into thinking, Oh, this is, I don't want it.
+1258	I want a universal app that I can also install on my,
+1261	what I can install the same app on my windows machine.
+1264	That's never been possible.
+1266	You can install it on your iPhone and your windows machine.
+1271	People don't think about pretty good PWA.
+1274	Yes.
+1275	Experience.
+1276	And people, cause you know, people don't think about these things the way do we do.
+1279	We're so deep into it, knowing what a PWA is and, and all the, and you know, what
+1284	it can and can't do.
+1285	And we're just thinking about app stores and, uh, you know, and to have, to be able
+1291	to, to have the same app on most people in a,
+1294	at least in a business environment, we're
+1297	probably have a windows machine or, you know, there's, there's a high,
+1301	high likelihood people have an iPhone and a windows machine.
+1306	But even, even the difference between not all
+1309	apps on your iPhone are available on your Mac desktop.
+1313	That's an entirely different app altogether.
+1317	So that is my, that is my word of the day.
+1321	Universal app.
+1323	The, um, that actually has, that's, that's actually a pretty good,
+1329	that's actually a pretty
+1331	good lead into something that I was thinking about.
+1333	I mean, you're talking about, uh, Dave, Dave Weiner and, and the open source,
+1340	open source communities and, and this kind of thing.
+1343	And, um, it was looking, as I saw, uh,
+1346	Russell from pod two posted this morning about, you
+1350	know, he was upset about, um, about things and that, you know,
+1356	he mentioned something
+1357	about splitting the community.
+1359	And I just, it just got me thinking about this, you know,
+1363	about this whole topic because I
+1366	had a, I had a good call with, and I want to talk about, uh,
+1368	what me and Oscar talked
+1369	about yesterday as well.
+1370	Um, I had a good call with Oscar yesterday cause we were trying to, um,
+1375	you know, come
+1376	to the, come to some conclusion or trying to figure out what to do about, uh,
+1381	about what,
+1381	uh, Bumi from Albie was talking about with the, uh, LN address options file spec.
+1388	Um, but sort of related to that, I started, when I saw Russell's thing,
+1397	it reminds, I guess
+1399	my first thought that I guess the first thought that I had was, you know,
+1404	splitting communities
+1405	doesn't really happen unless you have a sort of a self-proclaimed leader of, of,
+1414	of, yeah, self-proclaimed leaders in those communities that,
+1418	that kind of lean into their egos and then,
+1422	um, do something negative.
+1424	And I don't, I'm not concerned about any, about things being, you know,
+1430	splitting the podcasting 2.0 community because, uh, we don't have any leaders,
+1436	but nobody's in charge.
+1438	Um, and when you don't have any leaders, even self-proclaimed ones, uh, there's,
+1445	I mean, there's just, there's no, there's the splitting doesn't happen.
+1450	So, um, it's just like, it's just this sort of like, uh,
+1455	libertarian hydra thing that we
+1458	have going on, you know, here where there's not, nobody's really,
+1462	nobody's really in charge.
+1464	We just kind of duke it out and then figure out,
+1468	and then something emerges and when, and
+1471	sort of quote unquote wins.
+1474	And it's not all in a lot, it's not always what makes every, you know,
+1478	everybody happy, but it's just the way that it goes.
+1481	And it, you know, that's just true with open source.
+1484	I mean, open source is a, uh, I heard, um,
+1489	like I heard a talk by Thomas DiLorenzo one
+1494	time where he was talking about.
+1495	Who is Thomas DiLorenzo?
+1498	Uh, he's an Austrian economist.
+1500	Um, I think he's at,
+1501	I think he was at George Mason university and I'm not sure where he is.
+1504	Must be a Bitcoiner.
+1506	I don't think so.
+1507	No, I think he's a gold standard guy, but he was talking about the, uh,
+1511	the nature of
+1512	the, of the firm, you know, just, just the, you know, companies in general and,
+1516	and, and monopoly and antitrust.
+1518	That's his big sort of topic is monopoly and antitrust.
+1521	And he describes, uh, he describes, um, competition within a firm, uh,
+1532	as because, you know, he's
+1536	setting up this nature, like you have competition between firms in a market.
+1540	Then you also have this competition that takes place inside of a firm where,
+1544	and he calls it like this dynamic rival risk process.
+1548	And I always, that, that, that phrase always stuck with me,
+1552	a dynamic rival risk process.
+1554	That's what open source communities are.
+1556	They're a dynamic rival risk process, uh, in search of a single standard,
+1563	you know, getting from, getting from two, three, 10,
+1569	27 ideas to eventually get to a protocol reference or
+1575	standard is unbelievably messy and sometimes frankly impossible.
+1580	Uh, I mean, sometimes you try to go through this
+1584	dynamic rival risk process of people having
+1587	differences of opinions and, uh,
+1589	and proposing different protocols and that kind of thing.
+1592	And you really never can come to a, come to a, uh,
+1596	conclusion where everybody's on board.
+1598	That's also a thing that happens.
+1601	Um, and, but that's, but you know, that's why we do it.
+1606	Honestly, we do it.
+1608	People who love open source, we don't just do it because we like, um,
+1617	software or coding or,
+1619	uh, standards or anything like that.
+1623	I mean, like we know that's, that's not, there's,
+1626	if there was not a rivalry sort of competitive
+1629	process to it, it would not be as enticing and as fun as it is.
+1637	You know, people who love open source are like hot rotters,
+1643	hot rotting versus like just modding or restoring.
+1649	So like, if you're like, if you're a person who likes tinkering with cars,
+1654	you might, um, you might
+1656	like, and you want to put some more, you know, a hundred more horsepower in your,
+1660	in your Mitsubishi Mirage or something like that.
+1663	You know, you may go to,
+1664	you may like go to a bunch of websites and find some parts that
+1668	somebody told you to get on a forum and you buy
+1670	them and you install them on the weekend.
+1671	Okay.
+1671	That's, that's fine.
+1672	You're kind of a car guy.
+1674	That's not a hot, that's not what hot rotters do.
+1677	You know, hot rotters don't have the luxury of
+1680	buying off the shelf parts most of the time.
+1683	So we like the truck I drove to work this morning was my wife's a 67 F two 50.
+1691	This thing is a, it's a 67.
+1695	It's got a blower.
+1696	It's got a blower on the hood, doesn't it?
+1697	It's got, she's got a blower.
+1698	Tell me she's got a blower.
+1700	Um, almost it is a force.
+1704	There's a four 60 in it.
+1708	Yeah.
+1708	With a, with a cam, uh, with an aftermarket cam and this thing will,
+1715	it will do easily 150 miles an hour.
+1717	It is terrifying.
+1719	It rips the bricks right out of the pavement.
+1721	I bet when you take off of that thing, it is so scary.
+1726	25% throttle on the highway and you're doing 70.
+1729	Wow.
+1730	It is unreal.
+1732	And the thing is, it's got a, it's got a four 60 out of a 1974 in it.
+1737	So it's a 67 truck with a 74 engine.
+1740	We're already getting off the reservation here.
+1743	Kind of.
+1744	You know, you go into the part shop and you're like, uh, you know, I need a, uh,
+1748	you know,
+1749	I need this, uh, I need this flex plate, uh, for the, and they're like,
+1753	okay, what year?
+1755	I'm like, uh, well, which one do you want?
+1757	The one for the truck or the one for the, so, you know, like, so if you're,
+1763	if you're
+1764	doing that, you know, if you're a hot rodder and you're mixing, matching, uh,
+1768	let's say
+1769	you want to put a, a, a four R 70 W out of a 95 onto a four 60 from a 74, well, you
+1776	better be ready to go to the machine shop and break out the micrometer.
+1779	Yeah.
+1779	You're going to have to do some stuff.
+1781	Yeah.
+1781	There's, there's not going to be a flex plate that
+1784	exists that will interface that crankshaft
+1786	to that torque converter.
+1788	So you are literally going to have to build it from scratch.
+1791	That's what open source is.
+1795	I wanted to say something about Dave Weiner.
+1797	It applies to Russell because I've identified for
+1800	over 20 years of identified Dave Weiner has a bug.
+1803	He has a software bug.
+1804	It's in his processing and I've tried to understand it.
+1808	I've tried to route around it.
+1810	Um, I, I think I get, in fact, I'm,
+1812	I'm very happy he has this bug because that's how you
+1816	and I met 15 years ago.
+1818	Yep.
+1819	Amen.
+1820	And amen, indeed.
+1822	And it's a conspiracy loop.
+1824	He believes the world is against him at all times, forever.
+1828	Big companies are out to steal his ideas.
+1831	You know, people are running away.
+1833	It's a, it's a loop.
+1834	It's a, I've seen, I've seen him go through it.
+1836	Luckily he, he, he writes a lot.
+1838	So you can see the loop happening over and over and over again.
+1841	So when he complains about the name,
+1844	that's just an excuse for him to not engage in a project
+1849	that in fact, he's not in charge of.
+1851	That is exactly what you just said.
+1855	Yeah.
+1855	Um, when he's not in charge or someone says something
+1858	that makes them look like they want
+1860	to be a leader where they're just contributing or throwing out an idea.
+1863	He got, he, the loop kicks in and I've seen this over and over and over again.
+1870	And so when he said, well, podcasting too, it's insult, whatever he said,
+1875	that's the name of this podcast.
+1878	Nowhere, I mean, people have picked it up and colloquially, collo, collo,
+1883	collo, what's the term?
+1884	Colloquially.
+1885	Colloquially use the term for what we're doing, but it's podcastindex.org.
+1891	It's podcastindex.social.
+1893	The namespace is at podcastindex-org at GitHub.
+1898	There's nowhere does it say that this is a podcasting 2.0 community.
+1902	It's just a crutch.
+1903	It's just an excuse for him not to participate because he's not given what he,
+1909	he, he says he wants a leadership role.
+1911	My software, I want to do it.
+1913	I run it.
+1913	That's what he does.
+1914	And it's not malicious.
+1916	It's just a bug.
+1918	And so when he says, uh, OPML predates all this stuff, well, yeah.
+1926	Okay.
+1927	So does cassette tapes, you know?
+1930	Um, it's like, by the way, OPML, that's where you and I met.
+1936	We love the format.
+1937	We even built a namespace for it called SOPML.
+1940	People might want to look that up.
+1942	It's a phenomenal, the first index at ipotter.org,
+1947	the first podcast index was a hyperlinked outline
+1951	processor markup file, an OPML file, which was just spectacular to use.
+1959	I mean, you literally could paste in nodes of stuff that other people maintained.
+1965	And, and I, I love that.
+1967	And it was so exciting because things would update down the line.
+1971	It was basically one big directory outline that multiple people could,
+1975	could work on.
+1976	And as we were, you and I were in, I forget what the group was.
+1981	Yeah.
+1981	And we had instant outlining where all of a sudden the node would,
+1984	you'd hear a bleep and a node would glow.
+1986	And that would be an outline where you could write stuff and it would have
+1989	automatically updated.
+1990	And I could see what you had just written in an outline form.
+1993	I think in outlines, I think a lot of real time chat.
+1996	Yeah.
+1996	I think a lot of developers think in outlines because that's, you know,
+2000	code is kind of outline in a way.
+2002	And a folder hierarchies are outlined.
+2006	So I, and I, and we built software.
+2009	Well, anyway, so we were using that and I don't remember what it was,
+2012	probably something I said.
+2014	And then he just pulled the plug on the whole thing.
+2016	Like, Oh, I'm done.
+2018	People try to take it away from me.
+2021	This bug is unstop, unstoppable.
+2024	Only he can, can troubleshoot and fix that bug.
+2027	So it's, it is exactly what you're saying.
+2031	When there's no leader, people, some people get,
+2034	have this bug and they don't get it.
+2037	And they're frustrated and think that, you know,
+2040	the leaders are working behind the scenes.
+2042	It's conspiratorial loop.
+2044	I'm telling you, I've seen it over and over.
+2046	And over again, and it's incompatible with what we're doing.
+2050	Again, I'm very pleased that, um, that because of that, you and I met.
+2055	And so we built the, built the freedom controller completely based on OPML.
+2059	Not once.
+2061	I mean, he knows, he knows is there.
+2062	He never looked at it.
+2064	He doesn't care.
+2064	He's never looked at the stuff we're doing.
+2066	He's never looked at podcast index.org,
+2068	which is some of the stuff he's advocated for over
+2071	and over and over again, but he's not in the leadership council,
+2076	whatever that is, the Starfleet command.
+2079	So it's not easy.
+2080	And we're not either.
+2081	That's the point.
+2081	No, that's the point.
+2082	So it's, it's not easy for everybody to comprehend that, but, uh, I've given up.
+2087	I'm trying to fix people like that.
+2088	And in a way this, so now this, cause James, then I could have,
+2093	I should have warned James.
+2095	I didn't know he was going to do it.
+2096	I said, don't, don't,
+2097	you're wasting your breath to go and tell Dave Weiner to look at
+2100	a GitHub about something that he invented a whole
+2103	long time ago and try to tell him it's good.
+2106	Cause it has the same outcome.
+2108	Cause he, he's like, I wasn't consulted.
+2112	That's basically what he said.
+2113	And by the way, you're insulting me and you're trying to hijack stuff.
+2116	I've heard this for 20 years from him and I still love him.
+2122	He's, he, he is, he is a child of God.
+2124	So I can't see him any other way than that.
+2126	And I love him, but we may just not be able to work with him.
+2131	But OPML versus pod roll, the way we have it implemented.
+2138	Yeah.
+2138	It's like Betamax versus VHS.
+2141	Guess what?
+2142	Betamax definitely was superior.
+2144	What?
+2144	V 2000, the P 2000, the Phillips system was superior.
+2149	VHS one, give it up.
+2152	You know, that's where all the porn guys started to release on VHS.
+2155	And so it was the content as usual that drives it.
+2159	So if people are publishing and that's even in, we adhere to Dave Weiner's,
+2164	Dave Weiner's, um, rules for standards makers.
+2167	The name doesn't matter.
+2169	It's like right at the top.
+2170	Yeah.
+2171	It's one of the first ones.
+2173	So, and if something's working, then it's working.
+2178	The, the, the other one is interop is all that matters.
+2182	Yes.
+2182	Yes.
+2183	Interop, interop is the thing that you, that is the crux that you can't control.
+2191	And this is, this is always where open source hits the rocks is, is, is where,
+2198	so like right now we have, um, and this is, this is apropos to what, um,
+2204	Russell is, is talking about and doing as well.
+2208	Cause he's, he's building software for, uh, boost, uh,
+2211	boost gram metadata and that kind of thing.
+2213	And I think, and that's where a lot of where he got, you know,
+2217	I got frustrated with is in, but, but you can't, you, you can build stuff,
+2222	but you can't control the outcome.
+2224	That's see, that's, that's the issue.
+2227	And that's really the heart of it when, so you've got, you know, found, uh,
+2233	fountain and wave lake who are big players and in the value for value,
+2239	um, bitcoins ecosystem.
+2241	And they're pushing forward with Noster because that's the thing that fits the
+2246	system that they've built.
+2247	And they believe in that protocol and they believe in that system and then they're
+2251	going, they're going to push through with that.
+2254	And then you have, uh, other, you know, other people, uh,
+2258	Alex has proposed to spec for the boost metadata tag in the feed and then, um,
+2264	uh, protocol to go, um, to go along with that.
+2267	And you have Russell, who's building his software.
+2270	Uh, I forgot the name of it.
+2272	It's like a pod two.
+2274	Yeah.
+2275	That's the company, but I mean, it's like, it's like LBG or something like that.
+2280	I can't, I can't remember BGL BGL.
+2282	Okay.
+2283	So you got these, you got people building different things that are trying to do the
+2289	same thing or similar things.
+2293	And you can't, and various people within a community are going to align themselves
+2298	with the thing that they think is makes the most sense or the thing that fits the
+2303	thing they already did.
+2305	And you can't control the outcome.
+2308	So there's this sense that you build it and you advocate for it, but then you,
+2315	you, you always end up having to sit back and just hope that it takes root.
+2321	Yes.
+2322	And sometimes it does.
+2324	And sometimes it doesn't.
+2325	Well, I'll tell you how it does.
+2326	I'll tell you how it does.
+2327	And I've said this time and time again, it's always comes down to the content.
+2333	So I guarantee you whatever Stephen Bell builds and puts into sovereign feeds,
+2339	I'm going to use because I can't hack something together.
+2343	So when I have content and I'm publishing content and by publishing content,
+2347	that's just not my MP3 files.
+2349	That's my entire RSS feed.
+2351	That's my content.
+2352	And how I want it, what I want it to do is my content.
+2355	Now, if enough people are interested in my content,
+2359	they will want to read and parse my content.
+2361	It always comes down to that, no matter how many spiffy demos we have that.
+2367	And I'll say that is what has driven this community from day one.
+2370	If you recall, we started this and it was a lot of frustration, mainly from my side.
+2376	And Martin came in, Martin from Denmark,
+2379	and he tried to build basically what Stephen Bell did.
+2384	He tried to build a publishing system that sucked in your existing feed and then
+2389	allowed you to add the new namespace tags and pump it out.
+2392	And it was very difficult.
+2394	It was a very complicated thing.
+2397	And Stephen Bell came in and whatever special processing he has in his brain,
+2402	he was able to put it together.
+2405	And so as far as I can tell, we have driven whatever Stephen Bell put in there.
+2411	Not always his ideas, by the way.
+2415	I mean, he has stuff in there from other people that hasn't taken root yet,
+2419	but it's in there.
+2420	And it's not all his stuff, but publishing matters.
+2424	Well, so, you know, I mean, with with Steve, like Stephen's a good example.
+2430	And I talked about, you know,
+2433	we me and Oscar talked about this yesterday is Stephen put in the chat attribute.
+2440	Yes.
+2441	Into the into the live item tag, which was not in the spec.
+2446	No, but but because so there's two things with Stephen.
+2451	He put that in when it was not in the spec and that that guy that really solved a
+2457	problem and people picked it up.
+2459	It was a quick solution to a to a to a to a real problem.
+2463	Picked it up.
+2465	Got it.
+2465	Got the job done.
+2466	We have a real spec for it now.
+2468	But that but that got the job done.
+2470	Yeah.
+2471	The other thing he did was with the real time with live streams with socket.io.
+2475	We still don't have a real spec.
+2478	We don't have a spec for that.
+2479	We don't have a spec.
+2480	There is no spec for now.
+2485	There's a spec for the format of the messages you receive,
+2489	but there's no spec for how for how you construct the socket.
+2495	The the delivery, the transmission protocol is not defined.
+2501	So he's still using socket.io and people are tapping into that.
+2505	And, you know, I hope we can standardize something.
+2509	But it's gotten on the back burner for a long time.
+2512	But that's that's just a couple of examples of how when things things just naturally
+2519	get a momentum and they just go and you can't stop them.
+2525	We we had so we when I was talking to Oscar yesterday, we talked about, OK,
+2533	what are we going to do?
+2536	Because I was confused by Boomi's email when he said that he wasn't.
+2549	I don't know.
+2550	I don't even want to quote him because I was just confused, evidently,
+2553	because he said that that's not what he was saying.
+2555	I thought he was saying that Albie would not support an address options lookup file,
+2560	but that's evidently not what he meant.
+2562	So that's fine. But so originally, let me let me let me give the conclusion first.
+2569	Conclusion is I think what we're going to do is just scrap the LN address options
+2575	options dot well-known file.
+2579	Instead, we're just going to have to the original
+2582	proposal for lightning address was this.
+2585	It was just add another value recipient type with with the LN address option.
+2596	And that will refer to a lightning address, which is a bolt 11 LN URLP lookup,
+2601	which is interestingly what I already have in my sovereign feeds,
+2606	which is already working.
+2607	OK, so that the what we tried to do was we the the original idea was lightning
+2615	address was going to be that just a way to interface with bolt with LN URLP.
+2623	We transitioned to this LN address options lookup file because Roy came in and said,
+2630	hey, why don't we take this opportunity to future proof all this all this stuff and
+2636	create a sort of abstraction layer where we can have an options file that you can
+2642	look up and see how to pay somebody.
+2645	And it can have decent or bolt 11 or bolt 12 or whatever comes in the future that
+2651	seemed that seemed like a lot of people liked that idea.
+2655	I liked that idea.
+2656	And he seemed to think that we could get it into the LN URL spec.
+2659	But then, you know, the reality, though,
+2662	and I agree with Boomi on this and is there's probably not going to have any there's
+2668	probably not going to be any support for it on the broader wallet front.
+2672	So I understand the I understand the hesitancy on on Albie's part because they're
+2679	like, well, you know, I mean, I think what Boomi was saying is, yes,
+2685	we will begrudgingly support this.
+2688	But I don't like it because I don't think anybody else is going to any book is going
+2694	to because this this stuff is already built and we know what sort of entrenchment
+2701	looks like in a in a in a spec or a standard.
+2704	And that's in, you know, and he's right.
+2706	So basically, if you're so the saving grace here is if you were building to the LN
+2714	address options file already, then if you were building to that spec,
+2721	you are already having to do sort of a check and say, all right,
+2727	does this back end support the options look up?
+2732	Yes or no.
+2733	If not, fall back to LN URLP.
+2735	If so, look up the options file.
+2738	Right.
+2738	Well, now you can just get rid of that check.
+2740	Right.
+2740	You just can just just look at type.
+2744	Right.
+2744	Yeah.
+2744	So now, yeah, now you don't have to look have a list
+2748	of supporting hosts and this kind of thing.
+2751	It's just a straight LN URLP all the time.
+2755	And then we'll just we'll just go forward with that.
+2758	And, you know, hope that in the future is something is some sort of bolt 12 thing
+2764	happens that the LN URLP spec will itself update to handle that.
+2769	And we will just write that for free.
+2771	OK, well, I think that's what created the most confusion was the LN address part in
+2777	the we don't have to go into history.
+2779	But it's interesting where it came from initially as
+2782	to the people who don't really want it right now.
+2786	But I'm all for this.
+2788	That seems like a like a simple, elegant solution.
+2792	And Stephen B is asking, is the type LN URLP or node?
+2798	No, the type is still going to be LN address because it's just.
+2801	Oh, OK.
+2801	It's still a lightning address.
+2803	Oh, so we deal with.
+2804	OK, so no changes.
+2806	You still call it LN address when when LN address.
+2808	OK, all right.
+2809	Got it.
+2810	Yeah.
+2811	The LN address is that terminology is not going to change for the type.
+2815	You're just going to be doing it.
+2816	You're just going to know ahead of time when you see
+2818	that it's going to be a bolt 11 LN URLP lookup.
+2820	Got it.
+2821	So I say disregard my dumb comment.
+2830	Stephen B.
+2831	OK, there we go.
+2835	Well, that's good.
+2836	That I feel like, you know, something is moving now.
+2840	It feels like we're moving ahead.
+2842	And I see a lot of a lot of positive wordage around
+2848	the I think the Alex Gates metadata solution.
+2854	Am I saying that correctly?
+2857	Yeah.
+2857	The meta boost or boost metadata, whatever it is.
+2860	Yeah.
+2861	So, I mean, briefly, how does that work?
+2864	What exactly?
+2866	So, you know, we talked about this Oscar Oscar a little bit, too.
+2869	And, you know, they really want to do the Noster Nip thing.
+2877	And, you know, I was like, hey, you have a product.
+2883	Build what you need for your product.
+2885	And then we as a community can figure out how to interface with that.
+2895	You know, the thing is, I mean, specs are great.
+2901	But I think they also like there's an interop thing that has to happen here where we
+2908	can build a thing to interface with each other rather than, you know,
+2913	everybody has to, you know.
+2916	Because like this, like with Russell's, you know, BLG thing,
+2920	I think we could use something like the meta boost API,
+2924	API spec to interface with a lot of these things.
+2928	Like, I think, I think that's the interface layer that we can have.
+2931	We just got to figure out how to do it.
+2933	Okay.
+2936	And so, yeah, I don't think, I just don't, I don't,
+2941	I guess I just don't see them really, I don't see that as competitor specs.
+2949	Well, I mean, we have bridges already between ActivityPub and Noster,
+2953	which seems to work reasonably well.
+2956	Well, the one thing I, the one thing I expressed to, to Oscar is I'm like, well,
+2961	I think, you know, I think developers are,
+2964	are going to hit a wall of complexity with WebSockets.
+2968	Because WebSockets are just not as easy as just doing an HTTP look.
+2972	I've rid my entire house of WebSockets.
+2974	When we moved in here, I said, get rid of all those WebSockets.
+2977	I don't want a single one.
+2978	Clean as a whistle.
+2979	Clean.
+2980	Yes.
+2980	And so, you know, I was like, well, you know,
+2985	most socket programming is harder than just doing a get request and, or a post.
+2993	And most people know how to, most developers already know how to do those.
+2999	And so what he said was, well, why don't we, he said, why don't I do this?
+3005	He said, why don't, why don't I go ahead with, with what we're doing with Noster?
+3012	And then I'll put in HTTP support where you can do lookups, uh,
+3018	with just HTTP requests.
+3021	Perfect.
+3022	And so I'm like, you know, if, if you can do that, it'd be great.
+3025	You know, and so then, you know, we can figure out.
+3029	So that's, that's one way we can figure out how to, yeah, just like, uh,
+3032	like Alex is saying, you don't, then you don't have to hook into the stream.
+3036	Then you can just, then you can deal with HTTP.
+3040	Right.
+3040	And we can put something in front of that, that looks, uh,
+3044	like a more generalized, um, interface layer or something like that.
+3049	I don't know.
+3049	Well, I think this is all, I mean,
+3052	I've been so focused on trying to just get this, just get the payment part.
+3058	Like, you know, that,
+3060	that Ellen address options thing resolved that I think the, the, the boost date,
+3066	uh, metadata, that'll be sort of like next or whatever.
+3070	But I'm not too worried about it.
+3072	I think people can build what they want to build.
+3075	And I think, uh, a generalized accepted standard will come out of it that we can
+3079	all, that we can all use.
+3080	And it, you know, we'll, we'll figure out how to make it work.
+3083	Well, I, I must say that, you know, so I'm already publishing with a, uh,
+3088	a mini split to my strike wallet.
+3092	And, uh, believe me, I will be jumping up and down when I see payments come through.
+3096	And then if I, and then if I know where to get the information,
+3101	I'll be even happier.
+3104	Yeah, that's, um, yeah, I think, I just think we'll, I think we'll get there.
+3110	I think so too, Dave.
+3112	I do.
+3112	You know, I, I just had like this,
+3115	I've seen this happen so much before where we've gone through this process of,
+3121	of, of, of this, how many times?
+3124	A lot.
+3125	And we, we always get something at the end of it that works.
+3129	Um, so I'm, I'm not worried about it.
+3131	We'll, we'll figure something out.
+3134	Uh, well, we do have an answer to this one pressing question,
+3137	which is Ellen address.
+3139	And that is thankfully a solved.
+3141	Good.
+3141	Um, I am not changing my mind on this.
+3145	I'm done.
+3146	I personally am done with this discussion.
+3148	Everybody else can duke it out if they want, but I'm out of it.
+3150	Can we celebrate with a song?
+3152	Yeah, I think that's a good idea because Monday, December 16th,
+3157	live from Antones in Austin, Texas, Adam Curry's Booster Graham Ball Live.
+3162	It will be streaming on all of the modern podcast apps.
+3165	I'm very excited.
+3166	We have a lot of really cool bands who are going to be performing and a lot of,
+3171	uh, developers actually who will be showing up, uh, in the audience.
+3176	I got a guest list that's longer than, uh, the Queens, I tell you.
+3179	This guy will be performing Abel James, live while I'm alive on podcasting 2.0.
+3219	Well, I'm alive.
+3440	I like that guy.
+3441	I like him a lot.
+3447	I'm glad it was five minutes because, uh, I had to run to the, uh,
+3450	fridge and grab a drink.
+3452	Oh, good.
+3453	He, uh, he's also, he does podcasts and he's, he's, uh, he's on fire, man.
+3457	He's excited to be, uh, be at, uh, Antones Monday.
+3461	Tickets still available.
+3464	Get them while they last.
+3465	That's right.
+3466	It's a hot, it's a hot ticket.
+3468	It'd be great.
+3470	Thank you for boosting Chad F and, uh, Silas on Linux.
+3474	Appreciate that.
+3476	I wanted to just say one other quick thing about, uh, you know, the, uh, ever,
+3482	ever ongoing video, video, video.
+3486	I just have two things to say about it.
+3488	I need video, I need video.
+3490	If video, what is the most successful podcast category, Dave?
+3494	I think you know the answer to this.
+3496	True crime.
+3496	True crime.
+3497	If it's so important to have video to be successful,
+3501	why don't all true crime podcasts have video?
+3507	Because it's not true.
+3508	Thank you.
+3510	Second.
+3511	So that's one.
+3512	Second.
+3513	Do you know what the, uh, CPM,
+3516	the advertising rate is cost per thousand of a audio podcast?
+3523	You can give me an average.
+3525	Um, isn't it usually somewhere around like 22, $23?
+3529	Yeah, let's just say 20.
+3530	We'll just take it.
+3531	We'll low ball it.
+3532	20 bucks.
+3533	What is the CPM you get on YouTube?
+3536	Oh, I reckon it's like maybe five bucks.
+3541	Three.
+3542	Three.
+3543	That was high.
+3544	So what are y'all talking about?
+3547	Enough said.
+3548	Backslash.
+3549	End rant.
+3551	Period.
+3552	Period.
+3552	Yes.
+3553	Done.
+3554	Uh, I would like to, if we have, uh, do we have time?
+3560	We have time.
+3562	Okay.
+3562	I want, I just want to throw this on the radar.
+3569	I think it's time to start thinking about, uh,
+3575	super chat transcripts for live items.
+3580	That's funny because I put in my notes for next week.
+3584	That'll be today.
+3584	Chat transcripts for live items dash pod ping D.
+3588	I don't know why that's, that was,
+3590	that's the line I wrote down on the last show, last board meeting.
+3592	Okay.
+3594	Um, man, I got two of those things to talk about and I don't know which, uh,
+3600	let's do, uh, chat transcripts for live items.
+3604	Tell me what you're thinking.
+3605	Okay.
+3606	Okay.
+3606	That's good.
+3607	Cause that'll let me get, I've still,
+3608	I've been too busy to get pod ping D up and run.
+3611	That'll give me another week to get that.
+3612	Okay.
+3612	I'll leave it on the list though.
+3613	I'll leave it on the list.
+3614	Okay.
+3614	All right.
+3616	Uh, so, you know, I think we, I think it's something we all want.
+3621	Clearly we want a, a transcript for, uh, you know, for like for in,
+3627	in this instance, we're doing a live, we're doing a live item.
+3631	We're doing a live show and then, uh, so we need, uh, we would want,
+3638	we would want some way for when this live show becomes a normal podcast.
+3647	So when it goes, when it gets transferred from
+3650	a live item to a regular item in the feed,
+3653	we need some way to preserve the chat if the podcast, if the podcaster so desires.
+3662	Right.
+3663	A replay.
+3663	You're talking about a chat replay.
+3666	Chat playback.
+3666	Yes.
+3667	Playback.
+3667	So not transcripts is the wrong term, but it can't, but, but see, it could be a VTS.
+3673	I mean, it could be a VTT.
+3674	I mean, like, oh, that's just the format.
+3677	I'm just saying it's not, it's not really, it's, but when you say, when I,
+3681	when I heard this, I was like, I didn't, the word chat fell away from me.
+3685	I just like transcripts.
+3686	So we have to do live transcripts.
+3688	I was thinking completely incorrectly about what, what the topic was.
+3692	So when you say chat replay, I get it.
+3695	Yeah.
+3695	Chat.
+3696	I called it a chat transcript, but it could be a chat playback,
+3698	whatever you want to call it.
+3701	And that's cool.
+3703	Yeah.
+3703	We, so, you know, we need some way.
+3706	So there's two, there's two issues.
+3709	Um, there's two issues.
+3713	There's one's going to be time sync.
+3715	So where do you know, there has to be some way to sync up.
+3718	And Alex is saying that there's, uh, in the chase, he's, he's,
+3721	he's saying in the boardroom that there's some solutions for that.
+3724	So we need some way to sync up the, uh, so, so, you know, okay, here's,
+3731	here's where the episode starts, but, but in, in, in the, in the ether of, of time,
+3738	where did the chat
+3739	start and we need to make sure those things are, are, are, uh, simultaneous.
+3744	And then, uh, the other thing is how to preserve a,
+3751	a reference to the live items such that,
+3755	you know, such, such that, you know,
+3758	that this transcript of the chat belongs to this item.
+3763	So if that trans, you know, if that, if you're recording it as a,
+3769	so let's say IRC, okay.
+3771	This, so we're the boardroom that is IRC.
+3774	So something would be recording this IRC or, you know,
+3780	interfacing with the IRC server to
+3783	get the transcript of the IRC chat for this, this show.
+3789	Um, the, so then you would need some way to say, okay, this thing goes now,
+3798	this light, that live item that had, let's say, and I'm just spitballing here,
+3803	this light item, a live
+3804	item that had this GUID is now this item that
+3810	has this other GUID and we need to reference
+3815	this chat transcript file.
+3817	Well, isn't, isn't, isn't that exactly what we already do with, um, uh,
+3825	for with a value
+3827	time split because I'm, I am setting a queue for each value time split.
+3833	And now I have a tool for that called the split kit,
+3837	but that seems like something that,
+3839	you know, from a publishing side, you just have to do.
+3845	The boardroom's going nuts because they're like, well, Hey, this is,
+3849	I don't want this, the boardroom published.
+3852	I'm not saying that we're going to do that for this show.
+3854	I'm just saying for people that want it, you know, for shows that want it.
+3858	So like, if somebody's doing a show that wants to do this,
+3861	I feel like we need a spec for it.
+3864	Um, it reminds me of the old days of video where you, you know,
+3868	I'd be interviewing Paul
+3870	McCartney and there'd be a guy there with a huge,
+3873	big reel to reel video tape machine
+3875	and a guy next to him with a Nagra.
+3877	And then I'd have to look in the camera and go three, two, one, and make a clap.
+3884	Everybody claps.
+3885	Make one clap so they can sync it up, sync it up with the video.
+3890	Yeah.
+3890	No, I mean, maybe, I don't know.
+3894	You know, we'll have to, we'll have to see what we can, you know, what's out there.
+3897	What, what Alex is talking about.
+3900	Um, so, you know, there's, I don't want this.
+3905	I want the board, like for this show, the boardroom is that's, you got to show up.
+3910	This is secret.
+3911	Yeah.
+3911	This is, this is, no cone of silence here.
+3914	No, no worries.
+3915	Yeah.
+3915	If you want to know,
+3916	if you want to know what's going on in the boardroom, you got to show up.
+3918	But I can see a show like no agenda with the troll room.
+3921	Oh, so many people would love to see their trolls.
+3925	They would love, I know they would, they would, ah, this is great.
+3928	Look, I trolled Adam and he responded, you know, but also, um,
+3932	there's a lot of stuff that
+3933	they, they give me that I then use immediately in the show.
+3937	I mean, I can see a lot of podcasts that would like that.
+3939	Not this one, but I can see a lot that would.
+3941	Well, it's a very popular thing on, uh,
+3943	on YouTube and Twitch and all these other places.
+3946	There's, there's just clearly, there's clearly use cases for this.
+3949	So, um, you know, I, I just want, I think those are the,
+3954	those are the hurdles is getting,
+3957	getting time sync correct.
+3959	And then, uh, in figuring out the references.
+3964	Right.
+3964	Uh, and so I just wanted to put that on the radar
+3967	so there's something we can think about.
+3970	Um, I'm probably going to, I'll post a discussion item about it, uh,
+3975	just to get the ball rolling.
+3977	Yeah.
+3978	And then, yeah, yeah.
+3979	Cause I, I, it's a, it, we're almost there with super chat.
+3983	That's like the last thing that,
+3986	what reminded me of it is I watch the local weather or weather
+3990	guy, uh, James Spann does a, does a morning weather, uh,
+3993	briefing every morning at like 5 a.m.
+3996	And I just, I watch it pretty religiously and he's always got a chat.
+4001	I watched the replay at like six or six 30 and he's always got, uh,
+4006	does the chat from earlier?
+4008	He's the live chat comes through and it's being replayed while I'm watching it.
+4011	I'm like, you know, this, this, we need this.
+4013	This is a missing hole.
+4014	There's a hole.
+4015	I like it when, uh, if I, I don't watch him a lot anymore, but Scott Adams,
+4020	if I watch him, I'll watch him with the chat replay.
+4024	I enjoy that.
+4025	Yeah.
+4025	I can see it.
+4026	I can see it.
+4027	Sometimes I like it.
+4028	Sometimes I don't.
+4029	It, I just, I selectively turn it on or off.
+4032	Yeah.
+4034	Cotton gin has been asking for this for years.
+4036	Well, how come you haven't built it yet?
+4038	Cotton gin.
+4041	You're the IRC guru.
+4042	You are the IRC guru.
+4044	Come on, man.
+4045	Come on.
+4045	Let's get it going for no agenda.
+4047	It'd be hilarious.
+4049	Yeah.
+4050	Yeah.
+4050	He's a, he already has the, the listen calculator for me and all that stuff.
+4056	He's got all kinds of cool IRC things he's doing.
+4060	He says, I'm dumb.
+4062	Okay.
+4063	Boy, that'll be fun to watch on the replay.
+4066	Okay.
+4068	Well, dude, my brother, we have, we've covered a lot.
+4072	The only thing we didn't cover today is we have a, um, we have a business, uh,
+4077	thing that I promised I'd, I'd, uh, talk about here.
+4080	A business thing?
+4081	Yeah.
+4081	A business thing.
+4082	Yes.
+4083	So, so people know that our,
+4086	our new project is called Godcaster and it's a really interesting problem.
+4092	So at the beginning we needed a placeholder for a logo and you did something in,
+4099	um, in, I don't know, some AI thing.
+4103	What'd you use for that?
+4106	Uh, mid journey.
+4107	Mid journey.
+4108	And it came up with this big G and honestly, it's kind of grown,
+4111	it's kind of grown on me.
+4113	Um, I don't like the big G.
+4115	Yeah.
+4115	Um, but we do have a small budget available for anyone who wants to create a logo.
+4121	And if we use it, then we'll gladly buy it from you.
+4124	And, uh, and it's only for this group.
+4126	We're not going to talk about it anywhere else.
+4128	So if anybody, I mean, and it can be prompt jockeyed or whatever.
+4132	Uh, but we'd love to have some options to choose
+4135	from because we're building our website and
+4137	we're, and we're, you know, we're getting all kinds of things ready to market it.
+4141	So it would be great.
+4142	If anyone is interested, ping me and, uh, and we'll see if, you know,
+4146	and I'll let you know what we're doing.
+4148	But it has to be rad.
+4150	Oh no, it's gotta be rad.
+4151	Obviously you're doing it for Jesus.
+4153	Come on.
+4153	You can't, you can't do something for Jesus.
+4156	It's not rad.
+4157	It's gotta be rad.
+4158	Get that out of here.
+4160	Uh, let's thank some people, uh, before we leave.
+4163	Um, we have a Chad F who boosted a thousand sats.
+4167	Uh, it says listening live while I'm alive by Abel James live on PC 2.0.
+4171	Thank you.
+4172	That's lost on Linux.
+4173	Uh, also, um, uh, boosted, uh, for, um, Abel James.
+4180	And he just says, bye-bye Spotify.
+4182	Uh, 19,000 sats from user 36219770 over there on the fountains.
+4193	Merry Christmas boardroom.
+4194	Yeah, that guy's great.
+4194	Merry Christmas boardroom.
+4196	Uh, Sam Sethi, very active.
+4199	Uh, I'll do, uh, he has three.
+4201	No, he has many in her.
+4202	Here we go.
+4203	A thousand sats.
+4204	He says, Dave Weiner stole Netscape 0.91 from my friends who invented RSS.
+4209	Mike Holm and Dan Libby.
+4210	He then added a few updates and call it RSS 2.0.
+4213	What a hypocrite.
+4214	Hey man, how come we didn't say that on your show?
+4217	It doesn't count if you're just boosting it.
+4220	It's in the Brian cut.
+4222	Thousand from Sam.
+4224	The install bar appears only if you have IO and iOS app in the app store.
+4229	Apple want you to switch to their proprietary app store.
+4232	Welcome to my world.
+4233	Frowny face.
+4235	Yeah, but if anybody understands the, the depths of, of, of, of PWA.
+4241	You mean universal apps.
+4243	I'm not going to, I'm never going to use the term PWA again.
+4246	It's going to be universal app.
+4247	Um, by the way, what?
+4249	So when P when people hit the little mobile icon on, on the Godcaster,
+4254	that should pop up some, something that says,
+4257	here's how you install it based upon the OS or the browser or whatever.
+4261	It just, it just hit me.
+4263	I'm going to file it.
+4265	I'm a horrible GitHub filer.
+4267	Uh, triple seven from, you don't do it.
+4269	That's right.
+4269	Triple seven from Sam Sethi universal app install once run everywhere.
+4273	Yeah.
+4274	Dude, that's something like that.
+4278	See loss on Linux 1111 rename podcasting 2.0 to podcasting plus plus.
+4284	No, we're not renaming anything.
+4289	It has no name.
+4290	We're just a bunch of people making podcasting better.
+4296	Sam, man, stop drinking wine while boosting.
+4300	It's illegal in the UK.
+4302	He says a thousand.
+4303	No, don't stop.
+4304	There's only one pussy.
+4305	I want to call out Rip Van Weiner.
+4307	Okay.
+4308	Well, she's.
+4311	Hey, it's your, it's your sats, man.
+4313	You can do whatever you want.
+4315	Uh, pod two.
+4318	Uh, I think that's Russell 33,
+4319	33 decentralization thrives on diversity and innovation.
+4323	No idea better than another until it's proven supporting
+4326	new ideas of multiple systems ensures
+4327	as we grow stronger together.
+4329	Instead of dismissing, let's build, collaborate,
+4331	and foster a culture where creativity leads the way.
+4334	Hashtag decentralization.
+4335	Hashtag innovation.
+4336	Hashtag build together.
+4338	Well, I think we covered all that.
+4340	Yep.
+4340	For sure.
+4341	Alberto at rss.com.
+4342	Coming in from podcast guru with a thousand sats.
+4345	Got a bunch of, uh, uh, rocket ships and a Christmas tree.
+4348	Thank you.
+4349	Nice rocket Christmas tree.
+4351	Yes.
+4351	And, uh, I've hit the delimiter.
+4354	So you're up.
+4355	Oh, that's me.
+4356	Okay.
+4356	Uh, let's see.
+4357	We have, we had no, uh, one, one off PayPal's, but we have, uh, some booster grams.
+4363	Let me see.
+4365	Uh, here I had to resort my emails.
+4367	I'm now up to 1178 unread emails.
+4370	It's my inbox.
+4372	Let's see.
+4373	Uh, but I did, I did actually do some admin work.
+4376	I mean, this morning on your, on your, oh yeah, I saw it.
+4379	Yeah.
+4380	You were helping people.
+4382	The help desk came through.
+4384	Yeah.
+4385	I'm like, wow, look at that.
+4386	Look at that.
+4387	You're like, oh, I didn't have to do that one.
+4388	Okay.
+4389	Uh, let's see.
+4391	Uh, I see lots on Linux.
+4393	Uh, one, I see a satchel of Richard through fountain.
+4395	He says, I concur about 20,000 Hertz being a really interesting podcast.
+4399	Hmm.
+4401	Uh, that must be a comment.
+4403	I don't remember that one.
+4404	I don't remember that one.
+4406	Uh, Cole McCormick, satchel of Richard through fountain.
+4409	He says, uh, boosting in from Disneyland, the forces with the podcasting 2.0 crew.
+4413	Wow.
+4414	Wow.
+4415	Oh, from Disneyland.
+4416	He's committed.
+4418	Oh, Kyron mere mortals.
+4420	Satchel Richards through fountain.
+4421	He says, just some words of encouragement to all.
+4423	I regularly scour around the crypto space to see
+4426	if there are any other projects addressing
+4428	the value needs of musicians, podcasters, and artists in general.
+4432	Everything I see is centralized and dependent on one chain.
+4437	This is the only project that has the solid foundation
+4439	for distributed RSS and adaptable
+4441	protocol, the namespace and value tag, and the ethos to make it all make sense.
+4445	V4V international lifestyle.
+4448	Despite the Albie blip, I am more enthused than ever.
+4452	I love you all.
+4453	And we love you too, Kyron.
+4454	I, uh, I invited my, uh, my friend Mark Hall to Antone's and, um, uh, he's,
+4461	he's the documentarian.
+4463	He has a documentary of the Killing Ed documentary put up a long time ago on video.
+4468	Yeah, yeah, yeah.
+4469	On, uh, in A2.
+4471	Yes.
+4471	And, uh, he says, oh, this is value for value and boosting and all that.
+4476	It says, will my Hawk to a coin work?
+4478	I'm like, okay, the deaf, the, the shining example of rug pull.
+4485	Yeah.
+4485	Right.
+4486	Poor girl.
+4487	She got screwed over, man.
+4489	She got an agent and then a bunch of shysters moved in, uh, Cole McCormick,
+4497	uh, Satchel Richards through fountain.
+4499	He says, I would like to encourage more thought
+4501	and discussion around more podcasting apps,
+4503	integrating Noster from my singular perspective and experience.
+4508	I have really enjoyed going back and forth on
+4510	fountain and primal also considering that
+4511	many V for V musicians are using it.
+4514	Open mic is into it for live events.
+4516	I think it makes sense for the apps to go where the artists are.
+4519	That's, that's up to the apps.
+4522	It's up to the apps, right?
+4523	Yeah, that's exactly right.
+4524	That's what, that's the part you can't control.
+4526	Uh, still lost on Linux.
+4528	Uh, another Satchel Richards, he said, he says, I have super secret projects too.
+4532	They are so secret that I don't even make them that way.
+4535	No one can ever know about it.
+4539	I know, right?
+4540	Those two.
+4540	Yeah.
+4541	Yeah.
+4541	Many of those, uh, delimiter, capture blogger, 15,299 sats.
+4549	Nice.
+4549	Your fountain.
+4550	He says, hello, music connoisseurs, Adam and Dave.
+4554	I have two things to share this time.
+4557	Firstly, please check out my song.
+4559	The lyrics were written by me while the singing
+4562	and music were generated through AI based on
+4564	my detailed prompts.
+4565	You can find it by visiting podcast index.org and searching for CSB serenade.
+4573	Secondly, well, okay.
+4574	Let me, um, yeah, go ahead and keep reading.
+4577	I'll look for it.
+4578	Secondly, Adam, could you explain why some V4V
+4581	music podcasters refuse to play music hosted on Wavelake?
+4585	I'm a bit confused about this.
+4586	Yo, CSB.
+4588	You'd have to ask them, DSB.
+4591	I don't really know.
+4592	That's a, I mean, I have my thoughts about it.
+4594	Let's listen to, this is the, uh,
+4596	eclair serenade by comic strip blogger who was actually,
+4601	Oh man, I got to put this in the value split.
+4610	Hold on.
+4610	I got those urges inside, but the call of sweetness I could not hide.
+4616	It's always easy to resist the dream.
+4619	Okay.
+4620	This has, if, if anybody knows the, uh, the theme song,
+4625	the GLaDOS theme song from Portal,
+4628	that's, it gives me those vibes for sure.
+4630	I don't know anything about it.
+4632	Yeah.
+4632	That's definitely some Portal vibes.
+4634	Uh, we got some, uh, some monthlies.
+4636	We got Lauren Ball, $24.20.
+4639	Uh, Podverse, Mitch and the boys, $50.
+4642	Thank you.
+4643	Beautiful.
+4644	Basil Phillip, $25.
+4647	Christopher Harbaric, $10.
+4649	Mitch Downey, $10.
+4651	Hadn't heard from, uh, Sir Mitch in a while.
+4653	Yeah.
+4653	Terry Keller, $5.
+4656	Chris Cowan, $5.
+4657	Silicone Florist, $10.
+4659	Yara and Rosenstein, $1.
+4662	Damon Kasajak, $15.
+4664	Paul Saltzman, $22.22.
+4666	And Derek J. Visker, $21.
+4669	Thank you all very much.
+4670	And a late boost from, uh, Sir Libre.
+4673	Lightning thrashes, a short row of ducks, $22.22.
+4676	Great meeting as always.
+4677	I'm glad things seem to be settling down.
+4680	We've got the best devs in the universe.
+4682	There's nothing they can't accomplish.
+4685	I agree.
+4686	Nice.
+4686	I agree.
+4687	Dude, we have like a whole 10 minutes left if you want to talk about something.
+4694	Or do you just want to get back to your exciting day job?
+4700	The problem is we don't have time to get into the other thing that I want to talk.
+4705	Yeah.
+4705	That I want to talk about.
+4706	All right.
+4707	Um, well, um, let's talk about this.
+4711	Go ahead.
+4712	Go ahead.
+4712	No, no, please go.
+4714	No, I was just going to say, do you see, uh,
+4716	Kara and Prof G are going to sell their podcast
+4718	for, uh, eight figures.
+4721	They're going to sell their podcast?
+4722	No.
+4723	Where was this?
+4724	No, it was in hot, uh, hot pod is a hot pod.
+4727	The Bloomberg, the Bloomberg newsletter thing.
+4732	It's for sale.
+4734	Uh, it was on, uh, let's see.
+4736	Let's see what, uh, Ashley says.
+4740	Yeah.
+4740	Pivot goes to market.
+4741	Scott Galloway and Kara Swisher have become two
+4743	of the biggest stars in podcasting, blah, blah, blah.
+4746	Uh, this coming year, the,
+4747	their deal with Vox will be up and they've already begun seeking
+4751	a potentially new partner for their flagship program, as well as the other shows,
+4755	as well as their other shows while asking for an up to eight figure sum,
+4759	according to people familiar
+4760	with the conversations.
+4762	Well, that's interesting because James on pod news,
+4766	weekly review had a piece from the
+4769	Prof G podcast saying that that podcast brings in $8 million a year pivot.
+4778	He said 10.
+4779	I thought it was eight to 10.
+4781	Okay.
+4781	Maybe 10, okay.
+4782	$10 million a year.
+4785	Why would you want, why would you want to sell that to somebody?
+4790	This take the cashflow, you dummies.
+4794	This is the, it's bullshit is what it is.
+4798	Yeah.
+4798	This is, this is using his podcast to, to Jack,
+4802	to say publicly that they're making a lot of
+4806	money to try to jack up the offers.
+4809	That's what it sounds like to me.
+4812	I mean, that's a, that's a lot of money and why would Vox give that up?
+4819	This is, well, the, the,
+4820	the other part of the story said that Vox still owns the feed.
+4825	So any deal would have to include the feed.
+4830	Otherwise they would have to,
+4831	and this is the other thing that doesn't make any sense.
+4833	So she says in this, what's the name of this newsletter?
+4839	Soundbite.
+4839	Let me see if, yes.
+4841	Soundbite.
+4841	With a Y?
+4842	I thought you got this newsletter.
+4844	I don't think so.
+4845	Soundbite.
+4845	And who, who writes it?
+4846	It's Bloomberg.
+4847	It's Ashley Carmen.
+4848	Oh, Bloomberg.
+4849	Okay.
+4850	Mm-hmm.
+4851	Soundbite.
+4851	Bloomberg.
+4852	Got it.
+4853	But she says pivot remains their most popular offering
+4856	with over 278,000 followers on Spotify.
+4860	So you have 278,000 subscribers and you make $10 million a year.
+4865	How's those numbers don't add up to me?
+4866	Sounds a little sketchy.
+4869	Mm-hmm.
+4870	I mean, I know that's only on Spotify, but I mean, that's,
+4873	that would be a global number.
+4875	So let me, let's say, let's say double, let's say it's double that.
+4879	Let's say you have another 278,000 on, on Apple.
+4882	And they have, okay.
+4882	So they, let's do the numbers.
+4885	So they have, so let's say that, well, let's say they have a million.
+4888	Why just do a million?
+4890	Let's do a million.
+4890	All right.
+4891	So that's a thousand CPMs.
+4893	They have six spots, right?
+4897	So times six.
+4899	Do they have six spots?
+4900	Yeah.
+4900	Times six times, let's, let's say they're really great.
+4904	30.
+4905	Okay.
+4906	So what is that?
+4909	A second.
+4910	Calculator.
+4911	Come on, chat GPT.
+4913	So it's one, one, two, three thousand times six times 30 is, wow.
+4922	So they have $180,000 an episode and then times
+4929	they do twice weekly times 110 is, wow.
+4935	$19 million.
+4937	Something's wrong.
+4938	Something's off with these numbers.
+4941	I'm sure that not every spot gets a $30 CPM.
+4944	Maybe only the first one.
+4946	Well, yeah.
+4946	Oh yeah, for sure.
+4947	I mean, if you have like a post roll or something like that,
+4949	that's not going to get a $30 CPM.
+4951	It's not going to get a $30 CPM.
+4953	And plus, I mean, you're, you said a million followers.
+4955	I don't think they get there.
+4956	Well, I'm just thinking, I'm just thinking, I'm just thinking,
+4959	I'm just thinking, screw
+4960	this value for value stuff.
+4962	Dvorak and I should go for, for CPMs, man.
+4965	We'll, we'll make a killing four more years.
+4967	Exit strategy.
+4968	You'll make a killing and you'll kill the show in six months.
+4972	Within six hours.
+4974	Yeah.
+4975	Yeah.
+4976	78,000 followers on Spotify.
+4979	I'm thinking 600,000 total, maybe followers across all platforms.
+4985	And that translates into, let's say 600,000 downloads.
+4989	Well, what they have is they have very high end advertisers.
+4992	And this, this is what bothers me.
+4994	They're a so-called tech show.
+4996	But you know, when Apple advertises on your show,
+4999	are you really going to tell people that
+5001	Apple intelligence sucks?
+5002	Or are you going to say, it's great, Scott?
+5006	Well, how many, how many shows do they do per week of pivot?
+5010	Two.
+5012	Two.
+5012	Okay.
+5013	So that's, that's, uh, that's 1,200 CPM, right?
+5020	Cause you got, you got 600,000, which it would be 600 CPM times two,
+5026	1,200 times 20, let's
+5028	just say, uh, $30 CPM.
+5031	Yeah.
+5031	$36,000 an episode.
+5033	Ah, my math was off by amazing amounts.
+5037	Yes.
+5038	Uh, no, that's, that's $36,000 a week.
+5040	I'm sorry.
+5041	So we times 52, right?
+5043	That's, uh, 1.9 million, that's $2 million a year.
+5046	Yeah.
+5047	That sounds reasonable.
+5048	That sounds more like what it probably is, but you know,
+5052	taking high end advertisers, they
+5053	could be asking a huge amount and they read them.
+5056	So you don't know, you don't know what the deal is, but I think 10,
+5059	10 million and then saying we're for sale.
+5062	Uh, okay.
+5064	To speak with prof G language.
+5065	If I were you boss, uh,
+5067	I would get my own sales team and just get the Rolodex that you
+5071	already have and take the money.
+5074	Why, why do you need it up front?
+5076	You're all rich.
+5077	Yeah.
+5078	I mean, and yeah, and they both already have money.
+5080	So, I mean, like this is just, uh, yeah, I don't, that didn't make any sense to me.
+5084	Smells like a scam.
+5087	Yeah.
+5088	I mean, if you're, if you have, I mean, I'm sure they're making,
+5093	I'm sure they're, I'm
+5094	sure they're making seven figures easily.
+5096	I mean, they're making probably, you know, 5 million or something.
+5099	It wouldn't, wouldn't surprise me because, you know,
+5102	advertise as advertising goes up
+5103	and down, but nobody, I don't,
+5105	I just don't see how anybody's going to come in and buy
+5107	them for what, like 20 million or something like that.
+5110	Why would they do that?
+5112	Hmm.
+5112	Well, I will be interested to hear that.
+5115	I think they have a new show coming out today.
+5116	So maybe they talk about it.
+5118	It's my hate.
+5118	Listen, can't wait.
+5119	I'm excited.
+5120	Hate listens are the best.
+5124	I've dropped the ball on, on the media.
+5126	Oh yeah.
+5127	It's been, it's been a little hard.
+5129	Yeah.
+5129	Ever since they've, they self-analyzed that
+5132	no one cares about them when they thought
+5134	that everyone, they were important.
+5135	That's when it was still cool.
+5137	That was still a good hate.
+5139	Listen, all right, I'm letting you off, brother.
+5142	You got five minutes.
+5143	This is perfect.
+5143	Actually, we're at top of the hour.
+5145	Got to go home.
+5146	And thank you very much boardroom.
+5148	Thank you for being here.
+5150	We will not have a show next week because I will
+5154	be in transit from Amsterdam to Italy.
+5157	And we probably won't have a show the week after
+5160	that because it's the day after Christmas.
+5162	It's the day after Christmas.
+5165	Is Christmas on a Wednesday this year?
+5167	It'll be two days after Christmas.
+5168	Yeah.
+5168	Well, I'm sorry.
+5169	In Europe, they celebrate two days of Christmas.
+5172	They have Christmas on the 25th.
+5174	You get double Christmas in Europe?
+5175	You do.
+5175	Well, in the UK, it's called Boxing Day.
+5178	Okay.
+5179	And in the rest of Europe, it's called Second Christmas Day.
+5182	I swear to God.
+5183	No, you're kidding.
+5184	Yes.
+5185	It's literally called Second Christmas?
+5186	Second Christmas Day.
+5188	Yes.
+5188	Yes.
+5190	I feel cheated now.
+5192	I want two Christmases, too.
+5193	And we will be flying back on that Friday.
+5196	So it looks like we'll be off for two weeks.
+5198	But then we'll be cracking in the new year with
+5200	brand new Podcasting 2.0 board meetings.
+5203	Brother Dave, have a great weekend.
+5205	How are you, too, man?
+5206	Everybody, thank you so much for being here.
+5207	We love you.
+5208	We appreciate you.
+5209	We'll see you in the new year right here on 2.0.
+5226	You have been listening to Podcasting 2.0.
+5230	Visit podcastindex.org for more information.
+5234	Go podcasting!
+5235	I don't want your left-wing app.
+5237	I don't want your lefty app.

@@ -30,7 +30,7 @@ The site is four things layered:
 ```sh
 npm run build            # compile content/ → public/. This is what deploys.
 npm run build:strict     # warnings fatal (same as lint:notes)
-npm test                 # node --test — 278 tests, ~5s
+npm test                 # node --test — 291 tests, ~5s
 npm run serve            # http://127.0.0.1:8088
 npm run check:browser    # headless Chrome against the built site
 npm run sync             # mirror the vault into content/ (needs the vault)
@@ -38,7 +38,7 @@ npm run update:apps      # data/apps.json   ← Podcast Index apps directory (ne
 npm run update:mentions  # data/mentions.json ← the sibling repos
 npm run update:timeline  # data/timeline.json ← pc20-timeline's milestones
 npm run update:transcripts # data/transcripts/ ← captions/ (the search corpus)
-npm run fetch:captions   # captions/ ← the show's SRTs (network, gitignored, ~39 MB)
+npm run fetch:captions   # captions/ ← the show's SRTs, + pc20-archive's for the gaps (network, gitignored, ~42 MB)
 ```
 
 `node --test` must be bare — `node --test test/` fails to resolve modules.
@@ -85,7 +85,7 @@ goes stale silently unless something warns (see *Staleness*).
 | `scripts/source-lib.mjs` | shared by both generators: overridable paths, provenance, missing-source policy |
 | `scripts/mentions-lib.mjs` | the matching rules — the risky part of this repo |
 | `scripts/captions-lib.mjs` | the transcript tier: SRT → cues, dwell, lift, the four gates |
-| `scripts/fetch-captions.mjs` | fills `captions/`. The only script here that uses the network |
+| `scripts/fetch-captions.mjs` | fills `captions/` from the server and `captions/archive/` from pc20-archive. The only script here that uses the network |
 | `scripts/update-mentions.mjs` | CLI: five sources → `data/mentions.json` |
 | `scripts/timeline-lib.mjs` | eras, date placement, entry → note linking |
 | `scripts/update-timeline.mjs` | CLI: milestones → `data/timeline.json` |
@@ -205,13 +205,15 @@ that. A chapter title is somebody deciding "this bit is about X"; a caption line
 somebody saying the word. Under the plain matching rules above, 481,956 cues from 256
 episodes produce roughly **24,000 hits — about 31× the entire curated dataset**, and almost
 all of them are worthless. Four gates cut that to 177 on the calibration set (179 on
-2026-09-26, with six more episodes).
+2026-09-26, with six more episodes; 181 on 2026-09-27, with the 14 from pc20-archive).
 
 **Two cue counts appear below, and they are not a contradiction.** Every calibration number
 in this section was measured over **481,956 cues from 256 episodes** — every file that was
-not a stub, before the duplicate rule existed. The generator now reads **482,049 cues from
-258 episodes** (to E272 on 2026-09-26): four files (50, 51, 248, 249) are two duplicated pairs
-it drops, and E267–E272 arrived after the calibration. The
+not a stub, before the duplicate rule existed. The generator now reads **513,474 cues from
+272 episodes** — every episode to E272, on 2026-09-27: the server's four duplicated files (50,
+51, 248, 249) and eight stubs are replaced by pc20-archive's Whisper transcripts, two episodes
+the server never captioned are added the same way (see *pc20-archive fills the gaps*), and
+E267–E272 arrived after the calibration. The
 calibration figures stay on the set they were measured over; `data/mentions.json` is the
 authority for what is read today.
 
@@ -294,6 +296,21 @@ consecutive episodes. The spoken intro looks like an arbiter and is not: six of 
 name an episode in their opening cues that differs from the file name, and only those two are
 real — the other four are the transcriber splitting a number, as in E152's "episode 150 to
 drop the talk".
+
+**pc20-archive fills the gaps, and only the gaps.** Since 2026-09-27 the sibling repo publishes
+Whisper transcripts (large-v3-turbo, see its `captions/README.md`) for the 14 episodes the
+server has none for: the eight stubs (22, 46, 86, 204, 222, 226, 228, 256), both halves of each
+pair (50, 51, 248, 249) and the two never published (10, 244). They are on GitHub Pages at
+`https://chadfarrow.github.io/pc20-archive/captions/`, under the server's own file names.
+`fetch-captions.mjs` asks there for each gap and keeps the copy in `captions/archive/`, leaving
+the server's file where it is; `collectCaptions(files, archive)` reads an archive file only for
+an episode whose server file is a stub, a duplicate or absent, and lists it on `archived`. So a
+stub the server finishes wins again on the next run, and nothing keeps a list of the 14. A
+duplicate is judged on the server's files alone — filling one half of a pair must not turn the
+other half into a unique, trusted file. Matching each against a transcript of both episodes'
+audio settled the pairs (the file is E51's and E248's), but the rule never needed that.
+Whisper writes "boost-agrams", which the server never does, so `TRANSCRIPT_BOILERPLATE`
+allows a hyphen: without it `Boostagram` took its first transcript citation, from E222.
 
 ### Coverage is the ceiling, not vocabulary
 
@@ -429,7 +446,8 @@ before and after and scrolls by the difference, so new text appears under the bu
 `overflow-anchor: none` keeps the browser from adjusting as well.
 
 **The corpus.** `data/transcripts/NNN.txt`, `seconds<TAB>text` per cue, plus `index.json`
-(episode facts, stubs, duplicates, and `unpublished` — episodes with no caption file at
+(episode facts; `archived`, the episodes read from pc20-archive, which the page names with a
+link; stubs, duplicates, and `unpublished` — episodes with no caption file at
 all). One file per episode so git stores each transcript once; a single compressed file
 would be a new 10 MB blob every week. `vercel.json`'s `includeFiles` puts it in the
 function — **a `readdir` is invisible to Vercel's file tracing**, so without that line the
@@ -468,7 +486,8 @@ agent (installed with the publish agent by `scripts/install-agent.sh`):
    episode line changed — `build-episodes.mjs` restamps `generated` on every run, so a raw
    diff always differs. It pushes only when that commit is the only one ahead of origin, so
    the author's unpushed work is never published by a timer;
-2. runs `fetch-captions.mjs`, which asks the show's server for what is missing or a stub.
+2. runs `fetch-captions.mjs`, which asks the show's server for what is missing or a stub, then
+   pc20-archive for any episode the server still leaves without a usable transcript.
 
 It never builds or publishes. `auto-publish.sh` runs every generator on every pass, so the
 new episode reaches the mentions and the transcript search within 15 minutes of arriving
@@ -483,7 +502,9 @@ inside it would stop notes publishing too. Every step here runs under a `perl al
 backup of the show's files, kept by `pc20-archive/sync-nas.mjs` on its own agent. The wiki
 used to copy captions from it first; that was removed on 2026-09-26 at the owner's request,
 so an unmounted, stale or hung share can never change what the public site publishes. Do not
-add a NAS read back as an optimisation — the saving is one request per new episode.
+add a NAS read back as an optimisation — the saving is one request per new episode. The share
+now also holds pc20-archive's 14 Whisper transcripts in place of the server's stubs; the wiki
+takes the same files from GitHub Pages instead, like everything else, over the network.
 
 ## Staleness
 
@@ -503,7 +524,7 @@ fails on them — which is the point.
 
 **The captions have no git revision to record, and what stands in for one is weaker than it
 looks.** Their provenance entry holds the usable episode count, the newest episode, the stub
-list, the duplicate list and `records` — a **cue count, not a content hash**. That catches a
+list, the duplicate list, the `archived` list and `records` — a **cue count, not a content hash**. That catches a
 cache that is short, stale at the top end, or has gained stubs. It does not catch an episode
 re-transcribed in place with the same number of cues. `npm run fetch:captions --force` is the
 only way to be certain of that case; a hash over the cue text is the fix if it ever matters.
@@ -557,7 +578,9 @@ They were not, and the section that said so is what the transcript tier replaced
   `npm run fetch:captions` fills the cache from
   `https://mp3s.nashownotes.com/PC20-<NN>-Captions.srt` (single digits zero-padded — `PC20-7`
   is a 404, `PC20-07` is not), skipping what is present **and usable** — a stub is asked for
-  again, and the run says how many cleared; `--force` refetches everything. It is the only
+  again, and the run says how many cleared; `--force` refetches everything. Then it asks
+  pc20-archive for every episode still without a usable transcript, into `captions/archive/`
+  (see *pc20-archive fills the gaps*). It is the only
   script here that touches the network, and it reads nothing from the NAS (see *New
   episodes arrive on their own*). It asks for episodes up to the newest in
   `pc20-timeline/data/episodes.json`; that was a literal `266` until 2026-09-26, and only a

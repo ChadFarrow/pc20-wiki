@@ -1,0 +1,2089 @@
+0	Podcasting 2.0 for November 6, 2020, episode 10, now entering phase two.
+7	Friday, once again, dark in Austin, Texas.
+12	Winter is a-coming.
+14	Not one, not two, but three remote feeds today as we start with the dev down south.
+22	Dave Jones, everybody.
+25	What could go, what could possibly go wrong?
+28	Three feeds over crazy Wafa.
+32	That's right, that's right.
+34	So we've got Dave, Dave Jones,
+36	and we have two guests with us today who will be joining us for the show.
+41	We've got Tom and Kevin from Buzzsprout. Guys, how are you doing?
+44	Doing well, doing well.
+46	Yeah, glad to be here.
+48	All right, excellent.
+49	This is Podcasting 2.0, where we are shepherding in a new era of podcasting.
+55	And before we really get underway and we're going to, you know,
+59	kind of do this whole show with Tom and Kevin and talk about how, you know,
+64	how things are, where we're at with namespaces and also get a little insight into
+69	their company, Buzzsprout, and, you know, get their ideas.
+72	Because that's really what we're,
+75	what this has all been about on podcastindex.social,
+79	where we've really had an amazing hive mind of ideas and development.
+84	But we have a development of our own.
+87	Dave, you've got some, you've been kind of in and out the past week.
+92	Yeah, this is like the press release here for the fact that I've had, I was,
+99	I was COVID positive on Sunday.
+102	Yeah, we got, yes, this just in, ladies and gentlemen. Yeah.
+106	COVID positive Sunday.
+108	I felt like, I felt like I was floating above my own body for about three days.
+116	Oh, man.
+118	Yeah.
+118	Yeah, it sucked.
+119	I got, it's like, I went to bed Saturday, that,
+122	I went to bed Saturday night, feeling great.
+125	We like, we took the kids out for the trick-or-treats and all that.
+128	And it was, everything was awesome.
+130	And we had some dinner with friends and,
+132	and I wake up Sunday morning and I was like, oh crap, I feel horrible.
+137	And by like that afternoon,
+138	I was running a high fever and I got tested and it was like, yeah, you got Rona.
+144	And it was like, it was about three days of 102 fever, but I'm on,
+149	but I'm over the hump.
+151	I'm good.
+152	But that's, that's why I was, that's why I was sort of in and out,
+156	not making much sense or anything on the.
+159	No, you weren't making any sense.
+161	You weren't, you were showing up at odd hours and I knew what was going on.
+164	That could have gone sideways.
+167	And a couple of times I'm like, I was going to say, you know,
+169	Dave is taking it easy today.
+171	I'm like, I don't know. I didn't know how to tell everybody without telling them.
+176	Yeah.
+176	I had no idea.
+177	I was, I was messaging you in the GitHub saying,
+179	is there a problem with my pull requests?
+181	Why aren't they being accepted?
+182	Yeah.
+183	Why, why are you, why are you lazy piece of crap not approving this pull request?
+188	But, but it's, it's understandable because the last thing you need on,
+191	you know, it's like have everyone ask you, sending you messages, DMs,
+195	how you doing, how you feeling?
+197	Is it true?
+198	Are you dying?
+198	Are you dead?
+199	You know, all that stuff.
+201	Yeah.
+201	I was trying to avoid that.
+203	Cause I was like, well, I'll just figure out to tell everybody on the show.
+206	And yeah, but I'm, but I'm good.
+207	I'm good.
+207	I'm still like foggy and kind of weird, weird headed, but I'm on the,
+212	I'm on the, the firm upswing here.
+214	So we're, we beat it.
+216	Nice. Now we're very happy to have you here, Dave.
+220	I'm happy to be here.
+223	So, so we've got Tom and Kevin from, uh, from Buzzsprout, uh, who have been,
+228	uh, part of the podcast index.org project for a while.
+232	Um, they have, uh, one of the larger hosting companies for podcasts in, uh, uh,
+238	the U S maybe the world.
+239	I'm not sure.
+240	Not sure exactly, uh, what size, but they, they really been incredibly, uh,
+245	open and helpful and progressive dare,
+248	dare I say in a forward leaning type of way, uh,
+251	to really move things along and, and get stuff, uh, yeah,
+255	just get stuff implemented and adopted.
+258	And from, uh, my personal point of view, as we talked about on the last show, um,
+263	it was, it's really hard when you're in kind of this catch 22 chicken and the egg
+269	situation where you have, uh,
+271	features coming out and no one can really test them because, because, uh,
+276	the commercial companies have to go slower, have to make choices,
+280	have to decide what they're going to support, et cetera.
+285	Um, but there's really no, there's no other tools.
+287	And, you know, so I've been out there stomping my
+290	foot and messing up all my feeds multiple times.
+293	And finally things are starting to come into view.
+296	And, uh, and you guys at Buzzsprout have, have really been very, uh, as I said,
+300	you know, really leaning forward, moving forward with,
+303	with some of this namespace adoption, which I'm really great.
+306	Which Dave and I are both grateful for.
+309	Um, but I, I think it'd be great if we could get a little introduction to, uh,
+313	to the two of you and how you started, uh, you know, how Buzzsprout got started.
+318	Just any, any background I think would be good.
+322	Yeah, I'll jump in and then I'll let Tom tell the story.
+325	Uh, I'm Kevin Finn partnered up with Tom Rossi.
+327	Gosh, who knows how many years ago now, probably close to 14.
+330	And I always try to remember how old my daughter is because she was an infant when
+335	we first started up the company.
+337	Uh, we started in 2006, stumbled into podcasting in 2009 because, uh,
+341	we were doing like website builder stuff.
+343	And a bunch of people were saying, Hey, I want to be able to,
+346	I have these audio files.
+347	We're working a lot in the nonprofit space,
+349	a lot of nonprofit people like churches and other stuff.
+351	They create a ton of audio content and they couldn't
+353	figure out an easy way to get it online.
+356	So Buzzsprout was born out of that, out of us, you know, starting with, uh,
+360	Hey, here are some podcasts.
+362	I'm like, you don't know what that they're called podcasts,
+364	but they are called podcasts and here's ways to host them.
+366	And then them coming back and telling us, well, that's too difficult.
+368	And then us creating help articles for other people's software and them saying it's
+371	still too difficult.
+372	And us just saying, all right, we got to make a tool that makes this easier.
+376	And so we got into podcasting, introduced our existing customers to podcasting.
+381	And then slowly and surely podcasting kept getting more and more exciting.
+384	And we started getting more and more interested in it.
+387	And at this point is pretty much the main thing that we work on.
+390	It's pretty much all we do.
+392	And I want to say, what was it like 2016, Tom,
+395	2017 podcasting started really exploding.
+398	And we, we launched our own shows.
+401	We started launching a ton of content around podcasting and have just kind of gone
+405	all in and fallen in love with the independent open podcasting space.
+409	Yeah.
+411	I like, yeah, that's it.
+412	Yeah.
+413	Go ahead, Tom.
+414	Well, yeah, just that, that, that's, that's it.
+416	That's how we got here.
+417	I think it speaks a lot to the, you know, what Buzzsprout is.
+421	It was, it was, came out of a place of making podcasting accessible to people who it
+425	was not accessible to because they didn't understand what's an RSS feed.
+428	What is a podcast?
+429	They didn't even know what that was.
+430	And so making it really clear, look,
+432	this is a way for you to get your message out to as many people as possible,
+436	to the people that, you know, it might be hard for them to hear from you.
+440	This provides a mechanism for you to be able to do that.
+443	And that was where we were born out of and where it continues to drive us today.
+448	Yeah.
+448	What I, what I'd like about the Buzzsprout story and what I noticed, you know,
+453	I signed up and became a customer and then you, you kindly refunded me my money.
+459	That wasn't necessary, but it's appreciated.
+461	And I immediately saw how, and this is your, the roots of the company, I can,
+465	I understand that immediately now you came from a place of trying to help people
+470	understand what the hell they're doing and wound up making tools for it.
+475	But you never stop with the education part.
+478	And I think that's part of that's your, your, your Sproutcast, your Buzzcast.
+483	It's a lot of the documentation.
+486	I believe Melissa was, I got an email from her from, I had a support question.
+491	I get regular emails with kind of industry stuff.
+495	It's, it's, it's a, it's a role that I think is very, it's very good.
+499	Is this something that other companies, other hosting companies,
+503	do they do this kind of stuff as well?
+506	Is this a general role that podcast hosting companies fulfilled in the ecosystem?
+513	You know, I think it's a little bit of both.
+515	Yes and no.
+517	I would say that there has been a bit of, you know,
+520	podcasting is technology and it's intimidating for people who don't,
+524	who aren't into it and aren't excited about learning
+527	all the ins and outs of technology.
+529	There are a lot of people who just have a message that they want to get out to the
+532	world and they need somebody to help make that easy for them.
+534	And so they're not necessarily interested in learning how to compress an audio file
+537	or learn how to hook up an audio interface or learn how to do all this stuff.
+540	But if you can make it fun and engaging and, you know,
+543	remove those barriers of entry for them,
+545	then they've got a message that's just as valid
+547	as somebody else who's into all the tech.
+550	They just need a simple way to be able to do it.
+553	And we think there's a difference between, you know,
+555	just downloading an app and talking into your phone while you're driving around in
+558	your car with your friend and somebody who really wants to put a professional touch
+562	or professional podcast together.
+563	We think there's still an opportunity for them to be able to do a professional show
+567	and take it seriously,
+568	but not necessarily have to go get a degree in audio engineering and spend,
+572	you know, $5,000 in tech stuff to be able to do it.
+575	And so that's where our education stuff comes in is that we want to lower those
+579	barriers of entry as, you know, to the question of do other hosts do it?
+583	Some do, some don't.
+584	Some definitely feels like this is kind of, you know,
+587	they take the approach of, hey,
+588	if you're not all in and you want to learn everything,
+591	then this might not be the right thing for you.
+593	You have to control every little bit of it.
+596	And then there's other people, you know, like,
+597	like the anchor app is on the other end of that spectrum, which is like,
+600	just download the app and talk into your phone.
+601	And then that's a fine podcast too.
+603	So we're kind of in the middle there.
+605	What are your roles in the company?
+610	I'm a, so this is Kevin and I do more like product development,
+614	like front end stuff.
+616	And then Tom leads our entire technical side,
+618	which I'll just call it technical side.
+621	Tom will tell you all the details of it.
+623	Yeah.
+624	Tom, what the hell does that mean?
+625	All the goodness.
+626	Yeah.
+626	Dude, he, Kevin's good at dreaming up stuff and then I make it happen.
+630	That's, that's a better picture.
+632	Oh, that sounds like a familiar relationship to me.
+634	Tom, me, Dave, Kevin, me, Adam.
+636	Yeah.
+637	Right.
+637	Exactly.
+638	Yeah.
+639	We can commiserate.
+640	I'm familiar with this, with this relationship.
+645	Except I, I can't, I can't do code if my life depended on it other than an Apple
+650	script I did 16 years ago.
+653	So.
+654	What is it?
+656	I get very excited when I check in a commit to the GitHub.
+659	I really want it accepted because I, you know, I've rarely write code.
+662	And so once in a while I get to update a document or something.
+664	I'm like, I don't want to see my book in there.
+667	It's a dope.
+668	It's a dopamine hit.
+669	That's what it is.
+671	That's what it is.
+672	So Dave said that y'all, y'all are like, y'all are mostly,
+676	y'all had organic growth and y'all are mostly, you know,
+680	I think that's the term you use.
+682	It's mostly podcasts now.
+683	I mean, like, when did you decide or when did you begin to consider yourself to be a
+688	podcasting company, you know, a company rather than a web company or whatever,
+693	you know, your origins were?
+695	Yeah.
+697	Well, we launched in, we launched Buzzsprout in 2009.
+700	And at the time it was just like, it was like a sister product to this,
+704	you know, our larger product,
+706	which was this content management system for nonprofits.
+710	And it, Tom, help me out and remember here,
+712	but I want to say it was within a year or two that that product was,
+716	Buzzsprout started outperforming the content management system.
+720	And so it was a pretty easy transition for us at that point of saying, hey,
+724	this is, we're onto something here.
+726	And at the same time, there were a lot of new companies popping up in that,
+730	you know, website builder space that had larger teams and more funding.
+734	And they were doing a really good job.
+736	Tom and I have never been super interested in solving problems that other people
+740	were already solving really well.
+741	Like we don't just want to jump into a market just
+743	because we think there's an opportunity there.
+744	Like we wanted to really get into a space where we could fill a need that other
+748	people weren't fulfilling.
+750	And so we felt that pull more in the podcasting space
+752	than we did in the website builder space.
+754	So as soon as the product,
+756	like as soon as the market started justifying us to be able to move our focus over
+761	to podcasting, we were super excited to do it.
+764	I think it was definitely exciting because we have, we have other products,
+768	but Buzzsprout is probably the most fun to work on because it's
+772	podcasting and we used to just joke.
+775	Like, could you imagine if one day this pod,
+778	if this product made as much as our other products and yeah, we,
+783	we were very happy, you know, when it started taking off.
+787	Cause it's just so much fun to work with.
+790	So, I mean, I'm assuming y'all have, y'all still have like,
+792	or I'm not going to say legacy.
+794	I hate that term, but y'all still have other stuff you're trying to support that
+798	isn't as non podcast related to the company though.
+801	Right.
+801	Yeah.
+802	Yeah.
+802	We have other products.
+804	The reason I ask is because that's, that's hard.
+809	I mean, it's hard switching, you know,
+811	it's hard switching between two different, you know, two, three,
+814	four different code bases.
+816	I mean, that's, that's a challenge.
+817	I can feel your pain on that.
+820	I think it's interesting, especially when you're talking about podcasting.
+823	Kevin said this, I don't know, a couple months ago and,
+826	and it really resonated with me,
+828	but he was talking about the fact that we are a product
+831	development company that got into podcasting.
+833	Like our core competency is being able to take complicated things and making it
+837	accessible to people, making it understandable.
+840	And all of our products, they're all in that space of,
+843	of making things easy for people,
+845	helping them do those things rather than being a
+849	podcasting company that got into technology.
+851	You know, we were, we were a technology product company that got into podcasting.
+855	What other products do you have just from my edification?
+860	They're all, they're all over the place.
+862	So we have our content management system, which believe it or not, we still have,
+866	I think we have less than a hundred customers,
+867	but we still have people on that product.
+869	We have one that's in the time tracking space called tick,
+872	which is time tracking for people to track time against budgets.
+875	We have one in the medical space called stream care,
+878	which helps physicians run their own in-office pharmacy.
+883	And we have donor tools, which is a nonprofit donor management system.
+889	Wow.
+890	You guys like a, like a garage full of solutions.
+894	Yeah.
+895	Yeah.
+895	We have a lot of different products there, you know,
+897	all products that we've rubbed up against that we're like, man,
+899	I think we could build something.
+901	Here that would really add value and, and solve something,
+904	make it easy where other people are saying it's too complicated.
+907	It's too hard.
+908	We're going to get in there and we're going to, we're going to make it easy.
+910	And you can see it in Buzzsprout, but you can see it in these other areas as well.
+913	And how do you, how do you, how do you market your podcast services?
+916	Do you, is it, do you just have set budgets and you have a number of places where
+922	you buy a space or, I mean, I'm curious how you get the word out.
+926	Is it word of mouth?
+927	Well, let me, let me tell you where we started
+929	and then let Kevin tell you where we are.
+931	Today, because when we first started, it was all word of mouth.
+934	So we were working with people who were trying to solve that problem.
+938	So a lot of them were coming from our content management system and they were
+941	struggling with it, but then they started telling people.
+944	And then as they told people, it was just, it was just organic.
+947	And we really didn't, we really didn't do a lot at all in to, to,
+951	to grow the product.
+953	But then maybe what Kevin, maybe three, four years ago,
+956	we started taking it very seriously and actually put in the work to grow.
+961	So, and then Kevin can kind of tell you how that's worked out.
+964	Yeah.
+965	So, and we touched on this a few minutes ago, but our,
+967	our main path of growth has been through educational resources.
+971	So whether we, whether it be a blog post or a video we put online or a podcast or an
+975	online course that we make available for free,
+978	we want to educate people and get them excited about space.
+981	And remove those barriers or entry for them.
+983	And then they're, um, you know,
+984	as soon as they get to the point where they say, okay, we're ready to go.
+988	I mean, they could choose us or they could choose somebody else,
+990	but hopefully more times than not,
+992	they remember that we helped them get to this place and they at least check us out
+995	up against the competition.
+996	So as far as advertising goes, we do some paid ads.
+1001	Uh, I mean, I would love to get more and more out of that stuff because it just,
+1005	the more ad tech just keeps getting creepier and creepier,
+1008	but it is a good channel for us.
+1011	It's clear.
+1012	We, we pay for advertising.
+1013	We pay to, to advertise Buzzsprout.
+1015	We don't make money off of, you know, putting ads in our product.
+1019	Right.
+1019	Right.
+1020	Right.
+1020	Right.
+1021	Got that.
+1022	Um, it reminds me of digital ocean, like what you're talking about.
+1028	It's like, uh, when, if you, if I go to Google right now and just search for,
+1034	uh, anything like how to, uh, install, uh, some product on, uh, Ubuntu 20,
+1040	not like nine times out of 10, a digital ocean instruction, a tutorial article.
+1046	It's probably going to come up.
+1048	And it seems like, like being the, the tutorial people or the help people,
+1053	it does, it really does create a funnel into your product because you're helping
+1059	people you're, you're onboarding them into the thing that they want to, to,
+1064	to do to begin with.
+1065	But then you have this side effect of being able of saying, Oh, well,
+1069	while you're here, you might as well just, you, you know, our product is,
+1073	you know, is available as well.
+1075	I mean, it's a great, it's sort of a great route to take is, uh, is, I mean,
+1081	having followed the hosting situations from day one
+1085	and just bandwidth and storage was a huge problem.
+1089	And I think it might've been Libsyn who think
+1092	first was coming out with very low prices.
+1097	Um, can you really make money off of this business is,
+1100	is ultimately the question I want to ask.
+1102	And has that changed throughout the years?
+1108	Yeah.
+1109	I think Tom, you want to take this one?
+1112	Sure.
+1112	Sure.
+1113	Yeah.
+1113	Uh, I mean, it's, it definitely costs money to host and that's what,
+1117	what people have to understand, um, is that bandwidth and storage,
+1121	even though it is much more affordable these days than it was, you know,
+1126	10 years ago, uh, it still costs something.
+1129	And I mean, we were just talking about some of our podcasters we lose money on
+1133	because they use so much bandwidth.
+1135	They have episodes that go viral and things like that.
+1137	It's like even at, uh, a $12 a month, uh, subscription, you know,
+1141	we lose money on those.
+1143	Um, and so when people say things like, well, you know, it should be free.
+1146	You're like, well, it costs something.
+1148	So somebody has got to pay for it.
+1150	So how is that, how is it going to happen?
+1152	How, how is that, you know, uh, how is that exchange going to take place?
+1156	And so from the very beginning, we've always said, let's just be straight up.
+1159	Like you pay a monthly fee for a certain amount of storage.
+1163	And if you look at our buzzsprout pricing, we price based on hours of content.
+1167	Again, cause you know,
+1168	we're targeting people that they don't understand
+1171	a gigabyte of how long is a gigabyte?
+1173	And so we say, well, it's so many hours and we don't,
+1176	they don't have to worry about encoding.
+1178	Uh, so that way we can predict how much storage that will actually be.
+1182	Cause when they upload it to us,
+1183	they can upload a wave and we'll go ahead and we'll automatically encode it and
+1187	optimize it and do everything that needs to happen.
+1189	And, um, most of our people don't understand most of our entire,
+1193	there's entire seminars that teach people how to do that stuff.
+1197	And you guys are just doing it for them.
+1199	That's nice.
+1200	Right.
+1201	Right.
+1201	And so like Kevin was saying earlier, when you talk about other hosts,
+1205	that's always been our position of if you care,
+1208	if you're the guy that wants to be able to go and, Oh, I want to,
+1212	I want to actually edit my file directly.
+1214	And I don't want you touching it and all those kinds of things.
+1217	Um, you know, we have some ways to accommodate that with buzzsprout,
+1220	but we might not be a good fit because you sound like somebody who you're not,
+1223	you don't want a simple solution.
+1224	You want to actually go build your own XML.
+1226	Like if you want to learn XML, buzzsprout's not going to be a good fit for you.
+1229	So how did you, and by the way, um,
+1233	Dave and I are big believers in the days of free coming to an end and this,
+1239	it ha it has to end eventually.
+1243	Um, you know, so just looking at the incredible benefit we get from podcast
+1247	index.social, you know, there's, there's a couple of people who,
+1251	who do Mastodon hosting.
+1253	Uh, and I found this kid in, I think Denmark or Norway and he said mastodothost,
+1258	you know, and for a,
+1259	for a small instance with a hundred people or so it's nine euros a month.
+1264	And so I set it up on that and then we need a little more and, you know,
+1267	we didn't need some search enabled.
+1268	And so I don't know, now it's 29 euros, which is fine, but you know,
+1273	you get service, uh, and you can do whatever you want, but yeah,
+1277	free has, it's kind of over.
+1279	I think people are seeing the issues and I didn't even, I had no idea how,
+1284	uh, prevalent tracking is in podcasting with, um,
+1288	all kinds of shenanigans that are going on.
+1291	It's really, it's really quite amazing.
+1293	If you, if you think about it, you're, you're forced into that, right?
+1297	Because they're trying to figure out if we're going to offer this for free,
+1300	we've got to figure out how to make money.
+1302	And so you as the podcaster have no idea what strategies they're going to try to
+1308	employ to monetize your content.
+1310	And that's the cost of you getting it for free.
+1313	Hey, Tom, Tom, tech guys can't talk that smart.
+1316	You're supposed to be in the back, man.
+1318	You can't talk smart stuff like that.
+1320	That's not how it works.
+1322	Yeah.
+1323	I don't know if you guys saw the article,
+1325	but it was a couple of years ago before anchor got acquired by Spotify and the CEO
+1329	posted a blog post on medium or something.
+1332	And he was talking about the, how is anchor able to provide these services for free?
+1336	And what does it really cost them to host a podcast?
+1339	And they were saying, you know,
+1340	for the typical anchor podcast that costs them, I don't know.
+1342	I mean, it was ridiculously low.
+1343	It was like, you know, a dollar a month or something to host the show.
+1346	And that's why they're able to do it for free.
+1348	But the reality was, I mean,
+1349	I just felt like as I was reading that it was the most disingenuous thing I had read
+1354	in a long time because you might be talking about a
+1356	typical podcast that doesn't have a large reach.
+1359	And that you're talking about the bandwidth cost alone.
+1361	That is like 5% of the equation.
+1364	I mean, you have staff, you have programmers, you have support people,
+1367	you have server costs, you have an office, you've got healthcare, you've got taxes.
+1370	Like there's so much that goes into running a business that it's not just a
+1374	bandwidth is one bill out of a hundred that come in every month.
+1376	And so to boil it down to that and to try to make people believe that paying for
+1380	hosting is not worth it because the bandwidth bill is only a dollar a month for a
+1385	typical show is, is just terrible.
+1386	Like you've got to make up that money somewhere.
+1388	And they had raised millions of dollars and then they sold for millions of dollars.
+1392	And there's a whole nother business that's going on there.
+1394	And it's like attention economy stuff and profiting off of, you know,
+1398	your listener base and, and tracking people.
+1400	And they are thinking, hey, let's build a huge audience.
+1403	And at some point we'll figure out how to monetize the creations of other people and
+1406	the listeners that they attract.
+1409	It's not a dollar a month, guys.
+1411	No, that's, that's an interesting, like, I want to,
+1414	I want to ask you about Anchor specifically because they, um,
+1417	I was looking at just the hosting stats, just among, uh,
+1420	how many feeds each hoster has and that kind of thing.
+1423	And I mean, a lot of it's just, you know, estimates, I mean,
+1427	none of this stuff is, is, is hard science here, but I mean, like clearly,
+1431	you know, clearly Anchor is the, you know,
+1433	the big behemoth as far as the number of podcasts.
+1436	But is there any sense of how much of that is garbage and how much of it is what you
+1444	would consider just like a legitimate real podcast?
+1449	I mean, I I'm looking at, I don't know, is it like 650,000, uh,
+1453	shows or something like that.
+1455	And I mean, is it half, is half of that garbage?
+1459	I don't know.
+1460	You get, do you have any sense of that?
+1463	Yeah.
+1463	I mean, there are people who are trying to answer that question, like, uh, Daniel J.
+1466	Lewis.
+1467	I love, I love that.
+1469	We have this eclectic group of people who are finding feeds and sorting through
+1475	stuff and sleuthing.
+1476	I mean, this is, I'm sorry.
+1477	I just needed to say how much I love that.
+1479	We got everybody on podcast index.social.
+1482	It's a, it's a gang, man.
+1483	I like it.
+1484	Yeah.
+1485	Yeah.
+1486	So he's, he's doing some great work and trying to figure out like,
+1488	how do we define an active podcast?
+1490	Because we know that there's, you know,
+1492	hundreds of thousands of people who are probably downloading that anchor app and
+1495	loaded it up and said, Hey, this is my first podcast.
+1497	I hope, uh, you know,
+1499	everyone enjoys the show publish and then they never come back.
+1502	Is that really a podcast?
+1503	Count that?
+1504	Well, it's listed in the Apple podcast directory.
+1506	So I guess we did count it.
+1508	I don't know.
+1509	And so he seems like every,
+1510	it seems like every anchor podcast that gets
+1513	created is automatically listed in iTunes.
+1515	Yeah.
+1516	Unless they, unless they copy somebody else's.
+1520	Until they, until they do the locked feature.
+1522	I mean, come on.
+1524	Yeah, sure.
+1524	Yeah.
+1524	Until they implemented it.
+1525	Day one, right?
+1527	Well, well, that's probably a good segue into, uh,
+1531	the namespace and how you guys heard about podcast index.org and, um,
+1536	you know, what, just what you think in general of the project and, um,
+1541	and your thoughts and ideas.
+1543	Well, I'll tell you,
+1545	we have been internally clamoring for something like this for a long time.
+1550	We, we've, we've had multiple conversations about doing it ourselves.
+1553	And the problem with somebody like us doing it is that we are not, I mean,
+1559	we're, we're not independent, right?
+1562	And so anything that we do, any innovation that we try to do with inside,
+1565	inside of a feed is not for the benefit of the community.
+1568	At least that's not how it's viewed from our competitors.
+1570	It's, it's, it's us trying to leverage, you know,
+1573	something in the feed for a competitive advantage for our platform,
+1576	which isn't necessarily aligned with our intentions,
+1579	but that's just the way that it's perceived.
+1582	And that's not to say anything negative about our competition.
+1584	Like we would have a hard time in terms, you know, if they did something,
+1587	we'd have a hard time just being like, Oh,
+1589	that's actually good for the open community.
+1591	Let's jump on board.
+1592	And so there's been this struggle to innovate
+1594	because we're all competing with each other.
+1597	And even though we see each other at conferences and we're all friendly and
+1599	everything at the end of the day,
+1601	we still are trying to build the best products and then leverage those advantages to
+1604	get the most customers.
+1606	And so to have someone like you guys come along and say, Hey,
+1609	we're not a hosting company.
+1610	We're not an app company.
+1611	We are just people who care about the space and we care about it remaining open.
+1614	And we care about having a platform for free speech.
+1617	We care about all these good things that everyone can agree on,
+1620	regardless of whether you're host A or B or app C or D doesn't matter.
+1624	Let's come together and innovate.
+1626	Because if we don't,
+1627	so these platforms are going to continue to move and then we're going to lose
+1631	podcasting to these walled gardens.
+1633	And that's not good for anybody.
+1634	Nobody wants that.
+1635	Right.
+1636	And that's what's happening.
+1637	That's what we're super excited about.
+1638	And I, the only thing,
+1640	the only question I have at this point is why aren't there,
+1643	why isn't everybody jumping in here?
+1644	Why isn't every podcast host participating at the level that we are?
+1647	I can tell you that I can, well, I can't, I can't speak definitively,
+1652	but I can tell you that for really the only pushback that we've gotten,
+1657	I think is from.
+1658	Sort of gatekeeper mentality.
+1661	There's, there's a sense of, and I get it.
+1664	I mean, here's a, here's just, I mean, even though Adams clearly, you know,
+1669	been in, you know, pod, you know, in the podcast space for forever and,
+1674	you know, invented it.
+1675	But it's, there is a sense of just a couple
+1680	of guys coming in and who are these guys?
+1684	I mean, like we, we have all, we have boards and standards bodies and,
+1688	you know, association,
+1690	trade associations and all this kind of stuff, you know, that.
+1694	Those all sound like innovator killers.
+1696	Yeah, it's exactly right.
+1697	And, you know, we've, we've come up against that in the pod, you know, I'm sure,
+1701	you know, I mean, you've talked through email privately, Tom, about,
+1704	you know, people that have said, you know, come in and men.
+1707	Oh, you should do this, you know,
+1709	you should have a standard that should be rigorous and, you know,
+1712	all this kind of stuff.
+1713	And it's like, well, I mean, standards bodies are, are fine, but, and, and they,
+1718	but we're not building HTML six here.
+1720	I mean, this is just some podcast tags and it really shouldn't take 10 years and a
+1727	501c3 and all this kind of stuff just to get, just to get maybe 10 podcast tags.
+1733	And this was really a revelation for me as we were going down this path and I,
+1737	and all of a sudden I just saw the problem, you know, and,
+1741	and I started looking into, I've been at one,
+1743	I was on the original RSS board and that, you know,
+1746	there was never a meeting or anything.
+1749	It was just a bunch of names and okay, fine, whatever.
+1752	And I'm sure I got removed without, without them telling me,
+1756	but it just never made any sense why nothing had moved forward.
+1761	And then when I really started to look,
+1764	I understood that Apple had become this behemoth and this is,
+1768	I take that upon me, although, you know, it is what it is.
+1771	And 2020 is hindsight.
+1773	I gave them the index.
+1774	They kind of became the default app in general, but also the index.
+1779	And so they have two pieces of the pie.
+1782	They're not just an app and without Apple support,
+1785	and they have no reason to do much more innovation.
+1790	They really don't from a business perspective.
+1793	And I think a lot of hosting companies were suggesting things and,
+1797	but until an Apple said, yeah, okay, we're, we're on board and now it's worse.
+1803	Now it's, it has to be Apple and Spotify.
+1805	And that's when, when Dave and I went like, no, no, no, no, no, no, no, no.
+1810	This is backwards.
+1811	Come on.
+1811	We're taking the index back and, and we're going to, you know,
+1815	we're going to set up something that is for all intents and purposes immutable.
+1820	This is something that should unify all of us, all of us that are, that have,
+1825	you know, skin in the game for independent podcasting,
+1828	whether we're hosts or players or anything like this.
+1831	We should all be excited about an independent organization,
+1835	helping us innovate together because we can innovate quicker than,
+1840	than any one of these, you know,
+1842	behemoth companies that are beholden to, to shareholders.
+1846	And so when you go and you look at what we've been
+1848	able to do in a short period of time and yeah.
+1850	Okay.
+1850	So there's not a, not every player supports it and not every podcast host supports
+1855	it yet, but we can quickly do these things.
+1857	Let's do that.
+1858	You know, let's make a difference in this industry
+1860	much quicker than any of these other guys can.
+1863	Yeah.
+1865	I don't know if y'all see, I mean,
+1867	just having looked at some of the stuff that is coming out with, you know,
+1872	with the apps that are linking up on podcast index.social that everybody is
+1878	implementing the things like chapters and transcripts and now soundbites.
+1884	People are implementing this stuff into their apps and then they're posting
+1887	screenshots and they're linking up where you can go and test them.
+1890	And just even with those few, two or three tags, it's gotten exciting.
+1896	It's, it's beautiful.
+1897	Yeah.
+1897	I mean, like the, it's such a rich, uh, experience.
+1901	I mean, like you can't get, you, you can't get the experience that you get in,
+1907	uh, in pod, uh, pod friend or hyper catcher or pod verse.
+1911	Or, uh, I mean, like you forget the one that was posted last night.
+1915	Somebody posted a pod bay.fm pod bet.
+1918	Yeah.
+1919	Like those things you can't get that experience in the silo ads right now.
+1924	They're not, they're not doing that.
+1926	And you know, what's happened?
+1927	Something really cool happened.
+1928	And I, and I think it was partially between hyper caster and pod friend.
+1933	And, you know, cause I started posting chapters and they really became,
+1938	it became more like a slideshow.
+1940	So not just, not just the place where, you know,
+1943	you tap on something to go to a time code, which is something I despise.
+1946	I want people to be forced to listen to everything I say and no shortcuts,
+1951	but now it's like, now I can put a picture up and then there's a link.
+1955	And then, you know, you can click through to the link and it's more like a
+1959	multimedia presentation, which once we figure it out,
+1962	can be completely crowdsourced.
+1965	I mean, that's, that's, you know, it's fantastic.
+1967	We're using one guy's app, David with hypercatcher and hypercatcher studio.
+1972	So I can author the chapters in there.
+1974	People can use his app to suggest chapters yet.
+1978	It works over here on pod friend.
+1980	I mean, I don't think we've had that even in 16 years.
+1983	Yeah, that's hugely significant.
+1989	And exactly what you just said about the ability for the open podcast space to
+1994	innovate and do things is, I mean, it's been really, really hard.
+1999	Everybody who's building stuff.
+2001	I mean, it's not easy to build this stuff.
+2003	Sometimes it takes large teams.
+2004	There's a lot of money.
+2005	There's a lot of risk that goes into it.
+2006	And then it's, we've talked about this plenty of times.
+2009	It's the chicken or the egg problem.
+2010	And so who is going to, you know,
+2011	lay the first egg and hope that a chicken comes along and sits on it or whatever,
+2015	wherever that analogy goes from there.
+2017	I like it.
+2018	I like it.
+2019	Yeah.
+2019	For years, we could have put tons of stuff into the RSS tag.
+2023	But again, that would take us time.
+2024	It would take us development time.
+2025	It would cost us money to do that.
+2026	And also, if there's no apps, if there's no apps out there to use it, I mean,
+2029	you can't even get it.
+2031	I mean, I have 800,000 to a million downloads a week.
+2036	And, you know, so when I mess something up, it's monstrously cool.
+2041	I mean, people have double episodes.
+2043	They've got wrong album art showing up.
+2046	And, you know, that's all on me because I just
+2049	hack away and I'll get it right eventually.
+2052	And people know me by now.
+2053	And I spend a lot of time on Twitter saying, oh, could you please resubscribe?
+2058	But once you bring users in and you guys are going to be, will be, you know,
+2063	amongst the first to have users that are taking
+2066	advantage of a lot of these authoring tools.
+2069	And there's others out there.
+2070	I mean, for sure, we've got, I think, Castapod,
+2073	who is kind of like a self-host situation.
+2076	They're implementing tags.
+2078	You know, I think the namespace has been implemented by three of the locked tag,
+2083	which is small, but it recognizes the namespace.
+2086	You know, I think that's a big deal.
+2089	Yeah.
+2089	What is on your roadmap?
+2093	Well, let's get into the roadmap in one second.
+2095	I would say, you know, what I,
+2096	what I'm excited about is that there is the people who are participating the most
+2100	right now in what's happening in the podcast
+2103	index are smaller apps and smaller hosts.
+2105	We're one of the bigger ones that are jumping on.
+2107	But again, because I think we've just been wanting this for so long.
+2110	We're super excited about it.
+2111	And we have the team size that we're just able to do it.
+2114	But for some reason, some of the larger hosts are being a little bit more reluctant.
+2117	And so maybe they're waiting to see, you know, what's the adoption on this stuff.
+2122	So this is just a shout out to anybody listening to the show.
+2124	Like you, if you host with somebody,
+2125	a larger host or somebody who's not on board with this stuff,
+2128	you need to reach out to them and let them know that you want to use these tags for
+2131	your show, that you're excited about.
+2134	Not just like the locking tag and things like protecting your show,
+2137	which is super important, but also, hey, I need transcripts in my show.
+2140	I need chapter markers in my show.
+2141	I need, I want, you know, host and guest images in my show.
+2144	All the stuff that's happening right now.
+2147	I don't know what's going on with some of the big guys,
+2149	but it seems like they're sitting back and waiting for, who knows?
+2152	Or maybe we finalize the tag at the 15th and then they jump in.
+2155	You know, about in 1981, there was a campaign that was similar to this.
+2160	It was, it went like this.
+2161	Call up your cable company and say, I want my MTV.
+2165	That's true.
+2166	Yes.
+2168	That's it.
+2169	I love that.
+2170	And you know what's great about this?
+2172	This is the part that can't be overlooked.
+2175	Because right now, you know,
+2177	I've sent a tweet out once or twice for people to do some chapters in Hypercatcher.
+2182	And, you know, so I get some, get some feedback through there.
+2186	But once you have cool new features that you're authoring as a podcaster,
+2191	what you're going to do is you're going to say,
+2194	and this is what I fully intend to do once I have the workflow down,
+2198	is on my show, I'll say, hey, check out these five apps.
+2202	Or I've made a page.
+2203	You can, or go to this place on podcastindex.org.
+2207	And you can see all these new features.
+2209	Now, this drives listeners who say, oh, either they don't care or, oh,
+2214	okay, this is nice.
+2216	And maybe they like the app and some other features.
+2219	And that, in turn, drives them towards that.
+2221	Because I've been in this game from the beginning.
+2224	I get, like, the chapters thing.
+2226	Comic strip blogger has been, I've known him for a long time.
+2230	He is my personal troll and CIA handler.
+2233	I'm not quite sure which comes first.
+2235	And he has been telling me I'm an idiot for not
+2238	doing chapters for years and years and years.
+2241	People will hound podcasters to add features, to author features.
+2246	I never saw the benefit of it because it couldn't be crowdsourced.
+2250	And now, of course, I have that.
+2252	So it fulfills itself.
+2254	The marketing of these features, if they're worth their salt,
+2258	will propagate very quickly.
+2260	So, you know, when you get podcasters knocking at your door saying, hey,
+2264	I'd like these features, that's the time to listen.
+2267	And I think that's going to happen in kind of a snowball fashion, you know,
+2271	once we get some more things implemented.
+2274	You know, these chapters, which you guys are already doing, right?
+2276	You already have chapters and captions.
+2280	We've had chapters for years in the MP3.
+2284	Yeah, right.
+2285	And so now we've included them in the RSS feed using
+2287	the spec that was adopted in Podcast Index.
+2290	Yeah, beautiful.
+2290	But I think what gets me excited are the things that are new,
+2294	like transcripts are brand new.
+2295	Whereas you could do chapters before, transcripts are brand new.
+2300	So when you go and you look in, like,
+2301	Podcast Addict or Podfriend or one of these guys that's actually showing the words
+2305	while you're listening.
+2306	It's fun.
+2307	Yeah, that's amazing.
+2309	And when you look at the soundbites, the idea that Kevin really put forward,
+2313	this idea that the podcaster can say, hey,
+2315	if you're thinking of listening to this episode,
+2318	here's a 30-second clip that might sell you on why you should, you know,
+2322	listen to the whole thing.
+2324	Something like that, it can be a massive feature.
+2327	But it takes the host, the podcaster,
+2329	and the app working together to make that happen.
+2333	Yeah.
+2334	The soundbite idea is hopefully a solution to, well,
+2338	to prevent us from having to go down the road of algorithms.
+2343	Like people talk about podcasts having a discoverability
+2345	problem all the time, right?
+2347	And I feel like that's just, I mean, that's just asking for trouble, right?
+2350	Like if you want somebody to solve discoverability,
+2352	they'll build an algorithm that'll solve discoverability.
+2354	But you know what it's going to do?
+2355	It's going to figure out what you're susceptible to and what holds your interest.
+2358	And it's going to start feeding you through that same garbage all the time.
+2361	Yeah, totally.
+2361	Yeah.
+2362	We don't want that.
+2363	Didn't Spotify just change the compensation with their musicians?
+2369	I read that, yeah.
+2370	Yeah.
+2370	And so the idea being,
+2371	if there's an algorithm controlling what's being put in front of you is, hey,
+2375	listen to this next.
+2377	If there is some dollar attached to it,
+2378	then they're obviously going to push the thing that isn't necessarily the best thing
+2382	for you to listen to, but the thing that's going to make them the most money.
+2385	So I love the idea of a way around algorithms as
+2389	a way to solve that discoverability issue.
+2392	And so we've seen two versions of that that I like very much.
+2397	One is the, I always forget the name, Dave helped me,
+2402	Cast Coverage, castcoverage.com, which dumps you into random episodes,
+2408	a random spot in the feed.
+2411	And I laugh my ass off and from time to time actually use the pod friender feature
+2416	of pod friend, which is like,
+2418	it's like a Tinder and literally a podcast pops up and you swipe left and it's gone.
+2423	You swipe right and it's added to your favorites.
+2426	And I've used that a lot and just looking at
+2428	album art and listening to a little bit.
+2430	Oh, I'll check that out.
+2431	I mean, so discoverability is taking place in different ways.
+2435	I think the biggest thing that we're coming up against now is how do we make a lot
+2441	of these audience participation features, how do we make them work across apps?
+2447	So, because really, you know,
+2449	what YouTube has over podcasting is the chat on the sidebar where everybody can can
+2455	jump in and chat along and they've got all kinds of funky features you can use their
+2461	comments that work across the system.
+2465	This is where we're lacking and any centralized silo is always going to have a leg
+2471	up initially to be able to provide that.
+2473	And I think that's where, to me,
+2476	human beings are still great AI and they will recommend
+2479	the right things to the right people.
+2482	Or at least your AI and your brain will know, avoid this guy's suggestions.
+2488	Those are the things that I think we can really excel
+2491	at if we figure out some of those issues.
+2495	Yeah, I think the algorithm problem has just never,
+2499	you can't solve things always with an algorithm.
+2504	You can't, for instance, there's no way a music prediction algorithm is there.
+2512	I'm a huge Rush fan.
+2515	And so there's always going to be this prediction in the algorithm that says,
+2520	oh, you like Rush, so you're going to like this other power trio.
+2524	Well, the fact is, I don't like any of those.
+2527	I mean, there's just something unique about that
+2530	one band that I like that you can't quantify.
+2533	You cannot put it into any parameters which properly inform an algorithm.
+2539	And I think it's the same way with podcasting.
+2541	I heard, I think it was Marco Arment talking a few weeks ago.
+2547	He said, what people follow in podcasts is not like information or guests
+2553	necessarily or blah, blah, blah, blah, blah.
+2557	What they follow are personalities.
+2561	So like you, it's like,
+2562	I want to listen to Adam's podcast or I want to listen to,
+2567	you know, Kevin's podcast.
+2569	It's like you get, you get connected to where you feel like you have, you,
+2574	you feel like you have a connection to the host and you begin to follow that
+2579	person's podcasting.
+2581	And like, you can't necessarily quantify that into any sort of algorithm that's
+2586	going to, it's going to make a prediction engine that, that feels right.
+2591	You know, a good AB comparison for algo,
+2594	non-algo is Twitter and podcastindex.social.
+2599	So podcastindex.social, although things are obfuscated from view for you,
+2604	depending on who you're following, you can always pretty much start at the top.
+2609	And then eventually you wind up, oh, I've already seen this.
+2614	And then you're done.
+2616	Whereas on Twitter, it's like, shit's popping up from eight hours ago.
+2619	It's like, oh, what is this?
+2621	It's a reply.
+2622	Everything is weighted the same.
+2623	It's not, you know, uh, uh, they're not, it's not threaded properly.
+2628	And I find a lot of signal to, the signals to noise on,
+2631	on the Mastodon server is high, man.
+2634	I get a lot out of that.
+2636	Yeah.
+2636	I mean, two totally different goals of those platforms, right?
+2639	The Mastodon server, the goal is to give people a place to communicate information.
+2643	And so I go there and I caught up on my information and then I'm done.
+2646	The goal of Twitter is to keep me on that site as long as possible.
+2649	So like you want to say profitable way and never end.
+2653	Like you will always find something new to show me.
+2657	What are you?
+2657	I was just saying that they want to keep you on the
+2660	platform in the most profitable way, right?
+2663	Not only do they want to keep you on there,
+2664	but they want to put the stuff in front of you.
+2665	That's going to make them the most money.
+2667	And that's where, that's where that's fine tuning an algorithm is first.
+2671	They're going to get you addicted and then they
+2673	can start turning the screws to make sure that
+2675	the stuff that they're putting in front of you makes the most money for them.
+2678	That's the YouTube philosophy where they switched from, was it?
+2682	Yeah.
+2682	Click from, was it like clicks or likes to engagement time, engagement time?
+2688	And that's where like, I don't want to,
+2691	I don't even want to argue the validity of algorithms
+2694	being better at finding stuff or not,
+2696	because even if they solve that problem at the end of
+2698	the day, the motivation is different.
+2700	Like Kevin was saying, the motivation of YouTube is not to educate you.
+2704	It's not to find the content, it's to keep you on the platform with the,
+2707	in the most profitable way possible.
+2710	So, um, well then I'll, I'll ask this question to you specifically then Tom,
+2716	uh, like the biggest
+2717	to me, you know, clearly we had, you know, podcast index.
+2721	We're doing, we're, we're trying to, uh, we're trying to do two things.
+2726	We're trying to be an independent directory of podcasts, uh, so that, uh,
+2732	Apple is not the center of the universe and that's not against, you know,
+2735	nothing against Apple there, they're,
+2737	they've been great stewards of podcasting.
+2738	It's just that that it shouldn't be that way.
+2741	It really, it really just shouldn't.
+2743	And the, the other thing is running the API, try to give a small podcast apps,
+2749	uh, the ability
+2750	to boot up without having to launch 30 servers in a, in a, in a backend somewhere.
+2757	So like, those are, those are really the two goals of the index, um, and,
+2762	and what we spend our money and time on.
+2764	And so the biggest, you know, most, mostly that is running well and it's doing,
+2769	you know, clearly there's always bugs and we're always fixing things,
+2773	but there's a couple of things
+2775	that are really just kind of on a technical level challenging.
+2779	And one of those things is a search ranking.
+2783	And, and I've just, I spend a lot of mental cycles on this of how to get good,
+2791	uh, search ranking without having to fall back to the popularity scores or of,
+2800	of big silos and scraping
+2803	and this kind of stuff, because I don't, number one,
+2807	I don't really trust some of their numbers
+2810	when, I mean, clearly it's like Spotify, for instance, they are saying,
+2814	you know, they said that, uh, Michelle Obama was their top podcast.
+2819	Okay.
+2820	Well, maybe, but then they opened it up and made it not exclusive anymore,
+2825	which that makes me not trust those numbers.
+2828	So if, if you're just scraping popularity out of, out of silos and saying,
+2832	okay, well, these are, and I'm going to wait my ranking in the index that same way.
+2837	I don't like that.
+2838	I don't think that's accurate.
+2839	I feel like there needs to be something more
+2843	organic and something more decentralized.
+2846	I have not landed on anything.
+2850	Do you have any thoughts?
+2852	Well, I think you're going into it.
+2854	You're going into it with the goal of putting,
+2857	putting the algorithm together in such a way
+2860	to accurately represent what's going on.
+2863	And just having that goal is different than, uh, somebody like a Spotify who,
+2869	again, their goal is to make money.
+2871	And I think that's, it's not a bad thing.
+2874	They have to make money.
+2875	They're, you know, they're a company, but for, for podcast index,
+2878	it's a nonprofit, it's
+2879	an independent organization.
+2879	We're trying to solve this in a different way, value for value.
+2882	And so I think, um, it's not necessarily what the solution is right now.
+2886	It's that that's the goal.
+2887	And that's what we're trying.
+2888	And there's going to be, whatever we come up with right now is going to change in a
+2891	month or six months or a year.
+2893	It's going to continue to iterate.
+2894	Um, but the goal is, is not going to be convoluted with money.
+2900	Yeah.
+2900	Yeah.
+2901	That, because when, when people search for things, so like podcast, uh,
+2904	let's just take out, you know, plenty of apps to use our search.
+2907	Now when they search for things I want, clearly there's going to be,
+2912	there's a need for some
+2914	sort of ranking or waiting or popularity to inform, inform the rank, uh,
+2920	inform the results and the order.
+2923	And, and, but I don't, I don't want to get caught into this trap of, oh, well,
+2929	these other, you
+2930	know, these other silos want, this is how they've ranked it because I mean,
+2935	you can't, I just can't trust that.
+2937	You can't trust, you know, I can't trust that, but, but I don't,
+2940	but then you don't want to
+2941	necessarily just, just discard it and say, well, it's of no value whatsoever.
+2945	I'm trying to find this, this middle ground between,
+2949	between trusting the algorithms and
+2951	having zero algorithm at all, which also does not work.
+2956	Cause you gotta do, you gotta do something.
+2958	Yeah.
+2959	Have you approached it from the perspective of
+2961	like where Google started off and, you know,
+2964	years ago, they came up with this idea of page
+2966	rank where they would start scoring pages
+2968	based on somebody searches for this term.
+2970	And then they click on this page.
+2971	How long do they stay on that page?
+2973	Or do they come back and search for something else?
+2974	And the longer they would stay on that page, or if that would end their success,
+2978	then they knew that that was a pretty strong result.
+2980	And so they'd start promoting it and giving it higher and higher page rank.
+2982	It's evolved massively since then, but that's,
+2985	that's the basis of kind of where they started.
+2988	That's an interesting idea.
+2990	Yeah.
+2990	Giving people away.
+2991	So when they hit your index and they do research and you give back these results,
+2994	then also giving them a way to filter back.
+2996	Hey, okay.
+2997	This is the, the person clicked on the third result that you showed me.
+3000	And then they ended up listening to an episode or subscribing to that podcast.
+3003	So just let me know that.
+3004	I don't need to know anything about who this person is,
+3006	but let me know that the third result
+3008	was the result that they were actually looking for.
+3009	So then I can go to prioritize that for this keyword going forward.
+3012	Yeah.
+3013	That makes a lot of sense.
+3014	Cause that, that's the, cause you don't necessarily want, um, you know,
+3018	just a raw input where it
+3020	can be, I guess, gamed or misunderstood where it's just like, okay, well,
+3023	I'm piping all the
+3024	clicks into this one score that you need an extra, this sort of an extra,
+3029	like a arbitration layer there.
+3032	Uh, no, I like it.
+3033	Yeah.
+3033	I like that.
+3033	It's a good place to start.
+3034	And that the, you know, the other thing now that we actually have some apps,
+3038	it's a little, it's a little easier than it was at the beginning
+3042	because the beginning we had zero inputs whatsoever.
+3044	I mean, it was just like, there was nothing there.
+3047	And so, I mean, like now that we have some apps
+3050	and we actually have some inputs, um, the
+3052	initial rate, uh, algorithms, uh, worked out pretty good.
+3056	Just, just doing search misses.
+3058	It's like, okay, well, somebody searched for this.
+3060	And so now let's rank up those things.
+3062	Uh, but I think it's time to take the next step.
+3064	I appreciate that advice.
+3066	Yeah.
+3066	I mean, I really don't like the idea of charts or especially charts from,
+3071	you know, like wall of garden silos influencing search at all with search.
+3074	There's intense.
+3075	There's always a right answer.
+3076	Somebody is searching for something because they're looking for something.
+3079	And even if I'm looking for a broad category, like a type in baseball, I'm still
+3081	looking for, you know,
+3083	a specific baseball podcast that is talking about little league
+3086	baseball or something,
+3087	even though I might've just taught like typed in baseball, but there's
+3090	answers to these questions.
+3091	And the, the answer to what are the most popular
+3094	podcasts in the world is by saying, tell me
+3096	the most popular podcast in the world.
+3098	It's not by going to a search and typing something in, right.
+3100	It's like, show me the chart.
+3102	So search, I feel like should be a very different, you know,
+3105	like problem solution than just going
+3107	to the charts or using chart data to influence our search results.
+3111	I don't, I don't think it's sort of like search and discoverability.
+3114	They're really different things.
+3116	I don't know how y'all feel about that, but like discoverability, you don't,
+3120	I think it's rare to discover a podcast through a search.
+3124	I think search is to find something you already
+3127	have an idea that you're looking for, right?
+3130	Discoverability seems like a different animal to me.
+3133	And I'm sure that we have some search gurus who will be listening, who will jump in.
+3138	And we always encourage everybody to come to podcastindex.social.
+3142	That's where a lot of these things are fleshed out as,
+3144	and then of course the good stuff moves off to the GitHub.
+3147	That's where I stop.
+3149	I'll check, I'll check in once, once every,
+3151	like maybe every three days, see what Daniel J.
+3155	Lewis has posted.
+3156	Yeah.
+3158	It's always fun to read.
+3160	He's got interesting ideas.
+3161	So to bring it back to the podcasting 2.0, Dave, you're,
+3168	we have the namespace phase one
+3172	locking down November 15th, if I'm correct.
+3177	Yeah.
+3177	And I think, I don't know how Tom and Kevin feel,
+3180	but I feel like it's pretty much come into clarity now.
+3183	I think we have a pretty good, pretty good finish line in front of us.
+3188	Yeah.
+3188	I think we're super excited.
+3190	We can't wait for the 15th because I mean, at the 15th we're locked.
+3192	We have a spec, like everyone get your apps together, get on board.
+3196	Start implementing this stuff, get everyone excited,
+3199	get your audience members excited
+3201	about these new things.
+3201	Like, Hey, here's my podcast now.
+3203	And it does not just my podcast also has my
+3204	picture and the picture of the guests that was on there.
+3206	So what are the, what are the tags we are that are,
+3211	are good to go for phase one, the
+3213	transcript, the locked funding chapters, soundbite.
+3219	And then the one that we're working on right now is person.
+3223	Ah, yes.
+3224	Right.
+3224	And could, could someone explain to me the use case of soundbite?
+3228	Because I've honestly, I've kind of missed that conversation.
+3232	Sure.
+3233	I mean, I think about soundbite as, I mean, you remember what is eighties,
+3237	nineties, you drive into a new town and you don't know any
+3239	of the radio stations and you hit that scan
+3241	button on your FM radio.
+3242	Yeah.
+3243	You're like, show me all the cool stations in this town.
+3245	You had FM, huh?
+3246	Wow.
+3246	Okay.
+3248	Yeah.
+3249	So, I mean, you could, that's one use case.
+3251	You could use it like that.
+3252	You could say, um, Hey, I'm looking for a new sports podcast and now we go ahead,
+3258	we play all these 30, 45, you know, minute and a half soundbites from,
+3262	from anybody who's pushing soundbites out.
+3264	So this is a, um, so the way I just want to understand how to use it.
+3269	So I use it by saying, here's a clip and I guess,
+3272	I guess you can have more than one,
+3274	but here's, here's a clip from this show.
+3276	And that just goes as an additional tag as if it were, um,
+3281	that that's for discoverability.
+3283	So someone can just preview and listen to something from the show.
+3286	And I've determined what that is.
+3288	Is that correct?
+3289	Right.
+3289	So you, as the creator, you say, Hey,
+3291	this episode's two hours long at 23 minutes and 30 seconds.
+3295	Here's a 45 second soundbite that really fun and interesting.
+3298	So if you want to kind of get a flavor for the show, just listen to this 45 seconds.
+3301	And then after that,
+3301	you can decide if you want to subscribe or listen to the whole thing or whatever.
+3304	And there's another later on.
+3307	And so how does that function?
+3308	Do I have to clip an actual soundbite or is it a piece from the file?
+3313	What is the, I have not followed the tag, so I'm not sure.
+3315	Piece from the file.
+3316	Yeah.
+3316	It's a piece from the file.
+3317	It's not just time.
+3318	It's just time stamp and a duration.
+3320	That's beautiful.
+3321	At 45 seconds, play a 30 second clip.
+3324	And that's the soundbite that, you know,
+3326	we want to be able to highlight for that episode.
+3329	I like that.
+3330	Whose idea was that?
+3333	That's Kevin.
+3334	Yeah.
+3335	Well, it came from Buzzsprout.
+3336	We've been letting people create soundbites for their podcasts for years,
+3339	but then we had nothing to do.
+3341	Like we couldn't stick them in the RSS feed because no apps were doing it.
+3343	And right.
+3344	Right.
+3345	If we said everyone should be doing this.
+3348	So we just created a little video files and we're like,
+3350	share them on your Twitter, share
+3351	them on your Facebook, whatever you want to do with it.
+3353	Now that we have it, we're like, oh my gosh, this is, this makes perfect sense.
+3356	This is where it should have been all along.
+3357	Yeah.
+3358	Well, that, that makes sense.
+3359	We're, uh, you know, I don't know if y'all saw what I started putting in,
+3363	um, soundbite support in, uh, the index aggregators, uh, last night.
+3367	And, um, what, you know, I mean, one of the, as soon as it's done,
+3371	one of the first, one
+3372	of my first use cases for the index is going to
+3374	be just a new API endpoint where it's just
+3376	says recent soundbites or soundbites by category.
+3379	And it just basically just be a, you know, a stream of,
+3383	of the latest soundbites that are discovered.
+3385	Um, I think that'll be, that's basically like your scan button,
+3388	but you got to have some
+3389	buffering and stuff, don't you?
+3390	How, how the hell does that work?
+3392	Does, can you do an HTTP request straight into
+3394	the file at a certain point or how does that work?
+3396	Yeah, you can cause a bite range request.
+3400	So you can just say the file I want and start at this bite range or whatever.
+3406	It should, it should work, you know, quote unquote.
+3408	And how do I author that?
+3409	Is there, and are there any tools out there to do that?
+3411	Well, I guess, I got to just move my whole feed over to buzzsprout.
+3415	What the hell, man?
+3416	It's like, I just need to, you want to take my traffic?
+3420	I'll, I'll do it for 12 bucks a month.
+3422	I think that's, that's a good deal for me.
+3425	Yeah.
+3426	It's only, it's only a terabyte and a half of traffic.
+3428	It's not a big deal.
+3429	I bet, I bet someone at buzzsprout saw me sign up to like, oh crap.
+3433	Oh no.
+3434	Oh no.
+3435	We can't have that guy bringing his stuff over here.
+3437	No, no.
+3439	He said, Adam just signed up.
+3442	I upgraded him to free.
+3444	I was like, oh my gosh, we're going to lose it on this one.
+3446	Well, well, Hey man, Steve jobs did it for me the first time around.
+3450	So you're in good company, you know, he upgraded my Mac drive to let me,
+3454	to let me do all this stuff.
+3456	So, um, you know, Dave and I talked about this before we started the show,
+3462	um, because we wanted to, uh, show you guys some stuff that we've been working on.
+3467	And we think that it's probably, uh,
+3470	in the tradition of podcast index to do it publicly
+3475	and, and, and talk to you a little bit about what we're doing.
+3478	Um, you know, when we started the, we had, it's, it's always been on the website.
+3484	We have two main missions.
+3486	One preserve podcasting as a platform for free speech.
+3490	And I think, I think we're well on our way to doing that.
+3493	We have the index filled up.
+3495	We've got people contributing, keeping, uh, and by the way,
+3498	we'll be thanking people who,
+3499	uh, who donated to sponsor a machine.
+3501	We'll be thanking you on the next episode.
+3504	Um, we, so, you know, it is to a degree self-sustaining, you know,
+3508	Dave's not getting paid, you know,
+3510	I'm not getting paid, but that's not the point it's, it's running.
+3513	And I think we are, you know,
+3515	seeing the adoption and people adding us now as an option,
+3519	uh, for search and, uh, into their apps and some, some big ones too, you know,
+3525	like podcast addict, which is really nice.
+3527	And seeing all this plethora of new apps coming online with new experiences.
+3531	I think we, I think we are well on our way to achieving
+3536	that goal and being able to maintain it.
+3539	Second part of the mission, uh,
+3541	which Dave and I were thinking about from day one was retooling
+3547	podcasting as a platform of value.
+3550	And we, and you guys are interesting, uh, because of your overall philosophy,
+3555	which falls very much in line with ours, which, uh, if I could sum it up is, uh,
+3561	the days of free have to end.
+3563	And I believe the podcast audiences are well primed and ready, uh,
+3570	to look at a different
+3572	value model than they've previously been using.
+3576	When I say value model, uh, the,
+3578	the one that is most known that people default to is advertising.
+3582	Um, my personal view cut down real short is advertising
+3587	is censorship because it always
+3589	leads to censorship one way or the other, probably self-censorship.
+3593	Um, and we have seen that the value for value
+3599	model as deployed on no agenda as deployed
+3604	on podcast index, which is really whatever you're getting out of this,
+3608	put something back in.
+3609	And we asked for your time, your talent, or your treasure.
+3612	And a lot of people are very happy to when it's
+3615	open-ended and they can determine the value
+3617	of how much they want to give back,
+3619	it works a hell of a lot better than saying tip us five bucks a month.
+3623	And, uh, and why, I don't know, but it's true.
+3627	And, uh, we saw Patreon rise and Patreon has a lot of, a lot of pros, uh, uh,
+3633	versus the
+3634	cons, you know, it, it, it, it allows people to, uh, support media property,
+3639	support their, uh, their clubs, their groups, their tribes,
+3643	the podcast that they center around, um, has
+3646	a lot of issues, it's, uh, clearly, uh, you can be de-platformed from it, um,
+3652	and maybe not even de-platformed by a Patreon alone,
+3655	but down the line at the credit card processing.
+3659	Um, there's just a lot of different issues.
+3661	So what I do know, and actually I'm going to, if,
+3665	are you guys able to access email, Tom
+3668	and, uh, and Kevin, I'm sending you an email right now with little presentation.
+3674	Um, and Dave, you have it in front of you.
+3676	Yeah, I go.
+3677	So the second part of our mission,
+3679	which we haven't really spoken about that publicly
+3682	is why are we doing this?
+3685	You know, what is for, for part two for retooling podcasting as a platform, uh,
+3691	uh, value, but we, we really need to free podcasting from corporate control.
+3696	And this is another thing that I think Kevin and Tom, you,
+3699	you both identify this as being a very big issue.
+3702	So how we're going to do that is we have to continue to have decentralized content.
+3707	We have to integrate it with decentralized money.
+3710	And I say decentralized money because we know that
+3716	platform for free speech is very difficult
+3720	when you're using third parties and payment processors
+3724	and all these different places where
+3727	you can just get removed from.
+3728	So we're thinking a step ahead, um, which is, is always going to be,
+3733	is always going to take
+3734	an adoption process.
+3735	And what we're doing is we're building a self-sustaining ecosystem for podcasting.
+3740	Do you guys have this, uh, this PDF that I sent?
+3744	Yeah, I've got it.
+3744	So if you look at the second slide, and I'll post this on the podcast index.social.
+3749	So this is, uh, the model that Dave and I looked at from the very beginning,
+3755	um, that there are, and these are interactive advertising bureau numbers.
+3759	So this is just us numbers.
+3761	There's a hundred million us podcast listeners
+3764	who on average listen one hour per day.
+3766	And as some listen to hell of a lot more, some listen less, but on average,
+3770	you have a hundred million hours of content being consumed per day.
+3775	Based on my experience over a decade with no agenda show, MoFax, uh,
+3781	with podcast index, uh, looking at Patreon,
+3785	I believe we can convert at least 1% of those 100 million listening hours per day.
+3793	So 100 million people,
+3794	we should be able to get 1 million people to want to pledge to a
+3799	podcast instead of, uh, not pay for it or go through any other system.
+3803	So I'm thinking more model where, you know,
+3806	this show is worth something to me and I'm just
+3808	pegging that to make it simple at $1 an hour.
+3811	So if in, and I know that if I ask my listeners and I say,
+3815	what is the show worth to you, they'll
+3818	probably set it a lot higher than a, than a dollar per hour,
+3821	but it's a, it's a fair price.
+3822	And I think everybody can, can find themselves in that kind of range.
+3826	So now you're talking about a potential daily flow of $1 million.
+3833	And this is a stream of value that we have been
+3838	able to capture into a self-sustaining system.
+3844	And it's, it's a mind bender.
+3847	So if you're already on slide three and four, you're probably going, what the hell?
+3852	Um, and Dave jump in anytime here.
+3854	So I'm going to explain what the, the, the history of what,
+3857	what happened in the background
+3858	as we were building the index, I dove in deep into, uh,
+3863	digital money and how it would work
+3867	and how we could basically stream that at the same time.
+3871	Someone is streaming MP3 bits, ones and zeros.
+3874	I thought it would be entertaining and interesting
+3877	to see if we could stream value, some monetary
+3879	value back to the creator and back to the app you're using.
+3884	And anyone else who was in the chain of value that brought this program to you.
+3890	And there's a new protocol that is a part of the, well, it's a,
+3894	it's a Bitcoin off chain
+3896	protocol called lightning.
+3899	Uh, this is developed by lightning labs.
+3901	That is the company that Jack Dorsey funded.
+3904	Uh, and, and this is really, I think it's been around since 2018.
+3909	It's, uh, it is on main net.
+3911	So it's actually working.
+3912	It's, uh, it's functional and there's one, let me stop at the stop, Adam real quick.
+3917	Just ask Kevin and Tom.
+3918	I mean, how familiar are you guys with how Bitcoin and this kind of stuff works?
+3924	Are y'all, what's your skill level there?
+3927	Uh, mine is very high level.
+3929	I mean, I've bought some Bitcoins.
+3931	I've played around with a few different digital currencies a little bit,
+3936	but super high level,
+3937	never dug into the development side or how it all gets connected and just around.
+3941	Yeah.
+3942	Same here.
+3943	Okay.
+3944	All right.
+3944	Just checking.
+3945	So you've, you've at least had a wallet at one point and you've had Bitcoin in it or
+3952	some kind of digital currency.
+3953	Correct.
+3955	What's interesting about the lightning protocol
+3958	is it allows you to stream micro payments.
+3962	So thousands of a Satoshi, so very, very small amounts.
+3968	And you can stream it directly without creating an invoice.
+3971	As long as you have someone's public key, you can send it in real time.
+3976	And, uh, I was looking at this.
+3980	I set up a full Bitcoin, Bitcoin node, uh,
+3983	Dave and I was doing a lot more in the beginning
+3986	because Dave was focusing on, uh, on keeping the databases and everything running.
+3991	And, you know, once we kind of were able to really
+3994	dive in and understand what's happening,
+3996	um, we met these guys who also showed up on no agenda social, uh,
+4002	on podcast index.social.
+4005	And that's the guys from Sphinx chat.
+4008	And we, and so what they have, and I, and I always kind of knew this would happen.
+4015	They kind of have a peanut butter and we're sticking our chocolate into it.
+4018	They've created chat app that is very much like WeChat.
+4025	Are you familiar with WeChat, Kevin and Tom?
+4028	So, you know, WeChat basically does everything.
+4031	You can pay your bills.
+4032	You can do all kinds of stuff with it.
+4035	Um, and super app is what they call it.
+4037	Super app.
+4037	Yeah.
+4038	And everything costs a little bit of money.
+4042	So, uh, even sending a message to someone costs one, one hundredths of a penny,
+4047	I think is what the lowest denominator is.
+4050	Um, and they integrated, uh, with our help,
+4054	but it was quite easy because there's so much
+4057	available on the GitHub, et cetera, that, you know, the roadmap is there.
+4061	They integrated podcasting into their app.
+4065	And after we discussed the pledge idea, they now have a working, uh,
+4072	proof of concept where
+4074	you get the app, you go to the podcast you want to listen to.
+4079	And the minute you hit play every minute,
+4082	a little bit of money is streaming off and that
+4085	money is streamed off to the podcaster, uh,
+4089	with an automatic split to the podcast app they're using.
+4093	And we've just set that at 1%.
+4095	We thought that would be fair to start off with the market.
+4097	We'll have to tell us what's right or wrong.
+4099	Podcast index receives 1%, um, keep everything running.
+4106	And the podcaster can then determine what other money they need to split up.
+4112	So if they have a cohost or if they have a hosting company,
+4117	or if they have promoters, or if they
+4119	have an investor or anybody, they can personally go in, uh, say, okay,
+4125	I want 50% of what I get
+4127	to go to this person, 10% to that person, 10% to this service.
+4131	And, uh, and it, and the minute someone is using that podcast app, which is chat.
+4139	And it's also a digital wallet.
+4141	They are actually paying directly from their wallet
+4144	to all those other people in real time,
+4147	uh, at the value they determine.
+4151	Does that make sense?
+4155	That makes sense.
+4156	That sounds like the, that sounds like a magical future though.
+4160	Well, the thing is wrapping my head around this is huge.
+4166	Yeah.
+4166	Well, so, so to jump in real quick, the, so that,
+4170	the idea here is first of all, none, none
+4174	of this is proprietary.
+4175	None of this depends on the index to function.
+4180	Anybody can, as long as you have a public, uh, lightning node, uh,
+4186	that can accept key
+4188	send, you can drop, um, and the way, the way, the way this will ultimately be,
+4195	you know, come to fruition is in an open way is there will be tag that will,
+4203	that will be put into, they'll
+4206	be put into the, into the namespace, uh, that will define where the, these,
+4212	these addresses and what the split percentages are.
+4216	So if I'm a podcaster and I have a, a lightning,
+4220	a Bitcoin lightning node that can accept key
+4223	send payments, I'll take my, my nodes ID and I will just construct the XML, uh,
+4229	for this we're calling it the value block or the value tag.
+4233	You can drop it into your XML feed and any,
+4237	any podcast app that is aware of how to send
+4242	key send payments can read that and immediately
+4245	know where to begin streaming payments.
+4248	Now the, so, so it's not dependent on us, the, the end, the, we will,
+4256	we have already built
+4259	support for it in a way to be able to make this a little bit easier.
+4263	And so anything that comes through us, we, uh,
+4267	we put a 1% split in there just to help us
+4269	cover our cost and to help support the index.
+4273	Uh, but this is where hosting plays, plays the role.
+4277	And I think you can see that in the, in the PDF is, um,
+4281	what we envision is that hosting
+4283	companies will be, will be payment hubs essentially that, that,
+4289	because one thing that this, one
+4292	thing that's necessary here is to allow your, allow podcasters to have a, uh,
+4300	a lightning node that can accept payments.
+4303	And that in order for, uh, one of the roles for, for a hosting company,
+4308	it says you're already
+4309	providing the, um, the,
+4311	the feed services and the tools is you could also provide, uh, lightning
+4318	nodes, uh, and spin those up.
+4320	And then you take a, and then you just, you get a percentage, one, two, 5%,
+4325	whatever you negotiate with your customers.
+4327	And so as the streaming payments are coming through, um,
+4331	there's a percentage coming off
+4332	to this getting peeled off to the hoster and that, you know, that could,
+4337	that could cut, that could help that could cover costs.
+4340	That could be pure, you know, that could be a profit, whatever,
+4343	however that plays out
+4344	with your internal business.
+4345	And let me, let me say a little bit more about this hub.
+4348	Um, so what I think will happen, and by the way, all the code for this is available.
+4353	There's a GitHub, GitHub, um, there's a code that can be dropped into,
+4358	uh, existing pot.
+4360	I mean, I say it, here's my non-developer voice.
+4362	You can drop that code right into your app and that shit will work overnight.
+4365	Okay.
+4366	So we know the reality of that, but there, there's code to make simple, um,
+4372	simple podcast apps that don't need to receive key send.
+4376	They can just send, but the hub, because everything happens on blockchain,
+4381	the hubs become super
+4383	interesting for community-based features.
+4386	So, uh, in the demo, we'll show you guys and, um, and we're going to, you know,
+4391	get as many people in as possible starting next week.
+4394	It depends on the Sphinx chat guys, cause you know, there it's their hub, their,
+4398	uh, nodes, et cetera, they're spinning up and we have a whole
+4402	claim your podcaster wallet process set up.
+4408	The hub, uh, has chat features, relay features, uh,
+4411	all these community-based features that
+4414	when you see the app, they actually have a timeline.
+4417	And as the podcast is running very much like YouTube, uh,
+4421	you can chat along with people at the same time.
+4424	And that is going to be on the podcaster hub,
+4428	but obviously because it's blockchain that can
+4431	be propagated to all hubs, which is,
+4433	I think very exciting because these are the interactive
+4436	features that we've been looking for.
+4438	Um, you can also do, uh, what we're calling a boost.
+4444	So if you just, if you're listening and you hear
+4447	something really cool and you just want
+4449	to hit it with a little boost,
+4451	you get a whole animation and 100 Satoshis goes to the, goes
+4455	down the chain through all of the splits.
+4457	Um, I don't know if they've implemented it yet,
+4459	but the idea is when you come back in,
+4460	just like on YouTube and you play the show again,
+4463	you can see the replay of the chat and
+4465	you can add to that and participate in, uh, in, you know,
+4469	kind of that virtual comment
+4471	slash chat timeline that is just being added to with every person that comes in.
+4475	I mean, all of these features are all pretty much functional today,
+4480	including the ability
+4481	to set how much value we have.
+4484	I think max is a hundred Satoshis now,
+4486	but you can set it to one per minute or whatever you want.
+4490	Um, and that should be able to go higher, obviously, uh,
+4493	seeing as that 12,000 Satoshis is now $1.
+4497	So you see, there's a,
+4498	there's a lot of things that are going to take people getting used to.
+4502	Um, there's no doubt that there's an onboarding
+4505	process for people to even have Bitcoin and
+4508	understand how to get it from point A to point B.
+4512	There's a ton of very well-funded companies who are doing that.
+4516	Uh, but we feel this hub role, which is the last page,
+4520	that that is something that you guys
+4523	could do and other hosting companies as well.
+4526	And, and just to point out, to reiterate what Dave said, just like podcast index.
+4530	All of this, you don't need us to do this.
+4533	Uh, we'd love to be included in, in everybody's, uh,
+4537	ecosystem because we have a lot, you know,
+4539	set up and good to go, but it's, you know, anybody can set up an index and do this.
+4544	But, uh, the, uh, the, this to me is turbo charging podcasting with a defined,
+4552	uh, market defined value stream.
+4555	The same PR works, you know, Hey, uh, I'd be willing to give you money, Mr.
+4561	Podcaster.
+4561	If I can use this app with your podcast, the onboarding for that is very simple.
+4567	We've got that licked and hopefully it will feed upon itself.
+4572	Um, but what we'll need is companies that want to provide these extra services,
+4580	uh, which are
+4582	all, you know, established, uh, type of server services that are, you know,
+4586	I don't know exactly
+4587	what, what it all entails, but I have, I have a node running at my house.
+4591	So, you know, if I can do something,
+4593	then you guys may be able to do many more of those some things.
+4597	Um, what, what would the experience look like for the listener?
+4600	So the listener would need to have a lightning node as well.
+4603	No, the, the, you'd have to have some type of currency.
+4607	Yeah.
+4608	So you have a, an app and that app will basically
+4611	just have a wallet strapped onto it.
+4613	And there's code for that available already, um,
+4616	which can be done in a web app, Android or iOS.
+4622	And once you have that set up,
+4624	then essentially once you get the value block from the RSS feed
+4629	or from the index, you can immediately start participating in this and, uh,
+4634	your player that you just hit play and it all goes, uh,
+4639	you will have to configure my player to connect to
+4642	that as, to be able to pull as, as an app developer.
+4647	So let's take a pod friend as an example,
+4649	pod friend would function exactly the way it does
+4652	today, um, only there would be an additional
+4656	configuration where you go into your wallet
+4659	so you can receive money, put money in there and then, uh,
+4665	the equivalent of subscribe to
+4667	a podcast and it'll just work.
+4671	If there's no money in your wallet, it'll still work.
+4674	This is a pledge.
+4675	It's not a, it's not a, a pay to play.
+4678	It's actually the opposite.
+4679	It's play to pay.
+4680	So you've got, you've got, um, you know, even, yeah, I mean, even if the,
+4686	uh, podcaster
+4687	does not have a wallet set up, it'll still function as, as regular, but we may,
+4693	or a pod friend who would have an incentive to say, Hey, uh,
+4697	you could be paying this podcaster and
+4700	click here to make that happen.
+4702	Uh, because that app pod friend in this case would
+4705	get a 1% of the value stream for someone
+4708	who's using their app to listen to the podcast.
+4712	Yeah, there's a, there's a thing we've been talking about since the beginning.
+4717	And I'll try to clarify one thing is one of the
+4720	things we've been talking about from the
+4723	beginning is that app developers have been left out of the podcast,
+4727	podcast ecosystem in
+4728	a big way since the beginning.
+4730	And, you know, those guys are, uh, you know, you got hosting companies that,
+4734	that can make
+4735	an, you know, y'all can make enough money to, uh, to, to survive and pay y'all's
+4740	bills, uh, podcasters, uh, may not be me.
+4743	I'm making a fortune, but those guys are making, you know,
+4745	making some good money too.
+4746	But the podcast app developers really are let
+4749	have been left to sell their stuff for in
+4752	app purchases or 99 cents on an app store for years.
+4755	And so like one of the,
+4757	so to clarify the way that that works and the way this gets them
+4762	into the flow of so that they can make a living also is that, um, the,
+4769	um, essentially will
+4772	be the same as they are now, but they become, they become a, a wallet.
+4776	So basically they are a, um,
+4778	they just strap on a Bitcoin wallet to their smart wallet.
+4783	Yeah.
+4784	A lightning, they put a lightning wallet function
+4787	into their app so that now I can transfer some
+4790	Bitcoin over to my podcast app, uh,
+4792	to my podcast app from cat from cash app or PayPal
+4796	or wherever I'm getting my Bitcoin from.
+4798	I send some Bitcoin over to my podcast player.
+4801	And now, um, then now I see that this favorite podcast that I'm listening to,
+4808	uh, supports the value block and it shows, uh, a lightning payment address.
+4813	And I just say, oh yeah, I'll give them, you know, a dollar an hour, uh,
+4817	that I'll listen to it.
+4818	And it just boom, boom, boom.
+4819	It just starts happening in the background.
+4821	So basically the, that's, that's the idea is that podcast players,
+4826	podcast apps become wallets.
+4828	We've been working with, uh, uh, Paul and Evan from Sphinx chat and you'll,
+4833	you'll see Paul show up on a podcast index on social for sure.
+4837	Um, and there, the, the vibe in the Bitcoin
+4841	development community is very analogous to podcasting.
+4846	And I'll sum it up with something Paul said to us.
+4848	He said, there should be no billionaires coming out of this.
+4852	Everybody should be able to make money fair, compete on features,
+4857	compete on price, compete
+4858	on speed, whatever it is.
+4861	Uh, if, if anyone walks out a billionaire because they've siloed something,
+4865	then we, we fucked it up.
+4866	We did something wrong.
+4867	Uh, what I love about it is all the code is made available and it's updated.
+4873	It's fresh.
+4874	Uh, they cannot, um, they cannot single-handedly do this.
+4881	We can't single-handedly do this.
+4882	We've got to drive adoption and, uh,
+4885	getting this value block into the next phase of the namespace.
+4890	Uh, but just developing with it now, uh, at a point where I think we're all,
+4896	we've got a lot of excitement, a lot of momentum where people are now seeing, Hey,
+4901	we've got these great
+4903	features, but you know, if you use my tool, you got tags over here.
+4907	If you use that tool, you got tags over there.
+4910	Now, all of a sudden we have a reason to expand the ecosystem and have, uh,
+4916	these podcaster hubs,
+4917	which will allow for these, um,
+4920	these community features to not only happen in a way that is
+4925	completely anonymous, completely secure, uh, it's cryptographically insured to,
+4931	you know, for trust also provides built-in spam protection because
+4936	you could make things very expensive for
+4940	somebody trying to spam.
+4942	If you're just charging little amounts, you know, that's, that's always, if, if,
+4946	if, uh, email cost you one cent, there would be no spammers anymore.
+4950	So that's kind of built into the protocol.
+4954	Tom, I hear you tapping away on your keyboard.
+4957	Are you sending a message to have me arrested or what are you doing?
+4960	I'm Googling some of this stuff.
+4962	I have not, I've not heard a lot of this.
+4966	So let me, uh, go ahead, Tom, Kevin,
+4970	I was just saying that I was looking at different
+4975	lightning nodes and what it takes to integrate with one.
+4977	Cause as the host side, we would be, we're not a player.
+4980	And so we would be the integration on our side
+4983	would be to make sure that we could provide
+4985	that in the RSS feed so that the money can get routed, uh, appropriately.
+4989	Um, as a, as a hoster.
+4992	Yeah.
+4992	So, uh, hosting a full node for, uh, for receiving, uh, lightning.
+4997	And then there's these, uh, additional bits that, uh,
+5000	Sphinx chat has made available.
+5002	And that's, uh, the chat that's the, they have a meme server for, uh, you know, GIFs
+5008	and, and images, et cetera.
+5010	And, and again, all of this rides on the blockchain
+5013	is really phenomenal because, you know, you can,
+5015	you can join in just with your, with your public key.
+5018	I mean, it is, it is very, very exciting.
+5023	So all of that stuff, all those services are built within the, uh,
+5028	the LND node, which is the lightning node.
+5031	And, you know, there's a, uh, there's a, an obvious cost, uh, um, per month to,
+5040	to host that, uh, which could be something that you guys could provide in that,
+5044	in that manner.
+5046	Um, but I, I think, you know, I'll,
+5048	I'll leave that up to you because obviously any podcaster
+5051	could set up their own node.
+5053	I mean, I have one at home and I could do my own node services, but that's me.
+5057	And I also do my own RSS feed.
+5059	So I'm not your typical guy.
+5063	Yeah.
+5063	I think the, the thing to, uh, light lightning, if you've never,
+5067	if you're only partially for
+5069	me with Bitcoin, then lightning is going to make your head explode.
+5073	I mean, I'll just go ahead and say that.
+5075	I mean, it's not some, it is once somebody can explains it to you,
+5080	it makes perfect sense.
+5082	It's not, it's not magic and it's not a mystery, but it's just,
+5086	it really is a head twister
+5088	when you first sort of get, uh, get familiar with it because it allows, uh,
+5094	Bitcoin, uh, so, well, the problem with Bitcoin now is that the
+5097	transaction time is so long and the fees are so expensive.
+5100	So, I mean, you can take, you know, uh,
+5102	the fees are large if you want something less than
+5105	a six hour confirmation time to send Bitcoin from
+5108	one wallet to another lightning solves that
+5110	by making all the transactions off chain.
+5113	So that the transactions, um,
+5115	get sent in real time and small amounts for no fee or zero or very little fee.
+5121	And then the trend and then those, all those transactions are batched together,
+5126	uh, later
+5127	and then brought back on chain and at one time so that you have, it's a mind,
+5132	it's a, it's a, it's a mind F.
+5135	I mean, it's impossible to explain in words and,
+5138	and honestly for the podcaster and for
+5141	the listener, it shouldn't be difficult.
+5143	All it is, is put money in the top, press play.
+5148	That's it.
+5150	That's it.
+5150	And then enjoy all the features that come along with that.
+5153	Yeah.
+5154	So what we're trying to do is just put the plumbing together for it to make this,
+5158	to make it all flow because the, and, and I say plumbing,
+5162	I mean like the plumbing in the decentralized plumbing
+5166	that goes through all of RSS and that kind of thing, because the, the,
+5170	the way that this will get adoption is when people, uh, begin to have, you know,
+5176	have nodes available to
+5178	them and that kind of thing, which is not hard.
+5180	I mean, I have a node, uh, Adam's running his node, uh, Sphinx,
+5183	the Sphinx chat guys,
+5185	they spin up nodes for you.
+5186	Uh, it's there's, these services are out there, but it is very new.
+5191	And so this is a long-term vision that we have.
+5194	But when I say long-term, I mean, I, I think that this, I'm not, this,
+5199	I'm not talking five years long-term.
+5201	I mean, I'm talking about, you know, six months.
+5203	Well, I mean, this, and this other transactions would take place like that, right?
+5208	Decentralized and yeah.
+5209	Right.
+5210	Well, so, um, and we're going to get you guys, uh, uh,
+5213	access to the app so you can, so you
+5215	can see it in action.
+5217	Uh, we have, uh, we have like two or three podcasts that, uh,
+5221	that we've enabled this way.
+5223	And, you know, the whole process is really, you look at this and you're like,
+5229	this is, this is a whole new podcasting app.
+5232	And my hope has always been that, you know, with these two worlds,
+5237	we have hundreds, if
+5239	not thousands of wallets.
+5241	Everyone's got a wallet and you can use it as a point of sale.
+5245	You know, it's got a little, Oh, I can use it.
+5246	Like I'm charging people money.
+5248	And then, you know, it was like a little credit card thing,
+5252	or you can click on a marketplace.
+5254	So you can go buy server space or some wires or solder, whatever this is.
+5260	It's not a lot of things.
+5262	It's not like an Amazon.
+5264	You can also be a cashier Bitcoin in for gift cards,
+5269	which you can then use on Amazon, but
+5272	wait until these guys see the podcasting opportunity.
+5277	They're going to turn their wallets into podcast apps.
+5280	And I think that we have this interesting,
+5283	I hope to see some cross collaboration too.
+5285	I think we have an interesting mix of podcast
+5289	app developers and wallet developers, and we
+5292	can come together and we can create some kick ass stuff.
+5296	And it doesn't have to be, this is, you know, this,
+5299	another beauty of this thing is it does
+5301	not in any way exclude traditional advertising based funding.
+5304	No.
+5305	I mean, you can continue to have ads and do whatever you want to,
+5308	but then you also drop
+5309	this thing into your feed and that enables a lightning
+5315	aware podcast app apps begin to, to
+5319	send you money on a, on a stream streaming basis.
+5323	And that's an extra source of income that can
+5325	give you protection from possibly being de-platformed.
+5329	Can you guys help me understand the difference between a, like a node and a wallet?
+5335	Yeah.
+5335	The node is the backend, just to make it simple.
+5338	So the wallet holds your keys, has all the logic in it.
+5342	But your wallet is on your phone.
+5344	Typically it's not going to be online 24 seven.
+5347	So you need what they call a watchtower.
+5350	So there's a little process running in, uh,
+5352	on the server that is making sure you're receiving,
+5355	you know, whatever, whatever needs to be done so that when you reconnect your,
+5359	your wallet, uh, you can then, um, uh, see how much money you've received,
+5364	but you can also make payments
+5366	and do other things.
+5367	Uh, so the note is, am I saying that right, Dave?
+5370	The note is basically you're, you're always on presence.
+5374	Yeah.
+5375	The, yeah, the note is, is what is communicating.
+5378	The lightning note is what's communicating with
+5380	the Bitcoin client at all times in order to
+5382	manage, uh, connections between the lightning
+5385	network and the Bitcoin network and open and
+5388	close channels and do all this kind of stuff.
+5390	And the wallet is just sort of, it's almost a virtual construct on top of that,
+5395	just so that
+5395	you can see your money and trend and make transactions and that kind of thing.
+5400	And, and, and use the node for chat and other things.
+5404	Yeah.
+5404	Yeah.
+5405	The, the lightning L and D is the main, is the main implementation.
+5409	Uh, there's, there's a couple of others see lightning,
+5412	but I think L and D may be the
+5413	only one that supports key center right now.
+5415	Uh, does everybody who wants to be able to send
+5418	currency through lightning need their own
+5422	node or can you share nodes?
+5423	No, there's actually, um, there's a lot of, uh,
+5428	node providers or as they call lightning
+5432	service providers and breeze B R E E Z E seems to be leading the pack right now.
+5439	And they have a code on GitHub and they have pretty
+5444	much a full lightning node running on
+5447	the wallet and I believe they have a watchtower
+5450	in the background that they provide to people.
+5452	So they have, you know, it's kind of like a split service,
+5455	but you hold your keys in your wallet.
+5458	Um, and they have enabled key send payments from that.
+5463	So you really only need,
+5465	you really just need whatever infrastructure they're providing,
+5468	um, to, to send your, your payments to any receiving node.
+5475	The receiving node really needs to be on all the time with your breeze wallet.
+5479	You reconnect, it's re-syncing, it re-syncs real fast.
+5482	It's, it's a, a neutrino, um, uh, wallet.
+5487	So it's, it, as Dave was explaining, it, it, it,
+5489	it grabs a much smaller slice of the blockchain
+5491	to make sure it has payment confirmation.
+5494	Um, but it can't receive, uh, can't do key send receive unless it's online.
+5500	So that's just basically not functional.
+5502	So in order to receive, you need the, the node, the full node to send,
+5506	it can be just
+5507	a, a temporary client that has enough knowledge to, to make those payments,
+5511	uh, when connected.
+5514	Yeah.
+5515	It's an interesting, like, you know,
+5517	what we've been working with the Sphinx guys with, uh,
+5520	they, they, they, they provide nodes and they also provide,
+5523	and they also had the Sphinx app.
+5525	And so we, it was, it was a good combination because
+5528	they could provide both in order for
+5530	us to do this, like proof of concept.
+5532	Uh, let's see if this thing even works type of deal.
+5535	And, uh, cause they had an app that they,
+5537	they essentially turned their Sphinx, excuse
+5540	me, their lightning wallet app into a podcast app in the course of about a month.
+5547	Um, and so that, that kind of tells you what, what that entails.
+5551	I mean, it tells you what kind of how I'm not,
+5554	I don't want to use the word simple because
+5556	it is not simple, but what I'm trying to say is like,
+5559	it tells you that it's not, there's
+5561	a good integration there that exists already.
+5563	Uh, now the, the node hosting is, uh, something that it's just going to be,
+5569	it's going to be a learning curve.
+5571	And I think the Sphinx guys will be happy to lend, uh, Derek.
+5575	Yeah.
+5576	Paul, Paul is going to be on, uh, on the Mastodon server as much as he can.
+5580	And, uh, you know, we'll have pointers and all
+5583	kinds of stuff for anybody who's interested.
+5586	Um, Evan is one of their developers.
+5588	I may, I don't know if he'll have time, but he'll certainly be available.
+5591	And what we'd like to do is right after we're done here, Kevin and Tom,
+5594	Tom, we'd like to get you, uh, uh, suited up on the app and, and, uh,
+5599	walk through it with us.
+5601	So you have a little better idea and, uh,
+5603	then you can explain to the next guy how it works.
+5607	Yeah.
+5608	So, I mean, I think I have my head wrapped around the vision,
+5611	the implementation part
+5612	is still a little fuzzy, but I'll get clear, but the vision, right?
+5617	Like I should be able to open up my podcast app player of choice.
+5621	So let's say it's, it's pod friend and I've got this digital currency,
+5625	lightning, something or other.
+5627	It's basically Bitcoin.
+5629	Okay.
+5629	And I say, Hey, I want to pay $10 a month to my favorite podcasters, right?
+5633	So the first of every month, go ahead and drop 10 bucks in my, my pod friend wallet.
+5637	And configure pod friend that says, Hey, for the first,
+5640	I got $10 a month coming in here.
+5642	So, and I want to do a dollar a minute for the
+5643	first 600 minutes of podcasts I listened
+5645	to in pod friend every month, dish that out to my favorite podcast.
+5648	And that's it.
+5649	Exactly.
+5649	That's it.
+5650	And then while you're doing that, you're,
+5652	you're supporting everybody all the way down
+5655	the chain that you're supporting the app you're using pod friend,
+5657	you're supporting the index
+5659	and, uh, anything else that the podcaster, uh, and this is kind of as a podcaster,
+5666	I really like this feature that automatically half of it
+5669	can go to my co-host and it goes straight
+5672	to my co-host wallet.
+5673	You know, we don't have to have any conversation about it after that, uh,
+5677	10% can go to my investors who, who supported me and getting my gear, et cetera.
+5681	And that is, is all control.
+5683	That's all completely transparent, uh, in two ways.
+5688	One is you don't, you don't see it happening,
+5690	but you do get all the receipts for it.
+5693	Uh, but you can see it just, it all goes in one fell swoop all the way.
+5697	And that it's amazing.
+5699	We have, we have that part actually working.
+5702	It's like also transparent, right?
+5704	If I'm understanding is because you could always view the source of the RSS feed and
+5708	there's that value right there telling you how it's being distributed.
+5713	That's exactly right.
+5713	And that's why we, we put, uh, uh, if you, if you go through the index to get,
+5721	um, when we start exposing the value block, uh, stuff that we aggregate,
+5725	if we expose it through
+5727	the API, we'll have our split in there at 1%.
+5730	Uh, and that's, uh, for, you know, for the same thing, transparency,
+5734	we're just asking for a, essentially a donation.
+5738	And that would be something that, uh, you know, that a hoster could do.
+5741	You could say, well, here's, you know, here's your feed.
+5743	You're producing the feed and then you have a node.
+5747	Buzzsprout has a, has a lightning node that's sitting there and you say, okay,
+5751	well, you know, you can, uh, here's your,
+5754	we produce your feed and we're going to add our 1% to your value block.
+5757	And so we get a, we get a piece of, of a 1% of that as well.
+5762	And, uh, maybe, you know, it can, it's a sliding scale.
+5767	I mean, there's a market for it.
+5768	So who knows what those prices are supposed to be right now, but the other,
+5771	the other thing, um, but it's like you said, yes, it's all transparent.
+5775	It's right there in the XML feed.
+5776	You can just see, you can see it all.
+5777	You see where the money's going.
+5780	The, the other thing though, this not to complicate things, but it's a little,
+5786	um, you
+5786	thinking, thinking beyond the digital currency part of it is that in the, one of the
+5792	reasons why Adam had the idea of doing it on a minute by minute basis,
+5796	instead of just as, as lump sums is because this gives you insight
+5801	into what's happening during the playing
+5804	of your app, excuse me, playing of your, of your episode.
+5807	I mean, if, if all of a sudden you start,
+5810	you start seeing payments drop off at a certain
+5813	point in your episode, and of course it's Bitcoin.
+5816	So it's all anonymous, anonymous anyway, there's no user exposure, but I mean,
+5820	it can give you
+5821	insight into, well, maybe that's not a very good part of your episode.
+5825	So like, or if, if people begin to give you boost payments, you know,
+5828	they're like, Oh, bing, bing, bing, you know, this, this was great.
+5832	Well, maybe you want to, that informs you in a different way.
+5834	Oh, well that they like that segment.
+5836	So, I mean, it has more than just a, a, a funding function.
+5841	It's also a very valuable information tool when you're having, uh,
+5846	sequenced payments coming
+5848	in on a minute by minute basis.
+5850	And, and I'll, I will mention that in all this testing and we've had the,
+5855	the money at a very low level.
+5857	So I'm getting, you know, what is a one Satoshi is one, one hundredth of a penny.
+5862	I think, um, just to see that streaming in,
+5865	I'm looking at this log and like in an app
+5869	on my phone, like, Oh, boom, boom, boom.
+5871	And so I know that someone's listening now,
+5873	of course it's either Dave or Evan or Paul and
+5876	they're developing and they're testing, but it's exciting.
+5878	It doesn't matter how, how much it is like, Oh my God.
+5881	So I can actually see listeners coming in.
+5884	It's, it's, it's an incredible experience.
+5886	Yeah.
+5887	And you're not having to rely on,
+5888	I be certified download stats and all this kind of stuff.
+5891	None of that first impressions.
+5898	That's a mind bender, man.
+5903	I may have said that once or twice myself.
+5907	Yeah.
+5907	Yeah.
+5908	It took me quite a while to that's, I've been,
+5910	I've been harping on this for a while.
+5911	I say digital money and I don't care if it's Bitcoin
+5914	or a fed now digital dollar or a digital
+5917	Euro, you got to think differently about it.
+5919	And you can, especially this.
+5922	Yeah.
+5922	Go ahead.
+5924	There's no, I mean, there has to be a way, right.
+5928	For an open ecosystem, like a, what am I calling like a,
+5932	like a protocol instead of a platform
+5934	being able to distribute money because we want to be able to support our podcasters.
+5940	I'm, I'm happy to give, you know, Netflix my $12 a month, but how do I give my,
+5944	you know, 10 or 15 favorite podcasters?
+5946	Well, this, this is the example that I like the
+5949	most because what we're seeing now after
+5951	everyone being home a lot for Corona, uh, Ms.
+5955	Rona paying her visit is, you know, you're
+5958	paying, uh, you know, 15 bucks for Netflix, uh, 15 bucks for Hulu.
+5964	You got your Amazon purchases.
+5965	And of course you really only use a few from each of these silos.
+5970	Whereas the way we look at it is you,
+5972	you determine what you want to listen to and you route right
+5976	around or right through those silos, however, people are, uh,
+5980	and whatever app people are
+5981	listening in and you determine where your money goes.
+5984	There should be no reason.
+5985	And by the way, Spotify can easily put this into
+5988	the system if they're interested in it easily.
+5991	I said, hold for laughter.
+6001	I don't know.
+6003	No, but I mean, I'm just saying that it's, it's that open.
+6008	Oh yeah.
+6008	I mean, we would all love that.
+6010	Right.
+6010	I don't know that.
+6013	I don't know.
+6014	I feel very optimistic.
+6017	Well, I think the bottom line is it doesn't matter.
+6019	You know, I'm, I'm, I'm not making money off of Spotify.
+6022	Um, it comes directly from the producers who produce the show.
+6026	Um, people figured out Patreon.
+6028	So I, I really don't have any doubt that if people like the concept, which is,
+6035	uh, pledging,
+6037	here's what I'm going to pay for my listening.
+6039	And instead of, uh, a hundred dollars at the end of the month,
+6043	if we let the silos grow, I'll
+6045	have $30 at the end of the month.
+6046	And that's what I spend on my podcast.
+6048	And oh, by the way, if I run out, I can just feel bad about it and not care,
+6054	um, or I can top it up.
+6055	It doesn't matter.
+6056	It won't stop your listening experience.
+6058	Yeah.
+6060	There's a, here's the thing is that Spotify and, and Apple podcasts,
+6064	these are not great podcasting apps anyway.
+6067	No, they're not.
+6068	The reality is, is once you become a podcast fan,
+6070	you're probably going to find something else.
+6072	Yeah.
+6073	Right.
+6073	Yeah.
+6073	And especially if you get podcasters who start talking about this, like, Hey,
+6078	this show isn't free from me to produce.
+6080	There's this way that you can support me and other podcasts you love,
+6083	and it's available in these apps and they're excellent apps.
+6086	So if you're discovering this show here or here that doesn't support that,
+6089	I would encourage you to check this out.
+6090	Like if we can start getting that message out, uh, yeah,
+6093	you absolutely don't need a Spotify
+6096	to adopt something like this because again, podcast,
+6098	podcast fans will find dedicated apps.
+6101	Well, I, I can't wait to start pushing this on my shows because I,
+6105	I think people will give it a shot.
+6107	And again, we only need 1%.
+6109	You get 1%, then all of a sudden we've got the
+6112	pump is primed and stuff is moving through
+6114	and who knows who will come in with another idea.
+6117	I mean, this is the beauty of it.
+6118	We don't have all the answers.
+6119	Uh, we spent an inordinate amount of time trying to get a demo together.
+6124	Cause I know if anyone,
+6125	anyone listening to this is probably scratching their head, like
+6128	how the, what the, huh?
+6129	So I'm going to post this PDF on podcast index.social.
+6134	And so, uh, when we put the show up so people can see that,
+6138	and if you guys can hang on,
+6140	uh, then we'd like to guide you through, uh,
+6142	get you up and running so you can take a look at this in action.
+6145	How does that sound?
+6146	Sounds great.
+6147	Yeah.
+6148	All right.
+6149	Uh, Tom, Kevin, the buzzsprouters.
+6153	Thank you so much for being with us on, uh, this, uh,
+6156	seminal episode of podcasting 2.0 episode
+6159	number 10, Dave, thank you for coming from your deathbed and your airlock.
+6163	I know that you've, how long will you be continued
+6166	to be quarantined there another week or so?
+6170	I'm going to be locked in my bedroom for an additional five days.
+6172	So I'm going to, uh, that's what I was telling Adam earlier, my, my, the root,
+6177	my family's on one side of the house, there's a hallway and then I'm on,
+6181	I'm in my bedroom on the other side of the house.
+6184	So there's like this, it's like this air, the space airlock between us,
+6187	you know, it's like my wife would drop like lunch into the hallway
+6191	and shut the door and it's like, you
+6194	know, just, well, could not be a better time to
+6198	start exposing people to something when you've
+6201	got lots of time on your hands, Dave,
+6203	like you can just sit at home on your deathbed and
+6205	watch along as it all starts to unfold.
+6207	Yeah.
+6207	Watching.
+6208	That's what I'm good at right now.
+6209	All right, everybody, I'm sure we'll have a lot more to talk about next week.
+6213	Uh, again, thanks to Tom and Kevin from Buzzsprout.
+6216	Check them out at buzzsprout.com.
+6218	Podcasting 2.0 will return next Friday and we'll
+6220	see if we can push this thing to yet another level.
+6224	See you then, everybody.
+6225	Take care.
