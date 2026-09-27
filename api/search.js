@@ -1,5 +1,5 @@
 /**
- * GET /api/search/?q=<query>[&e=<episode>]
+ * GET /api/search/?q=<query>[&e=<episode>][&from=<row>]
  *
  * The transcript search. The whole site is static except this: the text is
  * 27 MB, so it is searched here and only the matching rows go to the browser.
@@ -56,6 +56,10 @@ export async function GET(request) {
   const rawEpisode = params.get('e');
   const episode = rawEpisode === null || rawEpisode === '' ? null : Number(rawEpisode);
   if (episode !== null && !Number.isInteger(episode)) return json({ error: 'bad-episode' }, 400, true);
+  // The row a later page starts at. Each page is its own address, so the CDN caches it too.
+  const rawFrom = params.get('from');
+  const from = rawFrom === null || rawFrom === '' ? 0 : Number(rawFrom);
+  if (!Number.isInteger(from) || from < 0) return json({ error: 'bad-from' }, 400, true);
 
   let loaded;
   try {
@@ -65,7 +69,7 @@ export async function GET(request) {
     return json({ error: 'unavailable' }, 503, false);
   }
 
-  const result = searchTranscripts(loaded.index, params.get('q') ?? '', { episode });
+  const result = searchTranscripts(loaded.index, params.get('q') ?? '', { episode, from });
   if (result.error) return json(result, 400, true);
 
   // Titles, dates and audio links for the episodes that matched — the page needs

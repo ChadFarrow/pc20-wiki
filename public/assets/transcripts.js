@@ -5,10 +5,12 @@
  * 27 MB. Each query goes to /api/search/ (api/search.js) and comes back as rows
  * — a timestamp, the cue with its neighbours, and where the query sits in it.
  *
- * Three things keep the load on that function small:
+ * Four things keep the load on that function small:
  *   - a query runs after typing pauses, not on every key;
  *   - it needs three letters or digits, the same floor the function enforces;
- *   - a newer query aborts the one in flight.
+ *   - a newer query aborts the one in flight;
+ *   - the first answer is the newest 100 rows, and the rest come 500 at a time
+ *     (`&from=`) only when the reader presses "Show more" at the end of the list.
  *
  * Every piece of caption text goes into the page through textContent. It is the
  * show's words, not markup, and it contains `<`, `&` and quotes.
@@ -28,12 +30,17 @@
   if (!form || !input || !status || !list) return;
 
   const QUERY_MIN = 3; // TRANSCRIPT_QUERY_MIN in scripts/transcripts-lib.mjs
+  const MORE = 500; // TRANSCRIPT_MORE_CAP in scripts/transcripts-lib.mjs
   const DEBOUNCE_MS = 400;
   const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
   let timer = null;
   let inflight = null;
+  let paging = null;
   let shown = '';
+  // The query on the page and how far down it the list has got, so a later page
+  // adds to the list instead of redrawing it. Null when nothing is listed.
+  let view = null;
 
   const squash = (text) => text.toLowerCase().replace(/[^a-z0-9]/g, '');
 
@@ -79,6 +86,7 @@
   }
 
   function clear() {
+    view = null;
     list.replaceChildren();
   }
 
@@ -94,18 +102,29 @@
   function render(data, episode) {
     clear();
     const counts = data.episodes ?? {};
-    const episodeCount = Object.keys(counts).length;
 
     if (!data.total) {
       say(`No matches for “${data.query}”.`);
       return;
     }
 
+    view = {
+      query: data.query,
+      episode,
+      counts,
+      facts: {},
+      total: data.total,
+      // Every row this query can page through: the archive, or one episode.
+      scope: episode == null ? data.total : (counts[episode] ?? 0),
+      rows: 0,
+      groups: new Map(),
+      tail: null,
+    };
+
+    append(data);
+
     if (episode == null) {
-      say(
-        `${plural(data.total, 'match', 'matches')} in ${plural(episodeCount, 'episode', 'episodes')}` +
-          (data.truncated ? ` — showing the newest ${data.results.length}.` : '.'),
-      );
+      tell();
     } else {
       const back = el('button', 'tsearch__back', 'Back to all episodes');
       back.type = 'button';
@@ -113,60 +132,146 @@
       status.textContent = `${plural(counts[episode] ?? 0, 'match', 'matches')} in E${episode}. `;
       status.append(back);
     }
+  }
 
-    // Rows arrive newest episode first, then by time, so a group is a run of
-    // consecutive rows with the same episode.
-    let group = null;
-    let groupEpisode = null;
+  function tell() {
+    const { total, counts, rows, scope } = view;
+    say(
+      `${plural(total, 'match', 'matches')} in ${plural(Object.keys(counts).length, 'episode', 'episodes')}` +
+        (rows < scope ? ` — showing the newest ${rows.toLocaleString('en')}.` : '.'),
+    );
+  }
+
+  /**
+   * Add one page of rows to the list.
+   *
+   * Rows arrive newest episode first, then by time, so an episode is a run of
+   * consecutive rows — but a page can end partway through one, and the next page
+   * then continues that episode's group rather than starting a second heading.
+   */
+  function append(data) {
+    Object.assign(view.facts, data.facts);
+    const { counts, facts, groups } = view;
+    const touched = new Set();
+    let first = null;
+
     for (const row of data.results) {
-      if (row.e !== groupEpisode) {
-        groupEpisode = row.e;
-        const facts = data.facts?.[row.e];
+      let group = groups.get(row.e);
+      if (!group) {
+        const fact = facts[row.e];
         const item = el('li', 'tsearch__episode');
         const head = el('p', 'tsearch__ep');
         head.append(
           el('strong', null, `E${row.e}`),
-          facts?.t ? ` · ${facts.t}` : '',
-          facts?.d ? ` · ${shortDate(facts.d)}` : '',
+          fact?.t ? ` · ${fact.t}` : '',
+          fact?.d ? ` · ${shortDate(fact.d)}` : '',
           el('span', 'tsearch__count', ` · ${plural(counts[row.e] ?? 0, 'match', 'matches')}`),
         );
-        item.append(head);
-        group = el('ol', 'tsearch__moments');
-        item.append(group);
-        list.append(item);
-
-        // The default view is capped, so an episode can have more than it shows.
-        const onPage = data.results.filter((r) => r.e === row.e).length;
-        if (episode == null && (counts[row.e] ?? 0) > onPage) {
-          const more = el('button', 'tsearch__more', `Show all ${counts[row.e]} in E${row.e}`);
-          more.type = 'button';
-          more.addEventListener('click', () => run(input.value, row.e));
-          item.append(more);
-        }
+        group = { item, moments: el('ol', 'tsearch__moments'), rows: 0, more: null };
+        item.append(head, group.moments);
+        list.insertBefore(item, view.tail?.item ?? null);
+        groups.set(row.e, group);
       }
 
-      const facts = data.facts?.[row.e];
+      const fact = facts[row.e];
       const li = el('li');
-      const time = facts?.a ? el('a', 'tsearch__at', stamp(row.t)) : el('span', 'tsearch__at', stamp(row.t));
-      if (facts?.a) {
-        time.href = `${facts.a}#t=${row.t}`;
+      const time = fact?.a ? el('a', 'tsearch__at', stamp(row.t)) : el('span', 'tsearch__at', stamp(row.t));
+      if (fact?.a) {
+        time.href = `${fact.a}#t=${row.t}`;
         time.setAttribute('aria-label', `Play E${row.e} from ${stamp(row.t)}`);
-        time.dataset.src = facts.a;
+        time.dataset.src = fact.a;
         time.dataset.t = String(row.t);
-        time.dataset.label = `E${row.e}${facts.t ? ` · ${facts.t}` : ''} · ${stamp(row.t)}`;
+        time.dataset.label = `E${row.e}${fact.t ? ` · ${fact.t}` : ''} · ${stamp(row.t)}`;
       }
       li.append(time, marked(row.x, row.ranges ?? []));
-      group.append(li);
+      group.moments.append(li);
+      group.rows++;
+      view.rows++;
+      touched.add(row.e);
+      first ??= li;
     }
 
-    if (episode == null && data.truncated) {
-      list.append(
-        el(
-          'li',
-          'tsearch__cap',
-          `Only the newest ${data.results.length} are listed. Add a word to narrow the search, or open one episode above.`,
-        ),
-      );
+    // An episode the list shows only part of offers the rest on its own; the
+    // offer goes once a later page has filled it in.
+    for (const e of touched) {
+      const group = groups.get(e);
+      const whole = group.rows >= (counts[e] ?? 0);
+      if (view.episode == null && !whole && !group.more) {
+        group.more = el('button', 'tsearch__more', `Show all ${counts[e]} in E${e}`);
+        group.more.type = 'button';
+        group.more.addEventListener('click', () => run(input.value, e));
+        group.item.append(group.more);
+      } else if (whole && group.more) {
+        group.more.remove();
+        group.more = null;
+      }
+    }
+
+    // `truncated` is the server's word on whether more remain; an empty page
+    // must not leave a button that asks for the same empty page again.
+    if (data.truncated && data.results.length > 0) {
+      offer(view.scope - view.rows);
+    } else if (view.tail) {
+      const focused = view.tail.item.contains(document.activeElement);
+      view.tail.item.remove();
+      view.tail = null;
+      // The button a keyboard reader pressed is gone; carry them to what it loaded.
+      if (focused) first?.querySelector('a')?.focus();
+    }
+  }
+
+  /** The end of a list that has more: a button for the next page, and how many are left. */
+  function offer(left) {
+    if (!view.tail) {
+      const item = el('li', 'tsearch__cap');
+      const button = el('button', 'tsearch__next');
+      button.type = 'button';
+      button.addEventListener('click', () => more());
+      const note = el('span', 'tsearch__left');
+      item.append(button, note);
+      list.append(item);
+      view.tail = { item, button, note };
+    }
+    const count = Math.max(0, left);
+    view.tail.button.textContent = count <= MORE ? `Show the other ${count.toLocaleString('en')}` : `Show ${MORE} more`;
+    view.tail.note.textContent =
+      count <= MORE
+        ? ''
+        : `${count.toLocaleString('en')} not shown yet. ` +
+          (view.episode == null ? 'Add a word to narrow the search, or open one episode above.' : 'Add a word to narrow the search.');
+  }
+
+  /** The next page of the query on the page, added below what is there. */
+  async function more() {
+    if (!view?.tail) return;
+    const current = view;
+    const { button, note } = current.tail;
+    if (paging) paging.abort();
+    paging = new AbortController();
+
+    const params = new URLSearchParams({ q: current.query });
+    if (current.episode != null) params.set('e', String(current.episode));
+    params.set('from', String(current.rows));
+    button.disabled = true;
+    button.textContent = 'Loading…';
+    note.textContent = '';
+    list.setAttribute('aria-busy', 'true');
+
+    try {
+      const response = await fetch(`/api/search/?${params}`, { signal: paging.signal });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || response.status);
+      // A newer query replaced the list while this page was on its way.
+      if (view !== current) return;
+      append(data);
+      if (current.episode == null) tell();
+    } catch (err) {
+      if (view !== current || !current.tail) return;
+      offer(current.scope - current.rows);
+      if (err.name !== 'AbortError') current.tail.note.textContent = 'Could not load more. Try again.';
+    } finally {
+      button.disabled = false;
+      list.removeAttribute('aria-busy');
     }
   }
 
@@ -259,6 +364,8 @@
     if (key === shown) return;
 
     inflight = new AbortController();
+    // A page still loading for the old query would only be thrown away.
+    if (paging) paging.abort();
     const params = new URLSearchParams({ q: query });
     if (episode != null) params.set('e', String(episode));
     say('Searching…');

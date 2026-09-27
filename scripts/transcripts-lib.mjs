@@ -33,11 +33,17 @@ export const TRANSCRIPT_QUERY_MIN = 3;
 /** Raw characters kept from a query. Anything longer is cut, not refused. */
 export const TRANSCRIPT_QUERY_MAX = 100;
 
-/** Rows returned by default. "the" matches 282,000 cues; nobody reads past a hundred. */
+/**
+ * Rows in the first answer. "the" matches 130,000 cues — 26 MB as JSON — so the
+ * rest come a page at a time, when a reader asks for them.
+ */
 export const TRANSCRIPT_RESULT_CAP = 100;
 
 /** Rows returned when the query is narrowed to one episode. */
 export const TRANSCRIPT_EPISODE_RESULT_CAP = 500;
+
+/** Rows in each later page — what the page's "Show more" asks for with `from`. */
+export const TRANSCRIPT_MORE_CAP = 500;
 
 /** 7 → `007.txt`. Padded so a directory listing and a git diff sort by episode. */
 export function corpusName(episode) {
@@ -230,8 +236,12 @@ function snippet(index, i, query, sq) {
  *
  * Rows run newest episode first, then by time: the newest end is what no
  * curated source reaches, and the same order the mentions use.
+ *
+ * `from` skips that many rows of the same order, so pages laid end to end hold
+ * every match once. A later page is TRANSCRIPT_MORE_CAP rows; `truncated` says
+ * whether any remain after this one.
  */
-export function searchTranscripts(index, rawQuery, { episode = null, limit = null } = {}) {
+export function searchTranscripts(index, rawQuery, { episode = null, from = 0, limit = null } = {}) {
   const query = String(rawQuery ?? '').trim().slice(0, TRANSCRIPT_QUERY_MAX);
   const sq = squash(query);
   const empty = { query, total: 0, episodes: {}, results: [], truncated: false };
@@ -242,15 +252,16 @@ export function searchTranscripts(index, rawQuery, { episode = null, limit = nul
   const episodes = {};
   for (const i of cues) episodes[index.episode[i]] = (episodes[index.episode[i]] ?? 0) + 1;
 
-  const cap = limit ?? (episode == null ? TRANSCRIPT_RESULT_CAP : TRANSCRIPT_EPISODE_RESULT_CAP);
+  const cap =
+    limit ?? (from > 0 ? TRANSCRIPT_MORE_CAP : episode == null ? TRANSCRIPT_RESULT_CAP : TRANSCRIPT_EPISODE_RESULT_CAP);
   const scoped = episode == null ? cues : cues.filter((i) => index.episode[i] === episode);
   scoped.sort((a, b) => index.episode[b] - index.episode[a] || a - b);
 
-  const results = scoped.slice(0, cap).map((i) => ({
+  const results = scoped.slice(from, from + cap).map((i) => ({
     e: index.episode[i],
     t: index.seconds[i],
     ...snippet(index, i, query, sq),
   }));
 
-  return { query, total: cues.length, episodes, results, truncated: scoped.length > cap };
+  return { query, total: cues.length, episodes, results, truncated: scoped.length > from + cap };
 }

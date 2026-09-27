@@ -30,7 +30,7 @@ The site is four things layered:
 ```sh
 npm run build            # compile content/ → public/. This is what deploys.
 npm run build:strict     # warnings fatal (same as lint:notes)
-npm test                 # node --test — 260 tests, ~5s
+npm test                 # node --test — 267 tests, ~5s
 npm run serve            # http://127.0.0.1:8088
 npm run check:browser    # headless Chrome against the built site
 npm run sync             # mirror the vault into content/ (needs the vault)
@@ -92,7 +92,7 @@ goes stale silently unless something warns (see *Staleness*).
 | `scripts/transcripts-lib.mjs` | the transcript search: corpus format, index, matching, snippets |
 | `scripts/update-transcripts.mjs` | CLI: `captions/` → `data/transcripts/` |
 | `api/search.js` | the Vercel function — loads the corpus once, answers `GET /api/search/?q=&e=` |
-| `public/assets/transcripts.js` | the `/transcripts/` page: debounced queries, grouped rows, `?q=` in the address |
+| `public/assets/transcripts.js` | the `/transcripts/` page: debounced queries, grouped rows, show-more paging, `?q=` in the address |
 | `scripts/browser-check.mjs` | drives the real built site over CDP |
 
 `*-lib.mjs` files are pure functions over strings and plain objects — no filesystem — so
@@ -387,10 +387,19 @@ shorter queries match whole words over the cue text, so `tor` does not find "sto
 match that runs from one episode's last cue into the next episode's first is dropped.
 
 **Limits that keep the load bounded:** a query needs 3 squashed characters and is cut to
-100; the default answer is the newest 100 rows (500 inside one episode), with a count for
+100; the first answer is the newest 100 rows (500 inside one episode), with a count for
 every episode so the page can say "802 matches in 156 episodes" and offer each; the page
 waits 400 ms after typing and aborts a query that a newer one replaced; responses carry
 `s-maxage=86400`. `episodes` counts every hit regardless of the cap and the episode filter.
+
+**Every match is reachable, a page at a time.** `from=<row>` skips that many rows of the
+same order and returns the next `TRANSCRIPT_MORE_CAP` (500); `truncated` says whether more
+remain. The page's `.tsearch__next` button at the end of the list asks for them and appends —
+a page can end partway through an episode, so `append()` continues that episode's group
+rather than opening a second heading, and drops an episode's "Show all" once it is complete.
+Loading everything at once was the rejected design: "the" is 130,323 rows, 26 MB of JSON.
+The button is `tsearch__next`, not `tsearch__more`, because `browser-check` clicks the first
+`.tsearch__more` and expects a per-episode button.
 
 **The corpus.** `data/transcripts/NNN.txt`, `seconds<TAB>text` per cue, plus `index.json`
 (episode facts, stubs, duplicates, and `unpublished` — episodes with no caption file at

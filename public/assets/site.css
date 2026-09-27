@@ -1245,6 +1245,7 @@ pre code {
 .tsearch__input:focus,
 .tsearch__go:focus-visible,
 .tsearch__more:focus-visible,
+.tsearch__next:focus-visible,
 .tsearch__back:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 1px;
@@ -1350,6 +1351,7 @@ pre code {
 }
 
 .tsearch__more,
+.tsearch__next,
 .tsearch__back {
   min-height: 28px;
   font-family: 'IBM Plex Mono', monospace;
@@ -1369,6 +1371,7 @@ pre code {
 }
 
 .tsearch__more:hover,
+.tsearch__next:hover,
 .tsearch__back:hover {
   border-color: var(--accent);
 }
@@ -1377,6 +1380,16 @@ pre code {
   margin-top: 1rem;
   font-size: 0.9rem;
   color: var(--ink-faint);
+}
+
+.tsearch__next:disabled {
+  cursor: progress;
+  opacity: 0.6;
+}
+
+.tsearch__left:not(:empty) {
+  display: block;
+  margin-top: 0.5rem;
 }
 
 .transcripts__source {

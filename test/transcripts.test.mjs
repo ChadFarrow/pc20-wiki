@@ -12,6 +12,7 @@ import {
   TRANSCRIPT_QUERY_MIN,
   TRANSCRIPT_QUERY_MAX,
   TRANSCRIPT_RESULT_CAP,
+  TRANSCRIPT_MORE_CAP,
 } from '../scripts/transcripts-lib.mjs';
 
 const cues = (...lines) => lines.map(([seconds, text]) => ({ seconds, text }));
@@ -127,6 +128,55 @@ test('the default cap bounds the rows returned', () => {
   const result = searchTranscripts(many, 'boost');
   assert.equal(result.results.length, TRANSCRIPT_RESULT_CAP);
   assert.equal(result.total, TRANSCRIPT_RESULT_CAP + 20);
+});
+
+test('a later page starts where the first one ended', () => {
+  const many = buildIndex([
+    { episode: 1, cues: Array.from({ length: TRANSCRIPT_RESULT_CAP + 20 }, (_, i) => ({ seconds: i, text: 'boost' })) },
+  ]);
+  const result = searchTranscripts(many, 'boost', { from: TRANSCRIPT_RESULT_CAP });
+  assert.equal(result.results.length, 20);
+  assert.equal(result.results[0].t, TRANSCRIPT_RESULT_CAP);
+  assert.equal(result.truncated, false);
+  // The counts still describe every hit, not the page.
+  assert.equal(result.total, TRANSCRIPT_RESULT_CAP + 20);
+});
+
+test('a later page is TRANSCRIPT_MORE_CAP rows, and says when more remain', () => {
+  const length = TRANSCRIPT_RESULT_CAP + TRANSCRIPT_MORE_CAP + 5;
+  const many = buildIndex([
+    { episode: 1, cues: Array.from({ length }, (_, i) => ({ seconds: i, text: 'boost' })) },
+  ]);
+  const second = searchTranscripts(many, 'boost', { from: TRANSCRIPT_RESULT_CAP });
+  assert.equal(second.results.length, TRANSCRIPT_MORE_CAP);
+  assert.equal(second.truncated, true);
+  const third = searchTranscripts(many, 'boost', { from: TRANSCRIPT_RESULT_CAP + TRANSCRIPT_MORE_CAP });
+  assert.equal(third.results.length, 5);
+  assert.equal(third.truncated, false);
+});
+
+test('pages laid end to end hold every row once, in order', () => {
+  const whole = hit(searchTranscripts(index, 'podping', { limit: Infinity }));
+  const paged = [];
+  for (let from = 0; ; ) {
+    const page = searchTranscripts(index, 'podping', { from, limit: 1 });
+    paged.push(...hit(page));
+    from += page.results.length;
+    if (!page.truncated) break;
+  }
+  assert.deepEqual(paged, whole);
+  assert.deepEqual(whole, ['203@5', '203@9', '35@10']);
+});
+
+test('a page past the end is empty and not truncated', () => {
+  const result = searchTranscripts(index, 'podping', { from: 50 });
+  assert.deepEqual(result.results, []);
+  assert.equal(result.truncated, false);
+  assert.equal(result.total, 3);
+});
+
+test('a later page inside one episode stays in that episode', () => {
+  assert.deepEqual(hit(searchTranscripts(index, 'podping', { episode: 203, from: 1 })), ['203@9']);
 });
 
 test('an episode filter returns only that episode', () => {

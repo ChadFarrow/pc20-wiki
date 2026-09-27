@@ -415,6 +415,10 @@ async function main() {
     const groups = await evaluate('document.querySelectorAll(".tsearch__episode").length');
     check('the transcript search returns episodes', groups > 0, `${groups} episodes shown`);
     check('the status counts every match, not just the rows shown', /^[\d,]+ matches in [\d,]+ episodes/.test(await status()), await status());
+    // "showing the newest 0" once passed the check above.
+    const showing = Number(((await status()).match(/showing the newest ([\d,]+)/)?.[1] ?? '').replace(/,/g, ''));
+    const onPage = await evaluate('document.querySelectorAll(".tsearch__moments > li").length');
+    check('the status names the rows the page shows', showing === onPage, `says ${showing}, shows ${onPage}`);
     const at = await evaluate('document.querySelector(".tsearch__at")?.getAttribute("href")');
     check('a transcript result opens the audio at its moment', /^https:\/\/.+\.mp3#t=\d+$/.test(at ?? ''), at);
     const marks = await evaluate('[...document.querySelectorAll(".tsearch__text mark")].map((m) => m.textContent.toLowerCase().replace(/[^a-z0-9]/g, ""))');
@@ -461,6 +465,35 @@ async function main() {
       check('one episode can be opened in full', false, 'no episode offered "Show all"');
     }
 
+    // Every match can be reached, a page at a time, not only the first hundred.
+    // After the one-episode check, because loading everything fills in every
+    // episode and takes their "Show all" buttons away.
+    await tsearch('podping');
+    await waitFor('/ in [\\d,]+ episodes/.test(document.getElementById("tsearch-status").textContent)', 150);
+    const rowCount = () => evaluate('document.querySelectorAll(".tsearch__moments > li").length');
+    await evaluate('document.querySelector(".tsearch__next")?.scrollIntoView({ block: "center" })');
+    await shoot('transcripts-more');
+    let clicks = 0;
+    while (clicks < 20 && (await evaluate('!!document.querySelector(".tsearch__next:not(:disabled)")'))) {
+      const before = await rowCount();
+      await evaluate('document.querySelector(".tsearch__next").click()');
+      clicks++;
+      await waitFor(`document.querySelectorAll(".tsearch__moments > li").length > ${before}`, 150);
+    }
+    const listed = await rowCount();
+    const total = Number(((await status()).match(/^([\d,]+) matches/)?.[1] ?? '').replace(/,/g, ''));
+    check(
+      'the show-more button reaches every match',
+      clicks > 0 && listed === total && !/showing/.test(await status()),
+      `${listed} of ${total} rows after ${clicks} click${clicks === 1 ? '' : 's'}`,
+    );
+    const heads = await evaluate('[...document.querySelectorAll(".tsearch__ep strong")].map((e) => e.textContent)');
+    check('a page that continues an episode adds to its group', heads.length === new Set(heads).size, `${heads.length} headings`);
+    check(
+      'no episode offers "Show all" once every row is listed',
+      (await evaluate('document.querySelectorAll(".tsearch__more").length')) === 0,
+    );
+
     await tsearch('ab');
     await sleep(100);
     check('a query too short to run says why', /at least 3/.test(await status()), await status());
@@ -486,7 +519,7 @@ async function main() {
       .map((el) => el.tagName.toLowerCase() + (el.className ? '.' + String(el.className).split(' ')[0] : '') + ' "' + el.textContent.trim().slice(0, 20) + '"')`);
     check('the transcripts page fits a phone with no sideways scroll', overflow <= 0, `${overflow}px over${wide.length ? `: ${wide.join(', ')}` : ''}`);
     // WCAG 2.5.8: 24 × 24 CSS px for anything tapped on its own.
-    const small = await evaluate(`[...document.querySelectorAll('.masthead__nav a, .tsearch__go, .tsearch__more, .tsearch__at, .tplayer__close')]
+    const small = await evaluate(`[...document.querySelectorAll('.masthead__nav a, .tsearch__go, .tsearch__more, .tsearch__next, .tsearch__at, .tplayer__close')]
       .filter((el) => el.getClientRects().length > 0)
       .map((el) => [el.textContent.trim(), el.getBoundingClientRect()])
       .filter(([, r]) => r.width < 24 || r.height < 24)

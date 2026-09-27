@@ -80,6 +80,23 @@ test('an episode filter narrows the rows', async () => {
   assert.deepEqual(body.results.map((row) => row.e), [35]);
 });
 
+test('`from` returns the rows after the first ones, and the counts stay whole', async () => {
+  const { response, body } = await call('q=podping&from=1');
+  assert.equal(response.status, 200);
+  assert.deepEqual(body.results.map((row) => [row.e, row.t]), [[35, 10]]);
+  assert.equal(body.total, 2);
+  assert.deepEqual(body.episodes, { 35: 1, 203: 1 });
+  assert.equal(body.truncated, false);
+});
+
+test('a malformed `from` is a 400, not the first page', async () => {
+  for (const from of ['-1', 'abc', '1.5']) {
+    const { response, body } = await call(`q=podping&from=${from}`);
+    assert.equal(response.status, 400, `from=${from}`);
+    assert.equal(body.error, 'bad-from');
+  }
+});
+
 test('a short query is a 400 with a reason', async () => {
   const { response, body } = await call('q=ab');
   assert.equal(response.status, 400);
