@@ -74,6 +74,13 @@ to `main` with no review step. Consequences worth holding in mind: a note is pub
 a minute after it is saved, and **the agent never runs the generators**, so generated data
 goes stale silently unless something warns (see *Staleness*).
 
+The push is `scripts/publish-push.sh`. A PR merged on GitHub leaves this checkout behind, and
+a plain push is then refused on every run: from 2026-10-23 to 2026-10-30 every publish
+committed and none reached the site, while the log said only "push failed". So it fetches
+first and rebases the new commit onto `origin/main`. A conflict, or uncommitted changes in the
+checkout, leaves the commit local and logs why. The fetch and the push each run under a 120 s
+`perl alarm` limit, because `auto-publish.sh` holds its lock while they run.
+
 ### Modules
 
 | File | Role |

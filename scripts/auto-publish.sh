@@ -138,13 +138,12 @@ git commit -q -m "$message" || {
 log "committed $((notes + data)) file(s): ${message}"
 
 if git remote | grep -q .; then
-  branch=$(git rev-parse --abbrev-ref HEAD)
-  if git push -q origin "$branch" 2>/dev/null; then
-    log "pushed to origin/${branch}"
-  else
-    log "push failed — the commit is local, push it by hand"
-    notify "Committed, but the push failed."
-  fi
+  # publish-push.sh rebases onto anything merged on GitHub since the last run,
+  # and says why when it cannot push. See the comment at its top.
+  result=$("$REPO/scripts/publish-push.sh")
+  status=$?
+  log "$result"
+  [ "$status" = 0 ] || notify "Committed, but the push failed."
 else
   log "no remote configured — commit is local"
 fi
