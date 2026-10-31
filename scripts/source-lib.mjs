@@ -7,11 +7,12 @@
  * write a half-empty file when a sibling is not checked out.
  *
  * The overridable path exists because of a bug next door:
- * pc20-timeline/scripts/build-episodes.mjs still defaults to
- * `../pc20-feed/pc20-archive.xml`, a directory that has not existed for a while,
- * and the only symptom is an ENOENT naming a path nobody recognises. So every
- * source here is printed before it is read, and a failure names the flag that
- * fixes it.
+ * pc20-timeline/scripts/build-episodes.mjs defaulted to
+ * `../pc20-feed/pc20-archive.xml`, and when that folder was moved away the only
+ * symptom was an ENOENT naming a path nobody recognised (the Friday refresh
+ * failed on it on 2026-10-30; it reads ../pc20-archive now, as update-mentions
+ * does). So every source here is printed before it is read, and a failure names
+ * the flag that fixes it.
  */
 
 import { execFile } from 'node:child_process';
