@@ -163,6 +163,11 @@ async function main() {
     [
       '--headless=new',
       '--disable-gpu',
+      // No 1.4 GB code-sign copy of Chrome under $TMPDIR/../X/ on macOS. Chrome makes
+      // one per start and only CDP Browser.close removes it; the SIGTERM in `finally`
+      // leaves it (measured 2026-11-11). Other platforms ignore the name. Chrome keeps
+      // only the LAST --disable-features, so add any other feature to this list.
+      '--disable-features=MacAppCodeSignClone',
       // Chrome refuses to start as root without --no-sandbox, which is exactly
       // the case in a container. CHROME_FLAGS keeps that out of the default.
       ...(process.env.CHROME_FLAGS ? process.env.CHROME_FLAGS.split(/\s+/) : []),
