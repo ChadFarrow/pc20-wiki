@@ -163,6 +163,9 @@ async function main() {
     [
       '--headless=new',
       '--disable-gpu',
+      // The transcript timestamp checks play real episode MP3s; never let them reach
+      // the speakers.
+      '--mute-audio',
       // No 1.4 GB code-sign copy of Chrome under $TMPDIR/../X/ on macOS. Chrome makes
       // one per start and only CDP Browser.close removes it; the SIGTERM in `finally`
       // leaves it (measured 2026-11-11). Other platforms ignore the name. Chrome keeps
