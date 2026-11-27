@@ -36,6 +36,7 @@ import { fileURLToPath } from 'node:url';
 
 import { flag, arg, tilde, sourcePath } from './source-lib.mjs';
 import { captionEpisode, collectCaptions, isStub } from './captions-lib.mjs';
+import { USER_AGENT } from './user-agent.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = resolve(
@@ -132,6 +133,7 @@ async function main() {
     // here is to keep going and say what happened.
     try {
       const response = await fetch(`${HOST}/${name(episode)}`, {
+        headers: { 'User-Agent': USER_AGENT },
         signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
       });
       if (response.status === 404) {
@@ -207,6 +209,7 @@ async function fillFromArchive() {
     }
     try {
       const response = await fetch(`${ARCHIVE}/${name(episode)}`, {
+        headers: { 'User-Agent': USER_AGENT },
         signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
       });
       if (response.status === 404) {
