@@ -93,6 +93,7 @@ checkout, leaves the commit local and logs why. The fetch and the push each run 
 | `scripts/mentions-lib.mjs` | the matching rules — the risky part of this repo |
 | `scripts/captions-lib.mjs` | the transcript tier: SRT → cues, dwell, lift, the four gates |
 | `scripts/fetch-captions.mjs` | fills `captions/` from the server and `captions/archive/` from pc20-archive. The only script here that uses the network |
+| `scripts/user-agent.mjs` | `USER_AGENT`, `pc20-wiki/<package.json version> (+https://pc20-wiki.vercel.app/)`: every `fetch()` to another host sends it (`fetch-captions.mjs`, `update-apps.mjs`; `test/user-agent.test.mjs` checks both). Bump `version` to change it; do not add a second string |
 | `scripts/update-mentions.mjs` | CLI: five sources → `data/mentions.json` |
 | `scripts/timeline-lib.mjs` | eras, date placement, entry → note linking |
 | `scripts/update-timeline.mjs` | CLI: milestones → `data/timeline.json` |

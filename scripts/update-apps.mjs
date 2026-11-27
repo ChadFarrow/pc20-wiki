@@ -28,6 +28,8 @@ import { promisify } from 'node:util';
 import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { USER_AGENT } from './user-agent.mjs';
+
 const run = promisify(execFile);
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -64,7 +66,7 @@ async function main() {
     updated = await sourceDate(path);
   } else {
     const url = arg('url') ?? UPSTREAM;
-    const response = await fetch(url);
+    const response = await fetch(url, { headers: { 'User-Agent': USER_AGENT } });
     if (!response.ok) throw new Error(`${response.status} fetching ${url}`);
     apps = await response.json();
     source = url;
